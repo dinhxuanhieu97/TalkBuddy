@@ -2,21 +2,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 const CONTEXTS = [
-  { id: "airport", label: "✈️ Airport", color: "#FFD600" },
-  { id: "hospital", label: "🏥 Hospital", color: "#FF6B6B" },
-  { id: "hotel", label: "🏨 Hotel", color: "#4ECDC4" },
+  { id: "airport",    label: "✈️ Airport",    color: "#FFD600" },
+  { id: "hospital",   label: "🏥 Hospital",   color: "#FF6B6B" },
+  { id: "hotel",      label: "🏨 Hotel",      color: "#4ECDC4" },
   { id: "restaurant", label: "🍽️ Restaurant", color: "#FF9F43" },
-  { id: "police", label: "🚔 Police", color: "#5F6DF6" },
-  { id: "shopping", label: "🛍️ Shopping", color: "#F368E0" },
-  { id: "transport", label: "🚌 Transport", color: "#26de81" },
-  { id: "bank", label: "🏦 Bank", color: "#FFA502" },
+  { id: "police",     label: "🚔 Police",     color: "#5F6DF6" },
+  { id: "shopping",   label: "🛍️ Shopping",   color: "#F368E0" },
+  { id: "transport",  label: "🚌 Transport",  color: "#26de81" },
+  { id: "bank",       label: "🏦 Bank",       color: "#FFA502" },
 ];
 
-type Phrase = {
-  en: string;
-  vi: string;
-  level: "basic" | "advanced";
-};
+type Phrase = { en: string; vi: string; level: "basic" | "advanced" };
 
 const PHRASE_DATA: Record<string, Phrase[]> = {
   airport: [
@@ -85,16 +81,13 @@ const PHRASE_DATA: Record<string, Phrase[]> = {
   ],
 };
 
-const SEARCH_SUGGESTIONS = [
-  "Help me",
-  "Where is",
-  "I need",
-  "How much",
-  "Can you",
-  "I don't understand",
-  "Emergency",
-  "Please call",
-];
+const SEARCH_SUGGESTIONS = ["Help me", "Where is", "I need", "How much", "Can you", "I don't understand", "Emergency", "Please call"];
+
+/* ── shared badge style ─────────────────────────────── */
+const levelBadge = (level: "basic" | "advanced") =>
+  level === "basic"
+    ? { bg: "rgba(46,204,113,0.14)", color: "#2ECC71" }
+    : { bg: "rgba(243,156,18,0.14)", color: "#F39C12" };
 
 export function LearnScreen() {
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
@@ -104,99 +97,71 @@ export function LearnScreen() {
 
   const phrases = selectedContext ? PHRASE_DATA[selectedContext] ?? [] : [];
   const filteredPhrases = searchQuery
-    ? Object.values(PHRASE_DATA)
-        .flat()
-        .filter(
-          (p) =>
-            p.en.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            p.vi.toLowerCase().includes(searchQuery.toLowerCase())
-        )
+    ? Object.values(PHRASE_DATA).flat().filter(
+        (p) =>
+          p.en.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.vi.toLowerCase().includes(searchQuery.toLowerCase())
+      )
     : phrases;
 
   const toggleSave = (en: string) => {
     setSavedPhrases((prev) =>
       prev.includes(en) ? prev.filter((p) => p !== en) : [...prev, en]
     );
-    // Save to history
     const stored = JSON.parse(localStorage.getItem("eng_history") || "[]");
     const phrase = Object.values(PHRASE_DATA).flat().find((p) => p.en === en);
-    if (phrase && !stored.find((s: any) => s.en === en)) {
+    if (phrase && !stored.find((s: Phrase & { date: string; context: string | null }) => s.en === en)) {
       stored.unshift({ ...phrase, date: new Date().toISOString(), context: selectedContext });
       localStorage.setItem("eng_history", JSON.stringify(stored.slice(0, 100)));
     }
   };
 
   return (
-    <div className="w-full h-full flex flex-col" style={{ backgroundColor: "#F9F9F9" }}>
-      {/* Header */}
-      <div
-        className="px-5 pt-14 pb-5"
-        style={{ backgroundColor: "#FFD600" }}
-      >
+    <div className="w-full h-full flex flex-col" style={{ backgroundColor: "var(--background)" }}>
+
+      {/* ── Liquid Glass Header ─────────────────── */}
+      <div className="glass-header-brand px-5 pt-14 pb-5">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p style={{ fontSize: 12, color: "#1C1C1E", opacity: 0.6 }}>Emergency English</p>
+            <p style={{ fontSize: 12, color: "#1C1C1E", opacity: 0.55 }}>Emergency English</p>
             <h1 style={{ fontSize: 24, fontWeight: 800, color: "#1C1C1E", lineHeight: 1.2 }}>
               What do you need?
             </h1>
           </div>
           <div
-            className="w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: "#1C1C1E" }}
+            className="glass-btn-dark w-10 h-10 rounded-full flex items-center justify-center"
           >
             <span style={{ fontSize: 16 }}>🔥</span>
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* Glass Search Bar */}
         <div className="relative">
           <input
             type="text"
             placeholder="Search phrases..."
             value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setSelectedContext(null);
-            }}
-            className="w-full py-3 pl-10 pr-4 rounded-2xl outline-none"
-            style={{
-              backgroundColor: "#FFFFFF",
-              fontSize: 14,
-              color: "#1C1C1E",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-            }}
+            onChange={(e) => { setSearchQuery(e.target.value); setSelectedContext(null); }}
+            className="glass-input w-full py-3 pl-10 pr-4 rounded-2xl outline-none"
+            style={{ fontSize: 14, color: "#1C1C1E" }}
           />
-          <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#9E9E9E"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2" width="18" height="18"
+            viewBox="0 0 24 24" fill="none" stroke="#9E9E9E" strokeWidth="2.5"
+            strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
         </div>
 
-        {/* Quick suggestions */}
+        {/* Quick suggestions – glass pills */}
         {searchQuery === "" && !selectedContext && (
           <div className="flex gap-2 mt-3 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
             {SEARCH_SUGGESTIONS.map((s) => (
               <button
                 key={s}
                 onClick={() => setSearchQuery(s)}
-                className="flex-shrink-0 px-3 py-1.5 rounded-full"
-                style={{
-                  backgroundColor: "rgba(28,28,30,0.1)",
-                  color: "#1C1C1E",
-                  fontSize: 12,
-                  fontWeight: 600,
-                  whiteSpace: "nowrap",
-                }}
+                className="glass-pill flex-shrink-0 px-3 py-1.5 rounded-full"
+                style={{ color: "#1C1C1E", fontSize: 12, fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {s}
               </button>
@@ -206,10 +171,11 @@ export function LearnScreen() {
       </div>
 
       <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: "none" }}>
-        {/* Context Chips */}
+
+        {/* Context chips grid */}
         {!searchQuery && (
           <div className="px-5 pt-4">
-            <p style={{ fontSize: 12, fontWeight: 700, color: "#9E9E9E", letterSpacing: 1, textTransform: "uppercase" }} className="mb-3">
+            <p style={{ fontSize: 11, fontWeight: 700, color: "var(--muted-foreground)", letterSpacing: 1, textTransform: "uppercase" }} className="mb-3">
               Choose Context
             </p>
             <div className="grid grid-cols-4 gap-2">
@@ -219,22 +185,13 @@ export function LearnScreen() {
                   <button
                     key={ctx.id}
                     onClick={() => setSelectedContext(isSelected ? null : ctx.id)}
-                    className="flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl active:scale-95 transition-transform"
-                    style={{
-                      backgroundColor: isSelected ? "#1C1C1E" : "#FFFFFF",
-                      boxShadow: isSelected ? "0 4px 12px rgba(0,0,0,0.2)" : "0 2px 8px rgba(0,0,0,0.06)",
-                    }}
+                    className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl active:scale-95 transition-transform ${isSelected ? "glass-btn-dark" : "glass"}`}
                   >
                     <span style={{ fontSize: 22 }}>{ctx.label.split(" ")[0]}</span>
-                    <span
-                      style={{
-                        fontSize: 9,
-                        fontWeight: 700,
-                        color: isSelected ? "#FFD600" : "#1C1C1E",
-                        textAlign: "center",
-                        lineHeight: 1.2,
-                      }}
-                    >
+                    <span style={{
+                      fontSize: 9, fontWeight: 700, textAlign: "center", lineHeight: 1.2,
+                      color: isSelected ? "#FFD600" : "var(--foreground)",
+                    }}>
                       {ctx.label.split(" ").slice(1).join(" ")}
                     </span>
                   </button>
@@ -244,18 +201,15 @@ export function LearnScreen() {
           </div>
         )}
 
-        {/* Phrases List */}
+        {/* Phrases list */}
         {(selectedContext || searchQuery) && (
           <div className="px-5 pt-4 pb-4">
             <div className="flex items-center justify-between mb-3">
-              <p style={{ fontSize: 12, fontWeight: 700, color: "#9E9E9E", letterSpacing: 1, textTransform: "uppercase" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, color: "var(--muted-foreground)", letterSpacing: 1, textTransform: "uppercase" }}>
                 {searchQuery ? `Results for "${searchQuery}"` : `${filteredPhrases.length} Phrases`}
               </p>
               {selectedContext && (
-                <button
-                  onClick={() => setSelectedContext(null)}
-                  style={{ fontSize: 12, color: "#FFD600", fontWeight: 700 }}
-                >
+                <button onClick={() => setSelectedContext(null)} style={{ fontSize: 12, color: "#1C1C1E", fontWeight: 700 }}>
                   Clear
                 </button>
               )}
@@ -265,51 +219,34 @@ export function LearnScreen() {
               {filteredPhrases.length === 0 && (
                 <div className="text-center py-8">
                   <p style={{ fontSize: 32 }}>🔍</p>
-                  <p style={{ color: "#9E9E9E", fontSize: 14, marginTop: 8 }}>No phrases found</p>
+                  <p style={{ color: "var(--muted-foreground)", fontSize: 14, marginTop: 8 }}>No phrases found</p>
                 </div>
               )}
               {filteredPhrases.map((phrase, idx) => {
                 const isSaved = savedPhrases.includes(phrase.en);
+                const badge = levelBadge(phrase.level);
                 return (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="rounded-2xl p-4"
-                    style={{
-                      backgroundColor: "#FFFFFF",
-                      boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
-                    }}
+                    className="glass rounded-2xl p-4"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span
-                            className="px-2 py-0.5 rounded-full"
-                            style={{
-                              backgroundColor: phrase.level === "basic" ? "#E8F9EE" : "#FFF3CD",
-                              color: phrase.level === "basic" ? "#2ECC71" : "#F39C12",
-                              fontSize: 9,
-                              fontWeight: 700,
-                              textTransform: "uppercase",
-                            }}
-                          >
+                          <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: badge.bg, color: badge.color, fontSize: 9, fontWeight: 700, textTransform: "uppercase" }}>
                             {phrase.level}
                           </span>
                         </div>
-                        <p style={{ fontSize: 15, fontWeight: 700, color: "#1C1C1E", lineHeight: 1.4 }}>
-                          {phrase.en}
-                        </p>
-                        <p style={{ fontSize: 13, color: "#9E9E9E", marginTop: 4, lineHeight: 1.4 }}>
-                          {phrase.vi}
-                        </p>
+                        <p style={{ fontSize: 15, fontWeight: 700, color: "var(--foreground)", lineHeight: 1.4 }}>{phrase.en}</p>
+                        <p style={{ fontSize: 13, color: "var(--muted-foreground)", marginTop: 4, lineHeight: 1.4 }}>{phrase.vi}</p>
                       </div>
                       <div className="flex flex-col gap-2">
                         <button
                           onClick={() => setShowDetail(phrase)}
-                          className="w-9 h-9 rounded-xl flex items-center justify-center"
-                          style={{ backgroundColor: "#FFD600" }}
+                          className="glass-btn-brand w-9 h-9 rounded-xl flex items-center justify-center"
                         >
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1E" strokeWidth="2.5">
                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
@@ -318,10 +255,9 @@ export function LearnScreen() {
                         </button>
                         <button
                           onClick={() => toggleSave(phrase.en)}
-                          className="w-9 h-9 rounded-xl flex items-center justify-center"
-                          style={{ backgroundColor: isSaved ? "#1C1C1E" : "#F3F3F3" }}
+                          className={`w-9 h-9 rounded-xl flex items-center justify-center ${isSaved ? "glass-btn-dark" : "glass"}`}
                         >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill={isSaved ? "#FFD600" : "none"} stroke={isSaved ? "#FFD600" : "#9E9E9E"} strokeWidth="2">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill={isSaved ? "#FFD600" : "none"} stroke={isSaved ? "#FFD600" : "var(--muted-foreground)"} strokeWidth="2">
                             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                           </svg>
                         </button>
@@ -337,20 +273,14 @@ export function LearnScreen() {
         {/* Empty state */}
         {!selectedContext && !searchQuery && (
           <div className="px-5 pt-6">
-            <div
-              className="rounded-3xl p-5"
-              style={{ backgroundColor: "#1C1C1E" }}
-            >
-              <p style={{ fontSize: 13, color: "#FFD600", fontWeight: 700, marginBottom: 6 }}>
-                🚨 Emergency Tip
-              </p>
-              <p style={{ fontSize: 14, color: "#FFFFFF", lineHeight: 1.6 }}>
+            <div className="glass-dark rounded-3xl p-5">
+              <p style={{ fontSize: 13, color: "#FFD600", fontWeight: 700, marginBottom: 6 }}>🚨 Emergency Tip</p>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>
                 Select a context above or type a phrase to find instant English help for any situation.
               </p>
             </div>
 
-            {/* Popular phrases */}
-            <p style={{ fontSize: 12, fontWeight: 700, color: "#9E9E9E", letterSpacing: 1, textTransform: "uppercase", marginTop: 20, marginBottom: 12 }}>
+            <p style={{ fontSize: 11, fontWeight: 700, color: "var(--muted-foreground)", letterSpacing: 1, textTransform: "uppercase", marginTop: 20, marginBottom: 12 }}>
               Popular Right Now
             </p>
             <div className="flex flex-col gap-3">
@@ -360,15 +290,11 @@ export function LearnScreen() {
                 { en: "Call the police!", vi: "Gọi cảnh sát!", ctx: "🚔" },
                 { en: "I don't speak English well.", vi: "Tôi không nói tiếng Anh giỏi.", ctx: "💬" },
               ].map((p, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl p-4 flex items-center gap-3"
-                  style={{ backgroundColor: "#FFFFFF", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
-                >
+                <div key={i} className="glass rounded-2xl p-4 flex items-center gap-3">
                   <span style={{ fontSize: 24 }}>{p.ctx}</span>
                   <div>
-                    <p style={{ fontSize: 14, fontWeight: 700, color: "#1C1C1E" }}>{p.en}</p>
-                    <p style={{ fontSize: 12, color: "#9E9E9E" }}>{p.vi}</p>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: "var(--foreground)" }}>{p.en}</p>
+                    <p style={{ fontSize: 12, color: "var(--muted-foreground)" }}>{p.vi}</p>
                   </div>
                 </div>
               ))}
@@ -379,39 +305,36 @@ export function LearnScreen() {
         <div style={{ height: 16 }} />
       </div>
 
-      {/* Detail Modal */}
+      {/* ── Liquid Glass Detail Modal ───────────── */}
       <AnimatePresence>
         {showDetail && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 flex items-end"
-            style={{ backgroundColor: "rgba(0,0,0,0.5)", zIndex: 50 }}
+            className="glass-sheet-backdrop absolute inset-0 flex items-end"
+            style={{ zIndex: 50 }}
             onClick={() => setShowDetail(null)}
           >
             <motion.div
               initial={{ y: 300 }}
               animate={{ y: 0 }}
               exit={{ y: 300 }}
+              transition={{ type: "spring", stiffness: 340, damping: 32 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full rounded-t-3xl p-6"
-              style={{ backgroundColor: "#FFFFFF" }}
+              className="glass-sheet w-full rounded-t-3xl p-6"
             >
-              <div className="w-10 h-1 rounded-full bg-gray-200 mx-auto mb-6" />
-              <p style={{ fontSize: 11, color: "#FFD600", fontWeight: 800, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
+              <div className="w-10 h-1 rounded-full bg-gray-200/60 mx-auto mb-6" />
+              <p style={{ fontSize: 11, color: "#1C1C1E", fontWeight: 800, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
                 English Phrase
               </p>
-              <h2 style={{ fontSize: 22, fontWeight: 800, color: "#1C1C1E", lineHeight: 1.3, marginBottom: 8 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 800, color: "var(--foreground)", lineHeight: 1.3, marginBottom: 8 }}>
                 {showDetail.en}
               </h2>
-              <p style={{ fontSize: 16, color: "#9E9E9E", marginBottom: 24 }}>{showDetail.vi}</p>
+              <p style={{ fontSize: 16, color: "var(--muted-foreground)", marginBottom: 24 }}>{showDetail.vi}</p>
 
               <div className="flex gap-3">
-                <button
-                  className="flex-1 py-4 rounded-2xl flex items-center justify-center gap-2"
-                  style={{ backgroundColor: "#FFD600" }}
-                >
+                <button className="glass-btn-brand flex-1 py-4 rounded-2xl flex items-center justify-center gap-2">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1E" strokeWidth="2.5">
                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
                     <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
@@ -420,12 +343,8 @@ export function LearnScreen() {
                   <span style={{ fontWeight: 700, color: "#1C1C1E", fontSize: 14 }}>Listen</span>
                 </button>
                 <button
-                  onClick={() => {
-                    toggleSave(showDetail.en);
-                    setShowDetail(null);
-                  }}
-                  className="flex-1 py-4 rounded-2xl flex items-center justify-center gap-2"
-                  style={{ backgroundColor: "#1C1C1E" }}
+                  onClick={() => { toggleSave(showDetail.en); setShowDetail(null); }}
+                  className="glass-btn-dark flex-1 py-4 rounded-2xl flex items-center justify-center gap-2"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD600" strokeWidth="2">
                     <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />

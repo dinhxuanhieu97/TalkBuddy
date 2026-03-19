@@ -24,3 +24,7 @@ Thumbs.db
 
 # Vite
 *.local
+
+# Antigravity internal (embedded git repo)
+antigravity-awesome-skills/
+.agent/
