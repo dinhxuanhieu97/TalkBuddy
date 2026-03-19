@@ -22,6 +22,10 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Project artifacts
+*.zip
+.agent/
+
 # Vite
 *.local
 
