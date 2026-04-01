@@ -12,7 +12,9 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { useT } from "../../lib/i18n";
+import { AuthService } from "../../services/AuthService";
 import { CreditBalance } from "../../components/CreditBalance";
 import { CreditShop } from "../../components/CreditShop";
 import { SubscriptionPlans } from "../../components/SubscriptionPlans";
@@ -47,6 +49,7 @@ type SettingItem = {
 
 export default function ProfileScreen() {
   const t = useT();
+  const navigation = useNavigation();
   const [notifications, setNotifications] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
   const [autoPlay, setAutoPlay] = useState(true);
@@ -61,6 +64,7 @@ export default function ProfileScreen() {
   const [showMySaved, setShowMySaved] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showLanguageSetup, setShowLanguageSetup] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
   const [activeSavedPractice, setActiveSavedPractice] = useState<{
     mode: "practice" | "dictation" | "shadow";
@@ -68,6 +72,42 @@ export default function ProfileScreen() {
   } | null>(null);
 
   const { phrases: savedPhrases, removePhrase } = useSavedPhrasesStore();
+
+  // Handle logout
+  const handleLogout = async () => {
+    Alert.alert(
+      t("auth.logout"),
+      t("auth.logoutConfirm") || "Are you sure you want to log out?",
+      [
+        { text: t("common.cancel") || "Cancel", style: "cancel" },
+        {
+          text: t("auth.logout"),
+          style: "destructive",
+          onPress: async () => {
+            setIsLoggingOut(true);
+            try {
+              await AuthService.signOut();
+              // Clear local storage
+              await AsyncStorage.clear();
+              // Navigate to login
+              navigation.reset({
+                index: 0,
+                routes: [{ name: "login" }],
+              });
+            } catch (error) {
+              console.error("Logout error:", error);
+              Alert.alert(
+                t("common.error") || "Error",
+                t("auth.logoutError") || "Failed to log out",
+              );
+            } finally {
+              setIsLoggingOut(false);
+            }
+          },
+        },
+      ],
+    );
+  };
 
   // Get user data from Zustand store
   const user = useUserStore((state) => state.user);
@@ -421,21 +461,34 @@ export default function ProfileScreen() {
               <Ionicons name="star" size={24} color="#FFD600" />
             </View>
             <View style={styles.upgradeText}>
-              <Text style={styles.upgradeTitle}>Upgrade to Pro</Text>
+              <Text style={styles.upgradeTitle}>
+                {t("profile.upgradeTitle")}
+              </Text>
               <Text style={styles.upgradeSubtitle}>
-                Unlock unlimited phrases, offline mode, and more
+                {t("profile.upgradeSubtitle")}
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.upgradeButton}>
-            <Text style={styles.upgradeButtonText}>Upgrade Now</Text>
+          <TouchableOpacity
+            style={styles.upgradeButton}
+            onPress={() => setShowSubscriptionPlans(true)}
+          >
+            <Text style={styles.upgradeButtonText}>
+              {t("profile.upgradeButton")}
+            </Text>
           </TouchableOpacity>
         </View>
 
         {/* Logout */}
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity
+          style={styles.logoutButton}
+          onPress={handleLogout}
+          disabled={isLoggingOut}
+        >
           <Ionicons name="log-out-outline" size={20} color="#FF3B30" />
-          <Text style={styles.logoutText}>Log Out</Text>
+          <Text style={styles.logoutText}>
+            {isLoggingOut ? t("common.loading") : t("auth.logout")}
+          </Text>
         </TouchableOpacity>
 
         {/* Version */}

@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "edge-tts": {
+      "source": "aahl/skills",
+      "sourceType": "github",
+      "computedHash": "ba6bb873a28d5e7337dd9e03fcc942b122f1e8ff1063963ef54ccb24fb49072f"
+    },
     "elevenlabs-agents": {
       "source": "jezweb/claude-skills",
       "sourceType": "github",

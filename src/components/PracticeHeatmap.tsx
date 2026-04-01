@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useT } from "../lib/i18n";
 import { useUserStore } from "../stores/userStore";
 
 const DAYS_OF_WEEK = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -52,6 +53,7 @@ function formatMonth(date: Date) {
 }
 
 export function PracticeHeatmap() {
+  const t = useT();
   const stats = useUserStore((s) => s.stats);
   const data = generateHeatmapData(stats.practiceStreak, stats.lastActiveDate);
 
@@ -81,11 +83,11 @@ export function PracticeHeatmap() {
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Ionicons name="calendar" size={16} color="#FFD600" />
-            <Text style={styles.title}>Practice Calendar</Text>
+            <Ionicons name="calendar" size={16} color="#6366F1" />
+            <Text style={styles.title}>{t("heatmap.title")}</Text>
           </View>
           <Text style={styles.subtitle}>
-            {activeDays} of {totalDays} days
+            {t("heatmap.daysActive", { active: activeDays, total: totalDays })}
           </Text>
         </View>
 
@@ -135,7 +137,7 @@ export function PracticeHeatmap() {
 
         {/* Legend */}
         <View style={styles.legend}>
-          <Text style={styles.legendLabel}>Less</Text>
+          <Text style={styles.legendLabel}>{t("heatmap.less")}</Text>
           {([0, 1, 2, 3] as const).map((level) => (
             <View
               key={level}
@@ -145,7 +147,7 @@ export function PracticeHeatmap() {
               ]}
             />
           ))}
-          <Text style={styles.legendLabel}>More</Text>
+          <Text style={styles.legendLabel}>{t("heatmap.more")}</Text>
         </View>
       </View>
     </View>

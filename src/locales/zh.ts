@@ -27,6 +27,8 @@ const zh = {
   "auth.forgotPassword": "忘记密码",
   "auth.forgotPasswordQuestion": "忘记密码？",
   "auth.logout": "退出登录",
+  "auth.logoutConfirm": "确定要退出登录吗？",
+  "auth.logoutError": "退出登录失败，请重试。",
   "auth.signingIn": "登录中...",
   "auth.orContinueWith": "或使用以下方式",
   "auth.google": "Google",
@@ -117,6 +119,37 @@ const zh = {
   "profile.phrasesLearned": "已学句子",
   "profile.practiceStreak": "连续练习",
   "profile.totalTime": "累计时间",
+
+  // ── Heatmap / Practice Calendar ────────────────────────────────
+  "heatmap.title": "练习日历",
+  "heatmap.daysActive": "{active}/{total} 天活跃",
+  "heatmap.mon": "一",
+  "heatmap.tue": "二",
+  "heatmap.wed": "三",
+  "heatmap.thu": "四",
+  "heatmap.fri": "五",
+  "heatmap.sat": "六",
+  "heatmap.sun": "日",
+  "heatmap.less": "少",
+  "heatmap.more": "多",
+
+  // ── Mastery Progress ───────────────────────────────────────────
+  "mastery.title": "掌握进度",
+  "mastery.excellent": "优秀",
+  "mastery.great": "很棒",
+  "mastery.solid": "不错",
+  "mastery.practice": "继续练习",
+  "mastery.started": "刚开始",
+  "mastery.phrasesTotal": "共 {n} 个句子",
+  "mastery.startLearning": "开始学习来查看你的进度",
+
+  // Mastery Levels
+  "mastery.level.beginner": "入门",
+  "mastery.level.learning": "学习中",
+  "mastery.level.familiar": "熟悉",
+  "mastery.level.proficient": "精通",
+  "mastery.level.mastered": "已掌握",
+
   "profile.section.account": "账户",
   "profile.section.preferences": "偏好设置",
   "profile.section.learning": "学习",

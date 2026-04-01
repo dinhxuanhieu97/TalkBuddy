@@ -29,6 +29,8 @@ const en: LocaleDict = {
   "auth.forgotPassword": "Forgot password",
   "auth.forgotPasswordQuestion": "Forgot Password?",
   "auth.logout": "Log Out",
+  "auth.logoutConfirm": "Are you sure you want to log out?",
+  "auth.logoutError": "Failed to log out. Please try again.",
   "auth.signingIn": "Signing In...",
   "auth.orContinueWith": "or continue with",
   "auth.google": "Google",
@@ -123,6 +125,37 @@ const en: LocaleDict = {
   "profile.phrasesLearned": "Phrases Learned",
   "profile.practiceStreak": "Practice Streak",
   "profile.totalTime": "Total Time",
+
+  // ── Heatmap / Practice Calendar ────────────────────────────────
+  "heatmap.title": "Practice Calendar",
+  "heatmap.daysActive": "{active} of {total} days active",
+  "heatmap.mon": "Mon",
+  "heatmap.tue": "Tue",
+  "heatmap.wed": "Wed",
+  "heatmap.thu": "Thu",
+  "heatmap.fri": "Fri",
+  "heatmap.sat": "Sat",
+  "heatmap.sun": "Sun",
+  "heatmap.less": "Less",
+  "heatmap.more": "More",
+
+  // ── Mastery Progress ───────────────────────────────────────────
+  "mastery.title": "Mastery Progress",
+  "mastery.excellent": "Excellent",
+  "mastery.great": "Great",
+  "mastery.solid": "Good",
+  "mastery.practice": "Keep Practicing",
+  "mastery.started": "Just Started",
+  "mastery.phrasesTotal": "{n} phrases total",
+  "mastery.startLearning": "Start learning to see your progress",
+
+  // Mastery Levels
+  "mastery.level.beginner": "Beginner",
+  "mastery.level.learning": "Learning",
+  "mastery.level.familiar": "Familiar",
+  "mastery.level.proficient": "Proficient",
+  "mastery.level.mastered": "Mastered",
+
   "profile.section.account": "Account",
   "profile.section.preferences": "Preferences",
   "profile.section.learning": "Learning",

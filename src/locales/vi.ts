@@ -29,6 +29,8 @@ const vi: LocaleDict = {
   "auth.forgotPassword": "Quên mật khẩu",
   "auth.forgotPasswordQuestion": "Quên mật khẩu?",
   "auth.logout": "Đăng xuất",
+  "auth.logoutConfirm": "Bạn có chắc chắn muốn đăng xuất không?",
+  "auth.logoutError": "Đăng xuất thất bại, vui lòng thử lại.",
   "auth.signingIn": "Đang đăng nhập...",
   "auth.orContinueWith": "hoặc tiếp tục với",
   "auth.google": "Google",
@@ -121,6 +123,37 @@ const vi: LocaleDict = {
   "profile.phrasesLearned": "Câu đã học",
   "profile.practiceStreak": "Chuỗi luyện tập",
   "profile.totalTime": "Tổng thời gian",
+
+  // ── Heatmap / Practice Calendar ────────────────────────────────
+  "heatmap.title": "Lịch luyện tập",
+  "heatmap.daysActive": "{active}/{total} ngày hoạt động",
+  "heatmap.mon": "T2",
+  "heatmap.tue": "T3",
+  "heatmap.wed": "T4",
+  "heatmap.thu": "T5",
+  "heatmap.fri": "T6",
+  "heatmap.sat": "T7",
+  "heatmap.sun": "CN",
+  "heatmap.less": "Ít",
+  "heatmap.more": "Nhiều",
+
+  // ── Mastery Progress ───────────────────────────────────────────
+  "mastery.title": "Tiến độ thành thạo",
+  "mastery.excellent": "Xuất sắc",
+  "mastery.great": "Tuyệt vời",
+  "mastery.solid": "Tốt",
+  "mastery.practice": "Tiếp tục luyện tập",
+  "mastery.started": "Mới bắt đầu",
+  "mastery.phrasesTotal": "{n} câu tổng",
+  "mastery.startLearning": "Bắt đầu học để xem tiến độ của bạn",
+
+  // Mastery Levels
+  "mastery.level.beginner": "Người mới",
+  "mastery.level.learning": "Đang học",
+  "mastery.level.familiar": "Quen thuộc",
+  "mastery.level.proficient": "Thành thạo",
+  "mastery.level.mastered": "Đã thành thạo",
+
   "profile.section.account": "Tài khoản",
   "profile.section.preferences": "Tùy chọn",
   "profile.section.learning": "Học tập",
