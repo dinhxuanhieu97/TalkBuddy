@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "elevenlabs-agents": {
+      "source": "jezweb/claude-skills",
+      "sourceType": "github",
+      "computedHash": "d2ff1bce50495cd79f41d7b4052ea6c834fe5c1ca2963f31e29b3a934dd53a77"
+    },
+    "elevenlabs-dubbing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "computedHash": "efb8329254dafb063ded9574d6fdafbc87ff458d4accd88d37e42530c31ef96f"
+    },
+    "elevenlabs-tts": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "computedHash": "d4f43c5fa865590bf0b8f70994b1901022ce21cba1f45ff373bf60ed96a5433c"
+    },
+    "setup-api-key": {
+      "source": "elevenlabs/skills",
+      "sourceType": "github",
+      "computedHash": "45e680b4a199bb031472fc28e752abc29bc2a38334cf5c80e1428c3f9fa33083"
+    },
+    "swiftui-expert-skill": {
+      "source": "avdlee/swiftui-agent-skill",
+      "sourceType": "github",
+      "computedHash": "2e48033f8c90095c5391ad0a3568ff31b3655e0273992c9d3bffd068b17dfd0f"
+    },
+    "text-to-speech": {
+      "source": "elevenlabs/skills",
+      "sourceType": "github",
+      "computedHash": "dccf9155f284345ade4a5af5d3c3db5d5da77856011ff92fff725160b0df8370"
+    }
+  }
+}

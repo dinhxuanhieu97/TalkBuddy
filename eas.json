@@ -1,0 +1,54 @@
+{
+  "cli": {
+    "version": ">= 12.0.0",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "enterpriseProvisioning": "adhoc"
+      }
+    },
+    "development-simulator": {
+      "developmentClient": true,
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": {
+        "enterpriseProvisioning": "adhoc"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview-play-store": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "preview-app-store": {
+      "distribution": "store"
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "YOUR_APP_STORE_CONNECT_APP_ID",
+        "ascAppName": "Talk Buddy"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./path-to-your-service-account-key.json",
+        "track": "production"
+      }
+    }
+  }
+}
