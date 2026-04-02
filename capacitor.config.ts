@@ -1,17 +1,20 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: 'com.talkbuddy.app',
-  appName: 'TalkBuddy',
-  webDir: 'dist',
+  appId: "com.talkbuddy.app",
+  appName: "TalkBuddy",
+  webDir: "dist",
   server: {
-    androidScheme: 'https',
+    androidScheme: "https",
+    // Live reload: point WebView to Vite dev server
+    url: "http://192.168.1.47:5173",
+    cleartext: true,
   },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,
-      backgroundColor: '#000000',
-      showSpinner: true,
+      backgroundColor: "#FFD600",
+      showSpinner: false,
     },
   },
 };

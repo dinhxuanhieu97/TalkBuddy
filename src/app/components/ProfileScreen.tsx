@@ -37,6 +37,7 @@ import { speak, stopSpeaking } from "../../services/TTSService";
 import PracticeMode from "./PracticeMode";
 import DictationMode from "./DictationMode";
 import ShadowMode from "./ShadowMode";
+import { VoiceSettingsScreen } from "../components/VoiceSettings/VoiceSettingsScreen";
 
 type SettingItem = {
   id: string;
@@ -63,6 +64,7 @@ export default function ProfileScreen() {
   const [showAvatarModal, setShowAvatarModal] = useState(false);
   const [showMySaved, setShowMySaved] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showVoiceSettings, setShowVoiceSettings] = useState(false);
   const [showLanguageSetup, setShowLanguageSetup] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
@@ -179,10 +181,16 @@ export default function ProfileScreen() {
       title: t("profile.section.preferences"),
       items: [
         {
+          id: "voice",
+          icon: "mic",
+          label: t("profile.voiceSettings") || "Voice Settings",
+          value: "Customize",
+          type: "navigation" as const,
+        },
+        {
           id: "settings",
           icon: "settings",
           label: t("profile.settings"),
-          value: t("settings.voiceSettings"),
           type: "navigation" as const,
         },
         {
@@ -283,6 +291,9 @@ export default function ProfileScreen() {
         break;
       case "settings":
         setShowSettings(true);
+        break;
+      case "voice":
+        setShowVoiceSettings(true);
         break;
       case "language":
         setShowLanguageSetup(true);
@@ -575,6 +586,19 @@ export default function ProfileScreen() {
         onRequestClose={() => setShowSettings(false)}
       >
         <SettingsScreen onBack={() => setShowSettings(false)} />
+      </Modal>
+
+      {/* Voice Settings Modal */}
+      <Modal
+        visible={showVoiceSettings}
+        animationType="slide"
+        presentationStyle="pageSheet"
+        onRequestClose={() => setShowVoiceSettings(false)}
+      >
+        <VoiceSettingsScreen
+          locale="en-US"
+          onBack={() => setShowVoiceSettings(false)}
+        />
       </Modal>
 
       {/* Language & Name Setup Modal */}

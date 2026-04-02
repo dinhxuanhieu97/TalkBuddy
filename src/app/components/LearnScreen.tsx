@@ -9,6 +9,7 @@ import {
   FlatList,
   Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -141,6 +142,9 @@ export default function LearnScreen() {
   const t = useT();
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [difficultyFilter, setDifficultyFilter] = useState<
+    "all" | "Basic" | "Advanced"
+  >("all");
   const {
     phrases: savedPhrasesList,
     togglePhrase,
@@ -160,6 +164,61 @@ export default function LearnScreen() {
   const isPlayingAllRef = useRef(false); // Ref for loop to check current state
   const scrollViewRef = useRef<ScrollView>(null);
   const phraseRefs = useRef<{ [key: string]: View }>({});
+
+  // Recent scenes state for "Continue Learning"
+  const [recentScenes, setRecentScenes] = useState<
+    {
+      contextId: string;
+      sceneName: string;
+      timestamp: number;
+    }[]
+  >([]);
+
+  // Category progress tracking
+  const [categoryProgress, setCategoryProgress] = useState<
+    Record<string, { learned: number; total: number }>
+  >({});
+
+  // Load recent scenes and progress from storage
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        // Load recent scenes
+        const savedScenes = await AsyncStorage.getItem("recentScenes");
+        if (savedScenes) {
+          setRecentScenes(JSON.parse(savedScenes).slice(0, 5));
+        }
+        // Load category progress
+        const savedProgress = await AsyncStorage.getItem("categoryProgress");
+        if (savedProgress) {
+          setCategoryProgress(JSON.parse(savedProgress));
+        }
+      } catch (e) {
+        console.error("Failed to load data:", e);
+      }
+    };
+    loadData();
+  }, []);
+
+  // Save recent scenes to storage
+  const addRecentScene = useCallback(
+    async (contextId: string, sceneName: string) => {
+      try {
+        const newEntry = { contextId, sceneName, timestamp: Date.now() };
+        const updated = [
+          newEntry,
+          ...recentScenes.filter(
+            (r) => !(r.contextId === contextId && r.sceneName === sceneName),
+          ),
+        ].slice(0, 5);
+        setRecentScenes(updated);
+        await AsyncStorage.setItem("recentScenes", JSON.stringify(updated));
+      } catch (e) {
+        console.error("Failed to save recent scene:", e);
+      }
+    },
+    [recentScenes],
+  );
 
   const phrases = selectedContext ? getPhrasesForContext(selectedContext) : [];
   const sceneCount = selectedContext
@@ -188,16 +247,28 @@ export default function LearnScreen() {
 
   // Only load phrases for matching scenes (not all scenes)
   const filteredPhrases = useMemo(() => {
-    if (!searchQuery) return phrases;
-    if (matchingScenes.length === 0) return [];
+    let result = phrases;
 
-    const result: Phrase[] = [];
-    matchingScenes.forEach(({ scenes }) => {
-      const scenePhrases = convertScenesToPhrases(scenes);
-      result.push(...scenePhrases);
-    });
+    // Apply difficulty filter
+    if (difficultyFilter !== "all") {
+      result = result.filter((p) => p.level === difficultyFilter);
+    }
+
+    // Apply search filter if exists
+    if (searchQuery && matchingScenes.length > 0) {
+      const searchResult: Phrase[] = [];
+      matchingScenes.forEach(({ scenes }) => {
+        const scenePhrases = convertScenesToPhrases(scenes);
+        searchResult.push(...scenePhrases);
+      });
+      result =
+        difficultyFilter !== "all"
+          ? searchResult.filter((p) => p.level === difficultyFilter)
+          : searchResult;
+    }
+
     return result;
-  }, [searchQuery, phrases, matchingScenes]);
+  }, [searchQuery, phrases, matchingScenes, difficultyFilter]);
 
   const toggleSave = useCallback(
     (phrase: Phrase) => {
@@ -482,37 +553,127 @@ export default function LearnScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
+        {/* Continue Learning - Recent Scenes */}
+        {!searchQuery && recentScenes.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>CONTINUE LEARNING</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.recentScenesContainer}
+            >
+              {recentScenes.map((recent, index) => {
+                const ctx = CONTEXTS.find((c) => c.id === recent.contextId);
+                return (
+                  <TouchableOpacity
+                    key={`${recent.contextId}-${recent.sceneName}-${index}`}
+                    style={styles.recentSceneCard}
+                    onPress={() => {
+                      setSelectedContext(recent.contextId);
+                      addRecentScene(recent.contextId, recent.sceneName);
+                    }}
+                  >
+                    <Text style={styles.recentSceneIcon}>
+                      {ctx?.emoji || "📚"}
+                    </Text>
+                    <Text style={styles.recentSceneName} numberOfLines={1}>
+                      {recent.sceneName}
+                    </Text>
+                    <Text style={styles.recentSceneCategory}>
+                      {t(CONTEXT_ID_TO_KEY[recent.contextId] as any)}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
+          </View>
+        )}
+
+        {/* Saved Phrases - Favorites */}
+        {!searchQuery && savedPhrasesList.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>SAVED PHRASES</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.recentScenesContainer}
+            >
+              {savedPhrasesList.slice(0, 10).map((phrase) => (
+                <TouchableOpacity
+                  key={phrase.id}
+                  style={styles.recentSceneCard}
+                  onPress={() => {
+                    // Navigate to phrase - expand it and scroll to it
+                    setSelectedContext(null);
+                    setSearchQuery(phrase.en);
+                  }}
+                >
+                  <Text style={styles.recentSceneIcon}>⭐</Text>
+                  <Text style={styles.recentSceneName} numberOfLines={2}>
+                    {phrase.en}
+                  </Text>
+                  <Text style={styles.recentSceneCategory}>
+                    {phrase.contextLabel || "Saved"}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
+
         {/* Contexts */}
         {!searchQuery && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>CHOOSE CONTEXT</Text>
             <View style={styles.contextGrid}>
-              {CONTEXTS.map((ctx) => (
-                <TouchableOpacity
-                  key={ctx.id}
-                  style={[
-                    styles.contextCard,
-                    selectedContext === ctx.id && styles.contextCardActive,
-                  ]}
-                  onPress={() =>
-                    setSelectedContext(
-                      selectedContext === ctx.id ? null : ctx.id,
-                    )
-                  }
-                >
-                  <View style={styles.contextContent}>
-                    <Text style={styles.contextIcon}>{ctx.emoji}</Text>
-                    <Text
-                      style={[
-                        styles.contextName,
-                        selectedContext === ctx.id && styles.contextNameActive,
-                      ]}
-                    >
-                      {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              ))}
+              {CONTEXTS.map((ctx) => {
+                const progress = categoryProgress[ctx.id];
+                const progressPercent = progress
+                  ? Math.round((progress.learned / progress.total) * 100)
+                  : 0;
+                return (
+                  <TouchableOpacity
+                    key={ctx.id}
+                    style={[
+                      styles.contextCard,
+                      selectedContext === ctx.id && styles.contextCardActive,
+                    ]}
+                    onPress={() =>
+                      setSelectedContext(
+                        selectedContext === ctx.id ? null : ctx.id,
+                      )
+                    }
+                  >
+                    <View style={styles.contextContent}>
+                      <Text style={styles.contextIcon}>{ctx.emoji}</Text>
+                      <Text
+                        style={[
+                          styles.contextName,
+                          selectedContext === ctx.id &&
+                            styles.contextNameActive,
+                        ]}
+                      >
+                        {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
+                      </Text>
+                      {progress && progress.total > 0 && (
+                        <View style={styles.progressContainer}>
+                          <View style={styles.progressBar}>
+                            <View
+                              style={[
+                                styles.progressFill,
+                                { width: `${progressPercent}%` },
+                              ]}
+                            />
+                          </View>
+                          <Text style={styles.progressText}>
+                            {progressPercent}%
+                          </Text>
+                        </View>
+                      )}
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         )}
@@ -534,6 +695,30 @@ export default function LearnScreen() {
                   <Text style={styles.closeButtonText}>Close</Text>
                 </TouchableOpacity>
               )}
+            </View>
+
+            {/* Difficulty Filter */}
+            <View style={styles.difficultyFilter}>
+              {(["all", "Basic", "Advanced"] as const).map((level) => (
+                <TouchableOpacity
+                  key={level}
+                  style={[
+                    styles.difficultyButton,
+                    difficultyFilter === level && styles.difficultyButtonActive,
+                  ]}
+                  onPress={() => setDifficultyFilter(level)}
+                >
+                  <Text
+                    style={[
+                      styles.difficultyButtonText,
+                      difficultyFilter === level &&
+                        styles.difficultyButtonTextActive,
+                    ]}
+                  >
+                    {level === "all" ? "All" : level}
+                  </Text>
+                </TouchableOpacity>
+              ))}
             </View>
 
             {/* Listen to Full Dialogue button - below PHRASES header */}
@@ -593,11 +778,15 @@ export default function LearnScreen() {
                   >
                     <TouchableOpacity
                       style={styles.phraseHeader}
-                      onPress={() =>
+                      onPress={() => {
                         setExpandedPhraseId(
                           expandedPhraseId === phrase.id ? null : phrase.id,
-                        )
-                      }
+                        );
+                        // Track scene when user expands a phrase
+                        if (expandedPhraseId !== phrase.id && selectedContext) {
+                          addRecentScene(selectedContext, phrase.contextLabel);
+                        }
+                      }}
                     >
                       <View style={styles.phraseHeaderLeft}>
                         <View style={styles.phraseLabels}>
@@ -920,6 +1109,76 @@ const styles = StyleSheet.create({
     color: "#9E9E9E",
     letterSpacing: 0.5,
     marginBottom: 16,
+  },
+  recentScenesContainer: {
+    paddingRight: 16,
+    gap: 12,
+  },
+  recentSceneCard: {
+    width: 140,
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  recentSceneIcon: {
+    fontSize: 28,
+    marginBottom: 8,
+  },
+  recentSceneName: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1C1C1E",
+    marginBottom: 4,
+  },
+  recentSceneCategory: {
+    fontSize: 11,
+    color: "#8E8E93",
+  },
+  progressContainer: {
+    marginTop: 6,
+  },
+  progressBar: {
+    height: 4,
+    backgroundColor: "#E5E5EA",
+    borderRadius: 2,
+    overflow: "hidden",
+  },
+  progressFill: {
+    height: "100%",
+    backgroundColor: "#34C759",
+    borderRadius: 2,
+  },
+  progressText: {
+    fontSize: 10,
+    color: "#8E8E93",
+    marginTop: 2,
+  },
+  difficultyFilter: {
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 16,
+  },
+  difficultyButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    backgroundColor: "#F2F2F7",
+  },
+  difficultyButtonActive: {
+    backgroundColor: "#FFD200",
+  },
+  difficultyButtonText: {
+    fontSize: 13,
+    fontWeight: "500",
+    color: "#8E8E93",
+  },
+  difficultyButtonTextActive: {
+    color: "#1C1C1E",
   },
   contextGrid: {
     flexDirection: "row",

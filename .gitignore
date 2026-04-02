@@ -66,9 +66,17 @@ logs
 *.sln
 *.sw?
 
-# Agent/Project specific (dựa trên folder .agents của bạn)
+# Agent/Project specific
 .agents/
 .windsurf/
+.playwright-mcp/
+
+# Vite cache
+node_modules/.vite/
+
+# iOS Xcode workspace
+ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/
+ios/App/CapApp-SPM/
 
 # Local development files
 commitgit.md
