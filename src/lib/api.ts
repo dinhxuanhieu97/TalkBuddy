@@ -1,26 +1,28 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5277";
 
 export const getApiUrl = (endpoint: string): string => {
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
   return `${API_BASE_URL}${cleanEndpoint}`;
 };
 
 export const apiFetch = async <T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> => {
   const url = getApiUrl(endpoint);
-  
+
   const response = await fetch(url, {
     ...options,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       ...options.headers,
     },
   });
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ message: 'Request failed' }));
+    const error = await response
+      .json()
+      .catch(() => ({ message: "Request failed" }));
     throw new Error(error.message || `HTTP ${response.status}`);
   }
 
@@ -30,22 +32,22 @@ export const apiFetch = async <T>(
 export const apiPost = async <T, B = unknown>(
   endpoint: string,
   body: B,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> => {
   return apiFetch<T>(endpoint, {
     ...options,
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(body),
   });
 };
 
 export const apiGet = async <T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> => {
   return apiFetch<T>(endpoint, {
     ...options,
-    method: 'GET',
+    method: "GET",
   });
 };
 

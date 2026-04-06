@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -10,39 +10,88 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AuthService } from "../services";
 import { useT } from "../lib/i18n";
+import { useUserStore } from "../stores/userStore";
 
-export default function Login() {
-  const router = useRouter();
+interface LoginProps {
+  onAuthSuccess?: () => void;
+  onGoToRegister?: () => void;
+  onGoToForgotPassword?: () => void;
+}
+
+interface LoginErrors {
+  email?: string;
+  password?: string;
+  general?: string;
+}
+
+export default function Login({
+  onAuthSuccess,
+  onGoToRegister,
+  onGoToForgotPassword,
+}: LoginProps) {
   const insets = useSafeAreaInsets();
   const t = useT();
+  const setUser = useUserStore((state) => state.setUser);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<LoginErrors>({});
+
+  // Load saved email on mount (Remember Me)
+  useEffect(() => {
+    (async () => {
+      const savedEmail = await AuthService.loadRememberEmail();
+      if (savedEmail) {
+        setEmail(savedEmail);
+        setRememberMe(true);
+      }
+    })();
+  }, []);
+
+  const validate = (): boolean => {
+    const errs: LoginErrors = {};
+    if (!email.trim()) errs.email = t("auth.error.fillAllFields");
+    if (!password) errs.password = t("auth.error.fillAllFields");
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      Alert.alert(t("common.error"), t("auth.error.fillAllFields"));
-      return;
-    }
+    if (!validate()) return;
 
     setIsLoading(true);
+    setErrors({});
     try {
-      const user = await AuthService.signInWithEmail(email, password);
+      const user = await AuthService.signInWithEmail(
+        email,
+        password,
+        rememberMe,
+      );
 
       if (user) {
-        router.replace("/(tabs)");
+        setUser({
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          avatar: user.image,
+          token: user.token,
+        });
+        onAuthSuccess?.();
       } else {
-        Alert.alert(t("common.error"), t("auth.error.invalidCredentials"));
+        setErrors({ general: t("auth.error.invalidCredentials") });
       }
-    } catch (error) {
-      console.error("Login error:", error);
-      Alert.alert(t("common.error"), t("auth.error.loginFailed"));
+    } catch (error: any) {
+      const message =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        t("auth.error.loginFailed");
+      setErrors({ general: message });
     } finally {
       setIsLoading(false);
     }
@@ -54,25 +103,32 @@ export default function Login() {
       const user = await AuthService.signInWithGoogle();
 
       if (user) {
-        router.replace("/(tabs)");
+        setUser({
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          avatar: user.image,
+          token: user.token,
+        });
+        onAuthSuccess?.();
       } else {
         Alert.alert(t("common.error"), t("auth.error.loginFailed"));
       }
-    } catch (error) {
-      console.error("Google login error:", error);
-      Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
+    } catch (error: any) {
+      const message =
+        error.response?.data?.message || t("auth.error.googleLoginFailed");
+      Alert.alert(t("common.error"), message);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleAppleLogin = () => {
-    console.log("Apple Login");
     Alert.alert(t("common.comingSoon"), t("auth.comingSoon.appleLogin"));
   };
 
   const handleForgotPassword = () => {
-    router.push("/forgot-password");
+    onGoToForgotPassword?.();
   };
 
   return (
@@ -95,32 +151,60 @@ export default function Login() {
 
         {/* Form */}
         <View style={styles.form}>
+          {/* General Error Banner */}
+          {errors.general ? (
+            <View style={styles.errorBanner}>
+              <Ionicons name="alert-circle" size={18} color="#d32f2f" />
+              <Text style={styles.errorBannerText}>{errors.general}</Text>
+            </View>
+          ) : null}
+
           {/* Email */}
           <View style={styles.inputContainer}>
             <Text style={styles.label}>{t("auth.email")}</Text>
             <TextInput
-              style={styles.input}
+              style={[styles.input, errors.email && styles.inputError]}
               placeholder={t("auth.emailPlaceholder")}
               placeholderTextColor="#999"
               value={email}
-              onChangeText={setEmail}
+              onChangeText={(v) => {
+                setEmail(v);
+                if (errors.email)
+                  setErrors((e) => ({ ...e, email: undefined }));
+              }}
+              onFocus={() => setErrors((e) => ({ ...e, email: undefined }))}
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
               editable={!isLoading}
             />
+            {errors.email ? (
+              <Text style={styles.fieldError}>{errors.email}</Text>
+            ) : null}
           </View>
 
           {/* Password */}
           <View style={styles.inputContainer}>
             <Text style={styles.label}>{t("auth.password")}</Text>
-            <View style={styles.passwordContainer}>
+            <View
+              style={[
+                styles.passwordContainer,
+                errors.password && styles.inputError,
+              ]}
+            >
               <TextInput
                 style={styles.passwordInput}
                 placeholder={t("auth.passwordPlaceholder")}
                 placeholderTextColor="#999"
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={(v) => {
+                  setPassword(v);
+                  if (errors.password)
+                    setErrors((e) => ({ ...e, password: undefined }));
+                }}
+                onFocus={() =>
+                  setErrors((e) => ({ ...e, password: undefined }))
+                }
                 secureTextEntry={!showPassword}
                 autoCapitalize="none"
                 editable={!isLoading}
@@ -137,14 +221,40 @@ export default function Login() {
                 />
               </TouchableOpacity>
             </View>
+            {errors.password ? (
+              <Text style={styles.fieldError}>{errors.password}</Text>
+            ) : null}
           </View>
 
-          {/* Forgot Password */}
-          <TouchableOpacity onPress={handleForgotPassword} disabled={isLoading}>
-            <Text style={styles.forgotText}>
-              {t("auth.forgotPasswordQuestion")}
-            </Text>
-          </TouchableOpacity>
+          {/* Remember Me + Forgot Password Row */}
+          <View style={styles.rememberForgotRow}>
+            <TouchableOpacity
+              style={styles.rememberMeRow}
+              onPress={() => setRememberMe(!rememberMe)}
+              activeOpacity={0.7}
+              disabled={isLoading}
+            >
+              <View
+                style={[styles.checkbox, rememberMe && styles.checkboxChecked]}
+              >
+                {rememberMe && (
+                  <Ionicons name="checkmark" size={14} color="#fff" />
+                )}
+              </View>
+              <Text style={styles.rememberMeText}>
+                {t("auth.rememberMe") || "Remember me"}
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={handleForgotPassword}
+              disabled={isLoading}
+            >
+              <Text style={styles.forgotText}>
+                {t("auth.forgotPasswordQuestion")}
+              </Text>
+            </TouchableOpacity>
+          </View>
 
           {/* Login Button */}
           <TouchableOpacity
@@ -195,7 +305,7 @@ export default function Login() {
         <View style={styles.footer}>
           <Text style={styles.footerText}>{t("auth.noAccountQuestion")} </Text>
           <TouchableOpacity
-            onPress={() => router.push("/register")}
+            onPress={() => onGoToRegister?.()}
             disabled={isLoading}
           >
             <Text style={styles.signUpText}>{t("auth.signUp")}</Text>
@@ -209,6 +319,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#FFD600",
   },
   scrollContent: {
     flexGrow: 1,
@@ -234,6 +345,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
+    position: "relative",
   },
   label: {
     fontSize: 14,
@@ -250,6 +362,31 @@ const styles = StyleSheet.create({
     color: "#1c1c1e",
     borderWidth: 1,
     borderColor: "rgba(28,28,30,0.1)",
+  },
+  inputError: {
+    borderColor: "#d32f2f",
+    borderWidth: 1.5,
+  },
+  fieldError: {
+    position: "absolute",
+    bottom: -18,
+    left: 4,
+    color: "#d32f2f",
+    fontSize: 12,
+  },
+  errorBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fdecea",
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 16,
+    gap: 8,
+  },
+  errorBannerText: {
+    color: "#d32f2f",
+    fontSize: 14,
+    flex: 1,
   },
   passwordContainer: {
     flexDirection: "row",
@@ -269,13 +406,41 @@ const styles = StyleSheet.create({
   eyeButton: {
     padding: 16,
   },
+  rememberForgotRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  rememberMeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: "rgba(28,28,30,0.3)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkboxChecked: {
+    backgroundColor: "#1c1c1e",
+    borderColor: "#1c1c1e",
+  },
+  rememberMeText: {
+    fontSize: 14,
+    color: "#1c1c1e",
+    fontWeight: "500",
+    opacity: 0.7,
+  },
   forgotText: {
     fontSize: 14,
     color: "#1c1c1e",
     fontWeight: "500",
     opacity: 0.7,
-    textAlign: "right",
-    marginBottom: 24,
   },
   loginButton: {
     backgroundColor: "#1c1c1e",

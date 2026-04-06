@@ -6,8 +6,7 @@ const config: CapacitorConfig = {
   webDir: "dist",
   server: {
     androidScheme: "https",
-    // Live reload: point WebView to Vite dev server
-    url: "http://192.168.1.47:5173",
+    url: "http://192.168.1.16:5173",
     cleartext: true,
   },
   plugins: {
@@ -15,6 +14,12 @@ const config: CapacitorConfig = {
       launchShowDuration: 2000,
       backgroundColor: "#FFD600",
       showSpinner: false,
+    },
+    GoogleSignIn: {
+      scopes: ["profile", "email"],
+      serverClientId:
+        "108942595833-pgbud7gpkatf252ghm14mjej01jbkkh9.apps.googleusercontent.com",
+      forceCodeForRefreshToken: true,
     },
   },
 };

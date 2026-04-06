@@ -21,16 +21,17 @@ const tabs: {
     labelKey: "nav.learn",
     iconName: "book-outline",
   },
-  {
-    id: "sos",
-    labelKey: "nav.sos",
-    iconName: "warning-outline",
-  },
-  {
-    id: "practice",
-    labelKey: "nav.practice",
-    iconName: "chatbubble-outline",
-  },
+  // Hidden for production: SOS and Practice tabs
+  // {
+  //   id: "sos",
+  //   labelKey: "nav.sos",
+  //   iconName: "warning-outline",
+  // },
+  // {
+  //   id: "practice",
+  //   labelKey: "nav.practice",
+  //   iconName: "chatbubble-outline",
+  // },
   {
     id: "me",
     labelKey: "nav.me",
@@ -38,7 +39,12 @@ const tabs: {
   },
 ];
 
-export default function MainApp() {
+interface MainAppProps {
+  onLogout?: () => void;
+  onResetOnboarding?: () => void;
+}
+
+export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
   const t = useT();
   const [activeTab, setActiveTab] = useState<Tab>("learn");
 
@@ -74,7 +80,12 @@ export default function MainApp() {
         {activeTab === "learn" && <LearnScreen />}
         {activeTab === "sos" && <TalkBuddyScreen />}
         {activeTab === "practice" && <PracticeScreen />}
-        {activeTab === "me" && <ProfileScreen />}
+        {activeTab === "me" && (
+          <ProfileScreen
+            onLogout={onLogout}
+            onResetOnboarding={onResetOnboarding}
+          />
+        )}
       </View>
 
       {/* Bottom Nav with Toggle Animation */}

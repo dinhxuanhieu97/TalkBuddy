@@ -107,7 +107,7 @@ export function InviteFriends() {
     const codeToShare = code || generateLocalCode();
     if (!codeToShare) return;
     try {
-      const shareUrl = `https://talkbuddy.app/ref/${codeToShare}`;
+      const shareUrl = `https://talkbuddy.wayjet.io/ref/${codeToShare}`;
       await Clipboard.setString(shareUrl);
       setCopyLinkStatus("success");
       setTimeout(() => setCopyLinkStatus("idle"), 2000);
@@ -121,14 +121,28 @@ export function InviteFriends() {
   const handleShare = useCallback(async () => {
     const codeToShare = code || generateLocalCode();
     if (!codeToShare) return;
+    const shareUrl = `https://talkbuddy.wayjet.io/ref/${codeToShare}`;
+    const shareMessage = `🎉 Join TalkBuddy with my referral code "${codeToShare}" and get ${REFERRAL_REWARD_DAYS.inviteeTrialDays} days of free Pro!\n\n${shareUrl}`;
     try {
-      const shareUrl = `https://talkbuddy.app/ref/${codeToShare}`;
+      // Try native Share API first (works on native apps)
       await Share.share({
-        message: `🎉 Join TalkBuddy with my referral code "${codeToShare}" and get ${REFERRAL_REWARD_DAYS.inviteeTrialDays} days of free Pro!\n\n${shareUrl}`,
+        message: shareMessage,
         title: "Invite Friends to TalkBuddy",
       });
     } catch {
-      // User cancelled share
+      // Fallback for web: copy to clipboard
+      try {
+        await Clipboard.setString(shareUrl);
+        Alert.alert(
+          t("common.success"),
+          t("profile.linkCopied") || "Link copied to clipboard!",
+        );
+      } catch {
+        Alert.alert(
+          t("common.error"),
+          t("profile.shareError") || "Failed to share",
+        );
+      }
     }
   }, [code, generateLocalCode]);
 

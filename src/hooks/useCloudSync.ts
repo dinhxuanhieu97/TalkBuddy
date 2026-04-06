@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUserStore } from "../stores/userStore";
 
 // API base URL from environment
-const API_URL = process.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = process.env.VITE_API_URL || "http://localhost:5277";
 
 interface UserData {
   id: string;

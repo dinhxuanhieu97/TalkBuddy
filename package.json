@@ -1,7 +1,7 @@
 {
   "name": "talk-buddy-app",
   "version": "1.0.0",
-  "main": "expo/App.tsx",
+  "main": "expo-router/entry",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,6 +27,7 @@
     "@capacitor/haptics": "^8.0.1",
     "@capacitor/ios": "^8.2.0",
     "@capacitor/status-bar": "^8.0.1",
+    "@codetrix-studio/capacitor-google-auth": "^3.4.0-rc.4",
     "@expo/vector-icons": "^15.1.1",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -63,6 +64,8 @@
     "@revenuecat/purchases-capacitor": "^12.3.0",
     "@supabase/supabase-js": "^2.100.0",
     "@tanstack/react-query": "^5.95.2",
+    "axios": "^1.14.0",
+    "babel-plugin-module-resolver": "^5.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -94,6 +97,7 @@
     "expo-updates": "~29.0.16",
     "expo-web-browser": "~15.0.10",
     "input-otp": "^1.4.2",
+    "localstorage-memory": "^1.0.3",
     "lucide-react": "^1.6.0",
     "lucide-react-native": "^0.487.0",
     "motion": "^12.38.0",

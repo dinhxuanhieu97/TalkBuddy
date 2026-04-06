@@ -94,52 +94,25 @@ export function useVoiceSettings(
   }, [settings]);
 
   // Debounced sync to backend
-  useEffect(() => {
-    // Clear existing timeout
-    if (syncTimeoutRef.current) {
-      clearTimeout(syncTimeoutRef.current);
-    }
-
-    // Set new timeout for backend sync
-    syncTimeoutRef.current = setTimeout(async () => {
-      try {
-        await syncToBackend(settings);
-      } catch (err) {
-        console.error("Failed to sync voice settings:", err);
-        // Don't show error to user, localStorage is primary
-      }
-    }, VOICE_SETTINGS_STORAGE.syncDebounceMs);
-
-    return () => {
-      if (syncTimeoutRef.current) {
-        clearTimeout(syncTimeoutRef.current);
-      }
-    };
-  }, [settings]);
-
-  /**
-   * Sync settings to backend
-   */
-  const syncToBackend = async (voiceSettings: VoiceSettings): Promise<void> => {
-    // Use hardcoded fallback for React Native compatibility
-    const apiUrl = process.env.VITE_API_URL || "http://192.168.1.47:3001";
-    const token = await AsyncStorage.getItem("auth_token");
-
-    if (!token) return;
-
-    const response = await fetch(`${apiUrl}/api/user/voice-settings`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(voiceSettings),
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to sync voice settings");
-    }
-  };
+  // NOTE: Backend endpoint /api/user/voice-settings does not exist yet.
+  // Sync is disabled until the endpoint is implemented. AsyncStorage is primary.
+  // useEffect(() => {
+  //   if (syncTimeoutRef.current) {
+  //     clearTimeout(syncTimeoutRef.current);
+  //   }
+  //   syncTimeoutRef.current = setTimeout(async () => {
+  //     try {
+  //       await syncToBackend(settings);
+  //     } catch (err) {
+  //       // Don't show error to user, localStorage is primary
+  //     }
+  //   }, VOICE_SETTINGS_STORAGE.syncDebounceMs);
+  //   return () => {
+  //     if (syncTimeoutRef.current) {
+  //       clearTimeout(syncTimeoutRef.current);
+  //     }
+  //   };
+  // }, [settings]);
 
   /**
    * Update accent and auto-select appropriate voice

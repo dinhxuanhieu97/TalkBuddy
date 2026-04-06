@@ -174,12 +174,23 @@ export default function LearnScreen() {
     }[]
   >([]);
 
+  // Popular phrases tracking (based on user interactions)
+  const [popularPhrases, setPopularPhrases] = useState<
+    {
+      phraseId: string;
+      en: string;
+      vi: string;
+      contextId: string;
+      count: number;
+    }[]
+  >([]);
+
   // Category progress tracking
   const [categoryProgress, setCategoryProgress] = useState<
     Record<string, { learned: number; total: number }>
   >({});
 
-  // Load recent scenes and progress from storage
+  // Load recent scenes, progress, and popular phrases from storage
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -192,6 +203,11 @@ export default function LearnScreen() {
         const savedProgress = await AsyncStorage.getItem("categoryProgress");
         if (savedProgress) {
           setCategoryProgress(JSON.parse(savedProgress));
+        }
+        // Load popular phrases
+        const savedPopular = await AsyncStorage.getItem("popularPhrases");
+        if (savedPopular) {
+          setPopularPhrases(JSON.parse(savedPopular));
         }
       } catch (e) {
         console.error("Failed to load data:", e);
@@ -218,6 +234,39 @@ export default function LearnScreen() {
       }
     },
     [recentScenes],
+  );
+
+  // Track phrase interaction to build popular phrases
+  const trackPhraseInteraction = useCallback(
+    async (phrase: Phrase, contextId: string) => {
+      try {
+        const existing = popularPhrases.find((p) => p.phraseId === phrase.id);
+        let updated: typeof popularPhrases;
+        if (existing) {
+          updated = popularPhrases.map((p) =>
+            p.phraseId === phrase.id ? { ...p, count: p.count + 1 } : p,
+          );
+        } else {
+          updated = [
+            ...popularPhrases,
+            {
+              phraseId: phrase.id,
+              en: phrase.en,
+              vi: phrase.vi,
+              contextId,
+              count: 1,
+            },
+          ];
+        }
+        // Sort by count and keep top 5
+        updated = updated.sort((a, b) => b.count - a.count).slice(0, 5);
+        setPopularPhrases(updated);
+        await AsyncStorage.setItem("popularPhrases", JSON.stringify(updated));
+      } catch (e) {
+        console.error("Failed to track phrase:", e);
+      }
+    },
+    [popularPhrases],
   );
 
   const phrases = selectedContext ? getPhrasesForContext(selectedContext) : [];
@@ -284,6 +333,12 @@ export default function LearnScreen() {
         await stopSpeaking();
         setPlayingPhraseId(null);
         return;
+      }
+
+      // Track phrase interaction for popular phrases
+      const phrase = phrases.find((p) => p.id === phraseId);
+      if (phrase && selectedContext) {
+        trackPhraseInteraction(phrase, selectedContext);
       }
 
       // Stop any ongoing speech
@@ -492,7 +547,7 @@ export default function LearnScreen() {
             <Text style={styles.headerSubtitle}>Emergency English</Text>
             <Text style={styles.headerTitle}>What do you need?</Text>
           </View>
-          <TouchableOpacity style={styles.profileButton}>
+          <TouchableOpacity style={styles.profileButton} onPress={() => {}}>
             <View style={styles.profileAvatar}>
               <Ionicons name="person" size={20} color="#fff" />
             </View>
@@ -585,38 +640,6 @@ export default function LearnScreen() {
                   </TouchableOpacity>
                 );
               })}
-            </ScrollView>
-          </View>
-        )}
-
-        {/* Saved Phrases - Favorites */}
-        {!searchQuery && savedPhrasesList.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>SAVED PHRASES</Text>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.recentScenesContainer}
-            >
-              {savedPhrasesList.slice(0, 10).map((phrase) => (
-                <TouchableOpacity
-                  key={phrase.id}
-                  style={styles.recentSceneCard}
-                  onPress={() => {
-                    // Navigate to phrase - expand it and scroll to it
-                    setSelectedContext(null);
-                    setSearchQuery(phrase.en);
-                  }}
-                >
-                  <Text style={styles.recentSceneIcon}>⭐</Text>
-                  <Text style={styles.recentSceneName} numberOfLines={2}>
-                    {phrase.en}
-                  </Text>
-                  <Text style={styles.recentSceneCategory}>
-                    {phrase.contextLabel || "Saved"}
-                  </Text>
-                </TouchableOpacity>
-              ))}
             </ScrollView>
           </View>
         )}
@@ -992,42 +1015,95 @@ export default function LearnScreen() {
             </View>
 
             <View style={styles.commonSection}>
-              <Text style={styles.sectionTitle}>Common situations</Text>
+              <Text style={styles.sectionTitle}>
+                {popularPhrases.length > 0
+                  ? "Popular Phrases"
+                  : "Common situations"}
+              </Text>
               <View style={styles.commonList}>
-                {[
-                  {
-                    label: "Lost Passport",
-                    en: "I lost my passport, where is the embassy?",
-                    icon: "🛂",
-                  },
-                  {
-                    label: "Need a Doctor",
-                    en: "I need a doctor, I feel very sick.",
-                    icon: "🏥",
-                  },
-                  {
-                    label: "Order Food",
-                    en: "May I have a menu please?",
-                    icon: "🍕",
-                  },
-                ].map((item, i) => (
-                  <TouchableOpacity key={i} style={styles.commonCard}>
-                    <View style={styles.commonIconContainer}>
-                      <Text style={styles.commonEmoji}>{item.icon}</Text>
-                    </View>
-                    <View style={styles.commonContent}>
-                      <Text style={styles.commonLabel}>{item.label}</Text>
-                      <Text style={styles.commonEn} numberOfLines={1}>
-                        {item.en}
-                      </Text>
-                    </View>
-                    <Ionicons
-                      name="chevron-forward"
-                      size={18}
-                      color="#E0E0E0"
-                    />
-                  </TouchableOpacity>
-                ))}
+                {(() => {
+                  if (popularPhrases.length > 0) {
+                    // Show popular phrases (up to 7)
+                    return popularPhrases.slice(0, 7).map((item) => {
+                      const ctx = CONTEXTS.find((c) => c.id === item.contextId);
+                      return (
+                        <TouchableOpacity
+                          key={item.phraseId}
+                          style={styles.commonCard}
+                          onPress={() => {
+                            setSelectedContext(item.contextId);
+                            setSearchQuery("");
+                          }}
+                        >
+                          <View style={styles.commonIconContainer}>
+                            <Text style={styles.commonEmoji}>
+                              {ctx?.emoji || "📚"}
+                            </Text>
+                          </View>
+                          <View style={styles.commonContent}>
+                            <Text style={styles.commonLabel} numberOfLines={1}>
+                              {item.en}
+                            </Text>
+                            <Text style={styles.commonEn} numberOfLines={1}>
+                              {item.vi}
+                            </Text>
+                          </View>
+                          <Ionicons
+                            name="chevron-forward"
+                            size={18}
+                            color="#E0E0E0"
+                          />
+                        </TouchableOpacity>
+                      );
+                    });
+                  }
+                  // Fallback: show default 3 contexts
+                  return (
+                    <>
+                      {[
+                        {
+                          label: "Lost Passport",
+                          contextId: "emergency",
+                          icon: "🛂",
+                        },
+                        {
+                          label: "Need a Doctor",
+                          contextId: "medical",
+                          icon: "🏥",
+                        },
+                        {
+                          label: "Order Food",
+                          contextId: "restaurant",
+                          icon: "🍕",
+                        },
+                      ].map((item, i) => (
+                        <TouchableOpacity
+                          key={i}
+                          style={styles.commonCard}
+                          onPress={() => {
+                            setSelectedContext(item.contextId);
+                            setSearchQuery("");
+                          }}
+                        >
+                          <View style={styles.commonIconContainer}>
+                            <Text style={styles.commonEmoji}>{item.icon}</Text>
+                          </View>
+                          <View style={styles.commonContent}>
+                            <Text style={styles.commonLabel}>{item.label}</Text>
+                            <Text style={styles.commonEn} numberOfLines={1}>
+                              {t(CONTEXT_ID_TO_KEY[item.contextId] as any)}
+                            </Text>
+                          </View>
+                          <Ionicons
+                            name="chevron-forward"
+                            size={18}
+                            color="#E0E0E0"
+                          />
+                        </TouchableOpacity>
+                      ))}
+                    </>
+                  );
+                })()}
               </View>
             </View>
           </View>
