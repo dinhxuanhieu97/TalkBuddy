@@ -237,6 +237,7 @@ export function EditProfileSimple() {
           maxLength={options.maxLength}
           returnKeyType={options.multiline ? "default" : "done"}
           blurOnSubmit={!options.multiline}
+          showSoftInputOnFocus={true}
         />
         {!errors[field] && !!formData[field] && !options.multiline && (
           <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
@@ -255,113 +256,99 @@ export function EditProfileSimple() {
   );
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={0}
-    >
-      <TouchableWithoutFeedback onPress={dismissKeyboard}>
-        <View style={styles.container}>
-          {/* Static Header - Avatar Left + Name/Email Right */}
-          <View style={styles.headerContainer}>
-            <Pressable
-              onPress={handleAvatarPress}
-              style={styles.avatarContainer}
-            >
-              {avatar ? (
-                <Image source={{ uri: avatar }} style={styles.avatar} />
-              ) : (
-                <View style={styles.avatarPlaceholder}>
-                  <Ionicons name="person" size={40} color="#9E9E9E" />
-                </View>
-              )}
-              <View style={styles.avatarEditBadge}>
-                <Ionicons name="camera" size={16} color="#1C1C1E" />
+    <View style={styles.container}>
+      <ScrollView
+        ref={scrollViewRef}
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="interactive"
+      >
+        {/* Static Header - Avatar Left + Name/Email Right */}
+        <View style={styles.headerContainer}>
+          <Pressable onPress={handleAvatarPress} style={styles.avatarContainer}>
+            {avatar ? (
+              <Image source={{ uri: avatar }} style={styles.avatar} />
+            ) : (
+              <View style={styles.avatarPlaceholder}>
+                <Ionicons name="person" size={40} color="#9E9E9E" />
               </View>
-            </Pressable>
-
-            <View style={styles.headerInfo}>
-              <Text style={styles.headerName} numberOfLines={1}>
-                {formData.name || "Your Name"}
-              </Text>
-              <Text style={styles.headerEmail} numberOfLines={1}>
-                {formData.email || "your@email.com"}
-              </Text>
-              <Text style={styles.headerHint}>Tap avatar to change photo</Text>
+            )}
+            <View style={styles.avatarEditBadge}>
+              <Ionicons name="camera" size={16} color="#1C1C1E" />
             </View>
+          </Pressable>
+
+          <View style={styles.headerInfo}>
+            <Text style={styles.headerName} numberOfLines={1}>
+              {formData.name || "Your Name"}
+            </Text>
+            <Text style={styles.headerEmail} numberOfLines={1}>
+              {formData.email || "your@email.com"}
+            </Text>
+            <Text style={styles.headerHint}>Tap avatar to change photo</Text>
           </View>
-
-          {/* Scrollable Form */}
-          <ScrollView
-            ref={scrollViewRef}
-            style={styles.scrollView}
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="handled"
-          >
-            <View style={styles.formContainer}>
-              {renderInput("name", "Full Name *", "person", {
-                placeholder: "Enter your name",
-                autoCapitalize: "words",
-              })}
-
-              {renderInput("email", "Email Address *", "mail", {
-                placeholder: "your@email.com",
-                keyboardType: "email-address",
-                autoCapitalize: "none",
-              })}
-
-              {renderInput("phone", "Phone Number", "call", {
-                placeholder: "+1 (555) 123-4567",
-                keyboardType: "phone-pad",
-              })}
-
-              {renderInput("location", "Location", "location", {
-                placeholder: "City, Country",
-                autoCapitalize: "words",
-              })}
-
-              {renderInput("language", "Preferred Language", "language", {
-                placeholder: "e.g., English, Vietnamese",
-                autoCapitalize: "words",
-              })}
-
-              {renderInput("bio", "Bio", "create", {
-                placeholder: "Tell us about yourself...",
-                multiline: true,
-                maxLength: 200,
-              })}
-
-              {/* Save Button - Inside ScrollView, below keyboard */}
-              <TouchableOpacity
-                style={[
-                  styles.saveButton,
-                  isSaving && styles.saveButtonDisabled,
-                ]}
-                onPress={handleSave}
-                disabled={isSaving}
-                activeOpacity={0.8}
-              >
-                {isSaving ? (
-                  <>
-                    <ActivityIndicator color="#1C1C1E" size="small" />
-                    <Text style={styles.saveButtonText}>Syncing...</Text>
-                  </>
-                ) : (
-                  <>
-                    <Ionicons name="cloud-upload" size={24} color="#1C1C1E" />
-                    <Text style={styles.saveButtonText}>Save & Sync</Text>
-                  </>
-                )}
-              </TouchableOpacity>
-
-              {/* Bottom padding */}
-              <View style={{ height: 40 }} />
-            </View>
-          </ScrollView>
         </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+
+        {/* Form */}
+        <View style={styles.formContainer}>
+          {renderInput("name", "Full Name *", "person", {
+            placeholder: "Enter your name",
+            autoCapitalize: "words",
+          })}
+
+          {renderInput("email", "Email Address *", "mail", {
+            placeholder: "your@email.com",
+            keyboardType: "email-address",
+            autoCapitalize: "none",
+          })}
+
+          {renderInput("phone", "Phone Number", "call", {
+            placeholder: "+1 (555) 123-4567",
+            keyboardType: "phone-pad",
+          })}
+
+          {renderInput("location", "Location", "location", {
+            placeholder: "City, Country",
+            autoCapitalize: "words",
+          })}
+
+          {renderInput("language", "Preferred Language", "language", {
+            placeholder: "e.g., English, Vietnamese",
+            autoCapitalize: "words",
+          })}
+
+          {renderInput("bio", "Bio", "create", {
+            placeholder: "Tell us about yourself...",
+            multiline: true,
+            maxLength: 200,
+          })}
+
+          {/* Save Button */}
+          <TouchableOpacity
+            style={[styles.saveButton, isSaving && styles.saveButtonDisabled]}
+            onPress={handleSave}
+            disabled={isSaving}
+            activeOpacity={0.8}
+          >
+            {isSaving ? (
+              <>
+                <ActivityIndicator color="#1C1C1E" size="small" />
+                <Text style={styles.saveButtonText}>Syncing...</Text>
+              </>
+            ) : (
+              <>
+                <Ionicons name="cloud-upload" size={24} color="#1C1C1E" />
+                <Text style={styles.saveButtonText}>Save & Sync</Text>
+              </>
+            )}
+          </TouchableOpacity>
+
+          <View style={{ height: 40 }} />
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 

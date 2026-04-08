@@ -932,7 +932,7 @@ export default function ProfileScreen({
         presentationStyle="fullScreen"
         onRequestClose={() => setShowEditProfile(false)}
       >
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={() => setShowEditProfile(false)}>
               <Ionicons name="close" size={28} color="#1C1C1E" />
