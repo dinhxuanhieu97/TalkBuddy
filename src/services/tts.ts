@@ -14,7 +14,7 @@ import {
 } from "../types/voice";
 
 // Use local network IP instead of localhost for mobile device access
-const TTS_URL = "http://192.168.1.47:8001";
+const TTS_URL = "http://192.168.1.126:8001";
 const TTS_API_KEY = "tts_service_secret_key";
 
 class TTSServiceClient {
