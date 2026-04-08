@@ -1,10 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useT } from "../lib/i18n";
 import { useUserStore } from "../stores/userStore";
 import { useSavedPhrasesStore } from "../stores/savedPhrasesStore";
 
 interface MasteryLevel {
-  label: string;
+  labelKey: string;
   color: string;
   bg: string;
   icon: keyof typeof import("@expo/vector-icons").Ionicons.glyphMap;
@@ -13,37 +14,37 @@ interface MasteryLevel {
 
 const MASTERY_LEVELS: MasteryLevel[] = [
   {
-    label: "Beginner",
+    labelKey: "mastery.level.beginner",
     color: "#EF4444",
     bg: "#FEF2F2",
     icon: "seedling" as any,
     minScore: 0,
   },
   {
-    label: "Learning",
+    labelKey: "mastery.level.learning",
     color: "#F97316",
     bg: "#FFF7ED",
     icon: "book-outline" as any,
     minScore: 25,
   },
   {
-    label: "Familiar",
+    labelKey: "mastery.level.familiar",
     color: "#EAB308",
     bg: "#FEFCE8",
     icon: "star-half" as any,
     minScore: 50,
   },
   {
-    label: "Proficient",
+    labelKey: "mastery.level.proficient",
     color: "#22C55E",
     bg: "#F0FDF4",
     icon: "checkmark-circle" as any,
     minScore: 75,
   },
   {
-    label: "Mastered",
-    color: "#6366F1",
-    bg: "#EEF2FF",
+    labelKey: "mastery.level.mastered",
+    color: "#3B82F6",
+    bg: "#EFF6FF",
     icon: "trophy" as any,
     minScore: 90,
   },
@@ -57,6 +58,7 @@ function getMasteryLevel(score: number): MasteryLevel {
 }
 
 export function MasteryProgress() {
+  const t = useT();
   const stats = useUserStore((s) => s.stats);
   const { phrases } = useSavedPhrasesStore();
 
@@ -97,11 +99,11 @@ export function MasteryProgress() {
         <View style={styles.header}>
           <View style={styles.headerLeft}>
             <Ionicons name="bar-chart" size={16} color="#6366F1" />
-            <Text style={styles.title}>Mastery Progress</Text>
+            <Text style={styles.title}>{t("mastery.title")}</Text>
           </View>
           <View style={[styles.badge, { backgroundColor: currentLevel.bg }]}>
             <Text style={[styles.badgeText, { color: currentLevel.color }]}>
-              {currentLevel.label}
+              {t(currentLevel.labelKey as any)}
             </Text>
           </View>
         </View>
@@ -120,17 +122,17 @@ export function MasteryProgress() {
           <View style={styles.scoreInfo}>
             <Text style={styles.scoreDesc}>
               {avgScore >= 90
-                ? "Excellent! You've mastered most phrases 🏆"
+                ? t("mastery.excellent")
                 : avgScore >= 75
-                  ? "Great progress! Keep it up 💪"
+                  ? t("mastery.great")
                   : avgScore >= 50
-                    ? "You're making solid progress 📈"
+                    ? t("mastery.solid")
                     : avgScore >= 25
-                      ? "Keep practicing daily 📚"
-                      : "Just getting started — let's go! 🚀"}
+                      ? t("mastery.practice")
+                      : t("mastery.started")}
             </Text>
             <Text style={styles.totalPhrasesText}>
-              {total} phrases learned total
+              {t("mastery.phrasesTotal", { n: total })}
             </Text>
           </View>
         </View>
@@ -180,7 +182,7 @@ export function MasteryProgress() {
                       ]}
                     />
                     <Text style={styles.legendText}>
-                      {d.level.label} {d.count}
+                      {t(d.level.labelKey as any)} {d.count}
                     </Text>
                   </View>
                 ))}
@@ -191,9 +193,7 @@ export function MasteryProgress() {
         {total === 0 && (
           <View style={styles.emptyState}>
             <Ionicons name="book-outline" size={32} color="#E0E0E0" />
-            <Text style={styles.emptyText}>
-              Start learning to track mastery
-            </Text>
+            <Text style={styles.emptyText}>{t("mastery.startLearning")}</Text>
           </View>
         )}
       </View>

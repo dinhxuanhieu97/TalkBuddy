@@ -48,7 +48,12 @@ export default function RootLayout() {
           }}
         >
           {/* Index screen - handles onboarding/login flow */}
-          <Stack.Screen name="index" />
+          <Stack.Screen
+            name="index"
+            options={{
+              headerShown: false,
+            }}
+          />
 
           {/* Auth screens */}
           <Stack.Screen name="login" />

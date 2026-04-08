@@ -29,22 +29,26 @@ A React Native + Expo application for English language learning, powered by AI c
 ### Installation
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Configure environment:**
+
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
 3. **Start the development server:**
+
    ```bash
    npm start
    ```
 
    Or platform-specific:
+
    ```bash
    npm run ios      # iOS simulator
    npm run android  # Android emulator
@@ -56,6 +60,7 @@ A React Native + Expo application for English language learning, powered by AI c
 ### Setup EAS
 
 1. **Login to Expo:**
+
    ```bash
    npx eas login
    ```
@@ -124,12 +129,15 @@ Talk-Buddy-App/
 ## 📝 Configuration Files
 
 ### app.json
+
 Expo app configuration including bundle identifiers, plugins, and asset patterns.
 
 ### eas.json
+
 EAS build profiles for development, preview, and production environments.
 
 ### metro.config.js
+
 Metro bundler configuration for handling additional asset types (SVG, audio).
 
 ## 🎨 Customization
@@ -140,13 +148,14 @@ Metro bundler configuration for handling additional asset types (SVG, audio).
 2. Load fonts in `app/_layout.tsx`:
    ```typescript
    const [loaded] = useFonts({
-     'Inter-Regular': require('../assets/fonts/Inter-Regular.otf'),
+     "Inter-Regular": require("../assets/fonts/Inter-Regular.otf"),
    });
    ```
 
 ### Adding Assets
 
 Place images in `assets/images/` and audio in `assets/audio/`. Reference them using:
+
 ```typescript
 <Image source={require('../assets/images/icon.png')} />
 ```
@@ -168,3 +177,5 @@ This project is private and proprietary.
 ---
 
 Built with ❤️ using React Native and Expo.
+
+Lưu ý: Khi deploy production, cần comment out server.url trong capacitor.config.ts và fix Vite build. Hiện tại config này chỉ dùng cho development.

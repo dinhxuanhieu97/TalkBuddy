@@ -11,44 +11,83 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthService } from "../services";
+import { useT } from "../lib/i18n";
+import { useUserStore } from "../stores/userStore";
 
-export default function Register() {
-  const router = useRouter();
+interface RegisterProps {
+  onAuthSuccess?: () => void;
+  onGoToLogin?: () => void;
+}
+
+interface FieldErrors {
+  name?: string;
+  email?: string;
+  password?: string;
+  general?: string;
+}
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export default function Register({
+  onAuthSuccess,
+  onGoToLogin,
+}: RegisterProps) {
+  const t = useT();
+  const setUser = useUserStore((state) => state.setUser);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [successMsg, setSuccessMsg] = useState("");
+
+  const validate = (): boolean => {
+    const errs: FieldErrors = {};
+    if (!name.trim()) errs.name = t("auth.registerErrorNameRequired");
+    if (!email.trim()) {
+      errs.email = t("auth.registerErrorEmailRequired");
+    } else if (!EMAIL_REGEX.test(email)) {
+      errs.email = t("auth.registerErrorEmailInvalid");
+    }
+    if (!password) {
+      errs.password = t("auth.registerErrorPasswordRequired");
+    } else if (password.length < 6) {
+      errs.password = t("auth.registerErrorPasswordMin");
+    }
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
 
   const handleRegister = async () => {
-    if (!name || !email || !password) {
-      Alert.alert("Error", "Please fill in all fields");
-      return;
-    }
-
-    if (password.length < 6) {
-      Alert.alert("Error", "Password must be at least 6 characters");
-      return;
-    }
+    setSuccessMsg("");
+    if (!validate()) return;
 
     setIsLoading(true);
+    setErrors({});
     try {
       const user = await AuthService.signUpWithEmail(email, password, name);
 
       if (user) {
-        // Navigate to main app with tabs
-        router.replace("/(tabs)");
+        // Sign out immediately so user logs in manually
+        await AuthService.signOut();
+        setSuccessMsg(t("auth.registerSuccess"));
+        setTimeout(() => {
+          onGoToLogin?.();
+        }, 1500);
       } else {
-        Alert.alert("Error", "Failed to create account");
+        setErrors({ general: t("auth.registerErrorGeneral") });
       }
-    } catch (error) {
-      console.error("Register error:", error);
-      Alert.alert("Error", "Failed to create account. Please try again.");
+    } catch (error: any) {
+      const message =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        t("auth.registerErrorGeneral");
+      setErrors({ general: message });
     } finally {
       setIsLoading(false);
     }
@@ -60,23 +99,28 @@ export default function Register() {
       const user = await AuthService.signInWithGoogle();
 
       if (user) {
-        // Navigate to main app with tabs
-        router.replace("/(tabs)");
+        setUser({
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          avatar: user.image,
+          token: user.token,
+        });
+        onAuthSuccess?.();
       } else {
-        Alert.alert("Error", "Failed to sign up with Google");
+        Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
       }
-    } catch (error) {
-      console.error("Google register error:", error);
-      Alert.alert("Error", "Failed to sign up with Google. Please try again.");
+    } catch (error: any) {
+      const message =
+        error.response?.data?.message || t("auth.error.googleLoginFailed");
+      Alert.alert(t("common.error"), message);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleAppleRegister = () => {
-    // TODO: Implement Apple Login
-    console.log("Apple Register");
-    Alert.alert("Coming Soon", "Apple Login will be available soon!");
+    Alert.alert(t("common.comingSoon"), t("auth.comingSoon.appleLogin"));
   };
 
   return (
@@ -98,55 +142,101 @@ export default function Register() {
           >
             {/* Header */}
             <View style={styles.header}>
-              <Text style={styles.title}>Create Account</Text>
-              <Text style={styles.subtitle}>
-                Start your English learning journey
-              </Text>
+              <Text style={styles.title}>{t("auth.registerTitle")}</Text>
+              <Text style={styles.subtitle}>{t("auth.registerSubtitle")}</Text>
             </View>
 
             {/* Form */}
             <View style={styles.form}>
+              {/* General Error */}
+              {errors.general ? (
+                <View style={styles.errorBanner}>
+                  <Ionicons name="alert-circle" size={18} color="#d32f2f" />
+                  <Text style={styles.errorBannerText}>{errors.general}</Text>
+                </View>
+              ) : null}
+
+              {/* Success Banner */}
+              {successMsg ? (
+                <View style={styles.successBanner}>
+                  <Ionicons name="checkmark-circle" size={18} color="#2e7d32" />
+                  <Text style={styles.successBannerText}>{successMsg}</Text>
+                </View>
+              ) : null}
+
               {/* Name */}
               <View style={styles.inputContainer}>
-                <Text style={styles.label}>Full Name</Text>
+                <Text style={styles.label}>
+                  {t("auth.registerFullNameLabel")}
+                </Text>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Enter your full name"
+                  style={[styles.input, errors.name && styles.inputError]}
+                  placeholder={t("auth.registerFullNamePlaceholder")}
                   placeholderTextColor="#999"
                   value={name}
-                  onChangeText={setName}
+                  onChangeText={(v) => {
+                    setName(v);
+                    if (errors.name)
+                      setErrors((e) => ({ ...e, name: undefined }));
+                  }}
+                  onFocus={() => setErrors((e) => ({ ...e, name: undefined }))}
                   autoCapitalize="words"
                   autoCorrect={false}
                   editable={!isLoading}
                 />
+                {errors.name ? (
+                  <Text style={styles.fieldError}>{errors.name}</Text>
+                ) : null}
               </View>
 
               {/* Email */}
               <View style={styles.inputContainer}>
-                <Text style={styles.label}>Email</Text>
+                <Text style={styles.label}>{t("auth.registerEmailLabel")}</Text>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Enter your email"
+                  style={[styles.input, errors.email && styles.inputError]}
+                  placeholder={t("auth.registerEmailPlaceholder")}
                   placeholderTextColor="#999"
                   value={email}
-                  onChangeText={setEmail}
+                  onChangeText={(v) => {
+                    setEmail(v);
+                    if (errors.email)
+                      setErrors((e) => ({ ...e, email: undefined }));
+                  }}
+                  onFocus={() => setErrors((e) => ({ ...e, email: undefined }))}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
                   editable={!isLoading}
                 />
+                {errors.email ? (
+                  <Text style={styles.fieldError}>{errors.email}</Text>
+                ) : null}
               </View>
 
               {/* Password */}
               <View style={styles.inputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.passwordContainer}>
+                <Text style={styles.label}>
+                  {t("auth.registerPasswordLabel")}
+                </Text>
+                <View
+                  style={[
+                    styles.passwordContainer,
+                    errors.password && styles.inputError,
+                  ]}
+                >
                   <TextInput
                     style={styles.passwordInput}
-                    placeholder="Create a password"
+                    placeholder={t("auth.registerPasswordPlaceholder")}
                     placeholderTextColor="#999"
                     value={password}
-                    onChangeText={setPassword}
+                    onChangeText={(v) => {
+                      setPassword(v);
+                      if (errors.password)
+                        setErrors((e) => ({ ...e, password: undefined }));
+                    }}
+                    onFocus={() =>
+                      setErrors((e) => ({ ...e, password: undefined }))
+                    }
                     secureTextEntry={!showPassword}
                     autoCapitalize="none"
                     editable={!isLoading}
@@ -161,14 +251,21 @@ export default function Register() {
                     </Text>
                   </TouchableOpacity>
                 </View>
+                {errors.password ? (
+                  <Text style={styles.fieldError}>{errors.password}</Text>
+                ) : null}
               </View>
 
               {/* Terms */}
               <View style={styles.termsContainer}>
                 <Text style={styles.termsText}>
-                  By signing up, you agree to our{" "}
-                  <Text style={styles.termsLink}>Terms of Service</Text> and{" "}
-                  <Text style={styles.termsLink}>Privacy Policy</Text>
+                  {t("auth.registerTerms")}
+                  <Text style={styles.termsLink}>
+                    {t("auth.registerTermsOfService")}
+                  </Text>{" "}
+                  <Text style={styles.termsLink}>
+                    {t("auth.registerPrivacyPolicy")}
+                  </Text>
                 </Text>
               </View>
 
@@ -183,14 +280,18 @@ export default function Register() {
                 disabled={isLoading}
               >
                 <Text style={styles.registerButtonText}>
-                  {isLoading ? "Creating Account..." : "Create Account"}
+                  {isLoading
+                    ? t("auth.registerSigningUp")
+                    : t("auth.registerButton")}
                 </Text>
               </TouchableOpacity>
 
               {/* Divider */}
               <View style={styles.divider}>
                 <View style={styles.dividerLine} />
-                <Text style={styles.dividerText}>or continue with</Text>
+                <Text style={styles.dividerText}>
+                  {t("auth.orContinueWith")}
+                </Text>
                 <View style={styles.dividerLine} />
               </View>
 
@@ -207,7 +308,7 @@ export default function Register() {
                   disabled={isLoading}
                 >
                   <Text style={styles.socialIcon}>G</Text>
-                  <Text style={styles.socialText}>Google</Text>
+                  <Text style={styles.socialText}>{t("auth.google")}</Text>
                 </TouchableOpacity>
 
                 {/* Apple */}
@@ -221,19 +322,23 @@ export default function Register() {
                   disabled={isLoading}
                 >
                   <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
-                  <Text style={styles.socialText}>Apple</Text>
+                  <Text style={styles.socialText}>{t("auth.apple")}</Text>
                 </TouchableOpacity>
               </View>
             </View>
 
             {/* Footer */}
             <View style={styles.footer}>
-              <Text style={styles.footerText}>Already have an account? </Text>
+              <Text style={styles.footerText}>
+                {t("auth.registerHaveAccount")}
+              </Text>
               <TouchableOpacity
-                onPress={() => router.back()}
+                onPress={() => onGoToLogin?.()}
                 disabled={isLoading}
               >
-                <Text style={styles.signInText}>Sign In</Text>
+                <Text style={styles.signInText}>
+                  {t("auth.registerSignIn")}
+                </Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -278,6 +383,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
+    position: "relative",
   },
   label: {
     fontSize: 14,
@@ -294,6 +400,46 @@ const styles = StyleSheet.create({
     color: "#1c1c1e",
     borderWidth: 1,
     borderColor: "rgba(28,28,30,0.1)",
+  },
+  inputError: {
+    borderColor: "#d32f2f",
+    borderWidth: 1.5,
+  },
+  fieldError: {
+    position: "absolute",
+    bottom: -18,
+    left: 4,
+    color: "#d32f2f",
+    fontSize: 12,
+  },
+  errorBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fdecea",
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 16,
+    gap: 8,
+  },
+  errorBannerText: {
+    color: "#d32f2f",
+    fontSize: 14,
+    flex: 1,
+  },
+  successBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#edf7ed",
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 16,
+    gap: 8,
+  },
+  successBannerText: {
+    color: "#2e7d32",
+    fontSize: 14,
+    fontWeight: "600",
+    flex: 1,
   },
   passwordContainer: {
     flexDirection: "row",

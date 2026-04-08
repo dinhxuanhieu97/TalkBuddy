@@ -1,17 +1,12 @@
-import { supabase } from "../lib/supabase";
-import * as WebBrowser from "expo-web-browser";
-import * as AuthSession from "expo-auth-session";
-import { Platform } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { api } from "./api";
 
-// Configure Google OAuth
-WebBrowser.maybeCompleteAuthSession();
-
-// Google OAuth configuration
-const discovery = {
-  authorizationEndpoint: "https://accounts.google.com/o/oauth2/v2/auth",
-  tokenEndpoint: "https://www.googleapis.com/oauth2/v4/token",
-  revocationEndpoint: "https://oauth2.googleapis.com/revoke",
-};
+let GoogleAuth: any = null;
+try {
+  GoogleAuth = require("@codetrix-studio/capacitor-google-auth").GoogleAuth;
+} catch (e) {
+  console.log("Capacitor Google Auth not available, using web fallback");
+}
 
 export interface AuthUser {
   id: string;
@@ -19,230 +14,183 @@ export interface AuthUser {
   name: string;
   image?: string;
   provider: "google" | "apple" | "email";
+  token?: string;
 }
 
+// Storage keys
+const STORAGE_KEYS = {
+  AUTH_TOKEN: "auth_token",
+  TOKEN_EXPIRY: "auth_token_expiry",
+  REMEMBER_EMAIL: "remember_me_email",
+} as const;
+
 export class AuthService {
-  // Google Sign-In
-  static async signInWithGoogle(): Promise<AuthUser | null> {
+  private static authToken: string | null = null;
+
+  static setAuthToken(token: string | null) {
+    this.authToken = token;
+  }
+
+  static getAuthToken(): string | null {
+    return this.authToken;
+  }
+
+  // ─── Remember Me ───────────────────────────────────────────
+  static async saveRememberEmail(email: string): Promise<void> {
+    await AsyncStorage.setItem(STORAGE_KEYS.REMEMBER_EMAIL, email);
+  }
+
+  static async loadRememberEmail(): Promise<string | null> {
+    return AsyncStorage.getItem(STORAGE_KEYS.REMEMBER_EMAIL);
+  }
+
+  static async clearRememberEmail(): Promise<void> {
+    await AsyncStorage.removeItem(STORAGE_KEYS.REMEMBER_EMAIL);
+  }
+
+  // ─── Token Persistence ─────────────────────────────────────
+  private static async persistToken(
+    token: string,
+    rememberMe: boolean,
+  ): Promise<void> {
+    await AsyncStorage.setItem(STORAGE_KEYS.AUTH_TOKEN, token);
+    this.setAuthToken(token);
+
+    // Set expiry: 30 days if rememberMe, 24 hours otherwise
+    const expiryMs = rememberMe
+      ? 30 * 24 * 60 * 60 * 1000
+      : 24 * 60 * 60 * 1000;
+    const expiry = (Date.now() + expiryMs).toString();
+    await AsyncStorage.setItem(STORAGE_KEYS.TOKEN_EXPIRY, expiry);
+  }
+
+  static async isTokenValid(): Promise<boolean> {
     try {
-      const clientId = this.getGoogleClientId();
+      const token = await AsyncStorage.getItem(STORAGE_KEYS.AUTH_TOKEN);
+      if (!token) return false;
 
-      if (!clientId) {
-        throw new Error("Google Client ID not configured");
+      const expiry = await AsyncStorage.getItem(STORAGE_KEYS.TOKEN_EXPIRY);
+      if (expiry && Date.now() > parseInt(expiry, 10)) {
+        await this.signOut();
+        return false;
       }
 
-      const request = new AuthSession.AuthRequest({
-        clientId,
-        scopes: ["openid", "profile", "email"],
-        redirectUri: AuthSession.makeRedirectUri({
-          scheme: undefined, // Use default scheme
-          path: "auth",
-        }),
-        responseType: AuthSession.ResponseType.Token,
-        extraParams: {
-          access_type: "offline",
-          prompt: "consent",
-        },
-      });
-
-      const result = await request.promptAsync(discovery);
-
-      if (result.type === "success") {
-        // Get user info from Google
-        const userInfo = await this.getGoogleUserInfo(
-          result.params.access_token,
-        );
-
-        if (userInfo) {
-          // Sign in to Supabase with Google
-          const { data, error } = await supabase.auth.signInWithIdToken({
-            provider: "google",
-            token: result.params.id_token,
-          });
-
-          if (error) {
-            console.error("Supabase auth error:", error);
-            // If Supabase is not configured, still return user data for testing
-            if (error.message === "Supabase not configured") {
-              const authUser: AuthUser = {
-                id: "mock-user-" + Date.now(),
-                email: userInfo.email,
-                name: userInfo.name,
-                image: userInfo.picture,
-                provider: "google",
-              };
-              return authUser;
-            }
-            throw error;
-          }
-
-          // Create/update user profile
-          const authUser: AuthUser = {
-            id: data.user?.id || "",
-            email: userInfo.email,
-            name: userInfo.name,
-            image: userInfo.picture,
-            provider: "google",
-          };
-
-          await this.syncUserProfile(authUser);
-
-          return authUser;
-        }
-      }
-
-      return null;
-    } catch (error) {
-      console.error("Google sign-in error:", error);
-      return null;
+      return true;
+    } catch {
+      return false;
     }
   }
 
-  // Get Google user info
-  private static async getGoogleUserInfo(accessToken: string): Promise<any> {
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/oauth2/v2/userinfo",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch user info");
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error("Error fetching Google user info:", error);
-      return null;
-    }
+  // ─── Helper: map API response → AuthUser ───────────────────
+  private static mapUser(
+    data: any,
+    provider: AuthUser["provider"],
+    token: string,
+  ): AuthUser {
+    return {
+      id: data.id,
+      email: data.email,
+      name: data.name,
+      image: data.avatar,
+      provider,
+      token,
+    };
   }
 
-  // Get Google Client ID based on platform
-  private static getGoogleClientId(): string {
-    const clientId =
-      Platform.OS === "ios"
-        ? process.env.VITE_GOOGLE_IOS_CLIENT_ID
-        : process.env.VITE_GOOGLE_ANDROID_CLIENT_ID;
-
-    return clientId || "";
-  }
-
-  // Email/Password Sign-In
+  // ─── Sign In with Email ────────────────────────────────────
   static async signInWithEmail(
     email: string,
     password: string,
+    rememberMe: boolean = false,
   ): Promise<AuthUser | null> {
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const res = await api.post("/api/auth/login", { email, password });
 
-      if (error) {
-        console.log("Email sign-in error:", error.message);
-        // If Supabase is not configured, create mock user for testing
-        if (error.message === "Supabase not configured") {
-          console.log("Creating mock user for development...");
-          const authUser: AuthUser = {
-            id: "dev-user-" + Date.now(),
-            email: email,
-            name: email.split("@")[0],
-            provider: "email",
-          };
-          console.log("Mock user created:", authUser);
-          return authUser;
+      if (res.data.token && res.data.user) {
+        await this.persistToken(res.data.token, rememberMe);
+
+        // Handle remember-me email
+        if (rememberMe) {
+          await this.saveRememberEmail(email);
+        } else {
+          await this.clearRememberEmail();
         }
-        throw error;
-      }
 
-      if (data.user) {
-        const authUser: AuthUser = {
-          id: data.user.id,
-          email: data.user.email || "",
-          name: data.user.user_metadata?.name || "",
-          image: data.user.user_metadata?.avatar_url,
-          provider: "email",
-        };
-
-        await this.syncUserProfile(authUser);
-
-        return authUser;
+        return this.mapUser(res.data.user, "email", res.data.token);
       }
 
       return null;
-    } catch (error) {
-      console.error("Email sign-in error:", error);
-      return null;
+    } catch (error: any) {
+      console.error(
+        "Email sign-in error:",
+        error.response?.data?.message || error.message,
+      );
+      throw error;
     }
   }
 
-  // Email/Password Sign-Up
+  // ─── Sign Up with Email ────────────────────────────────────
   static async signUpWithEmail(
     email: string,
     password: string,
     name: string,
   ): Promise<AuthUser | null> {
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const res = await api.post("/api/auth/register", {
         email,
         password,
-        options: {
-          data: {
-            name,
-          },
-        },
+        name,
       });
 
-      if (error) {
-        console.error("Email sign-up error:", error);
-        // If Supabase is not configured, create mock user for testing
-        if (error.message === "Supabase not configured") {
-          const authUser: AuthUser = {
-            id: "mock-user-" + Date.now(),
-            email: email,
-            name: name,
-            provider: "email",
-          };
-          return authUser;
-        }
-        throw error;
+      if (res.data.token && res.data.user) {
+        await this.persistToken(res.data.token, false);
+        return this.mapUser(res.data.user, "email", res.data.token);
       }
 
-      if (data.user) {
-        const authUser: AuthUser = {
-          id: data.user.id,
-          email: data.user.email || "",
-          name: name,
-          image: data.user.user_metadata?.avatar_url,
-          provider: "email",
-        };
+      return null;
+    } catch (error: any) {
+      console.error(
+        "Email sign-up error:",
+        error.response?.data?.message || error.message,
+      );
+      throw error;
+    }
+  }
 
-        await this.syncUserProfile(authUser);
+  // ─── Sign In with Google ───────────────────────────────────
+  static async signInWithGoogle(): Promise<AuthUser | null> {
+    try {
+      if (GoogleAuth) {
+        const result = await GoogleAuth.signIn();
 
-        return authUser;
+        if (result) {
+          const res = await api.post("/api/auth/google", {
+            idToken: result.authentication.idToken,
+            accessToken: result.authentication.accessToken,
+          });
+
+          if (res.data.token && res.data.user) {
+            await this.persistToken(res.data.token, true);
+            return this.mapUser(res.data.user, "google", res.data.token);
+          }
+        }
       }
 
       return null;
     } catch (error) {
-      console.error("Email sign-up error:", error);
-      return null;
+      console.error("Google sign-in error:", error);
+      throw error;
     }
   }
 
-  // Sign Out
+  // ─── Sign Out ──────────────────────────────────────────────
   static async signOut(): Promise<boolean> {
     try {
-      const { error } = await supabase.auth.signOut();
-
-      if (error) {
-        console.error("Sign-out error:", error);
-        return false;
-      }
-
+      await AsyncStorage.multiRemove([
+        STORAGE_KEYS.AUTH_TOKEN,
+        STORAGE_KEYS.TOKEN_EXPIRY,
+      ]);
+      this.setAuthToken(null);
       return true;
     } catch (error) {
       console.error("Sign-out error:", error);
@@ -250,82 +198,138 @@ export class AuthService {
     }
   }
 
-  // Get current user
+  // ─── Get Current User (from token) ─────────────────────────
   static async getCurrentUser(): Promise<AuthUser | null> {
     try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const isValid = await this.isTokenValid();
+      if (!isValid) return null;
 
-      if (user) {
-        const provider = user.app_metadata?.provider || "email";
-        return {
-          id: user.id,
-          email: user.email || "",
-          name: user.user_metadata?.name || "",
-          image: user.user_metadata?.avatar_url,
-          provider: provider as "google" | "apple" | "email",
-        };
-      }
+      const token = await AsyncStorage.getItem(STORAGE_KEYS.AUTH_TOKEN);
+      if (!token) return null;
 
-      return null;
+      this.setAuthToken(token);
+      const res = await api.get("/api/auth/me");
+
+      return this.mapUser(res.data, "email", token);
     } catch (error) {
       console.error("Get current user error:", error);
       return null;
     }
   }
 
-  // Listen to auth state changes
-  static onAuthStateChange(callback: (user: AuthUser | null) => void) {
-    return supabase.auth.onAuthStateChange((event, session) => {
-      if (session?.user) {
-        const provider = session.user.app_metadata?.provider || "email";
-        const authUser: AuthUser = {
-          id: session.user.id,
-          email: session.user.email || "",
-          name: session.user.user_metadata?.name || "",
-          image: session.user.user_metadata?.avatar_url,
-          provider: provider as "google" | "apple" | "email",
-        };
-        callback(authUser);
-      } else {
-        callback(null);
-      }
-    });
-  }
+  // ─── Password Reset ────────────────────────────────────────
 
-  // Sync user profile with database
-  private static async syncUserProfile(authUser: AuthUser): Promise<void> {
+  // Step 0: Validate email exists in database
+  static async validateEmailExists(
+    email: string,
+  ): Promise<{ success: boolean; message: string }> {
     try {
-      // Import UserService here to avoid circular dependencies
-      const { UserService } = await import("./UserService");
-
-      await UserService.upsertUser({
-        id: authUser.id,
-        email: authUser.email,
-        name: authUser.name,
-        image: authUser.image,
-        locale: "zh", // Default locale
-        accent: "en-US", // Default accent
-        speed: "normal", // Default speed
-        subscription_tier: "free", // Default subscription
+      const res = await api.post("/api/auth/forgot-password/validate-email", {
+        email,
       });
-    } catch (error) {
-      console.error("Error syncing user profile:", error);
-      // Don't throw error - allow app to continue even if sync fails
+      return {
+        success: res.data.success,
+        message: res.data.message || "Email hợp lệ",
+      };
+    } catch (error: any) {
+      return {
+        success: false,
+        message: error.response?.data?.message || "Email không hợp lệ",
+      };
     }
   }
 
-  // Reset password
+  // Step 1: Request OTP to be sent to email
+  static async requestPasswordResetOtp(
+    email: string,
+  ): Promise<{ success: boolean; message: string }> {
+    try {
+      const res = await api.post("/api/auth/forgot-password/request", {
+        email,
+      });
+      return {
+        success: true,
+        message: res.data?.message || "Đã gửi mã xác minh",
+      };
+    } catch (error: any) {
+      console.error("Request OTP error:", error);
+      return {
+        success: false,
+        message: error.response?.data?.message || "Không thể gửi mã xác minh",
+      };
+    }
+  }
+
+  // Step 2: Verify OTP and get reset token
+  static async verifyPasswordResetOtp(
+    email: string,
+    otp: string,
+  ): Promise<{ success: boolean; resetToken?: string; message: string }> {
+    try {
+      const res = await api.post("/api/auth/forgot-password/verify", {
+        email,
+        otp,
+      });
+      return {
+        success: true,
+        resetToken: res.data?.resetToken,
+        message: res.data?.message || "Xác minh thành công",
+      };
+    } catch (error: any) {
+      console.error("Verify OTP error:", error);
+      return {
+        success: false,
+        message: error.response?.data?.message || "Mã xác minh không đúng",
+      };
+    }
+  }
+
+  // Step 3: Resend OTP
+  static async resendPasswordResetOtp(
+    email: string,
+  ): Promise<{ success: boolean; message: string }> {
+    try {
+      const res = await api.post("/api/auth/forgot-password/resend", { email });
+      return {
+        success: true,
+        message: res.data?.message || "Đã gửi lại mã xác minh",
+      };
+    } catch (error: any) {
+      console.error("Resend OTP error:", error);
+      return {
+        success: false,
+        message: error.response?.data?.message || "Không thể gửi lại mã",
+      };
+    }
+  }
+
+  // Step 4: Reset password with token
+  static async resetPasswordWithToken(
+    resetToken: string,
+    newPassword: string,
+  ): Promise<{ success: boolean; message: string }> {
+    try {
+      const res = await api.post("/api/auth/forgot-password/reset", {
+        resetToken,
+        newPassword,
+      });
+      return {
+        success: true,
+        message: res.data?.message || "Đặt lại mật khẩu thành công",
+      };
+    } catch (error: any) {
+      console.error("Reset password error:", error);
+      return {
+        success: false,
+        message: error.response?.data?.message || "Không thể đặt lại mật khẩu",
+      };
+    }
+  }
+
+  // Legacy method - kept for compatibility
   static async resetPassword(email: string): Promise<boolean> {
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email);
-
-      if (error) {
-        console.error("Reset password error:", error);
-        return false;
-      }
-
+      await api.post("/api/auth/forgot-password", { email });
       return true;
     } catch (error) {
       console.error("Reset password error:", error);
@@ -333,18 +337,12 @@ export class AuthService {
     }
   }
 
-  // Update password
   static async updatePassword(newPassword: string): Promise<boolean> {
     try {
-      const { error } = await supabase.auth.updateUser({
-        password: newPassword,
-      });
+      const token = await AsyncStorage.getItem(STORAGE_KEYS.AUTH_TOKEN);
+      if (!token) return false;
 
-      if (error) {
-        console.error("Update password error:", error);
-        return false;
-      }
-
+      await api.post("/api/auth/reset-password", { password: newPassword });
       return true;
     } catch (error) {
       console.error("Update password error:", error);

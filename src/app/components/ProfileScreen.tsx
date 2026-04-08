@@ -13,6 +13,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { useT } from "../../lib/i18n";
+import { AuthService } from "../../services/AuthService";
 import { CreditBalance } from "../../components/CreditBalance";
 import { CreditShop } from "../../components/CreditShop";
 import { SubscriptionPlans } from "../../components/SubscriptionPlans";
@@ -35,6 +36,7 @@ import { speak, stopSpeaking } from "../../services/TTSService";
 import PracticeMode from "./PracticeMode";
 import DictationMode from "./DictationMode";
 import ShadowMode from "./ShadowMode";
+import { VoiceSettingsScreen } from "../components/VoiceSettings/VoiceSettingsScreen";
 
 type SettingItem = {
   id: string;
@@ -45,7 +47,15 @@ type SettingItem = {
   isEnabled?: boolean;
 };
 
-export default function ProfileScreen() {
+interface ProfileScreenProps {
+  onLogout?: () => void;
+  onResetOnboarding?: () => void;
+}
+
+export default function ProfileScreen({
+  onLogout,
+  onResetOnboarding,
+}: ProfileScreenProps) {
   const t = useT();
   const [notifications, setNotifications] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -60,7 +70,13 @@ export default function ProfileScreen() {
   const [showAvatarModal, setShowAvatarModal] = useState(false);
   const [showMySaved, setShowMySaved] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showVoiceSettings, setShowVoiceSettings] = useState(false);
   const [showLanguageSetup, setShowLanguageSetup] = useState(false);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
   const [activeSavedPractice, setActiveSavedPractice] = useState<{
     mode: "practice" | "dictation" | "shadow";
@@ -68,6 +84,29 @@ export default function ProfileScreen() {
   } | null>(null);
 
   const { phrases: savedPhrases, removePhrase } = useSavedPhrasesStore();
+
+  // Handle logout - show confirmation modal
+  const handleLogout = () => {
+    setShowLogoutConfirm(true);
+  };
+
+  const confirmLogout = async () => {
+    setShowLogoutConfirm(false);
+    setIsLoggingOut(true);
+    try {
+      await AuthService.signOut();
+      await AsyncStorage.clear();
+      onLogout?.();
+    } catch (error) {
+      console.error("Logout error:", error);
+      Alert.alert(
+        t("common.error") || "Error",
+        t("auth.logoutError") || "Failed to log out",
+      );
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
 
   // Get user data from Zustand store
   const user = useUserStore((state) => state.user);
@@ -139,10 +178,16 @@ export default function ProfileScreen() {
       title: t("profile.section.preferences"),
       items: [
         {
+          id: "voice",
+          icon: "mic",
+          label: t("profile.voiceSettings") || "Voice Settings",
+          value: "Customize",
+          type: "navigation" as const,
+        },
+        {
           id: "settings",
           icon: "settings",
           label: t("profile.settings"),
-          value: t("settings.voiceSettings"),
           type: "navigation" as const,
         },
         {
@@ -244,6 +289,9 @@ export default function ProfileScreen() {
       case "settings":
         setShowSettings(true);
         break;
+      case "voice":
+        setShowVoiceSettings(true);
+        break;
       case "language":
         setShowLanguageSetup(true);
         break;
@@ -253,30 +301,44 @@ export default function ProfileScreen() {
       case "resetOnboarding":
         handleResetOnboarding();
         break;
+      case "history":
+        setShowAnalyticsDashboard(true);
+        break;
+      case "goals":
+        // Daily goals - show settings modal
+        setShowSettings(true);
+        break;
+      case "help":
+        // Open help center URL
+        setShowAbout(true);
+        break;
+      case "feedback":
+        // Open feedback form
+        setShowFeedback(true);
+        break;
+      case "about":
+        // Show about modal
+        setShowAbout(true);
+        break;
       default:
         break;
     }
   };
 
-  const handleResetOnboarding = async () => {
-    Alert.alert(t("profile.resetTitle"), t("profile.resetMessage"), [
-      { text: t("common.cancel"), style: "cancel" },
-      {
-        text: t("profile.reset"),
-        style: "destructive",
-        onPress: async () => {
-          try {
-            await AsyncStorage.removeItem("hasSeenOnboarding");
-            Alert.alert(t("common.success"), t("profile.resetSuccess"), [
-              { text: t("common.ok") },
-            ]);
-          } catch (error) {
-            console.log("Error resetting onboarding:", error);
-            Alert.alert(t("common.error"), t("profile.resetError"));
-          }
-        },
-      },
-    ]);
+  const handleResetOnboarding = () => {
+    setShowResetConfirm(true);
+  };
+
+  const confirmResetOnboarding = async () => {
+    setShowResetConfirm(false);
+    try {
+      await AsyncStorage.removeItem("hasSeenOnboarding");
+      await AsyncStorage.removeItem("hasSetupLanguage");
+      onResetOnboarding?.();
+    } catch (error) {
+      console.log("Error resetting onboarding:", error);
+      Alert.alert(t("common.error"), t("profile.resetError"));
+    }
   };
 
   return (
@@ -330,9 +392,6 @@ export default function ProfileScreen() {
         {/* Credit Balance */}
         <CreditBalance onPress={() => setShowCreditShop(true)} />
 
-        {/* Test Family Button (Development only) */}
-        {!familyId && subscription !== "family" && <TestFamilyButton />}
-
         {/* ── NEW FEATURES ── */}
 
         {/* 1. Daily Goal Ring */}
@@ -383,7 +442,7 @@ export default function ProfileScreen() {
                       <Text style={styles.settingLabel}>{item.label}</Text>
                     </View>
                     <View style={styles.settingRight}>
-                      {item.type === "navigation" && item.value && (
+                      {item.type === "navigation" && !!item.value && (
                         <Text style={styles.settingValue}>{item.value}</Text>
                       )}
                       {item.type === "toggle" && (
@@ -421,21 +480,34 @@ export default function ProfileScreen() {
               <Ionicons name="star" size={24} color="#FFD600" />
             </View>
             <View style={styles.upgradeText}>
-              <Text style={styles.upgradeTitle}>Upgrade to Pro</Text>
+              <Text style={styles.upgradeTitle}>
+                {t("profile.upgradeTitle")}
+              </Text>
               <Text style={styles.upgradeSubtitle}>
-                Unlock unlimited phrases, offline mode, and more
+                {t("profile.upgradeSubtitle")}
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.upgradeButton}>
-            <Text style={styles.upgradeButtonText}>Upgrade Now</Text>
+          <TouchableOpacity
+            style={styles.upgradeButton}
+            onPress={() => setShowSubscriptionPlans(true)}
+          >
+            <Text style={styles.upgradeButtonText}>
+              {t("profile.upgradeButton")}
+            </Text>
           </TouchableOpacity>
         </View>
 
         {/* Logout */}
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity
+          style={styles.logoutButton}
+          onPress={handleLogout}
+          disabled={isLoggingOut}
+        >
           <Ionicons name="log-out-outline" size={20} color="#FF3B30" />
-          <Text style={styles.logoutText}>Log Out</Text>
+          <Text style={styles.logoutText}>
+            {isLoggingOut ? t("common.loading") : t("auth.logout")}
+          </Text>
         </TouchableOpacity>
 
         {/* Version */}
@@ -524,6 +596,19 @@ export default function ProfileScreen() {
         <SettingsScreen onBack={() => setShowSettings(false)} />
       </Modal>
 
+      {/* Voice Settings Modal */}
+      <Modal
+        visible={showVoiceSettings}
+        animationType="slide"
+        presentationStyle="pageSheet"
+        onRequestClose={() => setShowVoiceSettings(false)}
+      >
+        <VoiceSettingsScreen
+          locale="en-US"
+          onBack={() => setShowVoiceSettings(false)}
+        />
+      </Modal>
+
       {/* Language & Name Setup Modal */}
       <Modal
         visible={showLanguageSetup}
@@ -570,7 +655,7 @@ export default function ProfileScreen() {
             ]}
           >
             <Text style={{ fontSize: 18, fontWeight: "700", color: "#1C1C1E" }}>
-              My Saved
+              {t("profile.mySaved")}
             </Text>
             <TouchableOpacity onPress={() => setShowMySaved(false)}>
               <Ionicons name="close" size={28} color="#1C1C1E" />
@@ -581,10 +666,10 @@ export default function ProfileScreen() {
               <View style={{ alignItems: "center", paddingTop: 60 }}>
                 <Ionicons name="bookmark-outline" size={48} color="#CCC" />
                 <Text style={{ fontSize: 16, color: "#999", marginTop: 12 }}>
-                  No saved phrases yet
+                  {t("profile.noSaved")}
                 </Text>
                 <Text style={{ fontSize: 14, color: "#BBB", marginTop: 4 }}>
-                  Tap the bookmark icon on any phrase to save it
+                  {t("profile.noSavedHint")}
                 </Text>
               </View>
             ) : (
@@ -888,6 +973,329 @@ export default function ProfileScreen() {
           >
             <Ionicons name="close-circle" size={40} color="#FFF" />
           </TouchableOpacity>
+        </View>
+      </Modal>
+
+      {/* Reset Onboarding Confirmation Modal */}
+      <Modal
+        visible={showResetConfirm}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setShowResetConfirm(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0,0,0,0.5)",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFF",
+              borderRadius: 16,
+              padding: 24,
+              width: "85%",
+              maxWidth: 320,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "700",
+                color: "#1C1C1E",
+                marginBottom: 12,
+                textAlign: "center",
+              }}
+            >
+              {t("profile.resetTitle")}
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#666",
+                marginBottom: 24,
+                textAlign: "center",
+                lineHeight: 22,
+              }}
+            >
+              {t("profile.resetMessage")}
+            </Text>
+            <View style={{ flexDirection: "row", gap: 12 }}>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  backgroundColor: "#F5F5F7",
+                }}
+                onPress={() => setShowResetConfirm(false)}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "600",
+                    color: "#1C1C1E",
+                    textAlign: "center",
+                  }}
+                >
+                  {t("common.cancel")}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  backgroundColor: "#FF3B30",
+                }}
+                onPress={confirmResetOnboarding}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "600",
+                    color: "#FFF",
+                    textAlign: "center",
+                  }}
+                >
+                  {t("profile.reset")}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Logout Confirmation Modal */}
+      <Modal
+        visible={showLogoutConfirm}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setShowLogoutConfirm(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0,0,0,0.5)",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFF",
+              borderRadius: 16,
+              padding: 24,
+              width: "85%",
+              maxWidth: 320,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "700",
+                color: "#1C1C1E",
+                marginBottom: 12,
+                textAlign: "center",
+              }}
+            >
+              {t("auth.logout")}
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#666",
+                marginBottom: 24,
+                textAlign: "center",
+                lineHeight: 22,
+              }}
+            >
+              {t("auth.logoutConfirm")}
+            </Text>
+            <View style={{ flexDirection: "row", gap: 12 }}>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  backgroundColor: "#F5F5F7",
+                }}
+                onPress={() => setShowLogoutConfirm(false)}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "600",
+                    color: "#1C1C1E",
+                    textAlign: "center",
+                  }}
+                >
+                  {t("common.cancel")}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  backgroundColor: "#FF3B30",
+                }}
+                onPress={confirmLogout}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "600",
+                    color: "#FFF",
+                    textAlign: "center",
+                  }}
+                >
+                  {t("auth.logout")}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* About Modal */}
+      <Modal
+        visible={showAbout}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setShowAbout(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0,0,0,0.5)",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFF",
+              borderRadius: 16,
+              padding: 24,
+              width: "85%",
+              maxWidth: 320,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 22,
+                fontWeight: "700",
+                color: "#1C1C1E",
+                marginBottom: 16,
+                textAlign: "center",
+              }}
+            >
+              TalkBuddy
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#666",
+                marginBottom: 8,
+                textAlign: "center",
+              }}
+            >
+              {t("profile.version", { version: "1.0.0" })}
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                color: "#999",
+                marginBottom: 20,
+                textAlign: "center",
+                lineHeight: 20,
+              }}
+            >
+              AI-powered English learning app for travelers
+            </Text>
+            <View
+              style={{
+                borderTopWidth: 1,
+                borderTopColor: "#EEE",
+                paddingTop: 16,
+                marginBottom: 8,
+              }}
+            >
+              <TouchableOpacity
+                style={{ paddingVertical: 12, alignItems: "center" }}
+                onPress={() => setShowAbout(false)}
+              >
+                <Text style={{ fontSize: 16, color: "#007AFF" }}>
+                  {t("common.close")}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Feedback Modal */}
+      <Modal
+        visible={showFeedback}
+        animationType="slide"
+        presentationStyle="pageSheet"
+        onRequestClose={() => setShowFeedback(false)}
+      >
+        <View style={{ flex: 1, backgroundColor: "#F9F9F9" }}>
+          <View
+            style={[
+              styles.modalHeader,
+              { justifyContent: "space-between", alignItems: "center" },
+            ]}
+          >
+            <Text style={{ fontSize: 18, fontWeight: "700", color: "#1C1C1E" }}>
+              {t("profile.sendFeedback")}
+            </Text>
+            <TouchableOpacity onPress={() => setShowFeedback(false)}>
+              <Ionicons name="close" size={28} color="#1C1C1E" />
+            </TouchableOpacity>
+          </View>
+          <ScrollView style={{ flex: 1, padding: 20 }}>
+            <Text
+              style={{
+                fontSize: 14,
+                color: "#666",
+                marginBottom: 20,
+                textAlign: "center",
+              }}
+            >
+              We appreciate your feedback! Please email us at:
+            </Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#007AFF",
+                paddingVertical: 14,
+                borderRadius: 12,
+                alignItems: "center",
+              }}
+              onPress={() => {
+                // Would open email app - for now just close
+                setShowFeedback(false);
+              }}
+            >
+              <Text style={{ fontSize: 16, fontWeight: "600", color: "#FFF" }}>
+                support@talkbuddy.app
+              </Text>
+            </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 13,
+                color: "#999",
+                marginTop: 20,
+                textAlign: "center",
+              }}
+            >
+              Your feedback helps us improve the app!
+            </Text>
+          </ScrollView>
         </View>
       </Modal>
     </>
