@@ -1,4 +1,54 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
+
+// Custom debounce hook
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+// Search cache to store recent search results
+const searchCache = new Map<string, PresetScene[]>();
+const CACHE_MAX_SIZE = 10;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+interface CacheEntry {
+  scenes: PresetScene[];
+  timestamp: number;
+}
+
+const searchCacheStore = new Map<string, CacheEntry>();
+
+function getCachedSearchResults(query: string): PresetScene[] | null {
+  const entry = searchCacheStore.get(query.toLowerCase());
+  if (entry && Date.now() - entry.timestamp < CACHE_TTL) {
+    return entry.scenes;
+  }
+  searchCacheStore.delete(query.toLowerCase());
+  return null;
+}
+
+function setCachedSearchResults(query: string, scenes: PresetScene[]) {
+  // Clear old entries if cache is full
+  if (searchCacheStore.size >= CACHE_MAX_SIZE) {
+    const oldestKey = searchCacheStore.keys().next().value;
+    if (oldestKey) searchCacheStore.delete(oldestKey);
+  }
+  searchCacheStore.set(query.toLowerCase(), {
+    scenes,
+    timestamp: Date.now(),
+  });
+}
 import {
   View,
   Text,
@@ -20,21 +70,13 @@ import DictationMode from "./DictationMode";
 import ShadowMode from "./ShadowMode";
 import { useT } from "../../lib/i18n";
 import {
-  AIRPORT_SCENES,
-  HOTEL_SCENES,
-  RESTAURANT_SCENES,
-  SHOPPING_SCENES,
-  TRANSPORT_SCENES,
-  MEDICAL_SCENES,
-  SOCIAL_SCENES,
-  EMERGENCY_SCENES,
-  FOUNDATION_SCENES,
-  ENTERTAINMENT_SCENES,
-  BANKING_SCENES,
-  ACCOMMODATION_SCENES,
-  DAILY_LIFE_SCENES,
-} from "../../data/scenes";
-import type { PresetScene } from "../../data/scene-types";
+  PRESET_SCENES,
+  getScenesByCategory,
+  getSceneById,
+  getAllPhrasesFromScene,
+  type PresetScene,
+  type PresetPhrase,
+} from "../../data/preset-scenes";
 
 // Context ID to translation key mapping
 const CONTEXT_ID_TO_KEY: Record<string, string> = {
@@ -58,47 +100,60 @@ const CONTEXTS: {
   icon: string;
   emoji: string;
 }[] = [
-  { id: "airport", icon: "airplane", emoji: "✈️" },
-  { id: "medical", icon: "medical", emoji: "🏥" },
-  { id: "hotel", icon: "bed", emoji: "🏨" },
-  { id: "restaurant", icon: "restaurant", emoji: "🍽️" },
-  { id: "emergency", icon: "shield", emoji: "🚔" },
-  { id: "shopping", icon: "cart", emoji: "🛍️" },
-  { id: "transport", icon: "bus", emoji: "🚌" },
-  { id: "banking", icon: "business", emoji: "🏦" },
-  { id: "accommodation", icon: "home", emoji: "🏠" },
-  { id: "social", icon: "people", emoji: "👥" },
-  { id: "entertainment", icon: "film", emoji: "🎬" },
-  { id: "foundation", icon: "book", emoji: "📚" },
-  { id: "daily-life", icon: "calendar", emoji: "📅" },
+  { id: "airport", icon: "airplane", emoji: "\u2708\uFE0E" },
+  { id: "medical", icon: "medical", emoji: "\u{1F3E5}" },
+  { id: "hotel", icon: "bed", emoji: "\u{1F3E8}" },
+  { id: "restaurant", icon: "restaurant", emoji: "\u{1F37D}\uFE0E" },
+  { id: "emergency", icon: "shield", emoji: "\u{1F6E1}\uFE0E" },
+  { id: "shopping", icon: "cart", emoji: "\u{1F6CD}\uFE0E" },
+  { id: "transport", icon: "bus", emoji: "\u{1F68C}" },
+  { id: "banking", icon: "business", emoji: "\u{1F3E6}" },
+  { id: "accommodation", icon: "home", emoji: "\u{1F3E0}" },
+  { id: "social", icon: "people", emoji: "\u{1F465}" },
+  { id: "entertainment", icon: "film", emoji: "\u{1F3AC}" },
+  { id: "foundation", icon: "book", emoji: "\u{1F4DA}" },
+  { id: "daily-life", icon: "calendar", emoji: "\u{1F4C5}" },
 ];
 
-// Lazy load scene data to prevent memory crash
-const SCENE_DATA_MAP: Record<string, PresetScene[]> = {
-  airport: AIRPORT_SCENES,
-  medical: MEDICAL_SCENES,
-  hotel: HOTEL_SCENES,
-  restaurant: RESTAURANT_SCENES,
-  emergency: EMERGENCY_SCENES,
-  shopping: SHOPPING_SCENES,
-  transport: TRANSPORT_SCENES,
-  banking: BANKING_SCENES,
-  accommodation: ACCOMMODATION_SCENES,
-  social: SOCIAL_SCENES,
-  entertainment: ENTERTAINMENT_SCENES,
-  foundation: FOUNDATION_SCENES,
-  "daily-life": DAILY_LIFE_SCENES,
+// Filter contexts that have scenes (avoid empty categories)
+const CONTEXTS_WITH_SCENES = CONTEXTS.filter(
+  (ctx) => getScenesByCategory(ctx.id).length > 0,
+);
+
+// Get scenes by category using preset-scenes.ts helpers
+const getScenesForCategory = (categoryId: string): PresetScene[] => {
+  return getScenesByCategory(categoryId);
 };
 
 type Phrase = {
   id: string;
   en: string;
   vi: string;
-  level: "Basic" | "Advanced";
+  level: "Basic" | "Intermediate" | "Advanced";
   contextLabel: string;
+  speaker: "you" | "them";
+  role?: string;
+  themEn?: string;
+  themVi?: string;
 };
 
-// Convert PresetScene to Phrase format for backward compatibility
+// Convert difficulty from web format to display format
+function getDifficultyLabel(
+  difficulty: string,
+): "Basic" | "Intermediate" | "Advanced" {
+  switch (difficulty) {
+    case "basic":
+      return "Basic";
+    case "intermediate":
+      return "Intermediate";
+    case "advanced":
+      return "Advanced";
+    default:
+      return "Basic";
+  }
+}
+
+// Convert PresetScene to Phrase format - include both "you" and "them" turns
 function convertScenesToPhrases(scenes: PresetScene[]): Phrase[] {
   const phrases: Phrase[] = [];
 
@@ -106,12 +161,33 @@ function convertScenesToPhrases(scenes: PresetScene[]): Phrase[] {
     scene.flows.forEach((flow) => {
       flow.turns.forEach((turn, index) => {
         if (turn.speaker === "you") {
+          // Find the next "them" turn to show as context
+          const nextThemTurn = flow.turns[index + 1];
           phrases.push({
             id: `${scene.id}-${flow.id}-${index}`,
             en: turn.textEn,
             vi: turn.textZh || "",
-            level: flow.difficulty === "basic" ? "Basic" : "Advanced",
+            level: getDifficultyLabel(flow.difficulty),
             contextLabel: scene.titleEn,
+            speaker: "you",
+            themEn:
+              nextThemTurn?.speaker === "them"
+                ? nextThemTurn.textEn
+                : undefined,
+            themVi:
+              nextThemTurn?.speaker === "them"
+                ? nextThemTurn.textZh
+                : undefined,
+          });
+        } else if (turn.speaker === "them") {
+          phrases.push({
+            id: `${scene.id}-${flow.id}-${index}`,
+            en: turn.textEn,
+            vi: turn.textZh || "",
+            level: getDifficultyLabel(flow.difficulty),
+            contextLabel: scene.titleEn,
+            speaker: "them",
+            role: turn.role,
           });
         }
       });
@@ -123,27 +199,25 @@ function convertScenesToPhrases(scenes: PresetScene[]): Phrase[] {
 
 // Lazy load phrases for a specific context
 function getPhrasesForContext(contextId: string): Phrase[] {
-  const scenes = SCENE_DATA_MAP[contextId];
+  const scenes = getScenesByCategory(contextId);
   if (!scenes) return [];
   return convertScenesToPhrases(scenes);
 }
 
 // Get all phrases for search (lazy loaded)
 function getAllPhrases(): Phrase[] {
-  const allPhrases: Phrase[] = [];
-  Object.values(SCENE_DATA_MAP).forEach((scenes) => {
-    allPhrases.push(...convertScenesToPhrases(scenes));
-  });
-  return allPhrases;
+  return convertScenesToPhrases(PRESET_SCENES);
 }
 
 export default function LearnScreen() {
   const insets = useSafeAreaInsets();
   const t = useT();
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
+  const [selectedScene, setSelectedScene] = useState<PresetScene | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const [difficultyFilter, setDifficultyFilter] = useState<
-    "all" | "Basic" | "Advanced"
+    "all" | "Basic" | "Intermediate" | "Advanced"
   >("all");
   const {
     phrases: savedPhrasesList,
@@ -269,30 +343,54 @@ export default function LearnScreen() {
     [popularPhrases],
   );
 
-  const phrases = selectedContext ? getPhrasesForContext(selectedContext) : [];
+  // Get scenes for selected category
+  const categoryScenes = selectedContext
+    ? getScenesByCategory(selectedContext)
+    : [];
+
+  // Get phrases - either from selected scene or all phrases in category
+  const phrases = useMemo(() => {
+    if (selectedScene) {
+      return convertScenesToPhrases([selectedScene]);
+    }
+    return selectedContext ? getPhrasesForContext(selectedContext) : [];
+  }, [selectedContext, selectedScene]);
+
   const sceneCount = selectedContext
-    ? (SCENE_DATA_MAP[selectedContext]?.length ?? 0)
+    ? getScenesByCategory(selectedContext).length
     : 0;
 
   // Search scenes by metadata first (like web app) - lightweight operation
+  // Uses debounced query and cache for better performance
   const matchingScenes = useMemo(() => {
-    if (!searchQuery) return [];
-    const q = searchQuery.trim().toLowerCase();
+    if (!debouncedSearchQuery) return [];
+
+    const q = debouncedSearchQuery.trim().toLowerCase();
+
+    // Check cache first
+    const cached = getCachedSearchResults(q);
+    if (cached) {
+      return [{ contextId: "all", scenes: cached }];
+    }
+
     const matches: { contextId: string; scenes: PresetScene[] }[] = [];
 
-    Object.entries(SCENE_DATA_MAP).forEach(([contextId, scenes]) => {
-      const sceneMatches = scenes.filter(
-        (s) =>
-          s.titleZh.toLowerCase().includes(q) ||
-          s.titleEn.toLowerCase().includes(q) ||
-          s.description.toLowerCase().includes(q),
-      );
-      if (sceneMatches.length > 0) {
-        matches.push({ contextId, scenes: sceneMatches });
-      }
-    });
+    // Search in all preset scenes
+    const allScenes = PRESET_SCENES;
+    const sceneMatches = allScenes.filter(
+      (s) =>
+        s.titleZh.toLowerCase().includes(q) ||
+        s.titleEn.toLowerCase().includes(q) ||
+        s.description.toLowerCase().includes(q),
+    );
+
+    // Cache the results
+    if (sceneMatches.length > 0) {
+      setCachedSearchResults(q, sceneMatches);
+      matches.push({ contextId: "all", scenes: sceneMatches });
+    }
     return matches;
-  }, [searchQuery]);
+  }, [debouncedSearchQuery]);
 
   // Only load phrases for matching scenes (not all scenes)
   const filteredPhrases = useMemo(() => {
@@ -304,7 +402,7 @@ export default function LearnScreen() {
     }
 
     // Apply search filter if exists
-    if (searchQuery && matchingScenes.length > 0) {
+    if (debouncedSearchQuery && matchingScenes.length > 0) {
       const searchResult: Phrase[] = [];
       matchingScenes.forEach(({ scenes }) => {
         const scenePhrases = convertScenesToPhrases(scenes);
@@ -317,7 +415,7 @@ export default function LearnScreen() {
     }
 
     return result;
-  }, [searchQuery, phrases, matchingScenes, difficultyFilter]);
+  }, [debouncedSearchQuery, phrases, matchingScenes, difficultyFilter]);
 
   const toggleSave = useCallback(
     (phrase: Phrase) => {
@@ -351,12 +449,12 @@ export default function LearnScreen() {
         onDone: () => setPlayingPhraseId(null),
         onError: (error) => {
           setPlayingPhraseId(null);
-          Alert.alert("Error", "Failed to play audio");
+          Alert.alert(t("common.error"), t("learn.failedToPlayAudio"));
         },
       });
     } catch (error) {
       setPlayingPhraseId(null);
-      Alert.alert("Error", "Failed to play audio");
+      Alert.alert(t("common.error"), t("learn.failedToPlayAudio"));
     }
   };
 
@@ -544,8 +642,10 @@ export default function LearnScreen() {
       <View style={[styles.header, { paddingTop: insets.top + 20 }]}>
         <View style={styles.headerContent}>
           <View style={styles.headerLeft}>
-            <Text style={styles.headerSubtitle}>Emergency English</Text>
-            <Text style={styles.headerTitle}>What do you need?</Text>
+            <Text style={styles.headerSubtitle}>
+              {t("learn.headerSubtitle")}
+            </Text>
+            <Text style={styles.headerTitle}>{t("learn.headerTitle")}</Text>
           </View>
           <TouchableOpacity style={styles.profileButton} onPress={() => {}}>
             <View style={styles.profileAvatar}>
@@ -564,7 +664,7 @@ export default function LearnScreen() {
           />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search scenes..."
+            placeholder={t("learn.searchScenes")}
             value={searchQuery}
             onChangeText={handleSearchChange}
             placeholderTextColor="#9E9E9E"
@@ -611,7 +711,9 @@ export default function LearnScreen() {
         {/* Continue Learning - Recent Scenes */}
         {!searchQuery && recentScenes.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>CONTINUE LEARNING</Text>
+            <Text style={styles.sectionTitle}>
+              {t("learn.continueLearning")}
+            </Text>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -647,9 +749,9 @@ export default function LearnScreen() {
         {/* Contexts */}
         {!searchQuery && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>CHOOSE CONTEXT</Text>
+            <Text style={styles.sectionTitle}>{t("learn.chooseContext")}</Text>
             <View style={styles.contextGrid}>
-              {CONTEXTS.map((ctx) => {
+              {CONTEXTS_WITH_SCENES.map((ctx) => {
                 const progress = categoryProgress[ctx.id];
                 const progressPercent = progress
                   ? Math.round((progress.learned / progress.total) * 100)
@@ -701,47 +803,120 @@ export default function LearnScreen() {
           </View>
         )}
 
-        {/* Phrases List */}
-        {(selectedContext || searchQuery) && (
+        {/* Scene List - when category selected but no scene selected */}
+        {selectedContext && !selectedScene && !searchQuery && (
+          <View style={styles.sceneListSection}>
+            <View style={styles.phrasesSectionHeader}>
+              <TouchableOpacity
+                onPress={() => setSelectedContext(null)}
+                style={styles.backButton}
+              >
+                <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
+                <Text style={styles.backButtonText}>Categories</Text>
+              </TouchableOpacity>
+              <Text style={styles.sceneCountText}>{sceneCount} scenes</Text>
+            </View>
+            <ScrollView
+              style={styles.sceneListContainer}
+              showsVerticalScrollIndicator={false}
+            >
+              {categoryScenes
+                .filter((scene) => convertScenesToPhrases([scene]).length > 0)
+                .map((scene) => {
+                  const phraseCount = convertScenesToPhrases([scene]).length;
+                  return (
+                    <TouchableOpacity
+                      key={scene.id}
+                      style={styles.sceneCard}
+                      onPress={() => {
+                        setSelectedScene(scene);
+                        addRecentScene(selectedContext, scene.titleEn);
+                      }}
+                    >
+                      <View style={styles.sceneCardContent}>
+                        <Text style={styles.sceneTitleEn}>{scene.titleEn}</Text>
+                        <Text style={styles.sceneTitleZh}>{scene.titleZh}</Text>
+                        <Text style={styles.sceneDescription} numberOfLines={2}>
+                          {scene.description}
+                        </Text>
+                      </View>
+                      <View style={styles.sceneCardRight}>
+                        <Text style={styles.scenePhraseCount}>
+                          {phraseCount} phrases
+                        </Text>
+                        <Ionicons
+                          name="chevron-forward"
+                          size={18}
+                          color="#9E9E9E"
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+            </ScrollView>
+          </View>
+        )}
+
+        {/* Phrases List - when scene is selected or searching */}
+        {(selectedScene || searchQuery) && (
           <View style={styles.phrasesSection}>
             <View style={styles.phrasesSectionHeader}>
-              <Text style={styles.sectionTitle}>
-                {searchQuery
-                  ? "SEARCH RESULTS"
-                  : `${selectedContext?.toUpperCase()} PHRASES`}
-              </Text>
-              {selectedContext && (
-                <TouchableOpacity
-                  onPress={() => setSelectedContext(null)}
-                  style={styles.closeButton}
-                >
-                  <Text style={styles.closeButtonText}>Close</Text>
-                </TouchableOpacity>
-              )}
+              <View style={styles.phrasesHeaderLeft}>
+                {selectedScene && (
+                  <TouchableOpacity
+                    onPress={() => setSelectedScene(null)}
+                    style={styles.backButton}
+                  >
+                    <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
+                    <Text style={styles.backButtonText}>Scenes</Text>
+                  </TouchableOpacity>
+                )}
+                <Text style={styles.sectionTitle}>
+                  {searchQuery
+                    ? t("learn.searchResults")
+                    : selectedScene
+                      ? selectedScene.titleEn
+                      : t("learn.phrases", {
+                          context: selectedContext?.toUpperCase() || "",
+                        })}
+                </Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => {
+                  setSelectedScene(null);
+                  if (searchQuery) setSearchQuery("");
+                }}
+                style={styles.closeButton}
+              >
+                <Text style={styles.closeButtonText}>{t("learn.close")}</Text>
+              </TouchableOpacity>
             </View>
 
             {/* Difficulty Filter */}
             <View style={styles.difficultyFilter}>
-              {(["all", "Basic", "Advanced"] as const).map((level) => (
-                <TouchableOpacity
-                  key={level}
-                  style={[
-                    styles.difficultyButton,
-                    difficultyFilter === level && styles.difficultyButtonActive,
-                  ]}
-                  onPress={() => setDifficultyFilter(level)}
-                >
-                  <Text
+              {(["all", "Basic", "Intermediate", "Advanced"] as const).map(
+                (level) => (
+                  <TouchableOpacity
+                    key={level}
                     style={[
-                      styles.difficultyButtonText,
+                      styles.difficultyButton,
                       difficultyFilter === level &&
-                        styles.difficultyButtonTextActive,
+                        styles.difficultyButtonActive,
                     ]}
+                    onPress={() => setDifficultyFilter(level)}
                   >
-                    {level === "all" ? "All" : level}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+                    <Text
+                      style={[
+                        styles.difficultyButtonText,
+                        difficultyFilter === level &&
+                          styles.difficultyButtonTextActive,
+                      ]}
+                    >
+                      {level === "all" ? "All" : level}
+                    </Text>
+                  </TouchableOpacity>
+                ),
+              )}
             </View>
 
             {/* Listen to Full Dialogue button - below PHRASES header */}
@@ -818,15 +993,42 @@ export default function LearnScreen() {
                               styles.levelBadge,
                               phrase.level === "Advanced" &&
                                 styles.levelBadgeAdvanced,
+                              phrase.level === "Intermediate" &&
+                                styles.levelBadgeIntermediate,
                             ]}
                           >
                             <Text style={styles.levelText}>{phrase.level}</Text>
+                          </View>
+                          {/* Speaker badge - you vs them */}
+                          <View
+                            style={[
+                              styles.speakerBadge,
+                              phrase.speaker === "them" &&
+                                styles.speakerBadgeThem,
+                            ]}
+                          >
+                            <Text
+                              style={[
+                                styles.speakerBadgeText,
+                                phrase.speaker === "them" &&
+                                  styles.speakerBadgeTextThem,
+                              ]}
+                            >
+                              {phrase.speaker === "them"
+                                ? phrase.role || "Them"
+                                : "You"}
+                            </Text>
                           </View>
                           <Text style={styles.contextLabel}>
                             {phrase.contextLabel}
                           </Text>
                         </View>
-                        <Text style={styles.phraseEn}>
+                        <Text
+                          style={[
+                            styles.phraseEn,
+                            phrase.speaker === "them" && styles.phraseEnThem,
+                          ]}
+                        >
                           {searchQuery
                             ? highlightText(phrase.en, searchQuery).map(
                                 (part, i) => (
@@ -862,6 +1064,22 @@ export default function LearnScreen() {
                               )
                             : phrase.vi}
                         </Text>
+                        {/* Show them turn as context for "you" turns */}
+                        {phrase.speaker === "you" && phrase.themEn && (
+                          <View style={styles.themTurnContainer}>
+                            <Text style={styles.themTurnLabel}>
+                              {phrase.role || "They say"}:
+                            </Text>
+                            <Text style={styles.themTurnEn}>
+                              {phrase.themEn}
+                            </Text>
+                            {phrase.themVi && (
+                              <Text style={styles.themTurnVi}>
+                                {phrase.themVi}
+                              </Text>
+                            )}
+                          </View>
+                        )}
                       </View>
                       <View style={styles.phraseActions}>
                         <TouchableOpacity
@@ -1006,19 +1224,16 @@ export default function LearnScreen() {
             <View style={styles.tipCard}>
               <View style={styles.tipHeader}>
                 <Ionicons name="shield-checkmark" size={20} color="#FFD600" />
-                <Text style={styles.tipTitle}>Emergency tip</Text>
+                <Text style={styles.tipTitle}>{t("learn.emergencyTip")}</Text>
               </View>
-              <Text style={styles.tipText}>
-                Select a context to find phrases. Or use SOS Buddy for real-time
-                translation help.
-              </Text>
+              <Text style={styles.tipText}>{t("learn.emergencyTipDesc")}</Text>
             </View>
 
             <View style={styles.commonSection}>
               <Text style={styles.sectionTitle}>
                 {popularPhrases.length > 0
-                  ? "Popular Phrases"
-                  : "Common situations"}
+                  ? t("learn.popularScenes")
+                  : t("learn.commonSituations")}
               </Text>
               <View style={styles.commonList}>
                 {(() => {
@@ -1390,6 +1605,9 @@ const styles = StyleSheet.create({
   levelBadgeAdvanced: {
     backgroundColor: "#FFF3E0",
   },
+  levelBadgeIntermediate: {
+    backgroundColor: "#E8EAF6",
+  },
   levelText: {
     fontSize: 10,
     fontWeight: "600",
@@ -1538,5 +1756,116 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#9E9E9E",
     fontWeight: "500",
+  },
+  // Scene List Styles
+  sceneListSection: {
+    marginBottom: 24,
+  },
+  sceneListContainer: {
+    maxHeight: 500,
+  },
+  sceneCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  sceneCardContent: {
+    flex: 1,
+  },
+  sceneTitleEn: {
+    fontSize: 15,
+    fontWeight: "700",
+    color: "#1c1c1e",
+    marginBottom: 2,
+  },
+  sceneTitleZh: {
+    fontSize: 13,
+    color: "#666",
+    marginBottom: 4,
+  },
+  sceneDescription: {
+    fontSize: 12,
+    color: "#9E9E9E",
+  },
+  sceneCardRight: {
+    alignItems: "flex-end",
+    marginLeft: 12,
+  },
+  scenePhraseCount: {
+    fontSize: 12,
+    color: "#FFD200",
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  sceneCountText: {
+    fontSize: 13,
+    color: "#9E9E9E",
+    fontWeight: "500",
+  },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 8,
+  },
+  backButtonText: {
+    fontSize: 13,
+    color: "#1c1c1e",
+    fontWeight: "500",
+  },
+  phrasesHeaderLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  // Speaker badge styles
+  speakerBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    backgroundColor: "#E8F5E9",
+    borderRadius: 4,
+  },
+  speakerBadgeThem: {
+    backgroundColor: "#E3F2FD",
+  },
+  speakerBadgeText: {
+    fontSize: 10,
+    fontWeight: "600",
+    color: "#2E7D32",
+  },
+  speakerBadgeTextThem: {
+    color: "#1976D2",
+  },
+  phraseEnThem: {
+    color: "#1976D2",
+  },
+  // Them turn display (response from other person)
+  themTurnContainer: {
+    marginTop: 8,
+    padding: 12,
+    backgroundColor: "#F5F5F5",
+    borderRadius: 8,
+    borderLeftWidth: 3,
+    borderLeftColor: "#1976D2",
+  },
+  themTurnLabel: {
+    fontSize: 10,
+    fontWeight: "600",
+    color: "#1976D2",
+    marginBottom: 4,
+  },
+  themTurnEn: {
+    fontSize: 14,
+    color: "#666",
+    fontStyle: "italic",
+  },
+  themTurnVi: {
+    fontSize: 12,
+    color: "#9E9E9E",
+    marginTop: 2,
   },
 });

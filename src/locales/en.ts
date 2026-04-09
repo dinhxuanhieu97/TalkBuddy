@@ -138,6 +138,20 @@ const en: LocaleDict = {
   "setup.continue": "Continue",
   "setup.skip": "Skip",
   "setup.letsGo": "Start Learning",
+
+  // Onboarding Slides
+  "onboarding.slide1.title": "TalkBuddy",
+  "onboarding.slide2.title": "Translate language for everyone",
+  "onboarding.slide2.subtitle":
+    "Instantly find the right phrase for any urgent situation - airport, hospital, hotel, and more.",
+  "onboarding.slide3.title": "Master Pronunciation",
+  "onboarding.slide3.subtitle":
+    "Listen, repeat, and perfect your English accent with interactive phonics exercises.",
+  "onboarding.slide4.title": "Track Your Progress",
+  "onboarding.slide4.subtitle":
+    "Every phrase you learn is saved. Review your history and watch your English grow day by day.",
+  "onboarding.continue": "CONTINUE",
+  "onboarding.getStarted": "GET STARTED",
   "setup.step": "Step {current} of {total}",
 
   // ── Language options ───────────────────────────────────────────
@@ -172,6 +186,27 @@ const en: LocaleDict = {
   "learn.savedPhrases": "Saved Phrases",
   "learn.noResults": "No results found",
   "learn.tryDifferentSearch": "Try a different search term",
+  "learn.searchScenes": "Search scenes...",
+  "learn.continueLearning": "CONTINUE LEARNING",
+  "learn.popularScenes": "Popular Scenes",
+  "learn.failedToPlayAudio": "Failed to play audio",
+  "learn.chooseContext": "CHOOSE CONTEXT",
+  "learn.emergencyTip": "Emergency tip",
+  "learn.emergencyTipDesc":
+    "Select a context to find phrases. Or use SOS Buddy for real-time translation help.",
+  "learn.commonSituations": "Common situations",
+  "learn.headerSubtitle": "Emergency English",
+  "learn.headerTitle": "What do you need?",
+  "learn.close": "Close",
+  "learn.searchResults": "SEARCH RESULTS",
+  "learn.phrases": "{context} PHRASES",
+
+  // Profile
+  "profile.defaultName": "Traveler",
+  "profile.defaultEmail": "traveler@talkbuddy.app",
+  "profile.voiceSettingsValue": "Customize",
+  "profile.dailyGoalsValue": "10 min",
+  "profile.versionText": "Version {version}",
 
   // ── SOS / TalkBuddy ───────────────────────────────────────────
   "sos.title": "Talk Buddy",
@@ -276,6 +311,41 @@ const en: LocaleDict = {
 
   "profile.days": "{n} days",
   "profile.hours": "{n} hrs",
+
+  // Edit Profile Form
+  "profile.edit.fullName": "Full Name *",
+  "profile.edit.fullNamePlaceholder": "Enter your name",
+  "profile.edit.email": "Email Address *",
+  "profile.edit.emailPlaceholder": "your@email.com",
+  "profile.edit.phone": "Phone Number",
+  "profile.edit.phonePlaceholder": "+1 (555) 123-4567",
+  "profile.edit.location": "Location",
+  "profile.edit.locationPlaceholder": "City, Country",
+  "profile.edit.language": "Preferred Language",
+  "profile.edit.languagePlaceholder": "e.g., English, Vietnamese",
+  "profile.edit.bio": "Bio",
+  "profile.edit.bioPlaceholder": "Tell us about yourself...",
+  "profile.edit.saveButton": "Save & Sync",
+  "profile.edit.syncing": "Syncing...",
+  "profile.edit.success": "Profile updated and synced successfully!",
+  "profile.edit.error": "Failed to save profile. Please try again.",
+  "profile.edit.validationError": "Please fix the errors before saving.",
+  "profile.edit.nameRequired": "Name is required",
+  "profile.edit.nameMin": "Min 2 characters",
+  "profile.edit.emailRequired": "Email is required",
+  "profile.edit.emailInvalid": "Invalid email",
+  "profile.edit.phoneInvalid": "Invalid phone",
+  "profile.edit.bioMax": "Max 200 characters",
+  "profile.edit.changeAvatar": "Change Avatar",
+  "profile.edit.chooseOption": "Choose an option",
+  "profile.edit.takePhoto": "Take Photo",
+  "profile.edit.chooseLibrary": "Choose from Library",
+  "profile.edit.cancel": "Cancel",
+  "profile.edit.tapAvatarHint": "Tap avatar to change photo",
+  "profile.edit.yourName": "Your Name",
+  "profile.edit.yourEmail": "your@email.com",
+  "profile.edit.permissionDenied": "We need camera roll permissions.",
+  "profile.edit.permissionDeniedCamera": "We need camera permissions.",
 
   // ── Settings ──────────────────────────────────────────────────
   "settings.title": "Settings",

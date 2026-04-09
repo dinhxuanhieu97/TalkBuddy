@@ -1,5 +1,6 @@
-# Build stage for TalkBuddy Mobile App
-FROM node:20-alpine AS builder
+# Dockerfile for TalkBuddy Mobile App Build Environment
+# Use this for DevOps to build via EAS (Expo Application Services)
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -7,16 +8,11 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci
 
+# Install EAS CLI globally
+RUN npm install -g eas-cli
+
 # Copy source code
 COPY . .
 
-# Build web version
-RUN npm run build:web
-
-# Production nginx server for web
-FROM nginx:alpine AS production
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Default command - can be overridden
+CMD ["sh"]

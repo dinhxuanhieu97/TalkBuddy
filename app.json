@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "Talk Buddy",
-    "slug": "talk-buddy-app",
+    "name": "TalkBuddy-场景学英语，即学即用～",
+    "slug": "talkbuddy-scenario-english",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "talkbuddy",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -16,15 +16,16 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.talkbuddy",
-      "buildNumber": "1.0.0"
+      "bundleIdentifier": "com.talkbuddy.scenario",
+      "buildNumber": "1.0.0",
+      "buildReactNativeFromSource": false
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#000000"
       },
-      "package": "com.yourcompany.talkbuddy",
+      "package": "com.talkbuddy.scenario",
       "versionCode": 1
     },
     "web": {

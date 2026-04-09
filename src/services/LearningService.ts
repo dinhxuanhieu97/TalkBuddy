@@ -1,39 +1,33 @@
-import { supabase, Database } from '../lib/supabase';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  learningApi,
+  LearningProgress,
+  UserStreak,
+  DailyUsage,
+} from "../lib/learningApi";
 
-export type LearningProgress = Database['public']['Tables']['learning_progress']['Row'];
-export type LearningProgressInsert = Database['public']['Tables']['learning_progress']['Insert'];
-export type LearningProgressUpdate = Database['public']['Tables']['learning_progress']['Update'];
+export type LearningProgressUpdate = Partial<LearningProgress>;
+export type SavedPhraseInsert = any;
+export type UserStreakUpdate = Partial<UserStreak>;
+export type DailyUsageUpdate = Partial<DailyUsage>;
 
-export type SavedPhrase = Database['public']['Tables']['saved_phrases']['Row'];
-export type SavedPhraseInsert = Database['public']['Tables']['saved_phrases']['Insert'];
-
-export type UserStreak = Database['public']['Tables']['user_streaks']['Row'];
-export type UserStreakInsert = Database['public']['Tables']['user_streaks']['Insert'];
-export type UserStreakUpdate = Database['public']['Tables']['user_streaks']['Update'];
-
-export type DailyUsage = Database['public']['Tables']['daily_usage']['Row'];
-export type DailyUsageInsert = Database['public']['Tables']['daily_usage']['Insert'];
-export type DailyUsageUpdate = Database['public']['Tables']['daily_usage']['Update'];
+export interface SavedPhrase {
+  id: string;
+  user_id: string;
+  phrase_key: string;
+  created_at: string;
+}
 
 export class LearningService {
   // Learning Progress
-  static async getProgress(userId: string, phraseKey?: string): Promise<LearningProgress[]> {
+  static async getProgress(
+    userId: string,
+    phraseKey?: string,
+  ): Promise<LearningProgress[]> {
     try {
-      let query = supabase
-        .from('learning_progress')
-        .select('*')
-        .eq('user_id', userId);
-
-      if (phraseKey) {
-        query = query.eq('phrase_key', phraseKey);
-      }
-
-      const { data, error } = await query;
-      
-      if (error) throw error;
-      return data || [];
+      return await learningApi.getProgress(userId, phraseKey);
     } catch (error) {
-      console.error('Error fetching progress:', error);
+      console.error("Error fetching progress:", error);
       return [];
     }
   }
@@ -41,23 +35,12 @@ export class LearningService {
   static async updateProgress(
     userId: string,
     phraseKey: string,
-    updates: Partial<LearningProgressUpdate>
+    updates: Partial<LearningProgressUpdate>,
   ): Promise<LearningProgress | null> {
     try {
-      const { data, error } = await supabase
-        .from('learning_progress')
-        .upsert({
-          user_id: userId,
-          phrase_key: phraseKey,
-          ...updates,
-        })
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      return await learningApi.updateProgress(userId, phraseKey, updates);
     } catch (error) {
-      console.error('Error updating progress:', error);
+      console.error("Error updating progress:", error);
       return null;
     }
   }
@@ -70,7 +53,7 @@ export class LearningService {
       dictation_score?: number;
       shadowing_score?: number;
       listening_score?: number;
-    }
+    },
   ): Promise<LearningProgress | null> {
     try {
       // Get current progress
@@ -78,8 +61,12 @@ export class LearningService {
       const existing = currentProgress[0];
 
       // Calculate new mastery based on scores
-      const avgScore = Object.values(scores).filter(Boolean).reduce((a, b) => a + b, 0) / Object.values(scores).filter(Boolean).length;
-      const newMastery = existing 
+      const avgScore =
+        Object.values(scores)
+          .filter(Boolean)
+          .reduce((a, b) => a + b, 0) /
+        Object.values(scores).filter(Boolean).length;
+      const newMastery = existing
         ? Math.min(100, (existing.mastery + avgScore) / 2)
         : avgScore;
 
@@ -90,7 +77,10 @@ export class LearningService {
 
       if (existing) {
         srsRepetitions = existing.srs_repetitions + 1;
-        srsEaseFactor = Math.max(1.3, existing.srs_ease_factor + (0.1 - (3 - avgScore) * 0.08));
+        srsEaseFactor = Math.max(
+          1.3,
+          existing.srs_ease_factor + (0.1 - (3 - avgScore) * 0.08),
+        );
         srsInterval = Math.ceil(srsInterval * srsEaseFactor);
       }
 
@@ -110,56 +100,66 @@ export class LearningService {
         last_practiced: new Date().toISOString(),
       });
     } catch (error) {
-      console.error('Error in practice session:', error);
+      console.error("Error in practice session:", error);
       return null;
     }
   }
 
-  // Saved Phrases
+  // Saved Phrases - using AsyncStorage
   static async getSavedPhrases(userId: string): Promise<SavedPhrase[]> {
     try {
-      const { data, error } = await supabase
-        .from('saved_phrases')
-        .select('*')
-        .eq('user_id', userId);
-
-      if (error) throw error;
-      return data || [];
+      const data = await AsyncStorage.getItem("talkbuddy_saved_phrases");
+      const all: SavedPhrase[] = data ? JSON.parse(data) : [];
+      return all.filter((p) => p.user_id === userId);
     } catch (error) {
-      console.error('Error fetching saved phrases:', error);
+      console.error("Error fetching saved phrases:", error);
       return [];
     }
   }
 
   static async savePhrase(userId: string, phraseKey: string): Promise<boolean> {
     try {
-      const { error } = await supabase
-        .from('saved_phrases')
-        .upsert({
+      const data = await AsyncStorage.getItem("talkbuddy_saved_phrases");
+      const all: SavedPhrase[] = data ? JSON.parse(data) : [];
+      const exists = all.find(
+        (p) => p.user_id === userId && p.phrase_key === phraseKey,
+      );
+      if (!exists) {
+        all.push({
+          id: Date.now().toString(36),
           user_id: userId,
           phrase_key: phraseKey,
+          created_at: new Date().toISOString(),
         });
-
-      if (error) throw error;
+        await AsyncStorage.setItem(
+          "talkbuddy_saved_phrases",
+          JSON.stringify(all),
+        );
+      }
       return true;
     } catch (error) {
-      console.error('Error saving phrase:', error);
+      console.error("Error saving phrase:", error);
       return false;
     }
   }
 
-  static async unsavePhrase(userId: string, phraseKey: string): Promise<boolean> {
+  static async unsavePhrase(
+    userId: string,
+    phraseKey: string,
+  ): Promise<boolean> {
     try {
-      const { error } = await supabase
-        .from('saved_phrases')
-        .delete()
-        .eq('user_id', userId)
-        .eq('phrase_key', phraseKey);
-
-      if (error) throw error;
+      const data = await AsyncStorage.getItem("talkbuddy_saved_phrases");
+      const all: SavedPhrase[] = data ? JSON.parse(data) : [];
+      const filtered = all.filter(
+        (p) => !(p.user_id === userId && p.phrase_key === phraseKey),
+      );
+      await AsyncStorage.setItem(
+        "talkbuddy_saved_phrases",
+        JSON.stringify(filtered),
+      );
       return true;
     } catch (error) {
-      console.error('Error unsaving phrase:', error);
+      console.error("Error unsaving phrase:", error);
       return false;
     }
   }
@@ -167,59 +167,18 @@ export class LearningService {
   // User Streak
   static async getUserStreak(userId: string): Promise<UserStreak | null> {
     try {
-      const { data, error } = await supabase
-        .from('user_streaks')
-        .select('*')
-        .eq('user_id', userId)
-        .single();
-
-      if (error && error.code !== 'PGRST116') throw error; // PGRST116 = not found
-      return data || null;
+      return await learningApi.getUserStreak(userId);
     } catch (error) {
-      console.error('Error fetching user streak:', error);
+      console.error("Error fetching user streak:", error);
       return null;
     }
   }
 
   static async updateStreak(userId: string): Promise<UserStreak | null> {
     try {
-      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-      const currentStreak = await this.getUserStreak(userId);
-
-      let streakData: UserStreakInsert & { id?: string } = {
-        user_id: userId,
-        current_streak: 1,
-        longest_streak: 1,
-        total_days: 1,
-        today_phrase_count: 1,
-        last_active_date: today,
-      };
-
-      if (currentStreak) {
-        const lastActive = currentStreak.last_active_date;
-        const isConsecutive = lastActive && this.isConsecutiveDay(lastActive, today);
-
-        streakData = {
-          id: currentStreak.id,
-          user_id: userId,
-          current_streak: isConsecutive ? currentStreak.current_streak + 1 : 1,
-          longest_streak: Math.max(currentStreak.longest_streak, isConsecutive ? currentStreak.current_streak + 1 : 1),
-          total_days: currentStreak.total_days + 1,
-          today_phrase_count: lastActive === today ? currentStreak.today_phrase_count + 1 : 1,
-          last_active_date: today,
-        };
-      }
-
-      const { data, error } = await supabase
-        .from('user_streaks')
-        .upsert(streakData)
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      return await learningApi.updateStreak(userId);
     } catch (error) {
-      console.error('Error updating streak:', error);
+      console.error("Error updating streak:", error);
       return null;
     }
   }
@@ -241,80 +200,29 @@ export class LearningService {
       speak_for_me_count?: number;
       word_lookup_count?: number;
       scene_generate_count?: number;
-    }
+    },
   ): Promise<DailyUsage | null> {
     try {
-      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-
-      // Get existing usage for today
-      const { data: existing } = await supabase
-        .from('daily_usage')
-        .select('*')
-        .eq('user_id', userId)
-        .eq('date', today)
-        .single();
-
-      const usageData: DailyUsageInsert = {
-        user_id: userId,
-        date: today,
-        pronunciation_count: (existing?.pronunciation_count || 0) + (usage.pronunciation_count || 0),
-        ai_conversation_count: (existing?.ai_conversation_count || 0) + (usage.ai_conversation_count || 0),
-        speak_for_me_count: (existing?.speak_for_me_count || 0) + (usage.speak_for_me_count || 0),
-        word_lookup_count: (existing?.word_lookup_count || 0) + (usage.word_lookup_count || 0),
-        scene_generate_count: (existing?.scene_generate_count || 0) + (usage.scene_generate_count || 0),
-      };
-
-      const { data, error } = await supabase
-        .from('daily_usage')
-        .upsert(usageData)
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      return await learningApi.updateDailyUsage(userId, usage);
     } catch (error) {
-      console.error('Error updating daily usage:', error);
+      console.error("Error updating daily usage:", error);
       return null;
     }
   }
 
-  // Real-time subscriptions
-  static subscribeToProgress(userId: string, callback: (progress: LearningProgress[]) => void) {
-    return supabase
-      .channel(`progress_${userId}`)
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'learning_progress',
-          filter: `user_id=eq.${userId}`,
-        },
-        async () => {
-          const progress = await this.getProgress(userId);
-          callback(progress);
-        }
-      )
-      .subscribe();
+  // Real-time subscriptions - disabled for local storage
+  static subscribeToProgress(
+    _userId: string,
+    _callback: (progress: LearningProgress[]) => void,
+  ) {
+    return { unsubscribe: () => {} };
   }
 
-  static subscribeToStreak(userId: string, callback: (streak: UserStreak | null) => void) {
-    return supabase
-      .channel(`streak_${userId}`)
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'user_streaks',
-          filter: `user_id=eq.${userId}`,
-        },
-        async () => {
-          const streak = await this.getUserStreak(userId);
-          callback(streak);
-        }
-      )
-      .subscribe();
+  static subscribeToStreak(
+    _userId: string,
+    _callback: (streak: UserStreak | null) => void,
+  ) {
+    return { unsubscribe: () => {} };
   }
 }
 
