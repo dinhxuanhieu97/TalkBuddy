@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TalkBuddy-场景学英语，即学即用～",
-    "slug": "talkbuddy-scenario-english",
+    "slug": "talkbuddy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -38,8 +38,10 @@
     },
     "extra": {
       "eas": {
-        "projectId": "your-project-id-here"
-      }
-    }
+        "projectId": "84d80e31-f62b-47f1-a155-7151ee9c32d4"
+      },
+      "router": {}
+    },
+    "owner": "keydever"
   }
 }

@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
+  readonly VITE_WEB_API_URL: string;
+  readonly VITE_WEB_API_KEY: string;
   readonly VITE_ENABLE_AI_CHAT: string;
   readonly VITE_ENABLE_PRACTICE_MODE: string;
   readonly VITE_ANALYTICS_ID: string;

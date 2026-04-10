@@ -31,16 +31,6 @@
 				<string>com.talkbuddy.scenario</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>OAuthRedirect</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.talkbuddy.scenario</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.0</string>
