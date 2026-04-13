@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "./api";
+import * as Google from "expo-google-app-auth";
+import * as AppleAuthentication from "expo-apple-authentication";
 
-let GoogleAuth: any = null;
-try {
-  GoogleAuth = require("@codetrix-studio/capacitor-google-auth").GoogleAuth;
-} catch (e) {
-  console.log("Capacitor Google Auth not available, using web fallback");
-}
+// Google OAuth configuration from environment variables
+const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID || "";
+const GOOGLE_ANDROID_CLIENT_ID =
+  process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID || "";
 
 export interface AuthUser {
   id: string;
@@ -160,25 +160,69 @@ export class AuthService {
   // ─── Sign In with Google ───────────────────────────────────
   static async signInWithGoogle(): Promise<AuthUser | null> {
     try {
-      if (GoogleAuth) {
-        const result = await GoogleAuth.signIn();
+      console.log("Google sign-in config:", {
+        iosClientId: GOOGLE_IOS_CLIENT_ID,
+        hasClientId: !!GOOGLE_IOS_CLIENT_ID,
+      });
 
-        if (result) {
-          const res = await api.post("/api/auth/google", {
-            idToken: result.authentication.idToken,
-            accessToken: result.authentication.accessToken,
-          });
+      const result = await Google.logInAsync({
+        iosClientId: GOOGLE_IOS_CLIENT_ID,
+        androidClientId: GOOGLE_ANDROID_CLIENT_ID,
+        scopes: ["profile", "email"],
+        behavior: "system",
+      });
 
-          if (res.data.token && res.data.user) {
-            await this.persistToken(res.data.token, true);
-            return this.mapUser(res.data.user, "google", res.data.token);
-          }
+      console.log("Google sign-in result:", result);
+
+      if (result.type === "success") {
+        const res = await api.post("/api/auth/google", {
+          idToken: result.idToken,
+          accessToken: result.accessToken,
+        });
+
+        if (res.data.token && res.data.user) {
+          await this.persistToken(res.data.token, true);
+          return this.mapUser(res.data.user, "google", res.data.token);
         }
       }
 
       return null;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Google sign-in error:", error);
+      console.error("Error details:", error.message, error.stack);
+      throw error;
+    }
+  }
+
+  // ─── Sign In with Apple ────────────────────────────────────
+  static async signInWithApple(): Promise<AuthUser | null> {
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+      });
+
+      if (credential) {
+        const res = await api.post("/api/auth/apple", {
+          idToken: credential.identityToken,
+          user: credential.user,
+        });
+
+        if (res.data.token && res.data.user) {
+          await this.persistToken(res.data.token, true);
+          return this.mapUser(res.data.user, "apple", res.data.token);
+        }
+      }
+
+      return null;
+    } catch (error: any) {
+      if (error.code === "ERR_CANCELLED") {
+        console.log("Apple sign-in cancelled");
+        return null;
+      }
+      console.error("Apple sign-in error:", error);
       throw error;
     }
   }

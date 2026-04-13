@@ -1,12 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as FileSystem from "expo-file-system";
+// @ts-ignore - no types for react-native-zip-archive
 import { unzip } from "react-native-zip-archive";
+import * as FileSystem from "expo-file-system";
 
 const API_BASE_URL = "https://talkbuddy.wayjet.io/api/export";
 const API_KEY =
-  "db1a180767297ee4691e51d057993f6e32ad800676fc0cdc9a7c9661298cfa78";
+  "b3677caf2e11591d30be3ee616bb2e16a1126436c8b00b83c4b39108cc7551ae";
 
 const CONTENT_VERSION_KEY = "talkbuddy_content_versions";
+// @ts-ignore - documentDirectory exists at runtime
 const CONTENT_DIR = FileSystem.documentDirectory + "content/";
 
 export interface CategoryManifest {
@@ -269,6 +271,7 @@ const contentSyncService = {
       let totalSize = 0;
       for (const category of categories) {
         const catDir = CONTENT_DIR + category;
+        // @ts-ignore - size option not in types but works at runtime
         const catInfo = await FileSystem.getInfoAsync(catDir, { size: true });
         if (catInfo.exists && "size" in catInfo) {
           totalSize += catInfo.size || 0;

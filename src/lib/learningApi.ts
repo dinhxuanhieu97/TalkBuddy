@@ -1,7 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "../services/api";
 
-const API_BASE_URL = process.env.VITE_API_URL || "https://talkbuddy.wayjet.io";
+const isDebug = process.env.VITE_DEBUG === "true";
+const API_BASE_URL = isDebug
+  ? "http://localhost:5277"
+  : process.env.VITE_API_URL || "https://servicetalkbuddy.mysixbox.com";
 
 const STORAGE_KEYS = {
   LEARNING_PROGRESS: "talkbuddy_learning_progress",

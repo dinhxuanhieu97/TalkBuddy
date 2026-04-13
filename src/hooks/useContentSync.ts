@@ -1,9 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
+import { AppState, AppStateStatus } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import contentSyncService, { ManifestResponse, CategoryManifest } from "../services/contentSyncService";
+import NetInfo from "@react-native-community/netinfo";
+import contentSyncService, {
+  ManifestResponse,
+  CategoryManifest,
+} from "../services/contentSyncService";
 
 const LAST_SYNC_KEY = "talkbuddy_content_last_sync";
 const SYNC_SETTINGS_KEY = "talkbuddy_sync_settings";
+const LAST_VERSION_CHECK_KEY = "talkbuddy_last_version_check";
 
 interface SyncSettings {
   accent: string;
@@ -37,7 +43,10 @@ export const useContentSync = (): UseContentSyncReturn => {
   const [manifest, setManifest] = useState<ManifestResponse | null>(null);
   const [categoriesToUpdate, setCategoriesToUpdate] = useState(0);
   const [lastSyncTime, setLastSyncTime] = useState<Date | null>(null);
-  const [storageInfo, setStorageInfo] = useState<{ used: number; categories: string[] }>({
+  const [storageInfo, setStorageInfo] = useState<{
+    used: number;
+    categories: string[];
+  }>({
     used: 0,
     categories: [],
   });
@@ -66,13 +75,13 @@ export const useContentSync = (): UseContentSyncReturn => {
 
       const manifestData = await contentSyncService.fetchManifest(
         syncSettings.accent,
-        syncSettings.speed
+        syncSettings.speed,
       );
       setManifest(manifestData);
 
       const categories = await contentSyncService.getCategoriesNeedingUpdate(
         syncSettings.accent,
-        syncSettings.speed
+        syncSettings.speed,
       );
       setCategoriesToUpdate(categories.length);
     } catch (err) {
@@ -95,7 +104,7 @@ export const useContentSync = (): UseContentSyncReturn => {
 
       const categories = await contentSyncService.getCategoriesNeedingUpdate(
         syncSettings.accent,
-        syncSettings.speed
+        syncSettings.speed,
       );
       setCategoriesToUpdate(categories.length);
       return categories.length;
@@ -122,7 +131,7 @@ export const useContentSync = (): UseContentSyncReturn => {
           const overallProgress = ((current - 1 + catProgress) / total) * 100;
           setProgress(overallProgress);
           setCurrentCategory(category);
-        }
+        },
       );
 
       if (!result.success) {
@@ -165,19 +174,22 @@ export const useContentSync = (): UseContentSyncReturn => {
     }
   }, []);
 
-  const updateSettings = useCallback(async (newSettings: Partial<SyncSettings>) => {
-    const currentStr = await AsyncStorage.getItem(SYNC_SETTINGS_KEY);
-    const current: SyncSettings = currentStr
-      ? JSON.parse(currentStr)
-      : { accent: "en-US", speed: "normal", autoSync: true, wifiOnly: true };
+  const updateSettings = useCallback(
+    async (newSettings: Partial<SyncSettings>) => {
+      const currentStr = await AsyncStorage.getItem(SYNC_SETTINGS_KEY);
+      const current: SyncSettings = currentStr
+        ? JSON.parse(currentStr)
+        : { accent: "en-US", speed: "normal", autoSync: true, wifiOnly: true };
 
-    const updated = { ...current, ...newSettings };
-    await AsyncStorage.setItem(SYNC_SETTINGS_KEY, JSON.stringify(updated));
+      const updated = { ...current, ...newSettings };
+      await AsyncStorage.setItem(SYNC_SETTINGS_KEY, JSON.stringify(updated));
 
-    if (newSettings.accent || newSettings.speed) {
-      loadInitialData();
-    }
-  }, [loadInitialData]);
+      if (newSettings.accent || newSettings.speed) {
+        loadInitialData();
+      }
+    },
+    [loadInitialData],
+  );
 
   const getSettings = useCallback(async (): Promise<SyncSettings> => {
     const settingsStr = await AsyncStorage.getItem(SYNC_SETTINGS_KEY);
@@ -185,6 +197,79 @@ export const useContentSync = (): UseContentSyncReturn => {
       ? JSON.parse(settingsStr)
       : { accent: "en-US", speed: "normal", autoSync: true, wifiOnly: true };
   }, []);
+
+  // Auto-sync: check version when app comes to foreground with network
+  const checkVersionAndSync = useCallback(async () => {
+    try {
+      const settingsStr = await AsyncStorage.getItem(SYNC_SETTINGS_KEY);
+      const syncSettings: SyncSettings = settingsStr
+        ? JSON.parse(settingsStr)
+        : { accent: "en-US", speed: "normal", autoSync: true, wifiOnly: true };
+
+      if (!syncSettings.autoSync) return;
+
+      // Check network connection
+      const netInfo = await NetInfo.fetch();
+      const isConnected = netInfo.isConnected ?? false;
+      const isWifi = netInfo.type === "wifi";
+
+      // Skip if no connection
+      if (!isConnected) {
+        console.log("[useContentSync] No network, skipping auto-sync");
+        return;
+      }
+
+      // Skip if wifiOnly and not on wifi
+      if (syncSettings.wifiOnly && !isWifi) {
+        console.log(
+          "[useContentSync] Mobile data only, skipping auto-sync (wifiOnly)",
+        );
+        return;
+      }
+
+      // Check for version changes
+      const categoriesNeedingUpdate =
+        await contentSyncService.getCategoriesNeedingUpdate(
+          syncSettings.accent,
+          syncSettings.speed,
+        );
+
+      if (categoriesNeedingUpdate.length > 0) {
+        console.log(
+          "[useContentSync] Auto-sync: New content detected, syncing...",
+        );
+        await contentSyncService.syncAll(
+          syncSettings.accent,
+          syncSettings.speed,
+          () => {},
+        );
+        const newLastSync = new Date();
+        setLastSyncTime(newLastSync);
+        await AsyncStorage.setItem(LAST_SYNC_KEY, newLastSync.toISOString());
+      }
+    } catch (err) {
+      console.warn("[useContentSync] Auto-sync check failed:", err);
+    }
+  }, []);
+
+  // Run auto-sync when app comes to foreground
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (nextAppState === "active") {
+        console.log("[useContentSync] App active, checking for updates...");
+        checkVersionAndSync();
+      }
+    };
+
+    const subscription = AppState.addEventListener(
+      "change",
+      handleAppStateChange,
+    );
+
+    return () => {
+      subscription.remove();
+    };
+  }, [checkVersionAndSync]);
 
   return {
     isLoading,

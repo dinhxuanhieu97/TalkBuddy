@@ -4,10 +4,12 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>TalkBuddy-场景学英语，即学即用～</string>
+	<string>TalkBuddy</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,7 +29,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>talkbuddy</string>
+				<string>com.googleusercontent.apps.108942595833-pgbud7gpkatf252ghm14mjej01jbkkh9</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>OAuthRedirect</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>com.talkbuddy.scenario</string>
 			</array>
 		</dict>
@@ -45,6 +56,10 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>TalkBuddy needs access to Apple Music for voice features</string>
+	<key>NSAppleSignInUsageDescription</key>
+	<string>Sign in with your Apple ID</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your camera</string>
 	<key>NSMicrophoneUsageDescription</key>

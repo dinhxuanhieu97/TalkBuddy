@@ -1,4 +1,10 @@
 PODS:
+  - AppAuth (1.7.6):
+    - AppAuth/Core (= 1.7.6)
+    - AppAuth/ExternalUserAgent (= 1.7.6)
+  - AppAuth/Core (1.7.6)
+  - AppAuth/ExternalUserAgent (1.7.6):
+    - AppAuth/Core
   - boost (1.84.0)
   - Capacitor (8.3.0):
     - CapacitorCordova
@@ -9,6 +15,9 @@ PODS:
     - Capacitor
   - DoubleConversion (1.1.6)
   - EASClient (1.0.8):
+    - ExpoModulesCore
+  - EXAppAuth (11.1.1):
+    - AppAuth (~> 1.2)
     - ExpoModulesCore
   - EXApplication (7.0.8):
     - ExpoModulesCore
@@ -56,6 +65,8 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
+  - ExpoAppleAuthentication (8.0.8):
+    - ExpoModulesCore
   - ExpoAsset (12.0.12):
     - ExpoModulesCore
   - ExpoBlur (55.0.14):
@@ -2661,6 +2672,7 @@ DEPENDENCIES:
   - "CapacitorStatusBar (from `../node_modules/@capacitor/status-bar`)"
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EASClient (from `../node_modules/expo-eas-client/ios`)
+  - EXAppAuth (from `../node_modules/expo-app-auth/ios`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXAV (from `../node_modules/expo-av/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
@@ -2669,6 +2681,7 @@ DEPENDENCIES:
   - EXManifests (from `../node_modules/expo-manifests/ios`)
   - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo`)
+  - ExpoAppleAuthentication (from `../node_modules/expo-apple-authentication/ios`)
   - ExpoAsset (from `../node_modules/expo-asset/ios`)
   - ExpoBlur (from `../node_modules/expo-blur/ios`)
   - ExpoCrypto (from `../node_modules/expo-crypto/ios`)
@@ -2772,6 +2785,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - CapacitorCordova
     - libwebp
     - ReachabilitySwift
@@ -2792,6 +2806,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EASClient:
     :path: "../node_modules/expo-eas-client/ios"
+  EXAppAuth:
+    :path: "../node_modules/expo-app-auth/ios"
   EXApplication:
     :path: "../node_modules/expo-application/ios"
   EXAV:
@@ -2808,6 +2824,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-notifications/ios"
   Expo:
     :path: "../node_modules/expo"
+  ExpoAppleAuthentication:
+    :path: "../node_modules/expo-apple-authentication/ios"
   ExpoAsset:
     :path: "../node_modules/expo-asset/ios"
   ExpoBlur:
@@ -3007,6 +3025,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   Capacitor: 22e541237135648c9aa736232bb4d2eec35fddcb
   CapacitorCordova: d6441512a14b9bc2036b3101fe5c31244527ed9e
@@ -3014,6 +3033,7 @@ SPEC CHECKSUMS:
   CapacitorStatusBar: 01d5763b4ed720de5ce2edbc938de6a98f4c8f32
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   EASClient: 40dd9e740684782610c49becab2643782ea1a20c
+  EXAppAuth: c5cd6bec9afea6f3d83b50aaa6bf59d52a857569
   EXApplication: 1e98d4b1dccdf30627f92917f4b2c5a53c330e5f
   EXAV: b60fcf142fae6684d295bc28cd7cfcb3335570ea
   EXConstants: fce59a631a06c4151602843667f7cfe35f81e271
@@ -3022,6 +3042,7 @@ SPEC CHECKSUMS:
   EXManifests: a8d97683e5c7a3b026ffbd58559c64dc655b747b
   EXNotifications: 9eec98712cc814ceff916d876cb53859003b0597
   Expo: 78ceda23ec2990e8ec94980be4fce1aea9ffcdd5
+  ExpoAppleAuthentication: 9413ae9a5e631a424cc04c1b13b0694dbab7d594
   ExpoAsset: f867e55ceb428aab99e1e8c082b5aee7c159ea18
   ExpoBlur: 7a86e84e7728108fa6908d7103fa527705a3dbbf
   ExpoCrypto: b6105ebaa15d6b38a811e71e43b52cd934945322

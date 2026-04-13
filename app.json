@@ -2,7 +2,7 @@
   "expo": {
     "name": "TalkBuddy-场景学英语，即学即用～",
     "slug": "talkbuddy",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "talkbuddy",
@@ -18,7 +18,19 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.talkbuddy.scenario",
       "buildNumber": "1.0.0",
-      "buildReactNativeFromSource": false
+      "buildReactNativeFromSource": false,
+      "infoPlist": {
+        "CFBundleDisplayName": "TalkBuddy",
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.108942595833-pgbud7gpkatf252ghm14mjej01jbkkh9"
+            ]
+          }
+        ],
+        "NSAppleMusicUsageDescription": "TalkBuddy needs access to Apple Music for voice features",
+        "NSAppleSignInUsageDescription": "Sign in with your Apple ID"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -32,7 +44,7 @@
       "bundler": "metro",
       "output": "static"
     },
-    "plugins": ["expo-router"],
+    "plugins": ["expo-router", "expo-apple-authentication", "expo-sqlite"],
     "experiments": {
       "typedRoutes": true
     },

@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
   ScrollView,
   KeyboardAvoidingView,
   Modal,
@@ -64,11 +63,8 @@ export function LanguageSetupScreen({
 }: LanguageSetupScreenProps) {
   const t = useT();
   const { locale, setLocale } = useLocaleStore();
-  const user = useUserStore((s) => s.user);
-  const setUser = useUserStore((s) => s.setUser);
   const updatePreferences = useUserStore((s) => s.updatePreferences);
 
-  const [fullName, setFullName] = useState(user?.name ?? "");
   const [saving, setSaving] = useState(false);
   // pendingLocale = the language the user tapped but hasn't confirmed yet
   const [pendingLocale, setPendingLocale] = useState<Locale | null>(null);
@@ -99,12 +95,9 @@ export function LanguageSetupScreen({
 
   const handleSaveName = useCallback(() => {
     setSaving(true);
-    if (user && fullName.trim()) {
-      setUser({ ...user, name: fullName.trim() });
-    }
     setSaving(false);
     onDone?.();
-  }, [user, fullName, setUser, onDone]);
+  }, [onDone]);
 
   const isSetupMode = mode === "setup";
 
@@ -141,38 +134,6 @@ export function LanguageSetupScreen({
         {isSetupMode && (
           <Text style={styles.subtitle}>{t("setup.subtitle")}</Text>
         )}
-
-        {/* ── Full Name ─────────────────────────────────────────── */}
-        <View style={styles.section}>
-          <Text style={styles.sectionLabel}>{t("setup.fullName")}</Text>
-          <View style={styles.inputWrapper}>
-            <Ionicons
-              name="person-outline"
-              size={20}
-              color="#9E9E9E"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              value={fullName}
-              onChangeText={setFullName}
-              placeholder={t("setup.fullNamePlaceholder")}
-              placeholderTextColor="#C4C4C6"
-              autoCapitalize="words"
-              autoCorrect={false}
-              returnKeyType="done"
-            />
-            {fullName.length > 0 && (
-              <TouchableOpacity
-                onPress={() => setFullName("")}
-                style={styles.clearButton}
-              >
-                <Ionicons name="close-circle" size={18} color="#C4C4C6" />
-              </TouchableOpacity>
-            )}
-          </View>
-          <Text style={styles.fieldHint}>{t("setup.fullNameHint")}</Text>
-        </View>
 
         {/* ── App Language ──────────────────────────────────────── */}
         <View style={styles.section}>
