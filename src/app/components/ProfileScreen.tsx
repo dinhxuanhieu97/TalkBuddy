@@ -115,8 +115,8 @@ export default function ProfileScreen({
   const familyId = useUserStore((state) => state.familyId);
 
   // User profile data
-  const userName = user?.name || "Traveler";
-  const userEmail = user?.email || "traveler@talkbuddy.app";
+  const userName = user?.name || t("profile.defaultName");
+  const userEmail = user?.email || t("profile.defaultEmail");
   const userAvatar = user?.avatar;
 
   const profileStats = [
@@ -181,7 +181,7 @@ export default function ProfileScreen({
           id: "voice",
           icon: "mic",
           label: t("profile.voiceSettings") || "Voice Settings",
-          value: "Customize",
+          value: t("profile.voiceSettingsValue"),
           type: "navigation" as const,
         },
         {
@@ -219,7 +219,7 @@ export default function ProfileScreen({
           id: "goals",
           icon: "trophy",
           label: t("profile.dailyGoals"),
-          value: "10 min",
+          value: t("profile.dailyGoalsValue"),
           type: "navigation" as const,
         },
       ],
@@ -511,7 +511,9 @@ export default function ProfileScreen({
         </TouchableOpacity>
 
         {/* Version */}
-        <Text style={styles.versionText}>Version 1.0.0</Text>
+        <Text style={styles.versionText}>
+          {t("profile.versionText", { version: "1.0.0" })}
+        </Text>
 
         <View style={{ height: 40 }} />
       </ScrollView>

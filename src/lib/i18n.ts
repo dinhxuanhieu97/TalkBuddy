@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Localization from "expo-localization";
 import zh, { type LocaleKeys } from "../locales/zh";
 import en from "../locales/en";
 import vi from "../locales/vi";
@@ -19,10 +20,22 @@ export const LOCALE_OPTIONS: {
   descKey: LocaleKeys;
   flag: string;
 }[] = [
-  { value: "en", labelKey: "lang.en", descKey: "lang.enDesc", flag: "🇺🇸" },
-  { value: "zh", labelKey: "lang.zh", descKey: "lang.zhDesc", flag: "🇨🇳" },
-  { value: "vi", labelKey: "lang.vi", descKey: "lang.viDesc", flag: "🇻🇳" },
+  { value: "en", labelKey: "lang.en", descKey: "lang.enDesc", flag: "US" },
+  { value: "zh", labelKey: "lang.zh", descKey: "lang.zhDesc", flag: "CN" },
+  { value: "vi", labelKey: "lang.vi", descKey: "lang.viDesc", flag: "VN" },
 ];
+
+// Detect device locale on first launch
+function getInitialLocale(): Locale {
+  try {
+    const deviceLocale = Localization.getLocales()[0]?.languageCode ?? "en";
+    if (deviceLocale === "vi") return "vi";
+    if (deviceLocale === "zh") return "zh";
+    return "en";
+  } catch {
+    return "en";
+  }
+}
 
 interface LocaleState {
   locale: Locale;
@@ -32,7 +45,7 @@ interface LocaleState {
 export const useLocaleStore = create<LocaleState>()(
   persist(
     (set) => ({
-      locale: "en" as Locale,
+      locale: getInitialLocale() as Locale,
       setLocale: (locale) => set({ locale }),
     }),
     {

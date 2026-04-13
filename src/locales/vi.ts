@@ -138,6 +138,20 @@ const vi: LocaleDict = {
   "setup.letsGo": "Bắt đầu học",
   "setup.step": "Bước {current} / {total}",
 
+  // Onboarding Slides
+  "onboarding.slide1.title": "TalkBuddy",
+  "onboarding.slide2.title": "Dịch ngôn ngữ cho mọi người",
+  "onboarding.slide2.subtitle":
+    "Tìm ngay câu phù hợp với mọi tình huống - sân bay, bệnh viện, khách sạn, vô số các tình huống khác.",
+  "onboarding.slide3.title": "Luyện phát âm",
+  "onboarding.slide3.subtitle":
+    "Nghe, lặp lại và hoàn thiện phát âm tiếng Anh với các bài tập phát âm tương tác.",
+  "onboarding.slide4.title": "Theo dõi tiến bộ",
+  "onboarding.slide4.subtitle":
+    "Mọi câu bạn học được đều được lưu. Xem lại lịch sử và xem tiếng Anh của bạn phát triển mỗi ngày.",
+  "onboarding.continue": "TIẾP TỤC",
+  "onboarding.getStarted": "BẮT ĐẦU",
+
   // ── Language options ───────────────────────────────────────────
   "lang.en": "English",
   "lang.zh": "中文（简体）",
@@ -170,6 +184,27 @@ const vi: LocaleDict = {
   "learn.savedPhrases": "Câu đã lưu",
   "learn.noResults": "Không tìm thấy kết quả",
   "learn.tryDifferentSearch": "Thử từ khóa khác",
+  "learn.searchScenes": "Tìm kiếm...",
+  "learn.continueLearning": "Tiếp tục học",
+  "learn.popularScenes": "Phổ biến",
+  "learn.failedToPlayAudio": "Lỗi phát âm thanh",
+  "learn.chooseContext": "CHỌN NGUỒN",
+  "learn.emergencyTip": "Một số mẹo khẩn cấp",
+  "learn.emergencyTipDesc":
+    "Chọn ngay cảnh để tìm câu. Hoặc sử dụng SOS Buddy để được dịch thuật real-time.",
+  "learn.commonSituations": "Tình huống phổ biến",
+  "learn.headerSubtitle": "Tiếng Anh Khẩn cấp",
+  "learn.headerTitle": "Bạn cần gì?",
+  "learn.close": "Đóng",
+  "learn.searchResults": "Kết quả tìm kiếm",
+  "learn.phrases": "{context} Câu",
+
+  // Profile
+  "profile.defaultName": "Người dùng",
+  "profile.defaultEmail": "nguoidung@talkbuddy.app",
+  "profile.voiceSettingsValue": "Tùy chỉnh",
+  "profile.dailyGoalsValue": "10 phút",
+  "profile.versionText": "Phiên bản {version}",
 
   // ── SOS / TalkBuddy ───────────────────────────────────────────
   "sos.title": "Talk Buddy",
@@ -272,6 +307,41 @@ const vi: LocaleDict = {
   "profile.resetError": "Lỗi khi reset hướng dẫn.",
   "profile.days": "{n} ngày",
   "profile.hours": "{n} giờ",
+
+  // ── Edit Profile Simple ────────────────────────────────────────
+  "profile.edit.fullName": "Họ và tên *",
+  "profile.edit.fullNamePlaceholder": "Nhập tên của bạn",
+  "profile.edit.email": "Địa chỉ email *",
+  "profile.edit.emailPlaceholder": "email@cuaban.com",
+  "profile.edit.phone": "Số điện thoại",
+  "profile.edit.phonePlaceholder": "+84 123 456 789",
+  "profile.edit.location": "Địa chỉ",
+  "profile.edit.locationPlaceholder": "Thành phố, Quốc gia",
+  "profile.edit.language": "Ngôn ngữ yêu thích",
+  "profile.edit.languagePlaceholder": "ví dụ: Tiếng Anh, Tiếng Việt",
+  "profile.edit.bio": "Giới thiệu",
+  "profile.edit.bioPlaceholder": "Kể chuyên về bản thân...",
+  "profile.edit.saveButton": "Lưu & đóng bộ",
+  "profile.edit.syncing": "Đang đồng bộ...",
+  "profile.edit.success": "Cập nhật hồ sơ thành công!",
+  "profile.edit.error": "Lỗi lưu hồ sơ. Vui lòng thử lại.",
+  "profile.edit.validationError": "Vui lòng sửa lỗi trước khi lưu.",
+  "profile.edit.nameRequired": "Tên không được trống",
+  "profile.edit.nameMin": "Tối thiểu 2 ký tự",
+  "profile.edit.emailRequired": "Email không được trống",
+  "profile.edit.emailInvalid": "Email không hợp lệ",
+  "profile.edit.phoneInvalid": "Số điện thoại không hợp lệ",
+  "profile.edit.bioMax": "Tối đa 200 ký tự",
+  "profile.edit.changeAvatar": "Đổi avatar",
+  "profile.edit.chooseOption": "Chọn một tùy chọn",
+  "profile.edit.takePhoto": "Chụp ảnh",
+  "profile.edit.chooseLibrary": "Chọn từ thư viện",
+  "profile.edit.cancel": "Hủy",
+  "profile.edit.tapAvatarHint": "Nhấn vào avatar để thay đổi",
+  "profile.edit.yourName": "Tên của bạn",
+  "profile.edit.yourEmail": "email@cuaban.com",
+  "profile.edit.permissionDenied": "Cần quyền truy cập thư viện ảnh.",
+  "profile.edit.permissionDeniedCamera": "Cần quyền truy cập camera.",
 
   // ── Settings ──────────────────────────────────────────────────
   "settings.title": "Cài đặt",

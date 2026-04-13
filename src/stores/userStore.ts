@@ -98,7 +98,7 @@ const initialState = {
     notifications: true,
     darkMode: false,
     autoPlayAudio: true,
-    language: "en",
+    language: "zh",
     ttsVoice: "en-US-Standard-A",
     accent: "en-US" as VoiceAccent,
     speechSpeed: "normal" as SpeechSpeed,

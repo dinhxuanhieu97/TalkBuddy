@@ -1,4 +1,7 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5277";
+const isDebug = import.meta.env.VITE_DEBUG === "true";
+const API_BASE_URL = isDebug
+  ? "http://localhost:5277"
+  : import.meta.env.VITE_API_URL || "https://servicetalkbuddy.mysixbox.com";
 
 export const getApiUrl = (endpoint: string): string => {
   const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;

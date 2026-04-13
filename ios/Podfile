@@ -1,0 +1,181 @@
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
+require File.join(File.dirname(`node --print "require.resolve('react-native/package.json')"`), "scripts/react_native_pods")
+
+require 'json'
+podfile_properties = JSON.parse(File.read(File.join(__dir__, 'Podfile.properties.json'))) rescue {}
+
+def ccache_enabled?(podfile_properties)
+  # Environment variable takes precedence
+  return ENV['USE_CCACHE'] == '1' if ENV['USE_CCACHE']
+  
+  # Fall back to Podfile properties
+  podfile_properties['apple.ccacheEnabled'] == 'true'
+end
+
+ENV['RCT_NEW_ARCH_ENABLED'] ||= '0' if podfile_properties['newArchEnabled'] == 'false'
+ENV['EX_DEV_CLIENT_NETWORK_INSPECTOR'] ||= podfile_properties['EX_DEV_CLIENT_NETWORK_INSPECTOR']
+ENV['RCT_USE_RN_DEP'] ||= '1' if podfile_properties['ios.buildReactNativeFromSource'] != 'true' && podfile_properties['newArchEnabled'] != 'false'
+ENV['RCT_USE_PREBUILT_RNCORE'] ||= '1' if podfile_properties['ios.buildReactNativeFromSource'] != 'true' && podfile_properties['newArchEnabled'] != 'false'
+platform :ios, podfile_properties['ios.deploymentTarget'] || '15.1'
+
+prepare_react_native_project!
+
+# Capacitor requires dynamic framework (has custom module map incompatible with Swift static libs)
+pre_install do |installer|
+  installer.pod_targets.each do |pod|
+    if ['Capacitor', 'CapacitorCordova'].include?(pod.name)
+      def pod.build_type
+        Pod::BuildType.dynamic_framework
+      end
+    end
+  end
+end
+
+target 'TalkBuddy' do
+  use_expo_modules!
+
+  if ENV['EXPO_USE_COMMUNITY_AUTOLINKING'] == '1'
+    config_command = ['node', '-e', "process.argv=['', '', 'config'];require('@react-native-community/cli').run()"];
+  else
+    config_command = [
+      'node',
+      '--no-warnings',
+      '--eval',
+      'require(\'expo/bin/autolinking\')',
+      'expo-modules-autolinking',
+      'react-native-config',
+      '--json',
+      '--platform',
+      'ios'
+    ]
+  end
+
+  config = use_native_modules!(config_command)
+
+  # CapacitorCordova must define modules so Swift pod Capacitor can import it
+  pod 'CapacitorCordova', :modular_headers => true
+
+  use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
+  use_frameworks! :linkage => ENV['USE_FRAMEWORKS'].to_sym if ENV['USE_FRAMEWORKS']
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :hermes_enabled => podfile_properties['expo.jsEngine'] == nil || podfile_properties['expo.jsEngine'] == 'hermes',
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/..",
+    :privacy_file_aggregation_enabled => podfile_properties['apple.privacyManifestAggregationEnabled'] != 'false',
+  )
+
+  post_install do |installer|
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false,
+      :ccache_enabled => ccache_enabled?(podfile_properties),
+    )
+
+    # Patch 1: Create missing RCT-Folly headers (RN 0.81.x / Xcode 26 bug)
+    folly_dir = "#{installer.sandbox.root}/RCT-Folly/folly"
+    folly_portability = "#{folly_dir}/portability"
+
+    missing_headers = {
+      "#{folly_portability}/PThread.h"     => "#pragma once\n#include <pthread.h>\n",
+      "#{folly_portability}/Asm.h"         => "#pragma once\n#if defined(__x86_64__)||defined(__i386__)\n#define FOLLY_ASM_PAUSE() asm volatile(\"pause\")\n#elif defined(__arm__)||defined(__aarch64__)\n#define FOLLY_ASM_PAUSE() asm volatile(\"yield\")\n#else\n#define FOLLY_ASM_PAUSE()\n#endif\nnamespace folly { inline void asm_volatile_pause() { FOLLY_ASM_PAUSE(); } }\nusing folly::asm_volatile_pause;\n",
+      "#{folly_portability}/Builtins.h"    => "#pragma once\n",
+      "#{folly_portability}/Constexpr.h"   => "#pragma once\n",
+      "#{folly_portability}/Fcntl.h"       => "#pragma once\n#include <fcntl.h>\nnamespace folly { namespace fileops { using ::open; using ::close; using ::read; using ::write; } }\n",
+      "#{folly_portability}/GFlags.h"      => "#pragma once\n",
+      "#{folly_portability}/GMock.h"       => "#pragma once\n",
+      "#{folly_portability}/IOVec.h"       => "#pragma once\n#include <sys/uio.h>\n",
+      "#{folly_portability}/Math.h"        => "#pragma once\n#include <cmath>\n",
+      "#{folly_portability}/Sockets.h"     => "#pragma once\n#include <sys/socket.h>\n#include <netinet/in.h>\n",
+      "#{folly_portability}/SysFile.h"     => "#pragma once\n#include <sys/file.h>\n",
+      "#{folly_portability}/SysMman.h"     => "#pragma once\n#include <sys/mman.h>\n",
+      "#{folly_portability}/SysStat.h"     => "#pragma once\n#include <sys/stat.h>\n",
+      "#{folly_portability}/SysTime.h"     => "#pragma once\n#include <sys/time.h>\n",
+      "#{folly_portability}/SysTypes.h"    => "#pragma once\n#include <sys/types.h>\n",
+      "#{folly_portability}/SysUio.h"      => "#pragma once\n#include <sys/uio.h>\n#include <climits>\nnamespace folly {\n#ifdef IOV_MAX\nconstexpr size_t kIovMax = IOV_MAX;\n#else\nconstexpr size_t kIovMax = 1024;\n#endif\n} // namespace folly\n",
+      "#{folly_portability}/Windows.h"     => "#pragma once\n",
+      "#{folly_dir}/Indestructible.h"      => "#pragma once\n#include <utility>\n#include <new>\nnamespace folly {\ntemplate <typename T>\nclass Indestructible {\n public:\n  template <typename... Args>\n  explicit Indestructible(Args&&... args) { new (&storage_) T(std::forward<Args>(args)...); }\n  Indestructible() { new (&storage_) T(); }\n  T* get() { return reinterpret_cast<T*>(&storage_); }\n  const T* get() const { return reinterpret_cast<const T*>(&storage_); }\n  T& operator*() & { return *get(); }\n  const T& operator*() const& { return *get(); }\n  T* operator->() { return get(); }\n  const T* operator->() const { return get(); }\n  operator T&() { return *get(); }\n  operator const T&() const { return *get(); }\n private:\n  alignas(T) unsigned char storage_[sizeof(T)];\n};\n} // namespace folly\n",
+      "#{folly_dir}/Memory.h"              => "#pragma once\n#include <memory>\n#include <cstdlib>\nnamespace folly {\ninline void aligned_free(void* p) noexcept { ::free(p); }\ninline void* aligned_malloc(size_t size, size_t align) { void* p = nullptr; ::posix_memalign(&p, align, size); return p; }\nusing std::nextafter;\n} // namespace folly\n",
+    }
+
+    missing_headers.each do |path, content|
+      unless File.exist?(path)
+        File.write(path, content)
+        puts "[Podfile patch] Created #{File.basename(path)}"
+      end
+    end
+
+    # Inject constexpr_strlen + nextafter into Portability.h and Traits.h
+    [{
+      path: "#{folly_dir}/Portability.h",
+      marker: "FOLLY_ICE_DEFINED",
+      content: "\n#ifndef FOLLY_ICE_DEFINED\n#define FOLLY_ICE_DEFINED\n#include <type_traits>\n#include <cmath>\nnamespace folly {\n#if defined(__cpp_lib_is_constant_evaluated)\ninline constexpr bool is_constant_evaluated_or(bool) noexcept { return std::is_constant_evaluated(); }\n#else\ninline constexpr bool is_constant_evaluated_or(bool v) noexcept { return v; }\n#endif\nusing std::nextafter;\n} // namespace folly\n#endif\n"
+    }, {
+      path: "#{folly_dir}/Traits.h",
+      marker: "FOLLY_CONSTEXPR_STRLEN_DEFINED",
+      content: "\n#ifndef FOLLY_CONSTEXPR_STRLEN_DEFINED\n#define FOLLY_CONSTEXPR_STRLEN_DEFINED\n#include <cstddef>\nnamespace folly {\nconstexpr size_t constexpr_strlen(const char* s) noexcept { size_t n=0; while(s[n]!='\\0'){++n;} return n; }\n} // namespace folly\nusing folly::constexpr_strlen;\n#endif\n"
+    }].each do |patch|
+      content = File.exist?(patch[:path]) ? File.read(patch[:path]) : ""
+      unless content.include?(patch[:marker])
+        File.write(patch[:path], content + patch[:content])
+        puts "[Podfile patch] Injected #{patch[:marker]} into #{File.basename(patch[:path])}"
+      end
+    end
+
+    # Patch Time.h: force FOLLY_HAVE_CLOCK_GETTIME on all Apple (fixes clockid_t typedef conflict)
+    time_h = "#{folly_dir}/portability/Time.h"
+    if File.exist?(time_h)
+      t = File.read(time_h)
+      old_guard = '#if defined(__MACH__) && defined(__CLOCK_AVAILABILITY)'
+      new_guard = '#if defined(__MACH__)'
+      if t.include?(old_guard)
+        File.write(time_h, t.gsub(old_guard, new_guard))
+        puts "[Podfile patch] Fixed Time.h clock_gettime guard"
+      end
+    end
+
+    # Patch 2: Fix fmt/base.h consteval for Xcode 26 / Apple Clang
+    fmt_base = "#{installer.sandbox.root}/fmt/include/fmt/base.h"
+    if File.exist?(fmt_base)
+      fb = File.read(fmt_base)
+      patched = fb
+        .gsub('#elif defined(__apple_build_version__) && __apple_build_version__ < 14000029L',
+              '#elif defined(__apple_build_version__)')
+        .gsub('constexpr auto is_constant_evaluated(bool default_value = false) noexcept',
+              'inline auto is_constant_evaluated(bool default_value = false) noexcept')
+      if patched != fb
+        File.write(fmt_base, patched)
+        puts "[Podfile patch] Patched fmt/base.h for Xcode 26 Apple Clang"
+      end
+    end
+
+    # Patch 3: Build settings per target
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+        unless config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include?('FMT_CONSTEVAL=')
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] += [
+            'FMT_CONSTEVAL=',
+            'FMT_USE_CONSTEXPR=0',
+            'FOLLY_CFG_NO_COROUTINES=1',
+            'FOLLY_NO_CONFIG=1',
+            'FOLLY_MOBILE=1',
+            'FOLLY_USE_LIBCPP=1',
+          ]
+        end
+
+        if target.name == 'RNReanimated'
+          config.build_settings['OTHER_LDFLAGS'] = '$(inherited) -undefined dynamic_lookup'
+        end
+
+        if target.name == 'fmt'
+          config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+          config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '$(inherited) -Wno-invalid-constexpr'
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] += ['FMT_USE_CONSTEVAL=0']
+        end
+      end
+    end
+  end
+end
