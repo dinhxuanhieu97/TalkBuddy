@@ -18,6 +18,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useUserStore } from "../stores/userStore";
+import { useT } from "../lib/i18n";
 
 interface FormData {
   name: string;
@@ -29,16 +30,17 @@ interface FormData {
 }
 
 export function EditProfileSimple() {
+  const t = useT();
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
 
   const [formData, setFormData] = useState<FormData>({
-    name: user?.name || "Traveler",
-    email: user?.email || "traveler@talkbuddy.app",
+    name: user?.name || t("profile.edit.yourName"),
+    email: user?.email || t("profile.edit.yourEmail"),
     phone: user?.phone || "",
     bio: user?.bio || "",
     location: user?.location || "",
-    language: user?.language || "English",
+    language: user?.language || "",
   });
 
   const [avatar, setAvatar] = useState<string | undefined>(user?.avatar);
@@ -60,9 +62,9 @@ export function EditProfileSimple() {
     switch (field) {
       case "name":
         if (!value.trim()) {
-          newErrors.name = "Name is required";
+          newErrors.name = t("profile.edit.nameRequired");
         } else if (value.length < 2) {
-          newErrors.name = "Min 2 characters";
+          newErrors.name = t("profile.edit.nameMin");
         } else {
           delete newErrors.name;
         }
@@ -71,9 +73,9 @@ export function EditProfileSimple() {
       case "email":
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value.trim()) {
-          newErrors.email = "Email is required";
+          newErrors.email = t("profile.edit.emailRequired");
         } else if (!emailRegex.test(value)) {
-          newErrors.email = "Invalid email";
+          newErrors.email = t("profile.edit.emailInvalid");
         } else {
           delete newErrors.email;
         }
@@ -81,7 +83,7 @@ export function EditProfileSimple() {
 
       case "phone":
         if (value && !/^\+?[\d\s-()]+$/.test(value)) {
-          newErrors.phone = "Invalid phone";
+          newErrors.phone = t("profile.edit.phoneInvalid");
         } else {
           delete newErrors.phone;
         }
@@ -89,7 +91,7 @@ export function EditProfileSimple() {
 
       case "bio":
         if (value.length > 200) {
-          newErrors.bio = "Max 200 characters";
+          newErrors.bio = t("profile.edit.bioMax");
         } else {
           delete newErrors.bio;
         }
@@ -109,7 +111,11 @@ export function EditProfileSimple() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (status !== "granted") {
-      Alert.alert("Permission Denied", "We need camera roll permissions.");
+      Alert.alert(
+        t("common.error"),
+        t("profile.edit.permissionDenied") ||
+          "We need camera roll permissions.",
+      );
       return;
     }
 
@@ -129,7 +135,11 @@ export function EditProfileSimple() {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
     if (status !== "granted") {
-      Alert.alert("Permission Denied", "We need camera permissions.");
+      Alert.alert(
+        t("common.error"),
+        t("profile.edit.permissionDeniedCamera") ||
+          "We need camera permissions.",
+      );
       return;
     }
 
@@ -146,12 +156,12 @@ export function EditProfileSimple() {
 
   const handleAvatarPress = () => {
     Alert.alert(
-      "Change Avatar",
-      "Choose an option",
+      t("profile.edit.changeAvatar"),
+      t("profile.edit.chooseOption"),
       [
-        { text: "Take Photo", onPress: takePhoto },
-        { text: "Choose from Library", onPress: pickImage },
-        { text: "Cancel", style: "cancel" },
+        { text: t("profile.edit.takePhoto"), onPress: takePhoto },
+        { text: t("profile.edit.chooseLibrary"), onPress: pickImage },
+        { text: t("profile.edit.cancel"), style: "cancel" },
       ],
       { cancelable: true },
     );
@@ -165,7 +175,7 @@ export function EditProfileSimple() {
     });
 
     if (Object.keys(errors).length > 0) {
-      Alert.alert("Validation Error", "Please fix the errors before saving.");
+      Alert.alert(t("common.error"), t("profile.edit.validationError"));
       return;
     }
 
@@ -186,12 +196,14 @@ export function EditProfileSimple() {
 
       setIsSaving(false);
 
-      Alert.alert("✅ Success", "Profile updated and synced successfully!", [
-        { text: "OK", style: "default" },
-      ]);
+      Alert.alert(
+        t("common.success") || "✅ Success",
+        t("profile.edit.success"),
+        [{ text: "OK", style: "default" }],
+      );
     } catch (error) {
       setIsSaving(false);
-      Alert.alert("Error", "Failed to save profile. Please try again.");
+      Alert.alert(t("common.error"), t("profile.edit.error"));
     }
   };
 
@@ -282,45 +294,47 @@ export function EditProfileSimple() {
 
           <View style={styles.headerInfo}>
             <Text style={styles.headerName} numberOfLines={1}>
-              {formData.name || "Your Name"}
+              {formData.name || t("profile.edit.yourName")}
             </Text>
             <Text style={styles.headerEmail} numberOfLines={1}>
-              {formData.email || "your@email.com"}
+              {formData.email || t("profile.edit.yourEmail")}
             </Text>
-            <Text style={styles.headerHint}>Tap avatar to change photo</Text>
+            <Text style={styles.headerHint}>
+              {t("profile.edit.tapAvatarHint")}
+            </Text>
           </View>
         </View>
 
         {/* Form */}
         <View style={styles.formContainer}>
-          {renderInput("name", "Full Name *", "person", {
-            placeholder: "Enter your name",
+          {renderInput("name", t("profile.edit.fullName"), "person", {
+            placeholder: t("profile.edit.fullNamePlaceholder"),
             autoCapitalize: "words",
           })}
 
-          {renderInput("email", "Email Address *", "mail", {
-            placeholder: "your@email.com",
+          {renderInput("email", t("profile.edit.email"), "mail", {
+            placeholder: t("profile.edit.emailPlaceholder"),
             keyboardType: "email-address",
             autoCapitalize: "none",
           })}
 
-          {renderInput("phone", "Phone Number", "call", {
-            placeholder: "+1 (555) 123-4567",
+          {renderInput("phone", t("profile.edit.phone"), "call", {
+            placeholder: t("profile.edit.phonePlaceholder"),
             keyboardType: "phone-pad",
           })}
 
-          {renderInput("location", "Location", "location", {
-            placeholder: "City, Country",
+          {renderInput("location", t("profile.edit.location"), "location", {
+            placeholder: t("profile.edit.locationPlaceholder"),
             autoCapitalize: "words",
           })}
 
-          {renderInput("language", "Preferred Language", "language", {
-            placeholder: "e.g., English, Vietnamese",
+          {renderInput("language", t("profile.edit.language"), "language", {
+            placeholder: t("profile.edit.languagePlaceholder"),
             autoCapitalize: "words",
           })}
 
-          {renderInput("bio", "Bio", "create", {
-            placeholder: "Tell us about yourself...",
+          {renderInput("bio", t("profile.edit.bio"), "create", {
+            placeholder: t("profile.edit.bioPlaceholder"),
             multiline: true,
             maxLength: 200,
           })}
@@ -335,12 +349,16 @@ export function EditProfileSimple() {
             {isSaving ? (
               <>
                 <ActivityIndicator color="#1C1C1E" size="small" />
-                <Text style={styles.saveButtonText}>Syncing...</Text>
+                <Text style={styles.saveButtonText}>
+                  {t("profile.edit.syncing")}
+                </Text>
               </>
             ) : (
               <>
                 <Ionicons name="cloud-upload" size={24} color="#1C1C1E" />
-                <Text style={styles.saveButtonText}>Save & Sync</Text>
+                <Text style={styles.saveButtonText}>
+                  {t("profile.edit.saveButton")}
+                </Text>
               </>
             )}
           </TouchableOpacity>

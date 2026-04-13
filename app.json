@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "Talk Buddy",
-    "slug": "talk-buddy-app",
-    "version": "1.0.0",
+    "name": "TalkBuddy-场景学英语，即学即用～",
+    "slug": "talkbuddy",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "talkbuddy",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -16,29 +16,44 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.talkbuddy",
-      "buildNumber": "1.0.0"
+      "bundleIdentifier": "com.talkbuddy.scenario",
+      "buildNumber": "1.0.0",
+      "buildReactNativeFromSource": false,
+      "infoPlist": {
+        "CFBundleDisplayName": "TalkBuddy",
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.108942595833-pgbud7gpkatf252ghm14mjej01jbkkh9"
+            ]
+          }
+        ],
+        "NSAppleMusicUsageDescription": "TalkBuddy needs access to Apple Music for voice features",
+        "NSAppleSignInUsageDescription": "Sign in with your Apple ID"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#000000"
       },
-      "package": "com.yourcompany.talkbuddy",
+      "package": "com.talkbuddy.scenario",
       "versionCode": 1
     },
     "web": {
       "bundler": "metro",
       "output": "static"
     },
-    "plugins": ["expo-router"],
+    "plugins": ["expo-router", "expo-apple-authentication", "expo-sqlite"],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
       "eas": {
-        "projectId": "your-project-id-here"
-      }
-    }
+        "projectId": "84d80e31-f62b-47f1-a155-7151ee9c32d4"
+      },
+      "router": {}
+    },
+    "owner": "keydever"
   }
 }

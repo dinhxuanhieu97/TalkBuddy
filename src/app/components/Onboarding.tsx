@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "expo-router";
 import {
   View,
@@ -22,49 +22,39 @@ import Svg, {
   Ellipse,
 } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useT } from "../../lib/i18n";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
-// 4 Onboarding Slides theo Figma
-const slides = [
-  // Onboarding 1: Bee + TalkBuddy text (gradient top to bottom)
-  {
-    id: 0,
-    type: "bee",
-    gradient: ["#f9f9f9", "#ffd200"] as [string, string],
-  },
-  // Onboarding 2: 🚨 Translate (gradient yellow to light)
+// Slide config - stores translation keys
+const slideConfigs = [
+  { id: 0, type: "bee", gradient: ["#f9f9f9", "#ffd200"] as [string, string] },
   {
     id: 1,
     type: "emoji",
     emoji: "🚨",
     emojiBg: "rgba(28,28,30,0.1)",
     gradient: ["#ffd200", "#f9f9f9"] as [string, string],
-    title: "Translate language for everyone",
-    subtitle:
-      "Instantly find the right phrase for any urgent situation — airport, hospital, hotel, and more.",
+    titleKey: "onboarding.slide2.title",
+    subtitleKey: "onboarding.slide2.subtitle",
   },
-  // Onboarding 3: 🗣️ Master Pronunciation (gradient yellow to light)
   {
     id: 2,
     type: "emoji",
     emoji: "🗣️",
     emojiBg: "rgba(255,214,0,0.15)",
     gradient: ["#ffd200", "#f9f9f9"] as [string, string],
-    title: "Master Pronunciation",
-    subtitle:
-      "Listen, repeat, and perfect your English accent with interactive phonics exercises.",
+    titleKey: "onboarding.slide3.title",
+    subtitleKey: "onboarding.slide3.subtitle",
   },
-  // Onboarding 4: 📚 Track Progress (gradient yellow to light)
   {
     id: 3,
     type: "emoji",
     emoji: "📚",
     emojiBg: "rgba(28,28,30,0.1)",
     gradient: ["#ffd200", "#f9f9f9"] as [string, string],
-    title: "Track Your Progress",
-    subtitle:
-      "Every phrase you learn is saved. Review your history and watch your English grow day by day.",
+    titleKey: "onboarding.slide4.title",
+    subtitleKey: "onboarding.slide4.subtitle",
   },
 ];
 
@@ -207,6 +197,7 @@ interface OnboardingProps {
 }
 
 export default function Onboarding({ onDone }: OnboardingProps) {
+  const t = useT();
   const router = useRouter();
   const [current, setCurrent] = useState(0);
 
@@ -224,7 +215,7 @@ export default function Onboarding({ onDone }: OnboardingProps) {
   };
 
   const handleNext = async () => {
-    if (current < slides.length - 1) {
+    if (current < slideConfigs.length - 1) {
       setCurrent(current + 1);
     } else {
       await finishOnboarding();
@@ -241,7 +232,7 @@ export default function Onboarding({ onDone }: OnboardingProps) {
     }
   };
 
-  const slide = slides[current];
+  const slide = slideConfigs[current];
 
   return (
     <LinearGradient
@@ -275,7 +266,12 @@ export default function Onboarding({ onDone }: OnboardingProps) {
             <View style={styles.beeSlide}>
               <AnimatedBeeIcon />
               <View style={styles.talkbuddyContainer}>
-                <Text style={styles.talkbuddyText}>TalkBuddy</Text>
+                <View style={styles.talkbuddyTextContainer}>
+                  <Text style={styles.talkbuddyText}>TalkBuddy</Text>
+                  <Text style={styles.talkbuddySubtext}>
+                    - 场景学英语，即学即用～
+                  </Text>
+                </View>
               </View>
             </View>
           )}
@@ -291,8 +287,12 @@ export default function Onboarding({ onDone }: OnboardingProps) {
               >
                 <Text style={styles.emoji}>{slide.emoji}</Text>
               </View>
-              <Text style={styles.title}>{slide.title}</Text>
-              <Text style={styles.subtitle}>{slide.subtitle}</Text>
+              <Text style={styles.title}>
+                {slide.titleKey ? t(slide.titleKey) : ""}
+              </Text>
+              <Text style={styles.subtitle}>
+                {slide.subtitleKey ? t(slide.subtitleKey) : ""}
+              </Text>
             </View>
           )}
         </View>
@@ -307,7 +307,7 @@ export default function Onboarding({ onDone }: OnboardingProps) {
       <View style={styles.bottomContainer}>
         {/* Dots */}
         <View style={styles.dotsContainer}>
-          {slides.map((_, i) => (
+          {slideConfigs.map((_, i) => (
             <View
               key={i}
               style={[
@@ -328,7 +328,9 @@ export default function Onboarding({ onDone }: OnboardingProps) {
           activeOpacity={0.8}
         >
           <Text style={styles.continueText}>
-            {current < slides.length - 1 ? "CONTINUE" : "GET STARTED"}
+            {current < slideConfigs.length - 1
+              ? t("onboarding.continue")
+              : t("onboarding.getStarted")}
           </Text>
         </TouchableOpacity>
       </View>
@@ -383,11 +385,22 @@ const styles = StyleSheet.create({
   },
   talkbuddyContainer: {
     marginTop: 26,
+    alignItems: "center",
+    paddingHorizontal: 24,
+  },
+  talkbuddyTextContainer: {
+    alignItems: "center",
   },
   talkbuddyText: {
     fontSize: 28,
     fontWeight: "700",
     color: "#1c1c1e",
+  },
+  talkbuddySubtext: {
+    fontSize: 20,
+    fontWeight: "500",
+    color: "#1c1c1e",
+    marginTop: 4,
   },
   emojiSlide: {
     alignItems: "center",

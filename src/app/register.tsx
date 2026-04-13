@@ -538,7 +538,8 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: "row",
     justifyContent: "center",
-    paddingVertical: 24,
+    paddingVertical: 32,
+    marginBottom: 20,
   },
   footerText: {
     fontSize: 14,

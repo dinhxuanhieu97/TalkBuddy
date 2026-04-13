@@ -1,106 +1,78 @@
-import { supabase, Database } from "../lib/supabase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export type User = Database["public"]["Tables"]["users"]["Row"];
-export type UserInsert = Database["public"]["Tables"]["users"]["Insert"];
-export type UserUpdate = Database["public"]["Tables"]["users"]["Update"];
+export interface User {
+  id: string;
+  email: string | null;
+  name: string | null;
+  image: string | null;
+  locale: string;
+  accent: string;
+  speed: string;
+  subscription_tier: string;
+}
+
+export type UserInsert = Partial<User>;
+export type UserUpdate = Partial<User>;
+
+const USER_STORAGE_KEY = "talkbuddy_user";
 
 export class UserService {
-  // Get user by ID
+  // Get user from local storage
   static async getUser(userId: string): Promise<User | null> {
     try {
-      const { data, error } = await supabase
-        .from("users")
-        .select("*")
-        .eq("id", userId)
-        .single();
-
-      if (error) throw error;
-      return data;
+      const data = await AsyncStorage.getItem(USER_STORAGE_KEY);
+      if (data) {
+        const user = JSON.parse(data);
+        return user.id === userId ? user : null;
+      }
+      return null;
     } catch (error) {
       console.error("Error fetching user:", error);
       return null;
     }
   }
 
-  // Create or update user (upsert)
+  // Create or update user (local storage)
   static async upsertUser(
     userData: UserInsert & { id: string },
   ): Promise<User | null> {
     try {
-      const { data, error } = await supabase
-        .from("users")
-        .upsert({
-          id: userData.id,
-          email: userData.email,
-          name: userData.name,
-          image: userData.image,
-          locale: userData.locale || "zh",
-          accent: userData.accent || "en-US",
-          speed: userData.speed || "normal",
-          subscription_tier: userData.subscription_tier || "free",
-          stripe_customer_id: userData.stripe_customer_id,
-          stripe_sub_id: userData.stripe_sub_id,
-          subscription_ends_at: userData.subscription_ends_at,
-          iap_store: userData.iap_store,
-          iap_product_id: userData.iap_product_id,
-          referral_code: userData.referral_code,
-          referred_by: userData.referred_by,
-        })
-        .select()
-        .single();
-
-      if (error) {
-        console.error("Database error:", error);
-        // If Supabase is not configured, return mock user
-        if (error.message === "Supabase not configured") {
-          return {
-            id: userData.id,
-            email: userData.email,
-            email_verified: null,
-            name: userData.name,
-            image: userData.image,
-            password_hash: null,
-            locale: userData.locale || "zh",
-            accent: userData.accent || "en-US",
-            speed: userData.speed || "normal",
-            my_voice_gender: null,
-            subscription_tier: userData.subscription_tier || "free",
-            stripe_customer_id: userData.stripe_customer_id,
-            stripe_sub_id: userData.stripe_sub_id,
-            subscription_ends_at: userData.subscription_ends_at,
-            trip_boost_ends_at: userData.trip_boost_ends_at,
-            iap_store: userData.iap_store,
-            iap_product_id: userData.iap_product_id,
-            referral_code: userData.referral_code,
-            referred_by: userData.referred_by,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-          };
-        }
-        throw error;
-      }
-      return data;
+      const user: User = {
+        id: userData.id,
+        email: userData.email || null,
+        name: userData.name || null,
+        image: userData.image || null,
+        locale: userData.locale || "zh",
+        accent: userData.accent || "en-US",
+        speed: userData.speed || "normal",
+        subscription_tier: userData.subscription_tier || "free",
+      };
+      await AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+      return user;
     } catch (error) {
       console.error("Error upserting user:", error);
       return null;
     }
   }
-
   // Update user profile
   static async updateUser(
     userId: string,
     updates: UserUpdate,
   ): Promise<User | null> {
     try {
-      const { data, error } = await supabase
-        .from("users")
-        .update(updates)
-        .eq("id", userId)
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      const data = await AsyncStorage.getItem(USER_STORAGE_KEY);
+      if (data) {
+        const user = JSON.parse(data);
+        if (user.id === userId) {
+          const updatedUser = { ...user, ...updates };
+          await AsyncStorage.setItem(
+            USER_STORAGE_KEY,
+            JSON.stringify(updatedUser),
+          );
+          return updatedUser;
+        }
+      }
+      return null;
     } catch (error) {
       console.error("Error updating user:", error);
       return null;
@@ -136,11 +108,9 @@ export class UserService {
   }
 
   // Delete user
-  static async deleteUser(userId: string): Promise<boolean> {
+  static async deleteUser(_userId: string): Promise<boolean> {
     try {
-      const { error } = await supabase.from("users").delete().eq("id", userId);
-
-      if (error) throw error;
+      await AsyncStorage.removeItem(USER_STORAGE_KEY);
       return true;
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -148,23 +118,9 @@ export class UserService {
     }
   }
 
-  // Real-time subscription to user changes
-  static subscribeToUser(userId: string, callback: (user: User) => void) {
-    return supabase
-      .channel(`user_${userId}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "UPDATE",
-          schema: "public",
-          table: "users",
-          filter: `id=eq.${userId}`,
-        },
-        (payload) => {
-          callback(payload.new as User);
-        },
-      )
-      .subscribe();
+  // Real-time subscription - disabled for local storage
+  static subscribeToUser(_userId: string, _callback: (user: User) => void) {
+    return { unsubscribe: () => {} };
   }
 }
 

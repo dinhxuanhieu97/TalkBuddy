@@ -123,8 +123,19 @@ export default function Login({
     }
   };
 
-  const handleAppleLogin = () => {
-    Alert.alert(t("common.comingSoon"), t("auth.comingSoon.appleLogin"));
+  const handleAppleLogin = async () => {
+    setIsLoading(true);
+    try {
+      const user = await AuthService.signInWithApple();
+      if (user) {
+        setUser(user);
+        onAuthSuccess?.();
+      }
+    } catch (error: any) {
+      setErrors({ general: error.message || t("auth.error.loginFailed") });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleForgotPassword = () => {
