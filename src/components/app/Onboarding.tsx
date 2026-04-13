@@ -106,12 +106,12 @@ function AnimatedBeeIcon() {
 
   const rotate = wingAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [-15, 15],
+    outputRange: ["-15deg", "15deg"],
   });
 
   return (
     <Animated.View
-      style={{ transform: [{ translateY }, { rotate: `${rotate}deg` }] }}
+      style={{ transform: [{ translateY }, { rotate }] }}
     >
       <Svg width={110} height={76} viewBox="0 0 110 76" fill="none">
         <G clipPath="url(#clip0_201_4108)">

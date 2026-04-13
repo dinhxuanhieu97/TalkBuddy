@@ -36,7 +36,7 @@ import { speak, stopSpeaking } from "../../services/TTSService";
 import PracticeMode from "./PracticeMode";
 import DictationMode from "./DictationMode";
 import ShadowMode from "./ShadowMode";
-import { VoiceSettingsScreen } from "../components/VoiceSettings/VoiceSettingsScreen";
+import { VoiceSettingsScreen } from "./VoiceSettings/VoiceSettingsScreen";
 
 type SettingItem = {
   id: string;

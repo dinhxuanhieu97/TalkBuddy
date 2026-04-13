@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Onboarding from "./components/Onboarding";
+import Onboarding from "../components/app/Onboarding";
 import Login from "./login";
 import Register from "./register";
 import ForgotPassword from "./forgot-password";
 import VerifyOtp from "./verify-otp";
 import ResetPassword from "./reset-password";
 import ResetPasswordSuccess from "./reset-password-success";
-import MainApp from "./components/MainApp";
+import MainApp from "../components/app/MainApp";
 import { LanguageSetupScreen } from "../components/LanguageSetupScreen";
 import { configureAudio } from "../services/TTSService";
 import { useLocaleStore } from "../lib/i18n";

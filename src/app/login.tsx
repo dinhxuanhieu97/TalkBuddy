@@ -291,7 +291,11 @@ export default function Login({
             {/* Google */}
             <TouchableOpacity
               onPress={handleGoogleLogin}
-              style={[styles.socialButton, isLoading && styles.disabledButton]}
+              style={[
+                styles.socialButton,
+                Platform.OS === "android" && styles.socialButtonFullWidth,
+                isLoading && styles.disabledButton,
+              ]}
               activeOpacity={0.8}
               disabled={isLoading}
             >
@@ -300,15 +304,17 @@ export default function Login({
             </TouchableOpacity>
 
             {/* Apple */}
-            <TouchableOpacity
-              onPress={handleAppleLogin}
-              style={[styles.socialButton, isLoading && styles.disabledButton]}
-              activeOpacity={0.8}
-              disabled={isLoading}
-            >
-              <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
-              <Text style={styles.socialText}>{t("auth.apple")}</Text>
-            </TouchableOpacity>
+            {Platform.OS === "ios" && (
+              <TouchableOpacity
+                onPress={handleAppleLogin}
+                style={[styles.socialButton, isLoading && styles.disabledButton]}
+                activeOpacity={0.8}
+                disabled={isLoading}
+              >
+                <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
+                <Text style={styles.socialText}>{t("auth.apple")}</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
 
@@ -503,6 +509,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(28,28,30,0.1)",
     gap: 8,
+  },
+  socialButtonFullWidth: {
+    flex: 0,
+    width: "100%",
   },
   socialIcon: {
     fontSize: 18,

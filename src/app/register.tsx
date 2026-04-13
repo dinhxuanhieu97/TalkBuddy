@@ -246,9 +246,11 @@ export default function Register({
                     style={styles.eyeButton}
                     disabled={isLoading}
                   >
-                    <Text style={styles.eyeText}>
-                      {showPassword ? "👁️" : "👁️‍🗨️"}
-                    </Text>
+                    <Ionicons
+                      name={showPassword ? "eye-off" : "eye"}
+                      size={20}
+                      color="#666"
+                    />
                   </TouchableOpacity>
                 </View>
                 {errors.password ? (
@@ -302,6 +304,7 @@ export default function Register({
                   onPress={handleGoogleRegister}
                   style={[
                     styles.socialButton,
+                    Platform.OS === "android" && styles.socialButtonFullWidth,
                     isLoading && styles.disabledButton,
                   ]}
                   activeOpacity={0.8}
@@ -312,18 +315,20 @@ export default function Register({
                 </TouchableOpacity>
 
                 {/* Apple */}
-                <TouchableOpacity
-                  onPress={handleAppleRegister}
-                  style={[
-                    styles.socialButton,
-                    isLoading && styles.disabledButton,
-                  ]}
-                  activeOpacity={0.8}
-                  disabled={isLoading}
-                >
-                  <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
-                  <Text style={styles.socialText}>{t("auth.apple")}</Text>
-                </TouchableOpacity>
+                {Platform.OS === "ios" && (
+                  <TouchableOpacity
+                    onPress={handleAppleRegister}
+                    style={[
+                      styles.socialButton,
+                      isLoading && styles.disabledButton,
+                    ]}
+                    activeOpacity={0.8}
+                    disabled={isLoading}
+                  >
+                    <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
+                    <Text style={styles.socialText}>{t("auth.apple")}</Text>
+                  </TouchableOpacity>
+                )}
               </View>
             </View>
 
@@ -525,6 +530,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(28,28,30,0.1)",
     gap: 8,
+  },
+  socialButtonFullWidth: {
+    flex: 0,
+    width: "100%",
   },
   socialIcon: {
     fontSize: 18,

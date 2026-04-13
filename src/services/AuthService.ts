@@ -1,12 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "./api";
-import * as Google from "expo-google-app-auth";
+import * as AuthSession from "expo-auth-session";
 import * as AppleAuthentication from "expo-apple-authentication";
+import { Platform } from "react-native";
 
 // Google OAuth configuration from environment variables
 const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID || "";
 const GOOGLE_ANDROID_CLIENT_ID =
   process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID || "";
+const GOOGLE_WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID || "";
 
 export interface AuthUser {
   id: string;
@@ -160,24 +162,43 @@ export class AuthService {
   // ─── Sign In with Google ───────────────────────────────────
   static async signInWithGoogle(): Promise<AuthUser | null> {
     try {
-      console.log("Google sign-in config:", {
-        iosClientId: GOOGLE_IOS_CLIENT_ID,
-        hasClientId: !!GOOGLE_IOS_CLIENT_ID,
+      const clientId =
+        Platform.OS === "ios"
+          ? GOOGLE_IOS_CLIENT_ID
+          : Platform.OS === "android"
+            ? GOOGLE_ANDROID_CLIENT_ID
+            : GOOGLE_WEB_CLIENT_ID;
+
+      if (!clientId) {
+        throw new Error("Missing Google OAuth client id for current platform");
+      }
+
+      const redirectUri = AuthSession.makeRedirectUri();
+      const discovery = {
+        authorizationEndpoint: "https://accounts.google.com/o/oauth2/v2/auth",
+        tokenEndpoint: "https://oauth2.googleapis.com/token",
+        revocationEndpoint: "https://oauth2.googleapis.com/revoke",
+      };
+
+      const request = new AuthSession.AuthRequest({
+        clientId,
+        redirectUri,
+        responseType: AuthSession.ResponseType.IdToken,
+        scopes: ["openid", "profile", "email"],
       });
 
-      const result = await Google.logInAsync({
-        iosClientId: GOOGLE_IOS_CLIENT_ID,
-        androidClientId: GOOGLE_ANDROID_CLIENT_ID,
-        scopes: ["profile", "email"],
-        behavior: "system",
-      });
-
-      console.log("Google sign-in result:", result);
+      await request.makeAuthUrlAsync(discovery);
+      const result = await request.promptAsync(discovery);
 
       if (result.type === "success") {
+        const idToken = result.params?.id_token;
+        if (!idToken) {
+          throw new Error("Google OAuth response is missing id_token");
+        }
+
         const res = await api.post("/api/auth/google", {
-          idToken: result.idToken,
-          accessToken: result.accessToken,
+          idToken,
+          accessToken: result.params?.access_token,
         });
 
         if (res.data.token && res.data.user) {
