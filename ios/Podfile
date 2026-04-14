@@ -74,7 +74,7 @@ target 'TalkBuddy' do
       :ccache_enabled => ccache_enabled?(podfile_properties),
     )
 
-    # Patch 1: Create missing RCT-Folly headers (RN 0.81.x / Xcode 26 bug)
+    # Patch 1: Create missing RCT-Folly headers (RN 0.81.x / Xcode 26 bug, Old Arch only)
     folly_dir = "#{installer.sandbox.root}/RCT-Folly/folly"
     folly_portability = "#{folly_dir}/portability"
 
@@ -100,10 +100,12 @@ target 'TalkBuddy' do
       "#{folly_dir}/Memory.h"              => "#pragma once\n#include <memory>\n#include <cstdlib>\nnamespace folly {\ninline void aligned_free(void* p) noexcept { ::free(p); }\ninline void* aligned_malloc(size_t size, size_t align) { void* p = nullptr; ::posix_memalign(&p, align, size); return p; }\nusing std::nextafter;\n} // namespace folly\n",
     }
 
-    missing_headers.each do |path, content|
-      unless File.exist?(path)
-        File.write(path, content)
-        puts "[Podfile patch] Created #{File.basename(path)}"
+    if File.directory?(folly_portability)
+      missing_headers.each do |path, content|
+        unless File.exist?(path)
+          File.write(path, content)
+          puts "[Podfile patch] Created #{File.basename(path)}"
+        end
       end
     end
 
@@ -122,7 +124,7 @@ target 'TalkBuddy' do
         File.write(patch[:path], content + patch[:content])
         puts "[Podfile patch] Injected #{patch[:marker]} into #{File.basename(patch[:path])}"
       end
-    end
+    end if File.directory?(folly_dir)
 
     # Patch Time.h: force FOLLY_HAVE_CLOCK_GETTIME on all Apple (fixes clockid_t typedef conflict)
     time_h = "#{folly_dir}/portability/Time.h"
@@ -137,8 +139,13 @@ target 'TalkBuddy' do
     end
 
     # Patch 2: Fix fmt/base.h consteval for Xcode 26 / Apple Clang
-    fmt_base = "#{installer.sandbox.root}/fmt/include/fmt/base.h"
-    if File.exist?(fmt_base)
+    fmt_candidates = [
+      "#{installer.sandbox.root}/fmt/include/fmt/base.h",
+      "#{installer.sandbox.root}/ReactNativeDependencies/Headers/fmt/base.h",
+    ]
+    fmt_candidates.each do |fmt_base|
+      next unless File.exist?(fmt_base)
+      File.chmod(0644, fmt_base) if (File.stat(fmt_base).mode & 0200) == 0
       fb = File.read(fmt_base)
       patched = fb
         .gsub('#elif defined(__apple_build_version__) && __apple_build_version__ < 14000029L',
@@ -147,7 +154,7 @@ target 'TalkBuddy' do
               'inline auto is_constant_evaluated(bool default_value = false) noexcept')
       if patched != fb
         File.write(fmt_base, patched)
-        puts "[Podfile patch] Patched fmt/base.h for Xcode 26 Apple Clang"
+        puts "[Podfile patch] Patched #{File.basename(File.dirname(fmt_base))}/base.h for Xcode 26 Apple Clang"
       end
     end
 

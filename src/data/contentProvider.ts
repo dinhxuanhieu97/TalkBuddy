@@ -6,10 +6,11 @@ import NetInfo from "@react-native-community/netinfo";
 import * as SceneDatabase from "../services/SceneDatabase";
 
 // Resolve the base URL the same way api.ts does
-const isDebug = process.env.VITE_DEBUG === "true";
+const isDebug = process.env.EXPO_PUBLIC_DEBUG === "true";
 const _base = isDebug
   ? "http://localhost:5277"
-  : (process.env.VITE_API_URL ?? "https://servicetalkbuddy.mysixbox.com");
+  : (process.env.EXPO_PUBLIC_API_URL ??
+    "https://servicetalkbuddy.mysixbox.com");
 const API_BASE_URL = `${_base}/api/content`;
 
 // AsyncStorage fallback (web only) - uses a simple timestamp wrapper

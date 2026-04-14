@@ -10,8 +10,8 @@ export default function DevStatus() {
 
   useEffect(() => {
     const checkConfig = () => {
-      const supabaseUrl = process.env.VITE_SUPABASE_URL || "";
-      const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY || "";
+      const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || "";
+      const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || "";
       const googleClientId =
         process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ||
         process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ||
@@ -71,7 +71,8 @@ export default function DevStatus() {
           <View style={styles.tipContainer}>
             <Text style={styles.tipTitle}>💡 Setup Required:</Text>
             <Text style={styles.tipText}>
-              Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env
+              Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY to
+              .env
             </Text>
           </View>
         )}

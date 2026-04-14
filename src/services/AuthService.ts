@@ -1,6 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "./api";
-import * as Google from "expo-google-app-auth";
 import * as AppleAuthentication from "expo-apple-authentication";
 
 // Google OAuth configuration from environment variables
@@ -104,8 +103,10 @@ export class AuthService {
     rememberMe: boolean = false,
   ): Promise<AuthUser | null> {
     try {
+      console.log("[Auth] Login request to:", api.defaults.baseURL);
       const res = await api.post("/api/auth/login", { email, password });
 
+      console.log("[Auth] Login response status:", res.status);
       if (res.data.token && res.data.user) {
         await this.persistToken(res.data.token, rememberMe);
 
@@ -121,10 +122,14 @@ export class AuthService {
 
       return null;
     } catch (error: any) {
-      console.error(
-        "Email sign-in error:",
-        error.response?.data?.message || error.message,
-      );
+      console.log("[Auth] Login FAILED:", {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        message: error.message,
+        url: error.config?.url,
+        baseURL: api.defaults.baseURL,
+      });
       throw error;
     }
   }
@@ -142,6 +147,7 @@ export class AuthService {
         name,
       });
 
+      console.log("[Auth] Register request sent, status:", res.status);
       if (res.data.token && res.data.user) {
         await this.persistToken(res.data.token, false);
         return this.mapUser(res.data.user, "email", res.data.token);
@@ -149,47 +155,45 @@ export class AuthService {
 
       return null;
     } catch (error: any) {
-      console.error(
-        "Email sign-up error:",
-        error.response?.data?.message || error.message,
-      );
+      console.log("[Auth] Register FAILED:", {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        message: error.message,
+        url: error.config?.url,
+        method: error.config?.method,
+      });
       throw error;
     }
   }
 
   // ─── Sign In with Google ───────────────────────────────────
-  static async signInWithGoogle(): Promise<AuthUser | null> {
+  static async signInWithGoogle(
+    accessToken: string,
+    idToken?: string | null,
+  ): Promise<AuthUser | null> {
     try {
-      console.log("Google sign-in config:", {
-        iosClientId: GOOGLE_IOS_CLIENT_ID,
-        hasClientId: !!GOOGLE_IOS_CLIENT_ID,
+      const res = await api.post("/api/auth/google", {
+        accessToken,
+        idToken: idToken ?? accessToken,
       });
 
-      const result = await Google.logInAsync({
-        iosClientId: GOOGLE_IOS_CLIENT_ID,
-        androidClientId: GOOGLE_ANDROID_CLIENT_ID,
-        scopes: ["profile", "email"],
-        behavior: "system",
-      });
-
-      console.log("Google sign-in result:", result);
-
-      if (result.type === "success") {
-        const res = await api.post("/api/auth/google", {
-          idToken: result.idToken,
-          accessToken: result.accessToken,
-        });
-
-        if (res.data.token && res.data.user) {
-          await this.persistToken(res.data.token, true);
-          return this.mapUser(res.data.user, "google", res.data.token);
-        }
+      console.log("[Auth] Google sign-in request sent, status:", res.status);
+      if (res.data.token && res.data.user) {
+        await this.persistToken(res.data.token, true);
+        return this.mapUser(res.data.user, "google", res.data.token);
       }
 
       return null;
     } catch (error: any) {
-      console.error("Google sign-in error:", error);
-      console.error("Error details:", error.message, error.stack);
+      console.log("[Auth] Google sign-in FAILED:", {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        message: error.message,
+        url: error.config?.url,
+        method: error.config?.method,
+      });
       throw error;
     }
   }
