@@ -1,8 +1,8 @@
-import { Platform } from "react-native";
+import { Platform } from 'react-native';
 import {
   GoogleSignin,
   statusCodes,
-} from "@react-native-google-signin/google-signin";
+} from '@react-native-google-signin/google-signin';
 
 export interface GoogleUser {
   idToken: string;
@@ -26,18 +26,18 @@ class GoogleService {
 
     // iOS và Android cần Web Client ID khác nhau
     const webClientId =
-      Platform.OS === "ios"
+      Platform.OS === 'ios'
         ? process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID +
-          ".apps.googleusercontent.com"
-        : process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
+          '.apps.googleusercontent.com'
+        : '108942595833-dqrrtcrnqcio2i76cb1q5rd1c67af6bo.apps.googleusercontent.com';
 
     GoogleSignin.configure({
       webClientId,
       iosClientId:
         process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID +
-        ".apps.googleusercontent.com",
+        '.apps.googleusercontent.com',
       offlineAccess: true,
-      hostedDomain: "",
+      hostedDomain: '',
       forceCodeForRefreshToken: true,
     });
 
@@ -50,32 +50,32 @@ class GoogleService {
 
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
-      if (response.type === "cancelled") {
-        throw new Error("Sign-in cancelled");
+      if (response.type === 'cancelled') {
+        throw new Error('Sign-in cancelled');
       }
 
       const userInfo = response?.data;
 
       return {
-        idToken: userInfo.idToken || "",
-        serverAuthCode: userInfo.serverAuthCode || "",
+        idToken: userInfo.idToken || '',
+        serverAuthCode: userInfo.serverAuthCode || '',
         scopes: userInfo.scopes || [],
         user: {
           id: userInfo.user.id,
-          name: userInfo.user.name || "",
-          givenName: userInfo.user.givenName || "",
-          familyName: userInfo.user.familyName || "",
+          name: userInfo.user.name || '',
+          givenName: userInfo.user.givenName || '',
+          familyName: userInfo.user.familyName || '',
           email: userInfo.user.email,
-          photo: userInfo.user.photo || "",
+          photo: userInfo.user.photo || '',
         },
       };
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        throw new Error("Sign-in cancelled");
+        throw new Error('Sign-in cancelled');
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        throw new Error("Sign-in already in progress");
+        throw new Error('Sign-in already in progress');
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        throw new Error("Google Play Services not available");
+        throw new Error('Google Play Services not available');
       } else {
         throw new Error(`Sign-in error: ${error.message}`);
       }
@@ -94,7 +94,7 @@ class GoogleService {
     try {
       return GoogleSignin.hasPreviousSignIn();
     } catch (error: any) {
-      console.error("Error checking sign-in state:", error);
+      console.error('Error checking sign-in state:', error);
       return false;
     }
   }
@@ -108,20 +108,20 @@ class GoogleService {
       if (!userInfo) return null;
 
       return {
-        idToken: userInfo.idToken || "",
-        serverAuthCode: userInfo.serverAuthCode || "",
+        idToken: userInfo.idToken || '',
+        serverAuthCode: userInfo.serverAuthCode || '',
         scopes: userInfo.scopes || [],
         user: {
           id: userInfo.user.id,
-          name: userInfo.user.name || "",
-          givenName: userInfo.user.givenName || "",
-          familyName: userInfo.user.familyName || "",
+          name: userInfo.user.name || '',
+          givenName: userInfo.user.givenName || '',
+          familyName: userInfo.user.familyName || '',
           email: userInfo.user.email,
-          photo: userInfo.user.photo || "",
+          photo: userInfo.user.photo || '',
         },
       };
     } catch (error: any) {
-      console.error("Lỗi lấy thông tin người dùng:", error);
+      console.error('Lỗi lấy thông tin người dùng:', error);
       return null;
     }
   }
