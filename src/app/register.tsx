@@ -464,9 +464,6 @@ const styles = StyleSheet.create({
   eyeButton: {
     padding: 16,
   },
-  eyeText: {
-    fontSize: 18,
-  },
   termsContainer: {
     marginBottom: 24,
   },

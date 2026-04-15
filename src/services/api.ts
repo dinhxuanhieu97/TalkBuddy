@@ -1,10 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-const isDebug = process.env.VITE_DEBUG === "true";
+const isDebug = process.env.EXPO_PUBLIC_DEBUG === "true";
 const API_BASE_URL = isDebug
-  ? "http://localhost:5277"
-  : process.env.VITE_API_URL || "https://servicetalkbuddy.mysixbox.com";
+  ? process.env.EXPO_PUBLIC_API_URL || "http://localhost:5277"
+  : process.env.EXPO_PUBLIC_API_URL || "https://servicetalkbuddy.mysixbox.com";
 
 const api = axios.create({
   baseURL: API_BASE_URL,

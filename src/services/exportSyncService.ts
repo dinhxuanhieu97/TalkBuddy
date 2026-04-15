@@ -2,7 +2,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const EXPORT_API_BASE_URL = "https://talkbuddy.wayjet.io/api/export";
-const API_KEY = import.meta.env.VITE_WEB_API_KEY || "";
+const API_KEY = process.env.EXPO_PUBLIC_WEB_API_KEY || "";
 
 const LOCAL_MANIFEST_KEY = "talkbuddy_local_manifest";
 const AUDIO_FORMAT_MAP_KEY = "talkbuddy_audio_format_map";

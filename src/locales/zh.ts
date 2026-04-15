@@ -510,6 +510,19 @@ const zh = {
   "quickAccess.vocabDesc": "你收集的单词",
   "quickAccess.plan": "学习计划",
   "quickAccess.planDesc": "每日学习安排",
+
+  // Onboarding
+  "onboarding.slide2.title": "为所有人翻译语言",
+  "onboarding.slide2.subtitle":
+    "立即找到适合任何紧急情况的正确短语 - 机场、医院、酒店等。",
+  "onboarding.slide3.title": "掌握发音",
+  "onboarding.slide3.subtitle":
+    "通过互动语音练习倾听、重复和完善您的英语发音。",
+  "onboarding.slide4.title": "跟踪您的进度",
+  "onboarding.slide4.subtitle":
+    "您学习的每个短语都会被保存。查看您的历史记录，看着您的英语日益进步。",
+  "onboarding.continue": "继续",
+  "onboarding.getStarted": "开始使用",
 };
 
 export type LocaleKeys = keyof typeof zh;

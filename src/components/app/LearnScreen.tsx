@@ -806,20 +806,21 @@ export default function LearnScreen() {
         {/* Scene List - when category selected but no scene selected */}
         {selectedContext && !selectedScene && !searchQuery && (
           <View style={styles.sceneListSection}>
-            <View style={styles.phrasesSectionHeader}>
-              <TouchableOpacity
-                onPress={() => setSelectedContext(null)}
-                style={styles.backButton}
-              >
-                <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
-                <Text style={styles.backButtonText}>Categories</Text>
-              </TouchableOpacity>
-              <Text style={styles.sceneCountText}>{sceneCount} scenes</Text>
-            </View>
             <ScrollView
               style={styles.sceneListContainer}
               showsVerticalScrollIndicator={false}
+              stickyHeaderIndices={[0]}
             >
+              <View style={styles.sceneListStickyHeader}>
+                <TouchableOpacity
+                  onPress={() => setSelectedContext(null)}
+                  style={styles.backButton}
+                >
+                  <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
+                  <Text style={styles.backButtonText}>Categories</Text>
+                </TouchableOpacity>
+                <Text style={styles.sceneCountText}>{sceneCount} scenes</Text>
+              </View>
               {categoryScenes
                 .filter((scene) => convertScenesToPhrases([scene]).length > 0)
                 .map((scene) => {
@@ -1763,6 +1764,15 @@ const styles = StyleSheet.create({
   },
   sceneListContainer: {
     maxHeight: 500,
+  },
+  sceneListStickyHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#F9F9F9",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    zIndex: 1,
   },
   sceneCard: {
     flexDirection: "row",

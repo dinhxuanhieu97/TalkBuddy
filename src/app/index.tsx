@@ -1,37 +1,36 @@
-import { useEffect, useState } from "react";
-import { View } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import Onboarding from "../components/app/Onboarding";
-import Login from "./login";
-import Register from "./register";
-import ForgotPassword from "./forgot-password";
-import VerifyOtp from "./verify-otp";
-import ResetPassword from "./reset-password";
-import ResetPasswordSuccess from "./reset-password-success";
-import MainApp from "../components/app/MainApp";
-import { LanguageSetupScreen } from "../components/LanguageSetupScreen";
-import { configureAudio } from "../services/TTSService";
-import { useLocaleStore } from "../lib/i18n";
-import { AuthService } from "../services";
-import { useUserStore } from "../stores/userStore";
-import { setOnAuthExpired } from "../services/api";
+import { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Onboarding from '../components/app/Onboarding';
+import Login from './login';
+import Register from './register';
+import ForgotPassword from './forgot-password';
+import VerifyOtp from './verify-otp';
+import ResetPassword from './reset-password';
+import ResetPasswordSuccess from './reset-password-success';
+import MainApp from '../components/app/MainApp';
+import { LanguageSetupScreen } from '../components/LanguageSetupScreen';
+import { configureAudio } from '../services/TTSService';
+import { useLocaleStore } from '../lib/i18n';
+import { AuthService } from '../services';
+import { useUserStore } from '../stores/userStore';
+import { setOnAuthExpired } from '../services/api';
 
 type AppStep =
-  | "loading"
-  | "onboarding"
-  | "languageSetup"
-  | "login"
-  | "register"
-  | "forgotPassword"
-  | "verifyOtp"
-  | "resetPassword"
-  | "resetPasswordSuccess"
-  | "mainApp";
+  | 'loading'
+  | 'onboarding'
+  | 'login'
+  | 'register'
+  | 'forgotPassword'
+  | 'verifyOtp'
+  | 'resetPassword'
+  | 'resetPasswordSuccess'
+  | 'mainApp';
 
 export default function Index() {
-  const [step, setStep] = useState<AppStep>("loading");
-  const [resetEmail, setResetEmail] = useState("");
-  const [resetToken, setResetToken] = useState("");
+  const [step, setStep] = useState<AppStep>('loading');
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetToken, setResetToken] = useState('');
   const setLocale = useLocaleStore((s) => s.setLocale);
   const setUser = useUserStore((s) => s.setUser);
   const resetUser = useUserStore((s) => s.reset);
@@ -40,7 +39,7 @@ export default function Index() {
   useEffect(() => {
     setOnAuthExpired(() => {
       resetUser();
-      setStep("login");
+      setStep('login');
     });
   }, []);
 
@@ -53,7 +52,7 @@ export default function Index() {
     try {
       // Hydrate locale from AsyncStorage before anything renders
       const savedLocale = await AsyncStorage.getItem(
-        "talkbuddy-locale-storage",
+        'talkbuddy-locale-storage',
       );
       if (savedLocale) {
         try {
@@ -64,18 +63,10 @@ export default function Index() {
         } catch (_) {}
       }
 
-      const [hasSeenOnboarding, hasSetupLanguage] = await Promise.all([
-        AsyncStorage.getItem("hasSeenOnboarding"),
-        AsyncStorage.getItem("hasSetupLanguage"),
-      ]);
+      const hasSeenOnboarding = await AsyncStorage.getItem('hasSeenOnboarding');
 
       if (!hasSeenOnboarding) {
-        setStep("onboarding");
-        return;
-      }
-
-      if (!hasSetupLanguage) {
-        setStep("languageSetup");
+        setStep('onboarding');
         return;
       }
 
@@ -92,7 +83,7 @@ export default function Index() {
               avatar: user.image,
               token: user.token,
             });
-            setStep("mainApp");
+            setStep('mainApp');
             return;
           }
         } catch (_) {
@@ -100,116 +91,102 @@ export default function Index() {
         }
       }
 
-      setStep("login");
+      setStep('login');
     } catch (error) {
-      console.log("Error initializing app:", error);
-      setStep("login");
+      console.log('Error initializing app:', error);
+      setStep('login');
     }
   };
 
   const handleOnboardingDone = () => {
-    setStep("languageSetup");
-  };
-
-  const handleLanguageSetupDone = async () => {
-    try {
-      await AsyncStorage.setItem("hasSetupLanguage", "true");
-    } catch (_) {}
-    setStep("login");
+    setStep('login');
   };
 
   const handleAuthSuccess = () => {
-    setStep("mainApp");
+    setStep('mainApp');
   };
 
   const handleLogout = () => {
     resetUser();
-    setStep("login");
+    setStep('login');
   };
 
   const handleResetOnboarding = async () => {
     try {
-      await AsyncStorage.removeItem("hasSeenOnboarding");
-      await AsyncStorage.removeItem("hasSetupLanguage");
+      await AsyncStorage.removeItem('hasSeenOnboarding');
     } catch (_) {}
-    setStep("onboarding");
+    setStep('onboarding');
   };
 
-  if (step === "loading") {
-    return <View style={{ flex: 1, backgroundColor: "#FFD600" }} />;
+  if (step === 'loading') {
+    return <View style={{ flex: 1, backgroundColor: '#FFD600' }} />;
   }
 
-  if (step === "onboarding") {
+  if (step === 'onboarding') {
     return <Onboarding onDone={handleOnboardingDone} />;
   }
 
-  if (step === "languageSetup") {
-    return (
-      <LanguageSetupScreen mode="setup" onDone={handleLanguageSetupDone} />
-    );
-  }
-
-  if (step === "register") {
+  if (step === 'register') {
     return (
       <Register
         onAuthSuccess={handleAuthSuccess}
-        onGoToLogin={() => setStep("login")}
+        onGoToLogin={() => setStep('login')}
       />
     );
   }
 
-  if (step === "forgotPassword") {
+  if (step === 'forgotPassword') {
     return (
       <ForgotPassword
-        onGoToLogin={() => setStep("login")}
+        onGoToLogin={() => setStep('login')}
         onGoToVerifyOtp={(email) => {
           setResetEmail(email);
-          setStep("verifyOtp");
+          setStep('verifyOtp');
         }}
-        onBack={() => setStep("login")}
+        onBack={() => setStep('login')}
       />
     );
   }
 
-  if (step === "verifyOtp") {
+  if (step === 'verifyOtp') {
     return (
       <VerifyOtp
         email={resetEmail}
         onGoToResetPassword={(email, token) => {
           setResetEmail(email);
           setResetToken(token);
-          setStep("resetPassword");
+          setStep('resetPassword');
         }}
-        onGoBack={() => setStep("forgotPassword")}
-        onGoToLogin={() => setStep("login")}
+        onGoBack={() => setStep('forgotPassword')}
+        onGoToLogin={() => setStep('login')}
       />
     );
   }
 
-  if (step === "resetPassword") {
+  if (step === 'resetPassword') {
     return (
       <ResetPassword
         email={resetEmail}
         resetToken={resetToken}
-        onGoToSuccess={() => setStep("resetPasswordSuccess")}
-        onGoBack={() => setStep("verifyOtp")}
+        onGoToSuccess={() => setStep('resetPasswordSuccess')}
+        onGoBack={() => setStep('verifyOtp')}
       />
     );
   }
 
-  if (step === "resetPasswordSuccess") {
+  if (step === 'resetPasswordSuccess') {
     return (
       <ResetPasswordSuccess
         onGoToLogin={() => {
-          setResetEmail("");
-          setResetToken("");
-          setStep("login");
+          setResetEmail('');
+          setResetToken('');
+          setStep('login');
         }}
       />
     );
   }
 
-  if (step === "mainApp") {
+  if (step === 'mainApp') {
     return (
       <MainApp
         onLogout={handleLogout}
@@ -221,8 +198,8 @@ export default function Index() {
   return (
     <Login
       onAuthSuccess={handleAuthSuccess}
-      onGoToRegister={() => setStep("register")}
-      onGoToForgotPassword={() => setStep("forgotPassword")}
+      onGoToRegister={() => setStep('register')}
+      onGoToForgotPassword={() => setStep('forgotPassword')}
     />
   );
 }
