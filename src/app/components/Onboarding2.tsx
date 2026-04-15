@@ -247,13 +247,11 @@ function AnimatedBeeIcon() {
 
   const rotate = wingAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [-15, 15],
+    outputRange: ["-15deg", "15deg"],
   });
 
   return (
-    <Animated.View
-      style={{ transform: [{ translateY }, { rotate: `${rotate}deg` }] }}
-    >
+    <Animated.View style={{ transform: [{ translateY }, { rotate }] }}>
       <View style={styles.beeSvgContainer}>
         <Text style={styles.beeEmoji}>🐝</Text>
       </View>
