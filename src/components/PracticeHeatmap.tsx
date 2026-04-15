@@ -7,6 +7,16 @@ const DAYS_OF_WEEK = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const WEEKS_TO_SHOW = 10;
 const TOTAL_CELLS = WEEKS_TO_SHOW * 7;
 
+const DAY_KEYS = [
+  "heatmap.mon",
+  "heatmap.tue",
+  "heatmap.wed",
+  "heatmap.thu",
+  "heatmap.fri",
+  "heatmap.sat",
+  "heatmap.sun",
+];
+
 function generateHeatmapData(streak: number, lastActiveDate: string) {
   const today = new Date();
   const data: { date: Date; level: 0 | 1 | 2 | 3 }[] = [];
@@ -112,9 +122,9 @@ export function PracticeHeatmap() {
         <View style={styles.gridRow}>
           {/* Day of week labels */}
           <View style={styles.dayLabelCol}>
-            {DAYS_OF_WEEK.map((d, i) => (
+            {DAY_KEYS.map((d, i) => (
               <Text key={i} style={styles.dayLabel}>
-                {i % 2 === 0 ? d : " "}
+                {i % 2 === 0 ? t(d) : " "}
               </Text>
             ))}
           </View>

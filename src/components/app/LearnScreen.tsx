@@ -100,7 +100,7 @@ const CONTEXTS: {
   icon: string;
   emoji: string;
 }[] = [
-  { id: "airport", icon: "airplane", emoji: "\u2708\uFE0E" },
+  { id: "airport", icon: "airplane", emoji: "\u{1F6EB}" },
   { id: "medical", icon: "medical", emoji: "\u{1F3E5}" },
   { id: "hotel", icon: "bed", emoji: "\u{1F3E8}" },
   { id: "restaurant", icon: "restaurant", emoji: "\u{1F37D}\uFE0E" },
@@ -209,11 +209,22 @@ function getAllPhrases(): Phrase[] {
   return convertScenesToPhrases(PRESET_SCENES);
 }
 
-export default function LearnScreen() {
+interface LearnScreenProps {
+  onNavigateToProfile?: () => void;
+}
+
+export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
   const insets = useSafeAreaInsets();
   const t = useT();
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedScene, setSelectedScene] = useState<PresetScene | null>(null);
+
+  // Scroll to top when category is selected
+  useEffect(() => {
+    if (selectedContext) {
+      mainScrollRef.current?.scrollTo({ y: 0, animated: true });
+    }
+  }, [selectedContext]);
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const [difficultyFilter, setDifficultyFilter] = useState<
@@ -237,6 +248,7 @@ export default function LearnScreen() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const isPlayingAllRef = useRef(false); // Ref for loop to check current state
   const scrollViewRef = useRef<ScrollView>(null);
+  const mainScrollRef = useRef<ScrollView>(null);
   const phraseRefs = useRef<{ [key: string]: View }>({});
 
   // Recent scenes state for "Continue Learning"
@@ -647,7 +659,10 @@ export default function LearnScreen() {
             </Text>
             <Text style={styles.headerTitle}>{t("learn.headerTitle")}</Text>
           </View>
-          <TouchableOpacity style={styles.profileButton} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.profileButton}
+            onPress={onNavigateToProfile}
+          >
             <View style={styles.profileAvatar}>
               <Ionicons name="person" size={20} color="#fff" />
             </View>
@@ -701,6 +716,7 @@ export default function LearnScreen() {
       </View>
 
       <ScrollView
+        ref={mainScrollRef}
         style={styles.scrollView}
         contentContainerStyle={[
           styles.scrollContent,

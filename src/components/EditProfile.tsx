@@ -19,6 +19,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useUserStore } from "../stores/userStore";
+import { useT } from "../lib/i18n";
 
 // Enable LayoutAnimation on Android
 if (
@@ -40,6 +41,7 @@ interface FormData {
 export function EditProfile() {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
+  const t = useT();
 
   const [formData, setFormData] = useState<FormData>({
     name: user?.name || "Traveler",
@@ -63,9 +65,9 @@ export function EditProfile() {
     switch (field) {
       case "name":
         if (!value.trim()) {
-          newErrors.name = "Name is required";
+          newErrors.name = t("errors.nameRequired");
         } else if (value.length < 2) {
-          newErrors.name = "Name must be at least 2 characters";
+          newErrors.name = t("errors.nameMinLength");
         } else {
           delete newErrors.name;
         }
@@ -74,9 +76,9 @@ export function EditProfile() {
       case "email":
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value.trim()) {
-          newErrors.email = "Email is required";
+          newErrors.email = t("errors.emailRequired");
         } else if (!emailRegex.test(value)) {
-          newErrors.email = "Invalid email format";
+          newErrors.email = t("errors.emailInvalid");
         } else {
           delete newErrors.email;
         }
@@ -84,7 +86,7 @@ export function EditProfile() {
 
       case "phone":
         if (value && !/^\+?[\d\s-()]+$/.test(value)) {
-          newErrors.phone = "Invalid phone number";
+          newErrors.phone = t("errors.phoneInvalid");
         } else {
           delete newErrors.phone;
         }
@@ -92,7 +94,7 @@ export function EditProfile() {
 
       case "bio":
         if (value.length > 200) {
-          newErrors.bio = "Bio must be less than 200 characters";
+          newErrors.bio = t("errors.bioMaxLength");
         } else {
           delete newErrors.bio;
         }
@@ -113,8 +115,8 @@ export function EditProfile() {
 
     if (status !== "granted") {
       Alert.alert(
-        "Permission Denied",
-        "We need camera roll permissions to change your avatar.",
+        t("errors.permissionDenied"),
+        t("errors.permissionMessageCameraRoll"),
       );
       return;
     }
@@ -136,8 +138,8 @@ export function EditProfile() {
 
     if (status !== "granted") {
       Alert.alert(
-        "Permission Denied",
-        "We need camera permissions to take a photo.",
+        t("errors.permissionDenied"),
+        t("errors.permissionMessageCamera"),
       );
       return;
     }
@@ -154,10 +156,10 @@ export function EditProfile() {
   };
 
   const handleAvatarPress = () => {
-    Alert.alert("Change Avatar", "Choose an option", [
-      { text: "Take Photo", onPress: takePhoto },
-      { text: "Choose from Library", onPress: pickImage },
-      { text: "Cancel", style: "cancel" },
+    Alert.alert(t("editProfile.changeAvatar"), t("editProfile.chooseOption"), [
+      { text: t("editProfile.takePhoto"), onPress: takePhoto },
+      { text: t("editProfile.chooseFromLibrary"), onPress: pickImage },
+      { text: t("editProfile.cancel"), style: "cancel" },
     ]);
   };
 
@@ -169,7 +171,7 @@ export function EditProfile() {
     });
 
     if (Object.keys(errors).length > 0) {
-      Alert.alert("Validation Error", "Please fix the errors before saving.");
+      Alert.alert(t("errors.validationError"), t("errors.fixErrors"));
       return;
     }
 
@@ -181,22 +183,22 @@ export function EditProfile() {
       setUser({
         id: user?.id || "1",
         ...formData,
-        avatar,
+        avatar: avatar || undefined,
       });
 
       setIsSaving(false);
-      Alert.alert("Success", "Profile updated successfully!");
+      Alert.alert(t("editProfile.success"), t("editProfile.profileUpdated"));
     }, 1500);
   };
 
   const handleCancel = () => {
     Alert.alert(
-      "Discard Changes",
-      "Are you sure you want to discard your changes?",
+      t("editProfile.discardChanges"),
+      t("editProfile.confirmDiscard"),
       [
-        { text: "Keep Editing", style: "cancel" },
+        { text: t("editProfile.keepEditing"), style: "cancel" },
         {
-          text: "Discard",
+          text: t("editProfile.discard"),
           style: "destructive",
           onPress: () => {
             // Reset to original values
@@ -229,10 +231,8 @@ export function EditProfile() {
       >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Edit Profile</Text>
-          <Text style={styles.headerSubtitle}>
-            Update your personal information
-          </Text>
+          <Text style={styles.headerTitle}>{t("editProfile.title")}</Text>
+          <Text style={styles.headerSubtitle}>{t("editProfile.subtitle")}</Text>
         </View>
 
         {/* Avatar Section */}
@@ -252,14 +252,14 @@ export function EditProfile() {
               <Ionicons name="camera" size={16} color="#FFFFFF" />
             </View>
           </TouchableOpacity>
-          <Text style={styles.avatarHint}>Tap to change photo</Text>
+          <Text style={styles.avatarHint}>{t("editProfile.tapToChange")}</Text>
         </View>
 
         {/* Form Fields */}
         <View style={styles.formSection}>
           {/* Name */}
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Full Name *</Text>
+            <Text style={styles.inputLabel}>{t("editProfile.fullName")}</Text>
             <View
               style={[
                 styles.inputWrapper,
@@ -279,7 +279,7 @@ export function EditProfile() {
                 onChangeText={(value) => handleInputChange("name", value)}
                 onFocus={() => setFocusedField("name")}
                 onBlur={() => setFocusedField(null)}
-                placeholder="Enter your name"
+                placeholder={t("editProfile.namePlaceholder")}
                 placeholderTextColor="#9E9E9E"
               />
               {!errors.name && formData.name && (
@@ -291,7 +291,7 @@ export function EditProfile() {
 
           {/* Email */}
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Email Address *</Text>
+            <Text style={styles.inputLabel}>{t("editProfile.email")}</Text>
             <View
               style={[
                 styles.inputWrapper,
@@ -311,7 +311,7 @@ export function EditProfile() {
                 onChangeText={(value) => handleInputChange("email", value)}
                 onFocus={() => setFocusedField("email")}
                 onBlur={() => setFocusedField(null)}
-                placeholder="your@email.com"
+                placeholder={t("editProfile.emailPlaceholder")}
                 placeholderTextColor="#9E9E9E"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -327,7 +327,7 @@ export function EditProfile() {
 
           {/* Phone */}
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Phone Number</Text>
+            <Text style={styles.inputLabel}>{t("editProfile.phone")}</Text>
             <View
               style={[
                 styles.inputWrapper,
@@ -347,7 +347,7 @@ export function EditProfile() {
                 onChangeText={(value) => handleInputChange("phone", value)}
                 onFocus={() => setFocusedField("phone")}
                 onBlur={() => setFocusedField(null)}
-                placeholder="+1 (555) 123-4567"
+                placeholder={t("editProfile.phonePlaceholder")}
                 placeholderTextColor="#9E9E9E"
                 keyboardType="phone-pad"
               />
@@ -359,7 +359,7 @@ export function EditProfile() {
 
           {/* Location */}
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Location</Text>
+            <Text style={styles.inputLabel}>{t("editProfile.location")}</Text>
             <View
               style={[
                 styles.inputWrapper,
@@ -378,7 +378,7 @@ export function EditProfile() {
                 onChangeText={(value) => handleInputChange("location", value)}
                 onFocus={() => setFocusedField("location")}
                 onBlur={() => setFocusedField(null)}
-                placeholder="City, Country"
+                placeholder={t("editProfile.locationPlaceholder")}
                 placeholderTextColor="#9E9E9E"
               />
             </View>
@@ -386,7 +386,7 @@ export function EditProfile() {
 
           {/* Language */}
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Preferred Language</Text>
+            <Text style={styles.inputLabel}>{t("editProfile.language")}</Text>
             <View
               style={[
                 styles.inputWrapper,
@@ -405,7 +405,7 @@ export function EditProfile() {
                 onChangeText={(value) => handleInputChange("language", value)}
                 onFocus={() => setFocusedField("language")}
                 onBlur={() => setFocusedField(null)}
-                placeholder="English"
+                placeholder={t("editProfile.languagePlaceholder")}
                 placeholderTextColor="#9E9E9E"
               />
             </View>
@@ -414,7 +414,7 @@ export function EditProfile() {
           {/* Bio */}
           <View style={styles.inputGroup}>
             <View style={styles.bioLabelRow}>
-              <Text style={styles.inputLabel}>Bio</Text>
+              <Text style={styles.inputLabel}>{t("editProfile.bio")}</Text>
               <Text style={styles.charCount}>{formData.bio.length}/200</Text>
             </View>
             <View
@@ -431,7 +431,7 @@ export function EditProfile() {
                 onChangeText={(value) => handleInputChange("bio", value)}
                 onFocus={() => setFocusedField("bio")}
                 onBlur={() => setFocusedField(null)}
-                placeholder="Tell us about yourself..."
+                placeholder={t("editProfile.bioPlaceholder")}
                 placeholderTextColor="#9E9E9E"
                 multiline
                 numberOfLines={4}
@@ -452,7 +452,7 @@ export function EditProfile() {
           onPress={handleCancel}
           disabled={isSaving}
         >
-          <Text style={styles.cancelButtonText}>Cancel</Text>
+          <Text style={styles.cancelButtonText}>{t("editProfile.cancel")}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -465,7 +465,9 @@ export function EditProfile() {
           ) : (
             <>
               <Ionicons name="checkmark" size={20} color="#1C1C1E" />
-              <Text style={styles.saveButtonText}>Save Changes</Text>
+              <Text style={styles.saveButtonText}>
+                {t("editProfile.saveChanges")}
+              </Text>
             </>
           )}
         </TouchableOpacity>

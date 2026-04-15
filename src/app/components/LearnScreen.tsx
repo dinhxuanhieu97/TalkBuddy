@@ -90,7 +90,7 @@ const CONTEXTS: {
   icon: string;
   emoji: string;
 }[] = [
-  { id: "airport", icon: "airplane", emoji: "\u2708\uFE0E" },
+  { id: "airport", icon: "airplane", emoji: "\u{1F6EB}" },
   { id: "medical", icon: "medical", emoji: "\u{1F3E5}" },
   { id: "hotel", icon: "bed", emoji: "\u{1F3E8}" },
   { id: "restaurant", icon: "restaurant", emoji: "\u{1F37D}\uFE0E" },
@@ -204,6 +204,13 @@ export default function LearnScreen() {
   const t = useT();
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedScene, setSelectedScene] = useState<PresetScene | null>(null);
+
+  // Scroll to top when category is selected
+  useEffect(() => {
+    if (selectedContext) {
+      mainScrollRef.current?.scrollTo({ y: 0, animated: true });
+    }
+  }, [selectedContext]);
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const [difficultyFilter, setDifficultyFilter] = useState<
@@ -227,6 +234,7 @@ export default function LearnScreen() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const isPlayingAllRef = useRef(false); // Ref for loop to check current state
   const scrollViewRef = useRef<ScrollView>(null);
+  const mainScrollRef = useRef<ScrollView>(null);
   const phraseRefs = useRef<{ [key: string]: View }>({});
 
   // Recent scenes state for "Continue Learning"
@@ -666,6 +674,7 @@ export default function LearnScreen() {
       </View>
 
       <ScrollView
+        ref={mainScrollRef}
         style={styles.scrollView}
         contentContainerStyle={[
           styles.scrollContent,
@@ -715,56 +724,61 @@ export default function LearnScreen() {
         {!searchQuery && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>{t("learn.chooseContext")}</Text>
-            <View style={styles.contextGrid}>
-              {CONTEXTS_WITH_SCENES.map((ctx) => {
-                const progress = categoryProgress[ctx.id];
-                const progressPercent = progress
-                  ? Math.round((progress.learned / progress.total) * 100)
-                  : 0;
-                return (
-                  <TouchableOpacity
-                    key={ctx.id}
-                    style={[
-                      styles.contextCard,
-                      selectedContext === ctx.id && styles.contextCardActive,
-                    ]}
-                    onPress={() =>
-                      setSelectedContext(
-                        selectedContext === ctx.id ? null : ctx.id,
-                      )
-                    }
-                  >
-                    <View style={styles.contextContent}>
-                      <Text style={styles.contextIcon}>{ctx.emoji}</Text>
-                      <Text
-                        style={[
-                          styles.contextName,
-                          selectedContext === ctx.id &&
-                            styles.contextNameActive,
-                        ]}
-                      >
-                        {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
-                      </Text>
-                      {progress && progress.total > 0 && (
-                        <View style={styles.progressContainer}>
-                          <View style={styles.progressBar}>
-                            <View
-                              style={[
-                                styles.progressFill,
-                                { width: `${progressPercent}%` },
-                              ]}
-                            />
+            <ScrollView
+              style={styles.contextScrollView}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.contextGrid}>
+                {CONTEXTS_WITH_SCENES.map((ctx) => {
+                  const progress = categoryProgress[ctx.id];
+                  const progressPercent = progress
+                    ? Math.round((progress.learned / progress.total) * 100)
+                    : 0;
+                  return (
+                    <TouchableOpacity
+                      key={ctx.id}
+                      style={[
+                        styles.contextCard,
+                        selectedContext === ctx.id && styles.contextCardActive,
+                      ]}
+                      onPress={() =>
+                        setSelectedContext(
+                          selectedContext === ctx.id ? null : ctx.id,
+                        )
+                      }
+                    >
+                      <View style={styles.contextContent}>
+                        <Text style={styles.contextIcon}>{ctx.emoji}</Text>
+                        <Text
+                          style={[
+                            styles.contextName,
+                            selectedContext === ctx.id &&
+                              styles.contextNameActive,
+                          ]}
+                        >
+                          {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
+                        </Text>
+                        {progress && progress.total > 0 && (
+                          <View style={styles.progressContainer}>
+                            <View style={styles.progressBar}>
+                              <View
+                                style={[
+                                  styles.progressFill,
+                                  { width: `${progressPercent}%` },
+                                ]}
+                              />
+                            </View>
+                            <Text style={styles.progressText}>
+                              {progressPercent}%
+                            </Text>
                           </View>
-                          <Text style={styles.progressText}>
-                            {progressPercent}%
-                          </Text>
-                        </View>
-                      )}
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
+                        )}
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </ScrollView>
           </View>
         )}
 
@@ -1728,7 +1742,10 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   sceneListContainer: {
-    maxHeight: 500,
+    flex: 1,
+  },
+  contextScrollView: {
+    flex: 1,
   },
   sceneListStickyHeader: {
     flexDirection: "row",

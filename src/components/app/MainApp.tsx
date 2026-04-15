@@ -77,13 +77,16 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
     <View style={styles.container}>
       {/* Screen Content */}
       <View style={styles.screenContainer}>
-        {activeTab === "learn" && <LearnScreen />}
+        {activeTab === "learn" && (
+          <LearnScreen onNavigateToProfile={() => setActiveTab("me")} />
+        )}
         {activeTab === "sos" && <TalkBuddyScreen />}
         {activeTab === "practice" && <PracticeScreen />}
         {activeTab === "me" && (
           <ProfileScreen
             onLogout={onLogout}
             onResetOnboarding={onResetOnboarding}
+            onNavigateToLearn={() => setActiveTab("learn")}
           />
         )}
       </View>

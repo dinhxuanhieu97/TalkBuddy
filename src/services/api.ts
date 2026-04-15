@@ -170,6 +170,10 @@ export const userApi = {
   deductCredits: async (amount: number): Promise<void> => {
     await api.post("/api/user/credits/deduct", amount);
   },
+
+  deleteAccount: async (): Promise<void> => {
+    await api.delete("/api/user/account");
+  },
 };
 
 // Phrase API
