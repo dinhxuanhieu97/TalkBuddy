@@ -49,6 +49,7 @@ android/app/src/main/assets/capacitor.config.json
 .env.test.local
 .env.production.local
 .env*.local
+keystore.properties
 
 # Logs
 npm-debug.log*

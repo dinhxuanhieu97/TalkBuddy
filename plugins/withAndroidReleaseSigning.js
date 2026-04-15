@@ -23,9 +23,20 @@ def _tbSigningRequiredProps = [
         'MYAPP_UPLOAD_STORE_PASSWORD',
         'MYAPP_UPLOAD_KEY_PASSWORD'
 ]
+def _tbProjectKeystorePropertiesFile = new File(projectRoot, 'keystore.properties')
+def _tbProjectKeystoreProperties = new Properties()
+if (_tbProjectKeystorePropertiesFile.exists()) {
+    _tbProjectKeystorePropertiesFile.withInputStream { stream ->
+        _tbProjectKeystoreProperties.load(stream)
+    }
+}
 def _tbRequestedTasks = gradle.startParameter.taskNames.collect { it.toLowerCase() }
 def _tbIsReleaseTask = _tbRequestedTasks.any { it.contains('release') }
-def _tbGetSigningProp = { key -> findProperty(key) ?: System.getenv(key) }
+def _tbGetSigningProp = { key ->
+    findProperty(key)
+            ?: _tbProjectKeystoreProperties.getProperty(key)
+            ?: System.getenv(key)
+}
 ${MARKER_END}
 `;
 
@@ -57,7 +68,7 @@ function patchSigningConfigs(contents) {
         release {
             def _tbMissingSigningProps = _tbSigningRequiredProps.findAll { !_tbGetSigningProp(it) }
             if (_tbIsReleaseTask && !_tbMissingSigningProps.isEmpty()) {
-                throw new GradleException("Missing Android release signing properties: \${_tbMissingSigningProps.join(', ')}. Define them in ~/.gradle/gradle.properties or environment variables.")
+                throw new GradleException("Missing Android release signing properties: \${_tbMissingSigningProps.join(', ')}. Define them in keystore.properties, ~/.gradle/gradle.properties, or environment variables.")
             }
 
             def _tbUploadStoreFile = _tbGetSigningProp('MYAPP_UPLOAD_STORE_FILE')

@@ -9,7 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useUserStore } from "../stores/userStore";
 import { purchaseSubscription } from "../lib/revenuecat";
-import { t } from "../i18n"; // Import the i18n translation function
+import { t } from "../lib/i18n"; // Import the i18n translation function
 
 interface SubscriptionPlan {
   id: string;
