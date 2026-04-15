@@ -15,23 +15,25 @@ const tabs: {
   id: Tab;
   labelKey: LocaleKeys;
   iconName: keyof typeof Ionicons.glyphMap;
+  locked?: boolean;
 }[] = [
   {
     id: "learn",
     labelKey: "nav.learn",
     iconName: "book-outline",
   },
-  // Hidden for production: SOS and Practice tabs
-  // {
-  //   id: "sos",
-  //   labelKey: "nav.sos",
-  //   iconName: "warning-outline",
-  // },
-  // {
-  //   id: "practice",
-  //   labelKey: "nav.practice",
-  //   iconName: "chatbubble-outline",
-  // },
+  {
+    id: "sos",
+    labelKey: "nav.sos",
+    iconName: "warning-outline",
+    locked: true,
+  },
+  {
+    id: "practice",
+    labelKey: "nav.practice",
+    iconName: "chatbubble-outline",
+    locked: true,
+  },
   {
     id: "me",
     labelKey: "nav.me",
@@ -52,6 +54,12 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
   const animatedValues = useRef(tabs.map(() => new Animated.Value(0))).current;
 
   const handleTabPress = (index: number, tabId: Tab) => {
+    // Don't do anything if tab is locked
+    const tab = tabs.find((t) => t.id === tabId);
+    if (tab?.locked) {
+      return;
+    }
+
     // Haptic feedback (enable after installing expo-haptics)
     // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
@@ -106,12 +114,13 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
 
           const iconColor = isActive ? "#1C1C1E" : "#9E9E9E";
           const labelColor = isActive ? "#1C1C1E" : "#9E9E9E";
+          const isLocked = tab.locked;
 
           return (
             <Pressable
               key={tab.id}
               onPress={() => handleTabPress(index, tab.id)}
-              style={styles.tabButton}
+              style={[styles.tabButton, isLocked && styles.tabButtonLocked]}
               android_ripple={{
                 color: "rgba(255, 214, 0, 0.2)",
                 borderless: true,
@@ -122,6 +131,7 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
                   styles.tabContent,
                   {
                     transform: [{ scale }],
+                    opacity: isLocked ? 0.5 : 1,
                   },
                 ]}
               >
@@ -138,6 +148,11 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
                 {/* Icon on top */}
                 <View style={styles.iconContainer}>
                   <Ionicons name={tab.iconName} size={24} color={iconColor} />
+                  {isLocked && (
+                    <View style={styles.lockOverlay}>
+                      <Ionicons name="lock-closed" size={12} color="#FF3B30" />
+                    </View>
+                  )}
                 </View>
 
                 {/* Label below */}
@@ -184,6 +199,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 8,
   },
+  tabButtonLocked: {
+    opacity: 1,
+  },
   tabContent: {
     alignItems: "center",
     justifyContent: "center",
@@ -205,6 +223,15 @@ const styles = StyleSheet.create({
   iconContainer: {
     marginBottom: 4,
     zIndex: 1,
+    position: "relative",
+  },
+  lockOverlay: {
+    position: "absolute",
+    top: -4,
+    right: -8,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 10,
+    padding: 2,
   },
   tabLabel: {
     fontSize: 11,

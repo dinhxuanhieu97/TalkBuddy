@@ -119,7 +119,7 @@ type Phrase = {
   id: string;
   en: string;
   vi: string;
-  level: "Basic" | "Intermediate" | "Advanced";
+  level?: "Basic" | "Intermediate" | "Advanced" | "";
   contextLabel: string;
   speaker: "you" | "them";
   role?: string;
@@ -130,7 +130,10 @@ type Phrase = {
 // Convert difficulty from web format to display format
 function getDifficultyLabel(
   difficulty: string,
-): "Basic" | "Intermediate" | "Advanced" {
+): "Basic" | "Intermediate" | "Advanced" | "" {
+  if (!difficulty || difficulty.trim() === "") {
+    return "";
+  }
   switch (difficulty) {
     case "basic":
       return "Basic";
@@ -139,7 +142,7 @@ function getDifficultyLabel(
     case "advanced":
       return "Advanced";
     default:
-      return "Basic";
+      return "";
   }
 }
 
@@ -214,8 +217,8 @@ export default function LearnScreen() {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const [difficultyFilter, setDifficultyFilter] = useState<
-    "all" | "Basic" | "Intermediate" | "Advanced"
-  >("all");
+    "Basic" | "Intermediate" | "Advanced"
+  >("Basic");
   const {
     phrases: savedPhrasesList,
     togglePhrase,
@@ -370,9 +373,7 @@ export default function LearnScreen() {
     let result = phrases;
 
     // Apply difficulty filter
-    if (difficultyFilter !== "all") {
-      result = result.filter((p) => p.level === difficultyFilter);
-    }
+    result = result.filter((p) => p.level === difficultyFilter);
 
     // Apply search filter if exists
     if (debouncedSearchQuery && matchingScenes.length > 0) {
@@ -381,10 +382,7 @@ export default function LearnScreen() {
         const scenePhrases = convertScenesToPhrases(scenes);
         searchResult.push(...scenePhrases);
       });
-      result =
-        difficultyFilter !== "all"
-          ? searchResult.filter((p) => p.level === difficultyFilter)
-          : searchResult;
+      result = searchResult.filter((p) => p.level === difficultyFilter);
     }
 
     return result;
@@ -392,7 +390,7 @@ export default function LearnScreen() {
 
   const toggleSave = useCallback(
     (phrase: Phrase) => {
-      togglePhrase(phrase);
+      togglePhrase({ ...phrase, level: phrase.level || "" });
     },
     [togglePhrase],
   );
@@ -874,29 +872,26 @@ export default function LearnScreen() {
 
             {/* Difficulty Filter */}
             <View style={styles.difficultyFilter}>
-              {(["all", "Basic", "Intermediate", "Advanced"] as const).map(
-                (level) => (
-                  <TouchableOpacity
-                    key={level}
+              {(["Basic", "Intermediate", "Advanced"] as const).map((level) => (
+                <TouchableOpacity
+                  key={level}
+                  style={[
+                    styles.difficultyButton,
+                    difficultyFilter === level && styles.difficultyButtonActive,
+                  ]}
+                  onPress={() => setDifficultyFilter(level)}
+                >
+                  <Text
                     style={[
-                      styles.difficultyButton,
+                      styles.difficultyButtonText,
                       difficultyFilter === level &&
-                        styles.difficultyButtonActive,
+                        styles.difficultyButtonTextActive,
                     ]}
-                    onPress={() => setDifficultyFilter(level)}
                   >
-                    <Text
-                      style={[
-                        styles.difficultyButtonText,
-                        difficultyFilter === level &&
-                          styles.difficultyButtonTextActive,
-                      ]}
-                    >
-                      {level === "all" ? "All" : level}
-                    </Text>
-                  </TouchableOpacity>
-                ),
-              )}
+                    {level}
+                  </Text>
+                </TouchableOpacity>
+              ))}
             </View>
 
             {/* Listen to Full Dialogue button - below PHRASES header */}
@@ -968,17 +963,21 @@ export default function LearnScreen() {
                     >
                       <View style={styles.phraseHeaderLeft}>
                         <View style={styles.phraseLabels}>
-                          <View
-                            style={[
-                              styles.levelBadge,
-                              phrase.level === "Advanced" &&
-                                styles.levelBadgeAdvanced,
-                              phrase.level === "Intermediate" &&
-                                styles.levelBadgeIntermediate,
-                            ]}
-                          >
-                            <Text style={styles.levelText}>{phrase.level}</Text>
-                          </View>
+                          {phrase.level && (
+                            <View
+                              style={[
+                                styles.levelBadge,
+                                phrase.level === "Advanced" &&
+                                  styles.levelBadgeAdvanced,
+                                phrase.level === "Intermediate" &&
+                                  styles.levelBadgeIntermediate,
+                              ]}
+                            >
+                              <Text style={styles.levelText}>
+                                {phrase.level}
+                              </Text>
+                            </View>
+                          )}
                           {/* Speaker badge - you vs them */}
                           <View
                             style={[
@@ -1108,17 +1107,17 @@ export default function LearnScreen() {
                         {activePractice?.phrase.id === phrase.id ? (
                           activePractice.mode === "practice" ? (
                             <PracticeMode
-                              phrase={phrase}
+                              phrase={{ ...phrase, level: phrase.level || "" }}
                               onClose={closePracticeMode}
                             />
                           ) : activePractice.mode === "dictation" ? (
                             <DictationMode
-                              phrase={phrase}
+                              phrase={{ ...phrase, level: phrase.level || "" }}
                               onClose={closePracticeMode}
                             />
                           ) : (
                             <ShadowMode
-                              phrase={phrase}
+                              phrase={{ ...phrase, level: phrase.level || "" }}
                               onClose={closePracticeMode}
                             />
                           )

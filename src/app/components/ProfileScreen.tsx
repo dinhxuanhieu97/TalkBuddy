@@ -103,10 +103,7 @@ export default function ProfileScreen({
       onLogout?.();
     } catch (error) {
       console.error("Logout error:", error);
-      Alert.alert(
-        t("common.error") || "Error",
-        t("auth.logoutError") || "Failed to log out",
-      );
+      Alert.alert(t("common.error"), t("auth.logoutError"));
     } finally {
       setIsLoggingOut(false);
     }
@@ -184,7 +181,7 @@ export default function ProfileScreen({
         {
           id: "voice",
           icon: "mic",
-          label: t("profile.voiceSettings") || "Voice Settings",
+          label: t("profile.voiceSettings"),
           value: t("profile.voiceSettingsValue"),
           type: "navigation" as const,
         },
@@ -360,17 +357,11 @@ export default function ProfileScreen({
         await AsyncStorage.clear();
         onLogout?.();
       } else {
-        Alert.alert(
-          t("common.error") || "Error",
-          t("profile.deleteAccountError") || "Failed to delete account",
-        );
+        Alert.alert(t("common.error"), t("profile.deleteAccountError"));
       }
     } catch (error) {
       console.error("Delete account error:", error);
-      Alert.alert(
-        t("common.error") || "Error",
-        t("profile.deleteAccountError") || "Failed to delete account",
-      );
+      Alert.alert(t("common.error"), t("profile.deleteAccountError"));
     } finally {
       setIsDeletingAccount(false);
     }
@@ -1255,7 +1246,7 @@ export default function ProfileScreen({
                 textAlign: "center",
               }}
             >
-              TalkBuddy
+              {t("profile.appName")}
             </Text>
             <Text
               style={{
@@ -1276,7 +1267,7 @@ export default function ProfileScreen({
                 lineHeight: 20,
               }}
             >
-              AI-powered English learning app for travelers
+              {t("profile.aboutDescription")}
             </Text>
             <View
               style={{
@@ -1329,7 +1320,7 @@ export default function ProfileScreen({
                 textAlign: "center",
               }}
             >
-              We appreciate your feedback! Please email us at:
+              {t("profile.feedbackIntro")}
             </Text>
             <TouchableOpacity
               style={{
@@ -1344,7 +1335,7 @@ export default function ProfileScreen({
               }}
             >
               <Text style={{ fontSize: 16, fontWeight: "600", color: "#FFF" }}>
-                support@talkbuddy.app
+                {t("profile.supportEmail")}
               </Text>
             </TouchableOpacity>
             <Text
@@ -1355,7 +1346,7 @@ export default function ProfileScreen({
                 textAlign: "center",
               }}
             >
-              Your feedback helps us improve the app!
+              {t("profile.feedbackThanks")}
             </Text>
           </ScrollView>
         </View>

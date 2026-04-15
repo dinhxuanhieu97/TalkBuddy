@@ -11,13 +11,21 @@ import {
   Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { aiConversationService, type ChatMessage, type ConversationContext } from "../../services/aiConversationService";
+import { useT } from "../../lib/i18n";
+import {
+  aiConversationService,
+  type ChatMessage,
+  type ConversationContext,
+} from "../../services/aiConversationService";
 
 export default function AiConversationScreen() {
+  const t = useT();
   const [view, setView] = useState<"categories" | "conversation">("categories");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mode, setMode] = useState<"free" | "guided" | "listening">("free");
-  const [difficulty, setDifficulty] = useState<"beginner" | "intermediate" | "advanced">("beginner");
+  const [difficulty, setDifficulty] = useState<
+    "beginner" | "intermediate" | "advanced"
+  >("beginner");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -44,7 +52,7 @@ export default function AiConversationScreen() {
     const response = await aiConversationService.startConversation(
       selectedCategory,
       mode,
-      difficulty
+      difficulty,
     );
 
     if (response) {
@@ -69,7 +77,7 @@ export default function AiConversationScreen() {
       newMessages,
       selectedCategory,
       mode,
-      difficulty
+      difficulty,
     );
 
     if (response) {
@@ -90,9 +98,9 @@ export default function AiConversationScreen() {
   const renderCategoryGrid = () => (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>💬 AI Conversation</Text>
+        <Text style={styles.headerTitle}>{t("aiConversation.title")}</Text>
         <Text style={styles.headerSubtitle}>
-          Practice English with AI in real scenarios
+          {t("aiConversation.subtitle")}
         </Text>
       </View>
 
@@ -103,8 +111,10 @@ export default function AiConversationScreen() {
             style={[styles.modeButton, mode === m && styles.modeButtonActive]}
             onPress={() => setMode(m)}
           >
-            <Text style={[styles.modeText, mode === m && styles.modeTextActive]}>
-              {m.charAt(0).toUpperCase() + m.slice(1)}
+            <Text
+              style={[styles.modeText, mode === m && styles.modeTextActive]}
+            >
+              {t(`aiConversation.mode.${m}`)}
             </Text>
           </TouchableOpacity>
         ))}
@@ -114,17 +124,27 @@ export default function AiConversationScreen() {
         {(["beginner", "intermediate", "advanced"] as const).map((d) => (
           <TouchableOpacity
             key={d}
-            style={[styles.difficultyButton, difficulty === d && styles.difficultyButtonActive]}
+            style={[
+              styles.difficultyButton,
+              difficulty === d && styles.difficultyButtonActive,
+            ]}
             onPress={() => setDifficulty(d)}
           >
-            <Text style={[styles.difficultyText, difficulty === d && styles.difficultyTextActive]}>
-              {d.charAt(0).toUpperCase() + d.slice(1)}
+            <Text
+              style={[
+                styles.difficultyText,
+                difficulty === d && styles.difficultyTextActive,
+              ]}
+            >
+              {t(`aiConversation.difficulty.${d}`)}
             </Text>
           </TouchableOpacity>
         ))}
       </View>
 
-      <Text style={styles.sectionTitle}>Choose a Scenario</Text>
+      <Text style={styles.sectionTitle}>
+        {t("aiConversation.chooseScenario")}
+      </Text>
 
       <FlatList
         data={categories}
@@ -154,7 +174,9 @@ export default function AiConversationScreen() {
         disabled={!selectedCategory}
       >
         <Ionicons name="chatbubbles" size={24} color="white" />
-        <Text style={styles.startButtonText}>Start Practice</Text>
+        <Text style={styles.startButtonText}>
+          {t("aiConversation.startPractice")}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -167,10 +189,15 @@ export default function AiConversationScreen() {
         </TouchableOpacity>
         <View style={styles.headerInfo}>
           <Text style={styles.headerInfoTitle}>
-            {categories.find((c) => c.id === selectedCategory)?.name || "Conversation"}
+            {categories.find((c) => c.id === selectedCategory)?.name ||
+              t("aiConversation.conversation")}
           </Text>
           <Text style={styles.headerInfoSubtitle}>
-            Turn {turnCount} · {mode} · {difficulty}
+            {t("aiConversation.turnInfo", {
+              turn: turnCount,
+              mode: t(`aiConversation.mode.${mode}`),
+              difficulty: t(`aiConversation.difficulty.${difficulty}`),
+            })}
           </Text>
         </View>
         <TouchableOpacity onPress={handleReset} style={styles.newChatButton}>
@@ -191,7 +218,9 @@ export default function AiConversationScreen() {
             ]}
           >
             {item.role === "assistant" && (
-              <Text style={styles.assistantLabel}>AI</Text>
+              <Text style={styles.assistantLabel}>
+                {t("aiConversation.ai")}
+              </Text>
             )}
             <Text
               style={[
@@ -224,7 +253,7 @@ export default function AiConversationScreen() {
 
       {loading && (
         <View style={styles.loadingContainer}>
-          <Text style={styles.loadingText}>AI is thinking...</Text>
+          <Text style={styles.loadingText}>{t("aiConversation.thinking")}</Text>
         </View>
       )}
 
@@ -243,7 +272,10 @@ export default function AiConversationScreen() {
             maxLength={500}
           />
           <TouchableOpacity
-            style={[styles.sendButton, !input.trim() && styles.sendButtonDisabled]}
+            style={[
+              styles.sendButton,
+              !input.trim() && styles.sendButtonDisabled,
+            ]}
             onPress={handleSendMessage}
             disabled={!input.trim() || loading}
           >

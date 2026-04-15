@@ -1,33 +1,35 @@
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { useUserStore } from '../../stores/userStore';
-import { initializeMockFamily } from '../../utils/mockFamilyData';
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { useT } from "../../lib/i18n";
+import { useUserStore } from "../../stores/userStore";
+import { initializeMockFamily } from "../../utils/mockFamilyData";
 
 export function TestFamilyButton() {
+  const t = useT();
   const setFamily = useUserStore((state) => state.setFamily);
   const setSubscription = useUserStore((state) => state.setSubscription);
   const addCredits = useUserStore((state) => state.addCredits);
 
   const handleEnableFamily = () => {
     // Set subscription to family
-    setSubscription('family');
-    
+    setSubscription("family");
+
     // Add some credits to shared pool
     addCredits(1000);
-    
+
     // Initialize mock family data
     initializeMockFamily(setFamily, true); // true = isAdmin
   };
 
   return (
     <TouchableOpacity style={styles.button} onPress={handleEnableFamily}>
-      <Text style={styles.buttonText}>🧪 Enable Family Plan (Test)</Text>
+      <Text style={styles.buttonText}>{t("profile.testFamilyPlan")}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#34C759',
+    backgroundColor: "#34C759",
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 12,
@@ -36,8 +38,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
-    fontWeight: '700',
-    color: '#FFFFFF',
-    textAlign: 'center',
+    fontWeight: "700",
+    color: "#FFFFFF",
+    textAlign: "center",
   },
 });

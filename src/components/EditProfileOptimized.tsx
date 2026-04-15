@@ -22,7 +22,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useUserStore } from "../stores/userStore";
-import { useT } from "../lib/i18n";
+import { useT, type LocaleKeys } from "../lib/i18n";
 
 // Enable LayoutAnimation on Android
 if (
@@ -283,10 +283,10 @@ export function EditProfileOptimized() {
 
   const renderInput = (
     field: keyof FormData,
-    label: string,
+    label: LocaleKeys,
     icon: keyof typeof Ionicons.glyphMap,
     options: {
-      placeholder: string;
+      placeholder: LocaleKeys;
       keyboardType?: "default" | "email-address" | "phone-pad";
       autoCapitalize?: "none" | "sentences" | "words" | "characters";
       multiline?: boolean;
@@ -301,7 +301,7 @@ export function EditProfileOptimized() {
         }
       }}
     >
-      <Text style={styles.inputLabel}>{t(label)}</Text>
+      <Text style={styles.inputLabel}>{t(label as LocaleKeys)}</Text>
       <View
         style={[
           styles.inputWrapper,
@@ -322,7 +322,7 @@ export function EditProfileOptimized() {
           onChangeText={(value) => handleInputChange(field, value)}
           onFocus={() => handleInputFocus(field)}
           onBlur={() => setFocusedField(null)}
-          placeholder={t(options.placeholder)}
+          placeholder={t(options.placeholder as LocaleKeys)}
           placeholderTextColor="#BDBDBD"
           keyboardType={options.keyboardType}
           autoCapitalize={options.autoCapitalize}

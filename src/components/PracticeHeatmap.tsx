@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useT } from "../lib/i18n";
+import { useT, type LocaleKeys } from "../lib/i18n";
 import { useUserStore } from "../stores/userStore";
 
 const DAYS_OF_WEEK = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const WEEKS_TO_SHOW = 10;
 const TOTAL_CELLS = WEEKS_TO_SHOW * 7;
 
-const DAY_KEYS = [
+const DAY_KEYS: LocaleKeys[] = [
   "heatmap.mon",
   "heatmap.tue",
   "heatmap.wed",

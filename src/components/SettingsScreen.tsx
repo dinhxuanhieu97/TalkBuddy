@@ -15,7 +15,12 @@ import {
   SpeechSpeed,
   VoiceGender,
 } from "../stores/userStore";
-import { useLocaleStore, useT, LOCALE_OPTIONS } from "../lib/i18n";
+import {
+  useLocaleStore,
+  useT,
+  LOCALE_OPTIONS,
+  type LocaleKeys,
+} from "../lib/i18n";
 
 const ACCENT_OPTIONS: { value: VoiceAccent; label: string; tag: string }[] = [
   { value: "en-US", label: "American", tag: "US" },
@@ -166,7 +171,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                       preferences.accent === value && styles.optionLabelActive,
                     ]}
                   >
-                    {t(`settings.accent${label}`)}
+                    {t(`settings.accent${label}` as LocaleKeys)}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -195,7 +200,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                         styles.optionLabelActive,
                     ]}
                   >
-                    {t(`settings.speed${label}`)}
+                    {t(`settings.speed${label}` as LocaleKeys)}
                   </Text>
                 </TouchableOpacity>
               ))}

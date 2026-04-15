@@ -9,7 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useUserStore } from "../stores/userStore";
 import { purchaseSubscription } from "../lib/revenuecat";
-import { t } from "../lib/i18n"; // Import the i18n translation function
+import { useT } from "../lib/i18n";
 
 interface SubscriptionPlan {
   id: string;
@@ -23,82 +23,82 @@ interface SubscriptionPlan {
   color: string;
 }
 
-const PLANS: SubscriptionPlan[] = [
-  {
-    id: "free",
-    name: t("subscription.planFree"), // Replace hardcoded string with i18n t() call
-    price: { monthly: 0, yearly: 0 },
-    features: [
-      t("subscription.featureLimitedPhrases"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureBasicDifficulty"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureNoAI"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureNoSync"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureSavedPhrases30"), // Replace hardcoded string with i18n t() call
-    ],
-    color: "#9E9E9E",
-  },
-  {
-    id: "pro",
-    name: t("subscription.planPro"), // Replace hardcoded string with i18n t() call
-    price: { monthly: 2.99, yearly: 22.99 },
-    features: [
-      t("subscription.featureAllPhrases"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureIntermediateDifficulty"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureAI"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureSync"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureSavedPhrases500"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureAdFree"), // Replace hardcoded string with i18n t() call
-    ],
-    popular: true,
-    color: "#FFD600",
-  },
-  {
-    id: "family",
-    name: t("subscription.planFamily"), // Replace hardcoded string with i18n t() call
-    price: { monthly: 6.99, yearly: 52.99 },
-    features: [
-      t("subscription.featureProAll"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureFamilyMembers"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureSharedCredits"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureAnalytics"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureRoleVoices"), // Replace hardcoded string with i18n t() call
-      t("subscription.featureUnlimitedSaved"), // Replace hardcoded string with i18n t() call
-    ],
-    color: "#34C759",
-  },
-];
-
 export function SubscriptionPlans() {
+  const t = useT();
   const subscription = useUserStore((state) => state.subscription);
   const setSubscription = useUserStore((state) => state.setSubscription);
+
+  const PLANS: SubscriptionPlan[] = [
+    {
+      id: "free",
+      name: t("subscription.planFree"),
+      price: { monthly: 0, yearly: 0 },
+      features: [
+        t("subscription.featureLimitedPhrases"),
+        t("subscription.featureBasicDifficulty"),
+        t("subscription.featureNoAI"),
+        t("subscription.featureNoSync"),
+        t("subscription.featureSavedPhrases30"),
+      ],
+      color: "#9E9E9E",
+    },
+    {
+      id: "pro",
+      name: t("subscription.planPro"),
+      price: { monthly: 2.99, yearly: 22.99 },
+      features: [
+        t("subscription.featureAllPhrases"),
+        t("subscription.featureIntermediateDifficulty"),
+        t("subscription.featureAI"),
+        t("subscription.featureSync"),
+        t("subscription.featureSavedPhrases500"),
+        t("subscription.featureAdFree"),
+      ],
+      popular: true,
+      color: "#FFD600",
+    },
+    {
+      id: "family",
+      name: t("subscription.planFamily"),
+      price: { monthly: 6.99, yearly: 52.99 },
+      features: [
+        t("subscription.featureProAll"),
+        t("subscription.featureFamilyMembers"),
+        t("subscription.featureSharedCredits"),
+        t("subscription.featureAnalytics"),
+        t("subscription.featureRoleVoices"),
+        t("subscription.featureUnlimitedSaved"),
+      ],
+      color: "#34C759",
+    },
+  ];
 
   const handleSubscribe = async (planId: string, isYearly: boolean) => {
     if (planId === "free") {
       setSubscription("free");
-      Alert.alert("Success", t("subscription.success")); // Replace hardcoded string with i18n t() call
+      Alert.alert(t("subscription.success"), t("subscription.success"));
       return;
     }
 
     const packageId = isYearly ? `${planId}_yearly` : `${planId}_monthly`;
 
     Alert.alert(
-      "Subscribe",
+      t("subscription.monthly"),
       t("subscription.subscribe", { planId: planId.toUpperCase() }),
       [
-        // Replace hardcoded string with i18n t() call
-        { text: "Cancel", style: "cancel" },
+        { text: t("common.cancel"), style: "cancel" },
         {
-          text: "Subscribe",
+          text: t("subscription.monthly"),
           onPress: async () => {
             const result = await purchaseSubscription(packageId);
             if (result) {
               setSubscription(planId as any);
               Alert.alert(
-                t("subscription.success"), // Replace hardcoded string with i18n t() call
-                t("subscription.subscribed", { planId: planId.toUpperCase() }), // Replace hardcoded string with i18n t() call
+                t("subscription.success"),
+                t("subscription.subscribed", { planId: planId.toUpperCase() }),
               );
             } else {
-              Alert.alert("Error", t("subscription.error")); // Replace hardcoded string with i18n t() call
+              Alert.alert(t("common.error"), t("subscription.error"));
             }
           },
         },
@@ -110,12 +110,10 @@ export function SubscriptionPlans() {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>{t("subscription.choosePlan")}</Text>{" "}
-        // Replace hardcoded string with i18n t() call
+        <Text style={styles.headerTitle}>{t("subscription.choosePlan")}</Text>
         <Text style={styles.headerSubtitle}>
           {t("subscription.unlockFeatures")}
-        </Text>{" "}
-        // Replace hardcoded string with i18n t() call
+        </Text>
       </View>
 
       {/* Plans */}
@@ -137,8 +135,7 @@ export function SubscriptionPlans() {
                   <Ionicons name="star" size={12} color="#FFD600" />
                   <Text style={styles.popularText}>
                     {t("subscription.mostPopular")}
-                  </Text>{" "}
-                  // Replace hardcoded string with i18n t() call
+                  </Text>
                 </View>
               )}
 
@@ -147,8 +144,7 @@ export function SubscriptionPlans() {
                   <Ionicons name="checkmark-circle" size={16} color="#34C759" />
                   <Text style={styles.currentText}>
                     {t("subscription.currentPlan")}
-                  </Text>{" "}
-                  // Replace hardcoded string with i18n t() call
+                  </Text>
                 </View>
               )}
 
@@ -180,15 +176,13 @@ export function SubscriptionPlans() {
                   </Text>
                   <Text style={styles.pricePeriod}>
                     {t("subscription.month")}
-                  </Text>{" "}
-                  // Replace hardcoded string with i18n t() call
+                  </Text>
                 </View>
                 {plan.price.yearly > 0 && (
                   <Text style={styles.yearlyPrice}>
                     {t("subscription.yearlyPrice", {
                       price: plan.price.yearly.toFixed(2),
-                    })}{" "}
-                    // Replace hardcoded string with i18n t() call
+                    })}
                   </Text>
                 )}
               </View>
@@ -221,8 +215,7 @@ export function SubscriptionPlans() {
                       >
                         <Text style={styles.subscribeButtonText}>
                           {t("subscription.monthly")}
-                        </Text>{" "}
-                        // Replace hardcoded string with i18n t() call
+                        </Text>
                       </TouchableOpacity>
                       <TouchableOpacity
                         style={[
@@ -238,8 +231,7 @@ export function SubscriptionPlans() {
                             { color: plan.color },
                           ]}
                         >
-                          {t("subscription.yearly")} // Replace hardcoded string
-                          with i18n t() call
+                          {t("subscription.yearly")}
                         </Text>
                       </TouchableOpacity>
                     </>
@@ -258,8 +250,7 @@ export function SubscriptionPlans() {
                           { color: "#9E9E9E" },
                         ]}
                       >
-                        {t("subscription.downgrade")} // Replace hardcoded
-                        string with i18n t() call
+                        {t("subscription.downgrade")}
                       </Text>
                     </TouchableOpacity>
                   )}
@@ -272,17 +263,12 @@ export function SubscriptionPlans() {
 
       {/* Info */}
       <View style={styles.infoSection}>
-        <Text style={styles.infoTitle}>{t("subscription.infoTitle")}</Text> //
-        Replace hardcoded string with i18n t() call
+        <Text style={styles.infoTitle}>{t("subscription.infoTitle")}</Text>
         <Text style={styles.infoText}>
           • {t("subscription.autoRenew")}
-          {"\n"} // Replace hardcoded string with i18n t() call •{" "}
-          {t("subscription.cancelAnytime")}
-          {"\n"} // Replace hardcoded string with i18n t() call •{" "}
-          {t("subscription.creditsNeverExpire")}
-          {"\n"} // Replace hardcoded string with i18n t() call •{" "}
-          {t("subscription.familyShared")} // Replace hardcoded string with i18n
-          t() call
+          {"\n"}• {t("subscription.cancelAnytime")}
+          {"\n"}• {t("subscription.creditsNeverExpire")}
+          {"\n"}• {t("subscription.familyShared")}
         </Text>
       </View>
     </ScrollView>
