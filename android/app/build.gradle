@@ -81,6 +81,18 @@ def enableMinifyInReleaseBuilds = (findProperty('android.enableMinifyInReleaseBu
  */
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
+// @generated begin talkbuddy-android-release-signing - expo prebuild (DO NOT MODIFY)
+def _tbSigningRequiredProps = [
+        'MYAPP_UPLOAD_STORE_FILE',
+        'MYAPP_UPLOAD_KEY_ALIAS',
+        'MYAPP_UPLOAD_STORE_PASSWORD',
+        'MYAPP_UPLOAD_KEY_PASSWORD'
+]
+def _tbRequestedTasks = gradle.startParameter.taskNames.collect { it.toLowerCase() }
+def _tbIsReleaseTask = _tbRequestedTasks.any { it.contains('release') }
+def _tbGetSigningProp = { key -> findProperty(key) ?: System.getenv(key) }
+// @generated end talkbuddy-android-release-signing
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -105,6 +117,20 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            def _tbMissingSigningProps = _tbSigningRequiredProps.findAll { !_tbGetSigningProp(it) }
+            if (_tbIsReleaseTask && !_tbMissingSigningProps.isEmpty()) {
+                throw new GradleException("Missing Android release signing properties: ${_tbMissingSigningProps.join(', ')}. Define them in ~/.gradle/gradle.properties or environment variables.")
+            }
+
+            def _tbUploadStoreFile = _tbGetSigningProp('MYAPP_UPLOAD_STORE_FILE')
+            if (_tbUploadStoreFile) {
+                storeFile file(_tbUploadStoreFile)
+                storePassword _tbGetSigningProp('MYAPP_UPLOAD_STORE_PASSWORD')
+                keyAlias _tbGetSigningProp('MYAPP_UPLOAD_KEY_ALIAS')
+                keyPassword _tbGetSigningProp('MYAPP_UPLOAD_KEY_PASSWORD')
+            }
+        }
     }
     buildTypes {
         debug {
@@ -113,7 +139,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             def enableShrinkResources = findProperty('android.enableShrinkResourcesInReleaseBuilds') ?: 'false'
             shrinkResources enableShrinkResources.toBoolean()
             minifyEnabled enableMinifyInReleaseBuilds

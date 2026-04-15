@@ -47,7 +47,12 @@
       "bundler": "metro",
       "output": "static"
     },
-    "plugins": ["expo-router", "expo-apple-authentication", "expo-sqlite"],
+    "plugins": [
+      "expo-router",
+      "expo-apple-authentication",
+      "expo-sqlite",
+      "./plugins/withAndroidReleaseSigning"
+    ],
     "experiments": {
       "typedRoutes": true
     },

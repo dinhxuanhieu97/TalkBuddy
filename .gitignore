@@ -12,6 +12,7 @@ out/
 # Expo specific
 .expo/
 *.jks
+*.keystore
 *.p12
 *.key
 *.mobileprovision
@@ -109,3 +110,6 @@ firebase-debug.*.log
 # Temporary files
 tmp/
 temp/
+
+# Local Android signing materials
+android_build/
