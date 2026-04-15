@@ -1,0 +1,103 @@
+import { useState, useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+
+export default function DevModeBanner() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    // Check if we're in offline mode (mock client)
+    const checkOfflineMode = () => {
+      try {
+        // Simple check - if supabaseUrl is empty, we're in offline mode
+        const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || "";
+        const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || "";
+
+        if (!supabaseUrl || !supabaseAnonKey) {
+          setIsOffline(true);
+          setIsVisible(true);
+
+          // Auto-hide after 10 seconds
+          setTimeout(() => {
+            setIsVisible(false);
+          }, 10000);
+        }
+      } catch (error) {
+        console.log("Dev mode check failed:", error);
+      }
+    };
+
+    checkOfflineMode();
+  }, []);
+
+  if (!isVisible || !isOffline) {
+    return null;
+  }
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.banner}>
+        <Text style={styles.bannerText}>🔧 Development Mode</Text>
+        <Text style={styles.bannerSubtext}>
+          Running without backend connection
+        </Text>
+      </View>
+      <TouchableOpacity
+        style={styles.closeButton}
+        onPress={() => setIsVisible(false)}
+      >
+        <Text style={styles.closeText}>✕</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    position: "absolute",
+    top: 50,
+    left: 16,
+    right: 16,
+    zIndex: 1000,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  banner: {
+    flex: 1,
+    backgroundColor: "#FF6B35",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  bannerText: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "700",
+  },
+  bannerSubtext: {
+    color: "#fff",
+    fontSize: 10,
+    opacity: 0.9,
+    marginTop: 2,
+  },
+  closeButton: {
+    marginLeft: 8,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: "rgba(255,255,255,0.2)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  closeText: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "700",
+  },
+});

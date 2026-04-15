@@ -1,4 +1,4 @@
-import MainApp from "../../components/app/MainApp";
+import MainApp from "../components/MainApp";
 
 export default function TabLayout() {
   return <MainApp />;

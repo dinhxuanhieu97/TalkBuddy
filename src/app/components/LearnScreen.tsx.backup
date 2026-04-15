@@ -1,0 +1,556 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Search,
+  Volume2,
+  Bookmark,
+  X,
+  ChevronDown,
+  BookOpen,
+  Ear,
+  PenTool,
+  Play,
+  RotateCcw,
+  CheckCircle2,
+  Trash2,
+  ChevronRight,
+  MessageCircle,
+  ShieldAlert,
+  Plane,
+  HeartPulse,
+  ShoppingBag,
+  Hotel,
+  Utensils,
+  Bus,
+  Landmark,
+} from "lucide-react";
+
+const CONTEXTS = [
+  { id: "airport", name: "Airport", icon: "✈️" },
+  { id: "hospital", name: "Hospital", icon: "🏥" },
+  { id: "hotel", name: "Hotel", icon: "🏨" },
+  { id: "restaurant", name: "Restaurant", icon: "🍽️" },
+  { id: "police", name: "Police", icon: "🚔" },
+  { id: "shopping", name: "Shopping", icon: "🛍️" },
+  { id: "transport", name: "Transport", icon: "🚌" },
+  { id: "bank", name: "Bank", icon: "🏦" },
+];
+
+type Phrase = {
+  id: string;
+  en: string;
+  vi: string;
+  level: "Basic" | "Advanced";
+  contextLabel: string;
+  keywords?: { en: string; vi: string }[];
+  alternatives?: { en: string; vi: string }[];
+};
+
+const PHRASE_DATA: Record<string, Phrase[]> = {
+  airport: [
+    {
+      id: "air-1",
+      en: "Sure! May I see your passport and booking confirmation?",
+      vi: "Chắc chắn rồi! Cho tôi xem hộ chiếu và xác nhận đặt chỗ của bạn được không?",
+      level: "Basic",
+      contextLabel: "Counter",
+      keywords: [
+        { en: "passport", vi: "hộ chiếu" },
+        { en: "booking confirmation", vi: "xác nhận đặt chỗ" },
+        { en: "booking code", vi: "mã đặt chỗ" },
+      ],
+      alternatives: [
+        {
+          en: "Certainly. Can I have your passport and booking reference?",
+          vi: "Tất nhiên rồi. Cho xem hộ chiếu nhé. Và quý khách có mã đặt phòng không?",
+        },
+        {
+          en: "Sure thing. Your passport and booking info, please.",
+          vi: "Tất nhiên rồi. Vui lòng cho xem hộ chiếu. Quý khách có mã số đặt chỗ không?",
+        },
+      ],
+    },
+    {
+      id: "air-2",
+      en: "Where is the check-in counter?",
+      vi: "Quầy làm thủ tục ở đâu?",
+      level: "Basic",
+      contextLabel: "Check-in",
+    },
+    {
+      id: "air-3",
+      en: "My flight has been delayed.",
+      vi: "Chuyến bay của tôi bị trễ.",
+      level: "Basic",
+      contextLabel: "Notice",
+    },
+    {
+      id: "air-4",
+      en: "Can I upgrade to business class?",
+      vi: "Tôi có thể nâng cấp lên hạng thương gia không?",
+      level: "Advanced",
+      contextLabel: "Ticket",
+    },
+  ],
+  hospital: [
+    {
+      id: "hosp-1",
+      en: "I need to see a doctor immediately.",
+      vi: "Tôi cần gặp bác sĩ ngay lập tức.",
+      level: "Basic",
+      contextLabel: "Reception",
+    },
+    {
+      id: "hosp-2",
+      en: "Where is the emergency room?",
+      vi: "Phòng cấp cứu ở đâu?",
+      level: "Basic",
+      contextLabel: "Emergency",
+    },
+    {
+      id: "hosp-3",
+      en: "I'm allergic to penicillin.",
+      vi: "Tôi dị ứng với penicillin.",
+      level: "Advanced",
+      contextLabel: "Allergy",
+    },
+  ],
+};
+
+type PracticeTab = "read" | "understand" | "dictation";
+
+export function LearnScreen() {
+  const [selectedContext, setSelectedContext] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [savedPhrases, setSavedPhrases] = useState<string[]>([]);
+  const [expandedPhraseId, setExpandedPhraseId] = useState<string | null>(null);
+  const [activePracticeTab, setActivePracticeTab] =
+    useState<PracticeTab>("read");
+  const [dictationInput, setDictationInput] = useState("");
+
+  const phrases = selectedContext ? (PHRASE_DATA[selectedContext] ?? []) : [];
+  const filteredPhrases = searchQuery
+    ? Object.values(PHRASE_DATA)
+        .flat()
+        .filter(
+          (p) =>
+            p.en.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.vi.toLowerCase().includes(searchQuery.toLowerCase()),
+        )
+    : phrases;
+
+  const toggleSave = (en: string) => {
+    setSavedPhrases((prev) =>
+      prev.includes(en) ? prev.filter((p) => p !== en) : [...prev, en],
+    );
+  };
+
+  const renderPracticeContent = (phrase: Phrase) => {
+    switch (activePracticeTab) {
+      case "read":
+        return (
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <p className="text-[18px] font-semibold text-[#1C1C1E] leading-tight">
+                {phrase.en}
+              </p>
+              <p className="text-[14px] font-medium text-[#9E9E9E] italic border-l-2 border-[#FFD600] pl-4">
+                {phrase.vi}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-50">
+              <button className="flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gray-100 text-[12px] font-semibold text-[#1C1C1E] active:scale-95 transition-transform">
+                <Volume2 size={18} /> Read aloud phrase
+              </button>
+              <button className="flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gray-100 text-[12px] font-semibold text-[#1C1C1E] active:scale-95 transition-transform">
+                <RotateCcw size={18} /> Slow
+              </button>
+              <button className="flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gray-100 text-[12px] font-semibold text-[#1C1C1E] active:scale-95 transition-transform">
+                <Play size={18} /> Word by word
+              </button>
+              <button
+                onClick={() => toggleSave(phrase.en)}
+                className={`w-12 h-12 rounded-full flex items-center justify-center border border-gray-100 ${savedPhrases.includes(phrase.en) ? "bg-[#1C1C1E] text-[#FFD600]" : "bg-white text-[#9E9E9E]"}`}
+              >
+                <Bookmark
+                  size={18}
+                  fill={savedPhrases.includes(phrase.en) ? "#FFD600" : "none"}
+                />
+              </button>
+            </div>
+          </div>
+        );
+      case "understand":
+        return (
+          <div className="space-y-6">
+            <div>
+              <p className="text-[13px] font-bold text-[#1C1C1E] mb-4">
+                Listen carefully to these keywords.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {phrase.keywords?.map((kw, i) => (
+                  <button
+                    key={i}
+                    className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#EBF3FF] text-[#1C1C1E] text-[13px] font-bold border border-blue-50"
+                  >
+                    <Volume2 size={18} className="text-[#5F6DF6]" />
+                    <span>{kw.vi}</span>
+                    <span className="text-[#5F6DF6] text-[11px] font-semibold">
+                      {kw.en}
+                    </span>
+                  </button>
+                )) || (
+                  <p className="text-[13px] text-gray-400 italic">
+                    No keywords for this phrase.
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <p className="text-[13px] font-bold text-[#1C1C1E] mb-4">
+                They might also say this.
+              </p>
+              <div className="space-y-4">
+                {phrase.alternatives?.map((alt, i) => (
+                  <div
+                    key={i}
+                    className="p-6 rounded-[24px] bg-[#F9F9F9] border border-gray-50 flex gap-4 items-start"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-gray-100 shrink-0">
+                      <Volume2 size={18} className="text-[#9E9E9E]" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-bold text-[#1C1C1E] mb-1">
+                        {alt.en}
+                      </p>
+                      <p className="text-[12px] text-[#9E9E9E] font-medium leading-relaxed">
+                        {alt.vi}
+                      </p>
+                    </div>
+                  </div>
+                )) || (
+                  <p className="text-[13px] text-gray-400 italic">
+                    No alternative scenarios.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      case "dictation":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between px-1">
+                <p className="text-[13px] font-bold text-[#5F6DF6] flex items-center gap-2">
+                  <PenTool size={18} /> Dictation Mode
+                </p>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                  Practiced 0 times
+                </span>
+              </div>
+
+              <div className="flex gap-4">
+                <button className="flex-1 h-14 rounded-2xl bg-[#5F6DF6] text-white flex items-center justify-center gap-3 font-bold text-[14px] active:scale-95 transition-transform">
+                  <Volume2 size={18} /> Click to listen
+                </button>
+                <button className="w-14 h-14 rounded-2xl bg-[#F3F3F5] text-[#1C1C1E] flex items-center justify-center active:scale-95 transition-transform border border-gray-100">
+                  <RotateCcw size={18} />
+                </button>
+              </div>
+
+              <div className="w-full bg-[#F3F3F5] rounded-[32px] p-6 min-h-[140px] border border-gray-100">
+                <textarea
+                  value={dictationInput}
+                  onChange={(e) => setDictationInput(e.target.value)}
+                  placeholder="Type the Vietnamese you hear..."
+                  className="w-full h-full bg-transparent outline-none resize-none text-[15px] font-bold text-[#1C1C1E] placeholder:text-gray-400"
+                />
+              </div>
+
+              <div className="flex justify-end">
+                <button className="px-10 py-4 rounded-full bg-[#5F6DF6] text-white font-bold text-[13px] border border-[#4F5DE6] uppercase tracking-widest active:scale-95 transition-transform">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <div className="w-full h-full flex flex-col bg-[#F9F9F9] relative overflow-hidden">
+      {/* Header */}
+      <div className="px-4 pt-14 pb-6 bg-[#FFD600] flex-shrink-0 z-10">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <p className="text-[10px] font-bold text-[#1C1C1E] opacity-50 uppercase tracking-widest mb-1">
+              Travel Phrases
+            </p>
+            <h1 className="text-[24px] font-bold text-[#1C1C1E] leading-tight">
+              What's the situation?
+            </h1>
+          </div>
+          <div className="w-11 h-11 rounded-[16px] bg-[#1C1C1E] flex items-center justify-center border border-white/10">
+            <Volume2 size={18} className="text-[#FFD600]" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-[20px] flex items-center px-4 py-4 border border-yellow-400/30">
+          <Search size={18} className="text-[#9E9E9E] mr-2" />
+          <input
+            type="text"
+            placeholder="Search phrases, keywords..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              if (e.target.value) setSelectedContext(null);
+            }}
+            className="flex-1 bg-transparent outline-none text-[14px] font-semibold text-[#1C1C1E]"
+          />
+        </div>
+      </div>
+
+      <div
+        className="flex-1 overflow-y-auto"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {/* Context Grid */}
+        {!searchQuery && (
+          <div className="px-4 py-6">
+            <p className="text-[12px] font-semibold text-[#9E9E9E] uppercase tracking-widest mb-4 px-1">
+              CHOOSE CONTEXT
+            </p>
+            <div className="grid grid-cols-4 gap-2">
+              {CONTEXTS.map((ctx) => {
+                const isSelected = selectedContext === ctx.id;
+                return (
+                  <button
+                    key={ctx.id}
+                    onClick={() =>
+                      setSelectedContext(isSelected ? null : ctx.id)
+                    }
+                    className={`flex flex-col items-center justify-center p-2 h-[96px] rounded-[24px] transition-all active:scale-95 ${isSelected ? "bg-[#1C1C1E] border border-white/10" : "bg-white border border-gray-100"}`}
+                  >
+                    <span className="text-[28px] mb-1">{ctx.icon}</span>
+                    <span
+                      className={`text-[10px] font-bold text-center ${isSelected ? "text-[#FFD600]" : "text-[#1C1C1E]"}`}
+                    >
+                      {ctx.name}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Phrases List */}
+        {(selectedContext || searchQuery) && (
+          <div className="px-4 pb-24">
+            <div className="flex items-center justify-between mb-4 px-1">
+              <p className="text-[10px] font-bold text-[#9E9E9E] uppercase tracking-widest">
+                {searchQuery
+                  ? "Search Results"
+                  : `${selectedContext?.toUpperCase()} PHRASES`}
+              </p>
+              {selectedContext && (
+                <button
+                  onClick={() => setSelectedContext(null)}
+                  className="text-[10px] font-bold text-[#FFD600] uppercase tracking-widest bg-[#1C1C1E] px-4 py-2 rounded-full"
+                >
+                  Close
+                </button>
+              )}
+            </div>
+
+            <div className="space-y-4">
+              {filteredPhrases.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-20 opacity-20">
+                  <Search size={18} />
+                  <p className="text-sm font-bold mt-4">No phrases found</p>
+                </div>
+              ) : (
+                filteredPhrases.map((phrase) => {
+                  const isExpanded = expandedPhraseId === phrase.id;
+                  return (
+                    <motion.div
+                      layout
+                      key={phrase.id}
+                      className="rounded-[32px] overflow-hidden bg-white border border-gray-100"
+                    >
+                      {!isExpanded ? (
+                        /* COLLAPSED ITEM */
+                        <div
+                          className="p-6 flex items-start gap-4 active:bg-gray-50 transition-colors"
+                          onClick={() => {
+                            setExpandedPhraseId(phrase.id);
+                            setActivePracticeTab("read");
+                          }}
+                        >
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="text-[9px] font-bold uppercase tracking-widest text-[#FFD600] bg-[#1C1C1E] px-2 py-0.5 rounded-full">
+                                {phrase.contextLabel}
+                              </span>
+                              <span
+                                className={`text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ${phrase.level === "Basic" ? "bg-green-50 text-green-500" : "bg-orange-50 text-orange-500"}`}
+                              >
+                                {phrase.level}
+                              </span>
+                            </div>
+                            <p className="text-[15px] font-bold text-[#1C1C1E] leading-snug mb-1">
+                              {phrase.en}
+                            </p>
+                            <p className="text-[13px] text-[#9E9E9E] font-medium italic">
+                              {phrase.vi}
+                            </p>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-[#F9F9F9] flex items-center justify-center text-[#1C1C1E] shrink-0">
+                            <ChevronRight size={18} className="text-gray-300" />
+                          </div>
+                        </div>
+                      ) : (
+                        /* EXPANDED PRACTICE MODE */
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="p-6"
+                        >
+                          {/* Top Card */}
+                          <div className="bg-[#F3F3F5] rounded-[24px] p-6 mb-6 relative">
+                            <p className="text-[10px] font-bold text-[#FFD600] bg-[#1C1C1E] inline-block px-3 py-1 rounded-full mb-4 uppercase tracking-widest">
+                              {phrase.contextLabel}
+                            </p>
+                            <p className="text-[17px] font-bold text-[#1C1C1E] leading-tight mb-4">
+                              {phrase.en}
+                            </p>
+                            <button
+                              onClick={() => setExpandedPhraseId(null)}
+                              className="flex items-center gap-2 text-[11px] font-bold text-[#9E9E9E] uppercase tracking-widest"
+                            >
+                              <Volume2 size={18} /> Click to collapse
+                            </button>
+                          </div>
+
+                          {/* Tabs */}
+                          <div className="flex gap-1 bg-[#F3F3F5] p-1 rounded-[22px] mb-6">
+                            {[
+                              {
+                                id: "read",
+                                label: "Speak",
+                                icon: <BookOpen size={18} />,
+                              },
+                              {
+                                id: "understand",
+                                label: "Understand",
+                                icon: <Ear size={18} />,
+                              },
+                              {
+                                id: "dictation",
+                                label: "Dictation",
+                                icon: <PenTool size={18} />,
+                              },
+                            ].map((tab) => (
+                              <button
+                                key={tab.id}
+                                onClick={() =>
+                                  setActivePracticeTab(tab.id as PracticeTab)
+                                }
+                                className={`flex-1 py-3 rounded-[18px] flex items-center justify-center gap-2 text-[11px] font-semibold transition-all ${activePracticeTab === tab.id ? "bg-white text-[#5F6DF6] border border-gray-100" : "text-[#9E9E9E]"}`}
+                              >
+                                {tab.icon} {tab.label}
+                              </button>
+                            ))}
+                          </div>
+
+                          {/* Practice Content */}
+                          <div className="min-h-[200px]">
+                            {renderPracticeContent(phrase)}
+                          </div>
+
+                          {/* Footer */}
+                          <button
+                            onClick={() => setExpandedPhraseId(null)}
+                            className="w-full mt-8 py-4 flex items-center justify-center gap-2 text-[11px] font-bold text-[#9E9E9E] uppercase tracking-widest border-t border-gray-100 active:bg-gray-50 transition-colors"
+                          >
+                            <X size={18} /> Exit Practice
+                          </button>
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  );
+                })
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Home Empty State */}
+        {!selectedContext && !searchQuery && (
+          <div className="px-4 space-y-6 pb-24">
+            <div className="bg-[#1C1C1E] rounded-[32px] p-6 border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD600]/10 rounded-full -mr-16 -mt-16" />
+              <p className="text-[13px] font-semibold text-[#FFD600] mb-2 flex items-center gap-2">
+                <ShieldAlert size={18} /> Emergency tip
+              </p>
+              <p className="text-[14px] text-white/80 leading-relaxed font-normal">
+                Select a context to find phrases. Or use{" "}
+                <span className="text-[#FFD600] font-semibold">SOS Buddy</span>{" "}
+                for real-time translation help.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-[12px] font-semibold text-[#9E9E9E] mb-4 px-1">
+                Common situations
+              </p>
+              <div className="space-y-4">
+                {[
+                  {
+                    label: "Lost Passport",
+                    en: "I lost my passport, where is the embassy?",
+                    icon: "🛂",
+                  },
+                  {
+                    label: "Need a Doctor",
+                    en: "I need a doctor, I feel very sick.",
+                    icon: "🏥",
+                  },
+                  {
+                    label: "Order Food",
+                    en: "May I have a menu please?",
+                    icon: "🍕",
+                  },
+                ].map((item, i) => (
+                  <button
+                    key={i}
+                    className="w-full p-6 rounded-[32px] bg-white border border-gray-100 flex items-center gap-4 text-left active:scale-[0.98] transition-all"
+                  >
+                    <div className="w-14 h-14 rounded-[22px] bg-[#F9F9F9] flex items-center justify-center text-3xl border border-gray-50">
+                      {item.icon}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-[15px] font-bold text-[#1C1C1E] mb-1">
+                        {item.label}
+                      </p>
+                      <p className="text-[12px] text-[#9E9E9E] font-medium truncate max-w-[180px]">
+                        {item.en}
+                      </p>
+                    </div>
+                    <ChevronRight size={18} className="text-gray-300" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default LearnScreen;
