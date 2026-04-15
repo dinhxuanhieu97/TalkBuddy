@@ -14,6 +14,7 @@ import { useLocaleStore } from "../lib/i18n";
 import { AuthService } from "../services";
 import { useUserStore } from "../stores/userStore";
 import { setOnAuthExpired } from "../services/api";
+import googleService from "@/services/googleSignIn";
 
 type AppStep =
   | "loading"
@@ -39,6 +40,7 @@ export default function Index() {
     setOnAuthExpired(() => {
       resetUser();
       setStep("login");
+      googleService.configure();
     });
   }, []);
 

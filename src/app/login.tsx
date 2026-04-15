@@ -12,18 +12,23 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import * as Google from "expo-auth-session/providers/google";
-import * as WebBrowser from "expo-web-browser";
+import {
+  GoogleSignin,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 import { AuthService } from "../services";
 import { useT } from "../lib/i18n";
 import { useUserStore } from "../stores/userStore";
-
-WebBrowser.maybeCompleteAuthSession();
+import googleService from "@/services/googleSignIn";
 
 const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID;
-const GOOGLE_ANDROID_CLIENT_ID =
-  process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID;
-const GOOGLE_WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
+const GOOGLE_WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID;
+
+GoogleSignin.configure({
+  iosClientId: GOOGLE_IOS_CLIENT_ID,
+  webClientId: GOOGLE_WEB_CLIENT_ID,
+  offlineAccess: true,
+});
 
 interface LoginProps {
   onAuthSuccess?: () => void;
@@ -51,25 +56,6 @@ export default function Login({
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<LoginErrors>({});
-
-  const [_googleRequest, googleResponse, promptGoogleAsync] =
-    Google.useAuthRequest({
-      iosClientId: GOOGLE_IOS_CLIENT_ID,
-      androidClientId: GOOGLE_ANDROID_CLIENT_ID,
-      webClientId: GOOGLE_WEB_CLIENT_ID,
-    });
-
-  useEffect(() => {
-    if (googleResponse?.type === "success") {
-      const { authentication } = googleResponse;
-      if (authentication?.accessToken) {
-        handleGoogleAuthCallback(
-          authentication.accessToken,
-          authentication.idToken,
-        );
-      }
-    }
-  }, [googleResponse]);
 
   // Load saved email on mount (Remember Me)
   useEffect(() => {
@@ -154,7 +140,29 @@ export default function Login({
   };
 
   const handleGoogleLogin = async () => {
-    await promptGoogleAsync();
+    try {
+      // await GoogleSignin.hasPlayServices({
+      //   showPlayServicesUpdateDialog: true,
+      // });
+
+      const userInfo = await googleService.signIn();
+
+      if (userInfo.idToken) {
+        handleGoogleAuthCallback(userInfo.idToken);
+      }
+    } catch (error: any) {
+      console.log("siuu: ", error);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log("Google sign in cancelled");
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log("Google sign in in progress");
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        setErrors({ general: t("auth.error.googleLoginFailed") });
+      } else {
+        console.error("Google sign in error:", error);
+        setErrors({ general: t("auth.error.googleLoginFailed") });
+      }
+    }
   };
 
   const handleAppleLogin = async () => {
@@ -333,16 +341,21 @@ export default function Login({
               <Text style={styles.socialText}>{t("auth.google")}</Text>
             </TouchableOpacity>
 
-            {/* Apple */}
-            <TouchableOpacity
-              onPress={handleAppleLogin}
-              style={[styles.socialButton, isLoading && styles.disabledButton]}
-              activeOpacity={0.8}
-              disabled={isLoading}
-            >
-              <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
-              <Text style={styles.socialText}>{t("auth.apple")}</Text>
-            </TouchableOpacity>
+            {/* Apple - only show on iOS */}
+            {Platform.OS === "ios" && (
+              <TouchableOpacity
+                onPress={handleAppleLogin}
+                style={[
+                  styles.socialButton,
+                  isLoading && styles.disabledButton,
+                ]}
+                activeOpacity={0.8}
+                disabled={isLoading}
+              >
+                <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
+                <Text style={styles.socialText}>{t("auth.apple")}</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
 

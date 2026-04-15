@@ -17,37 +17,27 @@ function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue;
 }
 
-// Search cache to store recent search results
-const searchCache = new Map<string, PresetScene[]>();
-const CACHE_MAX_SIZE = 10;
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
-
-interface CacheEntry {
-  scenes: PresetScene[];
-  timestamp: number;
+// Pre-built search index for fast lookups
+interface SearchIndexEntry {
+  id: string;
+  searchText: string;
+  scene: PresetScene;
 }
 
-const searchCacheStore = new Map<string, CacheEntry>();
+const searchIndex: SearchIndexEntry[] = PRESET_SCENES.map((scene) => ({
+  id: scene.id,
+  searchText:
+    `${scene.titleZh} ${scene.titleEn} ${scene.category} ${scene.description}`.toLowerCase(),
+  scene,
+}));
 
-function getCachedSearchResults(query: string): PresetScene[] | null {
-  const entry = searchCacheStore.get(query.toLowerCase());
-  if (entry && Date.now() - entry.timestamp < CACHE_TTL) {
-    return entry.scenes;
-  }
-  searchCacheStore.delete(query.toLowerCase());
-  return null;
-}
+function searchScenes(query: string): PresetScene[] {
+  const q = query.toLowerCase().trim();
+  if (!q || q.length < 2) return [];
 
-function setCachedSearchResults(query: string, scenes: PresetScene[]) {
-  // Clear old entries if cache is full
-  if (searchCacheStore.size >= CACHE_MAX_SIZE) {
-    const oldestKey = searchCacheStore.keys().next().value;
-    if (oldestKey) searchCacheStore.delete(oldestKey);
-  }
-  searchCacheStore.set(query.toLowerCase(), {
-    scenes,
-    timestamp: Date.now(),
-  });
+  return searchIndex
+    .filter((entry) => entry.searchText.includes(q))
+    .map((entry) => entry.scene);
 }
 import {
   View,
@@ -360,36 +350,11 @@ export default function LearnScreen() {
     ? getScenesByCategory(selectedContext).length
     : 0;
 
-  // Search scenes by metadata first (like web app) - lightweight operation
-  // Uses debounced query and cache for better performance
+  // Search using pre-built index - O(n) but with minimal string operations
   const matchingScenes = useMemo(() => {
-    if (!debouncedSearchQuery) return [];
-
-    const q = debouncedSearchQuery.trim().toLowerCase();
-
-    // Check cache first
-    const cached = getCachedSearchResults(q);
-    if (cached) {
-      return [{ contextId: "all", scenes: cached }];
-    }
-
-    const matches: { contextId: string; scenes: PresetScene[] }[] = [];
-
-    // Search in all preset scenes
-    const allScenes = PRESET_SCENES;
-    const sceneMatches = allScenes.filter(
-      (s) =>
-        s.titleZh.toLowerCase().includes(q) ||
-        s.titleEn.toLowerCase().includes(q) ||
-        s.description.toLowerCase().includes(q),
-    );
-
-    // Cache the results
-    if (sceneMatches.length > 0) {
-      setCachedSearchResults(q, sceneMatches);
-      matches.push({ contextId: "all", scenes: sceneMatches });
-    }
-    return matches;
+    if (!debouncedSearchQuery || debouncedSearchQuery.length < 2) return [];
+    const results = searchScenes(debouncedSearchQuery);
+    return results.length > 0 ? [{ contextId: "all", scenes: results }] : [];
   }, [debouncedSearchQuery]);
 
   // Only load phrases for matching scenes (not all scenes)

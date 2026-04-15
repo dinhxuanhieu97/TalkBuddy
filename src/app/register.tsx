@@ -14,9 +14,22 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  GoogleSignin,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 import { AuthService } from "../services";
 import { useT } from "../lib/i18n";
 import { useUserStore } from "../stores/userStore";
+
+const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID;
+const GOOGLE_WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID;
+
+GoogleSignin.configure({
+  iosClientId: GOOGLE_IOS_CLIENT_ID,
+  webClientId: GOOGLE_WEB_CLIENT_ID,
+  offlineAccess: true,
+});
 
 interface RegisterProps {
   onAuthSuccess?: () => void;
@@ -96,24 +109,39 @@ export default function Register({
   const handleGoogleRegister = async () => {
     setIsLoading(true);
     try {
-      const user = await AuthService.signInWithGoogle();
-
-      if (user) {
-        setUser({
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          avatar: user.image,
-          token: user.token,
-        });
-        onAuthSuccess?.();
-      } else {
-        Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
+      const userInfo = await GoogleSignin.signIn();
+      if (userInfo.data?.idToken) {
+        const user = await AuthService.signInWithGoogle(
+          userInfo.data.idToken,
+          userInfo.data.idToken,
+        );
+        if (user) {
+          setUser({
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            avatar: user.image,
+            token: user.token,
+          });
+          onAuthSuccess?.();
+        } else {
+          Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
+        }
       }
     } catch (error: any) {
-      const message =
-        error.response?.data?.message || t("auth.error.googleLoginFailed");
-      Alert.alert(t("common.error"), message);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log("Google sign in cancelled");
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log("Google sign in in progress");
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
+      } else {
+        console.error("Google sign in error:", error);
+        Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
+      }
     } finally {
       setIsLoading(false);
     }
@@ -313,19 +341,21 @@ export default function Register({
                   <Text style={styles.socialText}>{t("auth.google")}</Text>
                 </TouchableOpacity>
 
-                {/* Apple */}
-                <TouchableOpacity
-                  onPress={handleAppleRegister}
-                  style={[
-                    styles.socialButton,
-                    isLoading && styles.disabledButton,
-                  ]}
-                  activeOpacity={0.8}
-                  disabled={isLoading}
-                >
-                  <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
-                  <Text style={styles.socialText}>{t("auth.apple")}</Text>
-                </TouchableOpacity>
+                {/* Apple - only show on iOS */}
+                {Platform.OS === "ios" && (
+                  <TouchableOpacity
+                    onPress={handleAppleRegister}
+                    style={[
+                      styles.socialButton,
+                      isLoading && styles.disabledButton,
+                    ]}
+                    activeOpacity={0.8}
+                    disabled={isLoading}
+                  >
+                    <Ionicons name="logo-apple" size={20} color="#1c1c1e" />
+                    <Text style={styles.socialText}>{t("auth.apple")}</Text>
+                  </TouchableOpacity>
+                )}
               </View>
             </View>
 
