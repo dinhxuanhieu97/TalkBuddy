@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { api } from "./api";
+import { api, userApi } from "./api";
 import * as AppleAuthentication from "expo-apple-authentication";
 
 // Google OAuth configuration from environment variables
@@ -394,6 +394,37 @@ export class AuthService {
       return true;
     } catch (error) {
       console.error("Update password error:", error);
+      return false;
+    }
+  }
+
+  // Delete user account permanently
+  static async deleteAccount(): Promise<boolean> {
+    try {
+      await userApi.deleteAccount();
+      await AsyncStorage.clear();
+      this.setAuthToken(null);
+      return true;
+    } catch (error) {
+      console.error("Delete account error:", error);
+      return false;
+    }
+  }
+
+  // Update user profile to database
+  static async updateProfile(profileData: {
+    name?: string;
+    avatar?: string;
+    phone?: string;
+    bio?: string;
+    location?: string;
+    language?: string;
+  }): Promise<boolean> {
+    try {
+      await userApi.updateProfile(profileData);
+      return true;
+    } catch (error) {
+      console.error("Update profile error:", error);
       return false;
     }
   }

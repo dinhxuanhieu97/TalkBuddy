@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator, Alert, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+} from "react-native";
 import useContentSync from "../hooks/useContentSync";
 
 interface ContentSyncUIProps {
@@ -32,8 +39,8 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
   };
 
   const formatDate = (date: Date | null): string => {
-    if (!date) return "Ch";
-    return new Date(date).toLocaleString("vi-VN", {
+    if (!date) return "未设置";
+    return new Date(date).toLocaleString("zh-CN", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
@@ -44,32 +51,28 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
 
   const handleSync = async () => {
     await sync();
-    Alert.alert("Hoàn thành", "Content sync hoàn t!");
+    Alert.alert("完成", "内容同步完成!");
   };
 
   const handleClear = () => {
-    Alert.alert(
-      "Xóa content",
-      "B n sung tt c ni dung ã download?",
-      [
-        { text: "H", style: "cancel" },
-        {
-          text: "Xóa",
-          style: "destructive",
-          onPress: async () => {
-            await clearContent();
-            Alert.alert("Hoàn thành", "Ðã xóa tt c content");
-          },
+    Alert.alert("删除内容", "您确定要删除所有已下载的内容吗？", [
+      { text: "取消", style: "cancel" },
+      {
+        text: "删除",
+        style: "destructive",
+        onPress: async () => {
+          await clearContent();
+          Alert.alert("完成", "已删除所有内容");
         },
-      ]
-    );
+      },
+    ]);
   };
 
   if (isLoading) {
     return (
       <View className="flex-1 items-center justify-center p-4">
         <ActivityIndicator size="large" color="#3B82F6" />
-        <Text className="mt-2 text-gray-600">ang ti...</Text>
+        <Text className="mt-2 text-gray-600">正在加载...</Text>
       </View>
     );
   }
@@ -77,8 +80,8 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
   return (
     <ScrollView className="flex-1 bg-white p-4">
       <View className="mb-4">
-        <Text className="text-xl font-bold text-gray-900">Content Sync</Text>
-        <Text className="text-sm text-gray-500">Quan ly ni dung hoc offline</Text>
+        <Text className="text-xl font-bold text-gray-900">内容同步</Text>
+        <Text className="text-sm text-gray-500">管理离线学习内容</Text>
       </View>
 
       {error && (
@@ -89,15 +92,17 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
 
       <View className="mb-4 p-4 bg-gray-50 rounded-lg">
         <View className="flex-row justify-between mb-2">
-          <Text className="text-gray-600">Categories cn cap nhat:</Text>
-          <Text className="font-semibold text-blue-600">{categoriesToUpdate}</Text>
+          <Text className="text-gray-600">需要更新的类别:</Text>
+          <Text className="font-semibold text-blue-600">
+            {categoriesToUpdate}
+          </Text>
         </View>
         <View className="flex-row justify-between mb-2">
-          <Text className="text-gray-600">Dung lng:</Text>
+          <Text className="text-gray-600">大小:</Text>
           <Text className="font-semibold">{formatBytes(storageInfo.used)}</Text>
         </View>
         <View className="flex-row justify-between">
-          <Text className="text-gray-600">Lan sync cui:</Text>
+          <Text className="text-gray-600">最后同步时间:</Text>
           <Text className="font-semibold">{formatDate(lastSyncTime)}</Text>
         </View>
       </View>
@@ -105,7 +110,7 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
       {isSyncing && (
         <View className="mb-4">
           <View className="flex-row justify-between mb-1">
-            <Text className="text-gray-600">ang ti...</Text>
+            <Text className="text-gray-600">正在加载...</Text>
             <Text className="text-gray-600">{Math.round(progress)}%</Text>
           </View>
           <View className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -114,23 +119,23 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
               style={{ width: `${progress}%` }}
             />
           </View>
-          <Text className="mt-1 text-sm text-gray-500">
-            {currentCategory}
-          </Text>
+          <Text className="mt-1 text-sm text-gray-500">{currentCategory}</Text>
         </View>
       )}
 
       <TouchableOpacity
         className={`p-4 rounded-lg mb-3 ${
-          isSyncing || categoriesToUpdate === 0
-            ? "bg-gray-300"
-            : "bg-blue-500"
+          isSyncing || categoriesToUpdate === 0 ? "bg-gray-300" : "bg-blue-500"
         }`}
         onPress={handleSync}
         disabled={isSyncing || categoriesToUpdate === 0}
       >
         <Text className="text-white text-center font-semibold">
-          {isSyncing ? "ang sync..." : categoriesToUpdate === 0 ? "Khong co cap nhat" : "Sync ngay"}
+          {isSyncing
+            ? "正在同步..."
+            : categoriesToUpdate === 0
+              ? "没有更新"
+              : "立即同步"}
         </Text>
       </TouchableOpacity>
 
@@ -139,7 +144,7 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
         onPress={checkForUpdates}
         disabled={isSyncing}
       >
-        <Text className="text-gray-700 text-center">Kiem tra cap nhat</Text>
+        <Text className="text-gray-700 text-center">检查更新</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -147,7 +152,7 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
         onPress={handleClear}
         disabled={isSyncing}
       >
-        <Text className="text-red-600 text-center">Xoa tt c content</Text>
+        <Text className="text-red-600 text-center">删除所有内容</Text>
       </TouchableOpacity>
 
       {storageInfo.categories.length > 0 && (
@@ -157,7 +162,7 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
             onPress={() => setShowDetails(!showDetails)}
           >
             <Text className="font-semibold text-gray-700">
-              Categories ({storageInfo.categories.length})
+              类别 ({storageInfo.categories.length})
             </Text>
             <Text className="text-gray-500">{showDetails ? "-" : "+"}</Text>
           </TouchableOpacity>
@@ -175,11 +180,8 @@ export const ContentSyncUI: React.FC<ContentSyncUIProps> = ({ onClose }) => {
       )}
 
       {onClose && (
-        <TouchableOpacity
-          className="mt-4 p-3"
-          onPress={onClose}
-        >
-          <Text className="text-center text-gray-500">ong</Text>
+        <TouchableOpacity className="mt-4 p-3" onPress={onClose}>
+          <Text className="text-center text-gray-500">关闭</Text>
         </TouchableOpacity>
       )}
     </ScrollView>

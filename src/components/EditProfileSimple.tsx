@@ -19,6 +19,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useUserStore } from "../stores/userStore";
 import { useT } from "../lib/i18n";
+import { AuthService } from "../services/AuthService";
 
 interface FormData {
   name: string;
@@ -156,12 +157,12 @@ export function EditProfileSimple() {
 
   const handleAvatarPress = () => {
     Alert.alert(
-      t("profile.edit.changeAvatar"),
-      t("profile.edit.chooseOption"),
+      t("editProfile.changeAvatar"),
+      t("editProfile.chooseOption"),
       [
-        { text: t("profile.edit.takePhoto"), onPress: takePhoto },
-        { text: t("profile.edit.chooseLibrary"), onPress: pickImage },
-        { text: t("profile.edit.cancel"), style: "cancel" },
+        { text: t("editProfile.takePhoto"), onPress: takePhoto },
+        { text: t("editProfile.chooseLibrary"), onPress: pickImage },
+        { text: t("editProfile.cancel"), style: "cancel" },
       ],
       { cancelable: true },
     );
@@ -175,7 +176,7 @@ export function EditProfileSimple() {
     });
 
     if (Object.keys(errors).length > 0) {
-      Alert.alert(t("common.error"), t("profile.edit.validationError"));
+      Alert.alert(t("errors.validationError"), t("errors.fixErrors"));
       return;
     }
 
@@ -191,16 +192,29 @@ export function EditProfileSimple() {
 
       setUser(updatedUser);
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Save to database via API
+      const profileData = {
+        name: formData.name,
+        avatar: avatar,
+        phone: formData.phone,
+        bio: formData.bio,
+        location: formData.location,
+        language: formData.language,
+      };
+
+      const success = await AuthService.updateProfile(profileData);
+
+      if (!success) {
+        console.warn(
+          "Failed to save profile to database, data saved locally only",
+        );
+      }
 
       setIsSaving(false);
 
-      Alert.alert(
-        t("common.success") || "✅ Success",
-        t("profile.edit.success"),
-        [{ text: "OK", style: "default" }],
-      );
+      Alert.alert(t("editProfile.success"), t("profile.edit.success"), [
+        { text: "OK", style: "default" },
+      ]);
     } catch (error) {
       setIsSaving(false);
       Alert.alert(t("common.error"), t("profile.edit.error"));
@@ -307,34 +321,34 @@ export function EditProfileSimple() {
 
         {/* Form */}
         <View style={styles.formContainer}>
-          {renderInput("name", t("profile.edit.fullName"), "person", {
-            placeholder: t("profile.edit.fullNamePlaceholder"),
+          {renderInput("name", t("editProfile.fullName"), "person", {
+            placeholder: t("editProfile.fullNamePlaceholder"),
             autoCapitalize: "words",
           })}
 
-          {renderInput("email", t("profile.edit.email"), "mail", {
-            placeholder: t("profile.edit.emailPlaceholder"),
+          {renderInput("email", t("editProfile.email"), "mail", {
+            placeholder: t("editProfile.emailPlaceholder"),
             keyboardType: "email-address",
             autoCapitalize: "none",
           })}
 
-          {renderInput("phone", t("profile.edit.phone"), "call", {
-            placeholder: t("profile.edit.phonePlaceholder"),
+          {renderInput("phone", t("editProfile.phone"), "call", {
+            placeholder: t("editProfile.phonePlaceholder"),
             keyboardType: "phone-pad",
           })}
 
-          {renderInput("location", t("profile.edit.location"), "location", {
-            placeholder: t("profile.edit.locationPlaceholder"),
+          {renderInput("location", t("editProfile.location"), "location", {
+            placeholder: t("editProfile.locationPlaceholder"),
             autoCapitalize: "words",
           })}
 
-          {renderInput("language", t("profile.edit.language"), "language", {
-            placeholder: t("profile.edit.languagePlaceholder"),
+          {renderInput("language", t("editProfile.language"), "language", {
+            placeholder: t("editProfile.languagePlaceholder"),
             autoCapitalize: "words",
           })}
 
-          {renderInput("bio", t("profile.edit.bio"), "create", {
-            placeholder: t("profile.edit.bioPlaceholder"),
+          {renderInput("bio", t("editProfile.bio"), "create", {
+            placeholder: t("editProfile.bioPlaceholder"),
             multiline: true,
             maxLength: 200,
           })}

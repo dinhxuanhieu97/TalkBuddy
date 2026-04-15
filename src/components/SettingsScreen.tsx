@@ -74,7 +74,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
 
   const handleLanguage = useCallback(
     (language: string) => {
-      setLocale(language as "en" | "zh" | "vi");
+      setLocale(language as "zh");
       updatePreferences({ language });
     },
     [setLocale, updatePreferences],
@@ -141,7 +141,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
           </View>
           <View style={styles.card}>
             {/* Accent */}
-            <Text style={styles.fieldLabel}>AI Voice Accent</Text>
+            <Text style={styles.fieldLabel}>{t("settings.accent")}</Text>
             <View style={styles.optionRow}>
               {ACCENT_OPTIONS.map(({ value, label, tag }) => (
                 <TouchableOpacity
@@ -166,7 +166,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                       preferences.accent === value && styles.optionLabelActive,
                     ]}
                   >
-                    {label}
+                    {t(`settings.accent${label}`)}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -175,7 +175,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
             <View style={styles.divider} />
 
             {/* Speech Speed */}
-            <Text style={styles.fieldLabel}>Speech Speed</Text>
+            <Text style={styles.fieldLabel}>{t("settings.speed")}</Text>
             <View style={styles.optionRow}>
               {SPEED_OPTIONS.map(({ value, label, icon }) => (
                 <TouchableOpacity
@@ -195,7 +195,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                         styles.optionLabelActive,
                     ]}
                   >
-                    {label}
+                    {t(`settings.speed${label}`)}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -205,7 +205,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
 
             {/* My Voice Gender */}
             <View style={styles.fieldRow}>
-              <Text style={styles.fieldLabel}>My Voice Gender</Text>
+              <Text style={styles.fieldLabel}>{t("settings.gender")}</Text>
               {!isPro && (
                 <View style={styles.proBadge}>
                   <Text style={styles.proBadgeText}>PRO</Text>
@@ -230,7 +230,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                       styles.genderLabelActive,
                   ]}
                 >
-                  Male
+                  {t("settings.genderMale")}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -251,14 +251,12 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                       styles.genderLabelActive,
                   ]}
                 >
-                  Female
+                  {t("settings.genderFemale")}
                 </Text>
               </TouchableOpacity>
             </View>
             {!isPro && (
-              <Text style={styles.proHint}>
-                Upgrade to Pro to choose your voice gender
-              </Text>
+              <Text style={styles.proHint}>{t("settings.upgradeToPro")}</Text>
             )}
           </View>
         </View>
@@ -310,16 +308,18 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
               size={18}
               color="#666"
             />
-            <Text style={styles.sectionTitle}>Study Reminder</Text>
+            <Text style={styles.sectionTitle}>{t("settings.reminder")}</Text>
           </View>
           <View style={styles.card}>
             <View style={styles.toggleRow}>
               <View>
-                <Text style={styles.toggleLabel}>Daily Reminder</Text>
+                <Text style={styles.toggleLabel}>
+                  {t("settings.reminderLabel")}
+                </Text>
                 <Text style={styles.toggleSub}>
                   {reminderEnabled
-                    ? `Reminder at ${String(reminderHour).padStart(2, "0")}:00`
-                    : "No reminder set"}
+                    ? `${t("settings.reminderAt")} ${String(reminderHour).padStart(2, "0")}:00`
+                    : t("settings.reminderOff")}
                 </Text>
               </View>
               <Switch
@@ -380,7 +380,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Ionicons name="settings-outline" size={18} color="#666" />
-            <Text style={styles.sectionTitle}>App Preferences</Text>
+            <Text style={styles.sectionTitle}>{t("settings.preferences")}</Text>
           </View>
           <View style={styles.card}>
             <View style={styles.toggleRow}>
@@ -391,9 +391,11 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                   color="#6366F1"
                 />
                 <View>
-                  <Text style={styles.toggleLabel}>Auto-play Audio</Text>
+                  <Text style={styles.toggleLabel}>
+                    {t("settings.autoPlayLabel")}
+                  </Text>
                   <Text style={styles.toggleSub}>
-                    Auto-play phrases when viewing
+                    {t("settings.autoPlayDesc")}
                   </Text>
                 </View>
               </View>
@@ -411,8 +413,12 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
               <View style={styles.toggleLeft}>
                 <Ionicons name="moon-outline" size={22} color="#6366F1" />
                 <View>
-                  <Text style={styles.toggleLabel}>Dark Mode</Text>
-                  <Text style={styles.toggleSub}>Switch to dark theme</Text>
+                  <Text style={styles.toggleLabel}>
+                    {t("settings.darkModeLabel")}
+                  </Text>
+                  <Text style={styles.toggleSub}>
+                    {t("settings.darkModeDesc")}
+                  </Text>
                 </View>
               </View>
               <Switch

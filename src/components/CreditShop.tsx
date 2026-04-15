@@ -23,7 +23,7 @@ interface CreditPack {
 const CREDIT_PACKS: CreditPack[] = [
   {
     id: "starter",
-    name: "Starter Pack",
+    name: "入门套餐",
     credits: 50,
     price: 0.99,
     currency: "USD",
@@ -31,7 +31,7 @@ const CREDIT_PACKS: CreditPack[] = [
   },
   {
     id: "standard",
-    name: "Standard Pack",
+    name: "标准套餐",
     credits: 200,
     price: 3.59,
     currency: "USD",
@@ -40,7 +40,7 @@ const CREDIT_PACKS: CreditPack[] = [
   },
   {
     id: "value",
-    name: "Value Pack",
+    name: "价值套餐",
     credits: 500,
     price: 7.99,
     currency: "USD",
@@ -48,7 +48,7 @@ const CREDIT_PACKS: CreditPack[] = [
   },
   {
     id: "premium",
-    name: "Premium Pack",
+    name: "高级套餐",
     credits: 1000,
     price: 14.99,
     currency: "USD",

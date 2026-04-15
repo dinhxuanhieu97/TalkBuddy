@@ -11,12 +11,14 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LineChart, BarChart } from "react-native-chart-kit";
 import { useUserStore } from "../stores/userStore";
+import { useT } from "../lib/i18n";
 
 const screenWidth = Dimensions.get("window").width;
 
 type TimeRange = "7d" | "30d" | "90d" | "all";
 
 export function AnalyticsDashboard() {
+  const t = useT();
   const [selectedRange, setSelectedRange] = useState<TimeRange>("7d");
   const stats = useUserStore((state) => state.stats);
 
@@ -24,19 +26,41 @@ export function AnalyticsDashboard() {
   const getLearningProgressData = () => {
     const ranges = {
       "7d": {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        labels: [
+          t("analytics.mon"),
+          t("analytics.tue"),
+          t("analytics.wed"),
+          t("analytics.thu"),
+          t("analytics.fri"),
+          t("analytics.sat"),
+          t("analytics.sun"),
+        ],
         data: [12, 15, 8, 20, 18, 25, 22],
       },
       "30d": {
-        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+        labels: [
+          t("analytics.week1"),
+          t("analytics.week2"),
+          t("analytics.week3"),
+          t("analytics.week4"),
+        ],
         data: [85, 120, 95, 140],
       },
       "90d": {
-        labels: ["Month 1", "Month 2", "Month 3"],
+        labels: [
+          t("analytics.month1"),
+          t("analytics.month2"),
+          t("analytics.month3"),
+        ],
         data: [280, 350, 420],
       },
       all: {
-        labels: ["Q1", "Q2", "Q3", "Q4"],
+        labels: [
+          t("analytics.q1"),
+          t("analytics.q2"),
+          t("analytics.q3"),
+          t("analytics.q4"),
+        ],
         data: [450, 580, 720, 850],
       },
     };
@@ -46,19 +70,41 @@ export function AnalyticsDashboard() {
   const getStudyTimeData = () => {
     const ranges = {
       "7d": {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        labels: [
+          t("analytics.mon"),
+          t("analytics.tue"),
+          t("analytics.wed"),
+          t("analytics.thu"),
+          t("analytics.fri"),
+          t("analytics.sat"),
+          t("analytics.sun"),
+        ],
         data: [25, 30, 15, 45, 35, 50, 40],
       },
       "30d": {
-        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+        labels: [
+          t("analytics.week1"),
+          t("analytics.week2"),
+          t("analytics.week3"),
+          t("analytics.week4"),
+        ],
         data: [180, 220, 190, 250],
       },
       "90d": {
-        labels: ["Month 1", "Month 2", "Month 3"],
+        labels: [
+          t("analytics.month1"),
+          t("analytics.month2"),
+          t("analytics.month3"),
+        ],
         data: [520, 680, 750],
       },
       all: {
-        labels: ["Q1", "Q2", "Q3", "Q4"],
+        labels: [
+          t("analytics.q1"),
+          t("analytics.q2"),
+          t("analytics.q3"),
+          t("analytics.q4"),
+        ],
         data: [1200, 1500, 1800, 2100],
       },
     };
@@ -119,8 +165,8 @@ export function AnalyticsDashboard() {
         <View style={styles.headerIcon}>
           <Ionicons name="analytics" size={32} color="#2196F3" />
         </View>
-        <Text style={styles.headerTitle}>Analytics Dashboard</Text>
-        <Text style={styles.headerSubtitle}>Track your learning progress</Text>
+        <Text style={styles.headerTitle}>{t("analytics.title")}</Text>
+        <Text style={styles.headerSubtitle}>{t("analytics.subtitle")}</Text>
       </View>
 
       {/* Time Range Selector */}
@@ -140,10 +186,10 @@ export function AnalyticsDashboard() {
                 selectedRange === range && styles.timeRangeTextActive,
               ]}
             >
-              {range === "7d" && "7 Days"}
-              {range === "30d" && "30 Days"}
-              {range === "90d" && "90 Days"}
-              {range === "all" && "All Time"}
+              {range === "7d" && t("analytics.7days")}
+              {range === "30d" && t("analytics.30days")}
+              {range === "90d" && t("analytics.90days")}
+              {range === "all" && t("analytics.allTime")}
             </Text>
           </TouchableOpacity>
         ))}
@@ -156,7 +202,9 @@ export function AnalyticsDashboard() {
             <Ionicons name="book" size={24} color="#2196F3" />
           </View>
           <Text style={styles.metricValue}>{stats.phrasesLearned}</Text>
-          <Text style={styles.metricLabel}>Phrases Learned</Text>
+          <Text style={styles.metricLabel}>
+            {t("analytics.phrasesLearned")}
+          </Text>
         </View>
 
         <View style={styles.metricCard}>
@@ -164,7 +212,7 @@ export function AnalyticsDashboard() {
             <Ionicons name="flame" size={24} color="#F44336" />
           </View>
           <Text style={styles.metricValue}>{stats.practiceStreak}</Text>
-          <Text style={styles.metricLabel}>Day Streak</Text>
+          <Text style={styles.metricLabel}>{t("analytics.dayStreak")}</Text>
         </View>
 
         <View style={styles.metricCard}>
@@ -174,13 +222,13 @@ export function AnalyticsDashboard() {
           <Text style={styles.metricValue}>
             {Math.floor(stats.totalTimeMinutes / 60)}h
           </Text>
-          <Text style={styles.metricLabel}>Study Time</Text>
+          <Text style={styles.metricLabel}>{t("analytics.studyTime")}</Text>
         </View>
       </View>
 
       {/* Learning Progress Chart */}
       <View style={styles.chartSection}>
-        <Text style={styles.chartTitle}>Phrases Learned</Text>
+        <Text style={styles.chartTitle}>{t("analytics.learningProgress")}</Text>
         <View style={styles.chartCard}>
           <LineChart
             data={{
@@ -198,7 +246,7 @@ export function AnalyticsDashboard() {
 
       {/* Study Time Chart */}
       <View style={styles.chartSection}>
-        <Text style={styles.chartTitle}>Study Time (minutes)</Text>
+        <Text style={styles.chartTitle}>{t("analytics.studyTimeChart")}</Text>
         <View style={styles.chartCard}>
           <BarChart
             data={{
@@ -218,7 +266,7 @@ export function AnalyticsDashboard() {
 
       {/* Skills Progress */}
       <View style={styles.chartSection}>
-        <Text style={styles.chartTitle}>Skills Progress</Text>
+        <Text style={styles.chartTitle}>{t("analytics.skillsProgress")}</Text>
         <View style={styles.skillsCard}>
           {/* Vocabulary */}
           <View style={styles.skillRow}>
@@ -226,7 +274,7 @@ export function AnalyticsDashboard() {
               <View style={styles.skillIconContainer}>
                 <Ionicons name="book" size={20} color="#2196F3" />
               </View>
-              <Text style={styles.skillLabel}>Vocabulary</Text>
+              <Text style={styles.skillLabel}>{t("analytics.vocabulary")}</Text>
               <Text style={styles.skillPercentage}>75%</Text>
             </View>
             <View style={styles.skillBarBackground}>
@@ -245,7 +293,7 @@ export function AnalyticsDashboard() {
               <View style={styles.skillIconContainer}>
                 <Ionicons name="create" size={20} color="#9C27B0" />
               </View>
-              <Text style={styles.skillLabel}>Grammar</Text>
+              <Text style={styles.skillLabel}>{t("analytics.grammar")}</Text>
               <Text style={styles.skillPercentage}>60%</Text>
             </View>
             <View style={styles.skillBarBackground}>
@@ -264,7 +312,7 @@ export function AnalyticsDashboard() {
               <View style={styles.skillIconContainer}>
                 <Ionicons name="headset" size={20} color="#4CAF50" />
               </View>
-              <Text style={styles.skillLabel}>Listening</Text>
+              <Text style={styles.skillLabel}>{t("analytics.listening")}</Text>
               <Text style={styles.skillPercentage}>85%</Text>
             </View>
             <View style={styles.skillBarBackground}>
@@ -283,7 +331,7 @@ export function AnalyticsDashboard() {
               <View style={styles.skillIconContainer}>
                 <Ionicons name="mic" size={20} color="#FF9800" />
               </View>
-              <Text style={styles.skillLabel}>Speaking</Text>
+              <Text style={styles.skillLabel}>{t("analytics.speaking")}</Text>
               <Text style={styles.skillPercentage}>50%</Text>
             </View>
             <View style={styles.skillBarBackground}>
@@ -300,15 +348,19 @@ export function AnalyticsDashboard() {
 
       {/* Achievements */}
       <View style={styles.achievementsSection}>
-        <Text style={styles.sectionTitle}>Recent Achievements</Text>
+        <Text style={styles.sectionTitle}>{t("analytics.achievements")}</Text>
         <View style={styles.achievementsCard}>
           <View style={styles.achievementRow}>
             <View style={styles.achievementIcon}>
               <Ionicons name="trophy" size={24} color="#FFD600" />
             </View>
             <View style={styles.achievementInfo}>
-              <Text style={styles.achievementTitle}>First Week Complete</Text>
-              <Text style={styles.achievementDate}>2 days ago</Text>
+              <Text style={styles.achievementTitle}>
+                {t("analytics.firstWeekComplete")}
+              </Text>
+              <Text style={styles.achievementDate}>
+                {t("analytics.2daysAgo")}
+              </Text>
             </View>
           </View>
 
@@ -319,8 +371,12 @@ export function AnalyticsDashboard() {
               <Ionicons name="star" size={24} color="#FFD600" />
             </View>
             <View style={styles.achievementInfo}>
-              <Text style={styles.achievementTitle}>50 Phrases Mastered</Text>
-              <Text style={styles.achievementDate}>5 days ago</Text>
+              <Text style={styles.achievementTitle}>
+                {t("analytics.50Phrases")}
+              </Text>
+              <Text style={styles.achievementDate}>
+                {t("analytics.5daysAgo")}
+              </Text>
             </View>
           </View>
 
@@ -331,8 +387,12 @@ export function AnalyticsDashboard() {
               <Ionicons name="flame" size={24} color="#F44336" />
             </View>
             <View style={styles.achievementInfo}>
-              <Text style={styles.achievementTitle}>7-Day Streak</Text>
-              <Text style={styles.achievementDate}>1 week ago</Text>
+              <Text style={styles.achievementTitle}>
+                {t("analytics.7DayStreak")}
+              </Text>
+              <Text style={styles.achievementDate}>
+                {t("analytics.1weekAgo")}
+              </Text>
             </View>
           </View>
         </View>
@@ -340,24 +400,20 @@ export function AnalyticsDashboard() {
 
       {/* Study Insights */}
       <View style={styles.insightsSection}>
-        <Text style={styles.sectionTitle}>Study Insights</Text>
+        <Text style={styles.sectionTitle}>{t("analytics.studyInsights")}</Text>
         <View style={styles.insightCard}>
           <Ionicons name="bulb" size={20} color="#FFD600" />
           <Text style={styles.insightText}>
-            You're most productive on weekends! Keep it up! 🎉
+            {t("analytics.weekendProductive")}
           </Text>
         </View>
         <View style={styles.insightCard}>
           <Ionicons name="trending-up" size={20} color="#4CAF50" />
-          <Text style={styles.insightText}>
-            Your learning pace increased by 25% this month!
-          </Text>
+          <Text style={styles.insightText}>{t("analytics.paceIncreased")}</Text>
         </View>
         <View style={styles.insightCard}>
           <Ionicons name="time" size={20} color="#2196F3" />
-          <Text style={styles.insightText}>
-            Average study session: 15 minutes. Try 20 for better retention!
-          </Text>
+          <Text style={styles.insightText}>{t("analytics.avgSession")}</Text>
         </View>
       </View>
 

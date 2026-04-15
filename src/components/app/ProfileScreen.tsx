@@ -50,11 +50,13 @@ type SettingItem = {
 interface ProfileScreenProps {
   onLogout?: () => void;
   onResetOnboarding?: () => void;
+  onNavigateToLearn?: () => void;
 }
 
 export default function ProfileScreen({
   onLogout,
   onResetOnboarding,
+  onNavigateToLearn,
 }: ProfileScreenProps) {
   const t = useT();
   const [notifications, setNotifications] = useState(true);
@@ -158,7 +160,7 @@ export default function ProfileScreen({
           id: "subscription",
           icon: "card",
           label: t("profile.subscription"),
-          value: `${subscription.charAt(0).toUpperCase() + subscription.slice(1)} ${t("common.plan")}`,
+          value: `${subscription === "free" ? t("profile.subscriptionFree") : subscription === "pro" ? t("profile.subscriptionPro") : subscription} ${t("common.plan")}`,
           type: "navigation" as const,
         },
         ...(subscription === "family" || familyId
@@ -180,7 +182,7 @@ export default function ProfileScreen({
         {
           id: "voice",
           icon: "mic",
-          label: t("profile.voiceSettings") || "Voice Settings",
+          label: t("profile.voiceSettings"),
           value: t("profile.voiceSettingsValue"),
           type: "navigation" as const,
         },
@@ -194,7 +196,7 @@ export default function ProfileScreen({
           id: "language",
           icon: "language",
           label: t("profile.appLanguage"),
-          value: "Chinese (Simplified)",
+          value: t("profile.chineseSimplified"),
           type: "navigation" as const,
         },
         {
@@ -346,8 +348,16 @@ export default function ProfileScreen({
         {/* Header with Yellow Background - Same as Practice tab */}
         <View style={styles.headerYellow}>
           <Text style={styles.headerTitle}>{t("profile.title")}</Text>
-          <View style={styles.headerBadge}>
-            <Ionicons name="school" size={20} color="#1C1C1E" />
+          <View style={styles.headerRight}>
+            <TouchableOpacity
+              onPress={onNavigateToLearn}
+              style={styles.headerIconButton}
+            >
+              <Ionicons name="book-outline" size={24} color="#1C1C1E" />
+            </TouchableOpacity>
+            <View style={styles.headerBadge}>
+              <Ionicons name="school" size={20} color="#1C1C1E" />
+            </View>
           </View>
         </View>
 
@@ -1326,9 +1336,14 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: "#FFF9E6",
+  },
+  headerRight: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    gap: 8,
+  },
+  headerIconButton: {
+    padding: 4,
   },
   userInfoCard: {
     flexDirection: "row",

@@ -122,12 +122,12 @@ export function InviteFriends() {
     const codeToShare = code || generateLocalCode();
     if (!codeToShare) return;
     const shareUrl = `https://talkbuddy.wayjet.io/ref/${codeToShare}`;
-    const shareMessage = `🎉 Join TalkBuddy with my referral code "${codeToShare}" and get ${REFERRAL_REWARD_DAYS.inviteeTrialDays} days of free Pro!\n\n${shareUrl}`;
+    const shareMessage = `🎉 使用我的邀请码 "${codeToShare}" 注册 TalkBuddy，获得 ${REFERRAL_REWARD_DAYS.inviteeTrialDays} 天免费 Pro！\n\n${shareUrl}`;
     try {
       // Try native Share API first (works on native apps)
       await Share.share({
         message: shareMessage,
-        title: "Invite Friends to TalkBuddy",
+        title: t("invite.shareTitle"),
       });
     } catch {
       // Fallback for web: copy to clipboard

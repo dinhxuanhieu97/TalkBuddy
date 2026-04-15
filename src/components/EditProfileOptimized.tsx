@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -18,17 +18,21 @@ import {
   Dimensions,
   Keyboard,
   TouchableWithoutFeedback,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
-import { useUserStore } from '../stores/userStore';
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import { useUserStore } from "../stores/userStore";
+import { useT } from "../lib/i18n";
 
 // Enable LayoutAnimation on Android
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = 80;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
@@ -45,14 +49,15 @@ interface FormData {
 export function EditProfileOptimized() {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
-  
+  const t = useT();
+
   const [formData, setFormData] = useState<FormData>({
-    name: user?.name || 'Traveler',
-    email: user?.email || 'traveler@talkbuddy.app',
-    phone: user?.phone || '',
-    bio: user?.bio || '',
-    location: user?.location || '',
-    language: user?.language || 'English',
+    name: user?.name || "Traveler",
+    email: user?.email || "traveler@talkbuddy.app",
+    phone: user?.phone || "",
+    bio: user?.bio || "",
+    location: user?.location || "",
+    language: user?.language || "English",
   });
 
   const [avatar, setAvatar] = useState<string | undefined>(user?.avatar);
@@ -69,31 +74,31 @@ export function EditProfileOptimized() {
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
-    extrapolate: 'clamp',
+    extrapolate: "clamp",
   });
 
   const avatarSize = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [110, 40],
-    extrapolate: 'clamp',
+    extrapolate: "clamp",
   });
 
   const avatarBorderWidth = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [4, 2],
-    extrapolate: 'clamp',
+    extrapolate: "clamp",
   });
 
   const headerTitleOpacity = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
     outputRange: [1, 0, 0],
-    extrapolate: 'clamp',
+    extrapolate: "clamp",
   });
 
   const miniTitleOpacity = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
     outputRange: [0, 0, 1],
-    extrapolate: 'clamp',
+    extrapolate: "clamp",
   });
 
   // Dismiss keyboard when tap outside
@@ -114,7 +119,7 @@ export function EditProfileOptimized() {
               animated: true,
             });
           },
-          () => {}
+          () => {},
         );
       }, 100);
     }
@@ -125,38 +130,38 @@ export function EditProfileOptimized() {
     const newErrors = { ...errors };
 
     switch (field) {
-      case 'name':
+      case "name":
         if (!value.trim()) {
-          newErrors.name = 'Name is required';
+          newErrors.name = t("errors.nameRequired");
         } else if (value.length < 2) {
-          newErrors.name = 'Min 2 characters';
+          newErrors.name = t("errors.min2Characters");
         } else {
           delete newErrors.name;
         }
         break;
 
-      case 'email':
+      case "email":
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value.trim()) {
-          newErrors.email = 'Email is required';
+          newErrors.email = t("errors.emailRequired");
         } else if (!emailRegex.test(value)) {
-          newErrors.email = 'Invalid email';
+          newErrors.email = t("errors.invalidEmail");
         } else {
           delete newErrors.email;
         }
         break;
 
-      case 'phone':
+      case "phone":
         if (value && !/^\+?[\d\s-()]+$/.test(value)) {
-          newErrors.phone = 'Invalid phone';
+          newErrors.phone = t("errors.invalidPhone");
         } else {
           delete newErrors.phone;
         }
         break;
 
-      case 'bio':
+      case "bio":
         if (value.length > 200) {
-          newErrors.bio = 'Max 200 characters';
+          newErrors.bio = t("errors.max200Characters");
         } else {
           delete newErrors.bio;
         }
@@ -179,9 +184,12 @@ export function EditProfileOptimized() {
   // Image Picker
   const pickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
-    if (status !== 'granted') {
-      Alert.alert('Permission Denied', 'We need camera roll permissions.');
+
+    if (status !== "granted") {
+      Alert.alert(
+        t("errors.permissionDenied"),
+        t("errors.permissionMessageCameraRoll"),
+      );
       return;
     }
 
@@ -199,9 +207,12 @@ export function EditProfileOptimized() {
 
   const takePhoto = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    
-    if (status !== 'granted') {
-      Alert.alert('Permission Denied', 'We need camera permissions.');
+
+    if (status !== "granted") {
+      Alert.alert(
+        t("errors.permissionDenied"),
+        t("errors.permissionMessageCamera"),
+      );
       return;
     }
 
@@ -218,14 +229,14 @@ export function EditProfileOptimized() {
 
   const handleAvatarPress = () => {
     Alert.alert(
-      'Change Avatar',
-      'Choose an option',
+      t("editProfile.changeAvatar"),
+      t("editProfile.chooseOption"),
       [
-        { text: 'Take Photo', onPress: takePhoto },
-        { text: 'Choose from Library', onPress: pickImage },
-        { text: 'Cancel', style: 'cancel' },
+        { text: t("editProfile.takePhoto"), onPress: takePhoto },
+        { text: t("editProfile.chooseFromLibrary"), onPress: pickImage },
+        { text: t("editProfile.cancel"), style: "cancel" },
       ],
-      { cancelable: true }
+      { cancelable: true },
     );
   };
 
@@ -237,7 +248,7 @@ export function EditProfileOptimized() {
     });
 
     if (Object.keys(errors).length > 0) {
-      Alert.alert('Validation Error', 'Please fix the errors before saving.');
+      Alert.alert(t("errors.validationError"), t("errors.fixErrors"));
       return;
     }
 
@@ -246,29 +257,27 @@ export function EditProfileOptimized() {
     try {
       // Update Zustand store immediately (optimistic update)
       const updatedUser = {
-        id: user?.id || '1',
+        id: user?.id || "1",
         ...formData,
         avatar,
       };
-      
+
       setUser(updatedUser);
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
       // Sync to cloud (if you have API)
       // await syncUserData(updatedUser);
 
       setIsSaving(false);
-      
-      Alert.alert(
-        '✅ Success',
-        'Profile updated and synced successfully!',
-        [{ text: 'OK', style: 'default' }]
-      );
+
+      Alert.alert(t("editProfile.success"), t("editProfile.profileUpdated"), [
+        { text: t("editProfile.ok"), style: "default" },
+      ]);
     } catch (error) {
       setIsSaving(false);
-      Alert.alert('Error', 'Failed to save profile. Please try again.');
+      Alert.alert(t("errors.error"), t("errors.failedToSave"));
     }
   };
 
@@ -278,11 +287,11 @@ export function EditProfileOptimized() {
     icon: keyof typeof Ionicons.glyphMap,
     options: {
       placeholder: string;
-      keyboardType?: 'default' | 'email-address' | 'phone-pad';
-      autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+      keyboardType?: "default" | "email-address" | "phone-pad";
+      autoCapitalize?: "none" | "sentences" | "words" | "characters";
       multiline?: boolean;
       maxLength?: number;
-    }
+    },
   ) => (
     <View
       style={styles.inputContainer}
@@ -292,7 +301,7 @@ export function EditProfileOptimized() {
         }
       }}
     >
-      <Text style={styles.inputLabel}>{label}</Text>
+      <Text style={styles.inputLabel}>{t(label)}</Text>
       <View
         style={[
           styles.inputWrapper,
@@ -304,7 +313,7 @@ export function EditProfileOptimized() {
           <Ionicons
             name={icon}
             size={20}
-            color={focusedField === field ? '#FFD600' : '#9E9E9E'}
+            color={focusedField === field ? "#FFD600" : "#9E9E9E"}
           />
         </View>
         <TextInput
@@ -313,13 +322,13 @@ export function EditProfileOptimized() {
           onChangeText={(value) => handleInputChange(field, value)}
           onFocus={() => handleInputFocus(field)}
           onBlur={() => setFocusedField(null)}
-          placeholder={options.placeholder}
+          placeholder={t(options.placeholder)}
           placeholderTextColor="#BDBDBD"
           keyboardType={options.keyboardType}
           autoCapitalize={options.autoCapitalize}
           multiline={options.multiline}
           maxLength={options.maxLength}
-          returnKeyType={options.multiline ? 'default' : 'done'}
+          returnKeyType={options.multiline ? "default" : "done"}
           blurOnSubmit={!options.multiline}
         />
         {!errors[field] && formData[field] && !options.multiline && (
@@ -332,10 +341,8 @@ export function EditProfileOptimized() {
           <Text style={styles.errorText}>{errors[field]}</Text>
         </View>
       )}
-      {field === 'bio' && (
-        <Text style={styles.charCount}>
-          {formData.bio.length}/200
-        </Text>
+      {field === "bio" && (
+        <Text style={styles.charCount}>{formData.bio.length}/200</Text>
       )}
     </View>
   );
@@ -343,17 +350,14 @@ export function EditProfileOptimized() {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={0}
     >
       <TouchableWithoutFeedback onPress={dismissKeyboard}>
         <View style={styles.container}>
           {/* Sticky Animated Header */}
           <Animated.View
-            style={[
-              styles.headerContainer,
-              { height: headerHeight },
-            ]}
+            style={[styles.headerContainer, { height: headerHeight }]}
           >
             <Pressable
               onPress={handleAvatarPress}
@@ -384,7 +388,7 @@ export function EditProfileOptimized() {
                       opacity: scrollY.interpolate({
                         inputRange: [0, HEADER_SCROLL_DISTANCE],
                         outputRange: [1, 0],
-                        extrapolate: 'clamp',
+                        extrapolate: "clamp",
                       }),
                     },
                   ]}
@@ -401,16 +405,15 @@ export function EditProfileOptimized() {
                 { opacity: headerTitleOpacity },
               ]}
             >
-              <Text style={styles.headerTitle}>Edit Profile</Text>
-              <Text style={styles.headerSubtitle}>Tap avatar to change photo</Text>
+              <Text style={styles.headerTitle}>{t("editProfile.title")}</Text>
+              <Text style={styles.headerSubtitle}>
+                {t("editProfile.tapToChange")}
+              </Text>
             </Animated.View>
 
             {/* Mini Title (appears when scrolled) */}
             <Animated.View
-              style={[
-                styles.miniTitleContainer,
-                { opacity: miniTitleOpacity },
-              ]}
+              style={[styles.miniTitleContainer, { opacity: miniTitleOpacity }]}
             >
               <Text style={styles.miniTitle}>{formData.name}</Text>
             </Animated.View>
@@ -424,41 +427,41 @@ export function EditProfileOptimized() {
             showsVerticalScrollIndicator={false}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-              { useNativeDriver: false }
+              { useNativeDriver: false },
             )}
             scrollEventThrottle={16}
             keyboardShouldPersistTaps="handled"
           >
             {/* Form Fields */}
             <View style={styles.formContainer}>
-              {renderInput('name', 'Full Name *', 'person', {
-                placeholder: 'Enter your name',
-                autoCapitalize: 'words',
+              {renderInput("name", "editProfile.fullName", "person", {
+                placeholder: "editProfile.fullNamePlaceholder",
+                autoCapitalize: "words",
               })}
 
-              {renderInput('email', 'Email Address *', 'mail', {
-                placeholder: 'your@email.com',
-                keyboardType: 'email-address',
-                autoCapitalize: 'none',
+              {renderInput("email", "editProfile.email", "mail", {
+                placeholder: "editProfile.emailPlaceholder",
+                keyboardType: "email-address",
+                autoCapitalize: "none",
               })}
 
-              {renderInput('phone', 'Phone Number', 'call', {
-                placeholder: '+1 (555) 123-4567',
-                keyboardType: 'phone-pad',
+              {renderInput("phone", "editProfile.phone", "call", {
+                placeholder: "editProfile.phonePlaceholder",
+                keyboardType: "phone-pad",
               })}
 
-              {renderInput('location', 'Location', 'location', {
-                placeholder: 'City, Country',
-                autoCapitalize: 'words',
+              {renderInput("location", "editProfile.location", "location", {
+                placeholder: "editProfile.locationPlaceholder",
+                autoCapitalize: "words",
               })}
 
-              {renderInput('language', 'Preferred Language', 'language', {
-                placeholder: 'e.g., English, Vietnamese',
-                autoCapitalize: 'words',
+              {renderInput("language", "editProfile.language", "language", {
+                placeholder: "editProfile.languagePlaceholder",
+                autoCapitalize: "words",
               })}
 
-              {renderInput('bio', 'Bio', 'create', {
-                placeholder: 'Tell us about yourself...',
+              {renderInput("bio", "editProfile.bio", "create", {
+                placeholder: "editProfile.bioPlaceholder",
                 multiline: true,
                 maxLength: 200,
               })}
@@ -478,12 +481,16 @@ export function EditProfileOptimized() {
               {isSaving ? (
                 <>
                   <ActivityIndicator color="#1C1C1E" size="small" />
-                  <Text style={styles.saveButtonText}>Syncing...</Text>
+                  <Text style={styles.saveButtonText}>
+                    {t("editProfile.syncing")}
+                  </Text>
                 </>
               ) : (
                 <>
                   <Ionicons name="cloud-upload" size={24} color="#1C1C1E" />
-                  <Text style={styles.saveButtonText}>Save & Sync</Text>
+                  <Text style={styles.saveButtonText}>
+                    {t("editProfile.saveChanges")}
+                  </Text>
                 </>
               )}
             </TouchableOpacity>
@@ -497,16 +504,16 @@ export function EditProfileOptimized() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F7',
+    backgroundColor: "#F5F5F7",
   },
   headerContainer: {
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+    justifyContent: "center",
     paddingTop: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -517,64 +524,64 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   avatarContainer: {
-    borderColor: '#FFD600',
-    overflow: 'hidden',
-    position: 'relative',
+    borderColor: "#FFD600",
+    overflow: "hidden",
+    position: "relative",
   },
   avatarImage: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   avatarPlaceholder: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#F3F3F5',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#F3F3F5",
+    alignItems: "center",
+    justifyContent: "center",
   },
   avatarEditBadge: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 2,
     right: 2,
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: '#FFD600',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#FFD600",
+    alignItems: "center",
+    justifyContent: "center",
     borderWidth: 3,
-    borderColor: '#FFFFFF',
-    shadowColor: '#000',
+    borderColor: "#FFFFFF",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 4,
   },
   headerTitleContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: '700',
-    color: '#1C1C1E',
+    fontWeight: "700",
+    color: "#1C1C1E",
     marginBottom: 4,
   },
   headerSubtitle: {
     fontSize: 13,
-    color: '#9E9E9E',
-    fontWeight: '500',
+    color: "#9E9E9E",
+    fontWeight: "500",
   },
   miniTitleContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   miniTitle: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#1C1C1E',
+    fontWeight: "700",
+    color: "#1C1C1E",
   },
   scrollView: {
     flex: 1,
@@ -591,83 +598,83 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 14,
-    fontWeight: '600',
-    color: '#1C1C1E',
+    fontWeight: "600",
+    color: "#1C1C1E",
     marginLeft: 4,
   },
   inputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: '#E0E0E0',
+    borderColor: "#E0E0E0",
     paddingHorizontal: 14,
     minHeight: 52,
     gap: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
   },
   inputWrapperFocused: {
-    borderColor: '#FFD600',
-    backgroundColor: '#FFFEF8',
-    shadowColor: '#FFD600',
+    borderColor: "#FFD600",
+    backgroundColor: "#FFFEF8",
+    shadowColor: "#FFD600",
     shadowOpacity: 0.2,
   },
   inputWrapperError: {
-    borderColor: '#FF3B30',
-    backgroundColor: '#FFF5F5',
+    borderColor: "#FF3B30",
+    backgroundColor: "#FFF5F5",
   },
   inputIconWrapper: {
     width: 24,
-    alignItems: 'center',
+    alignItems: "center",
   },
   input: {
     flex: 1,
     fontSize: 16,
-    color: '#1C1C1E',
+    color: "#1C1C1E",
     paddingVertical: 12,
   },
   inputMultiline: {
     minHeight: 100,
-    textAlignVertical: 'top',
+    textAlignVertical: "top",
     paddingTop: 12,
   },
   errorContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 6,
     marginLeft: 4,
   },
   errorText: {
     fontSize: 12,
-    color: '#FF3B30',
-    fontWeight: '500',
+    color: "#FF3B30",
+    fontWeight: "500",
   },
   charCount: {
     fontSize: 12,
-    color: '#9E9E9E',
-    textAlign: 'right',
+    color: "#9E9E9E",
+    textAlign: "right",
     marginRight: 4,
   },
   saveButtonContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 20,
     left: 20,
     right: 20,
   },
   saveButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     gap: 10,
-    backgroundColor: '#FFD600',
+    backgroundColor: "#FFD600",
     paddingVertical: 18,
     borderRadius: 16,
-    shadowColor: '#FFD600',
+    shadowColor: "#FFD600",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 12,
@@ -678,7 +685,7 @@ const styles = StyleSheet.create({
   },
   saveButtonText: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#1C1C1E',
+    fontWeight: "700",
+    color: "#1C1C1E",
   },
 });

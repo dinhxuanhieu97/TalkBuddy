@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
+import * as WebBrowser from "expo-web-browser";
 import { useT } from "../../lib/i18n";
 import { AuthService } from "../../services/AuthService";
 import { CreditBalance } from "../../components/CreditBalance";
@@ -77,6 +78,9 @@ export default function ProfileScreen({
   const [showAbout, setShowAbout] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [showDeleteAccountConfirm, setShowDeleteAccountConfirm] =
+    useState(false);
+  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
   const [activeSavedPractice, setActiveSavedPractice] = useState<{
     mode: "practice" | "dictation" | "shadow";
@@ -194,7 +198,7 @@ export default function ProfileScreen({
           id: "language",
           icon: "language",
           label: t("profile.appLanguage"),
-          value: "Chinese (Simplified)",
+          value: t("profile.appLanguageValue"),
           type: "navigation" as const,
         },
         {
@@ -249,6 +253,18 @@ export default function ProfileScreen({
           id: "about",
           icon: "information-circle",
           label: t("profile.about"),
+          type: "navigation" as const,
+        },
+        {
+          id: "privacy",
+          icon: "shield",
+          label: t("profile.privacyPolicy"),
+          type: "navigation" as const,
+        },
+        {
+          id: "terms",
+          icon: "document-text",
+          label: t("profile.termsOfService"),
           type: "navigation" as const,
         },
       ],
@@ -320,6 +336,12 @@ export default function ProfileScreen({
         // Show about modal
         setShowAbout(true);
         break;
+      case "privacy":
+        WebBrowser.openBrowserAsync("https://wayjetai.com/privacy-policy/");
+        break;
+      case "terms":
+        WebBrowser.openBrowserAsync("https://wayjetai.com/terms-of-use/");
+        break;
       default:
         break;
     }
@@ -327,6 +349,31 @@ export default function ProfileScreen({
 
   const handleResetOnboarding = () => {
     setShowResetConfirm(true);
+  };
+
+  const confirmDeleteAccount = async () => {
+    setShowDeleteAccountConfirm(false);
+    setIsDeletingAccount(true);
+    try {
+      const success = await AuthService.deleteAccount();
+      if (success) {
+        await AsyncStorage.clear();
+        onLogout?.();
+      } else {
+        Alert.alert(
+          t("common.error") || "Error",
+          t("profile.deleteAccountError") || "Failed to delete account",
+        );
+      }
+    } catch (error) {
+      console.error("Delete account error:", error);
+      Alert.alert(
+        t("common.error") || "Error",
+        t("profile.deleteAccountError") || "Failed to delete account",
+      );
+    } finally {
+      setIsDeletingAccount(false);
+    }
   };
 
   const confirmResetOnboarding = async () => {
@@ -506,6 +553,20 @@ export default function ProfileScreen({
           <Ionicons name="log-out-outline" size={20} color="#FF3B30" />
           <Text style={styles.logoutText}>
             {isLoggingOut ? t("common.loading") : t("auth.logout")}
+          </Text>
+        </TouchableOpacity>
+
+        {/* Delete Account */}
+        <TouchableOpacity
+          style={styles.deleteAccountButton}
+          onPress={() => setShowDeleteAccountConfirm(true)}
+          disabled={isDeletingAccount}
+        >
+          <Ionicons name="trash-outline" size={20} color="#FF3B30" />
+          <Text style={styles.deleteAccountText}>
+            {isDeletingAccount
+              ? t("common.loading")
+              : t("profile.deleteAccount")}
           </Text>
         </TouchableOpacity>
 
@@ -849,7 +910,7 @@ export default function ProfileScreen({
                                 color: "#2E7D32",
                               }}
                             >
-                              Practice
+                              {t("profile.practiceMode.practice")}
                             </Text>
                           </TouchableOpacity>
                           <TouchableOpacity
@@ -882,7 +943,7 @@ export default function ProfileScreen({
                                 color: "#7B1FA2",
                               }}
                             >
-                              Dictation
+                              {t("profile.practiceMode.dictation")}
                             </Text>
                           </TouchableOpacity>
                           <TouchableOpacity
@@ -911,7 +972,7 @@ export default function ProfileScreen({
                                 color: "#E65100",
                               }}
                             >
-                              Shadow
+                              {t("profile.practiceMode.shadow")}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -1299,6 +1360,101 @@ export default function ProfileScreen({
           </ScrollView>
         </View>
       </Modal>
+
+      {/* Delete Account Confirmation Modal */}
+      <Modal
+        visible={showDeleteAccountConfirm}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setShowDeleteAccountConfirm(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0,0,0,0.5)",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFF",
+              borderRadius: 16,
+              padding: 24,
+              width: "85%",
+              maxWidth: 320,
+            }}
+          >
+            <View style={{ alignItems: "center", marginBottom: 16 }}>
+              <Ionicons name="warning" size={40} color="#FF3B30" />
+            </View>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "700",
+                color: "#1C1C1E",
+                marginBottom: 12,
+                textAlign: "center",
+              }}
+            >
+              {t("profile.deleteAccountTitle")}
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                color: "#666",
+                marginBottom: 24,
+                textAlign: "center",
+                lineHeight: 20,
+              }}
+            >
+              {t("profile.deleteAccountMessage")}
+            </Text>
+            <View style={{ flexDirection: "row", gap: 12 }}>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  backgroundColor: "#F5F5F7",
+                }}
+                onPress={() => setShowDeleteAccountConfirm(false)}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "600",
+                    color: "#1C1C1E",
+                    textAlign: "center",
+                  }}
+                >
+                  {t("common.cancel")}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  backgroundColor: "#FF3B30",
+                }}
+                onPress={confirmDeleteAccount}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "600",
+                    color: "#FFF",
+                    textAlign: "center",
+                  }}
+                >
+                  {t("profile.deleteAccountConfirm")}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 }
@@ -1526,6 +1682,24 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   logoutText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#FF3B30",
+  },
+  deleteAccountButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    marginHorizontal: 20,
+    paddingVertical: 16,
+    backgroundColor: "#FFF",
+    borderRadius: 12,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: "#FFE0E0",
+  },
+  deleteAccountText: {
     fontSize: 16,
     fontWeight: "600",
     color: "#FF3B30",

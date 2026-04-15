@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import zh, { type LocaleKeys } from "../locales/zh";
+import zh from "../locales/zh";
+import { type LocaleKeys } from "../locales/zh";
 
 export type { LocaleKeys };
 
@@ -47,7 +48,7 @@ export const useLocaleStore = create<LocaleState>()(
 // Translation dictionaries
 // ============================================================
 
-const dictionaries: Record<Locale, Record<LocaleKeys, string>> = { zh };
+const dictionaries: Record<Locale, Record<string, string>> = { zh };
 
 // ============================================================
 // useT hook — the main translation interface

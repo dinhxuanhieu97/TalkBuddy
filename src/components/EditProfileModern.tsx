@@ -52,10 +52,10 @@ export function EditProfileModern() {
   const [formData, setFormData] = useState<FormData>({
     name: user?.name || "Traveler",
     email: user?.email || "traveler@talkbuddy.app",
-    phone: user?.phone || "",
-    bio: user?.bio || "",
-    location: user?.location || "",
-    language: user?.language || "English",
+    phone: user?.phone || "012 345 6789",
+    bio: user?.bio || "Passionate traveler exploring new cultures",
+    location: user?.location || "Hong Kong",
+    language: user?.language || "Chinese",
   });
 
   const [avatar, setAvatar] = useState<string | undefined>(user?.avatar);
@@ -93,9 +93,9 @@ export function EditProfileModern() {
     switch (field) {
       case "name":
         if (!value.trim()) {
-          newErrors.name = "Name is required";
+          newErrors.name = "名称是必填项";
         } else if (value.length < 2) {
-          newErrors.name = "Name must be at least 2 characters";
+          newErrors.name = "名称必须至少2个字符";
         } else {
           delete newErrors.name;
         }
@@ -104,9 +104,9 @@ export function EditProfileModern() {
       case "email":
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value.trim()) {
-          newErrors.email = "Email is required";
+          newErrors.email = "电子邮件是必填项";
         } else if (!emailRegex.test(value)) {
-          newErrors.email = "Invalid email format";
+          newErrors.email = "无效的电子邮件格式";
         } else {
           delete newErrors.email;
         }
@@ -114,7 +114,7 @@ export function EditProfileModern() {
 
       case "phone":
         if (value && !/^\+?[\d\s-()]+$/.test(value)) {
-          newErrors.phone = "Invalid phone number";
+          newErrors.phone = "无效的电话号码";
         } else {
           delete newErrors.phone;
         }
@@ -122,7 +122,7 @@ export function EditProfileModern() {
 
       case "bio":
         if (value.length > 200) {
-          newErrors.bio = "Bio must be less than 200 characters";
+          newErrors.bio = "简介必须少于200个字符";
         } else {
           delete newErrors.bio;
         }
@@ -151,10 +151,7 @@ export function EditProfileModern() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (status !== "granted") {
-      Alert.alert(
-        "Permission Denied",
-        "We need camera roll permissions to change your avatar.",
-      );
+      Alert.alert("权限被拒绝", "我们需要相册权限来更改您的头像。");
       return;
     }
 
@@ -174,10 +171,7 @@ export function EditProfileModern() {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
     if (status !== "granted") {
-      Alert.alert(
-        "Permission Denied",
-        "We need camera permissions to take a photo.",
-      );
+      Alert.alert("权限被拒绝", "我们需要相机权限来拍照。");
       return;
     }
 
@@ -194,12 +188,12 @@ export function EditProfileModern() {
 
   const handleAvatarPress = () => {
     Alert.alert(
-      "Change Avatar",
-      "Choose an option",
+      "更改头像",
+      "选择一个选项",
       [
-        { text: "Take Photo", onPress: takePhoto },
-        { text: "Choose from Library", onPress: pickImage },
-        { text: "Cancel", style: "cancel" },
+        { text: "拍照", onPress: takePhoto },
+        { text: "从图库选择", onPress: pickImage },
+        { text: "取消", style: "cancel" },
       ],
       { cancelable: true },
     );
@@ -213,7 +207,7 @@ export function EditProfileModern() {
     });
 
     if (Object.keys(errors).length > 0) {
-      Alert.alert("Validation Error", "Please fix the errors before saving.");
+      Alert.alert("验证错误", "请在保存前修复错误。");
       return;
     }
 
@@ -258,8 +252,8 @@ export function EditProfileModern() {
         }),
       ]).start();
 
-      Alert.alert("Success", "Profile updated successfully!", [
-        { text: "OK", style: "default" },
+      Alert.alert("成功", "个人资料更新成功！", [
+        { text: "确定", style: "default" },
       ]);
     }, 1500);
   };
@@ -382,8 +376,8 @@ export function EditProfileModern() {
             </View>
           </Animated.View>
         </Pressable>
-        <Text style={styles.headerTitle}>Edit Profile</Text>
-        <Text style={styles.headerSubtitle}>Tap avatar to change photo</Text>
+        <Text style={styles.headerTitle}>编辑个人资料</Text>
+        <Text style={styles.headerSubtitle}>点击头像更改照片</Text>
       </Animated.View>
 
       <Animated.ScrollView
@@ -396,52 +390,52 @@ export function EditProfileModern() {
         )}
         scrollEventThrottle={16}
       >
-        {/* Basic Information */}
+        {/* 基本信息 */}
         <View style={styles.section}>
-          {renderSectionHeader("Basic Information", "person-circle", "basic")}
+          {renderSectionHeader("基本信息", "person-circle", "basic")}
           {expandedSections.basic && (
             <View style={styles.sectionContent}>
-              {renderInput("name", "Full Name", "person", {
-                placeholder: "Enter your name",
+              {renderInput("name", "全名", "person", {
+                placeholder: "输入您的姓名",
                 autoCapitalize: "words",
               })}
-              {renderInput("language", "Preferred Language", "language", {
-                placeholder: "e.g., English, Vietnamese",
+              {renderInput("language", "首选语言", "language", {
+                placeholder: "例如，English, Vietnamese",
                 autoCapitalize: "words",
               })}
             </View>
           )}
         </View>
 
-        {/* Contact Information */}
+        {/* 联系信息 */}
         <View style={styles.section}>
-          {renderSectionHeader("Contact Information", "mail", "contact")}
+          {renderSectionHeader("联系信息", "mail", "contact")}
           {expandedSections.contact && (
             <View style={styles.sectionContent}>
-              {renderInput("email", "Email Address", "mail", {
+              {renderInput("email", "电子邮件地址", "mail", {
                 placeholder: "your@email.com",
                 keyboardType: "email-address",
                 autoCapitalize: "none",
               })}
-              {renderInput("phone", "Phone Number", "call", {
+              {renderInput("phone", "电话号码", "call", {
                 placeholder: "+1 (555) 123-4567",
                 keyboardType: "phone-pad",
               })}
-              {renderInput("location", "Location", "location", {
-                placeholder: "City, Country",
+              {renderInput("location", "位置", "location", {
+                placeholder: "城市，国家",
                 autoCapitalize: "words",
               })}
             </View>
           )}
         </View>
 
-        {/* About */}
+        {/* 关于您 */}
         <View style={styles.section}>
-          {renderSectionHeader("About You", "information-circle", "about")}
+          {renderSectionHeader("关于您", "information-circle", "about")}
           {expandedSections.about && (
             <View style={styles.sectionContent}>
-              {renderInput("bio", "Bio", "create", {
-                placeholder: "Tell us about yourself...",
+              {renderInput("bio", "简介", "create", {
+                placeholder: "告诉我们关于您的事...",
                 multiline: true,
                 maxLength: 200,
               })}
@@ -472,7 +466,7 @@ export function EditProfileModern() {
           ) : (
             <>
               <Ionicons name="checkmark-circle" size={24} color="#1C1C1E" />
-              <Text style={styles.saveButtonText}>Save Changes</Text>
+              <Text style={styles.saveButtonText}>保存更改</Text>
             </>
           )}
         </TouchableOpacity>
@@ -498,7 +492,7 @@ export function EditProfileModern() {
       >
         <View style={styles.successBadge}>
           <Ionicons name="checkmark-circle" size={60} color="#4CAF50" />
-          <Text style={styles.successText}>Saved!</Text>
+          <Text style={styles.successText}>保存成功</Text>
         </View>
       </Animated.View>
     </KeyboardAvoidingView>
