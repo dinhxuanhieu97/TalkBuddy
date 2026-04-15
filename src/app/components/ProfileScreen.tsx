@@ -194,7 +194,7 @@ export default function ProfileScreen({
           id: "language",
           icon: "language",
           label: t("profile.appLanguage"),
-          value: t("setup.fullName"),
+          value: "Chinese (Simplified)",
           type: "navigation" as const,
         },
         {
@@ -333,7 +333,6 @@ export default function ProfileScreen({
     setShowResetConfirm(false);
     try {
       await AsyncStorage.removeItem("hasSeenOnboarding");
-      await AsyncStorage.removeItem("hasSetupLanguage");
       onResetOnboarding?.();
     } catch (error) {
       console.log("Error resetting onboarding:", error);

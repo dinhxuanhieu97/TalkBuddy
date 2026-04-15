@@ -12,9 +12,18 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Google from "expo-auth-session/providers/google";
+import * as WebBrowser from "expo-web-browser";
 import { AuthService } from "../services";
 import { useT } from "../lib/i18n";
 import { useUserStore } from "../stores/userStore";
+
+WebBrowser.maybeCompleteAuthSession();
+
+const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID;
+const GOOGLE_ANDROID_CLIENT_ID =
+  process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID;
+const GOOGLE_WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
 
 interface LoginProps {
   onAuthSuccess?: () => void;
@@ -42,6 +51,25 @@ export default function Login({
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<LoginErrors>({});
+
+  const [_googleRequest, googleResponse, promptGoogleAsync] =
+    Google.useAuthRequest({
+      iosClientId: GOOGLE_IOS_CLIENT_ID,
+      androidClientId: GOOGLE_ANDROID_CLIENT_ID,
+      webClientId: GOOGLE_WEB_CLIENT_ID,
+    });
+
+  useEffect(() => {
+    if (googleResponse?.type === "success") {
+      const { authentication } = googleResponse;
+      if (authentication?.accessToken) {
+        handleGoogleAuthCallback(
+          authentication.accessToken,
+          authentication.idToken,
+        );
+      }
+    }
+  }, [googleResponse]);
 
   // Load saved email on mount (Remember Me)
   useEffect(() => {
@@ -97,11 +125,13 @@ export default function Login({
     }
   };
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleAuthCallback = async (
+    accessToken: string,
+    idToken?: string | null,
+  ) => {
     setIsLoading(true);
     try {
-      const user = await AuthService.signInWithGoogle();
-
+      const user = await AuthService.signInWithGoogle(accessToken, idToken);
       if (user) {
         setUser({
           id: user.id,
@@ -121,6 +151,10 @@ export default function Login({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleGoogleLogin = async () => {
+    await promptGoogleAsync();
   };
 
   const handleAppleLogin = async () => {

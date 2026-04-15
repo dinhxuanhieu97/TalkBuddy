@@ -246,9 +246,11 @@ export default function Register({
                     style={styles.eyeButton}
                     disabled={isLoading}
                   >
-                    <Text style={styles.eyeText}>
-                      {showPassword ? "👁️" : "👁️‍🗨️"}
-                    </Text>
+                    <Ionicons
+                      name={showPassword ? "eye-off" : "eye"}
+                      size={20}
+                      color="#666"
+                    />
                   </TouchableOpacity>
                 </View>
                 {errors.password ? (
@@ -458,9 +460,6 @@ const styles = StyleSheet.create({
   },
   eyeButton: {
     padding: 16,
-  },
-  eyeText: {
-    fontSize: 18,
   },
   termsContainer: {
     marginBottom: 24,

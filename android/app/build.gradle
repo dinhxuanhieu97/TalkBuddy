@@ -89,11 +89,12 @@ android {
 
     namespace 'com.talkbuddy.scenario'
     defaultConfig {
+        manifestPlaceholders = [appAuthRedirectScheme: 'talkbuddy']
         applicationId 'com.talkbuddy.scenario'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
     }

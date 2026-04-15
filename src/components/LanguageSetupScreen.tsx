@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import {
   View,
   Text,
@@ -6,48 +6,10 @@ import {
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
-  Modal,
-  Pressable,
   Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useLocaleStore, useT, LOCALE_OPTIONS, type Locale } from "../lib/i18n";
-import { useUserStore } from "../stores/userStore";
-
-// Static strings per locale so confirmation popup renders in the TARGET language
-// without changing the global locale first
-const CONFIRM_STRINGS: Record<
-  Locale,
-  {
-    langName: string;
-    title: string;
-    subtitle: string;
-    confirm: string;
-    cancel: string;
-  }
-> = {
-  en: {
-    langName: "English",
-    title: "Switch App Language?",
-    subtitle: "The entire app will display in English.",
-    confirm: "Yes, Switch",
-    cancel: "Cancel",
-  },
-  zh: {
-    langName: "中文（简体）",
-    title: "切换界面语言？",
-    subtitle: "整个 App 将以简体中文显示。",
-    confirm: "确认切换",
-    cancel: "取消",
-  },
-  vi: {
-    langName: "Tiếng Việt",
-    title: "Đổi ngôn ngữ ứng dụng?",
-    subtitle: "Toàn bộ ứng dụng sẽ hiển thị bằng Tiếng Việt.",
-    confirm: "Xác nhận đổi",
-    cancel: "Hủy",
-  },
-};
+import { useT } from "../lib/i18n";
 
 interface LanguageSetupScreenProps {
   onBack?: () => void;
@@ -62,42 +24,11 @@ export function LanguageSetupScreen({
   mode = "settings",
 }: LanguageSetupScreenProps) {
   const t = useT();
-  const { locale, setLocale } = useLocaleStore();
-  const updatePreferences = useUserStore((s) => s.updatePreferences);
-
   const [saving, setSaving] = useState(false);
-  // pendingLocale = the language the user tapped but hasn't confirmed yet
-  const [pendingLocale, setPendingLocale] = useState<Locale | null>(null);
 
-  const confirmStrings = pendingLocale ? CONFIRM_STRINGS[pendingLocale] : null;
-  const pendingOption = pendingLocale
-    ? LOCALE_OPTIONS.find((o) => o.value === pendingLocale)
-    : null;
-
-  const handleLangCardPress = useCallback(
-    (value: Locale) => {
-      if (value === locale) return; // already active, no need to confirm
-      setPendingLocale(value);
-    },
-    [locale],
-  );
-
-  const handleConfirm = useCallback(() => {
-    if (!pendingLocale) return;
-    setLocale(pendingLocale);
-    updatePreferences({ language: pendingLocale });
-    setPendingLocale(null);
-  }, [pendingLocale, setLocale, updatePreferences]);
-
-  const handleCancelConfirm = useCallback(() => {
-    setPendingLocale(null);
-  }, []);
-
-  const handleSaveName = useCallback(() => {
-    setSaving(true);
-    setSaving(false);
+  const handleSaveName = () => {
     onDone?.();
-  }, [onDone]);
+  };
 
   const isSetupMode = mode === "setup";
 
@@ -136,6 +67,7 @@ export function LanguageSetupScreen({
         )}
 
         {/* ── App Language ──────────────────────────────────────── */}
+        {/* App Language - Only Chinese available
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>
             {t("setup.preferredLanguage")}
@@ -180,7 +112,6 @@ export function LanguageSetupScreen({
               );
             })}
 
-            {/* Coming soon teaser */}
             <View style={styles.comingSoonCard}>
               <Ionicons name="globe-outline" size={20} color="#C4C4C6" />
               <Text style={styles.comingSoonText}>{t("lang.comingSoon")}</Text>
@@ -190,6 +121,7 @@ export function LanguageSetupScreen({
             </View>
           </View>
         </View>
+        */}
 
         <View style={{ height: 32 }} />
       </ScrollView>
@@ -224,67 +156,6 @@ export function LanguageSetupScreen({
           </TouchableOpacity>
         )}
       </View>
-
-      {/* ── Language Change Confirmation Bottom Sheet ── */}
-      <Modal
-        visible={pendingLocale !== null}
-        transparent
-        animationType="slide"
-        onRequestClose={handleCancelConfirm}
-      >
-        <Pressable style={styles.sheetOverlay} onPress={handleCancelConfirm}>
-          <Pressable style={styles.sheetContainer} onPress={() => {}}>
-            {/* Handle bar */}
-            <View style={styles.sheetHandle} />
-
-            {/* Language preview */}
-            {pendingOption && confirmStrings && (
-              <>
-                <View style={styles.sheetLangPreview}>
-                  <Text style={styles.sheetFlag}>{pendingOption.flag}</Text>
-                  <View>
-                    {/* Name shown in the TARGET language */}
-                    <Text style={styles.sheetLangName}>
-                      {CONFIRM_STRINGS[pendingOption.value].langName}
-                    </Text>
-                    <Text style={styles.sheetLangTag}>
-                      {pendingOption.flag} {pendingOption.value.toUpperCase()}
-                    </Text>
-                  </View>
-                </View>
-
-                <Text style={styles.sheetTitle}>{confirmStrings.title}</Text>
-                <Text style={styles.sheetSubtitle}>
-                  {confirmStrings.subtitle}
-                </Text>
-
-                <View style={styles.sheetActions}>
-                  <TouchableOpacity
-                    style={styles.sheetCancelBtn}
-                    onPress={handleCancelConfirm}
-                    activeOpacity={0.7}
-                  >
-                    <Text style={styles.sheetCancelText}>
-                      {confirmStrings.cancel}
-                    </Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    style={styles.sheetConfirmBtn}
-                    onPress={handleConfirm}
-                    activeOpacity={0.85}
-                  >
-                    <Ionicons name="checkmark" size={18} color="#1C1C1E" />
-                    <Text style={styles.sheetConfirmText}>
-                      {confirmStrings.confirm}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </>
-            )}
-          </Pressable>
-        </Pressable>
-      </Modal>
     </KeyboardAvoidingView>
   );
 }

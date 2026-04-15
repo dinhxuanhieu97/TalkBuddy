@@ -9,7 +9,6 @@ import VerifyOtp from "./verify-otp";
 import ResetPassword from "./reset-password";
 import ResetPasswordSuccess from "./reset-password-success";
 import MainApp from "./components/MainApp";
-import { LanguageSetupScreen } from "../components/LanguageSetupScreen";
 import { configureAudio } from "../services/TTSService";
 import { useLocaleStore } from "../lib/i18n";
 import { AuthService } from "../services";
@@ -19,7 +18,6 @@ import { setOnAuthExpired } from "../services/api";
 type AppStep =
   | "loading"
   | "onboarding"
-  | "languageSetup"
   | "login"
   | "register"
   | "forgotPassword"
@@ -64,18 +62,10 @@ export default function Index() {
         } catch (_) {}
       }
 
-      const [hasSeenOnboarding, hasSetupLanguage] = await Promise.all([
-        AsyncStorage.getItem("hasSeenOnboarding"),
-        AsyncStorage.getItem("hasSetupLanguage"),
-      ]);
+      const hasSeenOnboarding = await AsyncStorage.getItem("hasSeenOnboarding");
 
       if (!hasSeenOnboarding) {
         setStep("onboarding");
-        return;
-      }
-
-      if (!hasSetupLanguage) {
-        setStep("languageSetup");
         return;
       }
 
@@ -108,13 +98,6 @@ export default function Index() {
   };
 
   const handleOnboardingDone = () => {
-    setStep("languageSetup");
-  };
-
-  const handleLanguageSetupDone = async () => {
-    try {
-      await AsyncStorage.setItem("hasSetupLanguage", "true");
-    } catch (_) {}
     setStep("login");
   };
 
@@ -130,7 +113,6 @@ export default function Index() {
   const handleResetOnboarding = async () => {
     try {
       await AsyncStorage.removeItem("hasSeenOnboarding");
-      await AsyncStorage.removeItem("hasSetupLanguage");
     } catch (_) {}
     setStep("onboarding");
   };
@@ -141,12 +123,6 @@ export default function Index() {
 
   if (step === "onboarding") {
     return <Onboarding onDone={handleOnboardingDone} />;
-  }
-
-  if (step === "languageSetup") {
-    return (
-      <LanguageSetupScreen mode="setup" onDone={handleLanguageSetupDone} />
-    );
   }
 
   if (step === "register") {
