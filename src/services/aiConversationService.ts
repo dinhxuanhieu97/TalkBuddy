@@ -1,7 +1,9 @@
 import { speak, stopSpeaking } from "./TTSService";
 import { getAuthToken } from "./api";
 
-const API_URL = "http://localhost:5277/api";
+const API_URL = process.env.EXPO_PUBLIC_API_URL
+  ? `${process.env.EXPO_PUBLIC_API_URL}/api`
+  : "http://localhost:5277/api";
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -43,35 +45,43 @@ export const SCENE_CATEGORIES = [
 const SIMPLE_PROMPTS: Record<string, { role: string; context: string }> = {
   airport: {
     role: "airport staff",
-    context: "You are at an airport helping a traveler with check-in, boarding passes, and flight information.",
+    context:
+      "You are at an airport helping a traveler with check-in, boarding passes, and flight information.",
   },
   hotel: {
     role: "hotel receptionist",
-    context: "You are at a hotel front desk helping a guest with check-in, room keys, and hotel services.",
+    context:
+      "You are at a hotel front desk helping a guest with check-in, room keys, and hotel services.",
   },
   restaurant: {
     role: "restaurant server",
-    context: "You are at a restaurant taking orders, recommending dishes, and serving food.",
+    context:
+      "You are at a restaurant taking orders, recommending dishes, and serving food.",
   },
   shopping: {
     role: "shop assistant",
-    context: "You are at a store helping a customer find products, check prices, and complete purchases.",
+    context:
+      "You are at a store helping a customer find products, check prices, and complete purchases.",
   },
   transport: {
     role: "taxi driver",
-    context: "You are a taxi driver helping a passenger with directions and destination.",
+    context:
+      "You are a taxi driver helping a passenger with directions and destination.",
   },
   medical: {
     role: "doctor",
-    context: "You are a doctor at a clinic helping a patient with medical concerns.",
+    context:
+      "You are a doctor at a clinic helping a patient with medical concerns.",
   },
   emergency: {
     role: "emergency operator",
-    context: "You are an emergency operator helping someone in a crisis situation.",
+    context:
+      "You are an emergency operator helping someone in a crisis situation.",
   },
   banking: {
     role: "bank teller",
-    context: "You are at a bank helping a customer with transactions and account services.",
+    context:
+      "You are at a bank helping a customer with transactions and account services.",
   },
   social: {
     role: "local person",
@@ -87,10 +97,10 @@ export const aiConversationService = {
   startConversation: async (
     categoryId: string,
     mode: "free" | "guided" | "listening",
-    difficulty: "beginner" | "intermediate" | "advanced"
+    difficulty: "beginner" | "intermediate" | "advanced",
   ): Promise<ChatMessage | null> => {
     const prompt = SIMPLE_PROMPTS[categoryId] || SIMPLE_PROMPTS.default;
-    
+
     const difficultyInstructions = {
       beginner: "Use simple words and short sentences. Speak slowly.",
       intermediate: "Use natural English at a moderate pace with some idioms.",
@@ -129,7 +139,12 @@ ${prompt.context}
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          messages: [{ role: "user", content: "Start the conversation. You speak first." }],
+          messages: [
+            {
+              role: "user",
+              content: "Start the conversation. You speak first.",
+            },
+          ],
           sceneContext: prompt.context,
           mode,
           difficulty,
@@ -165,7 +180,7 @@ ${prompt.context}
     messages: ChatMessage[],
     categoryId: string,
     mode: "free" | "guided" | "listening",
-    difficulty: "beginner" | "intermediate" | "advanced"
+    difficulty: "beginner" | "intermediate" | "advanced",
   ): Promise<ChatMessage | null> => {
     const prompt = SIMPLE_PROMPTS[categoryId] || SIMPLE_PROMPTS.default;
 
@@ -236,7 +251,10 @@ ${prompt.context}
     }
   },
 
-  speakMessage: async (text: string, speed: "slow" | "normal" | "fast" = "normal"): Promise<void> => {
+  speakMessage: async (
+    text: string,
+    speed: "slow" | "normal" | "fast" = "normal",
+  ): Promise<void> => {
     await speak(text, { accent: "en-US", speed });
   },
 

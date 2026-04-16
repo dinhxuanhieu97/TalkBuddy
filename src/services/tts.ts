@@ -13,9 +13,9 @@ import {
   VoiceSpeed,
 } from "../types/voice";
 
-// Use local network IP instead of localhost for mobile device access
-const TTS_URL = "http://192.168.1.126:8001";
-const TTS_API_KEY = "tts_service_secret_key";
+const TTS_URL = process.env.EXPO_PUBLIC_TTS_URL || "http://localhost:8001";
+const TTS_API_KEY =
+  process.env.EXPO_PUBLIC_TTS_API_KEY || "tts_service_secret_key";
 
 class TTSServiceClient {
   private baseUrl: string;

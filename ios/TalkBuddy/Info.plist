@@ -21,7 +21,7 @@
     <key>CFBundlePackageType</key>
     <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0.1</string>
+    <string>1.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleURLTypes</key>
@@ -33,13 +33,9 @@
         </array>
       </dict>
       <dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>OAuthRedirect</string>
         <key>CFBundleURLSchemes</key>
         <array>
-				<string>com.talkbuddy.scenario</string>
+          <string>exp+talkbuddy</string>
         </array>
       </dict>
     </array>
@@ -56,14 +52,12 @@
       <key>NSAllowsLocalNetworking</key>
       <true/>
     </dict>
-    <key>NSAppleMusicUsageDescription</key>
-    <string>TalkBuddy needs access to Apple Music for voice features</string>
     <key>NSAppleSignInUsageDescription</key>
-    <string>Sign in with your Apple ID</string>
+    <string>Sign in with your Apple ID to save your learning progress and sync across devices</string>
     <key>NSCameraUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your camera</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>Allow $(PRODUCT_NAME) to access your microphone</string>
+    <string>TalkBuddy needs microphone access for voice practice with Shadow Mode to help you improve your pronunciation and speaking skills.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your photos</string>
     <key>NSUserActivityTypes</key>

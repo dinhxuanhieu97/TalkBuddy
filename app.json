@@ -2,7 +2,7 @@
   "expo": {
     "name": "TalkBuddy-场景学英语，即学即用～",
     "slug": "talkbuddy",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "talkbuddy",
@@ -28,8 +28,8 @@
             ]
           }
         ],
-        "NSAppleMusicUsageDescription": "TalkBuddy needs access to Apple Music for voice features",
-        "NSAppleSignInUsageDescription": "Sign in with your Apple ID"
+        "NSAppleSignInUsageDescription": "Sign in with your Apple ID to save your learning progress and sync across devices",
+        "NSMicrophoneUsageDescription": "TalkBuddy needs microphone access for voice practice with Shadow Mode to help you improve your pronunciation and speaking skills."
       }
     },
     "android": {

@@ -11,8 +11,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export type VoiceAccent = "en-US" | "en-GB" | "en-AU";
 export type SpeechSpeed = "slow" | "normal" | "fast";
 
-const API_URL = "http://localhost:5277/api";
-const TTS_CACHE_PREFIX = "talkbuddy_tts_";
+const API_URL = process.env.EXPO_PUBLIC_API_URL
+  ? `${process.env.EXPO_PUBLIC_API_URL}/api`
+  : "http://localhost:5277/api";
+const TTS_CACHE_PREFIX = "talkbuddy_tts_url_";
 
 const SPEED_RATE_MAP: Record<SpeechSpeed, number> = {
   slow: 0.5,
@@ -32,8 +34,8 @@ function cacheKey(text: string, accent: string, speed: string): string {
   return `${TTS_CACHE_PREFIX}${accent}_${speed}_${text.slice(0, 80)}`;
 }
 
-/** Get cached audio base64 */
-async function getCachedAudio(key: string): Promise<string | null> {
+/** Get cached audio URL */
+async function getCachedAudioUrl(key: string): Promise<string | null> {
   try {
     return await AsyncStorage.getItem(key);
   } catch {
@@ -41,17 +43,17 @@ async function getCachedAudio(key: string): Promise<string | null> {
   }
 }
 
-/** Save audio base64 to cache */
-async function cacheAudio(key: string, base64: string): Promise<void> {
+/** Save audio URL to cache */
+async function cacheAudioUrl(key: string, url: string): Promise<void> {
   try {
-    await AsyncStorage.setItem(key, base64);
+    await AsyncStorage.setItem(key, url);
   } catch {
     // Ignore cache errors
   }
 }
 
-/** Play base64 audio using Expo AV - returns Promise that resolves when done */
-async function playBase64Audio(base64: string, format: string): Promise<void> {
+/** Play audio from URL using Expo AV - returns Promise that resolves when done */
+async function playAudioFromUrl(url: string): Promise<void> {
   // Stop any currently playing audio
   if (currentSound) {
     try {
@@ -61,10 +63,8 @@ async function playBase64Audio(base64: string, format: string): Promise<void> {
     currentSound = null;
   }
 
-  const uri = `data:audio/${format};base64,${base64}`;
-
   const { sound } = await Audio.Sound.createAsync(
-    { uri },
+    { uri: url },
     { shouldPlay: true },
   );
 
@@ -122,12 +122,12 @@ export async function speak(
   const { accent = "en-US", speed = "normal", onDone, onError } = options;
 
   try {
-    // L1: Check cache
+    // L1: Check cached URL
     const key = cacheKey(text, accent, speed);
-    const cached = await getCachedAudio(key);
+    const cachedUrl = await getCachedAudioUrl(key);
 
-    if (cached) {
-      await playBase64Audio(cached, "mp3");
+    if (cachedUrl) {
+      await playAudioFromUrl(cachedUrl);
       onDone?.();
       return;
     }
@@ -148,13 +148,13 @@ export async function speak(
     if (!res.ok) throw new Error(`TTS API error: ${res.status}`);
 
     const data = await res.json();
-    if (!data.success || !data.data?.audio)
+    if (!data.success || !data.data?.audioUrl)
       throw new Error("Invalid TTS response");
 
-    // Cache for reuse
-    cacheAudio(key, data.data.audio);
+    // Cache URL for reuse
+    cacheAudioUrl(key, data.data.audioUrl);
 
-    await playBase64Audio(data.data.audio, data.data.format ?? "mp3");
+    await playAudioFromUrl(data.data.audioUrl);
     onDone?.();
   } catch (err) {
     console.warn("[TTS] Backend failed, falling back to expo-speech:", err);

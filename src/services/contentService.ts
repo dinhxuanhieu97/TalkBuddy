@@ -1,7 +1,9 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_BASE_URL = "http://localhost:5277/api/content";
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL
+  ? `${process.env.EXPO_PUBLIC_API_URL}/api/content`
+  : "http://localhost:5277/api/content";
 
 const CONTENT_CACHE_KEY = "talkbuddy_content_cache";
 const CACHE_EXPIRY_HOURS = 24;
@@ -62,14 +64,14 @@ class ContentService {
     try {
       const cached = localStorage.getItem(CONTENT_CACHE_KEY);
       if (!cached) return null;
-      
+
       const data: CacheData = JSON.parse(cached);
       const hoursSinceCache = (Date.now() - data.timestamp) / (1000 * 60 * 60);
-      
+
       if (hoursSinceCache > CACHE_EXPIRY_HOURS) {
         return null;
       }
-      
+
       return data;
     } catch {
       return null;
@@ -100,9 +102,9 @@ class ContentService {
 
     try {
       const response = await axios.get<{ success: boolean; data: Category[] }>(
-        `${API_BASE_URL}/categories`
+        `${API_BASE_URL}/categories`,
       );
-      
+
       if (response.data.success) {
         this.setCachedData({ categories: response.data.data });
         return response.data.data;
@@ -120,7 +122,7 @@ class ContentService {
 
   async getScenes(categoryId: string, forceRefresh = false): Promise<Scene[]> {
     const cacheKey = `scenes_${categoryId}`;
-    
+
     if (!forceRefresh) {
       const cached = this.getCachedData();
       if (cached?.scenes?.[categoryId]) {
@@ -130,9 +132,9 @@ class ContentService {
 
     try {
       const response = await axios.get<{ success: boolean; data: Scene[] }>(
-        `${API_BASE_URL}/scenes/${categoryId}`
+        `${API_BASE_URL}/scenes/${categoryId}`,
       );
-      
+
       if (response.data.success) {
         const cached = this.getCachedData() || { timestamp: 0, scenes: {} };
         cached.scenes = cached.scenes || {};
@@ -151,7 +153,9 @@ class ContentService {
     }
   }
 
-  async getMicroInteractions(forceRefresh = false): Promise<MicroInteractionGroup[]> {
+  async getMicroInteractions(
+    forceRefresh = false,
+  ): Promise<MicroInteractionGroup[]> {
     if (!forceRefresh) {
       const cached = this.getCachedData();
       if (cached?.microInteractions) {
@@ -160,10 +164,11 @@ class ContentService {
     }
 
     try {
-      const response = await axios.get<{ success: boolean; data: MicroInteractionGroup[] }>(
-        `${API_BASE_URL}/micro-interactions`
-      );
-      
+      const response = await axios.get<{
+        success: boolean;
+        data: MicroInteractionGroup[];
+      }>(`${API_BASE_URL}/micro-interactions`);
+
       if (response.data.success) {
         this.setCachedData({ microInteractions: response.data.data });
         return response.data.data;
@@ -182,9 +187,9 @@ class ContentService {
   async getManifest(): Promise<Manifest | null> {
     try {
       const response = await axios.get<{ success: boolean; data: Manifest }>(
-        `${API_BASE_URL}/manifest`
+        `${API_BASE_URL}/manifest`,
       );
-      
+
       if (response.data.success) {
         return response.data.data;
       }

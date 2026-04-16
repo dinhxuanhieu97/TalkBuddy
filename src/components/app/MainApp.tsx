@@ -80,8 +80,8 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
         {activeTab === "learn" && (
           <LearnScreen onNavigateToProfile={() => setActiveTab("me")} />
         )}
-        {activeTab === "sos" && <TalkBuddyScreen />}
-        {activeTab === "practice" && <PracticeScreen />}
+        {/* {activeTab === "sos" && <TalkBuddyScreen />}
+        {activeTab === "practice" && <PracticeScreen />} */}
         {activeTab === "me" && (
           <ProfileScreen
             onLogout={onLogout}

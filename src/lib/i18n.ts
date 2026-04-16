@@ -29,6 +29,8 @@ function getInitialLocale(): Locale {
 interface LocaleState {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
 export const useLocaleStore = create<LocaleState>()(
@@ -36,19 +38,28 @@ export const useLocaleStore = create<LocaleState>()(
     (set) => ({
       locale: getInitialLocale() as Locale,
       setLocale: (locale) => set({ locale }),
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
     }),
     {
       name: "talkbuddy-locale-storage",
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     },
   ),
 );
+
+export const useLocaleHydrated = () => useLocaleStore((s) => s._hasHydrated);
 
 // ============================================================
 // Translation dictionaries
 // ============================================================
 
-const dictionaries: Record<Locale, Record<string, string>> = { zh };
+const dictionaries: Record<Locale, Record<string, string>> = {
+  zh: zh as Record<string, string>,
+};
 
 // ============================================================
 // useT hook — the main translation interface
@@ -65,8 +76,9 @@ const dictionaries: Record<Locale, Record<string, string>> = { zh };
  * ```
  */
 export function useT() {
-  const locale = useLocaleStore((s) => s.locale);
-  const dict = dictionaries[locale];
+  // Force zh locale since the app only supports Chinese
+  const locale: Locale = "zh";
+  const dict = dictionaries[locale] || {};
 
   return function t(
     key: LocaleKeys,

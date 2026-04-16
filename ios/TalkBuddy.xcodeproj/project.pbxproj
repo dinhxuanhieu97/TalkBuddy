@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CD008A2490E6DA7E4F504F1 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581BF344434DE28C78C2B76 /* ExpoModulesProvider.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		564E6BE8033FE5233A8B766E /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623B3AF2860575EF39C8771C /* ExpoModulesProvider.swift */; };
-		92EBBABC2E42DF311B7614F3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 923C0F49ABCC27CCFAD73B44 /* PrivacyInfo.xcprivacy */; };
+		537812697230095210A8520A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 45736767BBBD7EBCEA92B8AC /* PrivacyInfo.xcprivacy */; };
+		805A5E6644A6B46190655D96 /* libPods-TalkBuddy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 390DECF9E292CBDA6B9F1275 /* libPods-TalkBuddy.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
-		FE8C99D4DBAA43CFA29B0EE0 /* libPods-TalkBuddy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB59D5DBECB87C59BEE8CF /* libPods-TalkBuddy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* TalkBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TalkBuddy/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TalkBuddy/Info.plist; sourceTree = "<group>"; };
-		36CB59D5DBECB87C59BEE8CF /* libPods-TalkBuddy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TalkBuddy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		623B3AF2860575EF39C8771C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TalkBuddy/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		923C0F49ABCC27CCFAD73B44 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = TalkBuddy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		390DECF9E292CBDA6B9F1275 /* libPods-TalkBuddy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TalkBuddy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45736767BBBD7EBCEA92B8AC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = TalkBuddy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		8581BF344434DE28C78C2B76 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TalkBuddy/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		9A3A53BFBAD4507946A9B7A5 /* Pods-TalkBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkBuddy.debug.xcconfig"; path = "Target Support Files/Pods-TalkBuddy/Pods-TalkBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = TalkBuddy/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B428B5D47AEAFEFB5FF73BAA /* Pods-TalkBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkBuddy.release.xcconfig"; path = "Target Support Files/Pods-TalkBuddy/Pods-TalkBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		AF8DCFAF615323931905060F /* Pods-TalkBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkBuddy.release.xcconfig"; path = "Target Support Files/Pods-TalkBuddy/Pods-TalkBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BF890B59414C639275A22CB8 /* Pods-TalkBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkBuddy.debug.xcconfig"; path = "Target Support Files/Pods-TalkBuddy/Pods-TalkBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TalkBuddy/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* TalkBuddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TalkBuddy-Bridging-Header.h"; path = "TalkBuddy/TalkBuddy-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE8C99D4DBAA43CFA29B0EE0 /* libPods-TalkBuddy.a in Frameworks */,
+				805A5E6644A6B46190655D96 /* libPods-TalkBuddy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				923C0F49ABCC27CCFAD73B44 /* PrivacyInfo.xcprivacy */,
+				45736767BBBD7EBCEA92B8AC /* PrivacyInfo.xcprivacy */,
 			);
 			name = TalkBuddy;
 			sourceTree = "<group>";
@@ -62,18 +62,35 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				36CB59D5DBECB87C59BEE8CF /* libPods-TalkBuddy.a */,
+				390DECF9E292CBDA6B9F1275 /* libPods-TalkBuddy.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3F04268F7ED202918C9CEF5D /* Pods */ = {
+		3045F62D1B358B285EB28CC7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BF890B59414C639275A22CB8 /* Pods-TalkBuddy.debug.xcconfig */,
-				B428B5D47AEAFEFB5FF73BAA /* Pods-TalkBuddy.release.xcconfig */,
+				9A3A53BFBAD4507946A9B7A5 /* Pods-TalkBuddy.debug.xcconfig */,
+				AF8DCFAF615323931905060F /* Pods-TalkBuddy.release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		65A5F44AE009DD24AB97660B /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				7FF5EFE08DC45A668088B21D /* TalkBuddy */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		7FF5EFE08DC45A668088B21D /* TalkBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				8581BF344434DE28C78C2B76 /* ExpoModulesProvider.swift */,
+			);
+			name = TalkBuddy;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -90,8 +107,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				3F04268F7ED202918C9CEF5D /* Pods */,
-				DF8B09475BF1609DA6509F24 /* ExpoModulesProviders */,
+				3045F62D1B358B285EB28CC7 /* Pods */,
+				65A5F44AE009DD24AB97660B /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,22 +132,6 @@
 			path = TalkBuddy/Supporting;
 			sourceTree = "<group>";
 		};
-		D7E7ED54BD83A33ACF20A0B4 /* TalkBuddy */ = {
-			isa = PBXGroup;
-			children = (
-				623B3AF2860575EF39C8771C /* ExpoModulesProvider.swift */,
-			);
-			name = TalkBuddy;
-			sourceTree = "<group>";
-		};
-		DF8B09475BF1609DA6509F24 /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				D7E7ED54BD83A33ACF20A0B4 /* TalkBuddy */,
-			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TalkBuddy" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				84E99137DE8ECD4DE56FF1CD /* [Expo] Configure project */,
+				C7DEA339011F2D4262C33D1C /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				6543D7785B911DA2390CEC18 /* [CP] Embed Pods Frameworks */,
+				76189368400BFA7056631B42 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				92EBBABC2E42DF311B7614F3 /* PrivacyInfo.xcprivacy in Resources */,
+				537812697230095210A8520A /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,23 +242,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6543D7785B911DA2390CEC18 /* [CP] Embed Pods Frameworks */ = {
+		76189368400BFA7056631B42 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TalkBuddy/Pods-TalkBuddy-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
-				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
@@ -295,6 +292,8 @@
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -319,13 +318,15 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TalkBuddy/Pods-TalkBuddy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		84E99137DE8ECD4DE56FF1CD /* [Expo] Configure project */ = {
+		C7DEA339011F2D4262C33D1C /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -357,7 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				564E6BE8033FE5233A8B766E /* ExpoModulesProvider.swift in Sources */,
+				0CD008A2490E6DA7E4F504F1 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,13 +367,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF890B59414C639275A22CB8 /* Pods-TalkBuddy.debug.xcconfig */;
+			baseConfigurationReference = 9A3A53BFBAD4507946A9B7A5 /* Pods-TalkBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TalkBuddy/TalkBuddy.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VCJXGNKDS9;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -384,12 +384,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(inherited)",
-					"-DRCT_NEW_ARCH_ENABLED=1",
-					"-Wno-error=constexpr-not-const",
-				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -397,7 +392,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.talkbuddy.scenario;
-				PRODUCT_NAME = "TalkBuddy";
+				PRODUCT_NAME = TalkBuddy;
 				SWIFT_OBJC_BRIDGING_HEADER = "TalkBuddy/TalkBuddy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -408,26 +403,19 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B428B5D47AEAFEFB5FF73BAA /* Pods-TalkBuddy.release.xcconfig */;
+			baseConfigurationReference = AF8DCFAF615323931905060F /* Pods-TalkBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TalkBuddy/TalkBuddy.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VCJXGNKDS9;
 				INFOPLIST_FILE = TalkBuddy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(inherited)",
-					"-DNDEBUG",
-					"-DRCT_NEW_ARCH_ENABLED=1",
-					"-Wno-error=constexpr-not-const",
-				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -435,7 +423,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.talkbuddy.scenario;
-				PRODUCT_NAME = "TalkBuddy";
+				PRODUCT_NAME = TalkBuddy;
 				SWIFT_OBJC_BRIDGING_HEADER = "TalkBuddy/TalkBuddy-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

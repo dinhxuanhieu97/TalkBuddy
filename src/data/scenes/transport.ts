@@ -28,17 +28,26 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, could you take me to the Hilton Hotel on 5th Avenue?",
             textZh: "你好，能送我去第五大道的希尔顿酒店吗？",
-            culturalNote: "上车后直接说目的地即可。如果不确定地址，可以给司机看手机上的地图。",
+            culturalNote:
+              "上车后直接说目的地即可。如果不确定地址，可以给司机看手机上的地图。",
             casualVersion: "Hey, Hilton Hotel on 5th Avenue, please.",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Sure, hop in. Do you have a specific route you'd like me to take, or should I just take the fastest way?",
+            textEn:
+              "Sure, hop in. Do you have a specific route you'd like me to take, or should I just take the fastest way?",
             textZh: "好的，上车吧。您有想走的路线，还是我走最快的路？",
             variations: [
-              { textEn: "No problem. That's about 20 minutes from here. Get in.", textZh: "没问题。从这里大概20分钟。上车吧。" },
-              { textEn: "Hilton on 5th? Sure thing. Jump in.", textZh: "第五大道的希尔顿？没问题。上车。" },
+              {
+                textEn:
+                  "No problem. That's about 20 minutes from here. Get in.",
+                textZh: "没问题。从这里大概20分钟。上车吧。",
+              },
+              {
+                textEn: "Hilton on 5th? Sure thing. Jump in.",
+                textZh: "第五大道的希尔顿？没问题。上车。",
+              },
             ],
             keyPhrases: [
               { en: "hop in", zh: "上车" },
@@ -46,8 +55,18 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "fastest way", zh: "最快的路" },
             ],
             alternativeExpressions: [
-              { textEn: "Where to?", textZh: "去哪儿？", actionHint: "告诉司机目的地", frequency: "common" },
-              { textEn: "Hop in, where are we headed?", textZh: "上车吧，去哪？", actionHint: "直接说地址", frequency: "common" },
+              {
+                textEn: "Where to?",
+                textZh: "去哪儿？",
+                actionHint: "告诉司机目的地",
+                frequency: "common",
+              },
+              {
+                textEn: "Hop in, where are we headed?",
+                textZh: "上车吧，去哪？",
+                actionHint: "直接说地址",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -58,7 +77,8 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "Shouldn't be more than 20 minutes, depending on traffic. Rush hour is winding down, so it should be okay.",
+            textEn:
+              "Shouldn't be more than 20 minutes, depending on traffic. Rush hour is winding down, so it should be okay.",
             textZh: "应该不超过20分钟，看交通情况。高峰期快过了，应该还行。",
             keyPhrases: [
               { en: "depending on traffic", zh: "看交通情况" },
@@ -66,33 +86,57 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "winding down", zh: "快结束了" },
             ],
             alternativeExpressions: [
-              { textEn: "Maybe 20 minutes or so, if traffic cooperates.", textZh: "顺利的话大概20分钟吧。", actionHint: "了解大概到达时间", frequency: "common" },
-              { textEn: "Hard to say — could be 15, could be 30. You know how it is.", textZh: "不好说——15分钟到30分钟都有可能。你懂的。", actionHint: "做好时间弹性准备", frequency: "occasional" },
+              {
+                textEn: "Maybe 20 minutes or so, if traffic cooperates.",
+                textZh: "顺利的话大概20分钟吧。",
+                actionHint: "了解大概到达时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hard to say — could be 15, could be 30. You know how it is.",
+                textZh: "不好说——15分钟到30分钟都有可能。你懂的。",
+                actionHint: "做好时间弹性准备",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
             textEn: "Sounds good. Can you turn on the meter, please?",
             textZh: "好的。能打表吗？",
-            culturalNote: "在正规出租车中，要求打表（turn on the meter）是合理的。有些城市是固定价格。",
+            culturalNote:
+              "在正规出租车中，要求打表（turn on the meter）是合理的。有些城市是固定价格。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "It's already running. You can see it right there on the dashboard.",
+            textEn:
+              "It's already running. You can see it right there on the dashboard.",
             textZh: "已经在跑了。您看仪表盘上就有。",
             keyPhrases: [
               { en: "already running", zh: "已经在跑了" },
               { en: "dashboard", zh: "仪表盘" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, meter's on. You can see it up front.", textZh: "是的，表打着呢。你看前面。", actionHint: "确认计价器在运行", frequency: "common" },
-              { textEn: "Don't worry, it started when you got in.", textZh: "放心，你上车就开始计时了。", actionHint: "不用额外要求打表", frequency: "common" },
+              {
+                textEn: "Yep, meter's on. You can see it up front.",
+                textZh: "是的，表打着呢。你看前面。",
+                actionHint: "确认计价器在运行",
+                frequency: "common",
+              },
+              {
+                textEn: "Don't worry, it started when you got in.",
+                textZh: "放心，你上车就开始计时了。",
+                actionHint: "不用额外要求打表",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great, thanks. Could you drop me off at the main entrance?",
+            textEn:
+              "Great, thanks. Could you drop me off at the main entrance?",
             textZh: "好的，谢谢。能在正门放我下车吗？",
           },
           {
@@ -105,8 +149,18 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "comes to", zh: "一共是" },
             ],
             alternativeExpressions: [
-              { textEn: "Alright, that's $23.50. Cash or card?", textZh: "好了，23.50美元。现金还是刷卡？", actionHint: "准备付款", frequency: "common" },
-              { textEn: "We're here. It's 23 fifty.", textZh: "到了。23块5。", actionHint: "准备付款下车", frequency: "common" },
+              {
+                textEn: "Alright, that's $23.50. Cash or card?",
+                textZh: "好了，23.50美元。现金还是刷卡？",
+                actionHint: "准备付款",
+                frequency: "common",
+              },
+              {
+                textEn: "We're here. It's 23 fifty.",
+                textZh: "到了。23块5。",
+                actionHint: "准备付款下车",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -118,22 +172,34 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yes, tap or insert your card right here. Would you like a receipt?",
+            textEn:
+              "Yes, tap or insert your card right here. Would you like a receipt?",
             textZh: "可以，在这里刷或感应一下。要收据吗？",
             keyPhrases: [
               { en: "tap or insert", zh: "感应或插卡" },
               { en: "receipt", zh: "收据" },
             ],
             alternativeExpressions: [
-              { textEn: "Card's fine. Just tap it right here.", textZh: "刷卡没问题。在这儿碰一下就行。", actionHint: "掏出银行卡", frequency: "common" },
-              { textEn: "Sure, chip or tap. Need a receipt?", textZh: "行，插卡或感应都行。要小票吗？", actionHint: "选择刷卡方式", frequency: "common" },
+              {
+                textEn: "Card's fine. Just tap it right here.",
+                textZh: "刷卡没问题。在这儿碰一下就行。",
+                actionHint: "掏出银行卡",
+                frequency: "common",
+              },
+              {
+                textEn: "Sure, chip or tap. Need a receipt?",
+                textZh: "行，插卡或感应都行。要小票吗？",
+                actionHint: "选择刷卡方式",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
             textEn: "Yes, please. Thank you. Keep the change.",
             textZh: "要的。谢谢。不用找了。",
-            culturalNote: "在美国，出租车一般给15-20%小费。\"Keep the change\" 意思是零头不用找了。",
+            culturalNote:
+              '在美国，出租车一般给15-20%小费。"Keep the change" 意思是零头不用找了。',
           },
         ],
       },
@@ -148,65 +214,109 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, are you my Uber? I'm looking for a white Toyota Camry.",
+            textEn:
+              "Hi, are you my Uber? I'm looking for a white Toyota Camry.",
             textZh: "你好，你是我的 Uber 吗？我在找一辆白色丰田凯美瑞。",
             culturalNote: "确认车型和司机名字是网约车的基本安全习惯。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yes! Are you Wei? I've been waiting by the coffee shop. Hop in!",
+            textEn:
+              "Yes! Are you Wei? I've been waiting by the coffee shop. Hop in!",
             textZh: "是的！你是 Wei 吗？我在咖啡店旁边等你呢。上车吧！",
             variations: [
-              { textEn: "That's me. What's the name on your ride?", textZh: "是我。你订单上的名字是？" },
+              {
+                textEn: "That's me. What's the name on your ride?",
+                textZh: "是我。你订单上的名字是？",
+              },
             ],
             keyPhrases: [
               { en: "waiting by", zh: "在……旁边等" },
               { en: "name on your ride", zh: "订单上的名字" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, that's me. Confirm your name for me?", textZh: "是的，是我。跟我确认一下你的名字？", actionHint: "报出你的名字", frequency: "common" },
-              { textEn: "Hey! I've been circling the block. Jump in!", textZh: "嘿！我绕了好几圈了。快上车！", actionHint: "赶紧上车", frequency: "occasional" },
+              {
+                textEn: "Yeah, that's me. Confirm your name for me?",
+                textZh: "是的，是我。跟我确认一下你的名字？",
+                actionHint: "报出你的名字",
+                frequency: "common",
+              },
+              {
+                textEn: "Hey! I've been circling the block. Jump in!",
+                textZh: "嘿！我绕了好几圈了。快上车！",
+                actionHint: "赶紧上车",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Yes, that's me. The app says you're going to the airport, right?",
+            textEn:
+              "Yes, that's me. The app says you're going to the airport, right?",
             textZh: "是的，是我。App 上显示去机场，对吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yep, Terminal 2. I'll follow the GPS. Feel free to adjust the AC or let me know if you need anything.",
-            textZh: "对，2号航站楼。我跟着导航走。空调随便调，有什么需要告诉我。",
+            textEn:
+              "Yep, Terminal 2. I'll follow the GPS. Feel free to adjust the AC or let me know if you need anything.",
+            textZh:
+              "对，2号航站楼。我跟着导航走。空调随便调，有什么需要告诉我。",
             keyPhrases: [
               { en: "terminal", zh: "航站楼" },
               { en: "follow the GPS", zh: "跟着导航走" },
               { en: "adjust the AC", zh: "调空调" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, airport Terminal 2. Should take about 40 minutes. Buckle up!", textZh: "对，机场2号航站楼。大概40分钟。系好安全带！", actionHint: "系安全带准备出发", frequency: "common" },
-              { textEn: "That's what I've got. Sit back and relax — I know a shortcut.", textZh: "是的，我看到了。坐好放松——我知道条近路。", actionHint: "安心乘车", frequency: "occasional" },
+              {
+                textEn:
+                  "Yep, airport Terminal 2. Should take about 40 minutes. Buckle up!",
+                textZh: "对，机场2号航站楼。大概40分钟。系好安全带！",
+                actionHint: "系安全带准备出发",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "That's what I've got. Sit back and relax — I know a shortcut.",
+                textZh: "是的，我看到了。坐好放松——我知道条近路。",
+                actionHint: "安心乘车",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Actually, could we make a quick stop along the way? I need to pick something up.",
+            textEn:
+              "Actually, could we make a quick stop along the way? I need to pick something up.",
             textZh: "对了，中途能停一下吗？我要拿个东西。",
             isBranchPoint: true,
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Sure, just add the stop in the app so the route updates. Otherwise I might miss the turn.",
-            textZh: "可以，在 App 里加个中途停靠点，不然路线不会更新，我可能错过路口。",
+            textEn:
+              "Sure, just add the stop in the app so the route updates. Otherwise I might miss the turn.",
+            textZh:
+              "可以，在 App 里加个中途停靠点，不然路线不会更新，我可能错过路口。",
             keyPhrases: [
               { en: "add the stop", zh: "加个停靠点" },
               { en: "route updates", zh: "路线更新" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, no problem. Just update the app so I know where to go.", textZh: "没问题。在App里更新一下，我好知道去哪。", actionHint: "在App中添加途经点", frequency: "common" },
-              { textEn: "I can do that, but it'll change the fare. That cool?", textZh: "可以，但费用会变。没问题吧？", actionHint: "确认接受额外费用", frequency: "common" },
+              {
+                textEn:
+                  "Yeah, no problem. Just update the app so I know where to go.",
+                textZh: "没问题。在App里更新一下，我好知道去哪。",
+                actionHint: "在App中添加途经点",
+                frequency: "common",
+              },
+              {
+                textEn: "I can do that, but it'll change the fare. That cool?",
+                textZh: "可以，但费用会变。没问题吧？",
+                actionHint: "确认接受额外费用",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -217,15 +327,26 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "Got it, I see it. We'll be at your stop in about 5 minutes.",
+            textEn:
+              "Got it, I see it. We'll be at your stop in about 5 minutes.",
             textZh: "收到，看到了。大概5分钟到你的停靠点。",
             keyPhrases: [
               { en: "got it", zh: "收到" },
               { en: "your stop", zh: "你的停靠点" },
             ],
             alternativeExpressions: [
-              { textEn: "I see the update. About 5 minutes out.", textZh: "看到更新了。大概5分钟到。", actionHint: "准备好下车拿东西", frequency: "common" },
-              { textEn: "Cool, it just popped up. I'll head there now.", textZh: "好，刚弹出来了。我现在过去。", actionHint: "留意到达时间", frequency: "common" },
+              {
+                textEn: "I see the update. About 5 minutes out.",
+                textZh: "看到更新了。大概5分钟到。",
+                actionHint: "准备好下车拿东西",
+                frequency: "common",
+              },
+              {
+                textEn: "Cool, it just popped up. I'll head there now.",
+                textZh: "好，刚弹出来了。我现在过去。",
+                actionHint: "留意到达时间",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -236,15 +357,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "No rush. I'll keep the car running right here. Your total will update automatically in the app.",
+            textEn:
+              "No rush. I'll keep the car running right here. Your total will update automatically in the app.",
             textZh: "不急。我在这里不熄火等你。费用会在 App 里自动更新。",
             keyPhrases: [
               { en: "keep the car running", zh: "不熄火等着" },
               { en: "update automatically", zh: "自动更新" },
             ],
             alternativeExpressions: [
-              { textEn: "Take your time. I'll wait right here with the meter running.", textZh: "慢慢来。我在这儿等着，计费继续走。", actionHint: "尽快办完回来", frequency: "common" },
-              { textEn: "No worries, I'm not going anywhere. The app handles the wait time.", textZh: "没事，我哪也不去。等待时间App会自动算。", actionHint: "不用担心司机走掉", frequency: "common" },
+              {
+                textEn:
+                  "Take your time. I'll wait right here with the meter running.",
+                textZh: "慢慢来。我在这儿等着，计费继续走。",
+                actionHint: "尽快办完回来",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "No worries, I'm not going anywhere. The app handles the wait time.",
+                textZh: "没事，我哪也不去。等待时间App会自动算。",
+                actionHint: "不用担心司机走掉",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -263,28 +397,46 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             role: "司机",
             textEn: "Alright, here we are. That'll be $65.",
             textZh: "好了，到了。65美元。",
-            keyPhrases: [
-              { en: "that'll be", zh: "一共是" },
-            ],
+            keyPhrases: [{ en: "that'll be", zh: "一共是" }],
             alternativeExpressions: [
-              { textEn: "Here you go. That's 65 bucks.", textZh: "到了。65块。", actionHint: "核实金额是否合理", frequency: "common" },
-              { textEn: "We're here. Sixty-five dollars, please.", textZh: "到了。请付65美元。", actionHint: "先别急着付，确认价格", frequency: "common" },
+              {
+                textEn: "Here you go. That's 65 bucks.",
+                textZh: "到了。65块。",
+                actionHint: "核实金额是否合理",
+                frequency: "common",
+              },
+              {
+                textEn: "We're here. Sixty-five dollars, please.",
+                textZh: "到了。请付65美元。",
+                actionHint: "先别急着付，确认价格",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Wait, $65? That seems really high. I checked online and this trip should be around $30.",
+            textEn:
+              "Wait, $65? That seems really high. I checked online and this trip should be around $30.",
             textZh: "等等，65美元？太贵了吧。我查过网上说这段路大概30美元。",
-            culturalNote: "遇到不合理收费时要冷静但坚定。提前查好大概费用很有用。",
+            culturalNote:
+              "遇到不合理收费时要冷静但坚定。提前查好大概费用很有用。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "There was a lot of traffic. I had to take a detour because of road construction.",
+            textEn:
+              "There was a lot of traffic. I had to take a detour because of road construction.",
             textZh: "路上堵车了。因为修路我绕了道。",
             variations: [
-              { textEn: "The meter doesn't lie, buddy. That's what it says.", textZh: "计价器不会说谎。上面就显示这个数。" },
-              { textEn: "Prices went up this year. Plus there's a surcharge for airport pickups.", textZh: "今年涨价了。而且机场接人有附加费。" },
+              {
+                textEn: "The meter doesn't lie, buddy. That's what it says.",
+                textZh: "计价器不会说谎。上面就显示这个数。",
+              },
+              {
+                textEn:
+                  "Prices went up this year. Plus there's a surcharge for airport pickups.",
+                textZh: "今年涨价了。而且机场接人有附加费。",
+              },
             ],
             keyPhrases: [
               { en: "detour", zh: "绕路" },
@@ -293,33 +445,61 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             ],
             isBranchPoint: true,
             alternativeExpressions: [
-              { textEn: "Traffic was terrible, man. Plus there was construction on the highway.", textZh: "堵得要命啊。高速上还在修路。", actionHint: "礼貌质疑绕路问题", frequency: "common" },
-              { textEn: "Look at the meter — that's what it says. I don't control the price.", textZh: "你看计价器——就是这个数。价格不是我定的。", actionHint: "坚持核对费用", frequency: "occasional" },
+              {
+                textEn:
+                  "Traffic was terrible, man. Plus there was construction on the highway.",
+                textZh: "堵得要命啊。高速上还在修路。",
+                actionHint: "礼貌质疑绕路问题",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Look at the meter — that's what it says. I don't control the price.",
+                textZh: "你看计价器——就是这个数。价格不是我定的。",
+                actionHint: "坚持核对费用",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I noticed the meter wasn't running when we started. Can you explain this charge?",
-            textZh: "我注意到我们出发时计价器没有打开。你能解释一下这个费用吗？",
+            textEn:
+              "I noticed the meter wasn't running when we started. Can you explain this charge?",
+            textZh:
+              "我注意到我们出发时计价器没有打开。你能解释一下这个费用吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Oh, it must have been a glitch. Look, I'll give you a discount — how about $45?",
+            textEn:
+              "Oh, it must have been a glitch. Look, I'll give you a discount — how about $45?",
             textZh: "哦，可能是故障。这样吧，给你打个折——45美元怎么样？",
             keyPhrases: [
               { en: "glitch", zh: "故障" },
               { en: "give you a discount", zh: "给你打折" },
             ],
             alternativeExpressions: [
-              { textEn: "Hmm, it might've glitched. Tell you what, I'll knock off ten bucks.", textZh: "嗯，可能出故障了。这样吧，给你减10块。", actionHint: "继续据理力争", frequency: "common" },
-              { textEn: "Okay okay, my bad. What do you think is fair?", textZh: "好吧好吧，我的错。你觉得多少合理？", actionHint: "说出你认为合理的价格", frequency: "occasional" },
+              {
+                textEn:
+                  "Hmm, it might've glitched. Tell you what, I'll knock off ten bucks.",
+                textZh: "嗯，可能出故障了。这样吧，给你减10块。",
+                actionHint: "继续据理力争",
+                frequency: "common",
+              },
+              {
+                textEn: "Okay okay, my bad. What do you think is fair?",
+                textZh: "好吧好吧，我的错。你觉得多少合理？",
+                actionHint: "说出你认为合理的价格",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I think a fair price would be around $30. That's what the ride normally costs according to Google Maps.",
-            textZh: "我觉得合理价格大概是30美元。Google Maps 上显示这段路正常就是这个价。",
+            textEn:
+              "I think a fair price would be around $30. That's what the ride normally costs according to Google Maps.",
+            textZh:
+              "我觉得合理价格大概是30美元。Google Maps 上显示这段路正常就是这个价。",
           },
           {
             speaker: "them",
@@ -331,20 +511,34 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "deal", zh: "成交" },
             ],
             alternativeExpressions: [
-              { textEn: "Alright, alright. 35 bucks, final offer. Take it or leave it.", textZh: "好吧好吧。35块，最后报价。要不要随你。", actionHint: "决定是否接受", frequency: "common" },
-              { textEn: "How about we split the difference — 40 bucks?", textZh: "折中一下——40块怎么样？", actionHint: "继续谈到合理价格", frequency: "occasional" },
+              {
+                textEn:
+                  "Alright, alright. 35 bucks, final offer. Take it or leave it.",
+                textZh: "好吧好吧。35块，最后报价。要不要随你。",
+                actionHint: "决定是否接受",
+                frequency: "common",
+              },
+              {
+                textEn: "How about we split the difference — 40 bucks?",
+                textZh: "折中一下——40块怎么样？",
+                actionHint: "继续谈到合理价格",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Okay, $35. But I'd also like your driver number so I can file a complaint about the meter.",
+            textEn:
+              "Okay, $35. But I'd also like your driver number so I can file a complaint about the meter.",
             textZh: "好吧，35美元。但我要你的司机编号，我要投诉计价器的问题。",
-            culturalNote: "记下出租车编号（driver number 或 taxi number）是保护自己权益的好办法。",
+            culturalNote:
+              "记下出租车编号（driver number 或 taxi number）是保护自己权益的好办法。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "It's on the dashboard — number 4821. Here's your receipt. Sorry about the confusion.",
+            textEn:
+              "It's on the dashboard — number 4821. Here's your receipt. Sorry about the confusion.",
             textZh: "在仪表盘上——编号4821。给你收据。不好意思搞混了。",
             keyPhrases: [
               { en: "driver number", zh: "司机编号" },
@@ -352,8 +546,19 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "sorry about the confusion", zh: "不好意思搞混了" },
             ],
             alternativeExpressions: [
-              { textEn: "The number's right there on the side of the car. Here's your receipt.", textZh: "车号就在车门边上。给你收据。", actionHint: "拍照留证", frequency: "common" },
-              { textEn: "Fine, here. And sorry about the whole thing.", textZh: "好吧，给你。这事确实抱歉。", actionHint: "保留收据作为凭证", frequency: "common" },
+              {
+                textEn:
+                  "The number's right there on the side of the car. Here's your receipt.",
+                textZh: "车号就在车门边上。给你收据。",
+                actionHint: "拍照留证",
+                frequency: "common",
+              },
+              {
+                textEn: "Fine, here. And sorry about the whole thing.",
+                textZh: "好吧，给你。这事确实抱歉。",
+                actionHint: "保留收据作为凭证",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -386,17 +591,24 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, could you help me with the ticket machine? I'm not sure how it works.",
+            textEn:
+              "Excuse me, could you help me with the ticket machine? I'm not sure how it works.",
             textZh: "不好意思，能帮我看看这个售票机吗？我不太会用。",
             casualVersion: "Hey, sorry — how does this machine work?",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Of course! First, select your language — you can switch it to English here. Then choose your destination or a fare amount.",
-            textZh: "当然！先选语言——这里可以切换成英文。然后选目的地或者票价金额。",
+            textEn:
+              "Of course! First, select your language — you can switch it to English here. Then choose your destination or a fare amount.",
+            textZh:
+              "当然！先选语言——这里可以切换成英文。然后选目的地或者票价金额。",
             variations: [
-              { textEn: "Sure! Where are you trying to go? I can help you find the right ticket.", textZh: "好的！你要去哪里？我帮你找对应的票。" },
+              {
+                textEn:
+                  "Sure! Where are you trying to go? I can help you find the right ticket.",
+                textZh: "好的！你要去哪里？我帮你找对应的票。",
+              },
             ],
             keyPhrases: [
               { en: "select your language", zh: "选语言" },
@@ -404,20 +616,35 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "fare amount", zh: "票价金额" },
             ],
             alternativeExpressions: [
-              { textEn: "Sure thing! What are you trying to do — buy a single ride or a pass?", textZh: "没问题！你要买单程还是通票？", actionHint: "说明你要买什么票", frequency: "common" },
-              { textEn: "Of course! It's pretty simple once you get the hang of it. Where are you headed?", textZh: "当然！搞懂了就很简单。你要去哪？", actionHint: "告诉对方你的目的地", frequency: "common" },
+              {
+                textEn:
+                  "Sure thing! What are you trying to do — buy a single ride or a pass?",
+                textZh: "没问题！你要买单程还是通票？",
+                actionHint: "说明你要买什么票",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Of course! It's pretty simple once you get the hang of it. Where are you headed?",
+                textZh: "当然！搞懂了就很简单。你要去哪？",
+                actionHint: "告诉对方你的目的地",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I need to get to Central Station. How much is a single ticket?",
+            textEn:
+              "I need to get to Central Station. How much is a single ticket?",
             textZh: "我要去中央车站。单程票多少钱？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "A single ride to Central Station is $2.75. But if you're planning to ride more today, a day pass is $7 for unlimited rides.",
-            textZh: "去中央车站单程是2.75美元。不过如果你今天要多次乘坐，日票7美元可以无限次乘坐。",
+            textEn:
+              "A single ride to Central Station is $2.75. But if you're planning to ride more today, a day pass is $7 for unlimited rides.",
+            textZh:
+              "去中央车站单程是2.75美元。不过如果你今天要多次乘坐，日票7美元可以无限次乘坐。",
             keyPhrases: [
               { en: "single ride", zh: "单程" },
               { en: "day pass", zh: "日票" },
@@ -425,27 +652,54 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             ],
             isBranchPoint: true,
             alternativeExpressions: [
-              { textEn: "One way to Central Station is $2.75. Want me to show you how to buy it?", textZh: "去中央车站单程2.75美元。要我教你怎么买吗？", actionHint: "看对方操作学习", frequency: "common" },
-              { textEn: "It depends on how far you're going. Let me check... $2.75 for a single ride.", textZh: "看你去多远。我查查……单程2.75美元。", actionHint: "考虑是否买日票更划算", frequency: "common" },
+              {
+                textEn:
+                  "One way to Central Station is $2.75. Want me to show you how to buy it?",
+                textZh: "去中央车站单程2.75美元。要我教你怎么买吗？",
+                actionHint: "看对方操作学习",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It depends on how far you're going. Let me check... $2.75 for a single ride.",
+                textZh: "看你去多远。我查查……单程2.75美元。",
+                actionHint: "考虑是否买日票更划算",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "The day pass sounds like a better deal. I'll get one of those.",
+            textEn:
+              "The day pass sounds like a better deal. I'll get one of those.",
             textZh: "日票划算些。我买一张日票吧。",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Great choice. The machine takes cash, credit cards, and contactless payments. Just tap here to select the day pass.",
-            textZh: "好选择。机器支持现金、信用卡和非接触式支付。点这里选日票。",
+            textEn:
+              "Great choice. The machine takes cash, credit cards, and contactless payments. Just tap here to select the day pass.",
+            textZh:
+              "好选择。机器支持现金、信用卡和非接触式支付。点这里选日票。",
             keyPhrases: [
               { en: "contactless payments", zh: "非接触式支付" },
               { en: "tap here", zh: "点这里" },
             ],
             alternativeExpressions: [
-              { textEn: "Good idea. Just hit 'Day Pass' on the screen and pay by card or cash.", textZh: "好选择。在屏幕上点'日票'，刷卡或投币付款。", actionHint: "按照指示操作", frequency: "common" },
-              { textEn: "Smart move. The day pass pays for itself after three rides.", textZh: "聪明。坐三次日票就回本了。", actionHint: "按屏幕提示购买", frequency: "common" },
+              {
+                textEn:
+                  "Good idea. Just hit 'Day Pass' on the screen and pay by card or cash.",
+                textZh: "好选择。在屏幕上点'日票'，刷卡或投币付款。",
+                actionHint: "按照指示操作",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Smart move. The day pass pays for itself after three rides.",
+                textZh: "聪明。坐三次日票就回本了。",
+                actionHint: "按屏幕提示购买",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -456,27 +710,42 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Yes, tap when you enter and tap again when you exit. Make sure to keep your card until the end of your last ride.",
-            textZh: "对，进站刷一次，出站再刷一次。一定要保留卡到最后一趟结束。",
+            textEn:
+              "Yes, tap when you enter and tap again when you exit. Make sure to keep your card until the end of your last ride.",
+            textZh:
+              "对，进站刷一次，出站再刷一次。一定要保留卡到最后一趟结束。",
             keyPhrases: [
               { en: "tap when you enter", zh: "进站刷卡" },
               { en: "tap again when you exit", zh: "出站再刷" },
               { en: "keep your card", zh: "保留卡" },
             ],
             alternativeExpressions: [
-              { textEn: "Just tap in and tap out. Easy peasy.", textZh: "进站刷一下出站刷一下。超简单。", actionHint: "记住进出都要刷卡", frequency: "common" },
-              { textEn: "Tap it at the turnstile going in and coming out. Don't throw the card away!", textZh: "进闸机刷一次出闸机刷一次。别把卡扔了！", actionHint: "保管好卡直到行程结束", frequency: "common" },
+              {
+                textEn: "Just tap in and tap out. Easy peasy.",
+                textZh: "进站刷一下出站刷一下。超简单。",
+                actionHint: "记住进出都要刷卡",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Tap it at the turnstile going in and coming out. Don't throw the card away!",
+                textZh: "进闸机刷一次出闸机刷一次。别把卡扔了！",
+                actionHint: "保管好卡直到行程结束",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thank you so much. Which platform do I need for Central Station?",
+            textEn:
+              "Thank you so much. Which platform do I need for Central Station?",
             textZh: "太感谢了。去中央车站在哪个站台？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Take the Blue Line, Platform 2, heading northbound. It's three stops from here.",
+            textEn:
+              "Take the Blue Line, Platform 2, heading northbound. It's three stops from here.",
             textZh: "坐蓝线，2号站台，北行方向。从这里三站就到。",
             keyPhrases: [
               { en: "platform", zh: "站台" },
@@ -484,13 +753,26 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "three stops", zh: "三站" },
             ],
             alternativeExpressions: [
-              { textEn: "Blue Line, Platform 2. Head that way and go downstairs.", textZh: "蓝线，2号站台。往那边走，下楼就是。", actionHint: "跟着指引找站台", frequency: "common" },
-              { textEn: "You want the Blue Line going north. It's three stops — pretty quick.", textZh: "你坐蓝线北行方向。三站就到——很快的。", actionHint: "确认方向后等车", frequency: "common" },
+              {
+                textEn:
+                  "Blue Line, Platform 2. Head that way and go downstairs.",
+                textZh: "蓝线，2号站台。往那边走，下楼就是。",
+                actionHint: "跟着指引找站台",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You want the Blue Line going north. It's three stops — pretty quick.",
+                textZh: "你坐蓝线北行方向。三站就到——很快的。",
+                actionHint: "确认方向后等车",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Blue Line, Platform 2, northbound. Got it. Thanks for your help!",
+            textEn:
+              "Blue Line, Platform 2, northbound. Got it. Thanks for your help!",
             textZh: "蓝线，2号站台，北行。明白了。谢谢！",
           },
         ],
@@ -506,16 +788,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I'm trying to get to the Museum of Natural History. Which line should I take?",
+            textEn:
+              "Excuse me, I'm trying to get to the Museum of Natural History. Which line should I take?",
             textZh: "不好意思，我想去自然历史博物馆。应该坐哪条线？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "You'll need to take the Green Line and then transfer to the Red Line. Let me show you on the map.",
+            textEn:
+              "You'll need to take the Green Line and then transfer to the Red Line. Let me show you on the map.",
             textZh: "你要坐绿线，然后换乘红线。我在地图上指给你看。",
             variations: [
-              { textEn: "Take the A train to 42nd Street, then switch to the C line. It's a direct transfer.", textZh: "坐A线到42街，然后换C线。直接换乘就行。" },
+              {
+                textEn:
+                  "Take the A train to 42nd Street, then switch to the C line. It's a direct transfer.",
+                textZh: "坐A线到42街，然后换C线。直接换乘就行。",
+              },
             ],
             keyPhrases: [
               { en: "transfer", zh: "换乘" },
@@ -523,8 +811,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "show you on the map", zh: "在地图上指给你看" },
             ],
             alternativeExpressions: [
-              { textEn: "Take the Green Line to Union Square, then switch to the Red. It's pretty straightforward.", textZh: "坐绿线到联合广场，然后换红线。挺简单的。", actionHint: "记住换乘站名", frequency: "common" },
-              { textEn: "Hmm, you'll need to transfer once. Let me think... Green to Red at Union Square.", textZh: "嗯，你要换一次车。我想想……在联合广场从绿线换红线。", actionHint: "记下换乘信息", frequency: "common" },
+              {
+                textEn:
+                  "Take the Green Line to Union Square, then switch to the Red. It's pretty straightforward.",
+                textZh: "坐绿线到联合广场，然后换红线。挺简单的。",
+                actionHint: "记住换乘站名",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hmm, you'll need to transfer once. Let me think... Green to Red at Union Square.",
+                textZh: "嗯，你要换一次车。我想想……在联合广场从绿线换红线。",
+                actionHint: "记下换乘信息",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -535,16 +835,30 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Transfer at Union Square. When you get off the Green Line, follow the signs for the Red Line — it's on the lower level. You can't miss it.",
-            textZh: "在联合广场站换乘。下绿线后，跟着红线的指示牌走——在下一层。很好找的。",
+            textEn:
+              "Transfer at Union Square. When you get off the Green Line, follow the signs for the Red Line — it's on the lower level. You can't miss it.",
+            textZh:
+              "在联合广场站换乘。下绿线后，跟着红线的指示牌走——在下一层。很好找的。",
             keyPhrases: [
               { en: "follow the signs", zh: "跟着指示牌走" },
               { en: "lower level", zh: "下一层" },
               { en: "you can't miss it", zh: "很好找的" },
             ],
             alternativeExpressions: [
-              { textEn: "Switch at Union Square. Just follow the signs — they're pretty clear.", textZh: "在联合广场换。跟着指示牌走就行——很清楚的。", actionHint: "到站后找指示牌", frequency: "common" },
-              { textEn: "Get off at Union Square and look for the Red Line signs. It's one level down.", textZh: "在联合广场下车，找红线的牌子。下一层就是。", actionHint: "下车后往下走一层", frequency: "common" },
+              {
+                textEn:
+                  "Switch at Union Square. Just follow the signs — they're pretty clear.",
+                textZh: "在联合广场换。跟着指示牌走就行——很清楚的。",
+                actionHint: "到站后找指示牌",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Get off at Union Square and look for the Red Line signs. It's one level down.",
+                textZh: "在联合广场下车，找红线的牌子。下一层就是。",
+                actionHint: "下车后往下走一层",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -555,7 +869,8 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "It's four stops on the Red Line. Get off at 81st Street — the museum entrance is right by the station exit.",
+            textEn:
+              "It's four stops on the Red Line. Get off at 81st Street — the museum entrance is right by the station exit.",
             textZh: "红线坐四站。在81街下车——博物馆入口就在出站口旁边。",
             keyPhrases: [
               { en: "get off at", zh: "在……下车" },
@@ -563,8 +878,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "right by", zh: "就在旁边" },
             ],
             alternativeExpressions: [
-              { textEn: "Four stops. Get off at 81st — the museum is right there.", textZh: "四站。在81街下——博物馆就在那儿。", actionHint: "数好站数别坐过", frequency: "common" },
-              { textEn: "It's about 10 minutes on the Red Line. 81st Street is your stop.", textZh: "红线大概10分钟。你在81街下。", actionHint: "留意车内报站", frequency: "common" },
+              {
+                textEn:
+                  "Four stops. Get off at 81st — the museum is right there.",
+                textZh: "四站。在81街下——博物馆就在那儿。",
+                actionHint: "数好站数别坐过",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's about 10 minutes on the Red Line. 81st Street is your stop.",
+                textZh: "红线大概10分钟。你在81街下。",
+                actionHint: "留意车内报站",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -575,41 +902,71 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "About 25 minutes total, including the transfer. Trains come every 5 minutes during the day, so you won't wait long.",
+            textEn:
+              "About 25 minutes total, including the transfer. Trains come every 5 minutes during the day, so you won't wait long.",
             textZh: "加上换乘一共大约25分钟。白天每5分钟一班，不用等太久。",
             keyPhrases: [
               { en: "including the transfer", zh: "包括换乘" },
               { en: "every 5 minutes", zh: "每5分钟一班" },
             ],
             alternativeExpressions: [
-              { textEn: "Around 25 minutes, give or take. Trains are pretty frequent.", textZh: "差不多25分钟，上下浮动。车挺频繁的。", actionHint: "不用担心等太久", frequency: "common" },
-              { textEn: "Maybe half an hour with the transfer. But trains run often, so no worries.", textZh: "算上换乘大概半小时。不过车次很多，不用担心。", actionHint: "预留充足时间", frequency: "common" },
+              {
+                textEn:
+                  "Around 25 minutes, give or take. Trains are pretty frequent.",
+                textZh: "差不多25分钟，上下浮动。车挺频繁的。",
+                actionHint: "不用担心等太久",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Maybe half an hour with the transfer. But trains run often, so no worries.",
+                textZh: "算上换乘大概半小时。不过车次很多，不用担心。",
+                actionHint: "预留充足时间",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "One last question — is there an express train, or are they all local?",
+            textEn:
+              "One last question — is there an express train, or are they all local?",
             textZh: "最后一个问题——有快车吗，还是都是慢车？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "On the Green Line there's an express that skips a few stops, but for your route you want the local train — the express doesn't stop at Union Square.",
-            textZh: "绿线有快车会跳过几站，但你要坐的路线应该坐慢车——快车不停联合广场站。",
+            textEn:
+              "On the Green Line there's an express that skips a few stops, but for your route you want the local train — the express doesn't stop at Union Square.",
+            textZh:
+              "绿线有快车会跳过几站，但你要坐的路线应该坐慢车——快车不停联合广场站。",
             keyPhrases: [
               { en: "express", zh: "快车" },
               { en: "local train", zh: "慢车/站站停" },
               { en: "skips a few stops", zh: "跳过几站" },
             ],
-            responseTip: "注意区分 express（快车）和 local（慢车/站站停），坐错可能会过站",
+            responseTip:
+              "注意区分 express（快车）和 local（慢车/站站停），坐错可能会过站",
             alternativeExpressions: [
-              { textEn: "For your trip, take the local — the express skips your transfer stop.", textZh: "你坐慢车——快车不停你要换乘的站。", actionHint: "确认坐慢车", frequency: "common" },
-              { textEn: "There's an express, but it doesn't stop where you need to transfer. Stick with the local.", textZh: "有快车，但它不停你要换乘的站。还是坐慢车吧。", actionHint: "选慢车更保险", frequency: "common" },
+              {
+                textEn:
+                  "For your trip, take the local — the express skips your transfer stop.",
+                textZh: "你坐慢车——快车不停你要换乘的站。",
+                actionHint: "确认坐慢车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "There's an express, but it doesn't stop where you need to transfer. Stick with the local.",
+                textZh: "有快车，但它不停你要换乘的站。还是坐慢车吧。",
+                actionHint: "选慢车更保险",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good to know! I'll take the local. Thank you so much for your help.",
+            textEn:
+              "Good to know! I'll take the local. Thank you so much for your help.",
             textZh: "还好你说了！我坐慢车。非常感谢你的帮助。",
           },
         ],
@@ -637,16 +994,23 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I have a reservation to pick up a car. The name is Wang, confirmation number RC-7742.",
+            textEn:
+              "Hi, I have a reservation to pick up a car. The name is Wang, confirmation number RC-7742.",
             textZh: "你好，我预订了一辆车来取。姓王，确认号 RC-7742。",
           },
           {
             speaker: "them",
             role: "柜台人员",
-            textEn: "Welcome, Mr. Wang! Let me pull that up. I see a mid-size sedan reserved for five days. May I have your driver's license and a credit card?",
-            textZh: "欢迎，王先生！让我查一下。我看到预订了一辆中型轿车，五天。请出示驾照和信用卡。",
+            textEn:
+              "Welcome, Mr. Wang! Let me pull that up. I see a mid-size sedan reserved for five days. May I have your driver's license and a credit card?",
+            textZh:
+              "欢迎，王先生！让我查一下。我看到预订了一辆中型轿车，五天。请出示驾照和信用卡。",
             variations: [
-              { textEn: "I have your reservation here — a compact car for five days. I'll need your license and a credit card, please.", textZh: "找到您的预订了——小型车五天。请给我驾照和信用卡。" },
+              {
+                textEn:
+                  "I have your reservation here — a compact car for five days. I'll need your license and a credit card, please.",
+                textZh: "找到您的预订了——小型车五天。请给我驾照和信用卡。",
+              },
             ],
             keyPhrases: [
               { en: "mid-size sedan", zh: "中型轿车" },
@@ -654,21 +1018,38 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "credit card", zh: "信用卡" },
             ],
             alternativeExpressions: [
-              { textEn: "I see your reservation. Can I get your license and a credit card?", textZh: "我看到你的预订了。给我驾照和信用卡。", actionHint: "出示证件", frequency: "common" },
-              { textEn: "Welcome! Let me look that up. A mid-size for five days, right? ID and credit card, please.", textZh: "欢迎！我查一下。中型车五天，对吧？请出示证件和信用卡。", actionHint: "确认预订信息", frequency: "common" },
+              {
+                textEn:
+                  "I see your reservation. Can I get your license and a credit card?",
+                textZh: "我看到你的预订了。给我驾照和信用卡。",
+                actionHint: "出示证件",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Welcome! Let me look that up. A mid-size for five days, right? ID and credit card, please.",
+                textZh:
+                  "欢迎！我查一下。中型车五天，对吧？请出示证件和信用卡。",
+                actionHint: "确认预订信息",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Here's my international driver's license and my passport. And here's my credit card.",
+            textEn:
+              "Here's my international driver's license and my passport. And here's my credit card.",
             textZh: "这是我的国际驾照和护照。这是信用卡。",
-            culturalNote: "很多国家认可国际驾照（International Driving Permit）。出发前在国内办好。",
+            culturalNote:
+              "很多国家认可国际驾照（International Driving Permit）。出发前在国内办好。",
           },
           {
             speaker: "them",
             role: "柜台人员",
-            textEn: "Thank you. Now, your reservation includes basic liability coverage. Would you like to add our Collision Damage Waiver? It's $19 per day and covers any damage to the vehicle.",
-            textZh: "谢谢。您的预订包含基本责任险。要加碰撞损害免责险吗？每天19美元，覆盖车辆的任何损坏。",
+            textEn:
+              "Thank you. Now, your reservation includes basic liability coverage. Would you like to add our Collision Damage Waiver? It's $19 per day and covers any damage to the vehicle.",
+            textZh:
+              "谢谢。您的预订包含基本责任险。要加碰撞损害免责险吗？每天19美元，覆盖车辆的任何损坏。",
             keyPhrases: [
               { en: "liability coverage", zh: "责任险" },
               { en: "Collision Damage Waiver", zh: "碰撞损害免责险" },
@@ -676,22 +1057,38 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "covers any damage", zh: "覆盖任何损坏" },
             ],
             isBranchPoint: true,
-            responseTip: "如果你的信用卡或旅行保险已包含租车保险，可以不买。但不熟悉的话建议买。",
+            responseTip:
+              "如果你的信用卡或旅行保险已包含租车保险，可以不买。但不熟悉的话建议买。",
             alternativeExpressions: [
-              { textEn: "Would you like to add any insurance? We've got a collision waiver for $19 a day.", textZh: "要加保险吗？碰撞险每天19美元。", actionHint: "考虑是否需要额外保险", frequency: "common" },
-              { textEn: "Your basic plan doesn't cover vehicle damage. Want to upgrade to full coverage?", textZh: "你的基本方案不包车损。要升级全险吗？", actionHint: "评估是否需要全险", frequency: "common" },
+              {
+                textEn:
+                  "Would you like to add any insurance? We've got a collision waiver for $19 a day.",
+                textZh: "要加保险吗？碰撞险每天19美元。",
+                actionHint: "考虑是否需要额外保险",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Your basic plan doesn't cover vehicle damage. Want to upgrade to full coverage?",
+                textZh: "你的基本方案不包车损。要升级全险吗？",
+                actionHint: "评估是否需要全险",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Yes, I'd like to add the collision waiver. Better safe than sorry.",
+            textEn:
+              "Yes, I'd like to add the collision waiver. Better safe than sorry.",
             textZh: "好的，加碰撞免责险吧。安全第一。",
           },
           {
             speaker: "them",
             role: "柜台人员",
-            textEn: "Smart choice. A couple of things to go over: the car comes with a full tank. Please return it with a full tank, or we'll charge $8.99 per gallon for refueling.",
-            textZh: "明智的选择。说几个注意事项：车是满油取车，请满油还车，不然加油费是每加仑8.99美元。",
+            textEn:
+              "Smart choice. A couple of things to go over: the car comes with a full tank. Please return it with a full tank, or we'll charge $8.99 per gallon for refueling.",
+            textZh:
+              "明智的选择。说几个注意事项：车是满油取车，请满油还车，不然加油费是每加仑8.99美元。",
             keyPhrases: [
               { en: "full tank", zh: "满油/满箱" },
               { en: "return it with a full tank", zh: "满油还车" },
@@ -699,8 +1096,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "refueling", zh: "加油" },
             ],
             alternativeExpressions: [
-              { textEn: "One thing — bring it back with a full tank, or we charge 9 bucks a gallon to fill it.", textZh: "提醒一下——满油还车，不然我们按每加仑9块收加油费。", actionHint: "记住满油还车", frequency: "common" },
-              { textEn: "Quick heads up: full tank out, full tank back. The gas station down the road is the cheapest.", textZh: "提前说一下：满油取车满油还。路那头的加油站最便宜。", actionHint: "还车前找附近加油站", frequency: "common" },
+              {
+                textEn:
+                  "One thing — bring it back with a full tank, or we charge 9 bucks a gallon to fill it.",
+                textZh: "提醒一下——满油还车，不然我们按每加仑9块收加油费。",
+                actionHint: "记住满油还车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Quick heads up: full tank out, full tank back. The gas station down the road is the cheapest.",
+                textZh: "提前说一下：满油取车满油还。路那头的加油站最便宜。",
+                actionHint: "还车前找附近加油站",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -711,16 +1120,30 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "柜台人员",
-            textEn: "Regular unleaded. There's a gas station about half a mile from here on the way back, which is very convenient for filling up before you return.",
-            textZh: "普通无铅汽油。回来的路上半英里处有个加油站，还车前加油很方便。",
+            textEn:
+              "Regular unleaded. There's a gas station about half a mile from here on the way back, which is very convenient for filling up before you return.",
+            textZh:
+              "普通无铅汽油。回来的路上半英里处有个加油站，还车前加油很方便。",
             keyPhrases: [
               { en: "regular unleaded", zh: "普通无铅汽油" },
               { en: "gas station", zh: "加油站" },
               { en: "filling up", zh: "加满油" },
             ],
             alternativeExpressions: [
-              { textEn: "It takes regular. There's a gas station right around the corner you can use before returning.", textZh: "加普通油就行。拐角就有个加油站，还车前可以去那加。", actionHint: "记住油品和加油站位置", frequency: "common" },
-              { textEn: "Just regular unleaded. Check the sticker inside the fuel cap if you forget.", textZh: "普通无铅就行。忘了的话看油箱盖里面的贴纸。", actionHint: "看油箱盖贴纸确认", frequency: "common" },
+              {
+                textEn:
+                  "It takes regular. There's a gas station right around the corner you can use before returning.",
+                textZh: "加普通油就行。拐角就有个加油站，还车前可以去那加。",
+                actionHint: "记住油品和加油站位置",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Just regular unleaded. Check the sticker inside the fuel cap if you forget.",
+                textZh: "普通无铅就行。忘了的话看油箱盖里面的贴纸。",
+                actionHint: "看油箱盖贴纸确认",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -731,17 +1154,32 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "柜台人员",
-            textEn: "The car is in spot B-14 in the parking garage. Please do a walk-around and note any existing scratches on this form before you drive off. Here are your keys.",
-            textZh: "车在停车场B-14号车位。开走前请绕车检查一圈，把已有的划痕记在这张表上。给您钥匙。",
+            textEn:
+              "The car is in spot B-14 in the parking garage. Please do a walk-around and note any existing scratches on this form before you drive off. Here are your keys.",
+            textZh:
+              "车在停车场B-14号车位。开走前请绕车检查一圈，把已有的划痕记在这张表上。给您钥匙。",
             keyPhrases: [
               { en: "walk-around", zh: "绕车检查" },
               { en: "existing scratches", zh: "已有的划痕" },
               { en: "parking garage", zh: "停车场" },
             ],
-            responseTip: "取车前一定要仔细检查并记录所有已有的刮痕和凹陷，拍照留证",
+            responseTip:
+              "取车前一定要仔细检查并记录所有已有的刮痕和凹陷，拍照留证",
             alternativeExpressions: [
-              { textEn: "Your car is in Lot B, spot 14. Check it over and note any dings before you leave.", textZh: "你的车在B区14号。开走前检查一圈，有磕碰记下来。", actionHint: "仔细验车并拍照", frequency: "common" },
-              { textEn: "Here are the keys. It's in the garage, B-14. Do a once-over and flag anything you see.", textZh: "给你钥匙。在车库B-14。检查一遍，有问题随时说。", actionHint: "记录所有已有痕迹", frequency: "common" },
+              {
+                textEn:
+                  "Your car is in Lot B, spot 14. Check it over and note any dings before you leave.",
+                textZh: "你的车在B区14号。开走前检查一圈，有磕碰记下来。",
+                actionHint: "仔细验车并拍照",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Here are the keys. It's in the garage, B-14. Do a once-over and flag anything you see.",
+                textZh: "给你钥匙。在车库B-14。检查一遍，有问题随时说。",
+                actionHint: "记录所有已有痕迹",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -768,28 +1206,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Welcome back! Just pull into any open spot in the \"Returns\" area. I'll come over and do a quick inspection.",
-            textZh: "欢迎回来！停到\u201C还车区\u201D任意一个空位就行。我过去做个快速检查。",
+            textEn:
+              'Welcome back! Just pull into any open spot in the "Returns" area. I\'ll come over and do a quick inspection.',
+            textZh:
+              "欢迎回来！停到\u201C还车区\u201D任意一个空位就行。我过去做个快速检查。",
             keyPhrases: [
               { en: "pull into", zh: "把车开进" },
               { en: "Returns area", zh: "还车区" },
               { en: "quick inspection", zh: "快速检查" },
             ],
             alternativeExpressions: [
-              { textEn: "Just park it anywhere in the return lot. I'll check it out in a sec.", textZh: "随便停还车区就行。我马上过去看。", actionHint: "把车停到还车区", frequency: "common" },
-              { textEn: "Pull right in there. I'll be over to inspect it in a minute.", textZh: "开进去就行。我一会儿过去检查。", actionHint: "停好车等待检查", frequency: "common" },
+              {
+                textEn:
+                  "Just park it anywhere in the return lot. I'll check it out in a sec.",
+                textZh: "随便停还车区就行。我马上过去看。",
+                actionHint: "把车停到还车区",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Pull right in there. I'll be over to inspect it in a minute.",
+                textZh: "开进去就行。我一会儿过去检查。",
+                actionHint: "停好车等待检查",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I filled up the tank at the gas station down the road. Here's the receipt.",
+            textEn:
+              "I filled up the tank at the gas station down the road. Here's the receipt.",
             textZh: "我在路边加油站加满了油。这是收据。",
-            culturalNote: "保留加油收据，作为满油还车的证明。有些租车公司会核实。",
+            culturalNote:
+              "保留加油收据，作为满油还车的证明。有些租车公司会核实。",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Let me check the fuel gauge... Yes, that's full. Thank you for doing that. Now let me walk around the car real quick.",
+            textEn:
+              "Let me check the fuel gauge... Yes, that's full. Thank you for doing that. Now let me walk around the car real quick.",
             textZh: "让我看看油表……嗯，满的。谢谢您加满了。我绕车快速看一圈。",
             keyPhrases: [
               { en: "fuel gauge", zh: "油表" },
@@ -797,14 +1252,27 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "walk around", zh: "绕车检查" },
             ],
             alternativeExpressions: [
-              { textEn: "Tank looks full. Nice. Let me just do a quick walk-around.", textZh: "油表满的。不错。我快速绕一圈看看。", actionHint: "等待检查结果", frequency: "common" },
-              { textEn: "Great, the fuel's topped off. I'll check the outside real quick.", textZh: "好的，油加满了。我快速看一下外观。", actionHint: "保持耐心等检查", frequency: "common" },
+              {
+                textEn:
+                  "Tank looks full. Nice. Let me just do a quick walk-around.",
+                textZh: "油表满的。不错。我快速绕一圈看看。",
+                actionHint: "等待检查结果",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Great, the fuel's topped off. I'll check the outside real quick.",
+                textZh: "好的，油加满了。我快速看一下外观。",
+                actionHint: "保持耐心等检查",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "I see a small scratch here on the rear bumper. Was this noted on the original form when you picked up the car?",
+            textEn:
+              "I see a small scratch here on the rear bumper. Was this noted on the original form when you picked up the car?",
             textZh: "我看到后保险杠这里有道小划痕。你取车时表上有记录吗？",
             keyPhrases: [
               { en: "scratch", zh: "划痕" },
@@ -813,19 +1281,33 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             ],
             isBranchPoint: true,
             alternativeExpressions: [
-              { textEn: "There's a little mark here on the bumper. Was this here before?", textZh: "保险杠这儿有个小痕迹。之前就有吗？", actionHint: "出示取车时的照片", frequency: "common" },
-              { textEn: "Hmm, I'm seeing a scratch on the rear. Did you note this at pickup?", textZh: "嗯，后面有道划痕。你取车时记录了吗？", actionHint: "展示取车时拍的照片", frequency: "common" },
+              {
+                textEn:
+                  "There's a little mark here on the bumper. Was this here before?",
+                textZh: "保险杠这儿有个小痕迹。之前就有吗？",
+                actionHint: "出示取车时的照片",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hmm, I'm seeing a scratch on the rear. Did you note this at pickup?",
+                textZh: "嗯，后面有道划痕。你取车时记录了吗？",
+                actionHint: "展示取车时拍的照片",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Yes, it was already there. I also took photos when I picked it up — let me show you.",
+            textEn:
+              "Yes, it was already there. I also took photos when I picked it up — let me show you.",
             textZh: "是的，之前就有了。我取车时拍了照片——给你看看。",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Okay, I can see it matches the pre-existing damage report. No problem at all. Everything else looks great.",
+            textEn:
+              "Okay, I can see it matches the pre-existing damage report. No problem at all. Everything else looks great.",
             textZh: "好的，和之前的损坏记录吻合。没问题。其他都没问题。",
             keyPhrases: [
               { en: "pre-existing damage", zh: "之前就有的损坏" },
@@ -833,8 +1315,19 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "everything looks great", zh: "一切都没问题" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, matches the original report. You're all good.", textZh: "嗯，和原始记录一致。没问题了。", actionHint: "松口气等结算", frequency: "common" },
-              { textEn: "I see it in the file. No worries, that's pre-existing. Everything else checks out.", textZh: "档案里有。别担心，之前就有的。其他都没问题。", actionHint: "等待最终结算", frequency: "common" },
+              {
+                textEn: "Yep, matches the original report. You're all good.",
+                textZh: "嗯，和原始记录一致。没问题了。",
+                actionHint: "松口气等结算",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "I see it in the file. No worries, that's pre-existing. Everything else checks out.",
+                textZh: "档案里有。别担心，之前就有的。其他都没问题。",
+                actionHint: "等待最终结算",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -845,35 +1338,64 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Five days at $45 per day, plus the collision waiver at $19 per day, comes to $320. Plus tax, your total is $348.80. We'll charge it to the card on file.",
-            textZh: "五天每天45美元，加碰撞免责险每天19美元，一共320美元。加税后总计348.80美元。从您登记的卡上扣。",
+            textEn:
+              "Five days at $45 per day, plus the collision waiver at $19 per day, comes to $320. Plus tax, your total is $348.80. We'll charge it to the card on file.",
+            textZh:
+              "五天每天45美元，加碰撞免责险每天19美元，一共320美元。加税后总计348.80美元。从您登记的卡上扣。",
             keyPhrases: [
               { en: "final total", zh: "最终总额" },
               { en: "plus tax", zh: "加税" },
               { en: "card on file", zh: "登记的卡" },
             ],
             alternativeExpressions: [
-              { textEn: "Let me total it up... Five days plus insurance comes to $348.80 with tax.", textZh: "我算一下……五天加保险含税一共348.80美元。", actionHint: "核对账单金额", frequency: "common" },
-              { textEn: "Your total is $348.80. We'll put it on the card you gave us at pickup.", textZh: "总计348.80美元。从你取车时登记的卡扣。", actionHint: "确认金额无误", frequency: "common" },
+              {
+                textEn:
+                  "Let me total it up... Five days plus insurance comes to $348.80 with tax.",
+                textZh: "我算一下……五天加保险含税一共348.80美元。",
+                actionHint: "核对账单金额",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Your total is $348.80. We'll put it on the card you gave us at pickup.",
+                textZh: "总计348.80美元。从你取车时登记的卡扣。",
+                actionHint: "确认金额无误",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That looks right. Can I get a copy of the receipt by email?",
+            textEn:
+              "That looks right. Can I get a copy of the receipt by email?",
             textZh: "没问题。能把收据发到我邮箱吗？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Absolutely. I'll send it to the email address on your reservation. You should receive it within the hour. Thank you for choosing us!",
-            textZh: "当然。我会发到您预订时留的邮箱。一小时内应该能收到。感谢选择我们！",
+            textEn:
+              "Absolutely. I'll send it to the email address on your reservation. You should receive it within the hour. Thank you for choosing us!",
+            textZh:
+              "当然。我会发到您预订时留的邮箱。一小时内应该能收到。感谢选择我们！",
             keyPhrases: [
               { en: "email address on your reservation", zh: "预订时留的邮箱" },
               { en: "within the hour", zh: "一小时内" },
             ],
             alternativeExpressions: [
-              { textEn: "Sure thing! I'll email the receipt right now. Should be in your inbox shortly.", textZh: "没问题！我现在就发邮件。很快就能收到。", actionHint: "检查邮箱确认收到", frequency: "common" },
-              { textEn: "Of course. You'll get it by email within the hour. Thanks for renting with us!", textZh: "当然。一小时内会收到邮件。感谢选择我们！", actionHint: "留意邮箱", frequency: "common" },
+              {
+                textEn:
+                  "Sure thing! I'll email the receipt right now. Should be in your inbox shortly.",
+                textZh: "没问题！我现在就发邮件。很快就能收到。",
+                actionHint: "检查邮箱确认收到",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Of course. You'll get it by email within the hour. Thanks for renting with us!",
+                textZh: "当然。一小时内会收到邮件。感谢选择我们！",
+                actionHint: "留意邮箱",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -901,18 +1423,31 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, do you know how to get to the Central Library from here?",
+            textEn:
+              "Excuse me, do you know how to get to the Central Library from here?",
             textZh: "不好意思，你知道从这里怎么去中央图书馆吗？",
-            casualVersion: "Hey, sorry to bother you — do you know where the Central Library is?",
+            casualVersion:
+              "Hey, sorry to bother you — do you know where the Central Library is?",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "The Central Library? Yeah, it's not far. Walk straight down this street for about two blocks, then turn right on Oak Street. You'll see it on your left.",
-            textZh: "中央图书馆？不远。沿这条街直走大约两个街区，然后在橡树街右转。在你左边就能看到。",
+            textEn:
+              "The Central Library? Yeah, it's not far. Walk straight down this street for about two blocks, then turn right on Oak Street. You'll see it on your left.",
+            textZh:
+              "中央图书馆？不远。沿这条街直走大约两个街区，然后在橡树街右转。在你左边就能看到。",
             variations: [
-              { textEn: "Sure! Go down to the traffic light and make a left. It's the big building on the corner — you really can't miss it.", textZh: "当然！走到红绿灯那里左转。在拐角处那栋大楼就是——很好找的。" },
-              { textEn: "Hmm, I think it's that way? Actually, I'm not from around here either. Sorry!", textZh: "嗯，好像是那个方向？其实我也不是本地人。抱歉！" },
+              {
+                textEn:
+                  "Sure! Go down to the traffic light and make a left. It's the big building on the corner — you really can't miss it.",
+                textZh:
+                  "当然！走到红绿灯那里左转。在拐角处那栋大楼就是——很好找的。",
+              },
+              {
+                textEn:
+                  "Hmm, I think it's that way? Actually, I'm not from around here either. Sorry!",
+                textZh: "嗯，好像是那个方向？其实我也不是本地人。抱歉！",
+              },
             ],
             keyPhrases: [
               { en: "walk straight", zh: "直走" },
@@ -921,41 +1456,70 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "on your left", zh: "在你左边" },
             ],
             alternativeExpressions: [
-              { textEn: "Sure! Just go straight for a couple blocks, hang a right on Oak, and it's on the left.", textZh: "好的！直走两个街区，在橡树街右拐，就在左手边。", actionHint: "复述确认方向", frequency: "common" },
-              { textEn: "Yeah, I think so. Walk that way, like 10 minutes? It's by the park.", textZh: "应该是吧。往那边走，大概10分钟？就在公园旁边。", actionHint: "确认距离和方向", frequency: "occasional" },
+              {
+                textEn:
+                  "Sure! Just go straight for a couple blocks, hang a right on Oak, and it's on the left.",
+                textZh: "好的！直走两个街区，在橡树街右拐，就在左手边。",
+                actionHint: "复述确认方向",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, I think so. Walk that way, like 10 minutes? It's by the park.",
+                textZh: "应该是吧。往那边走，大概10分钟？就在公园旁边。",
+                actionHint: "确认距离和方向",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Two blocks straight and then right on Oak Street. Is it walking distance?",
+            textEn:
+              "Two blocks straight and then right on Oak Street. Is it walking distance?",
             textZh: "直走两个街区然后在橡树街右转。走路能到吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Yeah, about a 10-minute walk. If you hit the park, you've gone too far.",
+            textEn:
+              "Yeah, about a 10-minute walk. If you hit the park, you've gone too far.",
             textZh: "能，大概走10分钟。如果走到公园了就是走过了。",
             keyPhrases: [
               { en: "walking distance", zh: "走路能到的距离" },
               { en: "10-minute walk", zh: "走10分钟" },
               { en: "gone too far", zh: "走过了" },
             ],
-            culturalNote: "\"If you hit X, you've gone too far\" 是英语里很常见的指路说法，意思是以某个标志物判断是否过头了。",
+            culturalNote:
+              '"If you hit X, you\'ve gone too far" 是英语里很常见的指路说法，意思是以某个标志物判断是否过头了。',
             alternativeExpressions: [
-              { textEn: "Yeah, like 10 minutes on foot. Pretty easy walk.", textZh: "走路大概10分钟。很好走。", actionHint: "放心步行前往", frequency: "common" },
-              { textEn: "Totally walkable. Just don't go past the park — that means you went too far.", textZh: "走路完全没问题。别走过公园——走过了就是太远了。", actionHint: "以公园为参照物", frequency: "common" },
+              {
+                textEn: "Yeah, like 10 minutes on foot. Pretty easy walk.",
+                textZh: "走路大概10分钟。很好走。",
+                actionHint: "放心步行前往",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Totally walkable. Just don't go past the park — that means you went too far.",
+                textZh: "走路完全没问题。别走过公园——走过了就是太远了。",
+                actionHint: "以公园为参照物",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. Is there a crosswalk at the intersection, or should I cross somewhere else?",
+            textEn:
+              "Got it. Is there a crosswalk at the intersection, or should I cross somewhere else?",
             textZh: "明白了。路口有人行横道吗，还是要从别的地方过？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "There's a crosswalk with a traffic light at the main intersection. Just wait for the walk signal — drivers around here don't always stop for pedestrians.",
-            textZh: "主路口有带红绿灯的人行横道。等行人信号灯——这附近的司机不一定让行人。",
+            textEn:
+              "There's a crosswalk with a traffic light at the main intersection. Just wait for the walk signal — drivers around here don't always stop for pedestrians.",
+            textZh:
+              "主路口有带红绿灯的人行横道。等行人信号灯——这附近的司机不一定让行人。",
             keyPhrases: [
               { en: "crosswalk", zh: "人行横道" },
               { en: "traffic light", zh: "红绿灯" },
@@ -963,27 +1527,54 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "pedestrians", zh: "行人" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, there's a light at the big intersection. Just use the crosswalk.", textZh: "大路口有红绿灯。走人行横道就行。", actionHint: "在路口等绿灯", frequency: "common" },
-              { textEn: "Cross at the light up there. Don't jaywalk — cops around here are strict.", textZh: "在前面红绿灯那里过。别闯红灯——这附近警察管得严。", actionHint: "遵守交通规则过马路", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, there's a light at the big intersection. Just use the crosswalk.",
+                textZh: "大路口有红绿灯。走人行横道就行。",
+                actionHint: "在路口等绿灯",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Cross at the light up there. Don't jaywalk — cops around here are strict.",
+                textZh: "在前面红绿灯那里过。别闯红灯——这附近警察管得严。",
+                actionHint: "遵守交通规则过马路",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks a lot! One more thing — is the library open on weekends?",
+            textEn:
+              "Thanks a lot! One more thing — is the library open on weekends?",
             textZh: "太感谢了！再问一下——图书馆周末开门吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "I think so, but I'm not 100% sure about the hours. You might want to check their website. Good luck!",
-            textZh: "应该开吧，但具体时间我不太确定。你可以查一下他们的网站。祝你好运！",
+            textEn:
+              "I think so, but I'm not 100% sure about the hours. You might want to check their website. Good luck!",
+            textZh:
+              "应该开吧，但具体时间我不太确定。你可以查一下他们的网站。祝你好运！",
             keyPhrases: [
               { en: "not 100% sure", zh: "不太确定" },
               { en: "check their website", zh: "查一下他们的网站" },
             ],
             alternativeExpressions: [
-              { textEn: "I'm not sure about their hours. Google it maybe? Anyway, good luck!", textZh: "时间我不太清楚。你搜一下吧？总之祝你好运！", actionHint: "手机查一下营业时间", frequency: "common" },
-              { textEn: "I think they close early on Sundays. Better check online first.", textZh: "好像周日关得早。最好先网上查查。", actionHint: "出发前查好开放时间", frequency: "occasional" },
+              {
+                textEn:
+                  "I'm not sure about their hours. Google it maybe? Anyway, good luck!",
+                textZh: "时间我不太清楚。你搜一下吧？总之祝你好运！",
+                actionHint: "手机查一下营业时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "I think they close early on Sundays. Better check online first.",
+                textZh: "好像周日关得早。最好先网上查查。",
+                actionHint: "出发前查好开放时间",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -1004,16 +1595,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I'm looking for the immigration office. Is it in this building?",
+            textEn:
+              "Excuse me, I'm looking for the immigration office. Is it in this building?",
             textZh: "不好意思，我找移民局办公室。在这栋楼里吗？",
           },
           {
             speaker: "them",
             role: "前台",
-            textEn: "Yes, it is. The immigration office is on the 4th floor, Room 412. Take the elevator on your right to the 4th floor, then turn left when you get out.",
+            textEn:
+              "Yes, it is. The immigration office is on the 4th floor, Room 412. Take the elevator on your right to the 4th floor, then turn left when you get out.",
             textZh: "是的。移民局在4楼412室。坐右边的电梯到4楼，出来左转。",
             variations: [
-              { textEn: "You're in the right building. It's on the 4th floor. The elevators are just around the corner.", textZh: "你来对地方了。在4楼。电梯就在拐角处。" },
+              {
+                textEn:
+                  "You're in the right building. It's on the 4th floor. The elevators are just around the corner.",
+                textZh: "你来对地方了。在4楼。电梯就在拐角处。",
+              },
             ],
             keyPhrases: [
               { en: "4th floor", zh: "4楼" },
@@ -1022,8 +1619,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "turn left when you get out", zh: "出来左转" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, 4th floor. Take the elevator on the right and go left when you get out.", textZh: "对，4楼。坐右边电梯，出来左转。", actionHint: "记住楼层和方向", frequency: "common" },
-              { textEn: "It's upstairs, Room 412. The elevators are just around that corner.", textZh: "在楼上，412室。电梯就在那个拐角。", actionHint: "找电梯上4楼", frequency: "common" },
+              {
+                textEn:
+                  "Yep, 4th floor. Take the elevator on the right and go left when you get out.",
+                textZh: "对，4楼。坐右边电梯，出来左转。",
+                actionHint: "记住楼层和方向",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's upstairs, Room 412. The elevators are just around that corner.",
+                textZh: "在楼上，412室。电梯就在那个拐角。",
+                actionHint: "找电梯上4楼",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1034,46 +1643,77 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "前台",
-            textEn: "Yes, please sign in here and I'll give you a visitor pass. You'll need to show a photo ID.",
-            textZh: "需要的，请在这里登记，我给你一个访客证。需要出示带照片的证件。",
+            textEn:
+              "Yes, please sign in here and I'll give you a visitor pass. You'll need to show a photo ID.",
+            textZh:
+              "需要的，请在这里登记，我给你一个访客证。需要出示带照片的证件。",
             keyPhrases: [
               { en: "sign in", zh: "登记" },
               { en: "visitor pass", zh: "访客证" },
               { en: "photo ID", zh: "带照片的证件" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, sign in here and I'll get you a badge. Got a photo ID on you?", textZh: "对，在这登记，我给你办访客证。带证件了吗？", actionHint: "出示护照或证件", frequency: "common" },
-              { textEn: "Please fill this out and show me your ID. I'll print a visitor badge for you.", textZh: "请填一下这个，给我看证件。我给你打一张访客证。", actionHint: "填写登记表", frequency: "common" },
+              {
+                textEn:
+                  "Yeah, sign in here and I'll get you a badge. Got a photo ID on you?",
+                textZh: "对，在这登记，我给你办访客证。带证件了吗？",
+                actionHint: "出示护照或证件",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Please fill this out and show me your ID. I'll print a visitor badge for you.",
+                textZh: "请填一下这个，给我看证件。我给你打一张访客证。",
+                actionHint: "填写登记表",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Here's my passport. Do I return the visitor pass when I leave?",
+            textEn:
+              "Here's my passport. Do I return the visitor pass when I leave?",
             textZh: "这是我的护照。走的时候要还访客证吗？",
           },
           {
             speaker: "them",
             role: "前台",
-            textEn: "Yes, please return it to this desk when you're done. The elevator is right over there. When you reach the 4th floor, Room 412 will be on your left, about halfway down the hallway.",
-            textZh: "是的，办完事请把访客证还到这个前台。电梯就在那边。到4楼后，412室在左边，大概走到走廊中间的位置。",
+            textEn:
+              "Yes, please return it to this desk when you're done. The elevator is right over there. When you reach the 4th floor, Room 412 will be on your left, about halfway down the hallway.",
+            textZh:
+              "是的，办完事请把访客证还到这个前台。电梯就在那边。到4楼后，412室在左边，大概走到走廊中间的位置。",
             keyPhrases: [
               { en: "return it", zh: "归还" },
               { en: "halfway down the hallway", zh: "走廊中间的位置" },
             ],
             alternativeExpressions: [
-              { textEn: "Drop off the badge here when you leave. Elevators are right there.", textZh: "走的时候把访客证还到这里。电梯就在那儿。", actionHint: "记得离开时还访客证", frequency: "common" },
-              { textEn: "Return the pass on your way out. Room 412 is halfway down the hall on the left.", textZh: "出来时把通行证还了。412室在走廊左边中间位置。", actionHint: "出来时别忘还通行证", frequency: "common" },
+              {
+                textEn:
+                  "Drop off the badge here when you leave. Elevators are right there.",
+                textZh: "走的时候把访客证还到这里。电梯就在那儿。",
+                actionHint: "记得离开时还访客证",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Return the pass on your way out. Room 412 is halfway down the hall on the left.",
+                textZh: "出来时把通行证还了。412室在走廊左边中间位置。",
+                actionHint: "出来时别忘还通行证",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Is there a waiting area up there, or do I go directly to the office?",
+            textEn:
+              "Is there a waiting area up there, or do I go directly to the office?",
             textZh: "上面有等候区吗，还是直接去办公室？",
           },
           {
             speaker: "them",
             role: "前台",
-            textEn: "There's a waiting area right outside Room 412. Take a number when you get there and wait for your number to be called.",
+            textEn:
+              "There's a waiting area right outside Room 412. Take a number when you get there and wait for your number to be called.",
             textZh: "412室外面有等候区。到了先取号，等叫号就行。",
             keyPhrases: [
               { en: "waiting area", zh: "等候区" },
@@ -1081,8 +1721,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "wait for your number to be called", zh: "等叫号" },
             ],
             alternativeExpressions: [
-              { textEn: "There's a waiting room right outside. Grab a number and they'll call you.", textZh: "外面就有等候室。取个号等叫号就行。", actionHint: "到了先取号", frequency: "common" },
-              { textEn: "When you get there, take a ticket and wait. They'll call your number.", textZh: "到了以后先取号牌等着。会叫号的。", actionHint: "先取号再坐下等", frequency: "common" },
+              {
+                textEn:
+                  "There's a waiting room right outside. Grab a number and they'll call you.",
+                textZh: "外面就有等候室。取个号等叫号就行。",
+                actionHint: "到了先取号",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "When you get there, take a ticket and wait. They'll call your number.",
+                textZh: "到了以后先取号牌等着。会叫号的。",
+                actionHint: "先取号再坐下等",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1093,16 +1745,29 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "前台",
-            textEn: "There are restrooms on every floor, at the end of the hallway near the emergency exit. On the 4th floor, they're on the right side.",
-            textZh: "每层都有洗手间，在走廊尽头靠近紧急出口的地方。4楼的在右边。",
+            textEn:
+              "There are restrooms on every floor, at the end of the hallway near the emergency exit. On the 4th floor, they're on the right side.",
+            textZh:
+              "每层都有洗手间，在走廊尽头靠近紧急出口的地方。4楼的在右边。",
             keyPhrases: [
               { en: "restrooms", zh: "洗手间" },
               { en: "end of the hallway", zh: "走廊尽头" },
               { en: "emergency exit", zh: "紧急出口" },
             ],
             alternativeExpressions: [
-              { textEn: "Bathrooms are at the end of each hallway. On the 4th floor, they're on the right.", textZh: "每层走廊尽头都有卫生间。4楼的在右边。", actionHint: "记住卫生间位置", frequency: "common" },
-              { textEn: "Down the hall, near the stairs. Every floor has them.", textZh: "走廊尽头，楼梯旁边。每层都有。", actionHint: "走到走廊尽头找", frequency: "common" },
+              {
+                textEn:
+                  "Bathrooms are at the end of each hallway. On the 4th floor, they're on the right.",
+                textZh: "每层走廊尽头都有卫生间。4楼的在右边。",
+                actionHint: "记住卫生间位置",
+                frequency: "common",
+              },
+              {
+                textEn: "Down the hall, near the stairs. Every floor has them.",
+                textZh: "走廊尽头，楼梯旁边。每层都有。",
+                actionHint: "走到走廊尽头找",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1120,8 +1785,18 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "appointment", zh: "预约/办事" },
             ],
             alternativeExpressions: [
-              { textEn: "No problem! Hope everything goes smoothly for you.", textZh: "不客气！希望你一切顺利。", actionHint: "道谢后前往", frequency: "common" },
-              { textEn: "You're welcome! Good luck up there.", textZh: "不用客气！祝你楼上办事顺利。", actionHint: "道谢离开前台", frequency: "common" },
+              {
+                textEn: "No problem! Hope everything goes smoothly for you.",
+                textZh: "不客气！希望你一切顺利。",
+                actionHint: "道谢后前往",
+                frequency: "common",
+              },
+              {
+                textEn: "You're welcome! Good luck up there.",
+                textZh: "不用客气！祝你楼上办事顺利。",
+                actionHint: "道谢离开前台",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -1149,18 +1824,31 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to buy two tickets for the ferry to Liberty Island.",
+            textEn:
+              "Hi, I'd like to buy two tickets for the ferry to Liberty Island.",
             textZh: "你好，我想买两张去自由岛的渡轮票。",
             casualVersion: "Hey, two tickets to Liberty Island, please.",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Sure! We have two options — a standard round-trip for $24 each, or a premium ticket for $35 that includes the pedestal access to the Statue of Liberty.",
-            textZh: "好的！我们有两种选择——标准往返票每张24美元，或者35美元的高级票，包含自由女神像基座的参观权限。",
+            textEn:
+              "Sure! We have two options — a standard round-trip for $24 each, or a premium ticket for $35 that includes the pedestal access to the Statue of Liberty.",
+            textZh:
+              "好的！我们有两种选择——标准往返票每张24美元，或者35美元的高级票，包含自由女神像基座的参观权限。",
             alternativeExpressions: [
-              { textEn: "Round-trip or one-way?", textZh: "往返还是单程？", actionHint: "告诉对方你要往返票", frequency: "common" },
-              { textEn: "How many adults and children?", textZh: "几个大人几个小孩？", actionHint: "说明人数和年龄", frequency: "common" },
+              {
+                textEn: "Round-trip or one-way?",
+                textZh: "往返还是单程？",
+                actionHint: "告诉对方你要往返票",
+                frequency: "common",
+              },
+              {
+                textEn: "How many adults and children?",
+                textZh: "几个大人几个小孩？",
+                actionHint: "说明人数和年龄",
+                frequency: "common",
+              },
             ],
             keyPhrases: [
               { en: "round-trip", zh: "往返" },
@@ -1172,22 +1860,26 @@ export const TRANSPORT_SCENES: PresetScene[] = [
                 meaningInContext: "在这句话里表示：往返票（去了还要回来）",
                 similarUsage: "类似用法：I booked a round-trip flight.",
               },
-              "pedestal": {
+              pedestal: {
                 meaningInContext: "在这句话里表示：自由女神像的底座/基座",
-                similarUsage: "类似用法：The statue stands on a stone pedestal.",
+                similarUsage:
+                  "类似用法：The statue stands on a stone pedestal.",
               },
             },
           },
           {
             speaker: "you",
-            textEn: "We'll take two standard round-trip tickets, please. What time does the next ferry depart?",
+            textEn:
+              "We'll take two standard round-trip tickets, please. What time does the next ferry depart?",
             textZh: "我们买两张标准往返票。下一班渡轮几点出发？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "The next departure is at 10:30, that's in about 20 minutes. Ferries run every 30 minutes after that. Boarding starts 10 minutes before departure at Gate 3.",
-            textZh: "下一班是10点半出发，大概还有20分钟。之后每30分钟一班。登船在3号登船口，出发前10分钟开始。",
+            textEn:
+              "The next departure is at 10:30, that's in about 20 minutes. Ferries run every 30 minutes after that. Boarding starts 10 minutes before departure at Gate 3.",
+            textZh:
+              "下一班是10点半出发，大概还有20分钟。之后每30分钟一班。登船在3号登船口，出发前10分钟开始。",
             keyPhrases: [
               { en: "departure", zh: "出发" },
               { en: "run every 30 minutes", zh: "每30分钟一班" },
@@ -1195,14 +1887,27 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "gate", zh: "登船口" },
             ],
             vocabNotes: {
-              "departure": {
+              departure: {
                 meaningInContext: "在这句话里表示：渡轮出发的时间",
-                similarUsage: "类似用法：The departure time for your flight is 3 PM.",
+                similarUsage:
+                  "类似用法：The departure time for your flight is 3 PM.",
               },
             },
             alternativeExpressions: [
-              { textEn: "Next one's at 10:30. They run every half hour after that.", textZh: "下一班10:30。之后每半小时一班。", actionHint: "看好时间不要迟到", frequency: "common" },
-              { textEn: "You've got about 20 minutes till the next boat. Boarding at Gate 3.", textZh: "下一班还有大约20分钟。在3号口登船。", actionHint: "提前去登船口排队", frequency: "common" },
+              {
+                textEn:
+                  "Next one's at 10:30. They run every half hour after that.",
+                textZh: "下一班10:30。之后每半小时一班。",
+                actionHint: "看好时间不要迟到",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You've got about 20 minutes till the next boat. Boarding at Gate 3.",
+                textZh: "下一班还有大约20分钟。在3号口登船。",
+                actionHint: "提前去登船口排队",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1213,35 +1918,57 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Yes, there's an open-air upper deck with great views. Seats are first come, first served, so I'd recommend boarding early if you want a good spot.",
-            textZh: "有的，上层有露天甲板，视野很好。座位先到先得，建议早点登船抢个好位置。",
+            textEn:
+              "Yes, there's an open-air upper deck with great views. Seats are first come, first served, so I'd recommend boarding early if you want a good spot.",
+            textZh:
+              "有的，上层有露天甲板，视野很好。座位先到先得，建议早点登船抢个好位置。",
             keyPhrases: [
               { en: "upper deck", zh: "上层甲板" },
               { en: "open-air", zh: "露天的" },
               { en: "first come, first served", zh: "先到先得" },
             ],
             alternativeExpressions: [
-              { textEn: "There's seating inside and outside. The top deck fills up fast though.", textZh: "里面外面都有座位。不过上层甲板很快就坐满了。", actionHint: "尽早上船抢上层座位", frequency: "common" },
+              {
+                textEn:
+                  "There's seating inside and outside. The top deck fills up fast though.",
+                textZh: "里面外面都有座位。不过上层甲板很快就坐满了。",
+                actionHint: "尽早上船抢上层座位",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. One more question — can I bring food and drinks on board?",
+            textEn:
+              "Got it. One more question — can I bring food and drinks on board?",
             textZh: "明白了。再问一下——可以带吃的喝的上船吗？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Yes, you can. There's also a snack bar on board if you want to buy anything during the ride. Just no glass bottles, please.",
-            textZh: "可以的。船上也有小吃吧，如果途中想买东西。只是不能带玻璃瓶。",
+            textEn:
+              "Yes, you can. There's also a snack bar on board if you want to buy anything during the ride. Just no glass bottles, please.",
+            textZh:
+              "可以的。船上也有小吃吧，如果途中想买东西。只是不能带玻璃瓶。",
             keyPhrases: [
               { en: "on board", zh: "船上" },
               { en: "snack bar", zh: "小吃吧" },
               { en: "glass bottles", zh: "玻璃瓶" },
             ],
             alternativeExpressions: [
-              { textEn: "Go for it. There's a café on board too if you need anything.", textZh: "可以的。船上也有小卖部，需要什么也能买到。", actionHint: "了解船上有补给", frequency: "common" },
-              { textEn: "Yeah, that's fine. Just no alcohol in glass bottles.", textZh: "可以的。就是不能带玻璃瓶装的酒。", actionHint: "不带玻璃瓶", frequency: "occasional" },
+              {
+                textEn:
+                  "Go for it. There's a café on board too if you need anything.",
+                textZh: "可以的。船上也有小卖部，需要什么也能买到。",
+                actionHint: "了解船上有补给",
+                frequency: "common",
+              },
+              {
+                textEn: "Yeah, that's fine. Just no alcohol in glass bottles.",
+                textZh: "可以的。就是不能带玻璃瓶装的酒。",
+                actionHint: "不带玻璃瓶",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -1252,41 +1979,70 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "售票员",
-            textEn: "It's about a 15-minute ride. The last ferry back is at 5 PM, so make sure you don't miss it. Enjoy your trip!",
-            textZh: "大概15分钟。最后一班回程的渡轮是下午5点，一定不要错过哦。祝你旅途愉快！",
+            textEn:
+              "It's about a 15-minute ride. The last ferry back is at 5 PM, so make sure you don't miss it. Enjoy your trip!",
+            textZh:
+              "大概15分钟。最后一班回程的渡轮是下午5点，一定不要错过哦。祝你旅途愉快！",
             keyPhrases: [
               { en: "the last ferry back", zh: "最后一班回程渡轮" },
               { en: "make sure", zh: "一定要" },
               { en: "don't miss it", zh: "不要错过" },
             ],
             vocabNotes: {
-              "ride": {
+              ride: {
                 meaningInContext: "在这句话里表示：乘坐（渡轮）的时间/路程",
                 similarUsage: "类似用法：It's a 20-minute ride to the airport.",
               },
             },
             alternativeExpressions: [
-              { textEn: "About 15 minutes. And heads up — last boat back is at 5.", textZh: "大概15分钟。提醒一下——最后一班回程的船5点开。", actionHint: "记好回程末班时间", frequency: "common" },
-              { textEn: "It's a quick ride — 15 minutes tops. Just don't miss the 5 o'clock ferry back!", textZh: "很快的——最多15分钟。别错过5点的回程船就行！", actionHint: "安排好岛上时间", frequency: "common" },
+              {
+                textEn:
+                  "About 15 minutes. And heads up — last boat back is at 5.",
+                textZh: "大概15分钟。提醒一下——最后一班回程的船5点开。",
+                actionHint: "记好回程末班时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's a quick ride — 15 minutes tops. Just don't miss the 5 o'clock ferry back!",
+                textZh: "很快的——最多15分钟。别错过5点的回程船就行！",
+                actionHint: "安排好岛上时间",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thank you! We'll make sure to catch the last one. Where's Gate 3?",
+            textEn:
+              "Thank you! We'll make sure to catch the last one. Where's Gate 3?",
             textZh: "谢谢！我们会赶上最后一班的。3号登船口在哪？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Head straight down the pier and you'll see signs for Gate 3 on your right. You can start lining up now.",
-            textZh: "沿码头直走，右手边就能看到3号登船口的指示牌。现在就可以排队了。",
+            textEn:
+              "Head straight down the pier and you'll see signs for Gate 3 on your right. You can start lining up now.",
+            textZh:
+              "沿码头直走，右手边就能看到3号登船口的指示牌。现在就可以排队了。",
             keyPhrases: [
               { en: "pier", zh: "码头" },
               { en: "lining up", zh: "排队" },
             ],
             alternativeExpressions: [
-              { textEn: "Straight down the pier, Gate 3 is on your right. You can line up now.", textZh: "沿码头直走，3号口在右边。现在就能排队了。", actionHint: "赶紧去排队", frequency: "common" },
-              { textEn: "Just follow the crowd — Gate 3 is right down there. Can't miss it.", textZh: "跟着人群走——3号口就在那边。不会错过的。", actionHint: "跟着人流走", frequency: "common" },
+              {
+                textEn:
+                  "Straight down the pier, Gate 3 is on your right. You can line up now.",
+                textZh: "沿码头直走，3号口在右边。现在就能排队了。",
+                actionHint: "赶紧去排队",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Just follow the crowd — Gate 3 is right down there. Can't miss it.",
+                textZh: "跟着人群走——3号口就在那边。不会错过的。",
+                actionHint: "跟着人流走",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -1302,18 +2058,33 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I'm not feeling very well. I think I'm getting seasick.",
+            textEn:
+              "Excuse me, I'm not feeling very well. I think I'm getting seasick.",
             textZh: "不好意思，我有点不舒服。我好像晕船了。",
             culturalNote: "晕船时不要忍着，及时告诉船员。他们通常有应对措施。",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "I'm sorry to hear that. Let me help you. Would you like to sit near the center of the boat? It rocks less there. I'll also get you a motion sickness bag just in case.",
-            textZh: "不好意思。我来帮你。要不要坐到船中间的位置？那里晃得少一些。我给你拿个晕船袋以防万一。",
+            textEn:
+              "I'm sorry to hear that. Let me help you. Would you like to sit near the center of the boat? It rocks less there. I'll also get you a motion sickness bag just in case.",
+            textZh:
+              "不好意思。我来帮你。要不要坐到船中间的位置？那里晃得少一些。我给你拿个晕船袋以防万一。",
             alternativeExpressions: [
-              { textEn: "Try to look at the horizon — it helps with the dizziness.", textZh: "试着看远处的地平线——有助于缓解头晕。", actionHint: "看向远处的水平线", frequency: "common" },
-              { textEn: "Would you like some fresh air? Let's go to the upper deck.", textZh: "需要透透气吗？我们去上层甲板吧。", actionHint: "去甲板上呼吸新鲜空气", frequency: "common" },
+              {
+                textEn:
+                  "Try to look at the horizon — it helps with the dizziness.",
+                textZh: "试着看远处的地平线——有助于缓解头晕。",
+                actionHint: "看向远处的水平线",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Would you like some fresh air? Let's go to the upper deck.",
+                textZh: "需要透透气吗？我们去上层甲板吧。",
+                actionHint: "去甲板上呼吸新鲜空气",
+                frequency: "common",
+              },
             ],
             keyPhrases: [
               { en: "seasick", zh: "晕船" },
@@ -1322,7 +2093,7 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "motion sickness bag", zh: "晕船袋" },
             ],
             vocabNotes: {
-              "rocks": {
+              rocks: {
                 meaningInContext: "在这句话里表示：（船）摇晃，不是石头的意思",
                 similarUsage: "类似用法：The boat rocked gently in the waves.",
               },
@@ -1336,8 +2107,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "船员",
-            textEn: "We have some ginger candies that can help settle your stomach. Unfortunately, we can't give out medication, but I can offer you some water and crackers.",
-            textZh: "我们有姜糖可以帮助缓解胃部不适。很遗憾我们不能提供药物，但可以给你一些水和饼干。",
+            textEn:
+              "We have some ginger candies that can help settle your stomach. Unfortunately, we can't give out medication, but I can offer you some water and crackers.",
+            textZh:
+              "我们有姜糖可以帮助缓解胃部不适。很遗憾我们不能提供药物，但可以给你一些水和饼干。",
             keyPhrases: [
               { en: "ginger candies", zh: "姜糖" },
               { en: "settle your stomach", zh: "缓解胃部不适" },
@@ -1345,34 +2118,63 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "crackers", zh: "饼干/苏打饼" },
             ],
             vocabNotes: {
-              "settle": {
-                meaningInContext: "在这句话里表示：使（胃部）平静下来、缓解不适",
+              settle: {
+                meaningInContext:
+                  "在这句话里表示：使（胃部）平静下来、缓解不适",
                 similarUsage: "类似用法：Have some tea to settle your nerves.",
               },
             },
             alternativeExpressions: [
-              { textEn: "We've got ginger candy and water. That usually does the trick.", textZh: "我们有姜糖和水。通常挺管用的。", actionHint: "先试试姜糖", frequency: "common" },
-              { textEn: "No meds, sorry. But I can get you some crackers and water — that might help.", textZh: "没有药，抱歉。不过我可以给你拿点饼干和水——可能有帮助。", actionHint: "接受饼干和水", frequency: "common" },
+              {
+                textEn:
+                  "We've got ginger candy and water. That usually does the trick.",
+                textZh: "我们有姜糖和水。通常挺管用的。",
+                actionHint: "先试试姜糖",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "No meds, sorry. But I can get you some crackers and water — that might help.",
+                textZh:
+                  "没有药，抱歉。不过我可以给你拿点饼干和水——可能有帮助。",
+                actionHint: "接受饼干和水",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll take the ginger candies and some water, please. How much longer until we arrive?",
+            textEn:
+              "I'll take the ginger candies and some water, please. How much longer until we arrive?",
             textZh: "给我姜糖和水吧。还有多久到？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "About 10 more minutes. The water is calmer near the island, so it should get better soon. Try to focus on a fixed point in the distance.",
-            textZh: "大概还有10分钟。靠近岛的时候水面会更平静，应该会好一些。试着看远处一个固定的点。",
+            textEn:
+              "About 10 more minutes. The water is calmer near the island, so it should get better soon. Try to focus on a fixed point in the distance.",
+            textZh:
+              "大概还有10分钟。靠近岛的时候水面会更平静，应该会好一些。试着看远处一个固定的点。",
             keyPhrases: [
               { en: "calmer", zh: "更平静" },
               { en: "fixed point", zh: "固定的点" },
               { en: "in the distance", zh: "在远处" },
             ],
             alternativeExpressions: [
-              { textEn: "About 10 more minutes. It'll get smoother once we're closer to shore.", textZh: "大概还有10分钟。靠近岸边就不那么晃了。", actionHint: "再坚持一下", frequency: "common" },
-              { textEn: "Hang in there — we're almost there. Try staring at something that isn't moving.", textZh: "坚持一下——快到了。盯着一个不动的东西看。", actionHint: "看远处固定的点", frequency: "common" },
+              {
+                textEn:
+                  "About 10 more minutes. It'll get smoother once we're closer to shore.",
+                textZh: "大概还有10分钟。靠近岸边就不那么晃了。",
+                actionHint: "再坚持一下",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hang in there — we're almost there. Try staring at something that isn't moving.",
+                textZh: "坚持一下——快到了。盯着一个不动的东西看。",
+                actionHint: "看远处固定的点",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1383,27 +2185,38 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "船员",
-            textEn: "No problem at all. I'll check on you in a few minutes. If you feel worse, don't hesitate to come find me — I'll be right over there by the cabin door.",
-            textZh: "别客气。我过几分钟来看看你。如果感觉更不舒服，别犹豫，来找我——我就在那边船舱门口。",
+            textEn:
+              "No problem at all. I'll check on you in a few minutes. If you feel worse, don't hesitate to come find me — I'll be right over there by the cabin door.",
+            textZh:
+              "别客气。我过几分钟来看看你。如果感觉更不舒服，别犹豫，来找我——我就在那边船舱门口。",
             keyPhrases: [
               { en: "check on you", zh: "来看看你" },
               { en: "don't hesitate", zh: "别犹豫" },
               { en: "cabin door", zh: "船舱门" },
             ],
             alternativeExpressions: [
-              { textEn: "Let me know if you need anything else. We're almost there.", textZh: "需要什么随时跟我说。快到了。", actionHint: "坚持一下就好", frequency: "common" },
+              {
+                textEn:
+                  "Let me know if you need anything else. We're almost there.",
+                textZh: "需要什么随时跟我说。快到了。",
+                actionHint: "坚持一下就好",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I really appreciate it. I'm feeling a little better already. The ginger candy is helping.",
+            textEn:
+              "I really appreciate it. I'm feeling a little better already. The ginger candy is helping.",
             textZh: "真的很感谢。已经好一点了。姜糖有效果。",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "Glad to hear it! For the return trip, you might want to sit outside on the lower deck — you'll get fresh air and it's the most stable part of the boat.",
-            textZh: "太好了！回程的时候建议坐在外面下层甲板——能呼吸到新鲜空气，而且那里是船最稳的部分。",
+            textEn:
+              "Glad to hear it! For the return trip, you might want to sit outside on the lower deck — you'll get fresh air and it's the most stable part of the boat.",
+            textZh:
+              "太好了！回程的时候建议坐在外面下层甲板——能呼吸到新鲜空气，而且那里是船最稳的部分。",
             keyPhrases: [
               { en: "return trip", zh: "回程" },
               { en: "lower deck", zh: "下层甲板" },
@@ -1411,8 +2224,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             ],
             responseTip: "记住回程时的建议：坐下层甲板外面，又稳又透气",
             alternativeExpressions: [
-              { textEn: "On the way back, sit outside on the lower deck. It's way more stable.", textZh: "回程的时候坐外面下层甲板。稳得多。", actionHint: "回程坐下层甲板", frequency: "common" },
-              { textEn: "Next time, try sitting near the middle and look at the horizon. Works wonders.", textZh: "下次试试坐中间，看地平线。效果特别好。", actionHint: "记住防晕船技巧", frequency: "common" },
+              {
+                textEn:
+                  "On the way back, sit outside on the lower deck. It's way more stable.",
+                textZh: "回程的时候坐外面下层甲板。稳得多。",
+                actionHint: "回程坐下层甲板",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Next time, try sitting near the middle and look at the horizon. Works wonders.",
+                textZh: "下次试试坐中间，看地平线。效果特别好。",
+                actionHint: "记住防晕船技巧",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -1440,18 +2265,32 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, is there parking available? I need to park for about three hours.",
+            textEn:
+              "Hi, is there parking available? I need to park for about three hours.",
             textZh: "你好，还有车位吗？我大概要停三个小时。",
             casualVersion: "Hey, got any spots open? I need about three hours.",
           },
           {
             speaker: "them",
             role: "管理员",
-            textEn: "Yes, we have spaces available. The rate is $5 per hour, or you can get the daily max of $25. Would you like a ticket or are you paying now?",
-            textZh: "有的，还有空位。每小时5美元，或者一天封顶25美元。你要取票还是现在付？",
+            textEn:
+              "Yes, we have spaces available. The rate is $5 per hour, or you can get the daily max of $25. Would you like a ticket or are you paying now?",
+            textZh:
+              "有的，还有空位。每小时5美元，或者一天封顶25美元。你要取票还是现在付？",
             alternativeExpressions: [
-              { textEn: "We're pretty full right now, but there should be some spots on the upper levels.", textZh: "现在差不多满了，不过上面几层应该还有位置。", actionHint: "去上面几层找车位", frequency: "occasional" },
-              { textEn: "Sure! Pull in and take a ticket from the machine.", textZh: "有的！开进去从机器取张票。", actionHint: "从入口机器取票", frequency: "common" },
+              {
+                textEn:
+                  "We're pretty full right now, but there should be some spots on the upper levels.",
+                textZh: "现在差不多满了，不过上面几层应该还有位置。",
+                actionHint: "去上面几层找车位",
+                frequency: "occasional",
+              },
+              {
+                textEn: "Sure! Pull in and take a ticket from the machine.",
+                textZh: "有的！开进去从机器取张票。",
+                actionHint: "从入口机器取票",
+                frequency: "common",
+              },
             ],
             keyPhrases: [
               { en: "spaces available", zh: "有空位" },
@@ -1460,12 +2299,13 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "daily max", zh: "一天封顶" },
             ],
             vocabNotes: {
-              "rate": {
+              rate: {
                 meaningInContext: "在这句话里表示：停车收费标准",
                 similarUsage: "类似用法：What's the room rate at this hotel?",
               },
               "daily max": {
-                meaningInContext: "在这句话里表示：一天最多收这么多钱，不会再涨",
+                meaningInContext:
+                  "在这句话里表示：一天最多收这么多钱，不会再涨",
                 similarUsage: "类似用法：The daily max on this plan is $30.",
               },
             },
@@ -1478,8 +2318,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "管理员",
-            textEn: "Yes, pay at the machine near the exit before you get your car. You can pay by cash or card. Insert your ticket, pay, and then use the validated ticket to open the exit gate.",
-            textZh: "是的，取车前在出口旁边的机器上付款。可以用现金或刷卡。插入票据，付款，然后用验证过的票打开出口闸门。",
+            textEn:
+              "Yes, pay at the machine near the exit before you get your car. You can pay by cash or card. Insert your ticket, pay, and then use the validated ticket to open the exit gate.",
+            textZh:
+              "是的，取车前在出口旁边的机器上付款。可以用现金或刷卡。插入票据，付款，然后用验证过的票打开出口闸门。",
             keyPhrases: [
               { en: "pay at the machine", zh: "在机器上付款" },
               { en: "near the exit", zh: "出口旁边" },
@@ -1487,40 +2329,70 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "exit gate", zh: "出口闸门" },
             ],
             alternativeExpressions: [
-              { textEn: "Pay before you leave at the machine by the exit. Cash or card, either works.", textZh: "走之前在出口旁的机器付款。现金刷卡都行。", actionHint: "离开前记得缴费", frequency: "common" },
-              { textEn: "You pay on your way out. Stick your ticket in the machine and it'll tell you the amount.", textZh: "出去的时候付。把票插进机器，会告诉你多少钱。", actionHint: "保管好停车票", frequency: "common" },
+              {
+                textEn:
+                  "Pay before you leave at the machine by the exit. Cash or card, either works.",
+                textZh: "走之前在出口旁的机器付款。现金刷卡都行。",
+                actionHint: "离开前记得缴费",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You pay on your way out. Stick your ticket in the machine and it'll tell you the amount.",
+                textZh: "出去的时候付。把票插进机器，会告诉你多少钱。",
+                actionHint: "保管好停车票",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. Are there any compact car spots closer to the elevator?",
+            textEn:
+              "Got it. Are there any compact car spots closer to the elevator?",
             textZh: "明白了。电梯附近有小型车位吗？",
           },
           {
             speaker: "them",
             role: "管理员",
-            textEn: "Yes, Level 2 has some compact spots right by the elevator. Just follow the green arrows on the floor — they'll lead you to open spaces.",
-            textZh: "有的，2层电梯旁边有小型车位。跟着地面上的绿色箭头走——它们会指向空车位。",
+            textEn:
+              "Yes, Level 2 has some compact spots right by the elevator. Just follow the green arrows on the floor — they'll lead you to open spaces.",
+            textZh:
+              "有的，2层电梯旁边有小型车位。跟着地面上的绿色箭头走——它们会指向空车位。",
             keyPhrases: [
               { en: "compact spots", zh: "小型车位" },
               { en: "follow the green arrows", zh: "跟着绿色箭头走" },
               { en: "open spaces", zh: "空车位" },
             ],
             alternativeExpressions: [
-              { textEn: "Level 2 has some spots by the elevator. Follow the green signs.", textZh: "2层电梯旁有位子。跟着绿色标识走。", actionHint: "去2层找车位", frequency: "common" },
-              { textEn: "Try Level 2 — there are usually compact spots near the elevator there.", textZh: "去2层试试——电梯附近通常有小车位。", actionHint: "开到2层找位置", frequency: "common" },
+              {
+                textEn:
+                  "Level 2 has some spots by the elevator. Follow the green signs.",
+                textZh: "2层电梯旁有位子。跟着绿色标识走。",
+                actionHint: "去2层找车位",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Try Level 2 — there are usually compact spots near the elevator there.",
+                textZh: "去2层试试——电梯附近通常有小车位。",
+                actionHint: "开到2层找位置",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great. Is the garage open 24 hours, or does it close at a certain time?",
+            textEn:
+              "Great. Is the garage open 24 hours, or does it close at a certain time?",
             textZh: "好的。停车场是24小时的，还是几点关门？",
           },
           {
             speaker: "them",
             role: "管理员",
-            textEn: "We're open 24/7, but the office closes at 10 PM. After that, everything is automated. If you have any issues with the machine, there's a help button that connects to our call center.",
-            textZh: "我们全天24小时开放，但办公室晚上10点关。之后全部自动化。如果机器有问题，有个求助按钮可以联系我们的呼叫中心。",
+            textEn:
+              "We're open 24/7, but the office closes at 10 PM. After that, everything is automated. If you have any issues with the machine, there's a help button that connects to our call center.",
+            textZh:
+              "我们全天24小时开放，但办公室晚上10点关。之后全部自动化。如果机器有问题，有个求助按钮可以联系我们的呼叫中心。",
             keyPhrases: [
               { en: "24/7", zh: "全天候/24小时" },
               { en: "automated", zh: "自动化的" },
@@ -1529,25 +2401,42 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             ],
             vocabNotes: {
               "24/7": {
-                meaningInContext: "在这句话里表示：每周7天每天24小时，全天候开放",
-                similarUsage: "类似用法：Our customer service is available 24/7.",
+                meaningInContext:
+                  "在这句话里表示：每周7天每天24小时，全天候开放",
+                similarUsage:
+                  "类似用法：Our customer service is available 24/7.",
               },
             },
             alternativeExpressions: [
-              { textEn: "Open 24/7. After 10 PM it's all self-service, but there's a help button if you need it.", textZh: "24小时营业。晚上10点后全自助，但有求助按钮。", actionHint: "记住晚上是自助模式", frequency: "common" },
-              { textEn: "We never close. But the booth closes at 10 — after that, everything's automated.", textZh: "全天不关。不过值班室10点下班——之后全自动化。", actionHint: "晚上有问题按求助按钮", frequency: "common" },
+              {
+                textEn:
+                  "Open 24/7. After 10 PM it's all self-service, but there's a help button if you need it.",
+                textZh: "24小时营业。晚上10点后全自助，但有求助按钮。",
+                actionHint: "记住晚上是自助模式",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "We never close. But the booth closes at 10 — after that, everything's automated.",
+                textZh: "全天不关。不过值班室10点下班——之后全自动化。",
+                actionHint: "晚上有问题按求助按钮",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Perfect. And I should remember my parking level and spot number, right?",
+            textEn:
+              "Perfect. And I should remember my parking level and spot number, right?",
             textZh: "好的。我要记住停车的楼层和车位号，对吗？",
           },
           {
             speaker: "them",
             role: "管理员",
-            textEn: "Exactly. I'd suggest taking a photo of the level sign and your spot number. People forget all the time and end up wandering around looking for their car!",
-            textZh: "没错。建议拍张楼层标识和车位号的照片。经常有人忘了，到处找车！",
+            textEn:
+              "Exactly. I'd suggest taking a photo of the level sign and your spot number. People forget all the time and end up wandering around looking for their car!",
+            textZh:
+              "没错。建议拍张楼层标识和车位号的照片。经常有人忘了，到处找车！",
             keyPhrases: [
               { en: "taking a photo", zh: "拍张照片" },
               { en: "level sign", zh: "楼层标识" },
@@ -1555,8 +2444,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             ],
             culturalNote: "这是非常实用的建议。大型停车场很容易迷路找不到车。",
             alternativeExpressions: [
-              { textEn: "Pro tip: take a photo of your level and spot number. People lose their cars all the time!", textZh: "小建议：拍张照记住楼层和车位号。好多人找不到车！", actionHint: "拍照记录停车位置", frequency: "common" },
-              { textEn: "Snap a pic of the sign. You'd be amazed how many people forget where they parked.", textZh: "拍张标识的照片。你想不到有多少人忘了停哪儿。", actionHint: "用手机拍照备忘", frequency: "common" },
+              {
+                textEn:
+                  "Pro tip: take a photo of your level and spot number. People lose their cars all the time!",
+                textZh: "小建议：拍张照记住楼层和车位号。好多人找不到车！",
+                actionHint: "拍照记录停车位置",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Snap a pic of the sign. You'd be amazed how many people forget where they parked.",
+                textZh: "拍张标识的照片。你想不到有多少人忘了停哪儿。",
+                actionHint: "用手机拍照备忘",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1577,17 +2478,27 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, how does this parking meter work? I can't figure out how to pay.",
+            textEn:
+              "Excuse me, how does this parking meter work? I can't figure out how to pay.",
             textZh: "不好意思，这个咪表怎么用？我搞不清怎么付款。",
-            culturalNote: "美国路边停车通常用电子咪表或手机App支付。不同城市的咪表操作方式不同。",
+            culturalNote:
+              "美国路边停车通常用电子咪表或手机App支付。不同城市的咪表操作方式不同。",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Oh, this one takes coins and cards. Just insert your card, select how much time you need, and press the green button. Or you can download the ParkMobile app — it's easier.",
-            textZh: "哦，这个可以投币或刷卡。插卡，选择要停多久，按绿色按钮就行。或者你可以下载 ParkMobile 应用——更方便。",
+            textEn:
+              "Oh, this one takes coins and cards. Just insert your card, select how much time you need, and press the green button. Or you can download the ParkMobile app — it's easier.",
+            textZh:
+              "哦，这个可以投币或刷卡。插卡，选择要停多久，按绿色按钮就行。或者你可以下载 ParkMobile 应用——更方便。",
             alternativeExpressions: [
-              { textEn: "You need quarters for this one. Do you have any change?", textZh: "这个要投25美分硬币。你有零钱吗？", actionHint: "准备25美分硬币", frequency: "occasional" },
+              {
+                textEn:
+                  "You need quarters for this one. Do you have any change?",
+                textZh: "这个要投25美分硬币。你有零钱吗？",
+                actionHint: "准备25美分硬币",
+                frequency: "occasional",
+              },
             ],
             keyPhrases: [
               { en: "parking meter", zh: "咪表/停车计时器" },
@@ -1596,68 +2507,98 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "download the app", zh: "下载应用" },
             ],
             vocabNotes: {
-              "meter": {
+              meter: {
                 meaningInContext: "在这句话里表示：路边停车收费的计时器/咪表",
-                similarUsage: "类似用法：I need to feed the meter before it expires.",
+                similarUsage:
+                  "类似用法：I need to feed the meter before it expires.",
               },
             },
           },
           {
             speaker: "you",
-            textEn: "I'll use my card. How much time am I allowed to park here?",
+            textEn:
+              "I'll use my card. How much time am I allowed to park here?",
             textZh: "我用卡吧。这里最长能停多久？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "I think the max is two hours. Check the sign on the pole — it should say the time limit and the hours when parking is metered.",
-            textZh: "我觉得最多两小时。看看杆子上的标识——上面应该写了时间限制和收费时段。",
+            textEn:
+              "I think the max is two hours. Check the sign on the pole — it should say the time limit and the hours when parking is metered.",
+            textZh:
+              "我觉得最多两小时。看看杆子上的标识——上面应该写了时间限制和收费时段。",
             keyPhrases: [
               { en: "the max", zh: "最多/上限" },
               { en: "time limit", zh: "时间限制" },
               { en: "metered", zh: "收费的/计时的" },
             ],
             alternativeExpressions: [
-              { textEn: "I think it's two hours max. Check the sign on the pole — it'll have all the details.", textZh: "好像最多两小时。看杆子上的标识——上面都写着。", actionHint: "仔细看标识牌", frequency: "common" },
-              { textEn: "Read the sign — it should say the limit. I think it's a two-hour zone.", textZh: "看标识牌——上面会写限制时间。好像是两小时的区域。", actionHint: "先看清规则再停", frequency: "common" },
+              {
+                textEn:
+                  "I think it's two hours max. Check the sign on the pole — it'll have all the details.",
+                textZh: "好像最多两小时。看杆子上的标识——上面都写着。",
+                actionHint: "仔细看标识牌",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Read the sign — it should say the limit. I think it's a two-hour zone.",
+                textZh: "看标识牌——上面会写限制时间。好像是两小时的区域。",
+                actionHint: "先看清规则再停",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "It says two-hour maximum, 8 AM to 6 PM. So after 6 PM, parking is free?",
+            textEn:
+              "It says two-hour maximum, 8 AM to 6 PM. So after 6 PM, parking is free?",
             textZh: "上面写最多两小时，早8点到晚6点。那6点以后停车免费？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Usually, yes. But always check for street cleaning signs too. If they're cleaning the street, you'll get a ticket even if the meter is free.",
-            textZh: "一般是的。但也要注意看有没有清扫街道的标识。如果在清扫街道，即使咪表免费时段你也会被罚款。",
+            textEn:
+              "Usually, yes. But always check for street cleaning signs too. If they're cleaning the street, you'll get a ticket even if the meter is free.",
+            textZh:
+              "一般是的。但也要注意看有没有清扫街道的标识。如果在清扫街道，即使咪表免费时段你也会被罚款。",
             keyPhrases: [
               { en: "street cleaning", zh: "清扫街道" },
               { en: "get a ticket", zh: "被开罚单" },
             ],
             alternativeExpressions: [
-              { textEn: "Check for any 'No Parking' signs nearby. Some spots are restricted at certain times.", textZh: "看看附近有没有'禁止停车'的标识。有些位置在特定时段是限制停车的。", actionHint: "仔细查看周围所有标识", frequency: "common" },
+              {
+                textEn:
+                  "Check for any 'No Parking' signs nearby. Some spots are restricted at certain times.",
+                textZh:
+                  "看看附近有没有'禁止停车'的标识。有些位置在特定时段是限制停车的。",
+                actionHint: "仔细查看周围所有标识",
+                frequency: "common",
+              },
             ],
             vocabNotes: {
-              "ticket": {
+              ticket: {
                 meaningInContext: "在这句话里表示：违停罚单，不是门票的意思",
                 similarUsage: "类似用法：I got a speeding ticket last week.",
               },
             },
-            culturalNote: "美国路边停车规则很复杂，同一个车位在不同时间可能有不同规定。一定要仔细看所有标识。",
+            culturalNote:
+              "美国路边停车规则很复杂，同一个车位在不同时间可能有不同规定。一定要仔细看所有标识。",
           },
           {
             speaker: "you",
-            textEn: "Oh no, I just found a ticket on my windshield! What do I do now?",
+            textEn:
+              "Oh no, I just found a ticket on my windshield! What do I do now?",
             textZh: "糟糕，我挡风玻璃上有张罚单！现在怎么办？",
             isBranchPoint: true,
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Let me see... Looks like a $65 fine for expired meter. You can pay it online — there should be a website and a code on the ticket. Pay within 30 days or it doubles.",
-            textZh: "让我看看……好像是咪表过期，罚65美元。可以网上交——罚单上应该有网站和编号。30天内付，不然翻倍。",
+            textEn:
+              "Let me see... Looks like a $65 fine for expired meter. You can pay it online — there should be a website and a code on the ticket. Pay within 30 days or it doubles.",
+            textZh:
+              "让我看看……好像是咪表过期，罚65美元。可以网上交——罚单上应该有网站和编号。30天内付，不然翻倍。",
             keyPhrases: [
               { en: "fine", zh: "罚款" },
               { en: "expired meter", zh: "咪表过期" },
@@ -1666,8 +2607,21 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "doubles", zh: "翻倍" },
             ],
             alternativeExpressions: [
-              { textEn: "Looks like a parking ticket — 65 bucks for an expired meter. You can pay it online.", textZh: "看着像罚单——咪表过期罚65块。可以网上交。", actionHint: "记下罚单编号去网上缴费", frequency: "common" },
-              { textEn: "Ouch, $65. It says expired meter. Pay online within 30 days or the fine doubles.", textZh: "心疼，65块。写的是咪表过期。30天内网上缴费，不然罚款翻倍。", actionHint: "尽快网上缴费", frequency: "common" },
+              {
+                textEn:
+                  "Looks like a parking ticket — 65 bucks for an expired meter. You can pay it online.",
+                textZh: "看着像罚单——咪表过期罚65块。可以网上交。",
+                actionHint: "记下罚单编号去网上缴费",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Ouch, $65. It says expired meter. Pay online within 30 days or the fine doubles.",
+                textZh:
+                  "心疼，65块。写的是咪表过期。30天内网上缴费，不然罚款翻倍。",
+                actionHint: "尽快网上缴费",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1678,8 +2632,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "路人",
-            textEn: "Yes, you can dispute it online or request a hearing. The instructions should be on the back of the ticket. But honestly, if the meter was expired, it's pretty hard to fight.",
-            textZh: "可以的，可以在线申诉或者要求听证。罚单背面应该有说明。但说实话，如果确实咪表过期了，很难打赢。",
+            textEn:
+              "Yes, you can dispute it online or request a hearing. The instructions should be on the back of the ticket. But honestly, if the meter was expired, it's pretty hard to fight.",
+            textZh:
+              "可以的，可以在线申诉或者要求听证。罚单背面应该有说明。但说实话，如果确实咪表过期了，很难打赢。",
             keyPhrases: [
               { en: "contest the ticket", zh: "申诉罚单" },
               { en: "dispute", zh: "争议/申诉" },
@@ -1687,13 +2643,26 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "hard to fight", zh: "很难打赢" },
             ],
             alternativeExpressions: [
-              { textEn: "You can fight it online, but if the meter was actually expired, it's tough to win.", textZh: "可以网上申诉，但如果咪表确实过期了，很难赢。", actionHint: "权衡是否值得申诉", frequency: "common" },
-              { textEn: "The back of the ticket has instructions for disputing it. But honestly, just pay it and move on.", textZh: "罚单背面有申诉说明。但说实话，交了算了。", actionHint: "看看罚单背面的说明", frequency: "occasional" },
+              {
+                textEn:
+                  "You can fight it online, but if the meter was actually expired, it's tough to win.",
+                textZh: "可以网上申诉，但如果咪表确实过期了，很难赢。",
+                actionHint: "权衡是否值得申诉",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "The back of the ticket has instructions for disputing it. But honestly, just pay it and move on.",
+                textZh: "罚单背面有申诉说明。但说实话，交了算了。",
+                actionHint: "看看罚单背面的说明",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I guess I'll just pay it. Lesson learned — I'll set a timer on my phone next time.",
+            textEn:
+              "I guess I'll just pay it. Lesson learned — I'll set a timer on my phone next time.",
             textZh: "那我还是交了吧。吃一堑长一智——下次我手机定个闹钟。",
           },
         ],
@@ -1721,18 +2690,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I've never used a gas pump in the US before. Could you show me how it works?",
+            textEn:
+              "Excuse me, I've never used a gas pump in the US before. Could you show me how it works?",
             textZh: "不好意思，我以前没在美国加过油。能教我怎么用吗？",
             culturalNote: "美国大部分加油站是自助的，和中国有人帮忙加油不同。",
-            casualVersion: "Hey, sorry — first time pumping gas here. Can you help me out?",
+            casualVersion:
+              "Hey, sorry — first time pumping gas here. Can you help me out?",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Sure! First, you'll need to pay. You can either pay at the pump with a credit card, or go inside and pre-pay with cash. What works better for you?",
-            textZh: "当然！首先要付款。你可以在油枪这里刷信用卡，或者进去先用现金预付。哪种方便？",
+            textEn:
+              "Sure! First, you'll need to pay. You can either pay at the pump with a credit card, or go inside and pre-pay with cash. What works better for you?",
+            textZh:
+              "当然！首先要付款。你可以在油枪这里刷信用卡，或者进去先用现金预付。哪种方便？",
             alternativeExpressions: [
-              { textEn: "Swipe your card right here, or you can pay inside first.", textZh: "在这里刷卡，或者先进去付款。", actionHint: "选一种付款方式", frequency: "common" },
+              {
+                textEn:
+                  "Swipe your card right here, or you can pay inside first.",
+                textZh: "在这里刷卡，或者先进去付款。",
+                actionHint: "选一种付款方式",
+                frequency: "common",
+              },
             ],
             keyPhrases: [
               { en: "gas pump", zh: "加油机/油枪" },
@@ -1740,7 +2719,7 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "pre-pay", zh: "预付" },
             ],
             vocabNotes: {
-              "pump": {
+              pump: {
                 meaningInContext: "在这句话里表示：加油机/油枪装置",
                 similarUsage: "类似用法：Which pump number are you at?",
               },
@@ -1748,34 +2727,54 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           },
           {
             speaker: "you",
-            textEn: "I'll use my credit card at the pump. What do I do after I insert the card?",
+            textEn:
+              "I'll use my credit card at the pump. What do I do after I insert the card?",
             textZh: "我在油枪这里刷信用卡吧。插卡之后怎么操作？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Insert the card and remove it quickly. It might ask for your ZIP code — just enter any 5-digit number if your card is international. Then select the fuel grade — regular is usually the cheapest and fine for most cars.",
-            textZh: "插卡后快速抽出。可能会要求输入邮编——如果是国际信用卡，随便输5位数字就行。然后选油品——regular（普通）通常最便宜，大部分车都可以用。",
+            textEn:
+              "Insert the card and remove it quickly. It might ask for your ZIP code — just enter any 5-digit number if your card is international. Then select the fuel grade — regular is usually the cheapest and fine for most cars.",
+            textZh:
+              "插卡后快速抽出。可能会要求输入邮编——如果是国际信用卡，随便输5位数字就行。然后选油品——regular（普通）通常最便宜，大部分车都可以用。",
             keyPhrases: [
               { en: "ZIP code", zh: "邮编" },
               { en: "fuel grade", zh: "油品等级" },
               { en: "regular", zh: "普通（汽油）" },
             ],
             vocabNotes: {
-              "regular": {
-                meaningInContext: "在这句话里表示：普通汽油（87号），最便宜的一档",
+              regular: {
+                meaningInContext:
+                  "在这句话里表示：普通汽油（87号），最便宜的一档",
                 similarUsage: "类似用法：Fill it up with regular, please.",
               },
-              "grade": {
+              grade: {
                 meaningInContext: "在这句话里表示：汽油的等级/标号",
-                similarUsage: "类似用法：Premium grade is for high-performance engines.",
+                similarUsage:
+                  "类似用法：Premium grade is for high-performance engines.",
               },
             },
-            culturalNote: "美国汽油分 Regular（87）、Mid-grade/Plus（89）、Premium（91/93）三档。除非车辆说明书要求，加 Regular 就行。",
+            culturalNote:
+              "美国汽油分 Regular（87）、Mid-grade/Plus（89）、Premium（91/93）三档。除非车辆说明书要求，加 Regular 就行。",
             isBranchPoint: true,
             alternativeExpressions: [
-              { textEn: "Slide the card in and pull it right out. Then pick your gas type. If it asks for a ZIP, just try 99999.", textZh: "插卡后马上拔出来。然后选油品。如果要邮编，试试输99999。", actionHint: "记住操作步骤", frequency: "common" },
-              { textEn: "Put your card in, pull it out fast. Choose regular unless your car needs premium. Easy peasy.", textZh: "插卡，快速拔出。选普通油就行，除非你的车要高标号的。很简单。", actionHint: "选对油品等级", frequency: "common" },
+              {
+                textEn:
+                  "Slide the card in and pull it right out. Then pick your gas type. If it asks for a ZIP, just try 99999.",
+                textZh:
+                  "插卡后马上拔出来。然后选油品。如果要邮编，试试输99999。",
+                actionHint: "记住操作步骤",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Put your card in, pull it out fast. Choose regular unless your car needs premium. Easy peasy.",
+                textZh:
+                  "插卡，快速拔出。选普通油就行，除非你的车要高标号的。很简单。",
+                actionHint: "选对油品等级",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -1786,8 +2785,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Lift the nozzle, put it in your gas tank, and squeeze the handle. You can lock it in place so you don't have to hold it the whole time. When it's full, it'll click and stop automatically.",
-            textZh: "拿起油枪，插进你的油箱口，按住把手。你可以把它卡住，就不用一直握着了。加满了会自动咔嗒一声停下来。",
+            textEn:
+              "Lift the nozzle, put it in your gas tank, and squeeze the handle. You can lock it in place so you don't have to hold it the whole time. When it's full, it'll click and stop automatically.",
+            textZh:
+              "拿起油枪，插进你的油箱口，按住把手。你可以把它卡住，就不用一直握着了。加满了会自动咔嗒一声停下来。",
             keyPhrases: [
               { en: "lift the nozzle", zh: "拿起油枪" },
               { en: "gas tank", zh: "油箱" },
@@ -1796,68 +2797,120 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "click and stop", zh: "咔嗒一声停下来" },
             ],
             alternativeExpressions: [
-              { textEn: "Grab the nozzle, stick it in, and squeeze. It'll stop by itself when it's full.", textZh: "拿起油枪，插进去，按住。满了会自动停。", actionHint: "按步骤操作", frequency: "common" },
-              { textEn: "Put the nozzle in your tank and pull the trigger. You can lock it so you don't have to hold it.", textZh: "把油枪插进油箱，扣住扳机。可以卡住就不用一直握着了。", actionHint: "可以把油枪卡住", frequency: "common" },
+              {
+                textEn:
+                  "Grab the nozzle, stick it in, and squeeze. It'll stop by itself when it's full.",
+                textZh: "拿起油枪，插进去，按住。满了会自动停。",
+                actionHint: "按步骤操作",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Put the nozzle in your tank and pull the trigger. You can lock it so you don't have to hold it.",
+                textZh: "把油枪插进油箱，扣住扳机。可以卡住就不用一直握着了。",
+                actionHint: "可以把油枪卡住",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. Oh wait — which side is my gas tank on? I keep forgetting.",
+            textEn:
+              "Got it. Oh wait — which side is my gas tank on? I keep forgetting.",
             textZh: "明白了。等等——我的油箱在哪边？我老是忘。",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Ha, check your dashboard — there's a little arrow next to the gas gauge icon that shows which side the tank is on. It's a little trick most people don't know about.",
-            textZh: "哈哈，看你的仪表盘——油表图标旁边有个小箭头，指向油箱口的那一边。这个小窍门大部分人不知道。",
+            textEn:
+              "Ha, check your dashboard — there's a little arrow next to the gas gauge icon that shows which side the tank is on. It's a little trick most people don't know about.",
+            textZh:
+              "哈哈，看你的仪表盘——油表图标旁边有个小箭头，指向油箱口的那一边。这个小窍门大部分人不知道。",
             keyPhrases: [
               { en: "dashboard", zh: "仪表盘" },
               { en: "gas gauge", zh: "油表" },
               { en: "little arrow", zh: "小箭头" },
             ],
-            culturalNote: "这个仪表盘上的小箭头几乎所有现代汽车都有，非常实用的冷知识。",
+            culturalNote:
+              "这个仪表盘上的小箭头几乎所有现代汽车都有，非常实用的冷知识。",
             alternativeExpressions: [
-              { textEn: "Your gas cap is on the driver's side. Just pull in with the pump on your left.", textZh: "你的油箱盖在驾驶座这边。把油枪放在左边停就行。", actionHint: "注意油箱盖的位置停车", frequency: "common" },
+              {
+                textEn:
+                  "Your gas cap is on the driver's side. Just pull in with the pump on your left.",
+                textZh: "你的油箱盖在驾驶座这边。把油枪放在左边停就行。",
+                actionHint: "注意油箱盖的位置停车",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Oh nice, I see it! It's on the left side. Okay, it's pumping now. Should I stay by the car?",
+            textEn:
+              "Oh nice, I see it! It's on the left side. Okay, it's pumping now. Should I stay by the car?",
             textZh: "哦看到了！在左边。好，在加了。我要守在车旁边吗？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "It's best to stay nearby, yes. Don't get back in the car while it's pumping — static electricity can be a hazard. It'll be done in a couple of minutes.",
-            textZh: "最好在旁边待着。加油时不要上车——静电可能有危险。两分钟左右就加完了。",
+            textEn:
+              "It's best to stay nearby, yes. Don't get back in the car while it's pumping — static electricity can be a hazard. It'll be done in a couple of minutes.",
+            textZh:
+              "最好在旁边待着。加油时不要上车——静电可能有危险。两分钟左右就加完了。",
             keyPhrases: [
               { en: "stay nearby", zh: "在旁边待着" },
               { en: "static electricity", zh: "静电" },
               { en: "hazard", zh: "危险/隐患" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, stay by the car. Don't sit back inside — static can cause problems.", textZh: "是的，在车旁边站着。别坐回车里——静电可能出问题。", actionHint: "在车外等加油完成", frequency: "common" },
-              { textEn: "Stick around, it only takes a couple minutes. And don't use your phone too close to the pump.", textZh: "在旁边待着，就几分钟的事。别在油枪旁边玩手机。", actionHint: "在旁边等几分钟", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, stay by the car. Don't sit back inside — static can cause problems.",
+                textZh: "是的，在车旁边站着。别坐回车里——静电可能出问题。",
+                actionHint: "在车外等加油完成",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Stick around, it only takes a couple minutes. And don't use your phone too close to the pump.",
+                textZh: "在旁边待着，就几分钟的事。别在油枪旁边玩手机。",
+                actionHint: "在旁边等几分钟",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "It just clicked and stopped. Do I just put the nozzle back?",
+            textEn:
+              "It just clicked and stopped. Do I just put the nozzle back?",
             textZh: "咔嗒停了。我把油枪放回去就行吗？",
           },
           {
             speaker: "them",
             role: "工作人员",
-            textEn: "Yep, hang it back up and close your gas cap. The receipt should print out automatically — or you can get one inside. You're all set!",
-            textZh: "对，挂回去，关好油箱盖。小票会自动打印出来——或者进去拿也行。搞定了！",
+            textEn:
+              "Yep, hang it back up and close your gas cap. The receipt should print out automatically — or you can get one inside. You're all set!",
+            textZh:
+              "对，挂回去，关好油箱盖。小票会自动打印出来——或者进去拿也行。搞定了！",
             keyPhrases: [
               { en: "hang it back up", zh: "挂回去" },
               { en: "gas cap", zh: "油箱盖" },
               { en: "you're all set", zh: "搞定了" },
             ],
             alternativeExpressions: [
-              { textEn: "Just put the nozzle back and close your gas cap. You're done!", textZh: "把油枪放回去，关好油箱盖。搞定了！", actionHint: "挂回油枪关好油箱盖", frequency: "common" },
-              { textEn: "Hang it up, cap your tank, and grab your receipt. All done!", textZh: "挂回去，盖好油箱盖，拿小票。齐活儿！", actionHint: "别忘了拿小票", frequency: "common" },
+              {
+                textEn:
+                  "Just put the nozzle back and close your gas cap. You're done!",
+                textZh: "把油枪放回去，关好油箱盖。搞定了！",
+                actionHint: "挂回油枪关好油箱盖",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hang it up, cap your tank, and grab your receipt. All done!",
+                textZh: "挂回去，盖好油箱盖，拿小票。齐活儿！",
+                actionHint: "别忘了拿小票",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -1873,16 +2926,24 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to pre-pay for gas on pump number 5. Can I pay with cash?",
+            textEn:
+              "Hi, I'd like to pre-pay for gas on pump number 5. Can I pay with cash?",
             textZh: "你好，我想预付5号油枪的油费。可以付现金吗？",
           },
           {
             speaker: "them",
             role: "收银员",
-            textEn: "Sure! How much would you like to put on it? If you pay more than what you pump, we'll refund the difference.",
+            textEn:
+              "Sure! How much would you like to put on it? If you pay more than what you pump, we'll refund the difference.",
             textZh: "可以！你想预存多少？如果付的比实际加的多，差额会退给你。",
             alternativeExpressions: [
-              { textEn: "How much gas do you need? Or do you just want to fill it up?", textZh: "你要加多少？还是加满？", actionHint: "告诉对方金额或说加满", frequency: "common" },
+              {
+                textEn:
+                  "How much gas do you need? Or do you just want to fill it up?",
+                textZh: "你要加多少？还是加满？",
+                actionHint: "告诉对方金额或说加满",
+                frequency: "common",
+              },
             ],
             keyPhrases: [
               { en: "pre-pay", zh: "预付" },
@@ -1904,28 +2965,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "收银员",
-            textEn: "Got it. Pump 5 is activated. You're good to go. Just come back inside if you need change.",
-            textZh: "收到。5号油枪已经激活了。可以去加了。如果需要找零，回来店里就行。",
+            textEn:
+              "Got it. Pump 5 is activated. You're good to go. Just come back inside if you need change.",
+            textZh:
+              "收到。5号油枪已经激活了。可以去加了。如果需要找零，回来店里就行。",
             keyPhrases: [
               { en: "activated", zh: "激活了" },
               { en: "you're good to go", zh: "可以了/可以去了" },
               { en: "change", zh: "找零" },
             ],
             alternativeExpressions: [
-              { textEn: "Pump 5 is all set. Go ahead and start fueling.", textZh: "5号枪好了。去加吧。", actionHint: "去5号枪开始加油", frequency: "common" },
-              { textEn: "You're good. 5's ready to go. Come back if you need change.", textZh: "可以了。5号准备好了。需要找零回来就行。", actionHint: "加完油回来找零", frequency: "common" },
+              {
+                textEn: "Pump 5 is all set. Go ahead and start fueling.",
+                textZh: "5号枪好了。去加吧。",
+                actionHint: "去5号枪开始加油",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You're good. 5's ready to go. Come back if you need change.",
+                textZh: "可以了。5号准备好了。需要找零回来就行。",
+                actionHint: "加完油回来找零",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks. Actually, one more thing — my card got declined at the pump earlier. Is that common with foreign cards?",
-            textZh: "谢谢。对了还有一个问题——我刚才在油枪上刷卡被拒了。外国卡常见吗？",
+            textEn:
+              "Thanks. Actually, one more thing — my card got declined at the pump earlier. Is that common with foreign cards?",
+            textZh:
+              "谢谢。对了还有一个问题——我刚才在油枪上刷卡被拒了。外国卡常见吗？",
           },
           {
             speaker: "them",
             role: "收银员",
-            textEn: "Yeah, that happens a lot with foreign credit cards because the pump asks for a US ZIP code. But you can always come inside and I'll run the card for you here — no ZIP code needed.",
-            textZh: "是的，外国信用卡经常这样，因为油枪上会要求输入美国邮编。你可以进来店里，我在这里帮你刷——不需要邮编。",
+            textEn:
+              "Yeah, that happens a lot with foreign credit cards because the pump asks for a US ZIP code. But you can always come inside and I'll run the card for you here — no ZIP code needed.",
+            textZh:
+              "是的，外国信用卡经常这样，因为油枪上会要求输入美国邮编。你可以进来店里，我在这里帮你刷——不需要邮编。",
             keyPhrases: [
               { en: "got declined", zh: "被拒了" },
               { en: "ZIP code", zh: "邮编" },
@@ -1934,50 +3012,81 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             vocabNotes: {
               "run the card": {
                 meaningInContext: "在这句话里表示：帮你刷信用卡/处理信用卡付款",
-                similarUsage: "类似用法：Let me run your card through the machine.",
+                similarUsage:
+                  "类似用法：Let me run your card through the machine.",
               },
-              "declined": {
+              declined: {
                 meaningInContext: "在这句话里表示：信用卡被拒绝/刷不过去",
                 similarUsage: "类似用法：My payment was declined at the store.",
               },
             },
-            culturalNote: "外国信用卡在美国自助加油时很容易被拒，因为系统要求输入美国邮编验证。最简单的解决办法就是进店用现金或让店员帮忙刷。",
+            culturalNote:
+              "外国信用卡在美国自助加油时很容易被拒，因为系统要求输入美国邮编验证。最简单的解决办法就是进店用现金或让店员帮忙刷。",
             alternativeExpressions: [
-              { textEn: "Yeah, foreign cards get rejected a lot out there. Just come inside and I'll swipe it for you.", textZh: "是的，外国卡在外面经常刷不过。进来我帮你刷。", actionHint: "下次直接进店刷卡", frequency: "common" },
-              { textEn: "Happens all the time. The pump wants a ZIP code. Bring your card in next time and we'll handle it.", textZh: "经常发生。油枪要邮编。下次拿卡进来我们帮你处理。", actionHint: "记住这个技巧", frequency: "common" },
+              {
+                textEn:
+                  "Yeah, foreign cards get rejected a lot out there. Just come inside and I'll swipe it for you.",
+                textZh: "是的，外国卡在外面经常刷不过。进来我帮你刷。",
+                actionHint: "下次直接进店刷卡",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Happens all the time. The pump wants a ZIP code. Bring your card in next time and we'll handle it.",
+                textZh: "经常发生。油枪要邮编。下次拿卡进来我们帮你处理。",
+                actionHint: "记住这个技巧",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good to know for next time! Where are the restrooms, by the way?",
+            textEn:
+              "Good to know for next time! Where are the restrooms, by the way?",
             textZh: "下次知道了！对了，洗手间在哪？",
           },
           {
             speaker: "them",
             role: "收银员",
-            textEn: "They're around the side of the building. You'll need this key — just bring it back when you're done.",
+            textEn:
+              "They're around the side of the building. You'll need this key — just bring it back when you're done.",
             textZh: "在楼的侧面。你需要这把钥匙——用完还回来就行。",
             keyPhrases: [
               { en: "around the side", zh: "在侧面" },
               { en: "you'll need this key", zh: "你需要这把钥匙" },
               { en: "bring it back", zh: "还回来" },
             ],
-            culturalNote: "美国很多加油站的洗手间需要找店员拿钥匙，这是防止外人随意使用的做法。",
+            culturalNote:
+              "美国很多加油站的洗手间需要找店员拿钥匙，这是防止外人随意使用的做法。",
             alternativeExpressions: [
-              { textEn: "Around the side. Here's the key — bring it back when you're done.", textZh: "在侧面。给你钥匙——用完还回来。", actionHint: "用完记得还钥匙", frequency: "common" },
-              { textEn: "Outside, to the left. You need this key to get in.", textZh: "外面，往左走。你需要这把钥匙才能进去。", actionHint: "拿好钥匙去找洗手间", frequency: "common" },
+              {
+                textEn:
+                  "Around the side. Here's the key — bring it back when you're done.",
+                textZh: "在侧面。给你钥匙——用完还回来。",
+                actionHint: "用完记得还钥匙",
+                frequency: "common",
+              },
+              {
+                textEn: "Outside, to the left. You need this key to get in.",
+                textZh: "外面，往左走。你需要这把钥匙才能进去。",
+                actionHint: "拿好钥匙去找洗手间",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks! Also, do you sell windshield washer fluid? I think mine is running low.",
+            textEn:
+              "Thanks! Also, do you sell windshield washer fluid? I think mine is running low.",
             textZh: "谢谢！你们卖挡风玻璃清洗液吗？我的好像快没了。",
           },
           {
             speaker: "them",
             role: "收银员",
-            textEn: "Yes, aisle 3 on the right. We also have engine oil and antifreeze if you need those. Let me know if you need help finding anything.",
-            textZh: "有的，右边第3排货架。我们也有机油和防冻液。找不到的话告诉我。",
+            textEn:
+              "Yes, aisle 3 on the right. We also have engine oil and antifreeze if you need those. Let me know if you need help finding anything.",
+            textZh:
+              "有的，右边第3排货架。我们也有机油和防冻液。找不到的话告诉我。",
             keyPhrases: [
               { en: "windshield washer fluid", zh: "挡风玻璃清洗液" },
               { en: "engine oil", zh: "机油" },
@@ -1985,8 +3094,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "aisle", zh: "过道/货架排" },
             ],
             alternativeExpressions: [
-              { textEn: "Aisle 3, on the right. We've also got oil and antifreeze if you need them.", textZh: "右边第3排。还有机油和防冻液需要的话也有。", actionHint: "去第3排找", frequency: "common" },
-              { textEn: "Yeah, over in the automotive section. Third row. Holler if you can't find it.", textZh: "有的，在汽车用品区。第三排。找不到喊我。", actionHint: "去汽车用品区找", frequency: "common" },
+              {
+                textEn:
+                  "Aisle 3, on the right. We've also got oil and antifreeze if you need them.",
+                textZh: "右边第3排。还有机油和防冻液需要的话也有。",
+                actionHint: "去第3排找",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, over in the automotive section. Third row. Holler if you can't find it.",
+                textZh: "有的，在汽车用品区。第三排。找不到喊我。",
+                actionHint: "去汽车用品区找",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2019,16 +3140,25 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to buy a ticket to Boston. What are the departure times today?",
+            textEn:
+              "Hi, I'd like to buy a ticket to Boston. What are the departure times today?",
             textZh: "你好，我想买一张去波士顿的票。今天有哪些班次？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Let me check. We have departures at 10:15 AM, 1:30 PM, and 4:45 PM. The 10:15 is an express — it takes about 3.5 hours. The others are local and take around 5 hours with stops.",
-            textZh: "我查一下。今天有上午10:15、下午1:30和下午4:45的班次。10:15是快车——大概3个半小时。其他是慢车，沿途停靠，大约5个小时。",
+            textEn:
+              "Let me check. We have departures at 10:15 AM, 1:30 PM, and 4:45 PM. The 10:15 is an express — it takes about 3.5 hours. The others are local and take around 5 hours with stops.",
+            textZh:
+              "我查一下。今天有上午10:15、下午1:30和下午4:45的班次。10:15是快车——大概3个半小时。其他是慢车，沿途停靠，大约5个小时。",
             alternativeExpressions: [
-              { textEn: "The next train leaves in 40 minutes. Would you like that one?", textZh: "下一班40分钟后出发。你要坐这班吗？", actionHint: "确认是否要最近的一班", frequency: "common" },
+              {
+                textEn:
+                  "The next train leaves in 40 minutes. Would you like that one?",
+                textZh: "下一班40分钟后出发。你要坐这班吗？",
+                actionHint: "确认是否要最近的一班",
+                frequency: "common",
+              },
             ],
             keyPhrases: [
               { en: "departures", zh: "班次/出发时间" },
@@ -2037,7 +3167,7 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "with stops", zh: "沿途停靠" },
             ],
             vocabNotes: {
-              "express": {
+              express: {
                 meaningInContext: "在这句话里表示：直达或快速列车，中途很少停",
                 similarUsage: "类似用法：Take the express bus to save time.",
               },
@@ -2045,14 +3175,17 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           },
           {
             speaker: "you",
-            textEn: "I'll take the 10:15 express. How much is a one-way ticket?",
+            textEn:
+              "I'll take the 10:15 express. How much is a one-way ticket?",
             textZh: "我坐10:15的快车。单程票多少钱？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "A one-way ticket in coach is $49, and business class is $89. Business class includes a reserved seat, more legroom, and complimentary Wi-Fi.",
-            textZh: "经济座单程49美元，商务座89美元。商务座包含预留座位、更大的腿部空间和免费Wi-Fi。",
+            textEn:
+              "A one-way ticket in coach is $49, and business class is $89. Business class includes a reserved seat, more legroom, and complimentary Wi-Fi.",
+            textZh:
+              "经济座单程49美元，商务座89美元。商务座包含预留座位、更大的腿部空间和免费Wi-Fi。",
             keyPhrases: [
               { en: "one-way ticket", zh: "单程票" },
               { en: "coach", zh: "经济座" },
@@ -2062,19 +3195,32 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "complimentary", zh: "免费赠送的" },
             ],
             vocabNotes: {
-              "coach": {
+              coach: {
                 meaningInContext: "在这句话里表示：普通/经济等级的座位",
                 similarUsage: "类似用法：We flew coach to save money.",
               },
-              "complimentary": {
+              complimentary: {
                 meaningInContext: "在这句话里表示：免费附送的，不额外收费",
-                similarUsage: "类似用法：The hotel offers complimentary breakfast.",
+                similarUsage:
+                  "类似用法：The hotel offers complimentary breakfast.",
               },
             },
             isBranchPoint: true,
             alternativeExpressions: [
-              { textEn: "Coach is $49, business is $89. Business gets you more legroom and free Wi-Fi.", textZh: "经济座49，商务座89。商务座空间大还有免费Wi-Fi。", actionHint: "选择座位等级", frequency: "common" },
-              { textEn: "One-way starts at $49 for regular seating. Want me to check business class?", textZh: "单程普通座49美元起。要看看商务座吗？", actionHint: "考虑是否升级商务座", frequency: "common" },
+              {
+                textEn:
+                  "Coach is $49, business is $89. Business gets you more legroom and free Wi-Fi.",
+                textZh: "经济座49，商务座89。商务座空间大还有免费Wi-Fi。",
+                actionHint: "选择座位等级",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "One-way starts at $49 for regular seating. Want me to check business class?",
+                textZh: "单程普通座49美元起。要看看商务座吗？",
+                actionHint: "考虑是否升级商务座",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2085,8 +3231,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Yes, you can bring two bags — one carry-on and one larger bag. There's overhead storage and a luggage rack at the end of each car for bigger bags. No extra charge.",
-            textZh: "可以，你可以带两件行李——一件随身和一件大件。车厢上方有行李架，每节车厢尽头也有大件行李区。不额外收费。",
+            textEn:
+              "Yes, you can bring two bags — one carry-on and one larger bag. There's overhead storage and a luggage rack at the end of each car for bigger bags. No extra charge.",
+            textZh:
+              "可以，你可以带两件行李——一件随身和一件大件。车厢上方有行李架，每节车厢尽头也有大件行李区。不额外收费。",
             keyPhrases: [
               { en: "carry-on", zh: "随身行李" },
               { en: "overhead storage", zh: "上方行李架" },
@@ -2094,8 +3242,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "no extra charge", zh: "不额外收费" },
             ],
             alternativeExpressions: [
-              { textEn: "Two bags are fine. There's a rack at the end of the car for bigger stuff.", textZh: "两件行李没问题。每节车厢尾部有大件行李架。", actionHint: "了解行李存放位置", frequency: "common" },
-              { textEn: "Sure, no problem. You can put it in the overhead bin or at the end of the car.", textZh: "可以，没问题。放头顶行李架或者车厢尾部都行。", actionHint: "上车后找行李位", frequency: "common" },
+              {
+                textEn:
+                  "Two bags are fine. There's a rack at the end of the car for bigger stuff.",
+                textZh: "两件行李没问题。每节车厢尾部有大件行李架。",
+                actionHint: "了解行李存放位置",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sure, no problem. You can put it in the overhead bin or at the end of the car.",
+                textZh: "可以，没问题。放头顶行李架或者车厢尾部都行。",
+                actionHint: "上车后找行李位",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2106,8 +3266,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "售票员",
-            textEn: "It'll be announced about 15 minutes before departure on the screen over there. Usually it's Platform 7 or 8 for the Boston trains. They'll call the boarding over the PA system too.",
-            textZh: "出发前大约15分钟会在那边的屏幕上公布。去波士顿的通常在7号或8号站台。他们也会通过广播叫你上车。",
+            textEn:
+              "It'll be announced about 15 minutes before departure on the screen over there. Usually it's Platform 7 or 8 for the Boston trains. They'll call the boarding over the PA system too.",
+            textZh:
+              "出发前大约15分钟会在那边的屏幕上公布。去波士顿的通常在7号或8号站台。他们也会通过广播叫你上车。",
             keyPhrases: [
               { en: "announced", zh: "公布/宣布" },
               { en: "platform", zh: "站台" },
@@ -2115,8 +3277,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "PA system", zh: "广播系统" },
             ],
             alternativeExpressions: [
-              { textEn: "Check the board in about 15 minutes — it'll show the platform. Usually 7 or 8 for Boston.", textZh: "15分钟后看大屏——会显示站台。去波士顿通常在7或8号。", actionHint: "等大屏幕公布站台", frequency: "common" },
-              { textEn: "They'll announce it soon. Keep an eye on the departure board over there.", textZh: "很快会广播的。留意那边的出发信息屏。", actionHint: "注意广播和屏幕", frequency: "common" },
+              {
+                textEn:
+                  "Check the board in about 15 minutes — it'll show the platform. Usually 7 or 8 for Boston.",
+                textZh: "15分钟后看大屏——会显示站台。去波士顿通常在7或8号。",
+                actionHint: "等大屏幕公布站台",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "They'll announce it soon. Keep an eye on the departure board over there.",
+                textZh: "很快会广播的。留意那边的出发信息屏。",
+                actionHint: "注意广播和屏幕",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2127,20 +3301,29 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Yes, there's a café car in the middle of the train. They sell sandwiches, drinks, and snacks. But I'd recommend grabbing something before you board — the café car can get crowded.",
-            textZh: "有的，列车中间有一节餐吧车。卖三明治、饮料和零食。不过建议上车前买点吃的——餐吧车可能会很挤。",
+            textEn:
+              "Yes, there's a café car in the middle of the train. They sell sandwiches, drinks, and snacks. But I'd recommend grabbing something before you board — the café car can get crowded.",
+            textZh:
+              "有的，列车中间有一节餐吧车。卖三明治、饮料和零食。不过建议上车前买点吃的——餐吧车可能会很挤。",
             keyPhrases: [
               { en: "café car", zh: "餐吧车" },
               { en: "grabbing something", zh: "买点东西" },
               { en: "before you board", zh: "上车前" },
             ],
             alternativeExpressions: [
-              { textEn: "There's no food service on this route, so bring your own snacks.", textZh: "这条线路没有餐饮服务，自己带点吃的吧。", actionHint: "上车前在车站买吃的", frequency: "occasional" },
+              {
+                textEn:
+                  "There's no food service on this route, so bring your own snacks.",
+                textZh: "这条线路没有餐饮服务，自己带点吃的吧。",
+                actionHint: "上车前在车站买吃的",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good idea. I'll grab a coffee and a sandwich. Thank you so much!",
+            textEn:
+              "Good idea. I'll grab a coffee and a sandwich. Thank you so much!",
             textZh: "好主意。我先买杯咖啡和三明治。非常感谢！",
           },
         ],
@@ -2156,17 +3339,30 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I think this might be my seat — 14A? I have a reserved seat ticket.",
+            textEn:
+              "Excuse me, I think this might be my seat — 14A? I have a reserved seat ticket.",
             textZh: "不好意思，这好像是我的座位——14A？我有对号入座的票。",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Oh, let me check my ticket... You're right, I'm in 14B. Sorry, I thought this was an unreserved car. Let me move my bag.",
-            textZh: "哦，让我看看我的票……你是对的，我是14B。抱歉，我以为这节车厢不对号。我把包挪一下。",
+            textEn:
+              "Oh, let me check my ticket... You're right, I'm in 14B. Sorry, I thought this was an unreserved car. Let me move my bag.",
+            textZh:
+              "哦，让我看看我的票……你是对的，我是14B。抱歉，我以为这节车厢不对号。我把包挪一下。",
             alternativeExpressions: [
-              { textEn: "Oh sorry, my mistake! I'll move right away.", textZh: "抱歉，我搞错了！我马上挪。", actionHint: "等对方让出座位", frequency: "common" },
-              { textEn: "Are you sure? Let me see your ticket.", textZh: "你确定吗？让我看看你的票。", actionHint: "出示你的车票给对方看", frequency: "occasional" },
+              {
+                textEn: "Oh sorry, my mistake! I'll move right away.",
+                textZh: "抱歉，我搞错了！我马上挪。",
+                actionHint: "等对方让出座位",
+                frequency: "common",
+              },
+              {
+                textEn: "Are you sure? Let me see your ticket.",
+                textZh: "你确定吗？让我看看你的票。",
+                actionHint: "出示你的车票给对方看",
+                frequency: "occasional",
+              },
             ],
             keyPhrases: [
               { en: "reserved seat", zh: "对号入座/预留座位" },
@@ -2174,69 +3370,113 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "let me move my bag", zh: "我把包挪一下" },
             ],
             vocabNotes: {
-              "unreserved": {
+              unreserved: {
                 meaningInContext: "在这句话里表示：不对号入座的，随便坐",
-                similarUsage: "类似用法：Unreserved seats are available on a first-come basis.",
+                similarUsage:
+                  "类似用法：Unreserved seats are available on a first-come basis.",
               },
             },
           },
           {
             speaker: "you",
-            textEn: "No worries at all. Could you help me lift this suitcase into the overhead rack? It's a bit heavy.",
+            textEn:
+              "No worries at all. Could you help me lift this suitcase into the overhead rack? It's a bit heavy.",
             textZh: "没关系。能帮我把这个箱子抬到上面的行李架吗？有点重。",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Sure thing. One, two, three — there we go. That is heavy! What do you have in there?",
+            textEn:
+              "Sure thing. One, two, three — there we go. That is heavy! What do you have in there?",
             textZh: "没问题。一、二、三——好了。真的挺重的！你装了什么？",
             keyPhrases: [
               { en: "overhead rack", zh: "上方行李架" },
               { en: "there we go", zh: "好了/搞定" },
             ],
             alternativeExpressions: [
-              { textEn: "Let me give you a hand. One, two, three — there ya go!", textZh: "我帮你。一二三——好了！", actionHint: "道谢", frequency: "common" },
-              { textEn: "Whoa, that's heavy! What've you got in there, bricks?", textZh: "哇，好重！你装了啥，砖头啊？", actionHint: "笑着感谢对方帮忙", frequency: "common" },
+              {
+                textEn:
+                  "Let me give you a hand. One, two, three — there ya go!",
+                textZh: "我帮你。一二三——好了！",
+                actionHint: "道谢",
+                frequency: "common",
+              },
+              {
+                textEn: "Whoa, that's heavy! What've you got in there, bricks?",
+                textZh: "哇，好重！你装了啥，砖头啊？",
+                actionHint: "笑着感谢对方帮忙",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Ha, way too many souvenirs! Thank you so much. Is there a power outlet near the seat?",
+            textEn:
+              "Ha, way too many souvenirs! Thank you so much. Is there a power outlet near the seat?",
             textZh: "哈哈，纪念品买太多了！太谢谢了。座位附近有电源插座吗？",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Yeah, there's one between our seats, down by the floor. It's a standard US outlet. Do you need a plug adapter?",
-            textZh: "有的，在我们座位中间，靠地板的地方。是标准美式插座。你需要转换插头吗？",
+            textEn:
+              "Yeah, there's one between our seats, down by the floor. It's a standard US outlet. Do you need a plug adapter?",
+            textZh:
+              "有的，在我们座位中间，靠地板的地方。是标准美式插座。你需要转换插头吗？",
             keyPhrases: [
               { en: "power outlet", zh: "电源插座" },
               { en: "down by the floor", zh: "靠地板的地方" },
               { en: "plug adapter", zh: "转换插头" },
             ],
             alternativeExpressions: [
-              { textEn: "There's one between the seats, down low. Standard American plug.", textZh: "座位中间有一个，在下面。美标插座。", actionHint: "找到插座充电", frequency: "common" },
-              { textEn: "Yeah, check by your feet. Some seats have USB ports too.", textZh: "有的，看看脚边。有些座位还有USB口。", actionHint: "找插座或USB口", frequency: "common" },
+              {
+                textEn:
+                  "There's one between the seats, down low. Standard American plug.",
+                textZh: "座位中间有一个，在下面。美标插座。",
+                actionHint: "找到插座充电",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, check by your feet. Some seats have USB ports too.",
+                textZh: "有的，看看脚边。有些座位还有USB口。",
+                actionHint: "找插座或USB口",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I have one, thanks! By the way, do you know if there's Wi-Fi on this train?",
+            textEn:
+              "I have one, thanks! By the way, do you know if there's Wi-Fi on this train?",
             textZh: "我有的，谢谢！对了，这趟车有Wi-Fi吗？",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "There is, but honestly it's pretty slow. Good enough for emails but not great for streaming. The password is usually on the back of the seat in front of you.",
-            textZh: "有的，但说实话挺慢的。发邮件够用，看视频就不太行了。密码通常在前面座椅靠背上。",
+            textEn:
+              "There is, but honestly it's pretty slow. Good enough for emails but not great for streaming. The password is usually on the back of the seat in front of you.",
+            textZh:
+              "有的，但说实话挺慢的。发邮件够用，看视频就不太行了。密码通常在前面座椅靠背上。",
             keyPhrases: [
               { en: "pretty slow", zh: "挺慢的" },
               { en: "good enough for", zh: "够用于……" },
               { en: "streaming", zh: "流媒体/看视频" },
             ],
             alternativeExpressions: [
-              { textEn: "There's Wi-Fi, but it's pretty spotty. Don't expect to stream anything.", textZh: "有Wi-Fi，但信号断断续续的。别指望看视频。", actionHint: "用来收发消息就好", frequency: "common" },
-              { textEn: "Yeah, the password's usually on the seatback. It's slow though — emails only, basically.", textZh: "有，密码一般在椅背上。不过很慢——基本只能收发邮件。", actionHint: "找椅背上的密码", frequency: "common" },
+              {
+                textEn:
+                  "There's Wi-Fi, but it's pretty spotty. Don't expect to stream anything.",
+                textZh: "有Wi-Fi，但信号断断续续的。别指望看视频。",
+                actionHint: "用来收发消息就好",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, the password's usually on the seatback. It's slow though — emails only, basically.",
+                textZh: "有，密码一般在椅背上。不过很慢——基本只能收发邮件。",
+                actionHint: "找椅背上的密码",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2247,8 +3487,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "列车员",
-            textEn: "We have three more stops — Providence, then two smaller stations. Boston South Station is the final stop, so you won't miss it. I'll announce each stop beforehand.",
-            textZh: "还有三站——普罗维登斯，然后两个小站。波士顿南站是终点站，你不会错过的。每站前我会广播。",
+            textEn:
+              "We have three more stops — Providence, then two smaller stations. Boston South Station is the final stop, so you won't miss it. I'll announce each stop beforehand.",
+            textZh:
+              "还有三站——普罗维登斯，然后两个小站。波士顿南站是终点站，你不会错过的。每站前我会广播。",
             keyPhrases: [
               { en: "final stop", zh: "终点站" },
               { en: "you won't miss it", zh: "你不会错过的" },
@@ -2256,19 +3498,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "beforehand", zh: "提前/事先" },
             ],
             alternativeExpressions: [
-              { textEn: "Next stop is Providence in about 20 minutes. Boston is two stops after that.", textZh: "下一站是普罗维登斯，大约20分钟。波士顿在那之后两站。", actionHint: "注意听广播", frequency: "common" },
+              {
+                textEn:
+                  "Next stop is Providence in about 20 minutes. Boston is two stops after that.",
+                textZh: "下一站是普罗维登斯，大约20分钟。波士顿在那之后两站。",
+                actionHint: "注意听广播",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great. And when we arrive, do I exit from the front or back of the train?",
+            textEn:
+              "Great. And when we arrive, do I exit from the front or back of the train?",
             textZh: "好的。到了以后，从车头还是车尾下车？",
           },
           {
             speaker: "them",
             role: "列车员",
-            textEn: "All doors open at South Station, so you can exit from any car. The main concourse and taxi stand are toward the front of the train. Make sure you have all your belongings.",
-            textZh: "在南站所有车门都会打开，从哪节车厢下都行。大厅和出租车站在列车前部方向。记得带好所有随身物品。",
+            textEn:
+              "All doors open at South Station, so you can exit from any car. The main concourse and taxi stand are toward the front of the train. Make sure you have all your belongings.",
+            textZh:
+              "在南站所有车门都会打开，从哪节车厢下都行。大厅和出租车站在列车前部方向。记得带好所有随身物品。",
             keyPhrases: [
               { en: "all doors open", zh: "所有车门都会打开" },
               { en: "main concourse", zh: "大厅/候车大厅" },
@@ -2276,8 +3527,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "belongings", zh: "随身物品" },
             ],
             alternativeExpressions: [
-              { textEn: "Boston is the last stop, so just sit tight. I'll announce when we're close.", textZh: "波士顿是终点站，坐着就行。快到了我会广播。", actionHint: "放心不会坐过站", frequency: "common" },
-              { textEn: "You can get off from any door. The main exit and taxis are toward the front.", textZh: "哪个门都能下。正门和出租车在前面方向。", actionHint: "带好行李从前门出", frequency: "common" },
+              {
+                textEn:
+                  "Boston is the last stop, so just sit tight. I'll announce when we're close.",
+                textZh: "波士顿是终点站，坐着就行。快到了我会广播。",
+                actionHint: "放心不会坐过站",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You can get off from any door. The main exit and taxis are toward the front.",
+                textZh: "哪个门都能下。正门和出租车在前面方向。",
+                actionHint: "带好行李从前门出",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -2305,67 +3568,119 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to rent a bicycle for the day. What options do you have?",
+            textEn:
+              "Hi, I'd like to rent a bicycle for the day. What options do you have?",
             textZh: "你好，我想租一辆自行车骑一天。你们有什么选择？",
-            casualVersion: "Hey, looking to rent a bike for today. What do you got?",
+            casualVersion:
+              "Hey, looking to rent a bike for today. What do you got?",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "Sure! We have standard city bikes for $15 a day and electric bikes for $30. The e-bikes are great if you're planning to cover a lot of ground or there are hills.",
-            textZh: "好的！我们有普通城市自行车每天15美元，电动自行车每天30美元。如果你打算骑很远或者有上坡路，电动的很方便。",
+            textEn:
+              "Sure! We have standard city bikes for $15 a day and electric bikes for $30. The e-bikes are great if you're planning to cover a lot of ground or there are hills.",
+            textZh:
+              "好的！我们有普通城市自行车每天15美元，电动自行车每天30美元。如果你打算骑很远或者有上坡路，电动的很方便。",
             keyPhrases: [
               { en: "city bikes", zh: "城市自行车" },
               { en: "electric bikes", zh: "电动自行车" },
               { en: "cover a lot of ground", zh: "走很远的路" },
             ],
             variations: [
-              { textEn: "We've got regular bikes and e-bikes. How far are you planning to ride?", textZh: "我们有普通自行车和电动车。你打算骑多远？" },
+              {
+                textEn:
+                  "We've got regular bikes and e-bikes. How far are you planning to ride?",
+                textZh: "我们有普通自行车和电动车。你打算骑多远？",
+              },
             ],
             alternativeExpressions: [
-              { textEn: "We've got regular bikes and e-bikes. The e-bike is great for hills.", textZh: "有普通自行车和电动的。有坡的话电动的很好用。", actionHint: "根据路线选车型", frequency: "common" },
-              { textEn: "City bikes are $15, e-bikes are $30. How far are you planning to go?", textZh: "城市车15块，电动车30块。你打算骑多远？", actionHint: "告诉对方你的计划", frequency: "common" },
+              {
+                textEn:
+                  "We've got regular bikes and e-bikes. The e-bike is great for hills.",
+                textZh: "有普通自行车和电动的。有坡的话电动的很好用。",
+                actionHint: "根据路线选车型",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "City bikes are $15, e-bikes are $30. How far are you planning to go?",
+                textZh: "城市车15块，电动车30块。你打算骑多远？",
+                actionHint: "告诉对方你的计划",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll take the city bike. Does it come with a helmet and a lock?",
+            textEn:
+              "I'll take the city bike. Does it come with a helmet and a lock?",
             textZh: "我要普通的。带头盔和锁吗？",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "A helmet is included — actually, it's required by law here. The lock is also included. Just make sure to lock it up whenever you park it.",
-            textZh: "头盔包含在内——其实这里法律规定必须戴。锁也包含在内。停车的时候一定记得锁好。",
+            textEn:
+              "A helmet is included — actually, it's required by law here. The lock is also included. Just make sure to lock it up whenever you park it.",
+            textZh:
+              "头盔包含在内——其实这里法律规定必须戴。锁也包含在内。停车的时候一定记得锁好。",
             keyPhrases: [
               { en: "required by law", zh: "法律要求的" },
               { en: "lock it up", zh: "锁好" },
             ],
-            culturalNote: "在很多欧美城市（如澳大利亚全境），骑车必须戴头盔，否则会被罚款。",
+            culturalNote:
+              "在很多欧美城市（如澳大利亚全境），骑车必须戴头盔，否则会被罚款。",
             alternativeExpressions: [
-              { textEn: "Helmet's included, and it's the law here. The lock comes with the bike too.", textZh: "头盔包含在内，这里法律要求的。锁也随车的。", actionHint: "骑车必须戴头盔", frequency: "common" },
-              { textEn: "You get a helmet and a lock. Make sure to always lock it when you park.", textZh: "有头盔和锁。停车的时候一定记得锁。", actionHint: "每次停车都要锁", frequency: "common" },
+              {
+                textEn:
+                  "Helmet's included, and it's the law here. The lock comes with the bike too.",
+                textZh: "头盔包含在内，这里法律要求的。锁也随车的。",
+                actionHint: "骑车必须戴头盔",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You get a helmet and a lock. Make sure to always lock it when you park.",
+                textZh: "有头盔和锁。停车的时候一定记得锁。",
+                actionHint: "每次停车都要锁",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good to know. Where do I return the bike, and by what time?",
+            textEn:
+              "Good to know. Where do I return the bike, and by what time?",
             textZh: "好的。在哪里还车，几点之前？",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "Return it right here by 7 PM. If you're late, there's a $5 fee per extra hour. I'll need a credit card on file and a quick signature on this waiver.",
-            textZh: "在这里还，晚上7点之前。如果超时，每小时多收5美元。我需要一张信用卡做登记，还有在这份免责协议上签个字。",
+            textEn:
+              "Return it right here by 7 PM. If you're late, there's a $5 fee per extra hour. I'll need a credit card on file and a quick signature on this waiver.",
+            textZh:
+              "在这里还，晚上7点之前。如果超时，每小时多收5美元。我需要一张信用卡做登记，还有在这份免责协议上签个字。",
             keyPhrases: [
               { en: "on file", zh: "登记在案" },
               { en: "waiver", zh: "免责协议/弃权书" },
               { en: "per extra hour", zh: "每多一小时" },
             ],
-            culturalNote: "waiver 是租借运动器材时常见的免责声明，签了表示你自行承担骑行风险。",
+            culturalNote:
+              "waiver 是租借运动器材时常见的免责声明，签了表示你自行承担骑行风险。",
             alternativeExpressions: [
-              { textEn: "Bring it back here by 7. After that it's $5 per hour. I'll just need a card and your signature.", textZh: "7点前还到这里。超时每小时5块。我需要你的卡和签名。", actionHint: "记好还车时间", frequency: "common" },
-              { textEn: "Back by 7 PM. Late returns are $5 an hour. Just sign this waiver and you're good.", textZh: "下午7点前还。超时每小时5美元。签一下这个免责书就行。", actionHint: "签好协议出发", frequency: "common" },
+              {
+                textEn:
+                  "Bring it back here by 7. After that it's $5 per hour. I'll just need a card and your signature.",
+                textZh: "7点前还到这里。超时每小时5块。我需要你的卡和签名。",
+                actionHint: "记好还车时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Back by 7 PM. Late returns are $5 an hour. Just sign this waiver and you're good.",
+                textZh: "下午7点前还。超时每小时5美元。签一下这个免责书就行。",
+                actionHint: "签好协议出发",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2376,8 +3691,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "店员",
-            textEn: "Definitely! The waterfront trail is beautiful — about 10 miles round trip. It's mostly flat and there are bike lanes the whole way. Here's a map. Stay on the marked bike paths and watch out for pedestrians near the pier.",
-            textZh: "当然！滨水步道很漂亮——往返大约10英里。基本都是平路，全程都有自行车道。给你一份地图。沿着标好的自行车道骑，码头附近注意行人。",
+            textEn:
+              "Definitely! The waterfront trail is beautiful — about 10 miles round trip. It's mostly flat and there are bike lanes the whole way. Here's a map. Stay on the marked bike paths and watch out for pedestrians near the pier.",
+            textZh:
+              "当然！滨水步道很漂亮——往返大约10英里。基本都是平路，全程都有自行车道。给你一份地图。沿着标好的自行车道骑，码头附近注意行人。",
             keyPhrases: [
               { en: "waterfront trail", zh: "滨水步道" },
               { en: "round trip", zh: "往返" },
@@ -2385,28 +3702,55 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "watch out for", zh: "注意/小心" },
             ],
             alternativeExpressions: [
-              { textEn: "The waterfront path is awesome — about 10 miles round trip, nice and flat.", textZh: "滨水步道超棒——往返大概10英里，又平又好骑。", actionHint: "走推荐路线", frequency: "common" },
-              { textEn: "I'd recommend the coastal trail. It's scenic and there are bike lanes the whole way.", textZh: "推荐海滨步道。风景好，全程都有自行车道。", actionHint: "选有自行车道的路线", frequency: "common" },
+              {
+                textEn:
+                  "The waterfront path is awesome — about 10 miles round trip, nice and flat.",
+                textZh: "滨水步道超棒——往返大概10英里，又平又好骑。",
+                actionHint: "走推荐路线",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "I'd recommend the coastal trail. It's scenic and there are bike lanes the whole way.",
+                textZh: "推荐海滨步道。风景好，全程都有自行车道。",
+                actionHint: "选有自行车道的路线",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Sounds perfect. One more thing — what should I do if I get a flat tire?",
+            textEn:
+              "Sounds perfect. One more thing — what should I do if I get a flat tire?",
             textZh: "听起来很棒。再问一下——如果轮胎爆了怎么办？",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "Just give us a call — the number's on your receipt. We'll either come to you or you can walk it back and we'll swap it for another bike. No extra charge for mechanical issues.",
-            textZh: "打我们电话就行——号码在收据上。我们会过去找你，或者你推回来换一辆车。机械故障不额外收费。",
+            textEn:
+              "Just give us a call — the number's on your receipt. We'll either come to you or you can walk it back and we'll swap it for another bike. No extra charge for mechanical issues.",
+            textZh:
+              "打我们电话就行——号码在收据上。我们会过去找你，或者你推回来换一辆车。机械故障不额外收费。",
             keyPhrases: [
               { en: "flat tire", zh: "爆胎/瘪胎" },
               { en: "swap it", zh: "换一辆" },
               { en: "no extra charge", zh: "不额外收费" },
             ],
             alternativeExpressions: [
-              { textEn: "Call us and we'll sort it out. Our number's on the receipt.", textZh: "打电话给我们，我们来处理。号码在收据上。", actionHint: "保管好收据", frequency: "common" },
-              { textEn: "No worries — just give us a ring. We'll swap the bike or come pick you up.", textZh: "别担心——打个电话就行。我们换辆车或者去接你。", actionHint: "遇到故障别慌打电话", frequency: "common" },
+              {
+                textEn:
+                  "Call us and we'll sort it out. Our number's on the receipt.",
+                textZh: "打电话给我们，我们来处理。号码在收据上。",
+                actionHint: "保管好收据",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "No worries — just give us a ring. We'll swap the bike or come pick you up.",
+                textZh: "别担心——打个电话就行。我们换辆车或者去接你。",
+                actionHint: "遇到故障别慌打电话",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -2422,33 +3766,51 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I'm trying to use one of these scooters, but the app won't let me unlock it. Can you help?",
+            textEn:
+              "Excuse me, I'm trying to use one of these scooters, but the app won't let me unlock it. Can you help?",
             textZh: "不好意思，我想用这些滑板车，但App解锁不了。能帮帮我吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Oh, you might need to add a payment method first. Open the app, go to settings, and add a credit card. Sometimes it also needs your location turned on.",
-            textZh: "哦，你可能需要先添加付款方式。打开App，去设置，添加一张信用卡。有时候还需要开启定位。",
+            textEn:
+              "Oh, you might need to add a payment method first. Open the app, go to settings, and add a credit card. Sometimes it also needs your location turned on.",
+            textZh:
+              "哦，你可能需要先添加付款方式。打开App，去设置，添加一张信用卡。有时候还需要开启定位。",
             keyPhrases: [
               { en: "payment method", zh: "付款方式" },
               { en: "location turned on", zh: "开启定位" },
             ],
             alternativeExpressions: [
-              { textEn: "Have you added a payment method? Check your settings — and make sure your GPS is on.", textZh: "你添加付款方式了吗？看看设置——还有确保GPS开着。", actionHint: "检查App设置", frequency: "common" },
-              { textEn: "Sometimes the app needs a card on file first. Try adding your credit card in settings.", textZh: "有时候App要先绑卡。试试在设置里加信用卡。", actionHint: "先绑定信用卡", frequency: "common" },
+              {
+                textEn:
+                  "Have you added a payment method? Check your settings — and make sure your GPS is on.",
+                textZh: "你添加付款方式了吗？看看设置——还有确保GPS开着。",
+                actionHint: "检查App设置",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sometimes the app needs a card on file first. Try adding your credit card in settings.",
+                textZh: "有时候App要先绑卡。试试在设置里加信用卡。",
+                actionHint: "先绑定信用卡",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Ah, that worked! Thanks. Is there a speed limit on these? I don't want to get in trouble.",
+            textEn:
+              "Ah, that worked! Thanks. Is there a speed limit on these? I don't want to get in trouble.",
             textZh: "啊，好了！谢谢。这些车有速度限制吗？我不想惹麻烦。",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Yeah, they're capped at 15 miles per hour. You're supposed to ride in the bike lane, not on the sidewalk. And make sure to park it upright in a designated parking area when you're done — otherwise you might get a fine.",
-            textZh: "有的，最高限速15英里每小时。应该在自行车道上骑，不能在人行道上。用完之后确保停在指定停车区，把车立好——不然可能会被罚款。",
+            textEn:
+              "Yeah, they're capped at 15 miles per hour. You're supposed to ride in the bike lane, not on the sidewalk. And make sure to park it upright in a designated parking area when you're done — otherwise you might get a fine.",
+            textZh:
+              "有的，最高限速15英里每小时。应该在自行车道上骑，不能在人行道上。用完之后确保停在指定停车区，把车立好——不然可能会被罚款。",
             keyPhrases: [
               { en: "capped at", zh: "上限为" },
               { en: "bike lane", zh: "自行车道" },
@@ -2456,10 +3818,23 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "designated parking area", zh: "指定停车区" },
               { en: "fine", zh: "罚款" },
             ],
-            culturalNote: "在很多城市（如洛杉矶、巴黎），在人行道上骑电动滑板车是违法的。乱停放也会被额外扣费。",
+            culturalNote:
+              "在很多城市（如洛杉矶、巴黎），在人行道上骑电动滑板车是违法的。乱停放也会被额外扣费。",
             alternativeExpressions: [
-              { textEn: "They max out at 15 mph. Ride in the bike lane, not on the sidewalk, and park it properly.", textZh: "最快15英里每小时。骑自行车道别骑人行道，停好车。", actionHint: "走自行车道", frequency: "common" },
-              { textEn: "Yeah, 15 miles per hour tops. And don't ride on the sidewalk — you'll get fined.", textZh: "最高15英里时速。别在人行道上骑——会被罚款的。", actionHint: "注意走自行车道", frequency: "common" },
+              {
+                textEn:
+                  "They max out at 15 mph. Ride in the bike lane, not on the sidewalk, and park it properly.",
+                textZh: "最快15英里每小时。骑自行车道别骑人行道，停好车。",
+                actionHint: "走自行车道",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, 15 miles per hour tops. And don't ride on the sidewalk — you'll get fined.",
+                textZh: "最高15英里时速。别在人行道上骑——会被罚款的。",
+                actionHint: "注意走自行车道",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2470,8 +3845,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "路人",
-            textEn: "Yeah, it's usually $1 to unlock and then about 30 cents per minute. It adds up quick, so it's better for short trips. There might be a day pass if you're planning to ride a lot.",
-            textZh: "是的，一般解锁1美元，然后每分钟大约30美分。费用涨得挺快的，所以比较适合短途。如果你打算多骑，可能有日卡。",
+            textEn:
+              "Yeah, it's usually $1 to unlock and then about 30 cents per minute. It adds up quick, so it's better for short trips. There might be a day pass if you're planning to ride a lot.",
+            textZh:
+              "是的，一般解锁1美元，然后每分钟大约30美分。费用涨得挺快的，所以比较适合短途。如果你打算多骑，可能有日卡。",
             keyPhrases: [
               { en: "to unlock", zh: "解锁费" },
               { en: "per minute", zh: "每分钟" },
@@ -2479,8 +3856,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "day pass", zh: "日卡/一日通票" },
             ],
             alternativeExpressions: [
-              { textEn: "A dollar to start, then 30 cents a minute. Adds up fast, so keep it short.", textZh: "起步1块，然后每分钟3毛。涨得快，尽量短途用。", actionHint: "注意控制时长", frequency: "common" },
-              { textEn: "It's pay-per-minute. About 30 cents. There's a day pass if you wanna ride a lot.", textZh: "按分钟计费。大概3毛一分钟。骑得多可以买日卡。", actionHint: "考虑买日卡", frequency: "common" },
+              {
+                textEn:
+                  "A dollar to start, then 30 cents a minute. Adds up fast, so keep it short.",
+                textZh: "起步1块，然后每分钟3毛。涨得快，尽量短途用。",
+                actionHint: "注意控制时长",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's pay-per-minute. About 30 cents. There's a day pass if you wanna ride a lot.",
+                textZh: "按分钟计费。大概3毛一分钟。骑得多可以买日卡。",
+                actionHint: "考虑买日卡",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -2491,34 +3880,63 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "路人",
-            textEn: "Technically yes, but honestly most people don't. I'd recommend it though — the roads can be busy. Some scooter companies have helmet pickup points where you can borrow one for free.",
-            textZh: "按规定是要的，但说实话大多数人不戴。不过我建议戴——路上车挺多的。有些滑板车公司有头盔取用点，可以免费借。",
+            textEn:
+              "Technically yes, but honestly most people don't. I'd recommend it though — the roads can be busy. Some scooter companies have helmet pickup points where you can borrow one for free.",
+            textZh:
+              "按规定是要的，但说实话大多数人不戴。不过我建议戴——路上车挺多的。有些滑板车公司有头盔取用点，可以免费借。",
             keyPhrases: [
               { en: "technically", zh: "按规定/严格来说" },
               { en: "helmet pickup points", zh: "头盔取用点" },
             ],
             alternativeExpressions: [
-              { textEn: "You should, but hardly anyone does. At least ride carefully — it gets busy out there.", textZh: "应该戴，但几乎没人戴。至少骑慢点——外面车挺多的。", actionHint: "安全起见还是戴上", frequency: "common" },
-              { textEn: "Officially yes. Some companies have free helmet stations. I'd wear one if I were you.", textZh: "按规定是的。有些公司有免费头盔取用点。我的话会戴的。", actionHint: "找附近的头盔取用点", frequency: "occasional" },
+              {
+                textEn:
+                  "You should, but hardly anyone does. At least ride carefully — it gets busy out there.",
+                textZh: "应该戴，但几乎没人戴。至少骑慢点——外面车挺多的。",
+                actionHint: "安全起见还是戴上",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Officially yes. Some companies have free helmet stations. I'd wear one if I were you.",
+                textZh: "按规定是的。有些公司有免费头盔取用点。我的话会戴的。",
+                actionHint: "找附近的头盔取用点",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks for all the tips! One last question — can two people ride on one scooter?",
+            textEn:
+              "Thanks for all the tips! One last question — can two people ride on one scooter?",
             textZh: "谢谢你的提醒！最后一个问题——两个人能骑一辆吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "No, definitely not. That's against the rules and it's really dangerous. Each person needs their own scooter. Have fun and ride safe!",
-            textZh: "不行，绝对不可以。这违反规定而且很危险。每个人需要自己一辆。玩得开心，骑车注意安全！",
+            textEn:
+              "No, definitely not. That's against the rules and it's really dangerous. Each person needs their own scooter. Have fun and ride safe!",
+            textZh:
+              "不行，绝对不可以。这违反规定而且很危险。每个人需要自己一辆。玩得开心，骑车注意安全！",
             keyPhrases: [
               { en: "against the rules", zh: "违反规定" },
               { en: "ride safe", zh: "骑车注意安全" },
             ],
             alternativeExpressions: [
-              { textEn: "Nope, one person per scooter. It's way too dangerous with two people.", textZh: "不行，一人一辆。两个人太危险了。", actionHint: "各骑各的", frequency: "common" },
-              { textEn: "Absolutely not — that's a quick way to get hurt. Get a second scooter.", textZh: "绝对不行——那是找受伤的节奏。再租一辆吧。", actionHint: "每人单独租一辆", frequency: "common" },
+              {
+                textEn:
+                  "Nope, one person per scooter. It's way too dangerous with two people.",
+                textZh: "不行，一人一辆。两个人太危险了。",
+                actionHint: "各骑各的",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Absolutely not — that's a quick way to get hurt. Get a second scooter.",
+                textZh: "绝对不行——那是找受伤的节奏。再租一辆吧。",
+                actionHint: "每人单独租一辆",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -2546,95 +3964,163 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, we're here for the Caribbean cruise. Where do we check in?",
+            textEn:
+              "Hi, we're here for the Caribbean cruise. Where do we check in?",
             textZh: "你好，我们来坐加勒比海游轮的。在哪里办登船手续？",
           },
           {
             speaker: "them",
             role: "港口工作人员",
-            textEn: "Welcome! Head to Terminal B — that's the building on your right. Have your passport and booking confirmation ready. You'll go through security first, then check-in.",
-            textZh: "欢迎！去B航站楼——就是右手边那栋楼。准备好护照和预订确认函。先过安检，然后办理登船。",
+            textEn:
+              "Welcome! Head to Terminal B — that's the building on your right. Have your passport and booking confirmation ready. You'll go through security first, then check-in.",
+            textZh:
+              "欢迎！去B航站楼——就是右手边那栋楼。准备好护照和预订确认函。先过安检，然后办理登船。",
             keyPhrases: [
               { en: "terminal", zh: "航站楼" },
               { en: "booking confirmation", zh: "预订确认函" },
               { en: "go through security", zh: "过安检" },
             ],
             alternativeExpressions: [
-              { textEn: "Head to Terminal B. Have your passport and booking info ready.", textZh: "去B航站楼。准备好护照和预订信息。", actionHint: "拿好证件去B楼", frequency: "common" },
-              { textEn: "Check-in is in that building on the right. You'll go through security first.", textZh: "办手续在右边那栋楼。先过安检。", actionHint: "先排队过安检", frequency: "common" },
+              {
+                textEn:
+                  "Head to Terminal B. Have your passport and booking info ready.",
+                textZh: "去B航站楼。准备好护照和预订信息。",
+                actionHint: "拿好证件去B楼",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Check-in is in that building on the right. You'll go through security first.",
+                textZh: "办手续在右边那栋楼。先过安检。",
+                actionHint: "先排队过安检",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Here are our passports and the booking email. We reserved a balcony cabin.",
+            textEn:
+              "Here are our passports and the booking email. We reserved a balcony cabin.",
             textZh: "这是我们的护照和预订邮件。我们订的是阳台舱。",
           },
           {
             speaker: "them",
             role: "登船柜台",
-            textEn: "Perfect. I can see your reservation — Cabin 7214, Deck 7. Here are your cruise cards. These are your room key, ID, and payment card all in one. Don't lose them!",
-            textZh: "好的。我查到你们的预订了——7214舱房，7层甲板。这是你们的游轮卡。这张卡集房卡、身份证明和付款卡于一体。别弄丢了！",
+            textEn:
+              "Perfect. I can see your reservation — Cabin 7214, Deck 7. Here are your cruise cards. These are your room key, ID, and payment card all in one. Don't lose them!",
+            textZh:
+              "好的。我查到你们的预订了——7214舱房，7层甲板。这是你们的游轮卡。这张卡集房卡、身份证明和付款卡于一体。别弄丢了！",
             keyPhrases: [
               { en: "balcony cabin", zh: "阳台舱" },
               { en: "deck", zh: "甲板/层" },
               { en: "cruise cards", zh: "游轮卡" },
             ],
-            culturalNote: "游轮上几乎所有消费都用 cruise card 结算，船上一般不收现金。下船时统一结账。",
+            culturalNote:
+              "游轮上几乎所有消费都用 cruise card 结算，船上一般不收现金。下船时统一结账。",
             alternativeExpressions: [
-              { textEn: "Got your reservation — Cabin 7214 on Deck 7. Here's your cruise card. It's your key, ID, and wallet all in one.", textZh: "查到你的预订了——7层7214舱。给你游轮卡。它是房卡、身份证明和钱包三合一。", actionHint: "保管好游轮卡", frequency: "common" },
-              { textEn: "All set! Your cabin is on Deck 7. Don't lose this card — you'll need it for everything on board.", textZh: "搞定了！你的舱房在7层。别丢了这张卡——船上什么都靠它。", actionHint: "随身带好游轮卡", frequency: "common" },
+              {
+                textEn:
+                  "Got your reservation — Cabin 7214 on Deck 7. Here's your cruise card. It's your key, ID, and wallet all in one.",
+                textZh:
+                  "查到你的预订了——7层7214舱。给你游轮卡。它是房卡、身份证明和钱包三合一。",
+                actionHint: "保管好游轮卡",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "All set! Your cabin is on Deck 7. Don't lose this card — you'll need it for everything on board.",
+                textZh: "搞定了！你的舱房在7层。别丢了这张卡——船上什么都靠它。",
+                actionHint: "随身带好游轮卡",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. What time is the safety drill? I heard it's mandatory.",
+            textEn:
+              "Got it. What time is the safety drill? I heard it's mandatory.",
             textZh: "明白了。安全演习几点？我听说是必须参加的。",
           },
           {
             speaker: "them",
             role: "登船柜台",
-            textEn: "Yes, it's called the muster drill. It's at 4:30 PM today — you'll hear an announcement. Go to your muster station — it's printed on your cruise card. It takes about 20 minutes.",
-            textZh: "是的，叫集合演习。今天下午4:30——你们会听到广播通知。去你们的集合站——集合站号码印在游轮卡上。大概20分钟。",
+            textEn:
+              "Yes, it's called the muster drill. It's at 4:30 PM today — you'll hear an announcement. Go to your muster station — it's printed on your cruise card. It takes about 20 minutes.",
+            textZh:
+              "是的，叫集合演习。今天下午4:30——你们会听到广播通知。去你们的集合站——集合站号码印在游轮卡上。大概20分钟。",
             keyPhrases: [
               { en: "muster drill", zh: "集合演习/安全演习" },
               { en: "muster station", zh: "集合站" },
               { en: "announcement", zh: "广播通知" },
             ],
             alternativeExpressions: [
-              { textEn: "The safety drill is at 4:30. Check your cruise card for your muster station.", textZh: "安全演习下午4:30。看游轮卡上的集合站号。", actionHint: "4:30准时参加演习", frequency: "common" },
-              { textEn: "It's mandatory — 4:30 PM today. You'll hear an announcement. Just go to your assigned station.", textZh: "必须参加——今天下午4:30。会有广播。去你指定的集合点就行。", actionHint: "别忽略广播通知", frequency: "common" },
+              {
+                textEn:
+                  "The safety drill is at 4:30. Check your cruise card for your muster station.",
+                textZh: "安全演习下午4:30。看游轮卡上的集合站号。",
+                actionHint: "4:30准时参加演习",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's mandatory — 4:30 PM today. You'll hear an announcement. Just go to your assigned station.",
+                textZh:
+                  "必须参加——今天下午4:30。会有广播。去你指定的集合点就行。",
+                actionHint: "别忽略广播通知",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "When does dinner service start? And do we need to dress up?",
+            textEn:
+              "When does dinner service start? And do we need to dress up?",
             textZh: "晚餐几点开始？需要穿正装吗？",
           },
           {
             speaker: "them",
             role: "登船柜台",
-            textEn: "The main dining room has two seatings — 6 PM and 8:30 PM. You're assigned to the early seating. Tonight is casual, but there's a formal night on Wednesday. You can also eat at the buffet anytime — it's on Deck 12.",
-            textZh: "主餐厅有两个用餐时段——下午6点和8:30。你们被安排在早场。今晚是休闲装，但周三有正装之夜。你们也可以随时去自助餐厅——在12层甲板。",
+            textEn:
+              "The main dining room has two seatings — 6 PM and 8:30 PM. You're assigned to the early seating. Tonight is casual, but there's a formal night on Wednesday. You can also eat at the buffet anytime — it's on Deck 12.",
+            textZh:
+              "主餐厅有两个用餐时段——下午6点和8:30。你们被安排在早场。今晚是休闲装，但周三有正装之夜。你们也可以随时去自助餐厅——在12层甲板。",
             keyPhrases: [
               { en: "seatings", zh: "用餐时段" },
               { en: "formal night", zh: "正装之夜" },
               { en: "buffet", zh: "自助餐" },
             ],
             alternativeExpressions: [
-              { textEn: "Dinner's at 6 or 8:30. You're in the early seating. Tonight's casual, formal night is Wednesday.", textZh: "晚餐6点或8:30。你们是早场。今晚休闲装，周三是正装之夜。", actionHint: "周三准备正装", frequency: "common" },
-              { textEn: "You can hit the buffet on Deck 12 anytime, or the dining room at 6 PM. Tonight's casual dress.", textZh: "12层自助餐厅随时可以去，主餐厅6点开。今晚穿休闲装就行。", actionHint: "随时可以去自助餐厅", frequency: "common" },
+              {
+                textEn:
+                  "Dinner's at 6 or 8:30. You're in the early seating. Tonight's casual, formal night is Wednesday.",
+                textZh:
+                  "晚餐6点或8:30。你们是早场。今晚休闲装，周三是正装之夜。",
+                actionHint: "周三准备正装",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You can hit the buffet on Deck 12 anytime, or the dining room at 6 PM. Tonight's casual dress.",
+                textZh:
+                  "12层自助餐厅随时可以去，主餐厅6点开。今晚穿休闲装就行。",
+                actionHint: "随时可以去自助餐厅",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "One more question — is the Wi-Fi included or do we need to buy a package?",
+            textEn:
+              "One more question — is the Wi-Fi included or do we need to buy a package?",
             textZh: "再问一下——Wi-Fi 包含在内吗，还是需要另买套餐？",
           },
           {
             speaker: "them",
             role: "登船柜台",
-            textEn: "Wi-Fi is extra, unfortunately. There's a basic plan for $15 a day — it handles email and messaging. The premium plan is $25 and supports video calls and streaming. You can buy it at the internet café on Deck 5 or through the cruise app.",
-            textZh: "Wi-Fi 要另付费的。基础套餐每天15美元——可以收发邮件和消息。高级套餐25美元，支持视频通话和看视频。你可以在5层的网络咖啡厅或者通过游轮App购买。",
+            textEn:
+              "Wi-Fi is extra, unfortunately. There's a basic plan for $15 a day — it handles email and messaging. The premium plan is $25 and supports video calls and streaming. You can buy it at the internet café on Deck 5 or through the cruise app.",
+            textZh:
+              "Wi-Fi 要另付费的。基础套餐每天15美元——可以收发邮件和消息。高级套餐25美元，支持视频通话和看视频。你可以在5层的网络咖啡厅或者通过游轮App购买。",
             keyPhrases: [
               { en: "extra", zh: "另外收费的" },
               { en: "basic plan", zh: "基础套餐" },
@@ -2642,8 +4128,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "streaming", zh: "看视频/流媒体" },
             ],
             alternativeExpressions: [
-              { textEn: "Wi-Fi costs extra — $15 a day for basic, $25 for premium.", textZh: "Wi-Fi要另外付费——基础版每天15，高级版25。", actionHint: "选择适合的套餐", frequency: "common" },
-              { textEn: "It's not included, unfortunately. You can buy a package at the internet café on Deck 5.", textZh: "很遗憾不包含在内。可以在5层网吧买套餐。", actionHint: "去5层网吧购买", frequency: "common" },
+              {
+                textEn:
+                  "Wi-Fi costs extra — $15 a day for basic, $25 for premium.",
+                textZh: "Wi-Fi要另外付费——基础版每天15，高级版25。",
+                actionHint: "选择适合的套餐",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's not included, unfortunately. You can buy a package at the internet café on Deck 5.",
+                textZh: "很遗憾不包含在内。可以在5层网吧买套餐。",
+                actionHint: "去5层网吧购买",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -2659,22 +4157,39 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Good morning. We signed up for the snorkeling excursion today. Where do we meet?",
+            textEn:
+              "Good morning. We signed up for the snorkeling excursion today. Where do we meet?",
             textZh: "早上好。我们报名了今天的浮潜岸上游。在哪里集合？",
           },
           {
             speaker: "them",
             role: "岸上游协调员",
-            textEn: "Good morning! The snorkeling group meets at the gangway exit on Deck 3 at 9 AM sharp. Make sure to bring your cruise card — you'll need to scan it when you leave and return to the ship.",
-            textZh: "早上好！浮潜团在3层甲板舷梯出口集合，早上9点整。记得带游轮卡——下船和回船都要扫卡。",
+            textEn:
+              "Good morning! The snorkeling group meets at the gangway exit on Deck 3 at 9 AM sharp. Make sure to bring your cruise card — you'll need to scan it when you leave and return to the ship.",
+            textZh:
+              "早上好！浮潜团在3层甲板舷梯出口集合，早上9点整。记得带游轮卡——下船和回船都要扫卡。",
             keyPhrases: [
               { en: "gangway", zh: "舷梯" },
               { en: "sharp", zh: "整（准时）" },
               { en: "scan", zh: "扫卡" },
             ],
             alternativeExpressions: [
-              { textEn: "Morning! Snorkeling group gathers at Deck 3 gangway at 9. Don't forget your cruise card — you need it to get on and off.", textZh: "早上好！浮潜团9点在3层舷梯集合。别忘了带游轮卡——上下船都要用。", actionHint: "记住集合地点和时间", frequency: "common" },
-              { textEn: "Hey there! Your group meets at the Deck 3 exit, 9 AM. Bring your ship card — they scan it at the gangway.", textZh: "嘿！你们的团在3层出口集合，早上9点。带好船卡——在舷梯那里要扫。", actionHint: "带好游轮卡", frequency: "occasional" },
+              {
+                textEn:
+                  "Morning! Snorkeling group gathers at Deck 3 gangway at 9. Don't forget your cruise card — you need it to get on and off.",
+                textZh:
+                  "早上好！浮潜团9点在3层舷梯集合。别忘了带游轮卡——上下船都要用。",
+                actionHint: "记住集合地点和时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hey there! Your group meets at the Deck 3 exit, 9 AM. Bring your ship card — they scan it at the gangway.",
+                textZh:
+                  "嘿！你们的团在3层出口集合，早上9点。带好船卡——在舷梯那里要扫。",
+                actionHint: "带好游轮卡",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -2685,17 +4200,34 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "岸上游协调员",
-            textEn: "Snorkeling equipment is provided — mask, snorkel, and fins. Just bring sunscreen, a towel, and some cash for tips or souvenirs. Waterproof sunscreen, please — to protect the reef.",
-            textZh: "浮潜装备提供——面镜、呼吸管和脚蹼。带上防晒霜、毛巾和一些现金用于小费或买纪念品。请用防水防晒霜——保护珊瑚礁。",
+            textEn:
+              "Snorkeling equipment is provided — mask, snorkel, and fins. Just bring sunscreen, a towel, and some cash for tips or souvenirs. Waterproof sunscreen, please — to protect the reef.",
+            textZh:
+              "浮潜装备提供——面镜、呼吸管和脚蹼。带上防晒霜、毛巾和一些现金用于小费或买纪念品。请用防水防晒霜——保护珊瑚礁。",
             keyPhrases: [
               { en: "mask, snorkel, and fins", zh: "面镜、呼吸管和脚蹼" },
               { en: "waterproof sunscreen", zh: "防水防晒霜" },
               { en: "reef", zh: "珊瑚礁" },
             ],
-            culturalNote: "很多海洋保护区要求使用 reef-safe sunscreen（珊瑚礁安全防晒霜），不含对珊瑚有害的化学成分。",
+            culturalNote:
+              "很多海洋保护区要求使用 reef-safe sunscreen（珊瑚礁安全防晒霜），不含对珊瑚有害的化学成分。",
             alternativeExpressions: [
-              { textEn: "We provide all the gear — mask, snorkel, fins. Just bring sunblock, a towel, and a bit of cash. And please use reef-safe sunscreen.", textZh: "装备我们全提供——面镜、呼吸管、脚蹼。带好防晒霜、毛巾和一点现金就行。请用珊瑚礁安全防晒霜。", actionHint: "注意用环保防晒霜", frequency: "common" },
-              { textEn: "Everything's included — snorkel gear, the works. You just need sunscreen, towel, and some spending money. Oh, and make sure the sunscreen is reef-friendly.", textZh: "全包的——浮潜装备什么都有。你只需要带防晒霜、毛巾和一些零花钱。对了，确保防晒霜是对珊瑚礁友好的。", actionHint: "准备好随身物品", frequency: "occasional" },
+              {
+                textEn:
+                  "We provide all the gear — mask, snorkel, fins. Just bring sunblock, a towel, and a bit of cash. And please use reef-safe sunscreen.",
+                textZh:
+                  "装备我们全提供——面镜、呼吸管、脚蹼。带好防晒霜、毛巾和一点现金就行。请用珊瑚礁安全防晒霜。",
+                actionHint: "注意用环保防晒霜",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Everything's included — snorkel gear, the works. You just need sunscreen, towel, and some spending money. Oh, and make sure the sunscreen is reef-friendly.",
+                textZh:
+                  "全包的——浮潜装备什么都有。你只需要带防晒霜、毛巾和一些零花钱。对了，确保防晒霜是对珊瑚礁友好的。",
+                actionHint: "准备好随身物品",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -2706,8 +4238,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "岸上游协调员",
-            textEn: "The ship departs at 5 PM, but you must be back on board by 4:30. If you miss the ship, you'll have to arrange your own transportation to the next port at your own expense. The excursion gets you back around 2 PM, so you'll have time to explore on your own afterward.",
-            textZh: "船下午5点启航，但你必须4:30前回到船上。如果错过了船，需要自费安排交通到下一个港口。岸上游大约下午2点回来，之后你还有时间自由活动。",
+            textEn:
+              "The ship departs at 5 PM, but you must be back on board by 4:30. If you miss the ship, you'll have to arrange your own transportation to the next port at your own expense. The excursion gets you back around 2 PM, so you'll have time to explore on your own afterward.",
+            textZh:
+              "船下午5点启航，但你必须4:30前回到船上。如果错过了船，需要自费安排交通到下一个港口。岸上游大约下午2点回来，之后你还有时间自由活动。",
             keyPhrases: [
               { en: "on board", zh: "上船/在船上" },
               { en: "miss the ship", zh: "错过船" },
@@ -2715,8 +4249,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "next port", zh: "下一个港口" },
             ],
             alternativeExpressions: [
-              { textEn: "Ship leaves at 5, but you need to be back by 4:30. The excursion wraps up around 2, so you'll have free time after.", textZh: "船5点开，但你必须4:30前回来。岸上游大约2点结束，之后你有自由时间。", actionHint: "记住回船截止时间", frequency: "common" },
-              { textEn: "All aboard by 4:30 — sailing's at 5. If you're late, you'll have to catch up to us at the next port on your own dime.", textZh: "4:30前必须上船——5点开船。迟到的话你得自费赶到下一个港口。", actionHint: "千万不要迟到", frequency: "occasional" },
+              {
+                textEn:
+                  "Ship leaves at 5, but you need to be back by 4:30. The excursion wraps up around 2, so you'll have free time after.",
+                textZh:
+                  "船5点开，但你必须4:30前回来。岸上游大约2点结束，之后你有自由时间。",
+                actionHint: "记住回船截止时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "All aboard by 4:30 — sailing's at 5. If you're late, you'll have to catch up to us at the next port on your own dime.",
+                textZh:
+                  "4:30前必须上船——5点开船。迟到的话你得自费赶到下一个港口。",
+                actionHint: "千万不要迟到",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -2727,36 +4275,69 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "岸上游协调员",
-            textEn: "Generally yes, but negotiate the fare before you get in — meters are rare here. You can also use the shuttle bus the cruise line provides — it runs between the port and the main town every 30 minutes. It's free for passengers.",
-            textZh: "一般来说安全，但上车前先谈好价——这里很少有打表的。你也可以用游轮公司提供的接驳巴士——在码头和镇中心之间每30分钟一班。乘客免费。",
+            textEn:
+              "Generally yes, but negotiate the fare before you get in — meters are rare here. You can also use the shuttle bus the cruise line provides — it runs between the port and the main town every 30 minutes. It's free for passengers.",
+            textZh:
+              "一般来说安全，但上车前先谈好价——这里很少有打表的。你也可以用游轮公司提供的接驳巴士——在码头和镇中心之间每30分钟一班。乘客免费。",
             keyPhrases: [
               { en: "negotiate the fare", zh: "谈好价格" },
               { en: "shuttle bus", zh: "接驳巴士" },
               { en: "runs between", zh: "来回运行" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, taxis are fine, just agree on a price first. Or you can take our free shuttle — it goes to town every half hour.", textZh: "可以，出租车没问题，就是先谈好价。或者坐我们的免费接驳车——每半小时一趟去镇上。", actionHint: "先谈好价再上车", frequency: "common" },
-              { textEn: "Local cabs are safe enough. Just make sure you settle the fare before hopping in — no meters around here. There's also a complimentary shuttle to the main area.", textZh: "当地出租车够安全的。就是上车前先谈好价——这里没有打表的。还有免费接驳车去主要地方。", actionHint: "可选接驳巴士更省心", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, taxis are fine, just agree on a price first. Or you can take our free shuttle — it goes to town every half hour.",
+                textZh:
+                  "可以，出租车没问题，就是先谈好价。或者坐我们的免费接驳车——每半小时一趟去镇上。",
+                actionHint: "先谈好价再上车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Local cabs are safe enough. Just make sure you settle the fare before hopping in — no meters around here. There's also a complimentary shuttle to the main area.",
+                textZh:
+                  "当地出租车够安全的。就是上车前先谈好价——这里没有打表的。还有免费接驳车去主要地方。",
+                actionHint: "可选接驳巴士更省心",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great. Can I use US dollars on the island, or do I need local currency?",
+            textEn:
+              "Great. Can I use US dollars on the island, or do I need local currency?",
             textZh: "好的。岛上可以用美元吗，还是需要当地货币？",
           },
           {
             speaker: "them",
             role: "岸上游协调员",
-            textEn: "Most shops and restaurants accept US dollars, but you'll get change in local currency. Credit cards are accepted in bigger stores. For small vendors or street food, cash is better — small bills are ideal.",
-            textZh: "大部分商店和餐厅接受美元，但找零会给当地货币。大店铺接受信用卡。小商贩或街头小吃最好用现金——最好是小面额的。",
+            textEn:
+              "Most shops and restaurants accept US dollars, but you'll get change in local currency. Credit cards are accepted in bigger stores. For small vendors or street food, cash is better — small bills are ideal.",
+            textZh:
+              "大部分商店和餐厅接受美元，但找零会给当地货币。大店铺接受信用卡。小商贩或街头小吃最好用现金——最好是小面额的。",
             keyPhrases: [
               { en: "change in local currency", zh: "用当地货币找零" },
               { en: "small bills", zh: "小面额纸币" },
               { en: "small vendors", zh: "小商贩" },
             ],
             alternativeExpressions: [
-              { textEn: "Dollars work in most places, but your change will be in local money. For street stalls, bring small bills — easier that way.", textZh: "大部分地方可以用美元，但找零是当地货币。街头小摊带小面额纸币——比较方便。", actionHint: "准备好零钱", frequency: "common" },
-              { textEn: "Yeah, US dollars are widely accepted. Bigger shops take cards too. For market vendors though, cash is king — and the smaller the bills, the better.", textZh: "美元很多地方都收。大店也刷卡。不过市场小贩那里现金最好使——面额越小越好。", actionHint: "大店刷卡小摊用现金", frequency: "common" },
+              {
+                textEn:
+                  "Dollars work in most places, but your change will be in local money. For street stalls, bring small bills — easier that way.",
+                textZh:
+                  "大部分地方可以用美元，但找零是当地货币。街头小摊带小面额纸币——比较方便。",
+                actionHint: "准备好零钱",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, US dollars are widely accepted. Bigger shops take cards too. For market vendors though, cash is king — and the smaller the bills, the better.",
+                textZh:
+                  "美元很多地方都收。大店也刷卡。不过市场小贩那里现金最好使——面额越小越好。",
+                actionHint: "大店刷卡小摊用现金",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -2770,7 +4351,8 @@ export const TRANSPORT_SCENES: PresetScene[] = [
     category: "transport",
     titleZh: "自驾游",
     titleEn: "Road Trip",
-    description: "在国外自驾旅行，包括加油、休息站、走风景公路和处理路上突发情况",
+    description:
+      "在国外自驾旅行，包括加油、休息站、走风景公路和处理路上突发情况",
     otherRole: "加油站员工/路人",
     otherRoleIcon: "map",
     flows: [
@@ -2786,24 +4368,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, which pump is regular unleaded?",
             textZh: "你好，哪个是普通无铅汽油的油枪？",
-            culturalNote: "在美国，加油站通常有三种油：Regular（普通）、Plus/Mid-grade（中等）、Premium（高级）。租的车一般加 Regular 就行。",
+            culturalNote:
+              "在美国，加油站通常有三种油：Regular（普通）、Plus/Mid-grade（中等）、Premium（高级）。租的车一般加 Regular 就行。",
           },
           {
             speaker: "them",
             role: "加油站员工",
-            textEn: "Any pump works — just select the grade you want on the screen. Regular is the one on the left, usually the green handle. Are you paying cash or card?",
-            textZh: "任何油枪都行——在屏幕上选你要的等级就行。普通汽油是左边那个，通常是绿色把手。现金还是刷卡？",
+            textEn:
+              "Any pump works — just select the grade you want on the screen. Regular is the one on the left, usually the green handle. Are you paying cash or card?",
+            textZh:
+              "任何油枪都行——在屏幕上选你要的等级就行。普通汽油是左边那个，通常是绿色把手。现金还是刷卡？",
             keyPhrases: [
               { en: "pump", zh: "油枪/加油机" },
               { en: "grade", zh: "等级/标号" },
               { en: "regular unleaded", zh: "普通无铅汽油" },
             ],
             variations: [
-              { textEn: "Pull up to any pump. Select regular on the touchscreen. Credit or debit?", textZh: "开到任何一个加油机前。在触摸屏上选普通。信用卡还是借记卡？" },
+              {
+                textEn:
+                  "Pull up to any pump. Select regular on the touchscreen. Credit or debit?",
+                textZh:
+                  "开到任何一个加油机前。在触摸屏上选普通。信用卡还是借记卡？",
+              },
             ],
             alternativeExpressions: [
-              { textEn: "Just pick any pump and choose regular on the screen — green button. Paying by card or cash?", textZh: "随便选个油枪，屏幕上选普通——绿色按钮。刷卡还是现金？", actionHint: "选择付款方式", frequency: "common" },
-              { textEn: "They're all the same pump — hit regular once you're there. It's the cheapest option. Cash or card today?", textZh: "油枪都一样的——到了选普通就行。最便宜的那个。今天现金还是刷卡？", actionHint: "普通汽油最经济", frequency: "occasional" },
+              {
+                textEn:
+                  "Just pick any pump and choose regular on the screen — green button. Paying by card or cash?",
+                textZh: "随便选个油枪，屏幕上选普通——绿色按钮。刷卡还是现金？",
+                actionHint: "选择付款方式",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "They're all the same pump — hit regular once you're there. It's the cheapest option. Cash or card today?",
+                textZh:
+                  "油枪都一样的——到了选普通就行。最便宜的那个。今天现金还是刷卡？",
+                actionHint: "普通汽油最经济",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -2814,62 +4417,114 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "加油站员工",
-            textEn: "You can pay at the pump — just insert or tap your card, then select your fuel grade and start pumping. If your foreign card doesn't work at the pump, come inside and I can run it here.",
-            textZh: "在油枪那里就能付——插卡或感应，然后选油品等级开始加油。如果你的外国卡在油枪那里刷不了，进来我这里刷。",
+            textEn:
+              "You can pay at the pump — just insert or tap your card, then select your fuel grade and start pumping. If your foreign card doesn't work at the pump, come inside and I can run it here.",
+            textZh:
+              "在油枪那里就能付——插卡或感应，然后选油品等级开始加油。如果你的外国卡在油枪那里刷不了，进来我这里刷。",
             keyPhrases: [
               { en: "pay at the pump", zh: "在油枪处付款" },
               { en: "start pumping", zh: "开始加油" },
               { en: "run it", zh: "刷卡（非正式说法）" },
             ],
-            culturalNote: "美国加油站基本都是自助加油。有些外国信用卡在油枪处刷不了（因为要输 ZIP code），进去找店员刷就行。",
+            culturalNote:
+              "美国加油站基本都是自助加油。有些外国信用卡在油枪处刷不了（因为要输 ZIP code），进去找店员刷就行。",
             alternativeExpressions: [
-              { textEn: "Swipe or tap your card at the pump. If it doesn't go through, just come inside and I'll ring it up.", textZh: "在油枪那里刷卡或感应。如果刷不了，进来我这里帮你刷。", actionHint: "外卡刷不了就进店", frequency: "common" },
-              { textEn: "Right at the pump — insert your card, pick your grade, and fill up. Some foreign cards don't work outside though, so come in if you have trouble.", textZh: "直接在油枪那里——插卡、选标号、加油。不过有些外国卡在外面刷不了，有问题就进来。", actionHint: "先试油枪再进店", frequency: "occasional" },
+              {
+                textEn:
+                  "Swipe or tap your card at the pump. If it doesn't go through, just come inside and I'll ring it up.",
+                textZh: "在油枪那里刷卡或感应。如果刷不了，进来我这里帮你刷。",
+                actionHint: "外卡刷不了就进店",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Right at the pump — insert your card, pick your grade, and fill up. Some foreign cards don't work outside though, so come in if you have trouble.",
+                textZh:
+                  "直接在油枪那里——插卡、选标号、加油。不过有些外国卡在外面刷不了，有问题就进来。",
+                actionHint: "先试油枪再进店",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks. Also, are there any rest stops with bathrooms coming up on the highway? We've been driving for two hours.",
-            textZh: "谢谢。另外，前面高速上有带卫生间的休息站吗？我们已经开了两个小时了。",
+            textEn:
+              "Thanks. Also, are there any rest stops with bathrooms coming up on the highway? We've been driving for two hours.",
+            textZh:
+              "谢谢。另外，前面高速上有带卫生间的休息站吗？我们已经开了两个小时了。",
           },
           {
             speaker: "them",
             role: "加油站员工",
-            textEn: "There's a rest area about 30 miles up on I-95. It has restrooms, a picnic area, and vending machines. Or if you want food, there's a travel plaza with fast food about 45 miles out.",
-            textZh: "I-95前方大约30英里有一个休息区。有卫生间、野餐区和自动贩卖机。如果想吃东西，大约45英里处有个服务广场，有快餐。",
+            textEn:
+              "There's a rest area about 30 miles up on I-95. It has restrooms, a picnic area, and vending machines. Or if you want food, there's a travel plaza with fast food about 45 miles out.",
+            textZh:
+              "I-95前方大约30英里有一个休息区。有卫生间、野餐区和自动贩卖机。如果想吃东西，大约45英里处有个服务广场，有快餐。",
             keyPhrases: [
               { en: "rest area", zh: "休息区" },
               { en: "travel plaza", zh: "服务广场" },
               { en: "vending machines", zh: "自动贩卖机" },
             ],
             alternativeExpressions: [
-              { textEn: "There's a rest stop about 30 miles ahead with bathrooms and vending machines. If you want actual food, there's a service plaza a bit further.", textZh: "前方大约30英里有个休息站，有卫生间和自动贩卖机。想吃正经东西的话，再远一点有服务广场。", actionHint: "选择休息站或服务广场", frequency: "common" },
-              { textEn: "Yeah, about 30 miles up the road on I-95 you'll hit a rest area. Restrooms, picnic tables, that sort of thing. Or 45 miles out there's a plaza with a few fast-food joints.", textZh: "I-95前方大约30英里有个休息区。卫生间、野餐桌那些。再走45英里有个广场，有几家快餐店。", actionHint: "根据需求选地方停", frequency: "occasional" },
+              {
+                textEn:
+                  "There's a rest stop about 30 miles ahead with bathrooms and vending machines. If you want actual food, there's a service plaza a bit further.",
+                textZh:
+                  "前方大约30英里有个休息站，有卫生间和自动贩卖机。想吃正经东西的话，再远一点有服务广场。",
+                actionHint: "选择休息站或服务广场",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, about 30 miles up the road on I-95 you'll hit a rest area. Restrooms, picnic tables, that sort of thing. Or 45 miles out there's a plaza with a few fast-food joints.",
+                textZh:
+                  "I-95前方大约30英里有个休息区。卫生间、野餐桌那些。再走45英里有个广场，有几家快餐店。",
+                actionHint: "根据需求选地方停",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "One more thing — we're trying to get to the coastal scenic route. Is this the right way?",
+            textEn:
+              "One more thing — we're trying to get to the coastal scenic route. Is this the right way?",
             textZh: "再问一下——我们想走海岸风景公路。这条路对吗？",
           },
           {
             speaker: "them",
             role: "加油站员工",
-            textEn: "You're close. Stay on this road for about 10 miles, then take Exit 23 and follow signs for Route 1 South — that's the scenic coastal highway. It's a beautiful drive, but it'll add about an hour compared to the interstate.",
-            textZh: "快到了。沿这条路开大约10英里，然后走23号出口，跟着1号公路南的标志走——那就是海岸风景公路。很漂亮，但比走高速多大约一个小时。",
+            textEn:
+              "You're close. Stay on this road for about 10 miles, then take Exit 23 and follow signs for Route 1 South — that's the scenic coastal highway. It's a beautiful drive, but it'll add about an hour compared to the interstate.",
+            textZh:
+              "快到了。沿这条路开大约10英里，然后走23号出口，跟着1号公路南的标志走——那就是海岸风景公路。很漂亮，但比走高速多大约一个小时。",
             keyPhrases: [
               { en: "exit", zh: "出口" },
               { en: "scenic coastal highway", zh: "海岸风景公路" },
               { en: "interstate", zh: "州际高速公路" },
             ],
             alternativeExpressions: [
-              { textEn: "Almost there. Keep going about 10 miles, get off at Exit 23, and follow the signs for Route 1 South. Beautiful drive, but adds about an hour.", textZh: "快到了。再开10英里，在23号出口下，跟着1号公路南的标志走。风景很美，但多花大约一小时。", actionHint: "注意出口编号", frequency: "common" },
-              { textEn: "You're on the right track. Take Exit 23 up ahead and hop on Route 1 heading south — that's your scenic route. Just know it's slower than the freeway.", textZh: "方向对的。前面23号出口下去，上1号公路往南——那就是风景路线。不过比高速慢。", actionHint: "风景路线时间更长", frequency: "occasional" },
+              {
+                textEn:
+                  "Almost there. Keep going about 10 miles, get off at Exit 23, and follow the signs for Route 1 South. Beautiful drive, but adds about an hour.",
+                textZh:
+                  "快到了。再开10英里，在23号出口下，跟着1号公路南的标志走。风景很美，但多花大约一小时。",
+                actionHint: "注意出口编号",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You're on the right track. Take Exit 23 up ahead and hop on Route 1 heading south — that's your scenic route. Just know it's slower than the freeway.",
+                textZh:
+                  "方向对的。前面23号出口下去，上1号公路往南——那就是风景路线。不过比高速慢。",
+                actionHint: "风景路线时间更长",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That's fine — we're not in a rush. Thanks for the directions!",
+            textEn:
+              "That's fine — we're not in a rush. Thanks for the directions!",
             textZh: "没关系——我们不赶时间。谢谢指路！",
           },
         ],
@@ -2885,53 +4540,89 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I think I'm lost. My GPS lost signal and I'm not sure where I am.",
+            textEn:
+              "Excuse me, I think I'm lost. My GPS lost signal and I'm not sure where I am.",
             textZh: "打扰一下，我好像迷路了。GPS没信号了，我不确定自己在哪。",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "You're on Miller Road, just past the old church. Where are you trying to get to?",
+            textEn:
+              "You're on Miller Road, just past the old church. Where are you trying to get to?",
             textZh: "你在 Miller 路上，刚过那个老教堂。你要去哪？",
             keyPhrases: [
               { en: "just past", zh: "刚过/刚经过" },
               { en: "trying to get to", zh: "想去" },
             ],
             alternativeExpressions: [
-              { textEn: "You're on Miller Road, right by the old church. Where you headed?", textZh: "你在 Miller 路上，就在老教堂旁边。你要去哪？", actionHint: "告诉对方目的地", frequency: "common" },
-              { textEn: "This is Miller Road. See that church back there? You just passed it. Where are you trying to go?", textZh: "这是 Miller 路。看到后面那个教堂了吗？你刚过的。你想去哪？", actionHint: "说出你的目的地", frequency: "occasional" },
+              {
+                textEn:
+                  "You're on Miller Road, right by the old church. Where you headed?",
+                textZh: "你在 Miller 路上，就在老教堂旁边。你要去哪？",
+                actionHint: "告诉对方目的地",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "This is Miller Road. See that church back there? You just passed it. Where are you trying to go?",
+                textZh:
+                  "这是 Miller 路。看到后面那个教堂了吗？你刚过的。你想去哪？",
+                actionHint: "说出你的目的地",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'm heading to Lake Tahoe. I think I took a wrong turn somewhere.",
+            textEn:
+              "I'm heading to Lake Tahoe. I think I took a wrong turn somewhere.",
             textZh: "我要去太浩湖。我觉得我在什么地方拐错了。",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Ah yeah, that's a common mistake. Turn around and go back to the intersection — take a right onto Highway 50. Stay on that for about 20 miles and you'll see signs for the lake.",
-            textZh: "啊是的，很多人走错。掉头回到那个十字路口——右转上50号公路。沿着开大约20英里就会看到湖的指示牌。",
+            textEn:
+              "Ah yeah, that's a common mistake. Turn around and go back to the intersection — take a right onto Highway 50. Stay on that for about 20 miles and you'll see signs for the lake.",
+            textZh:
+              "啊是的，很多人走错。掉头回到那个十字路口——右转上50号公路。沿着开大约20英里就会看到湖的指示牌。",
             keyPhrases: [
               { en: "turn around", zh: "掉头" },
               { en: "intersection", zh: "十字路口" },
               { en: "take a right onto", zh: "右转上……路" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, lots of people miss that turn. Just head back to the light and make a right on Highway 50. About 20 miles and you're there.", textZh: "很多人都走错那个弯。回到红绿灯那里右转上50号公路。大约20英里就到了。", actionHint: "先掉头回十字路口", frequency: "common" },
-              { textEn: "Classic wrong turn. Go back the way you came, hang a right at the intersection onto 50, and keep going. You'll see signs for the lake.", textZh: "经典走错路。原路返回，在十字路口右转上50号公路，一直走。你会看到湖的指示牌。", actionHint: "跟着路标走", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, lots of people miss that turn. Just head back to the light and make a right on Highway 50. About 20 miles and you're there.",
+                textZh:
+                  "很多人都走错那个弯。回到红绿灯那里右转上50号公路。大约20英里就到了。",
+                actionHint: "先掉头回十字路口",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Classic wrong turn. Go back the way you came, hang a right at the intersection onto 50, and keep going. You'll see signs for the lake.",
+                textZh:
+                  "经典走错路。原路返回，在十字路口右转上50号公路，一直走。你会看到湖的指示牌。",
+                actionHint: "跟着路标走",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thank you! By the way, we noticed a warning light on the dashboard. It looks like the engine temperature. Is there a mechanic nearby?",
-            textZh: "谢谢！顺便问一下，我们发现仪表盘上有个警示灯亮了。看起来是发动机温度的。附近有修车行吗？",
+            textEn:
+              "Thank you! By the way, we noticed a warning light on the dashboard. It looks like the engine temperature. Is there a mechanic nearby?",
+            textZh:
+              "谢谢！顺便问一下，我们发现仪表盘上有个警示灯亮了。看起来是发动机温度的。附近有修车行吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "That's the overheating light — you should pull over and let the engine cool down for a bit. Don't open the hood while it's hot. There's a gas station with a small auto shop about 3 miles down that way.",
-            textZh: "那是过热警示灯——你应该靠边停车让发动机冷却一会儿。发动机热的时候别打开引擎盖。往那边大约3英里有个加油站带小修车行。",
+            textEn:
+              "That's the overheating light — you should pull over and let the engine cool down for a bit. Don't open the hood while it's hot. There's a gas station with a small auto shop about 3 miles down that way.",
+            textZh:
+              "那是过热警示灯——你应该靠边停车让发动机冷却一会儿。发动机热的时候别打开引擎盖。往那边大约3英里有个加油站带小修车行。",
             keyPhrases: [
               { en: "overheating", zh: "过热" },
               { en: "pull over", zh: "靠边停车" },
@@ -2940,8 +4631,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "auto shop", zh: "修车行" },
             ],
             alternativeExpressions: [
-              { textEn: "That's your engine overheating. Pull over right away and let it cool. Don't touch the hood yet. There's a garage about 3 miles that way.", textZh: "那是发动机过热。马上靠边停车让它冷却。先别碰引擎盖。往那个方向大约3英里有个修车行。", actionHint: "先靠边等冷却", frequency: "common" },
-              { textEn: "Uh oh, that's the temperature warning. You should stop and let the engine rest. There's a place that does repairs not far from here — about 3 miles down the road.", textZh: "糟糕，那是温度警告灯。你应该停车让发动机休息。附近有个修车的地方——往前大约3英里。", actionHint: "不要继续开", frequency: "occasional" },
+              {
+                textEn:
+                  "That's your engine overheating. Pull over right away and let it cool. Don't touch the hood yet. There's a garage about 3 miles that way.",
+                textZh:
+                  "那是发动机过热。马上靠边停车让它冷却。先别碰引擎盖。往那个方向大约3英里有个修车行。",
+                actionHint: "先靠边等冷却",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Uh oh, that's the temperature warning. You should stop and let the engine rest. There's a place that does repairs not far from here — about 3 miles down the road.",
+                textZh:
+                  "糟糕，那是温度警告灯。你应该停车让发动机休息。附近有个修车的地方——往前大约3英里。",
+                actionHint: "不要继续开",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -2952,8 +4657,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "路人",
-            textEn: "Definitely. They usually have roadside assistance. The number should be in your rental agreement or on a sticker on the windshield. They might send a tow truck or swap the car for you.",
-            textZh: "一定要打。他们一般有道路救援服务。号码应该在你的租车协议上或者挡风玻璃的贴纸上。他们可能会派拖车或者给你换一辆车。",
+            textEn:
+              "Definitely. They usually have roadside assistance. The number should be in your rental agreement or on a sticker on the windshield. They might send a tow truck or swap the car for you.",
+            textZh:
+              "一定要打。他们一般有道路救援服务。号码应该在你的租车协议上或者挡风玻璃的贴纸上。他们可能会派拖车或者给你换一辆车。",
             keyPhrases: [
               { en: "roadside assistance", zh: "道路救援" },
               { en: "rental agreement", zh: "租车协议" },
@@ -2961,27 +4668,55 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "tow truck", zh: "拖车" },
             ],
             alternativeExpressions: [
-              { textEn: "For sure, call them. They've got roadside assistance. The number's in your paperwork or on the windshield sticker. They'll probably tow it or bring you a replacement.", textZh: "一定要打。他们有道路救援。号码在你的文件里或挡风玻璃贴纸上。他们可能会拖车或给你换一辆。", actionHint: "联系租车公司救援", frequency: "common" },
-              { textEn: "Absolutely. Check your rental papers — there should be an emergency number. They usually send a tow truck or swap out the car.", textZh: "肯定的。看看你的租车文件——应该有紧急电话。他们一般会派拖车或换车。", actionHint: "找租车协议上的电话", frequency: "occasional" },
+              {
+                textEn:
+                  "For sure, call them. They've got roadside assistance. The number's in your paperwork or on the windshield sticker. They'll probably tow it or bring you a replacement.",
+                textZh:
+                  "一定要打。他们有道路救援。号码在你的文件里或挡风玻璃贴纸上。他们可能会拖车或给你换一辆。",
+                actionHint: "联系租车公司救援",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Absolutely. Check your rental papers — there should be an emergency number. They usually send a tow truck or swap out the car.",
+                textZh:
+                  "肯定的。看看你的租车文件——应该有紧急电话。他们一般会派拖车或换车。",
+                actionHint: "找租车协议上的电话",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good idea. Thanks so much for your help — you've been really kind.",
+            textEn:
+              "Good idea. Thanks so much for your help — you've been really kind.",
             textZh: "好主意。非常感谢你的帮助——你真是太好了。",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "No problem at all. Good luck with the car, and enjoy Lake Tahoe when you get there!",
+            textEn:
+              "No problem at all. Good luck with the car, and enjoy Lake Tahoe when you get there!",
             textZh: "不客气。祝车的问题顺利解决，到了太浩湖好好玩！",
             keyPhrases: [
               { en: "no problem at all", zh: "完全不客气" },
               { en: "good luck", zh: "祝顺利" },
             ],
             alternativeExpressions: [
-              { textEn: "Happy to help! Hope the car's okay. Have a great time at the lake!", textZh: "很高兴帮到你！希望车没问题。去湖边玩得开心！", actionHint: "友好道别", frequency: "common" },
-              { textEn: "Don't mention it. Good luck getting it sorted, and enjoy Tahoe!", textZh: "不客气。祝车的事顺利解决，太浩湖玩得开心！", actionHint: "祝旅途愉快", frequency: "common" },
+              {
+                textEn:
+                  "Happy to help! Hope the car's okay. Have a great time at the lake!",
+                textZh: "很高兴帮到你！希望车没问题。去湖边玩得开心！",
+                actionHint: "友好道别",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Don't mention it. Good luck getting it sorted, and enjoy Tahoe!",
+                textZh: "不客气。祝车的事顺利解决，太浩湖玩得开心！",
+                actionHint: "祝旅途愉快",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -3009,82 +4744,152 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'm a guest at the Marriott downtown. Does the hotel offer an airport shuttle?",
+            textEn:
+              "Hi, I'm a guest at the Marriott downtown. Does the hotel offer an airport shuttle?",
             textZh: "你好，我是市中心万豪酒店的住客。酒店有机场接送服务吗？",
           },
           {
             speaker: "them",
             role: "酒店前台",
-            textEn: "Yes, we do! Our complimentary shuttle runs every 30 minutes between 6 AM and 11 PM. What time does your flight arrive?",
-            textZh: "有的！我们的免费接送车每30分钟一班，早上6点到晚上11点运行。你的航班几点到？",
+            textEn:
+              "Yes, we do! Our complimentary shuttle runs every 30 minutes between 6 AM and 11 PM. What time does your flight arrive?",
+            textZh:
+              "有的！我们的免费接送车每30分钟一班，早上6点到晚上11点运行。你的航班几点到？",
             keyPhrases: [
               { en: "complimentary shuttle", zh: "免费接送车" },
               { en: "runs every", zh: "每……一班" },
             ],
             variations: [
-              { textEn: "We sure do. It's a free shuttle service. When do you land?", textZh: "当然有。是免费的接送服务。你几点落地？" },
+              {
+                textEn:
+                  "We sure do. It's a free shuttle service. When do you land?",
+                textZh: "当然有。是免费的接送服务。你几点落地？",
+              },
             ],
             alternativeExpressions: [
-              { textEn: "Yes! We have a free airport shuttle every half hour from 6 AM to 11 PM. What time are you landing?", textZh: "有的！早6点到晚11点每半小时一班免费机场接送车。你几点到？", actionHint: "告知航班到达时间", frequency: "common" },
-              { textEn: "Absolutely. Our courtesy shuttle runs all day, every 30 minutes. Just tell me your arrival time and we'll have it ready.", textZh: "当然。我们的免费接送车全天运行，每30分钟一班。告诉我你的到达时间就行。", actionHint: "提供到达时间", frequency: "occasional" },
+              {
+                textEn:
+                  "Yes! We have a free airport shuttle every half hour from 6 AM to 11 PM. What time are you landing?",
+                textZh:
+                  "有的！早6点到晚11点每半小时一班免费机场接送车。你几点到？",
+                actionHint: "告知航班到达时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Absolutely. Our courtesy shuttle runs all day, every 30 minutes. Just tell me your arrival time and we'll have it ready.",
+                textZh:
+                  "当然。我们的免费接送车全天运行，每30分钟一班。告诉我你的到达时间就行。",
+                actionHint: "提供到达时间",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'm arriving at 3:15 PM tomorrow, Terminal 2. How do I find the shuttle?",
+            textEn:
+              "I'm arriving at 3:15 PM tomorrow, Terminal 2. How do I find the shuttle?",
             textZh: "我明天下午3:15到，2号航站楼。怎么找到接送车？",
           },
           {
             speaker: "them",
             role: "酒店前台",
-            textEn: "After you collect your luggage, exit through the arrivals hall and look for the hotel shuttle pick-up area — it's usually on the lower level, outside Door 4. Our shuttle is a white van with the Marriott logo. You can also call us when you've landed and we'll let the driver know.",
-            textZh: "取完行李后，从到达大厅出来，找酒店接送车上客区——通常在下层，4号门外。我们的接送车是一辆白色面包车，有万豪的标志。你也可以落地后打电话给我们，我们会通知司机。",
+            textEn:
+              "After you collect your luggage, exit through the arrivals hall and look for the hotel shuttle pick-up area — it's usually on the lower level, outside Door 4. Our shuttle is a white van with the Marriott logo. You can also call us when you've landed and we'll let the driver know.",
+            textZh:
+              "取完行李后，从到达大厅出来，找酒店接送车上客区——通常在下层，4号门外。我们的接送车是一辆白色面包车，有万豪的标志。你也可以落地后打电话给我们，我们会通知司机。",
             keyPhrases: [
               { en: "arrivals hall", zh: "到达大厅" },
               { en: "pick-up area", zh: "上客区" },
               { en: "lower level", zh: "下层" },
             ],
             alternativeExpressions: [
-              { textEn: "Grab your bags, head out of arrivals, and go down to the ground level. Our white Marriott van picks up outside Door 4. Give us a ring when you land.", textZh: "拿好行李，从到达口出来，下到底层。我们的白色万豪面包车在4号门外接人。落地后给我们打个电话。", actionHint: "落地后打电话确认", frequency: "common" },
-              { textEn: "Once you have your luggage, look for the shuttle zone on the lower level, by Door 4. It's a white van with our logo. You can also call when you're ready and we'll send the driver.", textZh: "拿到行李后，在下层4号门找接送区。白色面包车，有我们的标志。你也可以准备好了打电话，我们派司机过去。", actionHint: "认准白色面包车", frequency: "occasional" },
+              {
+                textEn:
+                  "Grab your bags, head out of arrivals, and go down to the ground level. Our white Marriott van picks up outside Door 4. Give us a ring when you land.",
+                textZh:
+                  "拿好行李，从到达口出来，下到底层。我们的白色万豪面包车在4号门外接人。落地后给我们打个电话。",
+                actionHint: "落地后打电话确认",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Once you have your luggage, look for the shuttle zone on the lower level, by Door 4. It's a white van with our logo. You can also call when you're ready and we'll send the driver.",
+                textZh:
+                  "拿到行李后，在下层4号门找接送区。白色面包车，有我们的标志。你也可以准备好了打电话，我们派司机过去。",
+                actionHint: "认准白色面包车",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Perfect. I have two large suitcases — is there enough room?",
+            textEn:
+              "Perfect. I have two large suitcases — is there enough room?",
             textZh: "好的。我有两个大行李箱——空间够吗？",
           },
           {
             speaker: "them",
             role: "酒店前台",
-            textEn: "Absolutely. The shuttle can handle plenty of luggage. The driver will help you load your bags. Is it just yourself, or will there be others?",
-            textZh: "完全没问题。接送车能放很多行李。司机会帮你搬行李。就你一个人，还是有同行的？",
-            keyPhrases: [
-              { en: "load your bags", zh: "搬行李上车" },
-            ],
+            textEn:
+              "Absolutely. The shuttle can handle plenty of luggage. The driver will help you load your bags. Is it just yourself, or will there be others?",
+            textZh:
+              "完全没问题。接送车能放很多行李。司机会帮你搬行李。就你一个人，还是有同行的？",
+            keyPhrases: [{ en: "load your bags", zh: "搬行李上车" }],
             alternativeExpressions: [
-              { textEn: "No problem at all! Plenty of space for luggage. The driver will take care of your bags. Traveling alone or with someone?", textZh: "完全没问题！行李空间很大。司机会帮你搬行李。一个人还是有同行的？", actionHint: "说明出行人数", frequency: "common" },
-              { textEn: "Two suitcases? Easy. We've got room. Our driver will load them for you. Anyone else coming with you?", textZh: "两个行李箱？没问题。空间足够。司机帮你搬上去。还有别人跟你一起吗？", actionHint: "告知人数", frequency: "occasional" },
+              {
+                textEn:
+                  "No problem at all! Plenty of space for luggage. The driver will take care of your bags. Traveling alone or with someone?",
+                textZh:
+                  "完全没问题！行李空间很大。司机会帮你搬行李。一个人还是有同行的？",
+                actionHint: "说明出行人数",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Two suitcases? Easy. We've got room. Our driver will load them for you. Anyone else coming with you?",
+                textZh:
+                  "两个行李箱？没问题。空间足够。司机帮你搬上去。还有别人跟你一起吗？",
+                actionHint: "告知人数",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Just me. And for departure — can the shuttle take me back to the airport too?",
+            textEn:
+              "Just me. And for departure — can the shuttle take me back to the airport too?",
             textZh: "就我一个人。回程的话——接送车也能送我去机场吗？",
           },
           {
             speaker: "them",
             role: "酒店前台",
-            textEn: "Of course. Just let the front desk know the night before, and we'll schedule a pick-up time. We recommend leaving at least 3 hours before an international flight.",
-            textZh: "当然。前一天晚上跟前台说一声就行，我们会安排出发时间。国际航班建议至少提前3小时出发。",
+            textEn:
+              "Of course. Just let the front desk know the night before, and we'll schedule a pick-up time. We recommend leaving at least 3 hours before an international flight.",
+            textZh:
+              "当然。前一天晚上跟前台说一声就行，我们会安排出发时间。国际航班建议至少提前3小时出发。",
             keyPhrases: [
               { en: "schedule a pick-up", zh: "安排接送时间" },
               { en: "the night before", zh: "前一天晚上" },
               { en: "at least 3 hours before", zh: "至少提前3小时" },
             ],
             alternativeExpressions: [
-              { textEn: "Sure thing. Just tell the front desk the evening before and we'll book you a spot. For international flights, plan on heading out 3 hours early.", textZh: "当然。前一天晚上跟前台说一声就行，我们帮你预约。国际航班的话，提前3小时出发。", actionHint: "提前一晚预约", frequency: "common" },
-              { textEn: "Absolutely. Let us know the night before your departure and we'll arrange everything. We usually suggest 3 hours for international flights.", textZh: "没问题。出发前一晚告诉我们就行，我们安排好一切。国际航班我们一般建议提前3小时。", actionHint: "提前沟通出发时间", frequency: "common" },
+              {
+                textEn:
+                  "Sure thing. Just tell the front desk the evening before and we'll book you a spot. For international flights, plan on heading out 3 hours early.",
+                textZh:
+                  "当然。前一天晚上跟前台说一声就行，我们帮你预约。国际航班的话，提前3小时出发。",
+                actionHint: "提前一晚预约",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Absolutely. Let us know the night before your departure and we'll arrange everything. We usually suggest 3 hours for international flights.",
+                textZh:
+                  "没问题。出发前一晚告诉我们就行，我们安排好一切。国际航班我们一般建议提前3小时。",
+                actionHint: "提前沟通出发时间",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -3095,16 +4900,33 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "酒店前台",
-            textEn: "It's not required since it's a complimentary service, but a couple of dollars is always appreciated if the driver helps with your bags.",
-            textZh: "因为是免费服务，不是必须的，但如果司机帮忙搬行李，给几美元小费他们会很感激。",
+            textEn:
+              "It's not required since it's a complimentary service, but a couple of dollars is always appreciated if the driver helps with your bags.",
+            textZh:
+              "因为是免费服务，不是必须的，但如果司机帮忙搬行李，给几美元小费他们会很感激。",
             keyPhrases: [
               { en: "not required", zh: "不是必须的" },
               { en: "appreciated", zh: "感激的/受欢迎的" },
             ],
-            culturalNote: "在美国，即使是免费接送，如果司机帮忙搬行李，给$2-5小费是常见的礼貌做法。",
+            culturalNote:
+              "在美国，即使是免费接送，如果司机帮忙搬行李，给$2-5小费是常见的礼貌做法。",
             alternativeExpressions: [
-              { textEn: "Tips aren't expected since the shuttle is free, but if the driver helps with your luggage, a few bucks goes a long way.", textZh: "接送车免费所以不用给小费，但如果司机帮搬行李，给几块钱就很好了。", actionHint: "帮搬行李可给小费", frequency: "common" },
-              { textEn: "It's complimentary, so no tip necessary. But a dollar or two for the driver is always a nice gesture, especially if they help with bags.", textZh: "是免费服务，所以不必给小费。但给司机一两美元是个好做法，特别是帮搬行李的时候。", actionHint: "小费不强制但受欢迎", frequency: "occasional" },
+              {
+                textEn:
+                  "Tips aren't expected since the shuttle is free, but if the driver helps with your luggage, a few bucks goes a long way.",
+                textZh:
+                  "接送车免费所以不用给小费，但如果司机帮搬行李，给几块钱就很好了。",
+                actionHint: "帮搬行李可给小费",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's complimentary, so no tip necessary. But a dollar or two for the driver is always a nice gesture, especially if they help with bags.",
+                textZh:
+                  "是免费服务，所以不必给小费。但给司机一两美元是个好做法，特别是帮搬行李的时候。",
+                actionHint: "小费不强制但受欢迎",
+                frequency: "occasional",
+              },
             ],
           },
         ],
@@ -3120,22 +4942,39 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, where can I catch the airport express bus to downtown?",
+            textEn:
+              "Excuse me, where can I catch the airport express bus to downtown?",
             textZh: "请问去市中心的机场快线在哪里坐？",
           },
           {
             speaker: "them",
             role: "信息台",
-            textEn: "Go out Exit B and cross to the bus terminal — it's the covered area across the road. Look for Route A1 — that's the airport express. It stops at Central Station, City Hall, and the main hotel district.",
-            textZh: "从B出口出去，过马路到公交站——就是对面有顶棚的地方。找A1线路——那就是机场快线。停靠中央车站、市政厅和主要酒店区。",
+            textEn:
+              "Go out Exit B and cross to the bus terminal — it's the covered area across the road. Look for Route A1 — that's the airport express. It stops at Central Station, City Hall, and the main hotel district.",
+            textZh:
+              "从B出口出去，过马路到公交站——就是对面有顶棚的地方。找A1线路——那就是机场快线。停靠中央车站、市政厅和主要酒店区。",
             keyPhrases: [
               { en: "bus terminal", zh: "公交站" },
               { en: "airport express", zh: "机场快线" },
               { en: "hotel district", zh: "酒店区" },
             ],
             alternativeExpressions: [
-              { textEn: "Head out Exit B, cross over to the bus stop with the roof — you can't miss it. Grab the A1, that's the express to downtown.", textZh: "从B出口出去，到对面有顶棚的公交站——很好找。坐A1线，那就是去市中心的快线。", actionHint: "找A1线路", frequency: "common" },
-              { textEn: "Take Exit B and walk across to the covered bus terminal. Look for Route A1 — it hits Central Station, City Hall, and the hotel area.", textZh: "走B出口到对面有顶棚的公交站。找A1线——会经过中央车站、市政厅和酒店区。", actionHint: "认准A1标志", frequency: "occasional" },
+              {
+                textEn:
+                  "Head out Exit B, cross over to the bus stop with the roof — you can't miss it. Grab the A1, that's the express to downtown.",
+                textZh:
+                  "从B出口出去，到对面有顶棚的公交站——很好找。坐A1线，那就是去市中心的快线。",
+                actionHint: "找A1线路",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Take Exit B and walk across to the covered bus terminal. Look for Route A1 — it hits Central Station, City Hall, and the hotel area.",
+                textZh:
+                  "走B出口到对面有顶棚的公交站。找A1线——会经过中央车站、市政厅和酒店区。",
+                actionHint: "认准A1标志",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -3146,8 +4985,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "信息台",
-            textEn: "It's $18 one way or $30 for a round trip. You can pay with credit card on the bus, or buy a ticket at the kiosk over there. Cash is not accepted on board.",
-            textZh: "单程18美元，往返30美元。可以在车上刷信用卡，或者在那边的自助售票机买票。车上不收现金。",
+            textEn:
+              "It's $18 one way or $30 for a round trip. You can pay with credit card on the bus, or buy a ticket at the kiosk over there. Cash is not accepted on board.",
+            textZh:
+              "单程18美元，往返30美元。可以在车上刷信用卡，或者在那边的自助售票机买票。车上不收现金。",
             keyPhrases: [
               { en: "one way", zh: "单程" },
               { en: "round trip", zh: "往返" },
@@ -3155,27 +4996,58 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "on board", zh: "车上" },
             ],
             alternativeExpressions: [
-              { textEn: "18 bucks one way, 30 round trip. You can tap your card on the bus or grab a ticket from the machine over there. No cash though.", textZh: "单程18块，往返30块。车上可以感应刷卡，或者去那边机器买票。不收现金。", actionHint: "不收现金要注意", frequency: "common" },
-              { textEn: "One way is $18, return is $30 — saves you a few bucks. Pay by card on board or use that ticket kiosk. They don't take cash on the bus.", textZh: "单程18美元，往返30美元——省几块钱。车上刷卡或用那个自助售票机。车上不收现金。", actionHint: "往返票更划算", frequency: "occasional" },
+              {
+                textEn:
+                  "18 bucks one way, 30 round trip. You can tap your card on the bus or grab a ticket from the machine over there. No cash though.",
+                textZh:
+                  "单程18块，往返30块。车上可以感应刷卡，或者去那边机器买票。不收现金。",
+                actionHint: "不收现金要注意",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "One way is $18, return is $30 — saves you a few bucks. Pay by card on board or use that ticket kiosk. They don't take cash on the bus.",
+                textZh:
+                  "单程18美元，往返30美元——省几块钱。车上刷卡或用那个自助售票机。车上不收现金。",
+                actionHint: "往返票更划算",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll get a round trip. How often does it run, and how long to downtown?",
+            textEn:
+              "I'll get a round trip. How often does it run, and how long to downtown?",
             textZh: "我买往返的。多久一班，到市中心要多久？",
           },
           {
             speaker: "them",
             role: "信息台",
-            textEn: "Every 20 minutes during the day. The ride is about 45 minutes, depending on traffic. The last bus is at midnight.",
-            textZh: "白天每20分钟一班。车程大约45分钟，看交通情况。末班车是午夜12点。",
+            textEn:
+              "Every 20 minutes during the day. The ride is about 45 minutes, depending on traffic. The last bus is at midnight.",
+            textZh:
+              "白天每20分钟一班。车程大约45分钟，看交通情况。末班车是午夜12点。",
             keyPhrases: [
               { en: "every 20 minutes", zh: "每20分钟" },
               { en: "last bus", zh: "末班车" },
             ],
             alternativeExpressions: [
-              { textEn: "Daytime it's every 20 minutes. Takes about 45 minutes to get downtown, traffic depending. Last one's at midnight.", textZh: "白天每20分钟一班。到市中心大约45分钟，看交通。末班车午夜。", actionHint: "注意末班车时间", frequency: "common" },
-              { textEn: "They come pretty often — every 20 minutes or so. Figure about 45 minutes for the ride. After midnight there's no service.", textZh: "来得挺频繁的——大约每20分钟一班。车程大概45分钟。午夜后没有车了。", actionHint: "别错过末班车", frequency: "occasional" },
+              {
+                textEn:
+                  "Daytime it's every 20 minutes. Takes about 45 minutes to get downtown, traffic depending. Last one's at midnight.",
+                textZh:
+                  "白天每20分钟一班。到市中心大约45分钟，看交通。末班车午夜。",
+                actionHint: "注意末班车时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "They come pretty often — every 20 minutes or so. Figure about 45 minutes for the ride. After midnight there's no service.",
+                textZh:
+                  "来得挺频繁的——大约每20分钟一班。车程大概45分钟。午夜后没有车了。",
+                actionHint: "别错过末班车",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -3186,54 +5058,104 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "信息台",
-            textEn: "Yes, there's a luggage compartment underneath. The driver will open it for you. Keep your valuables with you on the bus though.",
-            textZh: "可以，车底有行李舱。司机会帮你打开。不过贵重物品带在身上。",
+            textEn:
+              "Yes, there's a luggage compartment underneath. The driver will open it for you. Keep your valuables with you on the bus though.",
+            textZh:
+              "可以，车底有行李舱。司机会帮你打开。不过贵重物品带在身上。",
             keyPhrases: [
               { en: "luggage compartment", zh: "行李舱" },
               { en: "valuables", zh: "贵重物品" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, there's storage underneath. The driver will pop it open for you. Just keep your wallet and phone on you.", textZh: "车底有储物空间。司机会帮你打开。钱包和手机随身带着就好。", actionHint: "贵重物品随身带", frequency: "common" },
-              { textEn: "Sure, suitcases go in the compartment below. Driver handles that. But hang on to anything valuable — take it on the bus with you.", textZh: "当然，行李箱放下面的行李舱。司机来管。但贵重东西拿好——带上车。", actionHint: "别把贵重物品放行李舱", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, there's storage underneath. The driver will pop it open for you. Just keep your wallet and phone on you.",
+                textZh:
+                  "车底有储物空间。司机会帮你打开。钱包和手机随身带着就好。",
+                actionHint: "贵重物品随身带",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sure, suitcases go in the compartment below. Driver handles that. But hang on to anything valuable — take it on the bus with you.",
+                textZh:
+                  "当然，行李箱放下面的行李舱。司机来管。但贵重东西拿好——带上车。",
+                actionHint: "别把贵重物品放行李舱",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Which stop should I get off for the Hilton on Park Avenue?",
+            textEn:
+              "Which stop should I get off for the Hilton on Park Avenue?",
             textZh: "我要去公园大道的希尔顿，在哪一站下车？",
           },
           {
             speaker: "them",
             role: "信息台",
-            textEn: "Get off at the City Hall stop — that's the third stop. The Hilton is a 5-minute walk from there. The driver announces each stop, so you won't miss it.",
-            textZh: "在市政厅站下——第三站。希尔顿从那里走5分钟就到。司机每站都会报站，不会错过的。",
+            textEn:
+              "Get off at the City Hall stop — that's the third stop. The Hilton is a 5-minute walk from there. The driver announces each stop, so you won't miss it.",
+            textZh:
+              "在市政厅站下——第三站。希尔顿从那里走5分钟就到。司机每站都会报站，不会错过的。",
             keyPhrases: [
               { en: "get off at", zh: "在……下车" },
               { en: "announces each stop", zh: "每站报站" },
             ],
             alternativeExpressions: [
-              { textEn: "Hop off at City Hall — third stop. The Hilton's just a short walk from there. Don't worry, the driver calls out every stop.", textZh: "在市政厅下——第三站。希尔顿走几分钟就到。放心，司机每站都会报的。", actionHint: "数好第三站下车", frequency: "common" },
-              { textEn: "You want the City Hall stop, that's stop number three. From there it's maybe a 5-minute walk to the Hilton. The driver announces them all.", textZh: "你要在市政厅站下，第三站。从那里走大约5分钟到希尔顿。司机会报每一站。", actionHint: "听报站不会坐过", frequency: "occasional" },
+              {
+                textEn:
+                  "Hop off at City Hall — third stop. The Hilton's just a short walk from there. Don't worry, the driver calls out every stop.",
+                textZh:
+                  "在市政厅下——第三站。希尔顿走几分钟就到。放心，司机每站都会报的。",
+                actionHint: "数好第三站下车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You want the City Hall stop, that's stop number three. From there it's maybe a 5-minute walk to the Hilton. The driver announces them all.",
+                textZh:
+                  "你要在市政厅站下，第三站。从那里走大约5分钟到希尔顿。司机会报每一站。",
+                actionHint: "听报站不会坐过",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great. For the return trip, do I catch the bus at the same stop?",
+            textEn:
+              "Great. For the return trip, do I catch the bus at the same stop?",
             textZh: "好的。回程的话，在同一站上车吗？",
           },
           {
             speaker: "them",
             role: "信息台",
-            textEn: "Yes, the return pick-up is right across the street from where you get off. Look for the blue A1 sign. Show your round-trip ticket to the driver. Make sure to leave enough time for traffic — airport-bound buses can get busy during rush hour.",
-            textZh: "是的，回程上车点就在你下车的对面。找蓝色A1标志。给司机出示往返票就行。留够时间考虑交通——高峰期去机场的班车会很挤。",
+            textEn:
+              "Yes, the return pick-up is right across the street from where you get off. Look for the blue A1 sign. Show your round-trip ticket to the driver. Make sure to leave enough time for traffic — airport-bound buses can get busy during rush hour.",
+            textZh:
+              "是的，回程上车点就在你下车的对面。找蓝色A1标志。给司机出示往返票就行。留够时间考虑交通——高峰期去机场的班车会很挤。",
             keyPhrases: [
               { en: "return pick-up", zh: "回程上车点" },
               { en: "airport-bound", zh: "去往机场的" },
               { en: "rush hour", zh: "高峰期" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, same spot, just the other side of the street. Look for the blue A1 sign. Keep your return ticket handy. And give yourself extra time during rush hour.", textZh: "对，同一个地方，就在马路对面。找蓝色A1标志。把回程票准备好。高峰期多留点时间。", actionHint: "高峰期提前出发", frequency: "common" },
-              { textEn: "The return bus picks up right across from where you get dropped off. Flash your round-trip ticket to the driver. Heads up — traffic to the airport can be rough in the evening.", textZh: "回程车在你下车对面上车。出示往返票给司机就行。提醒一下——晚上去机场的路上可能堵车。", actionHint: "保管好往返票", frequency: "occasional" },
+              {
+                textEn:
+                  "Yep, same spot, just the other side of the street. Look for the blue A1 sign. Keep your return ticket handy. And give yourself extra time during rush hour.",
+                textZh:
+                  "对，同一个地方，就在马路对面。找蓝色A1标志。把回程票准备好。高峰期多留点时间。",
+                actionHint: "高峰期提前出发",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "The return bus picks up right across from where you get dropped off. Flash your round-trip ticket to the driver. Heads up — traffic to the airport can be rough in the evening.",
+                textZh:
+                  "回程车在你下车对面上车。出示往返票给司机就行。提醒一下——晚上去机场的路上可能堵车。",
+                actionHint: "保管好往返票",
+                frequency: "occasional",
+              },
             ],
           },
         ],
@@ -3247,7 +5169,8 @@ export const TRANSPORT_SCENES: PresetScene[] = [
     category: "transport",
     titleZh: "网约车问题处理",
     titleEn: "Rideshare Issues",
-    description: "使用 Uber/Lyft 时遇到的各种问题，如找不到司机、路线变更和投诉",
+    description:
+      "使用 Uber/Lyft 时遇到的各种问题，如找不到司机、路线变更和投诉",
     otherRole: "网约车司机",
     otherRoleIcon: "car",
     flows: [
@@ -3261,87 +5184,161 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'm your Uber passenger. I'm at the airport but I can't find you. Where exactly are you?",
-            textZh: "你好，我是你的 Uber 乘客。我在机场但找不到你。你具体在哪里？",
-            casualVersion: "Hey, I'm your Uber. I can't spot you — where are you exactly?",
+            textEn:
+              "Hi, I'm your Uber passenger. I'm at the airport but I can't find you. Where exactly are you?",
+            textZh:
+              "你好，我是你的 Uber 乘客。我在机场但找不到你。你具体在哪里？",
+            casualVersion:
+              "Hey, I'm your Uber. I can't spot you — where are you exactly?",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Hey! I'm in the rideshare pick-up zone on level 2 of the parking garage. It's a blue Toyota Camry, license plate 7XBK429. Do you see the signs for 'Rideshare Pick-up'?",
-            textZh: "嘿！我在停车场2层的网约车接客区。蓝色丰田凯美瑞，车牌 7XBK429。你看到'网约车接客'的标志了吗？",
+            textEn:
+              "Hey! I'm in the rideshare pick-up zone on level 2 of the parking garage. It's a blue Toyota Camry, license plate 7XBK429. Do you see the signs for 'Rideshare Pick-up'?",
+            textZh:
+              "嘿！我在停车场2层的网约车接客区。蓝色丰田凯美瑞，车牌 7XBK429。你看到'网约车接客'的标志了吗？",
             keyPhrases: [
               { en: "rideshare pick-up zone", zh: "网约车接客区" },
               { en: "parking garage", zh: "停车场（多层）" },
               { en: "license plate", zh: "车牌" },
             ],
             vocabNotes: {
-              "rideshare": { meaningInContext: "在这句话里表示：通过 Uber、Lyft 等 App 叫的车，区别于传统出租车", similarUsage: "类似用法：The rideshare pick-up is separate from the taxi stand.（网约车接客区和出租车站是分开的）" },
+              rideshare: {
+                meaningInContext:
+                  "在这句话里表示：通过 Uber、Lyft 等 App 叫的车，区别于传统出租车",
+                similarUsage:
+                  "类似用法：The rideshare pick-up is separate from the taxi stand.（网约车接客区和出租车站是分开的）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "I'm at the designated Uber/Lyft area. Follow the signs to the pick-up level.", textZh: "我在指定的 Uber/Lyft 区域。跟着标志走到接客层。", actionHint: "寻找机场的网约车专用接客标志", frequency: "common" },
+              {
+                textEn:
+                  "I'm at the designated Uber/Lyft area. Follow the signs to the pick-up level.",
+                textZh: "我在指定的 Uber/Lyft 区域。跟着标志走到接客层。",
+                actionHint: "寻找机场的网约车专用接客标志",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I see the signs, but I'm on the arrivals level. Do I need to go up to level 2?",
+            textEn:
+              "I see the signs, but I'm on the arrivals level. Do I need to go up to level 2?",
             textZh: "我看到标志了，但我在到达层。需要上到2层吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yes, take the elevator or escalator up one level. When you get out, turn right and walk about 200 feet. I'll flash my headlights when I see you. I'm in the third row.",
-            textZh: "是的，坐电梯或扶梯上一层。出来后右转走大约200英尺（60米）。看到你的时候我会闪大灯。我在第三排。",
+            textEn:
+              "Yes, take the elevator or escalator up one level. When you get out, turn right and walk about 200 feet. I'll flash my headlights when I see you. I'm in the third row.",
+            textZh:
+              "是的，坐电梯或扶梯上一层。出来后右转走大约200英尺（60米）。看到你的时候我会闪大灯。我在第三排。",
             keyPhrases: [
               { en: "flash my headlights", zh: "闪大灯" },
               { en: "arrivals level", zh: "到达层" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, go up one floor — elevator or escalator. Turn right, walk a bit, and I'm in row three. I'll blink my lights for you.", textZh: "是的，上一层——电梯或扶梯都行。右转走一段，我在第三排。我会闪灯给你看。", actionHint: "上到出发层找车", frequency: "common" },
-              { textEn: "You need to come up to level 2. Take the escalator, hang a right, about 200 feet. I'll be flashing my headlights — third row.", textZh: "你要上到2层。坐扶梯，右转，大约200英尺。我会闪大灯——第三排。", actionHint: "看闪灯找到司机", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, go up one floor — elevator or escalator. Turn right, walk a bit, and I'm in row three. I'll blink my lights for you.",
+                textZh:
+                  "是的，上一层——电梯或扶梯都行。右转走一段，我在第三排。我会闪灯给你看。",
+                actionHint: "上到出发层找车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You need to come up to level 2. Take the escalator, hang a right, about 200 feet. I'll be flashing my headlights — third row.",
+                textZh:
+                  "你要上到2层。坐扶梯，右转，大约200英尺。我会闪大灯——第三排。",
+                actionHint: "看闪灯找到司机",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Okay, I see a blue car flashing its lights. Is that you? The app says your car is a Camry.",
-            textZh: "好的，我看到一辆蓝色车在闪灯。是你吗？App 上显示你的车是凯美瑞。",
-            culturalNote: "上网约车前一定要核对车型、颜色、车牌和司机照片，确保安全。",
+            textEn:
+              "Okay, I see a blue car flashing its lights. Is that you? The app says your car is a Camry.",
+            textZh:
+              "好的，我看到一辆蓝色车在闪灯。是你吗？App 上显示你的车是凯美瑞。",
+            culturalNote:
+              "上网约车前一定要核对车型、颜色、车牌和司机照片，确保安全。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "That's me! Can you confirm your name for me? I just need to make sure I've got the right passenger.",
+            textEn:
+              "That's me! Can you confirm your name for me? I just need to make sure I've got the right passenger.",
             textZh: "是我！能确认一下你的名字吗？我要确认接对了人。",
-            keyPhrases: [
-              { en: "confirm your name", zh: "确认你的名字" },
-            ],
-            culturalMeaning: "这是网约车的安全流程，司机和乘客互相确认身份，防止上错车。千万不要主动先说名字，让司机来问。",
+            keyPhrases: [{ en: "confirm your name", zh: "确认你的名字" }],
+            culturalMeaning:
+              "这是网约车的安全流程，司机和乘客互相确认身份，防止上错车。千万不要主动先说名字，让司机来问。",
             alternativeExpressions: [
-              { textEn: "Yep, that's me! What's the name on the ride? Just wanna make sure.", textZh: "对，是我！这单叫车的是什么名字？确认一下。", actionHint: "告诉司机你的名字", frequency: "common" },
-              { textEn: "Right here! Before you hop in — can I get your name? Gotta verify it matches the app.", textZh: "就是这里！上车前——能告诉我你的名字吗？要跟App上的核对一下。", actionHint: "配合身份验证", frequency: "occasional" },
+              {
+                textEn:
+                  "Yep, that's me! What's the name on the ride? Just wanna make sure.",
+                textZh: "对，是我！这单叫车的是什么名字？确认一下。",
+                actionHint: "告诉司机你的名字",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Right here! Before you hop in — can I get your name? Gotta verify it matches the app.",
+                textZh:
+                  "就是这里！上车前——能告诉我你的名字吗？要跟App上的核对一下。",
+                actionHint: "配合身份验证",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'm Wang. Can you help me with my suitcase? It's pretty heavy.",
+            textEn:
+              "I'm Wang. Can you help me with my suitcase? It's pretty heavy.",
             textZh: "我姓王。能帮我搬一下行李箱吗？挺重的。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Of course! Pop the trunk — oh wait, let me get that for you. There you go. All set? The GPS says we'll be at your hotel in about 35 minutes.",
-            textZh: "当然！打开后备箱——等等，我来帮你。好了。都准备好了？GPS 显示大约35分钟到你的酒店。",
+            textEn:
+              "Of course! Pop the trunk — oh wait, let me get that for you. There you go. All set? The GPS says we'll be at your hotel in about 35 minutes.",
+            textZh:
+              "当然！打开后备箱——等等，我来帮你。好了。都准备好了？GPS 显示大约35分钟到你的酒店。",
             keyPhrases: [
               { en: "pop the trunk", zh: "打开后备箱" },
               { en: "all set", zh: "都准备好了" },
             ],
             vocabNotes: {
-              "pop the trunk": { meaningInContext: "在这句话里表示：打开汽车后备箱放行李", similarUsage: "类似用法：Can you pop the hood? I need to check the engine.（能打开引擎盖吗？我要检查发动机）" },
+              "pop the trunk": {
+                meaningInContext: "在这句话里表示：打开汽车后备箱放行李",
+                similarUsage:
+                  "类似用法：Can you pop the hood? I need to check the engine.（能打开引擎盖吗？我要检查发动机）",
+              },
             },
-            localVariants: { "en-US": "pop the trunk", "en-GB": "open the boot", "en-AU": "open the boot" },
+            localVariants: {
+              "en-US": "pop the trunk",
+              "en-GB": "open the boot",
+              "en-AU": "open the boot",
+            },
             alternativeExpressions: [
-              { textEn: "Sure thing! Let me get that for you — I'll put it in the trunk. All good? GPS says about 35 minutes to your hotel.", textZh: "没问题！我来帮你——放后备箱。都好了吗？GPS显示大约35分钟到你的酒店。", actionHint: "确认目的地", frequency: "common" },
-              { textEn: "No problem, I got it. Hop in and we'll get going. Should be about 35 minutes to the hotel, give or take.", textZh: "没问题，我来。上车吧，我们出发。到酒店大约35分钟，差不多。", actionHint: "上车出发", frequency: "occasional" },
+              {
+                textEn:
+                  "Sure thing! Let me get that for you — I'll put it in the trunk. All good? GPS says about 35 minutes to your hotel.",
+                textZh:
+                  "没问题！我来帮你——放后备箱。都好了吗？GPS显示大约35分钟到你的酒店。",
+                actionHint: "确认目的地",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "No problem, I got it. Hop in and we'll get going. Should be about 35 minutes to the hotel, give or take.",
+                textZh:
+                  "没问题，我来。上车吧，我们出发。到酒店大约35分钟，差不多。",
+                actionHint: "上车出发",
+                frequency: "occasional",
+              },
             ],
           },
           {
@@ -3352,24 +5349,43 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "Sure, the highway should be faster this time of day. Just a heads up — there might be a toll of about $3. It'll show up on your Uber receipt automatically.",
-            textZh: "好的，这个时间走高速应该更快。提前说一下——可能有大约3美元的过路费。会自动显示在你的 Uber 账单上。",
+            textEn:
+              "Sure, the highway should be faster this time of day. Just a heads up — there might be a toll of about $3. It'll show up on your Uber receipt automatically.",
+            textZh:
+              "好的，这个时间走高速应该更快。提前说一下——可能有大约3美元的过路费。会自动显示在你的 Uber 账单上。",
             keyPhrases: [
               { en: "toll", zh: "过路费" },
               { en: "heads up", zh: "提前说一下" },
               { en: "receipt", zh: "账单/收据" },
             ],
-            literalMeaning: "\"heads up\" 字面意思是 \"抬起头来\"，实际表示 \"提前提醒你一下\"",
+            literalMeaning:
+              '"heads up" 字面意思是 "抬起头来"，实际表示 "提前提醒你一下"',
             alternativeExpressions: [
-              { textEn: "No problem, highway it is. FYI there's a $3 toll — it'll get added to your fare automatically.", textZh: "没问题，走高速。提一下有3美元过路费——会自动加到你的车费里。", actionHint: "过路费自动计入", frequency: "common" },
-              { textEn: "Sure, this time of day highway's your best bet. Small toll though, like 3 bucks. Shows up on your receipt.", textZh: "好的，这个时间走高速最快。有个小过路费，大约3块。会显示在你的收据上。", actionHint: "不需要额外付费", frequency: "common" },
+              {
+                textEn:
+                  "No problem, highway it is. FYI there's a $3 toll — it'll get added to your fare automatically.",
+                textZh:
+                  "没问题，走高速。提一下有3美元过路费——会自动加到你的车费里。",
+                actionHint: "过路费自动计入",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sure, this time of day highway's your best bet. Small toll though, like 3 bucks. Shows up on your receipt.",
+                textZh:
+                  "好的，这个时间走高速最快。有个小过路费，大约3块。会显示在你的收据上。",
+                actionHint: "不需要额外付费",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "No problem. I'll rate you five stars for being so helpful. Thanks!",
+            textEn:
+              "No problem. I'll rate you five stars for being so helpful. Thanks!",
             textZh: "没问题。你这么热心我给你五星评价。谢谢！",
-            culturalNote: "在美国乘坐网约车，五星好评对司机非常重要。满意的话建议在 App 上给五星并留小费。",
+            culturalNote:
+              "在美国乘坐网约车，五星好评对司机非常重要。满意的话建议在 App 上给五星并留小费。",
           },
         ],
       },
@@ -3383,106 +5399,193 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I think you took a wrong turn. The GPS shows a shorter route going straight, but you turned onto the highway.",
-            textZh: "不好意思，我觉得你走错路了。GPS 显示直行更近，但你上了高速。",
+            textEn:
+              "Excuse me, I think you took a wrong turn. The GPS shows a shorter route going straight, but you turned onto the highway.",
+            textZh:
+              "不好意思，我觉得你走错路了。GPS 显示直行更近，但你上了高速。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "I know this area well — the direct route has heavy construction right now. There's a road closure on 5th Street. The highway actually saves about 10 minutes even though it looks longer on the map.",
-            textZh: "我对这一带很熟——直行的路现在在大修。第五街封路了。走高速虽然地图上看着远，但实际省大约10分钟。",
+            textEn:
+              "I know this area well — the direct route has heavy construction right now. There's a road closure on 5th Street. The highway actually saves about 10 minutes even though it looks longer on the map.",
+            textZh:
+              "我对这一带很熟——直行的路现在在大修。第五街封路了。走高速虽然地图上看着远，但实际省大约10分钟。",
             keyPhrases: [
               { en: "construction", zh: "施工" },
               { en: "road closure", zh: "封路" },
             ],
             alternativeExpressions: [
-              { textEn: "Trust me, the main road is a parking lot right now. This way is faster.", textZh: "相信我，主路现在堵成停车场了。这条路更快。", actionHint: "可以查看手机地图确认", frequency: "common" },
+              {
+                textEn:
+                  "Trust me, the main road is a parking lot right now. This way is faster.",
+                textZh: "相信我，主路现在堵成停车场了。这条路更快。",
+                actionHint: "可以查看手机地图确认",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Okay, I see the construction on my map now. Sorry about that. But the fare seems to be going up fast — will Uber adjust it if the route is longer?",
-            textZh: "好的，我在地图上看到施工了。抱歉。但费用涨得挺快——路线变长的话 Uber 会调整吗？",
+            textEn:
+              "Okay, I see the construction on my map now. Sorry about that. But the fare seems to be going up fast — will Uber adjust it if the route is longer?",
+            textZh:
+              "好的，我在地图上看到施工了。抱歉。但费用涨得挺快——路线变长的话 Uber 会调整吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Uber uses upfront pricing — meaning the price you saw when you booked is what you'll pay, regardless of the route. So even though this route is technically longer, your fare won't change. No worries.",
-            textZh: "Uber 用的是预估定价——就是说你下单时看到的价格就是最终价格，不管走哪条路。所以虽然这条路技术上更远，你的费用不会变。放心。",
+            textEn:
+              "Uber uses upfront pricing — meaning the price you saw when you booked is what you'll pay, regardless of the route. So even though this route is technically longer, your fare won't change. No worries.",
+            textZh:
+              "Uber 用的是预估定价——就是说你下单时看到的价格就是最终价格，不管走哪条路。所以虽然这条路技术上更远，你的费用不会变。放心。",
             keyPhrases: [
               { en: "upfront pricing", zh: "预估定价" },
               { en: "regardless of", zh: "不管/无论" },
               { en: "fare", zh: "费用/车费" },
             ],
             vocabNotes: {
-              "upfront pricing": { meaningInContext: "在这句话里表示：在你下单叫车时就确定好的固定价格，不会因为实际路线变化而改变", similarUsage: "类似用法：We offer upfront pricing with no hidden fees.（我们提供预估定价，没有隐藏费用）" },
+              "upfront pricing": {
+                meaningInContext:
+                  "在这句话里表示：在你下单叫车时就确定好的固定价格，不会因为实际路线变化而改变",
+                similarUsage:
+                  "类似用法：We offer upfront pricing with no hidden fees.（我们提供预估定价，没有隐藏费用）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Don't worry — Uber locks in the price when you book. Doesn't matter which route we take, you pay what it said.", textZh: "别担心——Uber下单时就锁定价格了。不管走哪条路，你付的就是当时显示的。", actionHint: "确认App上的价格", frequency: "common" },
-              { textEn: "The price is fixed from when you booked. Longer route, shorter route — same fare. So you're good.", textZh: "价格从你下单就固定了。走远走近——都一个价。所以放心。", actionHint: "不用担心绕路加价", frequency: "common" },
+              {
+                textEn:
+                  "Don't worry — Uber locks in the price when you book. Doesn't matter which route we take, you pay what it said.",
+                textZh:
+                  "别担心——Uber下单时就锁定价格了。不管走哪条路，你付的就是当时显示的。",
+                actionHint: "确认App上的价格",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "The price is fixed from when you booked. Longer route, shorter route — same fare. So you're good.",
+                textZh: "价格从你下单就固定了。走远走近——都一个价。所以放心。",
+                actionHint: "不用担心绕路加价",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. One more thing — do I tip you through the app or in cash?",
+            textEn:
+              "Got it. One more thing — do I tip you through the app or in cash?",
             textZh: "明白了。还有一个问题——小费是在 App 上给还是现金？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Either way works! You can tip in the app after the ride ends — you'll get a prompt. Or cash is always appreciated too. Whatever is easier for you.",
-            textZh: "都可以！行程结束后 App 上会有提示让你给小费。现金也欢迎。你方便就行。",
+            textEn:
+              "Either way works! You can tip in the app after the ride ends — you'll get a prompt. Or cash is always appreciated too. Whatever is easier for you.",
+            textZh:
+              "都可以！行程结束后 App 上会有提示让你给小费。现金也欢迎。你方便就行。",
             keyPhrases: [
               { en: "prompt", zh: "提示" },
               { en: "appreciated", zh: "感谢/欢迎" },
             ],
-            culturalNote: "美国网约车小费一般是车费的15-20%。App 上通常有预设金额可以选。不给也不违规，但算是礼貌。",
+            culturalNote:
+              "美国网约车小费一般是车费的15-20%。App 上通常有预设金额可以选。不给也不违规，但算是礼貌。",
             alternativeExpressions: [
-              { textEn: "Up to you! The app will ask you after the trip, or I'm happy with cash too. No pressure either way.", textZh: "随你！行程结束后App会问你，给现金也行。不勉强。", actionHint: "行程结束后App会提示", frequency: "common" },
-              { textEn: "Both work! Most people just tip through the app when it pops up. Cash is cool too though.", textZh: "都可以！大部分人在App弹出来的时候给。现金也没问题。", actionHint: "选自己方便的方式", frequency: "common" },
+              {
+                textEn:
+                  "Up to you! The app will ask you after the trip, or I'm happy with cash too. No pressure either way.",
+                textZh: "随你！行程结束后App会问你，给现金也行。不勉强。",
+                actionHint: "行程结束后App会提示",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Both work! Most people just tip through the app when it pops up. Cash is cool too though.",
+                textZh: "都可以！大部分人在App弹出来的时候给。现金也没问题。",
+                actionHint: "选自己方便的方式",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll tip in the app. By the way, the app is charging me a 'surge price' — $15 extra. Is that normal?",
-            textZh: "我在 App 上给。顺便问一下，App 收了我一笔'动态加价'——多了15美元。这正常吗？",
+            textEn:
+              "I'll tip in the app. By the way, the app is charging me a 'surge price' — $15 extra. Is that normal?",
+            textZh:
+              "我在 App 上给。顺便问一下，App 收了我一笔'动态加价'——多了15美元。这正常吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yeah, surge pricing happens when there's high demand — like after a big event or during rush hour. The airport is always busy at this time. You can dispute it through the app's help section if you think it's unfair, but honestly this time of day it's pretty standard.",
-            textZh: "是的，需求大的时候就会动态加价——比如大活动散场后或高峰期。这个时间机场总是很忙。如果你觉得不合理，可以在 App 的帮助中心申诉，但说实话这个时间段加价挺正常的。",
+            textEn:
+              "Yeah, surge pricing happens when there's high demand — like after a big event or during rush hour. The airport is always busy at this time. You can dispute it through the app's help section if you think it's unfair, but honestly this time of day it's pretty standard.",
+            textZh:
+              "是的，需求大的时候就会动态加价——比如大活动散场后或高峰期。这个时间机场总是很忙。如果你觉得不合理，可以在 App 的帮助中心申诉，但说实话这个时间段加价挺正常的。",
             keyPhrases: [
               { en: "surge pricing", zh: "动态加价" },
               { en: "high demand", zh: "需求大" },
               { en: "dispute", zh: "申诉/争议" },
             ],
             vocabNotes: {
-              "surge pricing": { meaningInContext: "在这句话里表示：在用车高峰期，Uber/Lyft 自动提高价格以应对大量需求", similarUsage: "类似用法：Surge pricing doubled the fare during the concert.（演唱会期间动态加价让车费翻了一倍）" },
+              "surge pricing": {
+                meaningInContext:
+                  "在这句话里表示：在用车高峰期，Uber/Lyft 自动提高价格以应对大量需求",
+                similarUsage:
+                  "类似用法：Surge pricing doubled the fare during the concert.（演唱会期间动态加价让车费翻了一倍）",
+              },
             },
-            literalMeaning: "\"surge\" 字面意思是 \"涌浪/激增\"，在打车App里表示需求突然大增导致的加价",
+            literalMeaning:
+              '"surge" 字面意思是 "涌浪/激增"，在打车App里表示需求突然大增导致的加价',
             alternativeExpressions: [
-              { textEn: "Yeah, that's surge — it kicks in when everyone's trying to get a ride at the same time. You can complain in the app but honestly it's normal for the airport.", textZh: "对，那是动态加价——大家同时叫车就会触发。你可以在App里投诉，但机场这个价挺正常的。", actionHint: "可以在App里申诉", frequency: "common" },
-              { textEn: "That's how it works — more riders than drivers and the price goes up. Try waiting 10-15 minutes next time, surge usually drops.", textZh: "就是这样——叫车的人比司机多价格就上去了。下次试试等10-15分钟，加价通常会降。", actionHint: "下次等加价降再叫", frequency: "occasional" },
+              {
+                textEn:
+                  "Yeah, that's surge — it kicks in when everyone's trying to get a ride at the same time. You can complain in the app but honestly it's normal for the airport.",
+                textZh:
+                  "对，那是动态加价——大家同时叫车就会触发。你可以在App里投诉，但机场这个价挺正常的。",
+                actionHint: "可以在App里申诉",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "That's how it works — more riders than drivers and the price goes up. Try waiting 10-15 minutes next time, surge usually drops.",
+                textZh:
+                  "就是这样——叫车的人比司机多价格就上去了。下次试试等10-15分钟，加价通常会降。",
+                actionHint: "下次等加价降再叫",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I see. Next time I'll check for surge before booking. We're almost there — you can drop me off at the main entrance.",
-            textZh: "明白了。下次下单前我先看看有没有加价。快到了——在正门放我下车就行。",
+            textEn:
+              "I see. Next time I'll check for surge before booking. We're almost there — you can drop me off at the main entrance.",
+            textZh:
+              "明白了。下次下单前我先看看有没有加价。快到了——在正门放我下车就行。",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Here you are — the main entrance of the Marriott. Let me help you with your luggage. Have a great stay!",
+            textEn:
+              "Here you are — the main entrance of the Marriott. Let me help you with your luggage. Have a great stay!",
             textZh: "到了——万豪酒店正门。我帮你拿行李。祝你住得愉快！",
             keyPhrases: [
               { en: "drop me off", zh: "放我下车" },
               { en: "have a great stay", zh: "祝你住得愉快" },
             ],
             alternativeExpressions: [
-              { textEn: "Here we are — Marriott front door. Let me pop the trunk for your bags. Enjoy your stay!", textZh: "到了——万豪正门。我开后备箱帮你拿行李。住得愉快！", actionHint: "下车前检查随身物品", frequency: "common" },
-              { textEn: "This is you — main entrance right here. I'll grab your luggage. Have a good one!", textZh: "到了——正门就在这。我帮你拿行李。祝一切顺利！", actionHint: "别忘了给评价", frequency: "common" },
+              {
+                textEn:
+                  "Here we are — Marriott front door. Let me pop the trunk for your bags. Enjoy your stay!",
+                textZh: "到了——万豪正门。我开后备箱帮你拿行李。住得愉快！",
+                actionHint: "下车前检查随身物品",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "This is you — main entrance right here. I'll grab your luggage. Have a good one!",
+                textZh: "到了——正门就在这。我帮你拿行李。祝一切顺利！",
+                actionHint: "别忘了给评价",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -3510,14 +5613,17 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to buy a ticket to Boston. What's the next departure?",
+            textEn:
+              "Hi, I'd like to buy a ticket to Boston. What's the next departure?",
             textZh: "你好，我想买一张去波士顿的票。最近一班是什么时候？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "The next bus to Boston leaves at 2:30 PM — that's in about an hour. It's a direct service, no transfers. The ride is approximately 4 hours and 15 minutes. One way or round trip?",
-            textZh: "下一班去波士顿的2点30分出发——大约一小时后。直达车，不用换乘。车程大约4小时15分钟。单程还是往返？",
+            textEn:
+              "The next bus to Boston leaves at 2:30 PM — that's in about an hour. It's a direct service, no transfers. The ride is approximately 4 hours and 15 minutes. One way or round trip?",
+            textZh:
+              "下一班去波士顿的2点30分出发——大约一小时后。直达车，不用换乘。车程大约4小时15分钟。单程还是往返？",
             keyPhrases: [
               { en: "departure", zh: "出发" },
               { en: "direct service", zh: "直达车" },
@@ -3525,19 +5631,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "one way or round trip", zh: "单程还是往返" },
             ],
             alternativeExpressions: [
-              { textEn: "Next one out is at 2:30 — nonstop to Boston. About four hours. Need a return ticket too?", textZh: "下一班2:30——直达波士顿。大约四小时。需要回程票吗？", actionHint: "告知单程还是往返", frequency: "common" },
+              {
+                textEn:
+                  "Next one out is at 2:30 — nonstop to Boston. About four hours. Need a return ticket too?",
+                textZh: "下一班2:30——直达波士顿。大约四小时。需要回程票吗？",
+                actionHint: "告知单程还是往返",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "One way, please. How much is it? And do you have different seat classes?",
+            textEn:
+              "One way, please. How much is it? And do you have different seat classes?",
             textZh: "单程。多少钱？有不同的座位等级吗？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "We have Economy at $35 and Economy Extra at $52. Economy Extra gets you extra legroom, a guaranteed power outlet, and priority boarding. Both have free Wi-Fi and a restroom on board.",
-            textZh: "经济座35美元，经济加宽座52美元。加宽座有更大的腿部空间、保证有电源插座和优先登车。两种都有免费Wi-Fi和车上卫生间。",
+            textEn:
+              "We have Economy at $35 and Economy Extra at $52. Economy Extra gets you extra legroom, a guaranteed power outlet, and priority boarding. Both have free Wi-Fi and a restroom on board.",
+            textZh:
+              "经济座35美元，经济加宽座52美元。加宽座有更大的腿部空间、保证有电源插座和优先登车。两种都有免费Wi-Fi和车上卫生间。",
             keyPhrases: [
               { en: "Economy Extra", zh: "经济加宽座" },
               { en: "legroom", zh: "腿部空间" },
@@ -3546,55 +5661,114 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "restroom on board", zh: "车上卫生间" },
             ],
             vocabNotes: {
-              "legroom": { meaningInContext: "在这句话里表示：座位前后之间的距离，决定你的腿伸不伸得开", similarUsage: "类似用法：This airline has terrible legroom in economy class.（这个航空公司经济舱腿部空间很小）" },
+              legroom: {
+                meaningInContext:
+                  "在这句话里表示：座位前后之间的距离，决定你的腿伸不伸得开",
+                similarUsage:
+                  "类似用法：This airline has terrible legroom in economy class.（这个航空公司经济舱腿部空间很小）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Basic is 35 bucks, the upgrade is 52 — more legroom, an outlet, and you board first. Both have Wi-Fi and a bathroom.", textZh: "基础票35，升级版52——更大的腿部空间、有插座、优先上车。都有Wi-Fi和卫生间。", actionHint: "考虑是否值得升级", frequency: "common" },
-              { textEn: "Economy's $35, Economy Extra's $52. Extra gets you a power outlet and priority boarding. For four hours, might be worth it.", textZh: "经济座35，加宽座52。加宽座有电源插座和优先登车。四个小时的话可能值得。", actionHint: "长途建议升级", frequency: "occasional" },
+              {
+                textEn:
+                  "Basic is 35 bucks, the upgrade is 52 — more legroom, an outlet, and you board first. Both have Wi-Fi and a bathroom.",
+                textZh:
+                  "基础票35，升级版52——更大的腿部空间、有插座、优先上车。都有Wi-Fi和卫生间。",
+                actionHint: "考虑是否值得升级",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Economy's $35, Economy Extra's $52. Extra gets you a power outlet and priority boarding. For four hours, might be worth it.",
+                textZh:
+                  "经济座35，加宽座52。加宽座有电源插座和优先登车。四个小时的话可能值得。",
+                actionHint: "长途建议升级",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll take Economy Extra — four hours is a long ride. Can I pick my seat?",
+            textEn:
+              "I'll take Economy Extra — four hours is a long ride. Can I pick my seat?",
             textZh: "我要经济加宽座——四小时挺长的。能选座位吗？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "Seats are first come, first served, but with Economy Extra you board first, so you'll have your pick. I'd recommend getting in line about 15 minutes before departure. The boarding gate is Gate 7.",
-            textZh: "座位是先到先得的，但经济加宽座优先上车，所以你可以先选。建议出发前15分钟开始排队。登车口在7号门。",
+            textEn:
+              "Seats are first come, first served, but with Economy Extra you board first, so you'll have your pick. I'd recommend getting in line about 15 minutes before departure. The boarding gate is Gate 7.",
+            textZh:
+              "座位是先到先得的，但经济加宽座优先上车，所以你可以先选。建议出发前15分钟开始排队。登车口在7号门。",
             keyPhrases: [
               { en: "first come, first served", zh: "先到先得" },
               { en: "boarding gate", zh: "登车口" },
               { en: "get in line", zh: "排队" },
             ],
-            literalMeaning: "\"first come, first served\" 字面意思是 \"先来的先服务\"，是英语中很常见的表达",
+            literalMeaning:
+              '"first come, first served" 字面意思是 "先来的先服务"，是英语中很常见的表达',
             alternativeExpressions: [
-              { textEn: "No assigned seats, but you board first with Extra so you'll get your pick. Line up at Gate 7 about 15 minutes early.", textZh: "没有指定座位，但加宽座先上车所以你可以随便选。提前15分钟去7号门排队。", actionHint: "提前去排队", frequency: "common" },
-              { textEn: "It's open seating — first on, best seat. With Economy Extra you get on before everyone else. Gate 7, be there 15 minutes ahead.", textZh: "自由选座——先上先选。加宽座比别人先上车。7号门，提前15分钟到。", actionHint: "先上车先选好座", frequency: "common" },
+              {
+                textEn:
+                  "No assigned seats, but you board first with Extra so you'll get your pick. Line up at Gate 7 about 15 minutes early.",
+                textZh:
+                  "没有指定座位，但加宽座先上车所以你可以随便选。提前15分钟去7号门排队。",
+                actionHint: "提前去排队",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's open seating — first on, best seat. With Economy Extra you get on before everyone else. Gate 7, be there 15 minutes ahead.",
+                textZh:
+                  "自由选座——先上先选。加宽座比别人先上车。7号门，提前15分钟到。",
+                actionHint: "先上车先选好座",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. Where can I wait? Is there a waiting area with seating?",
+            textEn:
+              "Got it. Where can I wait? Is there a waiting area with seating?",
             textZh: "明白了。在哪里等车？有候车区和座位吗？",
           },
           {
             speaker: "them",
             role: "售票员",
-            textEn: "The main waiting area is right behind you — plenty of seats. There are also vending machines and a coffee shop on the left. Restrooms are down the hall. We'll announce boarding on the PA system about 10 minutes before departure.",
-            textZh: "候车大厅就在你身后——座位很多。左边有自动售货机和一家咖啡店。卫生间在走廊尽头。出发前10分钟我们会在广播里通知登车。",
+            textEn:
+              "The main waiting area is right behind you — plenty of seats. There are also vending machines and a coffee shop on the left. Restrooms are down the hall. We'll announce boarding on the PA system about 10 minutes before departure.",
+            textZh:
+              "候车大厅就在你身后——座位很多。左边有自动售货机和一家咖啡店。卫生间在走廊尽头。出发前10分钟我们会在广播里通知登车。",
             keyPhrases: [
               { en: "vending machines", zh: "自动售货机" },
               { en: "PA system", zh: "广播系统" },
               { en: "announce boarding", zh: "通知登车" },
             ],
             vocabNotes: {
-              "PA system": { meaningInContext: "在这句话里表示：Public Address system，公共广播系统，用来对全场播报通知", similarUsage: "类似用法：The flight delay was announced over the PA system.（航班延误通过广播系统通知了）" },
+              "PA system": {
+                meaningInContext:
+                  "在这句话里表示：Public Address system，公共广播系统，用来对全场播报通知",
+                similarUsage:
+                  "类似用法：The flight delay was announced over the PA system.（航班延误通过广播系统通知了）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Waiting area's right behind you. Coffee shop on the left, bathrooms down the hall. We'll call boarding over the speakers 10 minutes before.", textZh: "候车区就在你身后。左边有咖啡店，卫生间在走廊那头。出发前10分钟广播通知上车。", actionHint: "留意广播", frequency: "common" },
-              { textEn: "Have a seat right over there — plenty of room. There's snacks and coffee nearby. Listen for the announcement about 10 minutes before departure.", textZh: "就在那边坐——位子很多。附近有零食和咖啡。出发前10分钟注意听广播。", actionHint: "别走太远听广播", frequency: "common" },
+              {
+                textEn:
+                  "Waiting area's right behind you. Coffee shop on the left, bathrooms down the hall. We'll call boarding over the speakers 10 minutes before.",
+                textZh:
+                  "候车区就在你身后。左边有咖啡店，卫生间在走廊那头。出发前10分钟广播通知上车。",
+                actionHint: "留意广播",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Have a seat right over there — plenty of room. There's snacks and coffee nearby. Listen for the announcement about 10 minutes before departure.",
+                textZh:
+                  "就在那边坐——位子很多。附近有零食和咖啡。出发前10分钟注意听广播。",
+                actionHint: "别走太远听广播",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -3605,8 +5779,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "售票员",
-            textEn: "You can bring one personal item on board — like a backpack — and one checked bag that goes underneath for free. Each additional checked bag is $20. Maximum weight is 50 pounds per bag.",
-            textZh: "车上可以带一件随身物品——比如背包——还有一件免费托运行李放在车底。每件额外托运行李20美元。每件最大重量50磅（约23公斤）。",
+            textEn:
+              "You can bring one personal item on board — like a backpack — and one checked bag that goes underneath for free. Each additional checked bag is $20. Maximum weight is 50 pounds per bag.",
+            textZh:
+              "车上可以带一件随身物品——比如背包——还有一件免费托运行李放在车底。每件额外托运行李20美元。每件最大重量50磅（约23公斤）。",
             keyPhrases: [
               { en: "personal item", zh: "随身物品" },
               { en: "checked bag", zh: "托运行李" },
@@ -3614,13 +5790,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "maximum weight", zh: "最大重量" },
             ],
             alternativeExpressions: [
-              { textEn: "One carry-on like a backpack, plus one bag underneath for free. Extra bags are 20 bucks each. Keep it under 50 pounds.", textZh: "一个随身的比如背包，加一件免费放车底的。多的每件20美元。每件不超过50磅。", actionHint: "检查行李重量", frequency: "common" },
-              { textEn: "You get a personal item on board and one free checked bag in the hold. Anything extra is $20. Max 50 pounds per bag.", textZh: "车上带一个随身物品，车底免费放一件托运。额外的每件20美元。每件最重50磅。", actionHint: "超重需额外付费", frequency: "common" },
+              {
+                textEn:
+                  "One carry-on like a backpack, plus one bag underneath for free. Extra bags are 20 bucks each. Keep it under 50 pounds.",
+                textZh:
+                  "一个随身的比如背包，加一件免费放车底的。多的每件20美元。每件不超过50磅。",
+                actionHint: "检查行李重量",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You get a personal item on board and one free checked bag in the hold. Anything extra is $20. Max 50 pounds per bag.",
+                textZh:
+                  "车上带一个随身物品，车底免费放一件托运。额外的每件20美元。每件最重50磅。",
+                actionHint: "超重需额外付费",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That works. I just have a backpack and one suitcase. Thank you — I'll head to the waiting area.",
+            textEn:
+              "That works. I just have a backpack and one suitcase. Thank you — I'll head to the waiting area.",
             textZh: "够了。我就一个背包和一个行李箱。谢谢——我去候车区了。",
           },
         ],
@@ -3636,8 +5827,10 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "Good afternoon, everyone. Welcome aboard the 2:30 service to Boston. The estimated arrival time is 6:45 PM. We'll make one rest stop in about two hours at the Hartford service plaza. The restroom is at the rear of the bus. Please keep your belongings with you at all times.",
-            textZh: "大家下午好。欢迎乘坐2:30去波士顿的班车。预计到达时间6:45 PM。大约两小时后我们会在哈特福德服务区停靠一次。卫生间在车尾。请随时保管好个人物品。",
+            textEn:
+              "Good afternoon, everyone. Welcome aboard the 2:30 service to Boston. The estimated arrival time is 6:45 PM. We'll make one rest stop in about two hours at the Hartford service plaza. The restroom is at the rear of the bus. Please keep your belongings with you at all times.",
+            textZh:
+              "大家下午好。欢迎乘坐2:30去波士顿的班车。预计到达时间6:45 PM。大约两小时后我们会在哈特福德服务区停靠一次。卫生间在车尾。请随时保管好个人物品。",
             keyPhrases: [
               { en: "welcome aboard", zh: "欢迎乘坐" },
               { en: "estimated arrival time", zh: "预计到达时间" },
@@ -3646,107 +5839,208 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "belongings", zh: "个人物品" },
             ],
             alternativeExpressions: [
-              { textEn: "Afternoon, folks. Boston-bound, arriving around 6:45. We'll stop once in Hartford for a break. Restroom's in the back. Keep your stuff close.", textZh: "大家下午好。去波士顿，大约6:45到。中间在哈特福德停一次。卫生间在后面。东西看好。", actionHint: "记住到达时间", frequency: "common" },
-              { textEn: "Welcome aboard, everyone. ETA is 6:45 in Boston. One rest stop in about two hours. Bathroom's at the rear. Please keep an eye on your belongings.", textZh: "欢迎上车。预计6:45到波士顿。大约两小时后停一次。卫生间在车尾。请看好个人物品。", actionHint: "了解中途停靠安排", frequency: "common" },
+              {
+                textEn:
+                  "Afternoon, folks. Boston-bound, arriving around 6:45. We'll stop once in Hartford for a break. Restroom's in the back. Keep your stuff close.",
+                textZh:
+                  "大家下午好。去波士顿，大约6:45到。中间在哈特福德停一次。卫生间在后面。东西看好。",
+                actionHint: "记住到达时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Welcome aboard, everyone. ETA is 6:45 in Boston. One rest stop in about two hours. Bathroom's at the rear. Please keep an eye on your belongings.",
+                textZh:
+                  "欢迎上车。预计6:45到波士顿。大约两小时后停一次。卫生间在车尾。请看好个人物品。",
+                actionHint: "了解中途停靠安排",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Excuse me, is this seat taken? I have an Economy Extra ticket.",
+            textEn:
+              "Excuse me, is this seat taken? I have an Economy Extra ticket.",
             textZh: "不好意思，这个座位有人吗？我是经济加宽座的票。",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "No, it's free. Go ahead. Are you heading to Boston too? The seats in this section recline a bit more — just push the button on the armrest.",
-            textZh: "没有人，坐吧。你也去波士顿吗？这个区域的座位可以多倾斜一些——按扶手上的按钮就行。",
+            textEn:
+              "No, it's free. Go ahead. Are you heading to Boston too? The seats in this section recline a bit more — just push the button on the armrest.",
+            textZh:
+              "没有人，坐吧。你也去波士顿吗？这个区域的座位可以多倾斜一些——按扶手上的按钮就行。",
             keyPhrases: [
               { en: "is this seat taken", zh: "这个座位有人吗" },
               { en: "recline", zh: "倾斜/放倒" },
               { en: "armrest", zh: "扶手" },
             ],
             alternativeExpressions: [
-              { textEn: "Nope, go for it. Heading to Boston? These seats recline more — hit the button on the arm.", textZh: "没人，坐吧。也去波士顿？这些座位能多倾斜一些——按扶手上的按钮。", actionHint: "试试座位倾斜功能", frequency: "common" },
-              { textEn: "All yours! Yeah, Boston too. Pro tip — there's a recline button on the armrest. These seats tilt back further.", textZh: "随便坐！对，也去波士顿。告诉你个窍门——扶手上有倾斜按钮。这些座位能更往后仰。", actionHint: "找到倾斜按钮", frequency: "occasional" },
+              {
+                textEn:
+                  "Nope, go for it. Heading to Boston? These seats recline more — hit the button on the arm.",
+                textZh:
+                  "没人，坐吧。也去波士顿？这些座位能多倾斜一些——按扶手上的按钮。",
+                actionHint: "试试座位倾斜功能",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "All yours! Yeah, Boston too. Pro tip — there's a recline button on the armrest. These seats tilt back further.",
+                textZh:
+                  "随便坐！对，也去波士顿。告诉你个窍门——扶手上有倾斜按钮。这些座位能更往后仰。",
+                actionHint: "找到倾斜按钮",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks! Yes, Boston. Is the Wi-Fi password posted somewhere? I can't seem to connect.",
+            textEn:
+              "Thanks! Yes, Boston. Is the Wi-Fi password posted somewhere? I can't seem to connect.",
             textZh: "谢谢！对，去波士顿。Wi-Fi 密码贴在哪里了？我好像连不上。",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "There's no password — just connect to 'GreyhoundWiFi' and accept the terms in your browser. It's a bit slow for streaming, but fine for messaging and email.",
-            textZh: "没有密码——连上'GreyhoundWiFi'然后在浏览器里接受条款就行。看视频可能有点慢，但发消息和邮件没问题。",
+            textEn:
+              "There's no password — just connect to 'GreyhoundWiFi' and accept the terms in your browser. It's a bit slow for streaming, but fine for messaging and email.",
+            textZh:
+              "没有密码——连上'GreyhoundWiFi'然后在浏览器里接受条款就行。看视频可能有点慢，但发消息和邮件没问题。",
             keyPhrases: [
               { en: "accept the terms", zh: "接受条款" },
               { en: "streaming", zh: "看视频/流媒体" },
             ],
             alternativeExpressions: [
-              { textEn: "No password needed. Just connect to 'GreyhoundWiFi' and hit accept in your browser. Don't expect Netflix to work though.", textZh: "不用密码。连上'GreyhoundWiFi'在浏览器里点接受就行。别指望能看Netflix。", actionHint: "在浏览器里接受条款", frequency: "common" },
-              { textEn: "It's open — just pick GreyhoundWiFi from the list and agree to the terms. Good enough for texting, not great for videos.", textZh: "开放的——在列表里选GreyhoundWiFi然后同意条款。发消息够用，看视频不太行。", actionHint: "连上后打开浏览器", frequency: "common" },
+              {
+                textEn:
+                  "No password needed. Just connect to 'GreyhoundWiFi' and hit accept in your browser. Don't expect Netflix to work though.",
+                textZh:
+                  "不用密码。连上'GreyhoundWiFi'在浏览器里点接受就行。别指望能看Netflix。",
+                actionHint: "在浏览器里接受条款",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's open — just pick GreyhoundWiFi from the list and agree to the terms. Good enough for texting, not great for videos.",
+                textZh:
+                  "开放的——在列表里选GreyhoundWiFi然后同意条款。发消息够用，看视频不太行。",
+                actionHint: "连上后打开浏览器",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it, thanks. How long is the rest stop usually? I want to grab some food.",
+            textEn:
+              "Got it, thanks. How long is the rest stop usually? I want to grab some food.",
             textZh: "明白了，谢谢。休息站一般停多久？我想买点吃的。",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Usually about 15 to 20 minutes. There's a food court at the Hartford plaza — McDonald's and Subway, I think. Just don't wander too far. The driver won't wait if you're late.",
-            textZh: "一般15到20分钟。哈特福德服务区有美食广场——好像有麦当劳和赛百味。别走太远。迟到了司机不会等你的。",
+            textEn:
+              "Usually about 15 to 20 minutes. There's a food court at the Hartford plaza — McDonald's and Subway, I think. Just don't wander too far. The driver won't wait if you're late.",
+            textZh:
+              "一般15到20分钟。哈特福德服务区有美食广场——好像有麦当劳和赛百味。别走太远。迟到了司机不会等你的。",
             keyPhrases: [
               { en: "food court", zh: "美食广场" },
               { en: "wander too far", zh: "走太远" },
             ],
-            culturalMeaning: "美国长途大巴在服务区停车时间有限，一定要注意时间。司机会在出发前按喇叭提醒，但迟到了真的会直接走。",
+            culturalMeaning:
+              "美国长途大巴在服务区停车时间有限，一定要注意时间。司机会在出发前按喇叭提醒，但迟到了真的会直接走。",
             alternativeExpressions: [
-              { textEn: "About 15-20 minutes. There's a McDonald's and Subway at the plaza. Just keep track of time — the bus leaves with or without you.", textZh: "大约15-20分钟。服务区有麦当劳和赛百味。注意时间——车不等人的。", actionHint: "设闹钟提醒", frequency: "common" },
-              { textEn: "It's a quick stop — 15, maybe 20 minutes. Grab food fast. Seriously, don't wander off. The driver will honk and go.", textZh: "很短的停靠——15到20分钟。赶紧买吃的。说真的，别乱跑。司机按喇叭就走。", actionHint: "抓紧时间买食物", frequency: "common" },
+              {
+                textEn:
+                  "About 15-20 minutes. There's a McDonald's and Subway at the plaza. Just keep track of time — the bus leaves with or without you.",
+                textZh:
+                  "大约15-20分钟。服务区有麦当劳和赛百味。注意时间——车不等人的。",
+                actionHint: "设闹钟提醒",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's a quick stop — 15, maybe 20 minutes. Grab food fast. Seriously, don't wander off. The driver will honk and go.",
+                textZh:
+                  "很短的停靠——15到20分钟。赶紧买吃的。说真的，别乱跑。司机按喇叭就走。",
+                actionHint: "抓紧时间买食物",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good to know! I'll set an alarm. By the way, do you know if the bus stops near the city center in Boston, or do I need to take another ride?",
-            textZh: "谢谢提醒！我设个闹钟。对了，巴士在波士顿市中心附近停吗？还是需要再转车？",
+            textEn:
+              "Good to know! I'll set an alarm. By the way, do you know if the bus stops near the city center in Boston, or do I need to take another ride?",
+            textZh:
+              "谢谢提醒！我设个闹钟。对了，巴士在波士顿市中心附近停吗？还是需要再转车？",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "The bus station is South Station — right in downtown Boston. It's connected to the subway, so you can transfer to the Red Line or Silver Line from there. Very convenient, actually.",
-            textZh: "巴士站是南站——就在波士顿市中心。连着地铁，可以从那里转红线或银线。其实很方便。",
+            textEn:
+              "The bus station is South Station — right in downtown Boston. It's connected to the subway, so you can transfer to the Red Line or Silver Line from there. Very convenient, actually.",
+            textZh:
+              "巴士站是南站——就在波士顿市中心。连着地铁，可以从那里转红线或银线。其实很方便。",
             keyPhrases: [
               { en: "downtown", zh: "市中心" },
               { en: "connected to the subway", zh: "连着地铁" },
               { en: "transfer to", zh: "转乘" },
             ],
             alternativeExpressions: [
-              { textEn: "You end up at South Station — smack in the middle of downtown. The T is right there — Red Line, Silver Line, whatever you need.", textZh: "终点站是南站——就在市中心正中间。地铁就在那——红线、银线，想转哪条都行。", actionHint: "到站后找地铁标志", frequency: "common" },
-              { textEn: "The bus drops you at South Station, which is downtown. It connects to the subway so getting around from there is easy.", textZh: "巴士把你放在南站，就是市中心。那里通地铁，之后出行很方便。", actionHint: "不需要再打车", frequency: "common" },
+              {
+                textEn:
+                  "You end up at South Station — smack in the middle of downtown. The T is right there — Red Line, Silver Line, whatever you need.",
+                textZh:
+                  "终点站是南站——就在市中心正中间。地铁就在那——红线、银线，想转哪条都行。",
+                actionHint: "到站后找地铁标志",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "The bus drops you at South Station, which is downtown. It connects to the subway so getting around from there is easy.",
+                textZh:
+                  "巴士把你放在南站，就是市中心。那里通地铁，之后出行很方便。",
+                actionHint: "不需要再打车",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That's great. Thank you so much — you've been really helpful!",
+            textEn:
+              "That's great. Thank you so much — you've been really helpful!",
             textZh: "太好了。非常感谢——你帮了大忙！",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "No problem! If it's your first time in Boston, I'd recommend the Freedom Trail — it's a walking tour through the historic sites. Have a great trip!",
-            textZh: "不客气！如果是第一次去波士顿，推荐自由之路——步行游览历史景点。旅途愉快！",
+            textEn:
+              "No problem! If it's your first time in Boston, I'd recommend the Freedom Trail — it's a walking tour through the historic sites. Have a great trip!",
+            textZh:
+              "不客气！如果是第一次去波士顿，推荐自由之路——步行游览历史景点。旅途愉快！",
             keyPhrases: [
               { en: "Freedom Trail", zh: "自由之路" },
               { en: "walking tour", zh: "步行游览" },
               { en: "historic sites", zh: "历史景点" },
             ],
             alternativeExpressions: [
-              { textEn: "Anytime! First time in Boston? Definitely check out the Freedom Trail — it's a walking path through all the historic stuff. Have fun!", textZh: "不客气！第一次去波士顿？一定要去自由之路——是条步行路线穿过所有历史景点。玩得开心！", actionHint: "搜索自由之路路线", frequency: "common" },
-              { textEn: "No worries! If you get a chance, walk the Freedom Trail — best way to see the city. Enjoy Boston!", textZh: "不客气！有机会的话走一下自由之路——看城市最好的方式。享受波士顿！", actionHint: "提前规划游览路线", frequency: "common" },
+              {
+                textEn:
+                  "Anytime! First time in Boston? Definitely check out the Freedom Trail — it's a walking path through all the historic stuff. Have fun!",
+                textZh:
+                  "不客气！第一次去波士顿？一定要去自由之路——是条步行路线穿过所有历史景点。玩得开心！",
+                actionHint: "搜索自由之路路线",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "No worries! If you get a chance, walk the Freedom Trail — best way to see the city. Enjoy Boston!",
+                textZh:
+                  "不客气！有机会的话走一下自由之路——看城市最好的方式。享受波士顿！",
+                actionHint: "提前规划游览路线",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -3760,7 +6054,8 @@ export const TRANSPORT_SCENES: PresetScene[] = [
     category: "transport",
     titleZh: "电动滑板车租赁",
     titleEn: "E-Scooter Rental",
-    description: "在城市中使用 Lime、Bird 等共享电动滑板车的完整流程和遇到的问题",
+    description:
+      "在城市中使用 Lime、Bird 等共享电动滑板车的完整流程和遇到的问题",
     otherRole: "路人/客服",
     otherRoleIcon: "zap",
     flows: [
@@ -3774,14 +6069,17 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, do you know how to use these scooters? I've never tried one before.",
+            textEn:
+              "Excuse me, do you know how to use these scooters? I've never tried one before.",
             textZh: "不好意思，你知道怎么用这些滑板车吗？我从来没用过。",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Sure! You need to download the Lime app first. Then you scan the QR code on the handlebars. It'll charge your credit card on file. The rate is usually $1 to unlock plus about 39 cents per minute.",
-            textZh: "当然！你先下载 Lime App。然后扫车把上的二维码。会从你绑定的信用卡扣费。费用一般是1美元解锁加每分钟大约39美分。",
+            textEn:
+              "Sure! You need to download the Lime app first. Then you scan the QR code on the handlebars. It'll charge your credit card on file. The rate is usually $1 to unlock plus about 39 cents per minute.",
+            textZh:
+              "当然！你先下载 Lime App。然后扫车把上的二维码。会从你绑定的信用卡扣费。费用一般是1美元解锁加每分钟大约39美分。",
             keyPhrases: [
               { en: "QR code", zh: "二维码" },
               { en: "handlebars", zh: "车把" },
@@ -3790,39 +6088,67 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "per minute", zh: "每分钟" },
             ],
             alternativeExpressions: [
-              { textEn: "Just download the app, add a payment method, and scan the code. It's super easy.", textZh: "下载App，添加支付方式，扫码就行。超简单。", actionHint: "先下载对应的App", frequency: "common" },
+              {
+                textEn:
+                  "Just download the app, add a payment method, and scan the code. It's super easy.",
+                textZh: "下载App，添加支付方式，扫码就行。超简单。",
+                actionHint: "先下载对应的App",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Okay, I downloaded the app. But it's asking for a US phone number to verify — I only have a Chinese number. Will that work?",
-            textZh: "好的，App 下载好了。但要求输入美国手机号验证——我只有中国号码。能用吗？",
+            textEn:
+              "Okay, I downloaded the app. But it's asking for a US phone number to verify — I only have a Chinese number. Will that work?",
+            textZh:
+              "好的，App 下载好了。但要求输入美国手机号验证——我只有中国号码。能用吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "I think Lime accepts international numbers — try entering your Chinese number with the country code +86. If it doesn't work, you might be able to sign up with just your email. Or try Bird — that's another scooter company here, the black ones over there.",
-            textZh: "我记得 Lime 接受国际号码——试试输入中国号码加国家代码 +86。如果不行的话，可能可以只用邮箱注册。或者试试 Bird——那边黑色的，另一个滑板车公司。",
+            textEn:
+              "I think Lime accepts international numbers — try entering your Chinese number with the country code +86. If it doesn't work, you might be able to sign up with just your email. Or try Bird — that's another scooter company here, the black ones over there.",
+            textZh:
+              "我记得 Lime 接受国际号码——试试输入中国号码加国家代码 +86。如果不行的话，可能可以只用邮箱注册。或者试试 Bird——那边黑色的，另一个滑板车公司。",
             keyPhrases: [
               { en: "country code", zh: "国家代码" },
               { en: "international numbers", zh: "国际号码" },
               { en: "sign up", zh: "注册" },
             ],
             alternativeExpressions: [
-              { textEn: "I'm pretty sure they take international numbers — just add +86 in front. If not, try email signup. Or use Bird, those black ones over there.", textZh: "我记得可以用国际号码——前面加+86。不行的话试试邮箱注册。或者用Bird，那边黑色的。", actionHint: "输入+86加手机号", frequency: "common" },
-              { textEn: "Try your Chinese number with the country code. Worst case, sign up with email. There's also Bird scooters around — the black ones.", textZh: "试试中国号码加国家代码。最差用邮箱注册。附近也有Bird滑板车——黑色的那种。", actionHint: "有备选方案", frequency: "common" },
+              {
+                textEn:
+                  "I'm pretty sure they take international numbers — just add +86 in front. If not, try email signup. Or use Bird, those black ones over there.",
+                textZh:
+                  "我记得可以用国际号码——前面加+86。不行的话试试邮箱注册。或者用Bird，那边黑色的。",
+                actionHint: "输入+86加手机号",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Try your Chinese number with the country code. Worst case, sign up with email. There's also Bird scooters around — the black ones.",
+                textZh:
+                  "试试中国号码加国家代码。最差用邮箱注册。附近也有Bird滑板车——黑色的那种。",
+                actionHint: "有备选方案",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "It worked with my Chinese number! Great. Now I've scanned the code and the scooter beeped. How do I ride it?",
-            textZh: "中国号码可以用！太好了。二维码扫了，滑板车响了一声。怎么骑？",
+            textEn:
+              "It worked with my Chinese number! Great. Now I've scanned the code and the scooter beeped. How do I ride it?",
+            textZh:
+              "中国号码可以用！太好了。二维码扫了，滑板车响了一声。怎么骑？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Put one foot on the platform and push off with the other foot to get started. Once you're moving, squeeze the throttle on the right handlebar to accelerate. The brake is on the left — squeeze gently. Don't go too fast at first!",
-            textZh: "一只脚踩在踏板上，另一只脚蹬地起步。动起来以后，握右边车把上的油门加速。刹车在左边——轻轻握。刚开始别太快！",
+            textEn:
+              "Put one foot on the platform and push off with the other foot to get started. Once you're moving, squeeze the throttle on the right handlebar to accelerate. The brake is on the left — squeeze gently. Don't go too fast at first!",
+            textZh:
+              "一只脚踩在踏板上，另一只脚蹬地起步。动起来以后，握右边车把上的油门加速。刹车在左边——轻轻握。刚开始别太快！",
             keyPhrases: [
               { en: "platform", zh: "踏板" },
               { en: "push off", zh: "蹬地起步" },
@@ -3831,23 +6157,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "brake", zh: "刹车" },
             ],
             vocabNotes: {
-              "throttle": { meaningInContext: "在这句话里表示：滑板车车把上控制速度的旋转手柄或按钮，相当于汽车的油门", similarUsage: "类似用法：Ease up on the throttle when going downhill.（下坡时松开油门）" },
+              throttle: {
+                meaningInContext:
+                  "在这句话里表示：滑板车车把上控制速度的旋转手柄或按钮，相当于汽车的油门",
+                similarUsage:
+                  "类似用法：Ease up on the throttle when going downhill.（下坡时松开油门）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Step on with one foot, push off with the other to get going. Right hand is the gas, left is the brake. Easy does it at first!", textZh: "一只脚踩上去，另一只脚蹬地起步。右手是油门，左手是刹车。慢慢来！", actionHint: "先慢慢练习", frequency: "common" },
-              { textEn: "Kick off to start, then twist the throttle on the right to speed up. Brake's on the left — squeeze gently. Take it slow till you get the hang of it.", textZh: "蹬地起步，然后右边拧油门加速。刹车在左边——轻轻捏。找到感觉前慢点骑。", actionHint: "先在空地练习", frequency: "common" },
+              {
+                textEn:
+                  "Step on with one foot, push off with the other to get going. Right hand is the gas, left is the brake. Easy does it at first!",
+                textZh:
+                  "一只脚踩上去，另一只脚蹬地起步。右手是油门，左手是刹车。慢慢来！",
+                actionHint: "先慢慢练习",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Kick off to start, then twist the throttle on the right to speed up. Brake's on the left — squeeze gently. Take it slow till you get the hang of it.",
+                textZh:
+                  "蹬地起步，然后右边拧油门加速。刹车在左边——轻轻捏。找到感觉前慢点骑。",
+                actionHint: "先在空地练习",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Got it. Where am I allowed to ride? Can I go on the sidewalk?",
+            textEn:
+              "Got it. Where am I allowed to ride? Can I go on the sidewalk?",
             textZh: "明白了。我能在哪里骑？能骑上人行道吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Actually, in most US cities you're supposed to ride in the bike lane or on the street — not on the sidewalk. Some areas have designated scooter lanes. And you should follow traffic signals just like a car. Oh, and helmets aren't required here but they're strongly recommended.",
-            textZh: "其实在美国大多数城市，你应该骑在自行车道或马路上——不能骑上人行道。有些地方有专门的滑板车道。要像开车一样遵守交通信号灯。哦，这里不强制戴头盔但强烈建议戴。",
+            textEn:
+              "Actually, in most US cities you're supposed to ride in the bike lane or on the street — not on the sidewalk. Some areas have designated scooter lanes. And you should follow traffic signals just like a car. Oh, and helmets aren't required here but they're strongly recommended.",
+            textZh:
+              "其实在美国大多数城市，你应该骑在自行车道或马路上——不能骑上人行道。有些地方有专门的滑板车道。要像开车一样遵守交通信号灯。哦，这里不强制戴头盔但强烈建议戴。",
             keyPhrases: [
               { en: "bike lane", zh: "自行车道" },
               { en: "sidewalk", zh: "人行道" },
@@ -3855,23 +6203,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "traffic signals", zh: "交通信号灯" },
               { en: "helmets", zh: "头盔" },
             ],
-            localVariants: { "en-US": "sidewalk", "en-GB": "pavement", "en-AU": "footpath" },
-            culturalNote: "在人行道上骑电动滑板车在很多美国城市是违法的，会被罚款。一定要走自行车道或靠马路边。",
+            localVariants: {
+              "en-US": "sidewalk",
+              "en-GB": "pavement",
+              "en-AU": "footpath",
+            },
+            culturalNote:
+              "在人行道上骑电动滑板车在很多美国城市是违法的，会被罚款。一定要走自行车道或靠马路边。",
             alternativeExpressions: [
-              { textEn: "Stay off the sidewalk — that's a no-no in most cities. Stick to the bike lane or the road. And follow traffic lights like you would in a car.", textZh: "别上人行道——大多数城市不让。走自行车道或马路。红绿灯像开车一样遵守。", actionHint: "走自行车道", frequency: "common" },
-              { textEn: "Bike lanes are your friend. Sidewalks are illegal for scooters here. A helmet's not required but I'd wear one if I were you.", textZh: "走自行车道就对了。人行道骑滑板车这里违法。头盔不强制但建议你戴。", actionHint: "尽量戴头盔", frequency: "common" },
+              {
+                textEn:
+                  "Stay off the sidewalk — that's a no-no in most cities. Stick to the bike lane or the road. And follow traffic lights like you would in a car.",
+                textZh:
+                  "别上人行道——大多数城市不让。走自行车道或马路。红绿灯像开车一样遵守。",
+                actionHint: "走自行车道",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Bike lanes are your friend. Sidewalks are illegal for scooters here. A helmet's not required but I'd wear one if I were you.",
+                textZh:
+                  "走自行车道就对了。人行道骑滑板车这里违法。头盔不强制但建议你戴。",
+                actionHint: "尽量戴头盔",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks for telling me — I would have ridden on the sidewalk! And where do I park it when I'm done?",
+            textEn:
+              "Thanks for telling me — I would have ridden on the sidewalk! And where do I park it when I'm done?",
             textZh: "谢谢提醒——我差点就骑上人行道了！骑完了停哪里？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Just park it upright on the sidewalk near a bike rack — don't block doorways or wheelchair ramps. The app will show you designated parking areas on the map. End your ride in the app and take a photo to confirm parking. Otherwise you'll keep getting charged!",
-            textZh: "立着停在人行道上自行车架附近就行——别挡门口或轮椅坡道。App 上的地图会显示指定停车区域。在 App 里结束行程并拍照确认停车。不然会一直计费的！",
+            textEn:
+              "Just park it upright on the sidewalk near a bike rack — don't block doorways or wheelchair ramps. The app will show you designated parking areas on the map. End your ride in the app and take a photo to confirm parking. Otherwise you'll keep getting charged!",
+            textZh:
+              "立着停在人行道上自行车架附近就行——别挡门口或轮椅坡道。App 上的地图会显示指定停车区域。在 App 里结束行程并拍照确认停车。不然会一直计费的！",
             keyPhrases: [
               { en: "upright", zh: "立着" },
               { en: "bike rack", zh: "自行车架" },
@@ -3880,20 +6250,37 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "keep getting charged", zh: "一直计费" },
             ],
             alternativeExpressions: [
-              { textEn: "Park it standing up near a bike rack. Don't block doors or ramps. End the ride in the app and snap a photo — otherwise it keeps charging.", textZh: "立着停在自行车架旁。别挡门和坡道。App里结束行程拍照——不然一直扣钱。", actionHint: "一定要在App里结束行程", frequency: "common" },
-              { textEn: "The app shows parking zones. Just leave it upright, don't block anything, and make sure you hit 'end ride' and take a pic. Super important.", textZh: "App上有停车区域。立好停着，别挡路，一定要点'结束行程'然后拍照。这个很重要。", actionHint: "拍照确认停车", frequency: "common" },
+              {
+                textEn:
+                  "Park it standing up near a bike rack. Don't block doors or ramps. End the ride in the app and snap a photo — otherwise it keeps charging.",
+                textZh:
+                  "立着停在自行车架旁。别挡门和坡道。App里结束行程拍照——不然一直扣钱。",
+                actionHint: "一定要在App里结束行程",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "The app shows parking zones. Just leave it upright, don't block anything, and make sure you hit 'end ride' and take a pic. Super important.",
+                textZh:
+                  "App上有停车区域。立好停着，别挡路，一定要点'结束行程'然后拍照。这个很重要。",
+                actionHint: "拍照确认停车",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "This is so helpful. One last thing — is it safe to ride at night?",
+            textEn:
+              "This is so helpful. One last thing — is it safe to ride at night?",
             textZh: "太有帮助了。最后一个问题——晚上骑安全吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "The scooters have front lights and a rear reflector, but honestly I'd stick to well-lit streets at night. Some scooter companies have a curfew after 10 PM in certain areas. Stay safe and have fun!",
-            textZh: "滑板车前面有灯后面有反光板，但老实说晚上我建议走灯光好的路。有些滑板车公司在某些区域晚上10点后有宵禁。注意安全，玩得开心！",
+            textEn:
+              "The scooters have front lights and a rear reflector, but honestly I'd stick to well-lit streets at night. Some scooter companies have a curfew after 10 PM in certain areas. Stay safe and have fun!",
+            textZh:
+              "滑板车前面有灯后面有反光板，但老实说晚上我建议走灯光好的路。有些滑板车公司在某些区域晚上10点后有宵禁。注意安全，玩得开心！",
             keyPhrases: [
               { en: "front lights", zh: "前灯" },
               { en: "rear reflector", zh: "后反光板" },
@@ -3901,11 +6288,30 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "curfew", zh: "宵禁/限制使用时间" },
             ],
             vocabNotes: {
-              "curfew": { meaningInContext: "在这句话里表示：某个时间之后不允许使用滑板车的规定", similarUsage: "类似用法：The city has a 9 PM curfew for minors.（这个城市未成年人晚上9点后有宵禁）" },
+              curfew: {
+                meaningInContext:
+                  "在这句话里表示：某个时间之后不允许使用滑板车的规定",
+                similarUsage:
+                  "类似用法：The city has a 9 PM curfew for minors.（这个城市未成年人晚上9点后有宵禁）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "There's a headlight and reflector, but I wouldn't ride on dark streets. Some areas shut the scooters down after 10 PM too.", textZh: "有前灯和反光板，但暗的路我不建议骑。有些地方晚上10点以后滑板车也会停用。", actionHint: "晚上尽量别骑", frequency: "common" },
-              { textEn: "They've got lights on them, but stick to well-lit areas at night. Oh, and some zones have a 10 PM cutoff — the scooter just stops working.", textZh: "车上有灯，但晚上走亮的路。有些区域10点后有限制——滑板车直接停止工作。", actionHint: "走亮的街道", frequency: "common" },
+              {
+                textEn:
+                  "There's a headlight and reflector, but I wouldn't ride on dark streets. Some areas shut the scooters down after 10 PM too.",
+                textZh:
+                  "有前灯和反光板，但暗的路我不建议骑。有些地方晚上10点以后滑板车也会停用。",
+                actionHint: "晚上尽量别骑",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "They've got lights on them, but stick to well-lit areas at night. Oh, and some zones have a 10 PM cutoff — the scooter just stops working.",
+                textZh:
+                  "车上有灯，但晚上走亮的路。有些区域10点后有限制——滑板车直接停止工作。",
+                actionHint: "走亮的街道",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -3920,90 +6326,166 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "I scanned the scooter but it won't start. The light is blinking red. What does that mean?",
+            textEn:
+              "I scanned the scooter but it won't start. The light is blinking red. What does that mean?",
             textZh: "我扫了二维码但滑板车启动不了。灯在闪红色。什么意思？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Red blinking usually means the battery is almost dead. You should end this ride in the app and find another one. Check the battery percentage before you scan — it shows on the app when you point your camera at it.",
-            textZh: "红灯闪一般是电池快没电了。你在 App 里结束这次行程找另一辆吧。扫码前先看电量——用 App 对着车拍的时候会显示电量百分比。",
+            textEn:
+              "Red blinking usually means the battery is almost dead. You should end this ride in the app and find another one. Check the battery percentage before you scan — it shows on the app when you point your camera at it.",
+            textZh:
+              "红灯闪一般是电池快没电了。你在 App 里结束这次行程找另一辆吧。扫码前先看电量——用 App 对着车拍的时候会显示电量百分比。",
             keyPhrases: [
               { en: "battery is almost dead", zh: "电池快没电了" },
               { en: "battery percentage", zh: "电量百分比" },
               { en: "blinking", zh: "闪烁" },
             ],
             alternativeExpressions: [
-              { textEn: "Red light means it's basically dead. Just end the ride and grab a different one. Next time check the battery in the app before scanning.", textZh: "红灯就是没电了。结束行程换一辆吧。下次扫码前先在App里看电量。", actionHint: "结束行程找别的车", frequency: "common" },
-              { textEn: "That's low battery. Ditch this one — end the ride in the app and find another. Pro tip: the app shows battery level before you unlock.", textZh: "那是电量低。放弃这辆——在App里结束行程找下一辆。小窍门：App解锁前会显示电量。", actionHint: "扫码前先看电量", frequency: "common" },
+              {
+                textEn:
+                  "Red light means it's basically dead. Just end the ride and grab a different one. Next time check the battery in the app before scanning.",
+                textZh:
+                  "红灯就是没电了。结束行程换一辆吧。下次扫码前先在App里看电量。",
+                actionHint: "结束行程找别的车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "That's low battery. Ditch this one — end the ride in the app and find another. Pro tip: the app shows battery level before you unlock.",
+                textZh:
+                  "那是电量低。放弃这辆——在App里结束行程找下一辆。小窍门：App解锁前会显示电量。",
+                actionHint: "扫码前先看电量",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "But the app already charged me the $1 unlock fee. Will I get a refund for a broken scooter?",
+            textEn:
+              "But the app already charged me the $1 unlock fee. Will I get a refund for a broken scooter?",
             textZh: "但 App 已经扣了1美元解锁费。坏车能退费吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Yeah, just go to the app's help section and report the issue. Select 'scooter didn't work' or 'low battery.' They usually refund the unlock fee automatically. You can also report the scooter as damaged so they can fix it.",
-            textZh: "可以的，在 App 的帮助中心报告问题。选'滑板车无法使用'或'电量低'。他们通常会自动退解锁费。你也可以报告滑板车损坏，这样他们会来修。",
+            textEn:
+              "Yeah, just go to the app's help section and report the issue. Select 'scooter didn't work' or 'low battery.' They usually refund the unlock fee automatically. You can also report the scooter as damaged so they can fix it.",
+            textZh:
+              "可以的，在 App 的帮助中心报告问题。选'滑板车无法使用'或'电量低'。他们通常会自动退解锁费。你也可以报告滑板车损坏，这样他们会来修。",
             keyPhrases: [
               { en: "report the issue", zh: "报告问题" },
               { en: "refund", zh: "退费" },
               { en: "damaged", zh: "损坏的" },
             ],
             alternativeExpressions: [
-              { textEn: "For sure — go to Help in the app and say the scooter didn't work. They'll refund the buck automatically. You can also flag it as broken.", textZh: "可以——在App的帮助里说滑板车不能用。他们会自动退那1块钱。你也可以标记它坏了。", actionHint: "在App里报告问题", frequency: "common" },
-              { textEn: "Yeah, just report it in the app. Pick 'scooter issue' and they'll give you your money back. Takes like 2 minutes.", textZh: "可以，在App里报告就行。选'滑板车问题'他们就退钱了。就两分钟的事。", actionHint: "选对应的问题类型", frequency: "common" },
+              {
+                textEn:
+                  "For sure — go to Help in the app and say the scooter didn't work. They'll refund the buck automatically. You can also flag it as broken.",
+                textZh:
+                  "可以——在App的帮助里说滑板车不能用。他们会自动退那1块钱。你也可以标记它坏了。",
+                actionHint: "在App里报告问题",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, just report it in the app. Pick 'scooter issue' and they'll give you your money back. Takes like 2 minutes.",
+                textZh:
+                  "可以，在App里报告就行。选'滑板车问题'他们就退钱了。就两分钟的事。",
+                actionHint: "选对应的问题类型",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I found another scooter — this one shows 78% battery. That should be enough, right?",
+            textEn:
+              "I found another scooter — this one shows 78% battery. That should be enough, right?",
             textZh: "我找到另一辆了——显示78%电量。应该够用了吧？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Definitely. 78% should get you about 15 to 20 miles, depending on speed and hills. More than enough for getting around the city. Just keep an eye on the battery level in the app as you ride.",
-            textZh: "肯定够。78%大约能跑15到20英里（24到32公里），取决于速度和坡度。在城里逛绰绰有余。骑的时候注意看 App 上的电量就行。",
+            textEn:
+              "Definitely. 78% should get you about 15 to 20 miles, depending on speed and hills. More than enough for getting around the city. Just keep an eye on the battery level in the app as you ride.",
+            textZh:
+              "肯定够。78%大约能跑15到20英里（24到32公里），取决于速度和坡度。在城里逛绰绰有余。骑的时候注意看 App 上的电量就行。",
             keyPhrases: [
               { en: "keep an eye on", zh: "留意/注意看" },
               { en: "depending on", zh: "取决于" },
             ],
-            literalMeaning: "\"keep an eye on\" 字面意思是 \"把一只眼睛放在上面\"，实际表示 \"持续关注、留意\"",
+            literalMeaning:
+              '"keep an eye on" 字面意思是 "把一只眼睛放在上面"，实际表示 "持续关注、留意"',
             alternativeExpressions: [
-              { textEn: "Plenty! 78% will get you way more than you need for getting around town. Just check the app now and then for the battery level.", textZh: "足够了！78%在城里逛绰绰有余。骑的时候偶尔看看App上的电量就行。", actionHint: "偶尔查看电量", frequency: "common" },
-              { textEn: "Oh yeah, that's more than enough. Should last 15-20 miles easy. Just don't let it get below 10% or it'll slow down on you.", textZh: "绝对够。轻松跑15-20英里。别让电量低于10%不然会自动减速。", actionHint: "留意电量别太低", frequency: "common" },
+              {
+                textEn:
+                  "Plenty! 78% will get you way more than you need for getting around town. Just check the app now and then for the battery level.",
+                textZh:
+                  "足够了！78%在城里逛绰绰有余。骑的时候偶尔看看App上的电量就行。",
+                actionHint: "偶尔查看电量",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Oh yeah, that's more than enough. Should last 15-20 miles easy. Just don't let it get below 10% or it'll slow down on you.",
+                textZh:
+                  "绝对够。轻松跑15-20英里。别让电量低于10%不然会自动减速。",
+                actionHint: "留意电量别太低",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great. One more thing — I accidentally rode into a no-parking zone and the scooter slowed down by itself. Is that normal?",
-            textZh: "好的。还有一件事——我不小心骑进了禁停区，滑板车自己减速了。这正常吗？",
+            textEn:
+              "Great. One more thing — I accidentally rode into a no-parking zone and the scooter slowed down by itself. Is that normal?",
+            textZh:
+              "好的。还有一件事——我不小心骑进了禁停区，滑板车自己减速了。这正常吗？",
           },
           {
             speaker: "them",
             role: "路人",
-            textEn: "Yes, that's a geofenced zone — the scooter uses GPS to detect restricted areas and automatically slows you down or prevents you from ending your ride there. Just ride out of the zone and you'll get full speed back. The app shows those zones in red on the map.",
-            textZh: "是的，那是电子围栏区域——滑板车用 GPS 检测限制区域，会自动减速或阻止你在那里结束行程。骑出那个区域就恢复正常速度了。App 地图上用红色标了这些区域。",
+            textEn:
+              "Yes, that's a geofenced zone — the scooter uses GPS to detect restricted areas and automatically slows you down or prevents you from ending your ride there. Just ride out of the zone and you'll get full speed back. The app shows those zones in red on the map.",
+            textZh:
+              "是的，那是电子围栏区域——滑板车用 GPS 检测限制区域，会自动减速或阻止你在那里结束行程。骑出那个区域就恢复正常速度了。App 地图上用红色标了这些区域。",
             keyPhrases: [
               { en: "geofenced zone", zh: "电子围栏区域" },
               { en: "restricted areas", zh: "限制区域" },
               { en: "full speed", zh: "全速" },
             ],
             vocabNotes: {
-              "geofenced": { meaningInContext: "在这句话里表示：用GPS技术划定的虚拟边界区域，进入后滑板车会自动限速或禁止停车", similarUsage: "类似用法：The drone has geofenced restrictions near airports.（无人机在机场附近有电子围栏限制）" },
+              geofenced: {
+                meaningInContext:
+                  "在这句话里表示：用GPS技术划定的虚拟边界区域，进入后滑板车会自动限速或禁止停车",
+                similarUsage:
+                  "类似用法：The drone has geofenced restrictions near airports.（无人机在机场附近有电子围栏限制）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Yep, that's a restricted zone — the scooter knows where it is via GPS and slows itself down. Ride out of it and you'll be back to normal speed. Red zones show up on the map.", textZh: "对，那是限制区域——滑板车通过GPS知道自己在哪，会自动减速。骑出去就恢复正常速度。App地图上红色区域就是。", actionHint: "骑出限制区域", frequency: "common" },
-              { textEn: "That's a geofence — certain areas limit the speed or won't let you park. Just keep going until you're out of the zone. Check the map for red areas.", textZh: "那是电子围栏——某些区域限速或不让停车。继续骑出去就好。看地图上的红色区域。", actionHint: "查看App地图红色区域", frequency: "common" },
+              {
+                textEn:
+                  "Yep, that's a restricted zone — the scooter knows where it is via GPS and slows itself down. Ride out of it and you'll be back to normal speed. Red zones show up on the map.",
+                textZh:
+                  "对，那是限制区域——滑板车通过GPS知道自己在哪，会自动减速。骑出去就恢复正常速度。App地图上红色区域就是。",
+                actionHint: "骑出限制区域",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "That's a geofence — certain areas limit the speed or won't let you park. Just keep going until you're out of the zone. Check the map for red areas.",
+                textZh:
+                  "那是电子围栏——某些区域限速或不让停车。继续骑出去就好。看地图上的红色区域。",
+                actionHint: "查看App地图红色区域",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That makes sense. Thanks for explaining everything. I would have been so confused on my own!",
+            textEn:
+              "That makes sense. Thanks for explaining everything. I would have been so confused on my own!",
             textZh: "原来如此。谢谢你解释这些。我自己搞的话肯定一头雾水！",
           },
         ],
@@ -4031,14 +6513,17 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to take a water taxi to the waterfront hotel district. How does it work?",
+            textEn:
+              "Hi, I'd like to take a water taxi to the waterfront hotel district. How does it work?",
             textZh: "你好，我想坐水上出租车去海滨酒店区。怎么坐？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "Welcome! The water taxi runs on a fixed route with several stops along the harbor. The hotel district is stop number 4 — about a 20-minute ride. We depart every 30 minutes, and the next one leaves in 10 minutes.",
-            textZh: "欢迎！水上出租车沿着港口的固定路线行驶，有几个停靠站。酒店区是第4站——大约20分钟的路程。每30分钟一班，下一班10分钟后出发。",
+            textEn:
+              "Welcome! The water taxi runs on a fixed route with several stops along the harbor. The hotel district is stop number 4 — about a 20-minute ride. We depart every 30 minutes, and the next one leaves in 10 minutes.",
+            textZh:
+              "欢迎！水上出租车沿着港口的固定路线行驶，有几个停靠站。酒店区是第4站——大约20分钟的路程。每30分钟一班，下一班10分钟后出发。",
             keyPhrases: [
               { en: "fixed route", zh: "固定路线" },
               { en: "harbor", zh: "港口" },
@@ -4046,19 +6531,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "depart", zh: "出发" },
             ],
             alternativeExpressions: [
-              { textEn: "Hop on — we go right past the hotel area. It's the fourth stop, about 20 minutes.", textZh: "上船吧——我们会经过酒店区。第四站，大约20分钟。", actionHint: "询问票价", frequency: "common" },
+              {
+                textEn:
+                  "Hop on — we go right past the hotel area. It's the fourth stop, about 20 minutes.",
+                textZh: "上船吧——我们会经过酒店区。第四站，大约20分钟。",
+                actionHint: "询问票价",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "How much is the fare? And can I buy a ticket here or do I need to pay on board?",
+            textEn:
+              "How much is the fare? And can I buy a ticket here or do I need to pay on board?",
             textZh: "票价多少？在这里买票还是上船再付？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "It's $12 for a single ride or $25 for an all-day pass — that lets you hop on and hop off as many times as you want. You can pay right here with cash or card, or use our app. I'd recommend the day pass if you plan to do some sightseeing along the waterfront.",
-            textZh: "单次12美元，或者25美元买一日通票——可以全天不限次上下。在这里现金或刷卡都行，也可以用我们的 App。如果打算沿海滨观光的话我推荐一日通票。",
+            textEn:
+              "It's $12 for a single ride or $25 for an all-day pass — that lets you hop on and hop off as many times as you want. You can pay right here with cash or card, or use our app. I'd recommend the day pass if you plan to do some sightseeing along the waterfront.",
+            textZh:
+              "单次12美元，或者25美元买一日通票——可以全天不限次上下。在这里现金或刷卡都行，也可以用我们的 App。如果打算沿海滨观光的话我推荐一日通票。",
             keyPhrases: [
               { en: "single ride", zh: "单次乘坐" },
               { en: "all-day pass", zh: "一日通票" },
@@ -4066,23 +6560,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "sightseeing", zh: "观光" },
             ],
             vocabNotes: {
-              "hop on and hop off": { meaningInContext: "在这句话里表示：可以在任何站点自由上下车/船，不限次数的乘坐方式", similarUsage: "类似用法：The hop-on-hop-off bus tour is great for tourists.（随上随下巴士游很适合游客）" },
+              "hop on and hop off": {
+                meaningInContext:
+                  "在这句话里表示：可以在任何站点自由上下车/船，不限次数的乘坐方式",
+                similarUsage:
+                  "类似用法：The hop-on-hop-off bus tour is great for tourists.（随上随下巴士游很适合游客）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "12 bucks one way, or 25 for all day — ride as much as you want. Cash, card, or our app. If you're sightseeing, the day pass is the way to go.", textZh: "单次12，全天25——随便坐。现金、刷卡或我们的App都行。如果要观光，日票最划算。", actionHint: "观光选日票更值", frequency: "common" },
-              { textEn: "A single ride is $12. But for $25 you get an all-day pass — unlimited on and off. Totally worth it if you're exploring the waterfront.", textZh: "单次12美元。但25美元买全天通票——不限次随上随下。逛海滨的话绝对值。", actionHint: "多次乘坐选全天票", frequency: "common" },
+              {
+                textEn:
+                  "12 bucks one way, or 25 for all day — ride as much as you want. Cash, card, or our app. If you're sightseeing, the day pass is the way to go.",
+                textZh:
+                  "单次12，全天25——随便坐。现金、刷卡或我们的App都行。如果要观光，日票最划算。",
+                actionHint: "观光选日票更值",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "A single ride is $12. But for $25 you get an all-day pass — unlimited on and off. Totally worth it if you're exploring the waterfront.",
+                textZh:
+                  "单次12美元。但25美元买全天通票——不限次随上随下。逛海滨的话绝对值。",
+                actionHint: "多次乘坐选全天票",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "The day pass sounds great. Two passes, please — one for me and one for my wife. Can we sit outside?",
+            textEn:
+              "The day pass sounds great. Two passes, please — one for me and one for my wife. Can we sit outside?",
             textZh: "一日通票不错。两张，我和太太各一张。能坐外面吗？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "Of course! There's open-air seating on the upper deck — best views of the skyline. Just be aware it can get windy and there might be some spray, so hold onto your hats and phones. Life jackets are under the seats if you need them.",
-            textZh: "当然可以！上层甲板有露天座位——看天际线最佳位置。不过注意风会比较大，可能有水花溅到，拿好帽子和手机。救生衣在座位下面，需要的话可以穿。",
+            textEn:
+              "Of course! There's open-air seating on the upper deck — best views of the skyline. Just be aware it can get windy and there might be some spray, so hold onto your hats and phones. Life jackets are under the seats if you need them.",
+            textZh:
+              "当然可以！上层甲板有露天座位——看天际线最佳位置。不过注意风会比较大，可能有水花溅到，拿好帽子和手机。救生衣在座位下面，需要的话可以穿。",
             keyPhrases: [
               { en: "open-air seating", zh: "露天座位" },
               { en: "upper deck", zh: "上层甲板" },
@@ -4091,71 +6607,140 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "life jackets", zh: "救生衣" },
             ],
             alternativeExpressions: [
-              { textEn: "Absolutely! Upper deck has the best views — you can see the whole skyline. Gets windy though, so hold onto your stuff. Life jackets are under the seats just in case.", textZh: "当然！上层甲板视野最好——能看到整个天际线。不过风大，拿好东西。救生衣在座位下面以防万一。", actionHint: "拿好帽子和手机", frequency: "common" },
-              { textEn: "Sure, go up top! Best spot on the boat. Just watch out for spray and wind. Life vests are stowed under every seat.", textZh: "当然，去上面！船上最好的位置。注意水花和风。救生衣在每个座位下面。", actionHint: "做好防风准备", frequency: "common" },
+              {
+                textEn:
+                  "Absolutely! Upper deck has the best views — you can see the whole skyline. Gets windy though, so hold onto your stuff. Life jackets are under the seats just in case.",
+                textZh:
+                  "当然！上层甲板视野最好——能看到整个天际线。不过风大，拿好东西。救生衣在座位下面以防万一。",
+                actionHint: "拿好帽子和手机",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sure, go up top! Best spot on the boat. Just watch out for spray and wind. Life vests are stowed under every seat.",
+                textZh:
+                  "当然，去上面！船上最好的位置。注意水花和风。救生衣在每个座位下面。",
+                actionHint: "做好防风准备",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Will someone announce the stops, or do I need to watch for it myself?",
+            textEn:
+              "Will someone announce the stops, or do I need to watch for it myself?",
             textZh: "有人报站吗？还是要自己注意看？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "We announce each stop over the speaker, and there's a digital display showing the next stop. When you hear 'Waterfront Hotels,' that's you. You'll also see the hotels from the water — can't miss them!",
-            textZh: "我们会通过喇叭报每一站，还有电子屏显示下一站。听到'海滨酒店'就是你们的站。从水上也能看到那些酒店——不会错过的！",
+            textEn:
+              "We announce each stop over the speaker, and there's a digital display showing the next stop. When you hear 'Waterfront Hotels,' that's you. You'll also see the hotels from the water — can't miss them!",
+            textZh:
+              "我们会通过喇叭报每一站，还有电子屏显示下一站。听到'海滨酒店'就是你们的站。从水上也能看到那些酒店——不会错过的！",
             keyPhrases: [
               { en: "speaker", zh: "喇叭/扬声器" },
               { en: "digital display", zh: "电子屏" },
               { en: "can't miss them", zh: "不会错过的" },
             ],
             alternativeExpressions: [
-              { textEn: "We call out every stop and there's a screen showing what's next. When you hear 'Waterfront Hotels,' that's your cue. You can see the hotels from the water too.", textZh: "我们每站都报，还有屏幕显示下一站。听到'海滨酒店'就是你们的站。从水上也能看到酒店。", actionHint: "注意听报站", frequency: "common" },
-              { textEn: "Don't worry about missing it — we announce stops and there's a display. Plus you'll literally see the hotels coming up on your right.", textZh: "不用担心坐过——我们会报站也有显示屏。而且你会看到酒店就在右边出现。", actionHint: "留意右侧", frequency: "common" },
+              {
+                textEn:
+                  "We call out every stop and there's a screen showing what's next. When you hear 'Waterfront Hotels,' that's your cue. You can see the hotels from the water too.",
+                textZh:
+                  "我们每站都报，还有屏幕显示下一站。听到'海滨酒店'就是你们的站。从水上也能看到酒店。",
+                actionHint: "注意听报站",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Don't worry about missing it — we announce stops and there's a display. Plus you'll literally see the hotels coming up on your right.",
+                textZh:
+                  "不用担心坐过——我们会报站也有显示屏。而且你会看到酒店就在右边出现。",
+                actionHint: "留意右侧",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Is there a later boat back? We might want to have dinner at the waterfront and return around 9 PM.",
+            textEn:
+              "Is there a later boat back? We might want to have dinner at the waterfront and return around 9 PM.",
             textZh: "有晚一点的船回来吗？我们可能在海滨吃晚饭，9点左右回来。",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "The last departure from the hotel district is at 10:30 PM. Your day pass covers everything until the last boat. Here's a schedule card — it has all the stop times. The evening boats also have LED lighting, so it's a beautiful ride at night.",
-            textZh: "从酒店区出发的末班是10:30 PM。一日通票覆盖到末班船。这是时刻表卡片——所有站点时间都有。晚上的船还有 LED 灯光装饰，夜景很漂亮。",
+            textEn:
+              "The last departure from the hotel district is at 10:30 PM. Your day pass covers everything until the last boat. Here's a schedule card — it has all the stop times. The evening boats also have LED lighting, so it's a beautiful ride at night.",
+            textZh:
+              "从酒店区出发的末班是10:30 PM。一日通票覆盖到末班船。这是时刻表卡片——所有站点时间都有。晚上的船还有 LED 灯光装饰，夜景很漂亮。",
             keyPhrases: [
               { en: "last departure", zh: "末班" },
               { en: "schedule card", zh: "时刻表卡片" },
               { en: "LED lighting", zh: "LED灯光装饰" },
             ],
             alternativeExpressions: [
-              { textEn: "Last boat from there is 10:30 PM, so you're totally fine for a 9 PM return. Your day pass covers everything. Oh, and the night boats have lights — it's really pretty.", textZh: "从那边末班船10:30 PM，所以9点回完全没问题。一日通票全覆盖。对了，晚上的船有灯光——特别漂亮。", actionHint: "确认末班船时间", frequency: "common" },
-              { textEn: "10:30 is the last departure from the hotel area. Day pass is good until then. The evening ride is actually gorgeous with all the LED lights.", textZh: "酒店区末班10:30。一日通票到那时都有效。晚上坐船特别美，有LED灯光。", actionHint: "安排好晚餐时间", frequency: "common" },
+              {
+                textEn:
+                  "Last boat from there is 10:30 PM, so you're totally fine for a 9 PM return. Your day pass covers everything. Oh, and the night boats have lights — it's really pretty.",
+                textZh:
+                  "从那边末班船10:30 PM，所以9点回完全没问题。一日通票全覆盖。对了，晚上的船有灯光——特别漂亮。",
+                actionHint: "确认末班船时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "10:30 is the last departure from the hotel area. Day pass is good until then. The evening ride is actually gorgeous with all the LED lights.",
+                textZh:
+                  "酒店区末班10:30。一日通票到那时都有效。晚上坐船特别美，有LED灯光。",
+                actionHint: "安排好晚餐时间",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Sounds romantic! Perfect. We'll definitely take the evening boat back. Thank you!",
+            textEn:
+              "Sounds romantic! Perfect. We'll definitely take the evening boat back. Thank you!",
             textZh: "听起来很浪漫！太好了。我们一定坐晚上的船回来。谢谢！",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "You're welcome! The boat is pulling in now. Head to the boarding ramp on your left. Enjoy the ride, and don't forget — your day pass works on all three water taxi routes, not just this one!",
-            textZh: "不客气！船正在靠岸。左边的登船通道上船。旅途愉快，别忘了——你的一日通票在所有三条水上出租车路线上都能用，不只是这条！",
+            textEn:
+              "You're welcome! The boat is pulling in now. Head to the boarding ramp on your left. Enjoy the ride, and don't forget — your day pass works on all three water taxi routes, not just this one!",
+            textZh:
+              "不客气！船正在靠岸。左边的登船通道上船。旅途愉快，别忘了——你的一日通票在所有三条水上出租车路线上都能用，不只是这条！",
             keyPhrases: [
               { en: "pulling in", zh: "靠岸" },
               { en: "boarding ramp", zh: "登船通道" },
               { en: "all three routes", zh: "所有三条路线" },
             ],
             vocabNotes: {
-              "pulling in": { meaningInContext: "在这句话里表示：船正在驶入码头、慢慢靠岸", similarUsage: "类似用法：The train is pulling in to the station.（火车正在进站）" },
+              "pulling in": {
+                meaningInContext: "在这句话里表示：船正在驶入码头、慢慢靠岸",
+                similarUsage:
+                  "类似用法：The train is pulling in to the station.（火车正在进站）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Here comes the boat now! Head to the ramp on your left. Enjoy the ride — and remember, your day pass works on all three routes!", textZh: "船来了！左边的通道上船。旅途愉快——别忘了你的一日通票三条线路都能用！", actionHint: "左侧登船", frequency: "common" },
-              { textEn: "Perfect timing — boat's pulling up. Board on the left. Oh, and your pass is good on every route, not just this one. Have fun!", textZh: "正好赶上——船靠岸了。左边上船。对了，你的通票每条线路都能用，不只这条。玩得开心！", actionHint: "一日通票通用所有线路", frequency: "common" },
+              {
+                textEn:
+                  "Here comes the boat now! Head to the ramp on your left. Enjoy the ride — and remember, your day pass works on all three routes!",
+                textZh:
+                  "船来了！左边的通道上船。旅途愉快——别忘了你的一日通票三条线路都能用！",
+                actionHint: "左侧登船",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Perfect timing — boat's pulling up. Board on the left. Oh, and your pass is good on every route, not just this one. Have fun!",
+                textZh:
+                  "正好赶上——船靠岸了。左边上船。对了，你的通票每条线路都能用，不只这条。玩得开心！",
+                actionHint: "一日通票通用所有线路",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -4170,14 +6755,17 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, we're a group of 6 and we'd like to do a private boat tour of the harbor. Do you offer that?",
+            textEn:
+              "Hi, we're a group of 6 and we'd like to do a private boat tour of the harbor. Do you offer that?",
             textZh: "你好，我们一行6人想包船游览港口。你们提供这种服务吗？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "Yes! We have private charters starting at $250 for one hour, or $400 for two hours. That includes a captain, a guided commentary, and complimentary water and snacks. Up to 10 people per boat.",
-            textZh: "有的！私人包船一小时起价250美元，两小时400美元。包括一名船长、导游讲解以及免费的水和小吃。每船最多10人。",
+            textEn:
+              "Yes! We have private charters starting at $250 for one hour, or $400 for two hours. That includes a captain, a guided commentary, and complimentary water and snacks. Up to 10 people per boat.",
+            textZh:
+              "有的！私人包船一小时起价250美元，两小时400美元。包括一名船长、导游讲解以及免费的水和小吃。每船最多10人。",
             keyPhrases: [
               { en: "private charter", zh: "私人包船" },
               { en: "guided commentary", zh: "导游讲解" },
@@ -4185,70 +6773,137 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "captain", zh: "船长" },
             ],
             vocabNotes: {
-              "complimentary": { meaningInContext: "在这句话里表示：作为服务的一部分免费提供，不另外收费", similarUsage: "类似用法：The hotel offers complimentary breakfast.（酒店提供免费早餐）" },
+              complimentary: {
+                meaningInContext:
+                  "在这句话里表示：作为服务的一部分免费提供，不另外收费",
+                similarUsage:
+                  "类似用法：The hotel offers complimentary breakfast.（酒店提供免费早餐）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "We do! Private tours start at 250 an hour. Comes with a captain, narration, and some snacks and water. Fits up to 10 people.", textZh: "有的！私人游船一小时起价250。配船长、讲解，还有小吃和水。最多10人。", actionHint: "确认人数和时长", frequency: "common" },
-              { textEn: "Absolutely — 250 for one hour, 400 for two. Captain, guided tour, complimentary refreshments. You can bring up to 10.", textZh: "当然——一小时250，两小时400。配船长、导游讲解、免费茶点。最多带10个人。", actionHint: "两小时更划算", frequency: "common" },
+              {
+                textEn:
+                  "We do! Private tours start at 250 an hour. Comes with a captain, narration, and some snacks and water. Fits up to 10 people.",
+                textZh:
+                  "有的！私人游船一小时起价250。配船长、讲解，还有小吃和水。最多10人。",
+                actionHint: "确认人数和时长",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Absolutely — 250 for one hour, 400 for two. Captain, guided tour, complimentary refreshments. You can bring up to 10.",
+                textZh:
+                  "当然——一小时250，两小时400。配船长、导游讲解、免费茶点。最多带10个人。",
+                actionHint: "两小时更划算",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Two hours would be great. Can we customize the route? We'd love to see the sunset over the bridge.",
+            textEn:
+              "Two hours would be great. Can we customize the route? We'd love to see the sunset over the bridge.",
             textZh: "两小时的好。能自定义路线吗？我们很想看到桥上的日落。",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "Absolutely! Our captain can adjust the route to your preferences. The sunset tour is actually our most popular request — we'll head toward the bridge around golden hour. Sunset is at 7:15 today, so I'd suggest departing at 5:30 to get the full experience.",
-            textZh: "当然可以！船长可以根据你们的喜好调整路线。日落游其实是最受欢迎的需求——我们会在黄金时刻朝大桥方向开。今天日落是7:15，所以建议5:30出发，充分享受全程。",
+            textEn:
+              "Absolutely! Our captain can adjust the route to your preferences. The sunset tour is actually our most popular request — we'll head toward the bridge around golden hour. Sunset is at 7:15 today, so I'd suggest departing at 5:30 to get the full experience.",
+            textZh:
+              "当然可以！船长可以根据你们的喜好调整路线。日落游其实是最受欢迎的需求——我们会在黄金时刻朝大桥方向开。今天日落是7:15，所以建议5:30出发，充分享受全程。",
             keyPhrases: [
               { en: "customize the route", zh: "自定义路线" },
               { en: "golden hour", zh: "黄金时刻" },
               { en: "departing", zh: "出发" },
             ],
             vocabNotes: {
-              "golden hour": { meaningInContext: "在这句话里表示：日落前一小时左右光线最柔和温暖的时段，是拍照和观景的最佳时间", similarUsage: "类似用法：Photographers love shooting during golden hour.（摄影师喜欢在黄金时刻拍照）" },
+              "golden hour": {
+                meaningInContext:
+                  "在这句话里表示：日落前一小时左右光线最柔和温暖的时段，是拍照和观景的最佳时间",
+                similarUsage:
+                  "类似用法：Photographers love shooting during golden hour.（摄影师喜欢在黄金时刻拍照）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "For sure! The captain customizes the route. Sunset is at 7:15, so I'd say leave at 5:30 to catch the whole golden hour by the bridge.", textZh: "当然可以！船长可以自定路线。日落7:15，建议5:30出发，正好赶上大桥的黄金时刻。", actionHint: "确认出发时间", frequency: "common" },
-              { textEn: "Totally — you tell us where you want to go. Sunset tour is our most popular. Today it sets at 7:15, so head out around 5:30 for the best experience.", textZh: "完全可以——你说想去哪就去哪。日落游是我们最火的。今天7:15日落，5:30出发体验最好。", actionHint: "5:30出发看日落", frequency: "common" },
+              {
+                textEn:
+                  "For sure! The captain customizes the route. Sunset is at 7:15, so I'd say leave at 5:30 to catch the whole golden hour by the bridge.",
+                textZh:
+                  "当然可以！船长可以自定路线。日落7:15，建议5:30出发，正好赶上大桥的黄金时刻。",
+                actionHint: "确认出发时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Totally — you tell us where you want to go. Sunset tour is our most popular. Today it sets at 7:15, so head out around 5:30 for the best experience.",
+                textZh:
+                  "完全可以——你说想去哪就去哪。日落游是我们最火的。今天7:15日落，5:30出发体验最好。",
+                actionHint: "5:30出发看日落",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "5:30 is perfect. Can we bring our own drinks? We'd like to celebrate a birthday on board.",
+            textEn:
+              "5:30 is perfect. Can we bring our own drinks? We'd like to celebrate a birthday on board.",
             textZh: "5:30 可以。能自带饮料吗？我们想在船上庆祝生日。",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "You're welcome to bring your own food and non-alcoholic drinks at no extra charge. If you want to bring alcohol, there's a $50 BYOB fee and you'll need to sign a liability waiver. Or we can provide a champagne package for $75 — that includes a bottle of Moët and glasses.",
-            textZh: "可以自带食物和非酒精饮料，不额外收费。如果要带酒的话，有50美元的自带酒水费，需要签免责声明。或者我们可以提供75美元的香槟套餐——包含一瓶酩悦和酒杯。",
+            textEn:
+              "You're welcome to bring your own food and non-alcoholic drinks at no extra charge. If you want to bring alcohol, there's a $50 BYOB fee and you'll need to sign a liability waiver. Or we can provide a champagne package for $75 — that includes a bottle of Moët and glasses.",
+            textZh:
+              "可以自带食物和非酒精饮料，不额外收费。如果要带酒的话，有50美元的自带酒水费，需要签免责声明。或者我们可以提供75美元的香槟套餐——包含一瓶酩悦和酒杯。",
             keyPhrases: [
               { en: "BYOB", zh: "自带酒水" },
               { en: "liability waiver", zh: "免责声明" },
               { en: "champagne package", zh: "香槟套餐" },
             ],
             vocabNotes: {
-              "BYOB": { meaningInContext: "在这句话里表示：Bring Your Own Bottle/Beverage，自带酒水", similarUsage: "类似用法：The restaurant is BYOB — you can bring your own wine.（这家餐厅允许自带酒水）" },
+              BYOB: {
+                meaningInContext:
+                  "在这句话里表示：Bring Your Own Bottle/Beverage，自带酒水",
+                similarUsage:
+                  "类似用法：The restaurant is BYOB — you can bring your own wine.（这家餐厅允许自带酒水）",
+              },
             },
-            literalMeaning: "\"BYOB\" 是 \"Bring Your Own Bottle\" 或 \"Bring Your Own Beverage\" 的缩写，字面意思是 \"自己带瓶子/饮料\"",
+            literalMeaning:
+              '"BYOB" 是 "Bring Your Own Bottle" 或 "Bring Your Own Beverage" 的缩写，字面意思是 "自己带瓶子/饮料"',
             alternativeExpressions: [
-              { textEn: "Food and soft drinks, no charge. Alcohol is a $50 BYOB fee plus a waiver. Or we can do a champagne package — 75 bucks, bottle of Moet, glasses, the works.", textZh: "食物和软饮免费。带酒的话50美元自带费加签免责书。或者我们有75美元的香槟套餐——一瓶酩悦、酒杯，全套。", actionHint: "考虑香槟套餐", frequency: "common" },
-              { textEn: "Bring whatever food you want, no problem. For booze there's a $50 BYOB fee and a liability form. Or skip the hassle — our champagne package is $75 with a bottle of bubbly.", textZh: "随便带吃的，没问题。带酒有50美元自带费和免责表。嫌麻烦的话——75美元香槟套餐直接搞定。", actionHint: "香槟套餐更省事", frequency: "occasional" },
+              {
+                textEn:
+                  "Food and soft drinks, no charge. Alcohol is a $50 BYOB fee plus a waiver. Or we can do a champagne package — 75 bucks, bottle of Moet, glasses, the works.",
+                textZh:
+                  "食物和软饮免费。带酒的话50美元自带费加签免责书。或者我们有75美元的香槟套餐——一瓶酩悦、酒杯，全套。",
+                actionHint: "考虑香槟套餐",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Bring whatever food you want, no problem. For booze there's a $50 BYOB fee and a liability form. Or skip the hassle — our champagne package is $75 with a bottle of bubbly.",
+                textZh:
+                  "随便带吃的，没问题。带酒有50美元自带费和免责表。嫌麻烦的话——75美元香槟套餐直接搞定。",
+                actionHint: "香槟套餐更省事",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "The champagne package sounds special! Let's do the 2-hour tour with the champagne package. How do I pay?",
+            textEn:
+              "The champagne package sounds special! Let's do the 2-hour tour with the champagne package. How do I pay?",
             textZh: "香槟套餐听起来很特别！两小时的加上香槟套餐吧。怎么付款？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "Your total is $475 — $400 for the 2-hour charter plus $75 for the champagne. We require a 50% deposit now and the rest when you board. I can take cash, card, or Venmo. We'll also email you a confirmation with the dock location and departure time.",
-            textZh: "总共475美元——两小时包船400美元加75美元香槟。需要先付50%定金，剩下的上船时付。可以现金、刷卡或 Venmo。我们还会发邮件确认码头位置和出发时间。",
+            textEn:
+              "Your total is $475 — $400 for the 2-hour charter plus $75 for the champagne. We require a 50% deposit now and the rest when you board. I can take cash, card, or Venmo. We'll also email you a confirmation with the dock location and departure time.",
+            textZh:
+              "总共475美元——两小时包船400美元加75美元香槟。需要先付50%定金，剩下的上船时付。可以现金、刷卡或 Venmo。我们还会发邮件确认码头位置和出发时间。",
             keyPhrases: [
               { en: "deposit", zh: "定金" },
               { en: "board", zh: "上船" },
@@ -4256,20 +6911,37 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "confirmation", zh: "确认" },
             ],
             alternativeExpressions: [
-              { textEn: "That's 475 total. Half now, half when you show up. Card, cash, or Venmo. We'll email you the dock info and time.", textZh: "总共475。先付一半，到的时候付剩下的。刷卡、现金或Venmo都行。我们会发邮件确认码头信息和时间。", actionHint: "先付定金", frequency: "common" },
-              { textEn: "So it's $400 plus $75 for the champagne — $475. We need 50% upfront and the balance at boarding. I'll send a confirmation to your email.", textZh: "400加75香槟——总共475。先付50%定金，上船时付尾款。我发确认邮件给你。", actionHint: "确认邮箱地址", frequency: "common" },
+              {
+                textEn:
+                  "That's 475 total. Half now, half when you show up. Card, cash, or Venmo. We'll email you the dock info and time.",
+                textZh:
+                  "总共475。先付一半，到的时候付剩下的。刷卡、现金或Venmo都行。我们会发邮件确认码头信息和时间。",
+                actionHint: "先付定金",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "So it's $400 plus $75 for the champagne — $475. We need 50% upfront and the balance at boarding. I'll send a confirmation to your email.",
+                textZh:
+                  "400加75香槟——总共475。先付50%定金，上船时付尾款。我发确认邮件给你。",
+                actionHint: "确认邮箱地址",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great, I'll pay the deposit by card. Can we cancel or reschedule if the weather is bad?",
+            textEn:
+              "Great, I'll pay the deposit by card. Can we cancel or reschedule if the weather is bad?",
             textZh: "好的，定金刷卡。如果天气不好能取消或改期吗？",
           },
           {
             speaker: "them",
             role: "船员",
-            textEn: "If we cancel due to weather — like heavy rain or high winds — you get a full refund or can reschedule for free. If you cancel on your end, we need 24 hours' notice for a full refund. Less than 24 hours, the deposit is non-refundable but you can reschedule within 30 days.",
-            textZh: "如果因天气取消——比如大雨或大风——全额退款或免费改期。如果是你们自己取消，需要提前24小时通知才能全额退款。不到24小时的话定金不退，但30天内可以改期。",
+            textEn:
+              "If we cancel due to weather — like heavy rain or high winds — you get a full refund or can reschedule for free. If you cancel on your end, we need 24 hours' notice for a full refund. Less than 24 hours, the deposit is non-refundable but you can reschedule within 30 days.",
+            textZh:
+              "如果因天气取消——比如大雨或大风——全额退款或免费改期。如果是你们自己取消，需要提前24小时通知才能全额退款。不到24小时的话定金不退，但30天内可以改期。",
             keyPhrases: [
               { en: "full refund", zh: "全额退款" },
               { en: "reschedule", zh: "改期" },
@@ -4277,13 +6949,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "non-refundable", zh: "不可退款的" },
             ],
             alternativeExpressions: [
-              { textEn: "If it's bad weather on our end — rain, high winds — full refund or free reschedule. If you cancel, we need 24 hours' notice. Less than that, you keep the deposit as credit for 30 days.", textZh: "如果是我们这边天气原因——下雨、大风——全额退或免费改期。你自己取消的话要提前24小时。不到24小时，定金作为30天内的抵用额度。", actionHint: "记住取消政策", frequency: "common" },
-              { textEn: "Weather cancellations are on us — full refund or reschedule, no charge. Your cancellation needs 24 hours for a refund. Under 24, the deposit rolls into credit.", textZh: "天气取消我们负责——全退或免费改期。你取消要提前24小时才能退。不到24小时定金转为抵用额度。", actionHint: "关注天气预报", frequency: "common" },
+              {
+                textEn:
+                  "If it's bad weather on our end — rain, high winds — full refund or free reschedule. If you cancel, we need 24 hours' notice. Less than that, you keep the deposit as credit for 30 days.",
+                textZh:
+                  "如果是我们这边天气原因——下雨、大风——全额退或免费改期。你自己取消的话要提前24小时。不到24小时，定金作为30天内的抵用额度。",
+                actionHint: "记住取消政策",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Weather cancellations are on us — full refund or reschedule, no charge. Your cancellation needs 24 hours for a refund. Under 24, the deposit rolls into credit.",
+                textZh:
+                  "天气取消我们负责——全退或免费改期。你取消要提前24小时才能退。不到24小时定金转为抵用额度。",
+                actionHint: "关注天气预报",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That's fair. We'll be there at 5:30. This is going to be the highlight of our trip!",
+            textEn:
+              "That's fair. We'll be there at 5:30. This is going to be the highlight of our trip!",
             textZh: "很合理。我们5:30到。这一定是我们旅行的亮点！",
           },
         ],
@@ -4311,14 +6998,18 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I landed in Terminal 1 but my connecting flight is in Terminal 4. How do I get there?",
-            textZh: "不好意思，我在1号航站楼降落，但转机的航班在4号航站楼。怎么过去？",
+            textEn:
+              "Excuse me, I landed in Terminal 1 but my connecting flight is in Terminal 4. How do I get there?",
+            textZh:
+              "不好意思，我在1号航站楼降落，但转机的航班在4号航站楼。怎么过去？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "You have two options. The AirTrain is the fastest — it's a free automated train that connects all terminals. Take it right outside this door, level 3. Terminal 4 is three stops away, about 8 minutes. Or there's a free shuttle bus at the ground level, but that takes about 20 minutes.",
-            textZh: "有两种方式。AirTrain 最快——是连接所有航站楼的免费自动列车。就在这个门外面3层坐。到4号航站楼3站，大约8分钟。或者在地面层有免费穿梭巴士，但要大约20分钟。",
+            textEn:
+              "You have two options. The AirTrain is the fastest — it's a free automated train that connects all terminals. Take it right outside this door, level 3. Terminal 4 is three stops away, about 8 minutes. Or there's a free shuttle bus at the ground level, but that takes about 20 minutes.",
+            textZh:
+              "有两种方式。AirTrain 最快——是连接所有航站楼的免费自动列车。就在这个门外面3层坐。到4号航站楼3站，大约8分钟。或者在地面层有免费穿梭巴士，但要大约20分钟。",
             keyPhrases: [
               { en: "connecting flight", zh: "转机航班" },
               { en: "AirTrain", zh: "机场轻轨" },
@@ -4326,19 +7017,29 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "shuttle bus", zh: "穿梭巴士" },
             ],
             alternativeExpressions: [
-              { textEn: "Follow the signs for 'Inter-Terminal Transport' — you can take the people mover or the shuttle.", textZh: "跟着'航站楼间交通'的标志走——可以坐自动列车或穿梭巴士。", actionHint: "选择更快的方式", frequency: "common" },
+              {
+                textEn:
+                  "Follow the signs for 'Inter-Terminal Transport' — you can take the people mover or the shuttle.",
+                textZh:
+                  "跟着'航站楼间交通'的标志走——可以坐自动列车或穿梭巴士。",
+                actionHint: "选择更快的方式",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll take the AirTrain. Do I need to go through security again when I get to Terminal 4?",
+            textEn:
+              "I'll take the AirTrain. Do I need to go through security again when I get to Terminal 4?",
             textZh: "我坐 AirTrain。到4号航站楼需要重新过安检吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "It depends on your situation. If you're staying airside — meaning you don't leave the secure area — then no. But since Terminal 1 and Terminal 4 are in different security zones at this airport, you will need to go through security again. I'd allow at least 30 minutes for that.",
-            textZh: "取决于情况。如果你一直留在隔离区内——就是不离开安检后的区域——就不用。但这个机场的1号和4号航站楼在不同的安检区域，所以你需要重新过安检。至少预留30分钟。",
+            textEn:
+              "It depends on your situation. If you're staying airside — meaning you don't leave the secure area — then no. But since Terminal 1 and Terminal 4 are in different security zones at this airport, you will need to go through security again. I'd allow at least 30 minutes for that.",
+            textZh:
+              "取决于情况。如果你一直留在隔离区内——就是不离开安检后的区域——就不用。但这个机场的1号和4号航站楼在不同的安检区域，所以你需要重新过安检。至少预留30分钟。",
             keyPhrases: [
               { en: "airside", zh: "隔离区/安检后区域" },
               { en: "secure area", zh: "安全区域" },
@@ -4346,92 +7047,185 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "allow at least", zh: "至少预留" },
             ],
             vocabNotes: {
-              "airside": { meaningInContext: "在这句话里表示：通过安检之后的机场区域，只有持有效登机牌的旅客才能进入", similarUsage: "类似用法：Duty-free shops are airside, past security.（免税店在安检后的隔离区内）" },
+              airside: {
+                meaningInContext:
+                  "在这句话里表示：通过安检之后的机场区域，只有持有效登机牌的旅客才能进入",
+                similarUsage:
+                  "类似用法：Duty-free shops are airside, past security.（免税店在安检后的隔离区内）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Unfortunately yes — T1 and T4 are in different security zones here. You'll have to clear security again. Budget at least 30 minutes for that.", textZh: "很遗憾是的——这里1号和4号航站楼在不同安检区。你得重新过安检。至少预留30分钟。", actionHint: "预留安检时间", frequency: "common" },
-              { textEn: "Yeah, you'll need to go through security again at T4. These terminals have separate secure areas. Allow 30 minutes to be safe.", textZh: "对，到4号航站楼要重新过安检。这些航站楼安检区是分开的。保险起见留30分钟。", actionHint: "提前安排时间", frequency: "common" },
+              {
+                textEn:
+                  "Unfortunately yes — T1 and T4 are in different security zones here. You'll have to clear security again. Budget at least 30 minutes for that.",
+                textZh:
+                  "很遗憾是的——这里1号和4号航站楼在不同安检区。你得重新过安检。至少预留30分钟。",
+                actionHint: "预留安检时间",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yeah, you'll need to go through security again at T4. These terminals have separate secure areas. Allow 30 minutes to be safe.",
+                textZh:
+                  "对，到4号航站楼要重新过安检。这些航站楼安检区是分开的。保险起见留30分钟。",
+                actionHint: "提前安排时间",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "My connecting flight boards in 90 minutes. Is that enough time?",
+            textEn:
+              "My connecting flight boards in 90 minutes. Is that enough time?",
             textZh: "我转机的航班90分钟后登机。时间够吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "That should be fine, but don't linger. The AirTrain is 8 minutes, security could be 15 to 30 minutes depending on the queue, and then you'll need to find your gate. My advice: go straight to the AirTrain now and don't stop for food or shopping until you've reached your gate.",
-            textZh: "应该够，但别耽搁。AirTrain 8分钟，安检看排队情况15到30分钟，然后还要找登机口。我建议：现在直接去坐 AirTrain，到了登机口再考虑吃东西或买东西。",
+            textEn:
+              "That should be fine, but don't linger. The AirTrain is 8 minutes, security could be 15 to 30 minutes depending on the queue, and then you'll need to find your gate. My advice: go straight to the AirTrain now and don't stop for food or shopping until you've reached your gate.",
+            textZh:
+              "应该够，但别耽搁。AirTrain 8分钟，安检看排队情况15到30分钟，然后还要找登机口。我建议：现在直接去坐 AirTrain，到了登机口再考虑吃东西或买东西。",
             keyPhrases: [
               { en: "don't linger", zh: "别耽搁" },
               { en: "queue", zh: "排队" },
               { en: "gate", zh: "登机口" },
             ],
-            localVariants: { "en-US": "line", "en-GB": "queue", "en-AU": "queue" },
+            localVariants: {
+              "en-US": "line",
+              "en-GB": "queue",
+              "en-AU": "queue",
+            },
             alternativeExpressions: [
-              { textEn: "Tight but doable. Don't stop for anything — go straight to the AirTrain, get through security, and then you can relax at your gate.", textZh: "紧但来得及。别停下来——直奔AirTrain，过安检，到了登机口再休息。", actionHint: "立刻出发别耽搁", frequency: "common" },
-              { textEn: "You should be fine, just don't waste time. AirTrain's 8 minutes, security maybe 20. Head straight there and skip the shops.", textZh: "应该没问题，别浪费时间就行。AirTrain 8分钟，安检大约20分钟。直接过去，别逛商店。", actionHint: "到登机口再买东西", frequency: "common" },
+              {
+                textEn:
+                  "Tight but doable. Don't stop for anything — go straight to the AirTrain, get through security, and then you can relax at your gate.",
+                textZh:
+                  "紧但来得及。别停下来——直奔AirTrain，过安检，到了登机口再休息。",
+                actionHint: "立刻出发别耽搁",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You should be fine, just don't waste time. AirTrain's 8 minutes, security maybe 20. Head straight there and skip the shops.",
+                textZh:
+                  "应该没问题，别浪费时间就行。AirTrain 8分钟，安检大约20分钟。直接过去，别逛商店。",
+                actionHint: "到登机口再买东西",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good advice. One question — can I use the moving walkways with my luggage cart, or do I need to carry my bags?",
-            textZh: "好建议。问一下——自动步道能推行李车上去吗？还是要自己拎包？",
+            textEn:
+              "Good advice. One question — can I use the moving walkways with my luggage cart, or do I need to carry my bags?",
+            textZh:
+              "好建议。问一下——自动步道能推行李车上去吗？还是要自己拎包？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "The moving walkways here are flat, so you can push your cart on them. But you'll need to leave the cart before the AirTrain — no carts allowed on the train. Just grab your bags and step on. There are carts available at Terminal 4 if you need one.",
-            textZh: "这里的自动步道是平的，可以推车上去。但在坐 AirTrain 之前要把车放下——列车上不让带推车。拿好行李直接上车就行。4号航站楼有推车可以用。",
+            textEn:
+              "The moving walkways here are flat, so you can push your cart on them. But you'll need to leave the cart before the AirTrain — no carts allowed on the train. Just grab your bags and step on. There are carts available at Terminal 4 if you need one.",
+            textZh:
+              "这里的自动步道是平的，可以推车上去。但在坐 AirTrain 之前要把车放下——列车上不让带推车。拿好行李直接上车就行。4号航站楼有推车可以用。",
             keyPhrases: [
               { en: "moving walkways", zh: "自动步道" },
               { en: "luggage cart", zh: "行李推车" },
               { en: "step on", zh: "上车" },
             ],
             alternativeExpressions: [
-              { textEn: "The walkways are flat so you can push your cart on them. But no carts on the AirTrain — grab your bags and leave the cart. There are carts at T4 if you need one.", textZh: "步道是平的可以推车上去。但AirTrain不让带推车——拿好行李把车放下。4号航站楼有推车可以用。", actionHint: "上AirTrain前放下推车", frequency: "common" },
-              { textEn: "Cart's fine on the moving walkway. When you get to the AirTrain, ditch the cart and carry your bags on. You can grab another cart on the other side.", textZh: "推车在自动步道上没问题。到AirTrain那里放下推车拿行李上车。到了对面可以再拿一个。", actionHint: "到了再找新推车", frequency: "common" },
+              {
+                textEn:
+                  "The walkways are flat so you can push your cart on them. But no carts on the AirTrain — grab your bags and leave the cart. There are carts at T4 if you need one.",
+                textZh:
+                  "步道是平的可以推车上去。但AirTrain不让带推车——拿好行李把车放下。4号航站楼有推车可以用。",
+                actionHint: "上AirTrain前放下推车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Cart's fine on the moving walkway. When you get to the AirTrain, ditch the cart and carry your bags on. You can grab another cart on the other side.",
+                textZh:
+                  "推车在自动步道上没问题。到AirTrain那里放下推车拿行李上车。到了对面可以再拿一个。",
+                actionHint: "到了再找新推车",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thanks. And on the AirTrain, how will I know which stop to get off at? I don't want to miss Terminal 4.",
-            textZh: "谢谢。在 AirTrain 上，怎么知道在哪站下？我不想坐过4号航站楼。",
+            textEn:
+              "Thanks. And on the AirTrain, how will I know which stop to get off at? I don't want to miss Terminal 4.",
+            textZh:
+              "谢谢。在 AirTrain 上，怎么知道在哪站下？我不想坐过4号航站楼。",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "There are automated announcements and a screen showing the next stop. It goes Terminal 1, 2, 3, 4, 5 in order. So when you hear 'Next stop: Terminal 4,' get ready to step off. If you miss it, just stay on — it loops around. You'll come back to Terminal 4.",
-            textZh: "有自动报站和屏幕显示下一站。按顺序走：1号、2号、3号、4号、5号航站楼。听到'下一站：4号航站楼'就准备下车。如果坐过了也没关系，不用下车——它是环形的，会回到4号航站楼。",
+            textEn:
+              "There are automated announcements and a screen showing the next stop. It goes Terminal 1, 2, 3, 4, 5 in order. So when you hear 'Next stop: Terminal 4,' get ready to step off. If you miss it, just stay on — it loops around. You'll come back to Terminal 4.",
+            textZh:
+              "有自动报站和屏幕显示下一站。按顺序走：1号、2号、3号、4号、5号航站楼。听到'下一站：4号航站楼'就准备下车。如果坐过了也没关系，不用下车——它是环形的，会回到4号航站楼。",
             keyPhrases: [
               { en: "automated announcements", zh: "自动报站" },
               { en: "in order", zh: "按顺序" },
               { en: "loops around", zh: "环形运行" },
             ],
             alternativeExpressions: [
-              { textEn: "There's a screen and announcements. It goes 1, 2, 3, 4, 5 — so yours is three stops. If you miss it, no biggie — it loops back around.", textZh: "有屏幕和报站。按1、2、3、4、5的顺序——你的是第三站。坐过了也没事——环形的会绕回来。", actionHint: "数好三站", frequency: "common" },
-              { textEn: "You'll hear 'Terminal 4' announced and see it on the display. Can't really miss it. And even if you do, it's a loop — just stay on.", textZh: "会听到报'4号航站楼'屏幕上也会显示。不太会坐过。就算坐过了也没事，环形线不用下车。", actionHint: "留意报站", frequency: "common" },
+              {
+                textEn:
+                  "There's a screen and announcements. It goes 1, 2, 3, 4, 5 — so yours is three stops. If you miss it, no biggie — it loops back around.",
+                textZh:
+                  "有屏幕和报站。按1、2、3、4、5的顺序——你的是第三站。坐过了也没事——环形的会绕回来。",
+                actionHint: "数好三站",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You'll hear 'Terminal 4' announced and see it on the display. Can't really miss it. And even if you do, it's a loop — just stay on.",
+                textZh:
+                  "会听到报'4号航站楼'屏幕上也会显示。不太会坐过。就算坐过了也没事，环形线不用下车。",
+                actionHint: "留意报站",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Great, that's very clear. I'll head to the AirTrain now. Thank you so much for your help!",
+            textEn:
+              "Great, that's very clear. I'll head to the AirTrain now. Thank you so much for your help!",
             textZh: "很清楚了。我现在就去坐 AirTrain。非常感谢你的帮助！",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "You're welcome! Follow the purple signs — they'll lead you right to the AirTrain. Good luck with your connection, and safe travels!",
-            textZh: "不客气！跟着紫色标志走——会直接带你到 AirTrain。祝转机顺利，一路平安！",
+            textEn:
+              "You're welcome! Follow the purple signs — they'll lead you right to the AirTrain. Good luck with your connection, and safe travels!",
+            textZh:
+              "不客气！跟着紫色标志走——会直接带你到 AirTrain。祝转机顺利，一路平安！",
             keyPhrases: [
               { en: "follow the signs", zh: "跟着标志走" },
               { en: "connection", zh: "转机" },
               { en: "safe travels", zh: "一路平安" },
             ],
             alternativeExpressions: [
-              { textEn: "No problem! Just follow the purple signs to the AirTrain. You'll be fine. Safe travels!", textZh: "不客气！跟着紫色标志走去AirTrain。没问题的。一路平安！", actionHint: "找紫色标志", frequency: "common" },
-              { textEn: "Happy to help! Purple signs will take you right there. Good luck with your connection — have a great flight!", textZh: "很高兴帮到你！紫色标志会带你到。祝转机顺利——旅途愉快！", actionHint: "跟着标志走", frequency: "common" },
+              {
+                textEn:
+                  "No problem! Just follow the purple signs to the AirTrain. You'll be fine. Safe travels!",
+                textZh:
+                  "不客气！跟着紫色标志走去AirTrain。没问题的。一路平安！",
+                actionHint: "找紫色标志",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Happy to help! Purple signs will take you right there. Good luck with your connection — have a great flight!",
+                textZh:
+                  "很高兴帮到你！紫色标志会带你到。祝转机顺利——旅途愉快！",
+                actionHint: "跟着标志走",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -4446,35 +7240,54 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I'm completely lost. I need to get to Gate B36 but I have no idea where I am. Can you help me?",
-            textZh: "不好意思，我完全迷路了。我要去B36登机口但完全不知道自己在哪。能帮帮我吗？",
+            textEn:
+              "Excuse me, I'm completely lost. I need to get to Gate B36 but I have no idea where I am. Can you help me?",
+            textZh:
+              "不好意思，我完全迷路了。我要去B36登机口但完全不知道自己在哪。能帮帮我吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "Of course! You're currently in Concourse A. Gate B36 is in Concourse B, which is the next building over. Don't worry — it happens to everyone in this airport, it's huge! Do you see the signs overhead that say 'Gates B'?",
-            textZh: "当然可以！你现在在A候机厅。B36登机口在B候机厅，就是旁边那栋。别担心——这个机场太大了，谁都会迷路！你看到头上写着'B登机口'的标志了吗？",
+            textEn:
+              "Of course! You're currently in Concourse A. Gate B36 is in Concourse B, which is the next building over. Don't worry — it happens to everyone in this airport, it's huge! Do you see the signs overhead that say 'Gates B'?",
+            textZh:
+              "当然可以！你现在在A候机厅。B36登机口在B候机厅，就是旁边那栋。别担心——这个机场太大了，谁都会迷路！你看到头上写着'B登机口'的标志了吗？",
             keyPhrases: [
               { en: "Concourse", zh: "候机厅" },
               { en: "overhead", zh: "头上的" },
             ],
             vocabNotes: {
-              "concourse": { meaningInContext: "在这句话里表示：机场里的一个大的候机区域，通常用字母编号（A、B、C），里面有一排登机口", similarUsage: "类似用法：Meet me at the food court in Concourse C.（在C候机厅的美食广场见）" },
+              concourse: {
+                meaningInContext:
+                  "在这句话里表示：机场里的一个大的候机区域，通常用字母编号（A、B、C），里面有一排登机口",
+                similarUsage:
+                  "类似用法：Meet me at the food court in Concourse C.（在C候机厅的美食广场见）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "No worries! B gates are this way. Follow me, I'll point you in the right direction.", textZh: "别担心！B登机口这边走。跟我来，我给你指路。", actionHint: "跟着工作人员走", frequency: "common" },
+              {
+                textEn:
+                  "No worries! B gates are this way. Follow me, I'll point you in the right direction.",
+                textZh: "别担心！B登机口这边走。跟我来，我给你指路。",
+                actionHint: "跟着工作人员走",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I see them! So I just follow the signs? Is it far? My flight boards in 40 minutes and I'm starting to panic.",
-            textZh: "看到了！跟着标志走就行？远吗？我的航班40分钟后登机，我开始慌了。",
+            textEn:
+              "I see them! So I just follow the signs? Is it far? My flight boards in 40 minutes and I'm starting to panic.",
+            textZh:
+              "看到了！跟着标志走就行？远吗？我的航班40分钟后登机，我开始慌了。",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "You have plenty of time — don't panic. Walk straight ahead, past the duty-free shops. You'll see a junction — turn left at the big 'B' sign. Then it's about a 5-minute walk. Gate numbers go in order, so B36 will be on the right-hand side near the end.",
-            textZh: "时间充裕——别慌。一直往前走，经过免税店。你会看到一个岔路口——在大大的'B'标志那里左转。然后走大约5分钟。登机口按顺序排的，B36在右手边靠里面。",
+            textEn:
+              "You have plenty of time — don't panic. Walk straight ahead, past the duty-free shops. You'll see a junction — turn left at the big 'B' sign. Then it's about a 5-minute walk. Gate numbers go in order, so B36 will be on the right-hand side near the end.",
+            textZh:
+              "时间充裕——别慌。一直往前走，经过免税店。你会看到一个岔路口——在大大的'B'标志那里左转。然后走大约5分钟。登机口按顺序排的，B36在右手边靠里面。",
             keyPhrases: [
               { en: "plenty of time", zh: "时间充裕" },
               { en: "duty-free shops", zh: "免税店" },
@@ -4482,69 +7295,135 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "right-hand side", zh: "右手边" },
             ],
             alternativeExpressions: [
-              { textEn: "Plenty of time, no worries. Go straight, past duty-free, left at the big 'B' sign. Five-minute walk and B36 is on the right toward the end.", textZh: "时间充裕，别急。一直走，过免税店，在大大的'B'标志左转。走5分钟，B36在右边靠里面。", actionHint: "在'B'标志左转", frequency: "common" },
-              { textEn: "You're totally fine on time. Walk straight through, hang a left at the 'B' junction, and it's about 5 minutes. B36 will be on your right.", textZh: "时间完全够。一直走，'B'岔路口左转，大约5分钟。B36在你右手边。", actionHint: "直走然后左转", frequency: "common" },
+              {
+                textEn:
+                  "Plenty of time, no worries. Go straight, past duty-free, left at the big 'B' sign. Five-minute walk and B36 is on the right toward the end.",
+                textZh:
+                  "时间充裕，别急。一直走，过免税店，在大大的'B'标志左转。走5分钟，B36在右边靠里面。",
+                actionHint: "在'B'标志左转",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You're totally fine on time. Walk straight through, hang a left at the 'B' junction, and it's about 5 minutes. B36 will be on your right.",
+                textZh:
+                  "时间完全够。一直走，'B'岔路口左转，大约5分钟。B36在你右手边。",
+                actionHint: "直走然后左转",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thank you! I also need to fill my water bottle. Are there water fountains in Concourse B?",
+            textEn:
+              "Thank you! I also need to fill my water bottle. Are there water fountains in Concourse B?",
             textZh: "谢谢！我还需要接点水。B候机厅有饮水台吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "Yes! There are bottle-filling stations near every restroom — look for the blue signs. There's one right next to Gate B32, which is close to your gate. You can also grab a coffee at the Starbucks near B30.",
-            textZh: "有的！每个卫生间附近都有饮水站——找蓝色标志。B32登机口旁边就有一个，离你的登机口很近。B30附近的星巴克也可以买杯咖啡。",
+            textEn:
+              "Yes! There are bottle-filling stations near every restroom — look for the blue signs. There's one right next to Gate B32, which is close to your gate. You can also grab a coffee at the Starbucks near B30.",
+            textZh:
+              "有的！每个卫生间附近都有饮水站——找蓝色标志。B32登机口旁边就有一个，离你的登机口很近。B30附近的星巴克也可以买杯咖啡。",
             keyPhrases: [
               { en: "bottle-filling stations", zh: "饮水站/灌水台" },
               { en: "close to your gate", zh: "离你的登机口近" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep! There are water bottle fillers by every restroom — look for the blue signs. There's one right by B32, super close to your gate.", textZh: "有！每个卫生间旁边都有接水的——找蓝色标志。B32旁边就有一个，离你的登机口很近。", actionHint: "找蓝色标志", frequency: "common" },
-              { textEn: "Sure, there's bottle refill stations all over. Closest one to you is near Gate B32. Blue sign, can't miss it.", textZh: "当然，到处都有饮水站。离你最近的在B32登机口旁边。蓝色标志，很好找。", actionHint: "B32旁边有饮水站", frequency: "common" },
+              {
+                textEn:
+                  "Yep! There are water bottle fillers by every restroom — look for the blue signs. There's one right by B32, super close to your gate.",
+                textZh:
+                  "有！每个卫生间旁边都有接水的——找蓝色标志。B32旁边就有一个，离你的登机口很近。",
+                actionHint: "找蓝色标志",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sure, there's bottle refill stations all over. Closest one to you is near Gate B32. Blue sign, can't miss it.",
+                textZh:
+                  "当然，到处都有饮水站。离你最近的在B32登机口旁边。蓝色标志，很好找。",
+                actionHint: "B32旁边有饮水站",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "One more thing — is there anywhere I can charge my phone? It's almost dead.",
+            textEn:
+              "One more thing — is there anywhere I can charge my phone? It's almost dead.",
             textZh: "再问一下——哪里可以给手机充电？快没电了。",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "Most of the seats in Concourse B have USB charging ports built into the armrests. And there are free charging stations — the tall kiosks with multiple cables — scattered around the concourse. You should find one near your gate. If not, the airline lounge near B34 has plenty of outlets.",
-            textZh: "B候机厅大部分座位的扶手上都有USB充电口。还有免费充电站——带多条数据线的高立柱——分布在候机厅各处。你的登机口附近应该有。如果没有，B34附近的航空公司贵宾室有很多插座。",
+            textEn:
+              "Most of the seats in Concourse B have USB charging ports built into the armrests. And there are free charging stations — the tall kiosks with multiple cables — scattered around the concourse. You should find one near your gate. If not, the airline lounge near B34 has plenty of outlets.",
+            textZh:
+              "B候机厅大部分座位的扶手上都有USB充电口。还有免费充电站——带多条数据线的高立柱——分布在候机厅各处。你的登机口附近应该有。如果没有，B34附近的航空公司贵宾室有很多插座。",
             keyPhrases: [
               { en: "USB charging ports", zh: "USB充电口" },
               { en: "charging stations", zh: "充电站" },
               { en: "outlets", zh: "插座" },
               { en: "airline lounge", zh: "航空公司贵宾室" },
             ],
-            culturalNote: "美国大型机场通常在座位区提供免费USB充电口。但要注意：公共USB充电口有安全风险，建议用自己的充电器插电源插座更安全。",
+            culturalNote:
+              "美国大型机场通常在座位区提供免费USB充电口。但要注意：公共USB充电口有安全风险，建议用自己的充电器插电源插座更安全。",
             alternativeExpressions: [
-              { textEn: "Most seats have USB ports in the armrests. There's also free charging kiosks around — tall things with cables. Should be one near your gate.", textZh: "大部分座位扶手上有USB口。还有免费的充电柱——高高的带数据线的。你的登机口附近应该有。", actionHint: "找座位上的USB口", frequency: "common" },
-              { textEn: "Check the armrests — there's USB charging built in. Or look for the standing charging stations scattered around. Tons of outlets near the gates.", textZh: "看看扶手——内置了USB充电。或者找分布在各处的立式充电站。登机口附近插座很多。", actionHint: "用自己的充电器更安全", frequency: "common" },
+              {
+                textEn:
+                  "Most seats have USB ports in the armrests. There's also free charging kiosks around — tall things with cables. Should be one near your gate.",
+                textZh:
+                  "大部分座位扶手上有USB口。还有免费的充电柱——高高的带数据线的。你的登机口附近应该有。",
+                actionHint: "找座位上的USB口",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Check the armrests — there's USB charging built in. Or look for the standing charging stations scattered around. Tons of outlets near the gates.",
+                textZh:
+                  "看看扶手——内置了USB充电。或者找分布在各处的立式充电站。登机口附近插座很多。",
+                actionHint: "用自己的充电器更安全",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "You've been incredibly helpful. I feel much better now. Thank you!",
+            textEn:
+              "You've been incredibly helpful. I feel much better now. Thank you!",
             textZh: "你帮了大忙。我现在安心多了。谢谢！",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "Happy to help! Just follow those signs and you'll be fine. And remember — if you ever get lost again, look for staff in blue vests like mine, or use the information kiosks — the touchscreen ones with the airport map. Have a great flight!",
-            textZh: "很高兴能帮到你！跟着标志走就没问题。记住——如果再迷路了，找穿像我这样蓝色背心的工作人员，或者用信息查询台——那些有机场地图的触屏设备。祝旅途愉快！",
+            textEn:
+              "Happy to help! Just follow those signs and you'll be fine. And remember — if you ever get lost again, look for staff in blue vests like mine, or use the information kiosks — the touchscreen ones with the airport map. Have a great flight!",
+            textZh:
+              "很高兴能帮到你！跟着标志走就没问题。记住——如果再迷路了，找穿像我这样蓝色背心的工作人员，或者用信息查询台——那些有机场地图的触屏设备。祝旅途愉快！",
             keyPhrases: [
               { en: "blue vests", zh: "蓝色背心" },
               { en: "information kiosks", zh: "信息查询台" },
               { en: "touchscreen", zh: "触屏的" },
             ],
             alternativeExpressions: [
-              { textEn: "You got it! Follow the signs and you're golden. If you get lost again, find someone in a blue vest like me, or use the touchscreen maps around the concourse.", textZh: "没问题！跟着标志走就行。再迷路的话找穿蓝色背心的人，或者用候机厅里的触屏地图。", actionHint: "记住找蓝色背心", frequency: "common" },
-              { textEn: "Glad I could help! Just follow those B signs. And if you ever need help, look for staff in blue vests or the info kiosks with maps. Safe travels!", textZh: "很高兴帮到你！跟着B标志走。需要帮助的话找蓝背心的工作人员或者信息查询台。一路平安！", actionHint: "记住求助方式", frequency: "common" },
+              {
+                textEn:
+                  "You got it! Follow the signs and you're golden. If you get lost again, find someone in a blue vest like me, or use the touchscreen maps around the concourse.",
+                textZh:
+                  "没问题！跟着标志走就行。再迷路的话找穿蓝色背心的人，或者用候机厅里的触屏地图。",
+                actionHint: "记住找蓝色背心",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Glad I could help! Just follow those B signs. And if you ever need help, look for staff in blue vests or the info kiosks with maps. Safe travels!",
+                textZh:
+                  "很高兴帮到你！跟着B标志走。需要帮助的话找蓝背心的工作人员或者信息查询台。一路平安！",
+                actionHint: "记住求助方式",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -4559,14 +7438,17 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, my mother is elderly and has difficulty walking long distances. Is there a wheelchair service available?",
+            textEn:
+              "Hi, my mother is elderly and has difficulty walking long distances. Is there a wheelchair service available?",
             textZh: "你好，我母亲年纪大了，走远路很困难。有轮椅服务吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "Absolutely. We provide complimentary wheelchair assistance. I'll radio for one right now. An attendant will come with a wheelchair and escort your mother all the way to the gate. Which flight are you on?",
-            textZh: "当然有。我们提供免费轮椅协助。我现在就呼叫。服务人员会推轮椅来，一路送你母亲到登机口。你们的航班是哪个？",
+            textEn:
+              "Absolutely. We provide complimentary wheelchair assistance. I'll radio for one right now. An attendant will come with a wheelchair and escort your mother all the way to the gate. Which flight are you on?",
+            textZh:
+              "当然有。我们提供免费轮椅协助。我现在就呼叫。服务人员会推轮椅来，一路送你母亲到登机口。你们的航班是哪个？",
             keyPhrases: [
               { en: "wheelchair assistance", zh: "轮椅协助" },
               { en: "complimentary", zh: "免费的" },
@@ -4574,93 +7456,177 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "escort", zh: "护送" },
             ],
             alternativeExpressions: [
-              { textEn: "Of course. Let me arrange wheelchair service. It's completely free. What gate do you need to get to?", textZh: "当然可以。我来安排轮椅服务。完全免费的。你们要去哪个登机口？", actionHint: "提供航班信息和登机口", frequency: "common" },
+              {
+                textEn:
+                  "Of course. Let me arrange wheelchair service. It's completely free. What gate do you need to get to?",
+                textZh:
+                  "当然可以。我来安排轮椅服务。完全免费的。你们要去哪个登机口？",
+                actionHint: "提供航班信息和登机口",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "We're on United Flight 892 to Shanghai, Gate C22. How long will the wheelchair take? We still need to go through security.",
-            textZh: "我们坐联合航空892航班去上海，C22登机口。轮椅要等多久？我们还要过安检。",
+            textEn:
+              "We're on United Flight 892 to Shanghai, Gate C22. How long will the wheelchair take? We still need to go through security.",
+            textZh:
+              "我们坐联合航空892航班去上海，C22登机口。轮椅要等多久？我们还要过安检。",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "About 5 to 10 minutes. The attendant will also help you through security — wheelchair passengers get to use the priority lane, so it should be quicker. They can assist with placing bags on the belt and everything.",
-            textZh: "大约5到10分钟。服务人员还会帮你们过安检——轮椅旅客可以走优先通道，会更快。他们可以帮忙把包放上传送带什么的。",
+            textEn:
+              "About 5 to 10 minutes. The attendant will also help you through security — wheelchair passengers get to use the priority lane, so it should be quicker. They can assist with placing bags on the belt and everything.",
+            textZh:
+              "大约5到10分钟。服务人员还会帮你们过安检——轮椅旅客可以走优先通道，会更快。他们可以帮忙把包放上传送带什么的。",
             keyPhrases: [
               { en: "priority lane", zh: "优先通道" },
               { en: "belt", zh: "传送带" },
               { en: "assist with", zh: "帮助做某事" },
             ],
             alternativeExpressions: [
-              { textEn: "Give it 5-10 minutes. They'll also fast-track you through security — wheelchair passengers get the priority line. They help with the bags and everything.", textZh: "等5-10分钟。他们还会帮你们快速过安检——轮椅旅客走优先通道。包放传送带什么的都帮忙。", actionHint: "等待轮椅服务", frequency: "common" },
-              { textEn: "Should be here in under 10 minutes. Good news — they take you through the priority security lane, so it's much faster. They handle everything.", textZh: "10分钟内到。好消息是——他们带你走安检优先通道，快很多。什么都帮你办好。", actionHint: "享受优先通道", frequency: "common" },
+              {
+                textEn:
+                  "Give it 5-10 minutes. They'll also fast-track you through security — wheelchair passengers get the priority line. They help with the bags and everything.",
+                textZh:
+                  "等5-10分钟。他们还会帮你们快速过安检——轮椅旅客走优先通道。包放传送带什么的都帮忙。",
+                actionHint: "等待轮椅服务",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Should be here in under 10 minutes. Good news — they take you through the priority security lane, so it's much faster. They handle everything.",
+                textZh:
+                  "10分钟内到。好消息是——他们带你走安检优先通道，快很多。什么都帮你办好。",
+                actionHint: "享受优先通道",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That's wonderful. Will they also help us when we board the plane?",
+            textEn:
+              "That's wonderful. Will they also help us when we board the plane?",
             textZh: "太好了。登机的时候也会帮忙吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "Yes! Wheelchair passengers board first — before all other groups. The attendant will take your mother right up to the jet bridge and help her onto the aircraft. On the other end in Shanghai, the airline will arrange wheelchair assistance at arrival too — just mention it to the flight crew.",
-            textZh: "会的！轮椅旅客最先登机——比所有其他组都早。服务人员会把你母亲送到廊桥并帮她上飞机。到上海那边，航空公司也会安排接机轮椅服务——跟机组人员说一下就行。",
+            textEn:
+              "Yes! Wheelchair passengers board first — before all other groups. The attendant will take your mother right up to the jet bridge and help her onto the aircraft. On the other end in Shanghai, the airline will arrange wheelchair assistance at arrival too — just mention it to the flight crew.",
+            textZh:
+              "会的！轮椅旅客最先登机——比所有其他组都早。服务人员会把你母亲送到廊桥并帮她上飞机。到上海那边，航空公司也会安排接机轮椅服务——跟机组人员说一下就行。",
             keyPhrases: [
               { en: "board first", zh: "最先登机" },
               { en: "jet bridge", zh: "廊桥/登机桥" },
               { en: "flight crew", zh: "机组人员" },
             ],
             vocabNotes: {
-              "jet bridge": { meaningInContext: "在这句话里表示：连接航站楼登机口和飞机舱门的封闭通道", similarUsage: "类似用法：Please wait in the jet bridge until the cabin door opens.（请在廊桥等候直到舱门打开）" },
+              "jet bridge": {
+                meaningInContext:
+                  "在这句话里表示：连接航站楼登机口和飞机舱门的封闭通道",
+                similarUsage:
+                  "类似用法：Please wait in the jet bridge until the cabin door opens.（请在廊桥等候直到舱门打开）",
+              },
             },
             alternativeExpressions: [
-              { textEn: "Absolutely. Wheelchair passengers pre-board — before everyone else. They'll wheel her right up to the plane. And let the crew know so Shanghai arranges a chair on arrival too.", textZh: "当然。轮椅旅客优先登机——比所有人都早。会推她直接到飞机跟前。告诉机组一声，上海那边也会安排轮椅接机。", actionHint: "提前告诉机组人员", frequency: "common" },
-              { textEn: "Yep, she'll board first. The attendant takes her through the jet bridge onto the aircraft. Just mention it to the flight crew and they'll set up wheelchair service in Shanghai too.", textZh: "会的，她最先登机。服务人员会推她走廊桥上飞机。跟机组说一下，他们会在上海也安排轮椅。", actionHint: "跟空乘说需要到达轮椅", frequency: "common" },
+              {
+                textEn:
+                  "Absolutely. Wheelchair passengers pre-board — before everyone else. They'll wheel her right up to the plane. And let the crew know so Shanghai arranges a chair on arrival too.",
+                textZh:
+                  "当然。轮椅旅客优先登机——比所有人都早。会推她直接到飞机跟前。告诉机组一声，上海那边也会安排轮椅接机。",
+                actionHint: "提前告诉机组人员",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Yep, she'll board first. The attendant takes her through the jet bridge onto the aircraft. Just mention it to the flight crew and they'll set up wheelchair service in Shanghai too.",
+                textZh:
+                  "会的，她最先登机。服务人员会推她走廊桥上飞机。跟机组说一下，他们会在上海也安排轮椅。",
+                actionHint: "跟空乘说需要到达轮椅",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Is there anything we need to fill out or sign for the wheelchair service?",
+            textEn:
+              "Is there anything we need to fill out or sign for the wheelchair service?",
             textZh: "轮椅服务需要填什么表或签字吗？",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "No paperwork needed. It's a standard service provided under the Air Carrier Access Act — every airline is required to offer it. Just keep your boarding passes ready. Oh, and one tip: it's customary to tip the wheelchair attendant $5 to $10, but it's not mandatory.",
-            textZh: "不需要填表。这是《航空运输无障碍法案》规定的标准服务——每个航空公司都必须提供。把登机牌准备好就行。对了，提示一下：习惯上给轮椅服务人员5到10美元小费，但不是必须的。",
+            textEn:
+              "No paperwork needed. It's a standard service provided under the Air Carrier Access Act — every airline is required to offer it. Just keep your boarding passes ready. Oh, and one tip: it's customary to tip the wheelchair attendant $5 to $10, but it's not mandatory.",
+            textZh:
+              "不需要填表。这是《航空运输无障碍法案》规定的标准服务——每个航空公司都必须提供。把登机牌准备好就行。对了，提示一下：习惯上给轮椅服务人员5到10美元小费，但不是必须的。",
             keyPhrases: [
               { en: "no paperwork", zh: "不需要填表" },
               { en: "Air Carrier Access Act", zh: "航空运输无障碍法案" },
               { en: "customary", zh: "习惯上的" },
               { en: "mandatory", zh: "必须的/强制的" },
             ],
-            culturalMeaning: "在美国，给轮椅服务人员小费是一种文化习惯，虽然不是强制的，但大多数人都会给。5-10美元是合适的金额。",
+            culturalMeaning:
+              "在美国，给轮椅服务人员小费是一种文化习惯，虽然不是强制的，但大多数人都会给。5-10美元是合适的金额。",
             alternativeExpressions: [
-              { textEn: "No forms, nothing. It's required by law — every airline has to provide it. Just have your boarding passes handy. Oh, and tipping the attendant $5-10 is appreciated but not required.", textZh: "不用填表，什么都不用。法律规定的——每家航空公司都必须提供。登机牌准备好就行。对了，给服务人员5-10美元小费不是必须但会很感激。", actionHint: "准备好登机牌和小费", frequency: "common" },
-              { textEn: "Zero paperwork. It's a legal requirement under federal law. Keep your boarding passes ready and that's it. A small tip for the attendant is customary but optional.", textZh: "完全不需要填表。联邦法律规定的服务。登机牌准备好就行。给服务人员一点小费是惯例但不强制。", actionHint: "小费是惯例", frequency: "common" },
+              {
+                textEn:
+                  "No forms, nothing. It's required by law — every airline has to provide it. Just have your boarding passes handy. Oh, and tipping the attendant $5-10 is appreciated but not required.",
+                textZh:
+                  "不用填表，什么都不用。法律规定的——每家航空公司都必须提供。登机牌准备好就行。对了，给服务人员5-10美元小费不是必须但会很感激。",
+                actionHint: "准备好登机牌和小费",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Zero paperwork. It's a legal requirement under federal law. Keep your boarding passes ready and that's it. A small tip for the attendant is customary but optional.",
+                textZh:
+                  "完全不需要填表。联邦法律规定的服务。登机牌准备好就行。给服务人员一点小费是惯例但不强制。",
+                actionHint: "小费是惯例",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll definitely tip them. This service is so helpful — my mother was really worried about the long walk. Thank you for making it easy.",
-            textZh: "我一定会给小费的。这个服务太贴心了——我妈本来很担心走那么远。谢谢你让一切变得容易。",
+            textEn:
+              "I'll definitely tip them. This service is so helpful — my mother was really worried about the long walk. Thank you for making it easy.",
+            textZh:
+              "我一定会给小费的。这个服务太贴心了——我妈本来很担心走那么远。谢谢你让一切变得容易。",
           },
           {
             speaker: "them",
             role: "机场工作人员",
-            textEn: "That's what we're here for! Ah, here comes the attendant with the wheelchair now. This is Maria — she'll take great care of your mother. Have a safe flight to Shanghai!",
-            textZh: "这就是我们的工作！啊，服务人员推着轮椅来了。这是 Maria——她会好好照顾你母亲的。祝飞上海一路平安！",
+            textEn:
+              "That's what we're here for! Ah, here comes the attendant with the wheelchair now. This is Maria — she'll take great care of your mother. Have a safe flight to Shanghai!",
+            textZh:
+              "这就是我们的工作！啊，服务人员推着轮椅来了。这是 Maria——她会好好照顾你母亲的。祝飞上海一路平安！",
             keyPhrases: [
               { en: "that's what we're here for", zh: "这就是我们的工作" },
               { en: "take great care of", zh: "好好照顾" },
               { en: "safe flight", zh: "一路平安" },
             ],
-            literalMeaning: "\"that's what we're here for\" 字面意思是 \"这就是我们在这里的原因\"，实际表示 \"这就是我的职责/很乐意帮忙\"",
+            literalMeaning:
+              '"that\'s what we\'re here for" 字面意思是 "这就是我们在这里的原因"，实际表示 "这就是我的职责/很乐意帮忙"',
             alternativeExpressions: [
-              { textEn: "It's my pleasure! Here's your wheelchair and attendant now. This is Maria — she'll look after your mom. Have a wonderful flight!", textZh: "我的荣幸！轮椅和服务人员到了。这是Maria——她会照顾你妈妈。祝旅途愉快！", actionHint: "跟着Maria走", frequency: "common" },
-              { textEn: "Happy to help! Oh perfect timing, here comes the wheelchair. Maria here will take great care of your mother all the way to the gate. Safe flight!", textZh: "很高兴帮到你！正好，轮椅来了。Maria会一路照顾你母亲到登机口。一路平安！", actionHint: "把母亲交给Maria", frequency: "common" },
+              {
+                textEn:
+                  "It's my pleasure! Here's your wheelchair and attendant now. This is Maria — she'll look after your mom. Have a wonderful flight!",
+                textZh:
+                  "我的荣幸！轮椅和服务人员到了。这是Maria——她会照顾你妈妈。祝旅途愉快！",
+                actionHint: "跟着Maria走",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Happy to help! Oh perfect timing, here comes the wheelchair. Maria here will take great care of your mother all the way to the gate. Safe flight!",
+                textZh:
+                  "很高兴帮到你！正好，轮椅来了。Maria会一路照顾你母亲到登机口。一路平安！",
+                actionHint: "把母亲交给Maria",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -4696,15 +7662,28 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yes, this is the number 7. Downtown is about 15 stops from here.",
+            textEn:
+              "Yes, this is the number 7. Downtown is about 15 stops from here.",
             textZh: "是的，这是7路。市中心大约15站。",
             keyPhrases: [
               { en: "number 7", zh: "7路" },
               { en: "stops", zh: "站" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, this is the 7. Gets you downtown — about 15 stops.", textZh: "对，这是7路。到市中心——大约15站。", actionHint: "确认上对了车", frequency: "common" },
-              { textEn: "You're on the right bus. Number 7 goes straight to downtown, about 15 stops from here.", textZh: "你坐对了。7路直达市中心，从这里大约15站。", actionHint: "可以上车了", frequency: "common" },
+              {
+                textEn:
+                  "Yep, this is the 7. Gets you downtown — about 15 stops.",
+                textZh: "对，这是7路。到市中心——大约15站。",
+                actionHint: "确认上对了车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "You're on the right bus. Number 7 goes straight to downtown, about 15 stops from here.",
+                textZh: "你坐对了。7路直达市中心，从这里大约15站。",
+                actionHint: "可以上车了",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -4715,28 +7694,45 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "司机",
-            textEn: "It's $2.50. You can pay with exact change, a transit card, or tap your phone.",
+            textEn:
+              "It's $2.50. You can pay with exact change, a transit card, or tap your phone.",
             textZh: "2.5美元。可以投币（需自备零钱）、刷公交卡，或手机刷卡。",
             keyPhrases: [
               { en: "exact change", zh: "自备零钱（不找零）" },
               { en: "transit card", zh: "公交卡" },
               { en: "tap your phone", zh: "手机刷卡" },
             ],
-            culturalNote: "美国公交通常不找零，需要自备零钱。很多城市支持手机支付（Apple Pay等）。",
+            culturalNote:
+              "美国公交通常不找零，需要自备零钱。很多城市支持手机支付（Apple Pay等）。",
             alternativeExpressions: [
-              { textEn: "Two-fifty. Exact change only, or you can use a transit card. Tap works too if you've got Apple Pay or Google Pay.", textZh: "2.5美元。只收正好的零钱，或者用公交卡。有Apple Pay或Google Pay也能刷。", actionHint: "准备好付款方式", frequency: "common" },
-              { textEn: "$2.50. We don't make change, so have the right amount or use your phone to tap.", textZh: "2.5美元。我们不找零，准备好零钱或者用手机刷。", actionHint: "不找零要自备", frequency: "common" },
+              {
+                textEn:
+                  "Two-fifty. Exact change only, or you can use a transit card. Tap works too if you've got Apple Pay or Google Pay.",
+                textZh:
+                  "2.5美元。只收正好的零钱，或者用公交卡。有Apple Pay或Google Pay也能刷。",
+                actionHint: "准备好付款方式",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "$2.50. We don't make change, so have the right amount or use your phone to tap.",
+                textZh: "2.5美元。我们不找零，准备好零钱或者用手机刷。",
+                actionHint: "不找零要自备",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll tap my phone. Can you tell me when we reach City Hall?",
+            textEn:
+              "I'll tap my phone. Can you tell me when we reach City Hall?",
             textZh: "我用手机刷。到市政厅的时候能提醒我吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Sure thing. There's also an electronic sign that shows the next stop. Just keep an eye on it.",
+            textEn:
+              "Sure thing. There's also an electronic sign that shows the next stop. Just keep an eye on it.",
             textZh: "没问题。车上也有电子显示牌会显示下一站。留意一下就行。",
             keyPhrases: [
               { en: "electronic sign", zh: "电子显示牌" },
@@ -4744,8 +7740,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "keep an eye on", zh: "留意" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, I'll give you a shout. There's a display up front that shows the next stop too, so watch for it.", textZh: "好的，我会叫你。前面还有个显示屏会显示下一站，留意一下。", actionHint: "看前方显示屏", frequency: "common" },
-              { textEn: "No problem, I'll let you know. You can also check the screen above the door — it shows every stop.", textZh: "没问题，我会提醒你。你也可以看门上方的屏幕——每站都显示。", actionHint: "关注门上方的屏幕", frequency: "common" },
+              {
+                textEn:
+                  "Yeah, I'll give you a shout. There's a display up front that shows the next stop too, so watch for it.",
+                textZh:
+                  "好的，我会叫你。前面还有个显示屏会显示下一站，留意一下。",
+                actionHint: "看前方显示屏",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "No problem, I'll let you know. You can also check the screen above the door — it shows every stop.",
+                textZh:
+                  "没问题，我会提醒你。你也可以看门上方的屏幕——每站都显示。",
+                actionHint: "关注门上方的屏幕",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -4764,21 +7774,36 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Excuse me, I need to transfer to the number 12 bus. Where should I get off?",
+            textEn:
+              "Excuse me, I need to transfer to the number 12 bus. Where should I get off?",
             textZh: "请问，我需要换乘12路公交，应该在哪站下车？",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Get off at Oak Street — that's three stops from here. The number 12 stop is right across the street.",
-            textZh: "在Oak Street下车——从这里还有三站。12路的站台就在马路对面。",
+            textEn:
+              "Get off at Oak Street — that's three stops from here. The number 12 stop is right across the street.",
+            textZh:
+              "在Oak Street下车——从这里还有三站。12路的站台就在马路对面。",
             keyPhrases: [
               { en: "get off at", zh: "在……下车" },
               { en: "right across the street", zh: "就在马路对面" },
             ],
             alternativeExpressions: [
-              { textEn: "Oak Street — three more stops. The 12 picks up right across the road, you can't miss it.", textZh: "Oak Street——还有三站。12路就在马路对面上车，很好找。", actionHint: "三站后下车", frequency: "common" },
-              { textEn: "Hop off at Oak Street, that's three stops away. Cross the street and you'll see the number 12 stop.", textZh: "Oak Street下车，还有三站。过马路就能看到12路的站台。", actionHint: "过马路找12路", frequency: "common" },
+              {
+                textEn:
+                  "Oak Street — three more stops. The 12 picks up right across the road, you can't miss it.",
+                textZh: "Oak Street——还有三站。12路就在马路对面上车，很好找。",
+                actionHint: "三站后下车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hop off at Oak Street, that's three stops away. Cross the street and you'll see the number 12 stop.",
+                textZh: "Oak Street下车，还有三站。过马路就能看到12路的站台。",
+                actionHint: "过马路找12路",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -4789,35 +7814,60 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "乘客",
-            textEn: "If you paid with a transit card, the transfer is free within two hours. If you paid cash, you should have asked for a transfer slip.",
-            textZh: "如果用公交卡付的，两小时内换乘免费。如果投币的话，上车时应该要一张换乘票。",
+            textEn:
+              "If you paid with a transit card, the transfer is free within two hours. If you paid cash, you should have asked for a transfer slip.",
+            textZh:
+              "如果用公交卡付的，两小时内换乘免费。如果投币的话，上车时应该要一张换乘票。",
             keyPhrases: [
               { en: "transfer", zh: "换乘" },
               { en: "transfer slip", zh: "换乘票" },
               { en: "within two hours", zh: "两小时内" },
             ],
-            culturalNote: "很多城市的公交系统提供换乘优惠，但需要用公交卡才能自动生效。投币乘客需要主动向司机要换乘票。",
+            culturalNote:
+              "很多城市的公交系统提供换乘优惠，但需要用公交卡才能自动生效。投币乘客需要主动向司机要换乘票。",
             alternativeExpressions: [
-              { textEn: "With a transit card it's free to transfer within two hours. If you paid cash, you should've gotten a transfer slip from the driver.", textZh: "公交卡两小时内免费换乘。投币的话应该找司机要了换乘票才行。", actionHint: "确认有换乘资格", frequency: "common" },
-              { textEn: "Did you use a card? Then you're good — free transfer for 2 hours. Cash riders need a transfer ticket from the driver.", textZh: "你刷卡了吗？那就没问题——2小时内免费换乘。投币的话需要找司机要换乘票。", actionHint: "检查付款方式", frequency: "common" },
+              {
+                textEn:
+                  "With a transit card it's free to transfer within two hours. If you paid cash, you should've gotten a transfer slip from the driver.",
+                textZh:
+                  "公交卡两小时内免费换乘。投币的话应该找司机要了换乘票才行。",
+                actionHint: "确认有换乘资格",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Did you use a card? Then you're good — free transfer for 2 hours. Cash riders need a transfer ticket from the driver.",
+                textZh:
+                  "你刷卡了吗？那就没问题——2小时内免费换乘。投币的话需要找司机要换乘票。",
+                actionHint: "检查付款方式",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I used my transit card, so I should be fine. How do I signal the driver to stop?",
+            textEn:
+              "I used my transit card, so I should be fine. How do I signal the driver to stop?",
             textZh: "我用的公交卡，应该没问题。怎么让司机知道我要下车？",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Just pull the cord along the window, or press the yellow strip. It'll ring a bell and the 'Stop Requested' sign will light up.",
-            textZh: "拉一下窗边的绳子，或者按黄色的按条。会响铃，然后'停车请求'的灯会亮。",
+            textEn:
+              "Just pull the cord along the window, or press the yellow strip. It'll ring a bell and the 'Stop Requested' sign will light up.",
+            textZh:
+              "拉一下窗边的绳子，或者按黄色的按条。会响铃，然后'停车请求'的灯会亮。",
             keyPhrases: [
               { en: "pull the cord", zh: "拉绳子" },
               { en: "Stop Requested", zh: "停车请求" },
             ],
             alternativeExpressions: [
-              { textEn: "Press the button near the door before your stop.", textZh: "到站前按门旁边的按钮。", actionHint: "提前一站按铃", frequency: "common" },
+              {
+                textEn: "Press the button near the door before your stop.",
+                textZh: "到站前按门旁边的按钮。",
+                actionHint: "提前一站按铃",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -4836,32 +7886,51 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Oh no, I think I missed my stop. Was that Market Street we just passed?",
+            textEn:
+              "Oh no, I think I missed my stop. Was that Market Street we just passed?",
             textZh: "糟糕，我好像坐过站了。刚才过的是Market Street吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "Yes, that was Market Street. I'll let you off at the next stop — it's just one block over. You can walk back easily.",
-            textZh: "是的，刚才是Market Street。下一站我给你停——就隔一个街区。你可以走回去。",
+            textEn:
+              "Yes, that was Market Street. I'll let you off at the next stop — it's just one block over. You can walk back easily.",
+            textZh:
+              "是的，刚才是Market Street。下一站我给你停——就隔一个街区。你可以走回去。",
             keyPhrases: [
               { en: "one block over", zh: "隔一个街区" },
               { en: "walk back", zh: "走回去" },
             ],
             alternativeExpressions: [
-              { textEn: "Yep, that was Market. I'll drop you at the next one — it's just a block. Easy walk back.", textZh: "对，刚才是Market。下一站我给你停——就一个街区。走回去很近。", actionHint: "下一站下车", frequency: "common" },
-              { textEn: "That was it, yeah. Don't worry, next stop is right around the corner. You can walk back in a minute.", textZh: "是的，刚过了。别担心，下一站就在拐角。一分钟就走回去了。", actionHint: "准备下车", frequency: "common" },
+              {
+                textEn:
+                  "Yep, that was Market. I'll drop you at the next one — it's just a block. Easy walk back.",
+                textZh:
+                  "对，刚才是Market。下一站我给你停——就一个街区。走回去很近。",
+                actionHint: "下一站下车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "That was it, yeah. Don't worry, next stop is right around the corner. You can walk back in a minute.",
+                textZh:
+                  "是的，刚过了。别担心，下一站就在拐角。一分钟就走回去了。",
+                actionHint: "准备下车",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Thank you! Or actually — can I take this bus back in the other direction?",
+            textEn:
+              "Thank you! Or actually — can I take this bus back in the other direction?",
             textZh: "谢谢！或者——这趟车能坐回去吗？",
           },
           {
             speaker: "them",
             role: "司机",
-            textEn: "This bus doesn't loop back. You'll need to cross the street and catch the number 7 going the other way. It comes every 10 minutes.",
+            textEn:
+              "This bus doesn't loop back. You'll need to cross the street and catch the number 7 going the other way. It comes every 10 minutes.",
             textZh: "这趟车不绕回去。你需要过马路坐反方向的7路。每10分钟一班。",
             keyPhrases: [
               { en: "doesn't loop back", zh: "不绕回去" },
@@ -4869,13 +7938,27 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "comes every 10 minutes", zh: "每10分钟一班" },
             ],
             alternativeExpressions: [
-              { textEn: "Nah, this one doesn't go back. Cross over and grab the 7 going the other direction. Comes every 10 minutes, no big deal.", textZh: "不行，这趟不往回走。过马路坐反方向的7路。10分钟一班，没事。", actionHint: "过马路等反方向的车", frequency: "common" },
-              { textEn: "This bus is one-way. You'd need to hop off, cross the street, and catch the 7 heading back. Should only be a few minutes' wait.", textZh: "这趟是单向的。下车过马路坐回头的7路。等几分钟就行。", actionHint: "下车后过马路", frequency: "common" },
+              {
+                textEn:
+                  "Nah, this one doesn't go back. Cross over and grab the 7 going the other direction. Comes every 10 minutes, no big deal.",
+                textZh:
+                  "不行，这趟不往回走。过马路坐反方向的7路。10分钟一班，没事。",
+                actionHint: "过马路等反方向的车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "This bus is one-way. You'd need to hop off, cross the street, and catch the 7 heading back. Should only be a few minutes' wait.",
+                textZh: "这趟是单向的。下车过马路坐回头的7路。等几分钟就行。",
+                actionHint: "下车后过马路",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "OK, I'll just walk back. It's only one block. Thank you for your help!",
+            textEn:
+              "OK, I'll just walk back. It's only one block. Thank you for your help!",
             textZh: "好吧，我走回去算了。就一个街区。谢谢您帮忙！",
           },
         ],
@@ -4910,28 +7993,47 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "乘客",
-            textEn: "There's a ticket machine right over there. You can choose English on the screen. Just select your zone and ticket type.",
-            textZh: "那边有个自动售票机。屏幕上可以选英语。选好区域和票种就行。",
+            textEn:
+              "There's a ticket machine right over there. You can choose English on the screen. Just select your zone and ticket type.",
+            textZh:
+              "那边有个自动售票机。屏幕上可以选英语。选好区域和票种就行。",
             keyPhrases: [
               { en: "ticket machine", zh: "自动售票机" },
               { en: "zone", zh: "区域" },
               { en: "ticket type", zh: "票种" },
             ],
             alternativeExpressions: [
-              { textEn: "See that machine over there? It's got English on the screen. Just pick your zone and what kind of ticket you want.", textZh: "看到那边的机器了吗？屏幕上有英文。选好区域和票种就行。", actionHint: "去自动售票机", frequency: "common" },
-              { textEn: "There's a ticket vending machine right there. Switch it to English, choose your zone and ticket type, and pay. Pretty straightforward.", textZh: "那边就有自助售票机。切换成英文，选区域和票种，付款。很简单的。", actionHint: "切换英文界面", frequency: "common" },
+              {
+                textEn:
+                  "See that machine over there? It's got English on the screen. Just pick your zone and what kind of ticket you want.",
+                textZh:
+                  "看到那边的机器了吗？屏幕上有英文。选好区域和票种就行。",
+                actionHint: "去自动售票机",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "There's a ticket vending machine right there. Switch it to English, choose your zone and ticket type, and pay. Pretty straightforward.",
+                textZh:
+                  "那边就有自助售票机。切换成英文，选区域和票种，付款。很简单的。",
+                actionHint: "切换英文界面",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Should I get a single ride or a day pass? I'll be taking it a few times today.",
+            textEn:
+              "Should I get a single ride or a day pass? I'll be taking it a few times today.",
             textZh: "买单程票还是日票？我今天要坐好几次。",
           },
           {
             speaker: "them",
             role: "乘客",
-            textEn: "A day pass is $5 — unlimited rides until midnight. A single ride is $2.75. So if you're riding more than twice, the day pass is a better deal.",
-            textZh: "日票5美元——午夜前不限次乘坐。单程票2.75美元。坐两次以上的话日票更划算。",
+            textEn:
+              "A day pass is $5 — unlimited rides until midnight. A single ride is $2.75. So if you're riding more than twice, the day pass is a better deal.",
+            textZh:
+              "日票5美元——午夜前不限次乘坐。单程票2.75美元。坐两次以上的话日票更划算。",
             keyPhrases: [
               { en: "day pass", zh: "日票" },
               { en: "unlimited rides", zh: "不限次乘坐" },
@@ -4939,8 +8041,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "better deal", zh: "更划算" },
             ],
             alternativeExpressions: [
-              { textEn: "Day pass is 5 bucks — ride all you want till midnight. Single ride's $2.75. If you're going more than twice, day pass is the move.", textZh: "日票5块——午夜前随便坐。单程2.75。坐两次以上的话日票划算。", actionHint: "算算坐几次", frequency: "common" },
-              { textEn: "A single is $2.75, day pass is $5 for unlimited. Do the math — more than two rides and you save money with the pass.", textZh: "单程2.75，日票5块不限次。算一下——超过两次用日票就省钱了。", actionHint: "多次乘坐买日票", frequency: "common" },
+              {
+                textEn:
+                  "Day pass is 5 bucks — ride all you want till midnight. Single ride's $2.75. If you're going more than twice, day pass is the move.",
+                textZh:
+                  "日票5块——午夜前随便坐。单程2.75。坐两次以上的话日票划算。",
+                actionHint: "算算坐几次",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "A single is $2.75, day pass is $5 for unlimited. Do the math — more than two rides and you save money with the pass.",
+                textZh:
+                  "单程2.75，日票5块不限次。算一下——超过两次用日票就省钱了。",
+                actionHint: "多次乘坐买日票",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -4951,17 +8067,34 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "乘客",
-            textEn: "Yes, cards and contactless payment both work. Don't forget to validate your ticket before you board — there's a little machine on the platform.",
-            textZh: "可以，信用卡和非接触支付都行。别忘了上车前在月台的小机器上验票。",
+            textEn:
+              "Yes, cards and contactless payment both work. Don't forget to validate your ticket before you board — there's a little machine on the platform.",
+            textZh:
+              "可以，信用卡和非接触支付都行。别忘了上车前在月台的小机器上验票。",
             keyPhrases: [
               { en: "contactless payment", zh: "非接触支付" },
               { en: "validate your ticket", zh: "验票" },
               { en: "platform", zh: "月台" },
             ],
-            culturalNote: "很多欧洲城市的公共交通采用信用制——没有闸机，但会有便衣检票员随机查票。逃票罚款很重。",
+            culturalNote:
+              "很多欧洲城市的公共交通采用信用制——没有闸机，但会有便衣检票员随机查票。逃票罚款很重。",
             alternativeExpressions: [
-              { textEn: "Yep, cards and tap-to-pay both work. Oh, and make sure you validate the ticket at the little machine on the platform before getting on.", textZh: "对，信用卡和感应支付都行。哦，上车前记得在月台的小机器上验票。", actionHint: "上车前一定要验票", frequency: "common" },
-              { textEn: "Credit card, debit, contactless — all good. Just don't forget to stamp your ticket at the validator before you board. That's important here.", textZh: "信用卡、借记卡、非接触——都行。别忘了上车前在验票机上盖章。这里很重要。", actionHint: "找月台上的验票机", frequency: "common" },
+              {
+                textEn:
+                  "Yep, cards and tap-to-pay both work. Oh, and make sure you validate the ticket at the little machine on the platform before getting on.",
+                textZh:
+                  "对，信用卡和感应支付都行。哦，上车前记得在月台的小机器上验票。",
+                actionHint: "上车前一定要验票",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Credit card, debit, contactless — all good. Just don't forget to stamp your ticket at the validator before you board. That's important here.",
+                textZh:
+                  "信用卡、借记卡、非接触——都行。别忘了上车前在验票机上盖章。这里很重要。",
+                actionHint: "找月台上的验票机",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -4979,8 +8112,18 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             textEn: "Good afternoon. Tickets, please.",
             textZh: "下午好。请出示车票。",
             alternativeExpressions: [
-              { textEn: "Hi there. Ticket inspection — can I see your ticket?", textZh: "你好。查票——能看看你的票吗？", actionHint: "出示车票", frequency: "common" },
-              { textEn: "Tickets, please. Just a routine check.", textZh: "请出示车票。例行检查。", actionHint: "准备好车票", frequency: "common" },
+              {
+                textEn: "Hi there. Ticket inspection — can I see your ticket?",
+                textZh: "你好。查票——能看看你的票吗？",
+                actionHint: "出示车票",
+                frequency: "common",
+              },
+              {
+                textEn: "Tickets, please. Just a routine check.",
+                textZh: "请出示车票。例行检查。",
+                actionHint: "准备好车票",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -4991,34 +8134,63 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "检票员",
-            textEn: "Hmm, I don't see a validation stamp on this. When did you buy it?",
+            textEn:
+              "Hmm, I don't see a validation stamp on this. When did you buy it?",
             textZh: "嗯，我没看到验票印章。你什么时候买的？",
-            keyPhrases: [
-              { en: "validation stamp", zh: "验票印章" },
-            ],
+            keyPhrases: [{ en: "validation stamp", zh: "验票印章" }],
             alternativeExpressions: [
-              { textEn: "This doesn't have a stamp on it. Did you validate it? When did you buy this?", textZh: "这上面没有盖章。你验过票了吗？什么时候买的？", actionHint: "解释情况", frequency: "common" },
-              { textEn: "I don't see a validation on this ticket. Where did you get on?", textZh: "这张票上没有验票记录。你在哪站上的车？", actionHint: "如实说明", frequency: "common" },
+              {
+                textEn:
+                  "This doesn't have a stamp on it. Did you validate it? When did you buy this?",
+                textZh: "这上面没有盖章。你验过票了吗？什么时候买的？",
+                actionHint: "解释情况",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "I don't see a validation on this ticket. Where did you get on?",
+                textZh: "这张票上没有验票记录。你在哪站上的车？",
+                actionHint: "如实说明",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "About 20 minutes ago. I'm sorry — I thought I validated it. I'm a tourist and this is my first time using the tram here.",
-            textZh: "大约20分钟前。抱歉——我以为我验过了。我是游客，第一次坐这里的电车。",
+            textEn:
+              "About 20 minutes ago. I'm sorry — I thought I validated it. I'm a tourist and this is my first time using the tram here.",
+            textZh:
+              "大约20分钟前。抱歉——我以为我验过了。我是游客，第一次坐这里的电车。",
           },
           {
             speaker: "them",
             role: "检票员",
-            textEn: "I understand. Since you do have a valid ticket, I'll let it go this time. Let me stamp it for you now. Next time, look for the yellow validation machine on the platform — insert the ticket and it prints the date and time.",
-            textZh: "我理解。既然你确实有票，这次就算了。我帮你盖章。下次找月台上的黄色验票机——把票插进去就会打印日期和时间。",
+            textEn:
+              "I understand. Since you do have a valid ticket, I'll let it go this time. Let me stamp it for you now. Next time, look for the yellow validation machine on the platform — insert the ticket and it prints the date and time.",
+            textZh:
+              "我理解。既然你确实有票，这次就算了。我帮你盖章。下次找月台上的黄色验票机——把票插进去就会打印日期和时间。",
             keyPhrases: [
               { en: "let it go", zh: "放过/算了" },
               { en: "stamp it", zh: "盖章" },
               { en: "validation machine", zh: "验票机" },
             ],
             alternativeExpressions: [
-              { textEn: "Since you do have a ticket, I'll let it slide this time. Here, I'll stamp it now. Next time, use the yellow machine on the platform — it prints the time on your ticket.", textZh: "你确实有票，这次就放过了。我帮你盖章。下次用月台上的黄色机器——会在票上打印时间。", actionHint: "记住下次验票", frequency: "common" },
-              { textEn: "OK, since you're a tourist and you have the ticket, no fine this time. Let me validate it for you. The yellow box on the platform — that's what you need to use.", textZh: "好吧，你是游客而且确实有票，这次不罚了。我帮你验。月台上的黄色箱子——下次用那个。", actionHint: "找黄色验票机", frequency: "common" },
+              {
+                textEn:
+                  "Since you do have a ticket, I'll let it slide this time. Here, I'll stamp it now. Next time, use the yellow machine on the platform — it prints the time on your ticket.",
+                textZh:
+                  "你确实有票，这次就放过了。我帮你盖章。下次用月台上的黄色机器——会在票上打印时间。",
+                actionHint: "记住下次验票",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "OK, since you're a tourist and you have the ticket, no fine this time. Let me validate it for you. The yellow box on the platform — that's what you need to use.",
+                textZh:
+                  "好吧，你是游客而且确实有票，这次不罚了。我帮你验。月台上的黄色箱子——下次用那个。",
+                actionHint: "找黄色验票机",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5055,12 +8227,20 @@ export const TRANSPORT_SCENES: PresetScene[] = [
             role: "收费员",
             textEn: "That'll be $6.50 for the toll.",
             textZh: "过路费6.5美元。",
-            keyPhrases: [
-              { en: "toll", zh: "过路费" },
-            ],
+            keyPhrases: [{ en: "toll", zh: "过路费" }],
             alternativeExpressions: [
-              { textEn: "Six-fifty, please.", textZh: "6.5美元。", actionHint: "准备付款", frequency: "common" },
-              { textEn: "Toll is $6.50. Cash or card?", textZh: "过路费6.5美元。现金还是刷卡？", actionHint: "选择付款方式", frequency: "common" },
+              {
+                textEn: "Six-fifty, please.",
+                textZh: "6.5美元。",
+                actionHint: "准备付款",
+                frequency: "common",
+              },
+              {
+                textEn: "Toll is $6.50. Cash or card?",
+                textZh: "过路费6.5美元。现金还是刷卡？",
+                actionHint: "选择付款方式",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5071,7 +8251,8 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "收费员",
-            textEn: "We accept cash or cards. Go ahead and insert or tap your card on the reader.",
+            textEn:
+              "We accept cash or cards. Go ahead and insert or tap your card on the reader.",
             textZh: "现金和卡都可以。插卡或者在读卡器上刷一下。",
             keyPhrases: [
               { en: "insert", zh: "插卡" },
@@ -5079,28 +8260,57 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "reader", zh: "读卡器" },
             ],
             alternativeExpressions: [
-              { textEn: "Cash or credit, both work. Just tap or insert your card right here on the machine.", textZh: "现金或信用卡都行。在这个机器上刷卡或插卡就行。", actionHint: "刷卡付费", frequency: "common" },
-              { textEn: "Either one's fine. Stick your card in the reader or tap it. You're all set.", textZh: "都可以。把卡插进读卡器或者感应一下。好了。", actionHint: "插卡或感应", frequency: "common" },
+              {
+                textEn:
+                  "Cash or credit, both work. Just tap or insert your card right here on the machine.",
+                textZh: "现金或信用卡都行。在这个机器上刷卡或插卡就行。",
+                actionHint: "刷卡付费",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Either one's fine. Stick your card in the reader or tap it. You're all set.",
+                textZh: "都可以。把卡插进读卡器或者感应一下。好了。",
+                actionHint: "插卡或感应",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Done. Is this toll for the whole highway, or are there more toll booths ahead?",
+            textEn:
+              "Done. Is this toll for the whole highway, or are there more toll booths ahead?",
             textZh: "好了。这是整条高速的费用吗，还是前面还有收费站？",
           },
           {
             speaker: "them",
             role: "收费员",
-            textEn: "This covers the bridge crossing. There's one more toll plaza about 40 miles ahead at the state line. That one is $4. Have a safe drive!",
-            textZh: "这是过桥费。前面大约40英里的州界还有一个收费站，那边4美元。开车注意安全！",
+            textEn:
+              "This covers the bridge crossing. There's one more toll plaza about 40 miles ahead at the state line. That one is $4. Have a safe drive!",
+            textZh:
+              "这是过桥费。前面大约40英里的州界还有一个收费站，那边4美元。开车注意安全！",
             keyPhrases: [
               { en: "bridge crossing", zh: "过桥" },
               { en: "toll plaza", zh: "收费站" },
               { en: "state line", zh: "州界" },
             ],
             alternativeExpressions: [
-              { textEn: "That's just the bridge toll. There's another one about 40 miles up at the state border — four bucks. Drive safe!", textZh: "这只是过桥费。前面大约40英里州界还有一个——4块钱。开车注意安全！", actionHint: "准备好下一个收费站", frequency: "common" },
-              { textEn: "This one covers the bridge. Heads up, there's one more toll plaza at the state line, $4. After that you're clear.", textZh: "这个是过桥的。提醒一下，州界还有个收费站，4美元。过了之后就没有了。", actionHint: "留意前方收费站", frequency: "common" },
+              {
+                textEn:
+                  "That's just the bridge toll. There's another one about 40 miles up at the state border — four bucks. Drive safe!",
+                textZh:
+                  "这只是过桥费。前面大约40英里州界还有一个——4块钱。开车注意安全！",
+                actionHint: "准备好下一个收费站",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "This one covers the bridge. Heads up, there's one more toll plaza at the state line, $4. After that you're clear.",
+                textZh:
+                  "这个是过桥的。提醒一下，州界还有个收费站，4美元。过了之后就没有了。",
+                actionHint: "留意前方收费站",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -5114,27 +8324,47 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "I accidentally went through the E-ZPass lane, but my rental car doesn't have E-ZPass. What should I do?",
+            textEn:
+              "I accidentally went through the E-ZPass lane, but my rental car doesn't have E-ZPass. What should I do?",
             textZh: "我不小心走了E-ZPass通道，但我的租车没有E-ZPass。怎么办？",
             vocabNotes: {
-              "E-ZPass": { meaningInContext: "美国东部常见的电子收费系统，类似国内的ETC" },
+              "E-ZPass": {
+                meaningInContext: "美国东部常见的电子收费系统，类似国内的ETC",
+              },
             },
           },
           {
             speaker: "them",
             role: "收费员",
-            textEn: "Don't worry — a camera captured your license plate. The toll will be billed to the rental car company, and they'll charge it to your credit card on file. There's usually an admin fee on top of the toll, though.",
-            textZh: "别担心——摄像头拍到了你的车牌。过路费会算到租车公司，他们会从你的信用卡上扣。不过通常还会加一笔手续费。",
+            textEn:
+              "Don't worry — a camera captured your license plate. The toll will be billed to the rental car company, and they'll charge it to your credit card on file. There's usually an admin fee on top of the toll, though.",
+            textZh:
+              "别担心——摄像头拍到了你的车牌。过路费会算到租车公司，他们会从你的信用卡上扣。不过通常还会加一笔手续费。",
             keyPhrases: [
               { en: "license plate", zh: "车牌" },
               { en: "billed to", zh: "记账给/向……收费" },
               { en: "on file", zh: "留档的" },
               { en: "admin fee", zh: "手续费" },
             ],
-            culturalNote: "租车走电子收费通道，租车公司通常会额外收取$3-5的手续费。建议租车时直接购买租车公司的ETC服务。",
+            culturalNote:
+              "租车走电子收费通道，租车公司通常会额外收取$3-5的手续费。建议租车时直接购买租车公司的ETC服务。",
             alternativeExpressions: [
-              { textEn: "No worries — the camera got your plate. The rental company will charge your card for the toll plus an admin fee on top.", textZh: "别担心——摄像头拍到车牌了。租车公司会从你的卡上扣过路费外加一笔手续费。", actionHint: "会有额外手续费", frequency: "common" },
-              { textEn: "It's fine, happens all the time. They'll snap your plate and bill the rental company. Just expect an extra service charge.", textZh: "没事，经常有人这样。他们会拍车牌记到租车公司。就是会有额外的服务费。", actionHint: "留意租车账单", frequency: "common" },
+              {
+                textEn:
+                  "No worries — the camera got your plate. The rental company will charge your card for the toll plus an admin fee on top.",
+                textZh:
+                  "别担心——摄像头拍到车牌了。租车公司会从你的卡上扣过路费外加一笔手续费。",
+                actionHint: "会有额外手续费",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "It's fine, happens all the time. They'll snap your plate and bill the rental company. Just expect an extra service charge.",
+                textZh:
+                  "没事，经常有人这样。他们会拍车牌记到租车公司。就是会有额外的服务费。",
+                actionHint: "留意租车账单",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5145,20 +8375,37 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "收费员",
-            textEn: "It depends on the rental company — usually $3 to $5 per toll. You might want to call them and ask about adding a toll pass to your rental. It's usually around $5 a day.",
-            textZh: "看租车公司——一般每次3到5美元。你可以打电话问他们能不能给你的车加个电子收费标签。通常一天5美元左右。",
+            textEn:
+              "It depends on the rental company — usually $3 to $5 per toll. You might want to call them and ask about adding a toll pass to your rental. It's usually around $5 a day.",
+            textZh:
+              "看租车公司——一般每次3到5美元。你可以打电话问他们能不能给你的车加个电子收费标签。通常一天5美元左右。",
             keyPhrases: [
               { en: "toll pass", zh: "电子收费标签" },
               { en: "per toll", zh: "每次过路" },
             ],
             alternativeExpressions: [
-              { textEn: "Depends on the company — usually 3 to 5 per toll on top of the actual toll. You could call them about getting a toll pass added — runs about $5 a day.", textZh: "看租车公司——一般每次收3到5美元手续费加上实际过路费。你可以打电话问加个电子收费标签——大约一天5美元。", actionHint: "考虑买租车公司的ETC", frequency: "common" },
-              { textEn: "Usually $3-5 per occurrence. My advice? Call the rental company and add a toll transponder. It's like 5 bucks a day and saves you the hassle.", textZh: "一般每次3-5美元。我建议？打电话给租车公司加个电子收费器。一天5美元左右，省很多麻烦。", actionHint: "打电话给租车公司", frequency: "occasional" },
+              {
+                textEn:
+                  "Depends on the company — usually 3 to 5 per toll on top of the actual toll. You could call them about getting a toll pass added — runs about $5 a day.",
+                textZh:
+                  "看租车公司——一般每次收3到5美元手续费加上实际过路费。你可以打电话问加个电子收费标签——大约一天5美元。",
+                actionHint: "考虑买租车公司的ETC",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Usually $3-5 per occurrence. My advice? Call the rental company and add a toll transponder. It's like 5 bucks a day and saves you the hassle.",
+                textZh:
+                  "一般每次3-5美元。我建议？打电话给租车公司加个电子收费器。一天5美元左右，省很多麻烦。",
+                actionHint: "打电话给租车公司",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good to know. I'll call the rental company right away. Thank you!",
+            textEn:
+              "Good to know. I'll call the rental company right away. Thank you!",
             textZh: "了解了。我马上打电话给租车公司。谢谢！",
           },
         ],
@@ -5187,57 +8434,98 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, my car broke down on the highway. I need roadside assistance.",
+            textEn:
+              "Hi, my car broke down on the highway. I need roadside assistance.",
             textZh: "你好，我的车在高速上抛锚了。我需要道路救援。",
           },
           {
             speaker: "them",
             role: "调度员",
-            textEn: "I'm sorry to hear that. Can you tell me your exact location? What highway are you on, and what's the nearest mile marker or exit?",
-            textZh: "很抱歉。能告诉我你的具体位置吗？在哪条高速，最近的里程标或出口是哪个？",
+            textEn:
+              "I'm sorry to hear that. Can you tell me your exact location? What highway are you on, and what's the nearest mile marker or exit?",
+            textZh:
+              "很抱歉。能告诉我你的具体位置吗？在哪条高速，最近的里程标或出口是哪个？",
             keyPhrases: [
               { en: "exact location", zh: "具体位置" },
               { en: "mile marker", zh: "里程标" },
               { en: "exit", zh: "出口" },
             ],
             alternativeExpressions: [
-              { textEn: "Oh no, sorry to hear that. Where are you right now? Which highway, and can you see a mile marker or an exit number?", textZh: "哎呀，很抱歉。你现在在哪？哪条公路，能看到里程标或出口号吗？", actionHint: "查看周围路标", frequency: "common" },
-              { textEn: "I'm sorry about that. Can you give me your location — highway name, nearest exit, anything you can see around you?", textZh: "很抱歉。能告诉我你的位置吗——公路名、最近的出口，或者你能看到的任何标志？", actionHint: "描述周围环境", frequency: "common" },
+              {
+                textEn:
+                  "Oh no, sorry to hear that. Where are you right now? Which highway, and can you see a mile marker or an exit number?",
+                textZh:
+                  "哎呀，很抱歉。你现在在哪？哪条公路，能看到里程标或出口号吗？",
+                actionHint: "查看周围路标",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "I'm sorry about that. Can you give me your location — highway name, nearest exit, anything you can see around you?",
+                textZh:
+                  "很抱歉。能告诉我你的位置吗——公路名、最近的出口，或者你能看到的任何标志？",
+                actionHint: "描述周围环境",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'm on I-95 northbound, near exit 42. I pulled over to the right shoulder.",
+            textEn:
+              "I'm on I-95 northbound, near exit 42. I pulled over to the right shoulder.",
             textZh: "我在I-95北向，42号出口附近。我停在右侧路肩上了。",
             vocabNotes: {
-              "northbound": { meaningInContext: "北向行驶方向", similarUsage: "southbound（南向）、eastbound（东向）" },
-              "right shoulder": { meaningInContext: "高速公路右侧应急车道/路肩" },
+              northbound: {
+                meaningInContext: "北向行驶方向",
+                similarUsage: "southbound（南向）、eastbound（东向）",
+              },
+              "right shoulder": {
+                meaningInContext: "高速公路右侧应急车道/路肩",
+              },
             },
           },
           {
             speaker: "them",
             role: "调度员",
-            textEn: "Got it. What seems to be the problem? Is it a flat tire, engine trouble, or something else?",
+            textEn:
+              "Got it. What seems to be the problem? Is it a flat tire, engine trouble, or something else?",
             textZh: "收到。什么情况？爆胎、发动机故障，还是其他问题？",
             keyPhrases: [
               { en: "flat tire", zh: "爆胎" },
               { en: "engine trouble", zh: "发动机故障" },
             ],
             alternativeExpressions: [
-              { textEn: "OK, I've got your location. What's going on — flat tire, engine problem, or something else?", textZh: "好的，位置收到了。什么情况——爆胎、发动机问题还是其他？", actionHint: "描述故障情况", frequency: "common" },
-              { textEn: "Got it. Can you tell me what happened? Did you get a flat, or is it the engine? Any warning lights?", textZh: "收到。能说说怎么了吗？爆胎还是发动机？有没有警示灯亮？", actionHint: "说明具体故障", frequency: "common" },
+              {
+                textEn:
+                  "OK, I've got your location. What's going on — flat tire, engine problem, or something else?",
+                textZh:
+                  "好的，位置收到了。什么情况——爆胎、发动机问题还是其他？",
+                actionHint: "描述故障情况",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Got it. Can you tell me what happened? Did you get a flat, or is it the engine? Any warning lights?",
+                textZh:
+                  "收到。能说说怎么了吗？爆胎还是发动机？有没有警示灯亮？",
+                actionHint: "说明具体故障",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "The engine started making a loud noise and then just stopped. I can't restart it.",
+            textEn:
+              "The engine started making a loud noise and then just stopped. I can't restart it.",
             textZh: "发动机开始发出很大的声音然后就熄火了。打不着了。",
           },
           {
             speaker: "them",
             role: "调度员",
-            textEn: "OK, I'm dispatching a tow truck to your location. The estimated arrival time is about 30 to 45 minutes. Please stay in your vehicle with your hazard lights on. Is there anything else you need — are you safe?",
-            textZh: "好的，我派拖车过去。预计30到45分钟到。请待在车里，开着双闪灯。还需要什么吗——你安全吧？",
+            textEn:
+              "OK, I'm dispatching a tow truck to your location. The estimated arrival time is about 30 to 45 minutes. Please stay in your vehicle with your hazard lights on. Is there anything else you need — are you safe?",
+            textZh:
+              "好的，我派拖车过去。预计30到45分钟到。请待在车里，开着双闪灯。还需要什么吗——你安全吧？",
             keyPhrases: [
               { en: "tow truck", zh: "拖车" },
               { en: "estimated arrival time", zh: "预计到达时间" },
@@ -5245,8 +8533,22 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "stay in your vehicle", zh: "待在车里" },
             ],
             alternativeExpressions: [
-              { textEn: "I'm sending a tow truck now — 30 to 45 minutes. Stay in the car with your hazards on and keep your seatbelt on. Are you in a safe spot?", textZh: "我现在派拖车——30到45分钟。待在车里开着双闪，系好安全带。你在安全的地方吗？", actionHint: "打开双闪灯等待", frequency: "common" },
-              { textEn: "A tow truck is on its way — should be there in half an hour to 45 minutes. Keep those hazard lights flashing. Don't get out on the highway side. You OK?", textZh: "拖车已经出发了——大约半小时到45分钟。双闪灯开着。别往公路那边下车。你还好吗？", actionHint: "不要在车道侧下车", frequency: "common" },
+              {
+                textEn:
+                  "I'm sending a tow truck now — 30 to 45 minutes. Stay in the car with your hazards on and keep your seatbelt on. Are you in a safe spot?",
+                textZh:
+                  "我现在派拖车——30到45分钟。待在车里开着双闪，系好安全带。你在安全的地方吗？",
+                actionHint: "打开双闪灯等待",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "A tow truck is on its way — should be there in half an hour to 45 minutes. Keep those hazard lights flashing. Don't get out on the highway side. You OK?",
+                textZh:
+                  "拖车已经出发了——大约半小时到45分钟。双闪灯开着。别往公路那边下车。你还好吗？",
+                actionHint: "不要在车道侧下车",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5257,18 +8559,35 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "调度员",
-            textEn: "If you have AAA or your car insurance includes roadside assistance, it may be covered. Otherwise, a basic tow is around $75 to $125 for the first 5 miles, plus $3 to $7 per additional mile.",
-            textZh: "如果你有AAA会员或车险包含道路救援，可能免费。否则基本拖车费头5英里大约75到125美元，之后每英里加3到7美元。",
+            textEn:
+              "If you have AAA or your car insurance includes roadside assistance, it may be covered. Otherwise, a basic tow is around $75 to $125 for the first 5 miles, plus $3 to $7 per additional mile.",
+            textZh:
+              "如果你有AAA会员或车险包含道路救援，可能免费。否则基本拖车费头5英里大约75到125美元，之后每英里加3到7美元。",
             keyPhrases: [
               { en: "AAA", zh: "美国汽车协会（道路救援会员服务）" },
               { en: "roadside assistance", zh: "道路救援" },
               { en: "covered", zh: "（保险）覆盖/包含" },
               { en: "per additional mile", zh: "每多一英里" },
             ],
-            culturalNote: "AAA（美国汽车协会）是美国最常见的道路救援服务，年费约60-100美元。很多信用卡和车险也附带道路救援。",
+            culturalNote:
+              "AAA（美国汽车协会）是美国最常见的道路救援服务，年费约60-100美元。很多信用卡和车险也附带道路救援。",
             alternativeExpressions: [
-              { textEn: "Do you have AAA or roadside coverage through your insurance? If so, it might be free. Otherwise, a tow runs about $75-125 for the first 5 miles, then $3-7 per mile after that.", textZh: "你有AAA或保险含道路救援吗？有的话可能免费。没有的话拖车头5英里大约75-125美元，之后每英里3-7美元。", actionHint: "检查保险是否覆盖", frequency: "common" },
-              { textEn: "Check your insurance or rental agreement — many include roadside assistance at no extra cost. Without coverage, expect around $100 for a basic tow, plus mileage.", textZh: "查一下保险或租车协议——很多包含免费道路救援。没有的话基本拖车大约100美元，加里程费。", actionHint: "查看租车协议", frequency: "common" },
+              {
+                textEn:
+                  "Do you have AAA or roadside coverage through your insurance? If so, it might be free. Otherwise, a tow runs about $75-125 for the first 5 miles, then $3-7 per mile after that.",
+                textZh:
+                  "你有AAA或保险含道路救援吗？有的话可能免费。没有的话拖车头5英里大约75-125美元，之后每英里3-7美元。",
+                actionHint: "检查保险是否覆盖",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Check your insurance or rental agreement — many include roadside assistance at no extra cost. Without coverage, expect around $100 for a basic tow, plus mileage.",
+                textZh:
+                  "查一下保险或租车协议——很多包含免费道路救援。没有的话基本拖车大约100美元，加里程费。",
+                actionHint: "查看租车协议",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -5283,59 +8602,110 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "拖车司机",
-            textEn: "Hey there! I'm Mike, your tow driver. Let's take a look. Yep, this isn't starting. We'll need to tow it. Where would you like me to take it?",
-            textZh: "嗨！我是Mike，你的拖车司机。看看情况。嗯，确实打不着了。需要拖走。你想拖到哪里？",
+            textEn:
+              "Hey there! I'm Mike, your tow driver. Let's take a look. Yep, this isn't starting. We'll need to tow it. Where would you like me to take it?",
+            textZh:
+              "嗨！我是Mike，你的拖车司机。看看情况。嗯，确实打不着了。需要拖走。你想拖到哪里？",
             keyPhrases: [
               { en: "tow driver", zh: "拖车司机" },
               { en: "tow it", zh: "拖走" },
             ],
             alternativeExpressions: [
-              { textEn: "Hey! I'm Mike from AAA. Let me check it out... Yeah, this thing's not starting. We'll have to tow it. Any idea where you want it to go?", textZh: "嗨！我是AAA的Mike。让我看看……嗯，确实打不着。得拖走。你想拖到哪里？", actionHint: "说明想去的修车行", frequency: "common" },
-              { textEn: "I'm your tow guy, Mike. Let me take a look... Yep, she's dead. Gotta tow it. Got a mechanic in mind, or need a recommendation?", textZh: "我是拖车的Mike。让我看看……嗯，彻底熄火了。得拖走。有想去的修车行吗，还是需要推荐？", actionHint: "问问有没有推荐", frequency: "occasional" },
+              {
+                textEn:
+                  "Hey! I'm Mike from AAA. Let me check it out... Yeah, this thing's not starting. We'll have to tow it. Any idea where you want it to go?",
+                textZh:
+                  "嗨！我是AAA的Mike。让我看看……嗯，确实打不着。得拖走。你想拖到哪里？",
+                actionHint: "说明想去的修车行",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "I'm your tow guy, Mike. Let me take a look... Yep, she's dead. Gotta tow it. Got a mechanic in mind, or need a recommendation?",
+                textZh:
+                  "我是拖车的Mike。让我看看……嗯，彻底熄火了。得拖走。有想去的修车行吗，还是需要推荐？",
+                actionHint: "问问有没有推荐",
+                frequency: "occasional",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I don't know any mechanics around here. Can you recommend a good repair shop?",
+            textEn:
+              "I don't know any mechanics around here. Can you recommend a good repair shop?",
             textZh: "我不认识附近的修车行。能推荐一个靠谱的吗？",
           },
           {
             speaker: "them",
             role: "拖车司机",
-            textEn: "There's a well-rated place called Joe's Auto about 3 miles from here. They're honest and do good work. But they close at 6, so we need to hurry. It's a rental car, right?",
-            textZh: "附近3英里有一家口碑很好的叫Joe's Auto。很实诚，活儿也好。不过6点关门，得快点。这是租的车吧？",
+            textEn:
+              "There's a well-rated place called Joe's Auto about 3 miles from here. They're honest and do good work. But they close at 6, so we need to hurry. It's a rental car, right?",
+            textZh:
+              "附近3英里有一家口碑很好的叫Joe's Auto。很实诚，活儿也好。不过6点关门，得快点。这是租的车吧？",
             keyPhrases: [
               { en: "well-rated", zh: "口碑好的" },
               { en: "honest", zh: "实诚的" },
             ],
             alternativeExpressions: [
-              { textEn: "I know a good shop about 3 miles from here — Joe's Auto. Good people, fair prices. But they close at 6, so we gotta move. This a rental?", textZh: "我知道附近3英里有家好店——Joe's Auto。人好，价公道。但6点关门，得赶紧。这是租的车？", actionHint: "确认是否是租车", frequency: "common" },
-              { textEn: "Joe's Auto is nearby and they're solid — honest work, won't rip you off. Only thing is they shut at 6. Is this your car or a rental?", textZh: "Joe's Auto就在附近，他们很靠谱——活实在，不会宰你。就是6点关门。这是你自己的车还是租的？", actionHint: "说明车辆情况", frequency: "common" },
+              {
+                textEn:
+                  "I know a good shop about 3 miles from here — Joe's Auto. Good people, fair prices. But they close at 6, so we gotta move. This a rental?",
+                textZh:
+                  "我知道附近3英里有家好店——Joe's Auto。人好，价公道。但6点关门，得赶紧。这是租的车？",
+                actionHint: "确认是否是租车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Joe's Auto is nearby and they're solid — honest work, won't rip you off. Only thing is they shut at 6. Is this your car or a rental?",
+                textZh:
+                  "Joe's Auto就在附近，他们很靠谱——活实在，不会宰你。就是6点关门。这是你自己的车还是租的？",
+                actionHint: "说明车辆情况",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Yes, it's a rental. Should I call the rental company first?",
+            textEn:
+              "Yes, it's a rental. Should I call the rental company first?",
             textZh: "是的，租的。我要先打电话给租车公司吗？",
           },
           {
             speaker: "them",
             role: "拖车司机",
-            textEn: "Definitely. Call them now — they might have a preferred repair shop, or they might just want to swap the car for you. In the meantime, I'll get your car loaded up.",
-            textZh: "最好先打。他们可能有指定修车行，或者直接给你换车。你打电话的时候我先把车装上。",
+            textEn:
+              "Definitely. Call them now — they might have a preferred repair shop, or they might just want to swap the car for you. In the meantime, I'll get your car loaded up.",
+            textZh:
+              "最好先打。他们可能有指定修车行，或者直接给你换车。你打电话的时候我先把车装上。",
             keyPhrases: [
               { en: "preferred repair shop", zh: "指定修车行" },
               { en: "swap the car", zh: "换车" },
               { en: "loaded up", zh: "装上（拖车）" },
             ],
             alternativeExpressions: [
-              { textEn: "Yeah, call them first. They might have their own shop or just swap the car out. I'll start loading up while you're on the phone.", textZh: "对，先打电话。他们可能有自己的指定修车行，或者直接给你换车。你打电话的时候我先把车装上。", actionHint: "一边打电话一边装车", frequency: "common" },
-              { textEn: "For sure, get them on the phone. Rental companies usually have a preferred garage or they'll bring you a replacement. Let me get the car up on the flatbed meanwhile.", textZh: "一定要打。租车公司一般有合作修车行，或者派一辆替换车。我先把车装上拖板车。", actionHint: "联系租车公司询问方案", frequency: "common" },
+              {
+                textEn:
+                  "Yeah, call them first. They might have their own shop or just swap the car out. I'll start loading up while you're on the phone.",
+                textZh:
+                  "对，先打电话。他们可能有自己的指定修车行，或者直接给你换车。你打电话的时候我先把车装上。",
+                actionHint: "一边打电话一边装车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "For sure, get them on the phone. Rental companies usually have a preferred garage or they'll bring you a replacement. Let me get the car up on the flatbed meanwhile.",
+                textZh:
+                  "一定要打。租车公司一般有合作修车行，或者派一辆替换车。我先把车装上拖板车。",
+                actionHint: "联系租车公司询问方案",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Good idea. Thank you, Mike. I really appreciate you getting here so quickly.",
+            textEn:
+              "Good idea. Thank you, Mike. I really appreciate you getting here so quickly.",
             textZh: "好主意。谢谢你Mike。真感谢你来这么快。",
           },
         ],
@@ -5349,13 +8719,15 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I've got a flat tire and I don't know how to change it. Can you send someone to help?",
+            textEn:
+              "Hi, I've got a flat tire and I don't know how to change it. Can you send someone to help?",
             textZh: "你好，我爆胎了，不会换。能派人来帮忙吗？",
           },
           {
             speaker: "them",
             role: "调度员",
-            textEn: "Of course. Does your car have a spare tire? Check in the trunk — there should be a compartment under the floor mat.",
+            textEn:
+              "Of course. Does your car have a spare tire? Check in the trunk — there should be a compartment under the floor mat.",
             textZh: "当然。你的车有备胎吗？看看后备箱——脚垫下面应该有个隔层。",
             keyPhrases: [
               { en: "spare tire", zh: "备胎" },
@@ -5364,8 +8736,21 @@ export const TRANSPORT_SCENES: PresetScene[] = [
               { en: "floor mat", zh: "脚垫" },
             ],
             alternativeExpressions: [
-              { textEn: "Sure thing. Is there a spare in the trunk? Pop it open and check — usually there's one under the floor panel.", textZh: "没问题。后备箱有备胎吗？打开看看——通常在底板下面。", actionHint: "检查后备箱底部", frequency: "common" },
-              { textEn: "We'll get someone out there. First, check if you've got a spare — open the trunk, lift the mat, and there should be a compartment underneath.", textZh: "我们派人去。先看看有没有备胎——打开后备箱，掀起脚垫，下面应该有个隔层。", actionHint: "先找到备胎", frequency: "common" },
+              {
+                textEn:
+                  "Sure thing. Is there a spare in the trunk? Pop it open and check — usually there's one under the floor panel.",
+                textZh: "没问题。后备箱有备胎吗？打开看看——通常在底板下面。",
+                actionHint: "检查后备箱底部",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "We'll get someone out there. First, check if you've got a spare — open the trunk, lift the mat, and there should be a compartment underneath.",
+                textZh:
+                  "我们派人去。先看看有没有备胎——打开后备箱，掀起脚垫，下面应该有个隔层。",
+                actionHint: "先找到备胎",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5376,38 +8761,72 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "调度员",
-            textEn: "That's a temporary spare — also called a donut. Our technician will be there in about 25 minutes to change it for you. Keep in mind that a donut spare has a speed limit of 50 mph and should only be driven about 50 miles. You'll want to get the real tire repaired or replaced as soon as possible.",
-            textZh: "那是临时备胎——也叫甜甜圈。我们的技师大约25分钟到，帮你换上。注意临时备胎限速50英里/小时，只能开大约50英里。要尽快修好或换掉原来的轮胎。",
+            textEn:
+              "That's a temporary spare — also called a donut. Our technician will be there in about 25 minutes to change it for you. Keep in mind that a donut spare has a speed limit of 50 mph and should only be driven about 50 miles. You'll want to get the real tire repaired or replaced as soon as possible.",
+            textZh:
+              "那是临时备胎——也叫甜甜圈。我们的技师大约25分钟到，帮你换上。注意临时备胎限速50英里/小时，只能开大约50英里。要尽快修好或换掉原来的轮胎。",
             keyPhrases: [
               { en: "temporary spare", zh: "临时备胎" },
               { en: "donut", zh: "甜甜圈（临时备胎的俗称）" },
               { en: "speed limit", zh: "限速" },
               { en: "repaired or replaced", zh: "修好或换掉" },
             ],
-            culturalNote: "很多现代车只配备临时小备胎（donut），不能高速行驶也不能开太远。有些新车甚至只有补胎液没有备胎。",
+            culturalNote:
+              "很多现代车只配备临时小备胎（donut），不能高速行驶也不能开太远。有些新车甚至只有补胎液没有备胎。",
             alternativeExpressions: [
-              { textEn: "Good, that's a donut spare — the small one. Our guy will swap it for you in about 25 minutes. Just remember, max 50 mph and don't drive more than 50 miles on it.", textZh: "好的，那是甜甜圈备胎——小的那种。我们的技师大约25分钟到帮你换。记住，最快50英里/小时，别开超过50英里。", actionHint: "尽快去修轮胎", frequency: "common" },
-              { textEn: "That's a temp spare. Tech will be there in 25 to put it on. Don't go over 50 mph on it and get the real tire fixed ASAP.", textZh: "那是临时备胎。技师25分钟到帮你装。不要超过50英里/小时，尽快去修原来的轮胎。", actionHint: "临时备胎有速度限制", frequency: "common" },
+              {
+                textEn:
+                  "Good, that's a donut spare — the small one. Our guy will swap it for you in about 25 minutes. Just remember, max 50 mph and don't drive more than 50 miles on it.",
+                textZh:
+                  "好的，那是甜甜圈备胎——小的那种。我们的技师大约25分钟到帮你换。记住，最快50英里/小时，别开超过50英里。",
+                actionHint: "尽快去修轮胎",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "That's a temp spare. Tech will be there in 25 to put it on. Don't go over 50 mph on it and get the real tire fixed ASAP.",
+                textZh:
+                  "那是临时备胎。技师25分钟到帮你装。不要超过50英里/小时，尽快去修原来的轮胎。",
+                actionHint: "临时备胎有速度限制",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "Understood. Is there a tire shop nearby where I can get the original tire fixed?",
+            textEn:
+              "Understood. Is there a tire shop nearby where I can get the original tire fixed?",
             textZh: "了解。附近有轮胎店可以修原来那个轮胎吗？",
           },
           {
             speaker: "them",
             role: "调度员",
-            textEn: "There's a Discount Tire about 6 miles north. They can usually patch a tire for $10 to $25 if the damage isn't too bad. If you need a new tire, expect to pay $80 to $200 depending on the size.",
-            textZh: "北边大约6英里有家Discount Tire。如果损坏不严重，补胎一般10到25美元。需要换新胎的话，看尺寸大约80到200美元。",
+            textEn:
+              "There's a Discount Tire about 6 miles north. They can usually patch a tire for $10 to $25 if the damage isn't too bad. If you need a new tire, expect to pay $80 to $200 depending on the size.",
+            textZh:
+              "北边大约6英里有家Discount Tire。如果损坏不严重，补胎一般10到25美元。需要换新胎的话，看尺寸大约80到200美元。",
             keyPhrases: [
               { en: "patch a tire", zh: "补胎" },
               { en: "damage", zh: "损坏" },
               { en: "depending on the size", zh: "看尺寸" },
             ],
             alternativeExpressions: [
-              { textEn: "There's a Discount Tire about 6 miles north. A patch job is like $10-25 if the hole's not too bad. New tire's $80-200 depending on the size.", textZh: "北边大约6英里有家Discount Tire。补胎大约10-25美元，看洞大不大。新胎80-200美元，看尺寸。", actionHint: "先补胎试试", frequency: "common" },
-              { textEn: "Discount Tire is close by — 6 miles north. If it's a small puncture they can patch it cheap. If you need a new one, budget $80-200.", textZh: "Discount Tire很近——北边6英里。小洞的话能便宜补好。需要换新的话准备80-200美元。", actionHint: "开临时备胎去修", frequency: "common" },
+              {
+                textEn:
+                  "There's a Discount Tire about 6 miles north. A patch job is like $10-25 if the hole's not too bad. New tire's $80-200 depending on the size.",
+                textZh:
+                  "北边大约6英里有家Discount Tire。补胎大约10-25美元，看洞大不大。新胎80-200美元，看尺寸。",
+                actionHint: "先补胎试试",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Discount Tire is close by — 6 miles north. If it's a small puncture they can patch it cheap. If you need a new one, budget $80-200.",
+                textZh:
+                  "Discount Tire很近——北边6英里。小洞的话能便宜补好。需要换新的话准备80-200美元。",
+                actionHint: "开临时备胎去修",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -5436,22 +8855,39 @@ export const TRANSPORT_SCENES: PresetScene[] = [
         turns: [
           {
             speaker: "you",
-            textEn: "Hi, I'd like to rent a scooter for two days. What do you have available?",
+            textEn:
+              "Hi, I'd like to rent a scooter for two days. What do you have available?",
             textZh: "你好，我想租一辆踏板车用两天。有什么车可以租？",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "Sure! We have 50cc and 125cc scooters. The 50cc is $25 a day — you don't need a motorcycle license for it. The 125cc is $40 a day but you'll need a valid motorcycle license or an international driving permit.",
-            textZh: "好的！我们有50cc和125cc的。50cc一天25美元——不需要摩托车驾照。125cc一天40美元，需要有效的摩托车驾照或国际驾照。",
+            textEn:
+              "Sure! We have 50cc and 125cc scooters. The 50cc is $25 a day — you don't need a motorcycle license for it. The 125cc is $40 a day but you'll need a valid motorcycle license or an international driving permit.",
+            textZh:
+              "好的！我们有50cc和125cc的。50cc一天25美元——不需要摩托车驾照。125cc一天40美元，需要有效的摩托车驾照或国际驾照。",
             keyPhrases: [
               { en: "motorcycle license", zh: "摩托车驾照" },
               { en: "international driving permit", zh: "国际驾照" },
               { en: "50cc / 125cc", zh: "排量（表示发动机大小）" },
             ],
             alternativeExpressions: [
-              { textEn: "We've got 50cc and 125cc scooters. The 50 is 25 a day, no motorcycle license needed. The 125 is 40 but you'll need a motorcycle license or international permit.", textZh: "我们有50cc和125cc的。50cc一天25，不需要摩托车驾照。125cc一天40，需要摩托车驾照或国际驾照。", actionHint: "确认自己有没有摩托车驾照", frequency: "common" },
-              { textEn: "Small one's $25/day — anyone with a regular license can ride it. The bigger one's $40 but you need a motorcycle endorsement. Which sounds good?", textZh: "小的25美元/天——普通驾照就能骑。大的40但需要摩托车执照。你想要哪个？", actionHint: "没有摩托证选50cc", frequency: "common" },
+              {
+                textEn:
+                  "We've got 50cc and 125cc scooters. The 50 is 25 a day, no motorcycle license needed. The 125 is 40 but you'll need a motorcycle license or international permit.",
+                textZh:
+                  "我们有50cc和125cc的。50cc一天25，不需要摩托车驾照。125cc一天40，需要摩托车驾照或国际驾照。",
+                actionHint: "确认自己有没有摩托车驾照",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Small one's $25/day — anyone with a regular license can ride it. The bigger one's $40 but you need a motorcycle endorsement. Which sounds good?",
+                textZh:
+                  "小的25美元/天——普通驾照就能骑。大的40但需要摩托车执照。你想要哪个？",
+                actionHint: "没有摩托证选50cc",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5462,37 +8898,71 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "店员",
-            textEn: "Yes, we need a $200 deposit on your credit card — or you can leave your passport as a deposit. We also need a copy of your regular driver's license. The rental includes a helmet, but I strongly recommend getting the insurance for $8 a day. It covers theft and damage.",
-            textZh: "需要信用卡预授权200美元押金——或者押护照也行。还需要你的普通驾照复印件。租车含一个头盔，但强烈建议买保险，一天8美元，包含盗窃和损坏。",
+            textEn:
+              "Yes, we need a $200 deposit on your credit card — or you can leave your passport as a deposit. We also need a copy of your regular driver's license. The rental includes a helmet, but I strongly recommend getting the insurance for $8 a day. It covers theft and damage.",
+            textZh:
+              "需要信用卡预授权200美元押金——或者押护照也行。还需要你的普通驾照复印件。租车含一个头盔，但强烈建议买保险，一天8美元，包含盗窃和损坏。",
             keyPhrases: [
               { en: "deposit", zh: "押金" },
               { en: "helmet", zh: "头盔" },
               { en: "insurance", zh: "保险" },
               { en: "theft", zh: "盗窃" },
             ],
-            culturalNote: "在东南亚等旅游区租摩托车，千万不要押护照——护照丢失补办非常麻烦。尽量用信用卡付押金。",
+            culturalNote:
+              "在东南亚等旅游区租摩托车，千万不要押护照——护照丢失补办非常麻烦。尽量用信用卡付押金。",
             alternativeExpressions: [
-              { textEn: "$200 deposit on your card, or you can leave your passport. We need to see your license too. Helmet's included. I'd grab the insurance — $8/day covers theft and damage.", textZh: "信用卡200美元押金，或者押护照。需要看你的驾照。含头盔。建议买保险——8美元/天包盗窃和损坏。", actionHint: "用信用卡付押金更安全", frequency: "common" },
-              { textEn: "We need a $200 hold on your credit card and a copy of your license. You get a helmet with the rental. The insurance is optional but recommended — 8 bucks a day.", textZh: "信用卡预授权200美元加驾照复印件。租车含头盔。保险可选但建议买——一天8块。", actionHint: "建议买保险", frequency: "common" },
+              {
+                textEn:
+                  "$200 deposit on your card, or you can leave your passport. We need to see your license too. Helmet's included. I'd grab the insurance — $8/day covers theft and damage.",
+                textZh:
+                  "信用卡200美元押金，或者押护照。需要看你的驾照。含头盔。建议买保险——8美元/天包盗窃和损坏。",
+                actionHint: "用信用卡付押金更安全",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "We need a $200 hold on your credit card and a copy of your license. You get a helmet with the rental. The insurance is optional but recommended — 8 bucks a day.",
+                textZh:
+                  "信用卡预授权200美元加驾照复印件。租车含头盔。保险可选但建议买——一天8块。",
+                actionHint: "建议买保险",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "I'll use my credit card for the deposit and I'll take the insurance. Where should I return it?",
+            textEn:
+              "I'll use my credit card for the deposit and I'll take the insurance. Where should I return it?",
             textZh: "我用信用卡付押金，保险也买。在哪里还车？",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "You can return it here anytime before 6 PM on the last day. Please return it with a full tank — gas stations are marked on this map. Let me show you how everything works on the scooter.",
-            textZh: "最后一天下午6点前还到这里就行。请加满油还车——加油站在地图上标了。我来教你怎么操作这辆车。",
+            textEn:
+              "You can return it here anytime before 6 PM on the last day. Please return it with a full tank — gas stations are marked on this map. Let me show you how everything works on the scooter.",
+            textZh:
+              "最后一天下午6点前还到这里就行。请加满油还车——加油站在地图上标了。我来教你怎么操作这辆车。",
             keyPhrases: [
               { en: "full tank", zh: "油箱加满" },
               { en: "return it here", zh: "还到这里" },
             ],
             alternativeExpressions: [
-              { textEn: "Bring it back here by 6 PM on the last day. Fill the tank up before you return it — gas stations are on the map here. Let me walk you through the controls.", textZh: "最后一天下午6点前还到这里。还车前加满油——加油站在这张地图上标了。我教你怎么操作。", actionHint: "记得加满油还车", frequency: "common" },
-              { textEn: "Return is right here, before 6 PM. Please top off the gas first — I've marked the stations on this map. Now let me show you how everything works.", textZh: "还车就在这里，6点前。请先把油加满——我在地图上标了加油站。现在让我教你怎么操作。", actionHint: "记住还车时间和地点", frequency: "common" },
+              {
+                textEn:
+                  "Bring it back here by 6 PM on the last day. Fill the tank up before you return it — gas stations are on the map here. Let me walk you through the controls.",
+                textZh:
+                  "最后一天下午6点前还到这里。还车前加满油——加油站在这张地图上标了。我教你怎么操作。",
+                actionHint: "记得加满油还车",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Return is right here, before 6 PM. Please top off the gas first — I've marked the stations on this map. Now let me show you how everything works.",
+                textZh:
+                  "还车就在这里，6点前。请先把油加满——我在地图上标了加油站。现在让我教你怎么操作。",
+                actionHint: "记住还车时间和地点",
+                frequency: "common",
+              },
             ],
           },
         ],
@@ -5507,36 +8977,69 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "店员",
-            textEn: "Welcome back. Let me check the scooter... Hmm, there's a new scratch on the left side here. This wasn't here before.",
-            textZh: "欢迎回来。我检查一下车……嗯，左边这里有一道新划痕。之前没有的。",
+            textEn:
+              "Welcome back. Let me check the scooter... Hmm, there's a new scratch on the left side here. This wasn't here before.",
+            textZh:
+              "欢迎回来。我检查一下车……嗯，左边这里有一道新划痕。之前没有的。",
             keyPhrases: [
               { en: "scratch", zh: "划痕" },
               { en: "wasn't here before", zh: "之前没有" },
             ],
             alternativeExpressions: [
-              { textEn: "Hmm, I'm seeing a scratch on the left side that wasn't there when you picked it up.", textZh: "嗯，左边有道划痕，你取车的时候没有。", actionHint: "出示取车时的照片", frequency: "common" },
-              { textEn: "Hold on — there's a new scratch here on the left. This is new damage. Did something happen?", textZh: "等一下——左边这里有道新划痕。这是新的。发生什么了？", actionHint: "解释情况或出示照片", frequency: "common" },
+              {
+                textEn:
+                  "Hmm, I'm seeing a scratch on the left side that wasn't there when you picked it up.",
+                textZh: "嗯，左边有道划痕，你取车的时候没有。",
+                actionHint: "出示取车时的照片",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Hold on — there's a new scratch here on the left. This is new damage. Did something happen?",
+                textZh: "等一下——左边这里有道新划痕。这是新的。发生什么了？",
+                actionHint: "解释情况或出示照片",
+                frequency: "common",
+              },
             ],
           },
           {
             speaker: "you",
-            textEn: "That scratch was already there when I picked it up. I actually took photos before I left — here, you can see it in these pictures.",
-            textZh: "这个划痕我取车的时候就有了。我出发前拍了照片——你看，这些照片里可以看到。",
+            textEn:
+              "That scratch was already there when I picked it up. I actually took photos before I left — here, you can see it in these pictures.",
+            textZh:
+              "这个划痕我取车的时候就有了。我出发前拍了照片——你看，这些照片里可以看到。",
           },
           {
             speaker: "them",
             role: "店员",
-            textEn: "Oh, you're right — I can see it in your photo with the timestamp. My apologies. Let me check the rest... Everything else looks fine. Full tank too. Your deposit will be refunded in 3 to 5 business days.",
-            textZh: "哦，你说得对——你照片上有时间戳能看到。抱歉。我看看其他地方……都没问题。油也加满了。押金3到5个工作日退还。",
+            textEn:
+              "Oh, you're right — I can see it in your photo with the timestamp. My apologies. Let me check the rest... Everything else looks fine. Full tank too. Your deposit will be refunded in 3 to 5 business days.",
+            textZh:
+              "哦，你说得对——你照片上有时间戳能看到。抱歉。我看看其他地方……都没问题。油也加满了。押金3到5个工作日退还。",
             keyPhrases: [
               { en: "timestamp", zh: "时间戳" },
               { en: "refunded", zh: "退还" },
               { en: "business days", zh: "工作日" },
             ],
-            culturalNote: "租车前一定要拍照记录车辆现有损坏，包括划痕、凹痕等。拍照时确保有时间戳。这是保护自己的最佳方式。",
+            culturalNote:
+              "租车前一定要拍照记录车辆现有损坏，包括划痕、凹痕等。拍照时确保有时间戳。这是保护自己的最佳方式。",
             alternativeExpressions: [
-              { textEn: "Oh wait, I see it in your photo with the timestamp — you're right, it was already there. My bad. Everything else checks out. Full tank, good. Deposit back in 3-5 business days.", textZh: "等等，你照片上有时间戳确实能看到——你说得对，本来就有。我的错。其他都没问题。油也满了。押金3-5个工作日退。", actionHint: "保留好照片和收据", frequency: "common" },
-              { textEn: "Ah, you've got photos — smart. Yeah, I can see it was pre-existing. Sorry about that. Rest of the scooter looks great. Deposit will be released in a few business days.", textZh: "啊，你有照片——聪明。是的，确实是原来就有的。抱歉。车其他地方都没问题。押金几个工作日内退还。", actionHint: "等待押金退还", frequency: "common" },
+              {
+                textEn:
+                  "Oh wait, I see it in your photo with the timestamp — you're right, it was already there. My bad. Everything else checks out. Full tank, good. Deposit back in 3-5 business days.",
+                textZh:
+                  "等等，你照片上有时间戳确实能看到——你说得对，本来就有。我的错。其他都没问题。油也满了。押金3-5个工作日退。",
+                actionHint: "保留好照片和收据",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Ah, you've got photos — smart. Yeah, I can see it was pre-existing. Sorry about that. Rest of the scooter looks great. Deposit will be released in a few business days.",
+                textZh:
+                  "啊，你有照片——聪明。是的，确实是原来就有的。抱歉。车其他地方都没问题。押金几个工作日内退还。",
+                actionHint: "等待押金退还",
+                frequency: "common",
+              },
             ],
           },
           {
@@ -5547,11 +9050,24 @@ export const TRANSPORT_SCENES: PresetScene[] = [
           {
             speaker: "them",
             role: "店员",
-            textEn: "Of course — here you go. Thank you for renting with us. Hope you enjoyed the ride!",
+            textEn:
+              "Of course — here you go. Thank you for renting with us. Hope you enjoyed the ride!",
             textZh: "当然——给你。谢谢光临。希望骑得开心！",
             alternativeExpressions: [
-              { textEn: "Here's your receipt. Thanks for choosing us — hope you had a great time out there!", textZh: "这是你的收据。谢谢选择我们——希望你玩得开心！", actionHint: "保留收据", frequency: "common" },
-              { textEn: "Sure thing, here you go. Thanks for renting with us. Come back anytime!", textZh: "没问题，给你。感谢光顾。随时再来！", actionHint: "收好收据留底", frequency: "common" },
+              {
+                textEn:
+                  "Here's your receipt. Thanks for choosing us — hope you had a great time out there!",
+                textZh: "这是你的收据。谢谢选择我们——希望你玩得开心！",
+                actionHint: "保留收据",
+                frequency: "common",
+              },
+              {
+                textEn:
+                  "Sure thing, here you go. Thanks for renting with us. Come back anytime!",
+                textZh: "没问题，给你。感谢光顾。随时再来！",
+                actionHint: "收好收据留底",
+                frequency: "common",
+              },
             ],
           },
         ],

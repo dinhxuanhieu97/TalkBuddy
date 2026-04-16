@@ -58,6 +58,7 @@ export default function ProfileScreen({
   onResetOnboarding,
   onNavigateToLearn,
 }: ProfileScreenProps) {
+  const handleNavigateToLearn = onNavigateToLearn || (() => {});
   const t = useT();
   const [notifications, setNotifications] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -156,24 +157,24 @@ export default function ProfileScreen({
           value: t("common.view"),
           type: "navigation" as const,
         },
-        {
-          id: "subscription",
-          icon: "card",
-          label: t("profile.subscription"),
-          value: `${subscription === "free" ? t("profile.subscriptionFree") : subscription === "pro" ? t("profile.subscriptionPro") : subscription} ${t("common.plan")}`,
-          type: "navigation" as const,
-        },
-        ...(subscription === "family" || familyId
-          ? [
-              {
-                id: "family",
-                icon: "people",
-                label: t("profile.familyPlan"),
-                value: familyId ? t("common.manage") : t("common.join"),
-                type: "navigation" as const,
-              },
-            ]
-          : []),
+        // {
+        //   id: "subscription",
+        //   icon: "card",
+        //   label: t("profile.subscription"),
+        //   value: `${subscription === "free" ? t("profile.subscriptionFree") : subscription === "pro" ? t("profile.subscriptionPro") : subscription} ${t("common.plan")}`,
+        //   type: "navigation" as const,
+        // },
+        // ...(subscription === "family" || familyId
+        //   ? [
+        //       {
+        //         id: "family",
+        //         icon: "people",
+        //         label: t("profile.familyPlan"),
+        //         value: familyId ? t("common.manage") : t("common.join"),
+        //         type: "navigation" as const,
+        //       },
+        //     ]
+        //   : []),
       ],
     },
     {
@@ -350,7 +351,7 @@ export default function ProfileScreen({
           <Text style={styles.headerTitle}>{t("profile.title")}</Text>
           <View style={styles.headerRight}>
             <TouchableOpacity
-              onPress={onNavigateToLearn}
+              onPress={handleNavigateToLearn}
               style={styles.headerIconButton}
             >
               <Ionicons name="book-outline" size={24} color="#1C1C1E" />
@@ -398,8 +399,8 @@ export default function ProfileScreen({
           </View>
         </View>
 
-        {/* Credit Balance */}
-        <CreditBalance onPress={() => setShowCreditShop(true)} />
+        {/* Credit Balance - Hidden until payments implemented */}
+        {/* <CreditBalance onPress={() => setShowCreditShop(true)} /> */}
 
         {/* ── NEW FEATURES ── */}
 
@@ -497,14 +498,7 @@ export default function ProfileScreen({
               </Text>
             </View>
           </View>
-          <TouchableOpacity
-            style={styles.upgradeButton}
-            onPress={() => setShowSubscriptionPlans(true)}
-          >
-            <Text style={styles.upgradeButtonText}>
-              {t("profile.upgradeButton")}
-            </Text>
-          </TouchableOpacity>
+          {/* Upgrade button - Hidden until payments implemented */}
         </View>
 
         {/* Logout */}
@@ -527,8 +521,8 @@ export default function ProfileScreen({
         <View style={{ height: 40 }} />
       </ScrollView>
 
-      {/* Credit Shop Modal */}
-      <Modal
+      {/* Credit Shop Modal - Hidden until payments implemented */}
+      {/* <Modal
         visible={showCreditShop}
         animationType="slide"
         presentationStyle="pageSheet"
@@ -542,10 +536,10 @@ export default function ProfileScreen({
           </View>
           <CreditShop />
         </View>
-      </Modal>
+      </Modal> */}
 
-      {/* Subscription Plans Modal */}
-      <Modal
+      {/* Subscription Plans Modal - Hidden until payments implemented */}
+      {/* <Modal
         visible={showSubscriptionPlans}
         animationType="slide"
         presentationStyle="pageSheet"
@@ -559,10 +553,10 @@ export default function ProfileScreen({
           </View>
           <SubscriptionPlans />
         </View>
-      </Modal>
+      </Modal> */}
 
-      {/* Family Manager Modal */}
-      <Modal
+      {/* Family Manager Modal - Hidden until payments implemented */}
+      {/* <Modal
         visible={showFamilyManager}
         animationType="slide"
         presentationStyle="pageSheet"
@@ -576,7 +570,7 @@ export default function ProfileScreen({
           </View>
           <FamilyManager />
         </View>
-      </Modal>
+      </Modal> */}
 
       {/* Notification Settings Modal */}
       <Modal

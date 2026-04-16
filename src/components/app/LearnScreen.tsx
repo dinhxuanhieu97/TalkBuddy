@@ -58,6 +58,7 @@ import {
   StyleSheet,
   FlatList,
   Alert,
+  useWindowDimensions,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
@@ -214,8 +215,12 @@ interface LearnScreenProps {
 }
 
 export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
+  const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const t = useT();
+  const isTablet = width >= 768;
+  const contextCardWidth = isTablet ? "14%" : "23%";
+  const handleNavigateToProfile = onNavigateToProfile || (() => {});
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedScene, setSelectedScene] = useState<PresetScene | null>(null);
 
@@ -661,7 +666,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
           </View>
           <TouchableOpacity
             style={styles.profileButton}
-            onPress={onNavigateToProfile}
+            onPress={handleNavigateToProfile}
           >
             <View style={styles.profileAvatar}>
               <Ionicons name="person" size={20} color="#fff" />
@@ -777,6 +782,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                     key={ctx.id}
                     style={[
                       styles.contextCard,
+                      { width: contextCardWidth },
                       selectedContext === ctx.id && styles.contextCardActive,
                     ]}
                     onPress={() =>
@@ -1777,16 +1783,16 @@ const styles = StyleSheet.create({
   // Scene List Styles
   sceneListSection: {
     marginBottom: 24,
+    paddingHorizontal: 16,
   },
   sceneListContainer: {
     maxHeight: 500,
+    padding: 16,
   },
   sceneListStickyHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#F9F9F9",
-    paddingHorizontal: 16,
     paddingVertical: 12,
     zIndex: 1,
   },
