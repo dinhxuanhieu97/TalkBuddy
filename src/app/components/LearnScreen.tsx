@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
+import logger from "../../lib/logger";
 
 // Custom debounce hook
 function useDebounce<T>(value: T, delay: number): T {
@@ -202,7 +203,11 @@ function getAllPhrases(): Phrase[] {
   return convertScenesToPhrases(PRESET_SCENES);
 }
 
-export default function LearnScreen() {
+interface LearnScreenProps {
+  onNavigateToProfile?: () => void;
+}
+
+export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
   const insets = useSafeAreaInsets();
   const t = useT();
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
@@ -446,7 +451,7 @@ export default function LearnScreen() {
   const handlePlayAll = async () => {
     if (isPlayingAll) {
       // Stop playing
-      console.log("[TTS] Stopping playback");
+      logger.log("[TTS] Stopping playback");
       isPlayingAllRef.current = false;
       await stopSpeaking();
       setIsPlayingAll(false);
@@ -455,22 +460,22 @@ export default function LearnScreen() {
     }
 
     if (phrases.length === 0) {
-      console.log("[TTS] No phrases to play");
+      logger.log("[TTS] No phrases to play");
       return;
     }
 
-    console.log(`[TTS] Starting playback of ${phrases.length} phrases`);
+    logger.log(`[TTS] Starting playback of ${phrases.length} phrases`);
     isPlayingAllRef.current = true;
     setIsPlayingAll(true);
 
     for (let i = 0; i < phrases.length; i++) {
       // Check if stopped using ref (not state)
       if (!isPlayingAllRef.current) {
-        console.log("[TTS] Playback stopped by user");
+        logger.log("[TTS] Playback stopped by user");
         break;
       }
 
-      console.log(
+      logger.log(
         `[TTS] Playing phrase ${i + 1}/${phrases.length}: "${phrases[i].en}"`,
       );
       setPlayingTurnIndex(i);
@@ -494,7 +499,7 @@ export default function LearnScreen() {
           accent: "en-US",
           speed: "normal",
         });
-        console.log(`[TTS] Phrase ${i + 1} completed`);
+        logger.log(`[TTS] Phrase ${i + 1} completed`);
       } catch (error) {
         console.error(`[TTS] Error on phrase ${i + 1}:`, error);
         // Continue to next phrase even on error
@@ -502,7 +507,7 @@ export default function LearnScreen() {
 
       // Check again after speak completes using ref
       if (!isPlayingAllRef.current) {
-        console.log("[TTS] Playback stopped by user after speak");
+        logger.log("[TTS] Playback stopped by user after speak");
         break;
       }
 
@@ -510,7 +515,7 @@ export default function LearnScreen() {
       await new Promise((resolve) => setTimeout(resolve, 500));
     }
 
-    console.log("[TTS] Playback completed");
+    logger.log("[TTS] Playback completed");
     isPlayingAllRef.current = false;
     setIsPlayingAll(false);
     setPlayingTurnIndex(null);
@@ -610,7 +615,7 @@ export default function LearnScreen() {
       style={styles.container}
     >
       {/* Header */}
-      <View style={[styles.header, { paddingTop: insets.top + 20 }]}>
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <View style={styles.headerContent}>
           <View style={styles.headerLeft}>
             <Text style={styles.headerSubtitle}>
@@ -618,9 +623,12 @@ export default function LearnScreen() {
             </Text>
             <Text style={styles.headerTitle}>{t("learn.headerTitle")}</Text>
           </View>
-          <TouchableOpacity style={styles.profileButton} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.profileButton}
+            onPress={() => onNavigateToProfile?.()}
+          >
             <View style={styles.profileAvatar}>
-              <Ionicons name="person" size={20} color="#fff" />
+              <Ionicons name="person" size={16} color="#fff" />
             </View>
           </TouchableOpacity>
         </View>
@@ -1325,22 +1333,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerSubtitle: {
-    fontSize: 12,
+    fontSize: 14,
     color: "#666",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "700",
     color: "#1c1c1e",
   },
   profileButton: {
-    marginLeft: 12,
+    marginLeft: 8,
   },
   profileAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     backgroundColor: "#1c1c1e",
     alignItems: "center",
     justifyContent: "center",

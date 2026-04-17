@@ -22,8 +22,6 @@ interface ProcessEnv {
   readonly EXPO_PUBLIC_DEBUG: string;
   readonly EXPO_PUBLIC_TTS_URL: string;
   readonly EXPO_PUBLIC_TTS_API_KEY: string;
-  readonly EXPO_PUBLIC_SUPABASE_URL: string;
-  readonly EXPO_PUBLIC_SUPABASE_ANON_KEY: string;
   readonly EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID: string;
   readonly EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID: string;
   readonly EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID: string;

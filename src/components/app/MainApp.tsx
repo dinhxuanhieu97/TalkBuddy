@@ -3,13 +3,11 @@ import { View, Text, StyleSheet, Animated, Pressable } from "react-native";
 // TODO: Install expo-haptics
 // import * as Haptics from "expo-haptics";
 import LearnScreen from "./LearnScreen";
-import TalkBuddyScreen from "./TalkBuddyScreen";
-import PracticeScreen from "./PracticeScreen";
 import ProfileScreen from "./ProfileScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { useT, type LocaleKeys } from "../../lib/i18n";
 
-type Tab = "learn" | "sos" | "practice" | "me";
+type Tab = "learn" | "me";
 
 const tabs: {
   id: Tab;

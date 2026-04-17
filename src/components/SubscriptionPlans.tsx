@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUserStore } from "../stores/userStore";
-import { purchaseSubscription } from "../lib/revenuecat";
+import { purchaseSubscription, restorePurchases } from "../lib/revenuecat";
 import { useT } from "../lib/i18n";
 
 interface SubscriptionPlan {
@@ -271,6 +271,28 @@ export function SubscriptionPlans() {
           {"\n"}• {t("subscription.familyShared")}
         </Text>
       </View>
+
+      {/* Restore Purchases */}
+      <TouchableOpacity
+        style={styles.restoreButton}
+        onPress={async () => {
+          Alert.alert(t("subscription.restore"), t("subscription.restoring"));
+          const result = await restorePurchases();
+          if (result) {
+            setSubscription("pro");
+            Alert.alert(t("subscription.success"), t("subscription.restored"));
+          } else {
+            Alert.alert(
+              t("subscription.noPurchases"),
+              t("subscription.noPurchasesDesc"),
+            );
+          }
+        }}
+      >
+        <Text style={styles.restoreButtonText}>
+          {t("subscription.restorePurchases")}
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -441,5 +463,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#666",
     lineHeight: 22,
+  },
+  restoreButton: {
+    backgroundColor: "#34C759",
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    marginHorizontal: 20,
+    marginBottom: 40,
+  },
+  restoreButtonText: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#FFFFFF",
   },
 });

@@ -296,12 +296,18 @@ const zh = {
   "profile.shareError": "分享失败",
   "profile.privacyPolicy": "隐私政策",
   "profile.termsOfService": "服务条款",
-  "profile.deleteAccount": "删除账户",
-  "profile.deleteAccountTitle": "删除账户",
+  "profile.deleteAccount": "Delete account",
+  "profile.deleteAccountTitle": "Delete account",
   "profile.deleteAccountMessage":
-    "此操作不可撤销。删除账户后，您的所有数据（包括学习记录、收藏内容和订阅信息）将被永久删除。确定要继续吗？",
-  "profile.deleteAccountConfirm": "确认删除",
-  "profile.deleteAccountError": "删除账户失败，请稍后重试。",
+    "This action cannot be undone. After deleting your account, all your data (including learning records, favorites and subscription info) will be permanently deleted. Are you sure you want to continue?",
+  "profile.deleteAccountConfirm": "Confirm delete",
+  "profile.deleteAccountError":
+    "Failed to delete account, please try again later.",
+  "profile.notLoggedIn": "Not logged in",
+  "profile.loginToProtectData":
+    "Please log in to protect your data. If you clear cache without logging in, your data will be lost.",
+  "profile.loginNow": "Log in now",
+  "profile.continueAsGuest": "Continue as guest",
   "profile.aboutDescription": "AI 驱动的英语学习应用，专为旅行者打造",
   "profile.feedbackIntro": "感谢您的反馈！请通过以下邮箱联系我们：",
   "profile.feedbackThanks": "您的反馈帮助我们改进应用！",
@@ -753,6 +759,46 @@ const zh = {
   "subscription.month": "/月",
   "subscription.yearlyPrice": "年费 ${price}（节省更多）",
   "subscription.infoTitle": "订阅须知",
+  "subscription.restore": "恢复购买",
+  "subscription.restoring": "正在恢复购买...",
+  "subscription.restored": "恢复购买成功",
+  "subscription.noPurchases": "没有购买记录",
+  "subscription.noPurchasesDesc": "您没有任何购买记录",
+  "subscription.restorePurchases": "恢复购买记录",
+
+  // Common
+  "common.continue": "继续",
+  "common.getStarted": "开始使用",
+
+  // Onboarding
+  "onboarding.forTravelers": "旅行者的中文",
+  "onboarding.forTravelersSubtitle":
+    "快速找到适合任何情况的中文短语 - 机场、医院、酒店等。",
+  "onboarding.speakLikeLocal": "像本地人一样说话",
+  "onboarding.speakLikeLocalSubtitle":
+    "通过互动语音练习倾听、重复和完善您的中文发音。",
+  "onboarding.trackProgress": "跟踪您的进度",
+  "onboarding.trackProgressSubtitle":
+    "您学习的每个短语都会被保存。查看您的历史记录，看着您的中文日益进步。",
+  "onboarding.translateForEveryone": "为所有人翻译语言",
+  "onboarding.translateForEveryoneSubtitle":
+    "快速找到适合任何紧急情况的正确短语 - 机场、医院、酒店等。",
+
+  // Practice
+  "practice.goodbye": "再见",
+  "practice.goodbyeQuestion": "怎么说再见?",
+  "practice.goodbyeAnswer": "再见",
+  "practice.listenChoose": "听并选择正确的翻译",
+  "practice.hello": "你好",
+  "practice.thankYou": "谢谢",
+  "practice.sorry": "抱歉",
+  "practice.helloAnswer": "你好",
+  "practice.thankYouAnswer": "谢谢",
+  "practice.sorryAnswer": "再见",
+  "practice.whatDoesMean": "'{{word}}' 是什么意思?",
+  "practice.pronounce": "发音: '{{word}}'",
+
+  // ── End of zh object ──────────────────────────────────────────
 };
 
 export type LocaleKeys = keyof typeof zh;

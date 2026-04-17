@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
+import logger from "../../lib/logger";
 
 // Custom debounce hook
 function useDebounce<T>(value: T, delay: number): T {
@@ -492,7 +493,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
   const handlePlayAll = async () => {
     if (isPlayingAll) {
       // Stop playing
-      console.log("[TTS] Stopping playback");
+      logger.log("[TTS] Stopping playback");
       isPlayingAllRef.current = false;
       await stopSpeaking();
       setIsPlayingAll(false);
@@ -501,22 +502,22 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     }
 
     if (phrases.length === 0) {
-      console.log("[TTS] No phrases to play");
+      logger.log("[TTS] No phrases to play");
       return;
     }
 
-    console.log(`[TTS] Starting playback of ${phrases.length} phrases`);
+    logger.log(`[TTS] Starting playback of ${phrases.length} phrases`);
     isPlayingAllRef.current = true;
     setIsPlayingAll(true);
 
     for (let i = 0; i < phrases.length; i++) {
       // Check if stopped using ref (not state)
       if (!isPlayingAllRef.current) {
-        console.log("[TTS] Playback stopped by user");
+        logger.log("[TTS] Playback stopped by user");
         break;
       }
 
-      console.log(
+      logger.log(
         `[TTS] Playing phrase ${i + 1}/${phrases.length}: "${phrases[i].en}"`,
       );
       setPlayingTurnIndex(i);
@@ -540,7 +541,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
           accent: "en-US",
           speed: "normal",
         });
-        console.log(`[TTS] Phrase ${i + 1} completed`);
+        logger.log(`[TTS] Phrase ${i + 1} completed`);
       } catch (error) {
         console.error(`[TTS] Error on phrase ${i + 1}:`, error);
         // Continue to next phrase even on error
@@ -548,7 +549,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
 
       // Check again after speak completes using ref
       if (!isPlayingAllRef.current) {
-        console.log("[TTS] Playback stopped by user after speak");
+        logger.log("[TTS] Playback stopped by user after speak");
         break;
       }
 
@@ -556,7 +557,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
       await new Promise((resolve) => setTimeout(resolve, 500));
     }
 
-    console.log("[TTS] Playback completed");
+    logger.log("[TTS] Playback completed");
     isPlayingAllRef.current = false;
     setIsPlayingAll(false);
     setPlayingTurnIndex(null);

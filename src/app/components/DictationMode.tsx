@@ -25,18 +25,18 @@ type ActivePlay = "full" | "slow" | "word-by-word" | null;
 
 // Distractor phrases for quiz
 const DISTRACTORS = [
-  "Tôi không hiểu",
-  "Xin vui lòng đợi",
-  "Không vấn đề gì",
-  "Tôi không thể làm điều đó",
-  "Đi đến đó",
-  "Cho tôi xem giấy tờ",
-  "Giá bao nhiêu?",
-  "Đã hết hàng",
-  "Cảm ơn bạn rất nhiều",
-  "Tôi cần giúp đỡ",
-  "Xin lỗi, tôi bị lạc",
-  "Bạn có thể nói chậm hơn không?",
+  "我不明白",
+  "请稍等",
+  "没关系",
+  "我做不到",
+  "去哪里",
+  "让我看看文件",
+  "多少钱?",
+  "已经没货了",
+  "非常感谢",
+  "我需要帮助",
+  "对不起，我迷路了",
+  "请说慢一点",
 ];
 
 function generateQuizOptions(correctVi: string) {

@@ -3,21 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function DevModeBanner() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
-    // Check if we're in offline mode (mock client)
-    const checkOfflineMode = () => {
+    // Check if we're in development mode
+    const checkDevMode = () => {
       try {
-        // Simple check - if supabaseUrl is empty, we're in offline mode
-        const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || "";
-        const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || "";
-
-        if (!supabaseUrl || !supabaseAnonKey) {
-          setIsOffline(true);
+        const isDev = process.env.NODE_ENV === "development";
+        if (isDev) {
           setIsVisible(true);
-
-          // Auto-hide after 10 seconds
           setTimeout(() => {
             setIsVisible(false);
           }, 10000);
@@ -27,10 +20,10 @@ export default function DevModeBanner() {
       }
     };
 
-    checkOfflineMode();
+    checkDevMode();
   }, []);
 
-  if (!isVisible || !isOffline) {
+  if (!isVisible) {
     return null;
   }
 

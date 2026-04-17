@@ -18,32 +18,42 @@ type Exercise = {
   options?: string[];
 };
 
-const EXERCISES: Exercise[] = [
+const EXERCISES = (t: ReturnType<typeof useT>): Exercise[] => [
   {
     id: "1",
     type: "listening",
-    question: "Listen and choose the correct translation",
-    answer: "Xin chào",
-    options: ["Xin chào", "Cảm ơn", "Tạm biệt", "Xin lỗi"],
+    question: t("practice.listenChoose"),
+    answer: t("practice.hello"),
+    options: [
+      t("practice.hello"),
+      t("practice.thankYou"),
+      t("practice.goodbye"),
+      t("practice.sorry"),
+    ],
   },
   {
     id: "2",
     type: "reading",
-    question: "What does 'Cảm ơn' mean?",
-    answer: "Thank you",
-    options: ["Hello", "Thank you", "Goodbye", "Sorry"],
+    question: t("practice.whatDoesMean", { word: t("practice.thankYou") }),
+    answer: t("practice.thankYouAnswer"),
+    options: [
+      t("practice.helloAnswer"),
+      t("practice.thankYouAnswer"),
+      t("practice.goodbyeAnswer"),
+      t("practice.sorryAnswer"),
+    ],
   },
   {
     id: "3",
     type: "writing",
-    question: "How do you say 'Goodbye' in Vietnamese?",
-    answer: "Tạm biệt",
+    question: t("practice.goodbyeQuestion"),
+    answer: t("practice.goodbyeAnswer"),
   },
   {
     id: "4",
     type: "speaking",
-    question: "Pronounce: 'Xin lỗi'",
-    answer: "Xin lỗi",
+    question: t("practice.pronounce", { word: t("practice.sorry") }),
+    answer: t("practice.sorryAnswer"),
   },
 ];
 
@@ -56,7 +66,7 @@ export default function PracticeScreen() {
   const [score, setScore] = useState(0);
   const [completedExercises, setCompletedExercises] = useState(0);
 
-  const currentExercise = EXERCISES[currentExerciseIndex];
+  const currentExercise = EXERCISES(t)[currentExerciseIndex];
   const isCorrect =
     showResult &&
     (selectedAnswer === currentExercise.answer ||
@@ -71,7 +81,7 @@ export default function PracticeScreen() {
   };
 
   const handleNext = () => {
-    if (currentExerciseIndex < EXERCISES.length - 1) {
+    if (currentExerciseIndex < EXERCISES(t).length - 1) {
       setCurrentExerciseIndex(currentExerciseIndex + 1);
       setSelectedAnswer(null);
       setUserInput("");
@@ -120,13 +130,13 @@ export default function PracticeScreen() {
             style={[
               styles.progressFill,
               {
-                width: `${((currentExerciseIndex + 1) / EXERCISES.length) * 100}%`,
+                width: `${((currentExerciseIndex + 1) / EXERCISES(t).length) * 100}%`,
               },
             ]}
           />
         </View>
         <Text style={styles.progressText}>
-          {currentExerciseIndex + 1} / {EXERCISES.length}
+          {currentExerciseIndex + 1} / {EXERCISES(t).length}
         </Text>
       </View>
 
@@ -264,7 +274,7 @@ export default function PracticeScreen() {
             ) : (
               <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
                 <Text style={styles.nextButtonText}>
-                  {currentExerciseIndex < EXERCISES.length - 1
+                  {currentExerciseIndex < EXERCISES(t).length - 1
                     ? t("practice.nextExercise")
                     : t("practice.restart")}
                 </Text>

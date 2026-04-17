@@ -85,16 +85,6 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
     [setLocale, updatePreferences],
   );
 
-  const handleAutoPlay = useCallback(
-    (autoPlayAudio: boolean) => updatePreferences({ autoPlayAudio }),
-    [updatePreferences],
-  );
-
-  const handleDarkMode = useCallback(
-    (darkMode: boolean) => updatePreferences({ darkMode }),
-    [updatePreferences],
-  );
-
   const handleReminderToggle = useCallback(
     (value: boolean) => {
       setReminderEnabled(value);
@@ -378,61 +368,6 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                 )}
               </>
             )}
-          </View>
-        </View>
-
-        {/* ── APP PREFERENCES ── */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Ionicons name="settings-outline" size={18} color="#666" />
-            <Text style={styles.sectionTitle}>{t("settings.preferences")}</Text>
-          </View>
-          <View style={styles.card}>
-            <View style={styles.toggleRow}>
-              <View style={styles.toggleLeft}>
-                <Ionicons
-                  name="play-circle-outline"
-                  size={22}
-                  color="#6366F1"
-                />
-                <View>
-                  <Text style={styles.toggleLabel}>
-                    {t("settings.autoPlayLabel")}
-                  </Text>
-                  <Text style={styles.toggleSub}>
-                    {t("settings.autoPlayDesc")}
-                  </Text>
-                </View>
-              </View>
-              <Switch
-                value={preferences.autoPlayAudio}
-                onValueChange={handleAutoPlay}
-                trackColor={{ false: "#E0E0E0", true: "#FFD600" }}
-                thumbColor="#FFFFFF"
-              />
-            </View>
-
-            <View style={styles.divider} />
-
-            <View style={styles.toggleRow}>
-              <View style={styles.toggleLeft}>
-                <Ionicons name="moon-outline" size={22} color="#6366F1" />
-                <View>
-                  <Text style={styles.toggleLabel}>
-                    {t("settings.darkModeLabel")}
-                  </Text>
-                  <Text style={styles.toggleSub}>
-                    {t("settings.darkModeDesc")}
-                  </Text>
-                </View>
-              </View>
-              <Switch
-                value={preferences.darkMode}
-                onValueChange={handleDarkMode}
-                trackColor={{ false: "#E0E0E0", true: "#FFD600" }}
-                thumbColor="#FFFFFF"
-              />
-            </View>
           </View>
         </View>
 

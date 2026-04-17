@@ -51,16 +51,15 @@ type SettingItem = {
 interface ProfileScreenProps {
   onLogout?: () => void;
   onResetOnboarding?: () => void;
+  onNavigateToLearn?: () => void;
 }
 
 export default function ProfileScreen({
   onLogout,
   onResetOnboarding,
+  onNavigateToLearn,
 }: ProfileScreenProps) {
   const t = useT();
-  const [notifications, setNotifications] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
-  const [autoPlay, setAutoPlay] = useState(true);
   const [showCreditShop, setShowCreditShop] = useState(false);
   const [showSubscriptionPlans, setShowSubscriptionPlans] = useState(false);
   const [showFamilyManager, setShowFamilyManager] = useState(false);
@@ -115,6 +114,9 @@ export default function ProfileScreen({
   const subscription = useUserStore((state) => state.subscription);
   const familyId = useUserStore((state) => state.familyId);
 
+  // Check if user is logged in
+  const isLoggedIn = user !== null;
+
   // User profile data
   const userName = user?.name || t("profile.defaultName");
   const userEmail = user?.email || t("profile.defaultEmail");
@@ -148,31 +150,31 @@ export default function ProfileScreen({
           label: t("profile.editProfile"),
           type: "navigation" as const,
         },
-        {
-          id: "analytics",
-          icon: "analytics",
-          label: t("profile.analytics"),
-          value: t("common.view"),
-          type: "navigation" as const,
-        },
-        {
-          id: "subscription",
-          icon: "card",
-          label: t("profile.subscription"),
-          value: `${subscription.charAt(0).toUpperCase() + subscription.slice(1)} ${t("common.plan")}`,
-          type: "navigation" as const,
-        },
-        ...(subscription === "family" || familyId
-          ? [
-              {
-                id: "family",
-                icon: "people",
-                label: t("profile.familyPlan"),
-                value: familyId ? t("common.manage") : t("common.join"),
-                type: "navigation" as const,
-              },
-            ]
-          : []),
+        // {
+        //   id: "analytics",
+        //   icon: "analytics",
+        //   label: t("profile.analytics"),
+        //   value: t("common.view"),
+        //   type: "navigation" as const,
+        // },
+        // {
+        //   id: "subscription",
+        //   icon: "card",
+        //   label: t("profile.subscription"),
+        //   value: `${subscription.charAt(0).toUpperCase() + subscription.slice(1)} ${t("common.plan")}`,
+        //   type: "navigation" as const,
+        // },
+        // ...(subscription === "family" || familyId
+        //   ? [
+        //       {
+        //         id: "family",
+        //         icon: "people",
+        //         label: t("profile.familyPlan"),
+        //         value: familyId ? t("common.manage") : t("common.join"),
+        //         type: "navigation" as const,
+        //       },
+        //     ]
+        //   : []),
       ],
     },
     {
@@ -191,40 +193,40 @@ export default function ProfileScreen({
           label: t("profile.settings"),
           type: "navigation" as const,
         },
-        {
-          id: "language",
-          icon: "language",
-          label: t("profile.appLanguage"),
-          value: t("profile.appLanguageValue"),
-          type: "navigation" as const,
-        },
-        {
-          id: "notifications",
-          icon: "notifications",
-          label: t("profile.notifications"),
-          type: "toggle" as const,
-          isEnabled: notifications,
-        },
+        // {
+        //   id: "language",
+        //   icon: "language",
+        //   label: t("profile.appLanguage"),
+        //   value: t("profile.appLanguageValue"),
+        //   type: "navigation" as const,
+        // },
+        // {
+        //   id: "notifications",
+        //   icon: "notifications",
+        //   label: t("profile.notifications"),
+        //   type: "toggle" as const,
+        //   isEnabled: notifications,
+        // },
       ],
     },
-    {
-      title: t("profile.section.learning"),
-      items: [
-        {
-          id: "history",
-          icon: "time",
-          label: t("profile.learningHistory"),
-          type: "navigation" as const,
-        },
-        {
-          id: "goals",
-          icon: "trophy",
-          label: t("profile.dailyGoals"),
-          value: t("profile.dailyGoalsValue"),
-          type: "navigation" as const,
-        },
-      ],
-    },
+    // {
+    //   title: t("profile.section.learning"),
+    //   items: [
+    //     {
+    //       id: "history",
+    //       icon: "time",
+    //       label: t("profile.learningHistory"),
+    //       type: "navigation" as const,
+    //     },
+    //     {
+    //       id: "goals",
+    //       icon: "trophy",
+    //       label: t("profile.dailyGoals"),
+    //       value: t("profile.dailyGoalsValue"),
+    //       type: "navigation" as const,
+    //     },
+    //   ],
+    // },
     {
       title: t("profile.section.support"),
       items: [
@@ -234,12 +236,12 @@ export default function ProfileScreen({
           label: t("profile.resetOnboarding"),
           type: "navigation" as const,
         },
-        {
-          id: "help",
-          icon: "help-circle",
-          label: t("profile.helpCenter"),
-          type: "navigation" as const,
-        },
+        // {
+        //   id: "help",
+        //   icon: "help-circle",
+        //   label: t("profile.helpCenter"),
+        //   type: "navigation" as const,
+        // },
         {
           id: "feedback",
           icon: "chatbubble",
@@ -268,34 +270,20 @@ export default function ProfileScreen({
     },
   ];
 
-  const handleToggle = (id: string, value: boolean) => {
-    switch (id) {
-      case "notifications":
-        setNotifications(value);
-        break;
-      case "darkMode":
-        setDarkMode(value);
-        break;
-      case "autoPlay":
-        setAutoPlay(value);
-        break;
-    }
-  };
-
   const handleNavigation = (id: string) => {
     switch (id) {
       case "profile":
         setShowEditProfile(true);
         break;
-      case "analytics":
-        setShowAnalyticsDashboard(true);
-        break;
-      case "subscription":
-        setShowSubscriptionPlans(true);
-        break;
-      case "family":
-        setShowFamilyManager(true);
-        break;
+      // case "analytics":
+      //   setShowAnalyticsDashboard(true);
+      //   break;
+      // case "subscription":
+      //   setShowSubscriptionPlans(true);
+      //   break;
+      // case "family":
+      //   setShowFamilyManager(true);
+      //   break;
       case "saved":
         setShowMySaved(true);
         break;
@@ -305,26 +293,26 @@ export default function ProfileScreen({
       case "voice":
         setShowVoiceSettings(true);
         break;
-      case "language":
-        setShowLanguageSetup(true);
-        break;
-      case "notifications":
-        setShowNotificationSettings(true);
-        break;
+      // case "language":
+      //   setShowLanguageSetup(true);
+      //   break;
+      // case "notifications":
+      //   setShowNotificationSettings(true);
+      //   break;
       case "resetOnboarding":
         handleResetOnboarding();
         break;
-      case "history":
-        setShowAnalyticsDashboard(true);
-        break;
+      // case "history":
+      //   setShowAnalyticsDashboard(true);
+      //   break;
       case "goals":
         // Daily goals - show settings modal
         setShowSettings(true);
         break;
-      case "help":
-        // Open help center URL
-        setShowAbout(true);
-        break;
+      // case "help":
+      //   // Open help center URL
+      //   setShowAbout(true);
+      //   break;
       case "feedback":
         // Open feedback form
         setShowFeedback(true);
@@ -348,6 +336,20 @@ export default function ProfileScreen({
     setShowResetConfirm(true);
   };
 
+  const handleDeleteAccountPress = () => {
+    if (!isLoggedIn) {
+      Alert.alert(t("profile.notLoggedIn"), t("profile.loginToProtectData"), [
+        { text: t("profile.continueAsGuest"), style: "cancel" },
+        {
+          text: t("profile.loginNow"),
+          onPress: () => onLogout?.(),
+        },
+      ]);
+      return;
+    }
+    setShowDeleteAccountConfirm(true);
+  };
+
   const confirmDeleteAccount = async () => {
     setShowDeleteAccountConfirm(false);
     setIsDeletingAccount(true);
@@ -369,12 +371,19 @@ export default function ProfileScreen({
 
   const confirmResetOnboarding = async () => {
     setShowResetConfirm(false);
+    setIsDeletingAccount(true);
     try {
-      await AsyncStorage.removeItem("hasSeenOnboarding");
-      onResetOnboarding?.();
+      // Delete account from database
+      await AuthService.deleteAccount();
+      await AsyncStorage.clear();
+      onLogout?.();
     } catch (error) {
-      console.log("Error resetting onboarding:", error);
-      Alert.alert(t("common.error"), t("profile.resetError"));
+      console.error("Reset onboarding error:", error);
+      // Still try to reset even if API fails
+      await AsyncStorage.clear();
+      onLogout?.();
+    } finally {
+      setIsDeletingAccount(false);
     }
   };
 
@@ -384,71 +393,103 @@ export default function ProfileScreen({
         {/* Header with Yellow Background - Same as Practice tab */}
         <View style={styles.headerYellow}>
           <Text style={styles.headerTitle}>{t("profile.title")}</Text>
-          <View style={styles.headerBadge}>
-            <Ionicons name="school" size={20} color="#1C1C1E" />
-          </View>
-        </View>
-
-        {/* User Info Card */}
-        <View style={styles.userInfoCard}>
-          {/* Left: Clickable Avatar */}
           <TouchableOpacity
-            style={styles.avatarContainer}
-            onPress={() => setShowAvatarModal(true)}
-            activeOpacity={0.8}
+            style={styles.headerBadge}
+            onPress={() => onNavigateToLearn?.()}
           >
-            {userAvatar ? (
-              <Image source={{ uri: userAvatar }} style={styles.avatarImage} />
-            ) : (
-              <Ionicons name="person" size={40} color="#FFD600" />
-            )}
-            <View style={styles.avatarOverlay}>
-              <Ionicons name="expand" size={16} color="#FFF" />
-            </View>
+            <Ionicons name="school" size={16} color="#1C1C1E" />
           </TouchableOpacity>
-
-          {/* Right: User Info */}
-          <View style={styles.userInfo}>
-            {/* Nickname with Edit Icon */}
-            <View style={styles.nameRow}>
-              <Text style={styles.userName}>{userName}</Text>
-              <TouchableOpacity
-                onPress={() => setShowEditProfile(true)}
-                style={styles.editIcon}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Ionicons name="pencil" size={18} color="#9E9E9E" />
-              </TouchableOpacity>
-            </View>
-
-            {/* Email */}
-            <Text style={styles.userEmail}>{userEmail}</Text>
-          </View>
         </View>
+
+        {/* User Info Card - Show login UI if not logged in */}
+        {isLoggedIn ? (
+          <View style={styles.userInfoCard}>
+            {/* Left: Clickable Avatar */}
+            <TouchableOpacity
+              style={styles.avatarContainer}
+              onPress={() => setShowAvatarModal(true)}
+              activeOpacity={0.8}
+            >
+              {userAvatar ? (
+                <Image
+                  source={{ uri: userAvatar }}
+                  style={styles.avatarImage}
+                />
+              ) : (
+                <Ionicons name="person" size={40} color="#FFD600" />
+              )}
+              <View style={styles.avatarOverlay}>
+                <Ionicons name="expand" size={16} color="#FFF" />
+              </View>
+            </TouchableOpacity>
+
+            {/* Right: User Info */}
+            <View style={styles.userInfo}>
+              {/* Nickname with Edit Icon */}
+              <View style={styles.nameRow}>
+                <Text style={styles.userName}>{userName}</Text>
+                <TouchableOpacity
+                  onPress={() => setShowEditProfile(true)}
+                  style={styles.editIcon}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Ionicons name="pencil" size={18} color="#9E9E9E" />
+                </TouchableOpacity>
+              </View>
+
+              {/* Email */}
+              <Text style={styles.userEmail}>{userEmail}</Text>
+            </View>
+          </View>
+        ) : (
+          <View style={styles.loginPromptCard}>
+            <View style={styles.loginPromptIcon}>
+              <Ionicons
+                name="person-circle-outline"
+                size={60}
+                color="#FFD600"
+              />
+            </View>
+            <Text style={styles.loginPromptTitle}>
+              {t("profile.notLoggedIn")}
+            </Text>
+            <Text style={styles.loginPromptDesc}>
+              {t("profile.loginToProtectData")}
+            </Text>
+            <TouchableOpacity
+              style={styles.loginPromptButton}
+              onPress={() => onLogout?.()}
+            >
+              <Text style={styles.loginPromptButtonText}>
+                {t("profile.loginNow")}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
         {/* Credit Balance */}
-        <CreditBalance onPress={() => setShowCreditShop(true)} />
+        {/* <CreditBalance onPress={() => setShowCreditShop(true)} /> */}
 
         {/* ── NEW FEATURES ── */}
 
         {/* 1. Daily Goal Ring */}
-        <DailyGoalRing />
+        {/* <DailyGoalRing /> */}
 
         {/* 2. Streak Display */}
-        <StreakDisplay />
+        {/* <StreakDisplay /> */}
 
         {/* 3. Mastery Progress */}
-        <MasteryProgress />
+        {/* <MasteryProgress /> */}
 
         {/* 4. Practice Heatmap */}
-        <PracticeHeatmap />
+        {/* <PracticeHeatmap /> */}
 
         {/* 5. Quick Access Cards */}
-        <QuickAccessCards
+        {/* <QuickAccessCards
           onNavigate={(screen) => {
             if (screen === "saved") setShowMySaved(true);
           }}
-        />
+        /> */}
 
         {/* 6. Invite Friends / Referral */}
         <InviteFriends />
@@ -463,10 +504,7 @@ export default function ProfileScreen({
                 <View key={item.id}>
                   <TouchableOpacity
                     style={styles.settingItem}
-                    onPress={() =>
-                      item.type === "navigation" && handleNavigation(item.id)
-                    }
-                    disabled={item.type === "toggle"}
+                    onPress={() => handleNavigation(item.id)}
                   >
                     <View style={styles.settingLeft}>
                       <View style={styles.settingIconContainer}>
@@ -481,16 +519,6 @@ export default function ProfileScreen({
                     <View style={styles.settingRight}>
                       {item.type === "navigation" && !!item.value && (
                         <Text style={styles.settingValue}>{item.value}</Text>
-                      )}
-                      {item.type === "toggle" && (
-                        <Switch
-                          value={item.isEnabled}
-                          onValueChange={(value) =>
-                            handleToggle(item.id, value)
-                          }
-                          trackColor={{ false: "#E0E0E0", true: "#FFD600" }}
-                          thumbColor="#FFFFFF"
-                        />
                       )}
                       {item.type === "navigation" && (
                         <Ionicons
@@ -510,8 +538,8 @@ export default function ProfileScreen({
           </View>
         ))}
 
-        {/* Upgrade Banner */}
-        <View style={styles.upgradeCard}>
+        {/* Upgrade Banner - Hidden */}
+        {/* <View style={styles.upgradeCard}>
           <View style={styles.upgradeContent}>
             <View style={styles.upgradeIcon}>
               <Ionicons name="star" size={24} color="#FFD600" />
@@ -533,7 +561,7 @@ export default function ProfileScreen({
               {t("profile.upgradeButton")}
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         {/* Logout */}
         <TouchableOpacity
@@ -550,7 +578,7 @@ export default function ProfileScreen({
         {/* Delete Account */}
         <TouchableOpacity
           style={styles.deleteAccountButton}
-          onPress={() => setShowDeleteAccountConfirm(true)}
+          onPress={handleDeleteAccountPress}
           disabled={isDeletingAccount}
         >
           <Ionicons name="trash-outline" size={20} color="#FF3B30" />
@@ -1460,19 +1488,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 16,
+    paddingTop: 50,
+    paddingBottom: 12,
     backgroundColor: "#FFD600",
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "700",
     color: "#1C1C1E",
   },
   headerBadge: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     backgroundColor: "#FFF9E6",
     alignItems: "center",
     justifyContent: "center",
@@ -1531,6 +1559,41 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#9E9E9E",
     marginTop: 2,
+  },
+  loginPromptCard: {
+    marginHorizontal: 20,
+    marginTop: 20,
+    padding: 24,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    alignItems: "center",
+  },
+  loginPromptIcon: {
+    marginBottom: 16,
+  },
+  loginPromptTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#1C1C1E",
+    marginBottom: 8,
+  },
+  loginPromptDesc: {
+    fontSize: 14,
+    color: "#9E9E9E",
+    textAlign: "center",
+    lineHeight: 20,
+    marginBottom: 20,
+  },
+  loginPromptButton: {
+    backgroundColor: "#FFD600",
+    paddingHorizontal: 32,
+    paddingVertical: 14,
+    borderRadius: 12,
+  },
+  loginPromptButtonText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#1C1C1E",
   },
   statsContainer: {
     flexDirection: "row",

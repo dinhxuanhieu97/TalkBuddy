@@ -10,6 +10,7 @@ import {
   Easing,
   Dimensions,
   TouchableWithoutFeedback,
+  PanResponder,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, {
@@ -198,6 +199,22 @@ export default function Onboarding({ onDone }: OnboardingProps) {
   const t = useT();
   const router = useRouter();
   const [current, setCurrent] = useState(0);
+  const slideAnim = useRef(new Animated.Value(0)).current;
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, { dx, dy }) => {
+        return Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10;
+      },
+      onPanResponderRelease: (_, { dx }) => {
+        if (dx < -50) {
+          handleNext();
+        } else if (dx > 50) {
+          handlePrev();
+        }
+      },
+    }),
+  ).current;
 
   const finishOnboarding = async () => {
     try {
@@ -214,6 +231,18 @@ export default function Onboarding({ onDone }: OnboardingProps) {
 
   const handleNext = async () => {
     if (current < slideConfigs.length - 1) {
+      Animated.sequence([
+        Animated.timing(slideAnim, {
+          toValue: -20,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(slideAnim, {
+          toValue: 0,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
       setCurrent(current + 1);
     } else {
       await finishOnboarding();
@@ -226,6 +255,18 @@ export default function Onboarding({ onDone }: OnboardingProps) {
 
   const handlePrev = () => {
     if (current > 0) {
+      Animated.sequence([
+        Animated.timing(slideAnim, {
+          toValue: 20,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(slideAnim, {
+          toValue: 0,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
       setCurrent(current - 1);
     }
   };
@@ -248,8 +289,8 @@ export default function Onboarding({ onDone }: OnboardingProps) {
         </TouchableOpacity>
       </View>
 
-      {/* Content Area with Tap Gesture */}
-      <View style={styles.contentContainer}>
+      {/* Content Area with Swipe Gesture */}
+      <View style={styles.contentContainer} {...panResponder.panHandlers}>
         {/* Tap left area to go previous (disabled for first slide) */}
         {current > 0 && (
           <TouchableWithoutFeedback onPress={handlePrev}>

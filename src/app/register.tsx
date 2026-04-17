@@ -14,6 +14,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import logger from "../lib/logger";
 import {
   GoogleSignin,
   statusCodes,
@@ -133,9 +134,9 @@ export default function Register({
       }
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log("Google sign in cancelled");
+        logger.log("Google sign in cancelled");
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log("Google sign in in progress");
+        logger.log("Google sign in in progress");
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         Alert.alert(t("common.error"), t("auth.error.googleLoginFailed"));
       } else {

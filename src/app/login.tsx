@@ -18,6 +18,7 @@ import {
 } from "@react-native-google-signin/google-signin";
 import { AuthService } from "../services";
 import { useT } from "../lib/i18n";
+import logger from "../lib/logger";
 import { useUserStore } from "../stores/userStore";
 import googleService from "@/services/googleSignIn";
 
@@ -151,11 +152,11 @@ export default function Login({
         handleGoogleAuthCallback(userInfo.idToken);
       }
     } catch (error: any) {
-      console.log("siuu: ", error);
+      logger.log("Google sign in error: ", error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log("Google sign in cancelled");
+        logger.log("Google sign in cancelled");
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log("Google sign in in progress");
+        logger.log("Google sign in in progress");
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         setErrors({ general: t("auth.error.googleLoginFailed") });
       } else {

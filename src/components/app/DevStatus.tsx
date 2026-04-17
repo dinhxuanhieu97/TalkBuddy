@@ -3,22 +3,18 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function DevStatus() {
   const [config, setConfig] = useState({
-    hasSupabase: false,
     hasGoogleAuth: false,
     isDevelopment: true,
   });
 
   useEffect(() => {
     const checkConfig = () => {
-      const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || "";
-      const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || "";
       const googleClientId =
         process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ||
         process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ||
         "";
 
       setConfig({
-        hasSupabase: !!(supabaseUrl && supabaseAnonKey),
         hasGoogleAuth: !!googleClientId,
         isDevelopment: process.env.NODE_ENV === "development",
       });
@@ -37,18 +33,6 @@ export default function DevStatus() {
         <Text style={styles.title}>🔧 Development Status</Text>
 
         <View style={styles.statusRow}>
-          <Text style={styles.statusLabel}>Supabase:</Text>
-          <Text
-            style={[
-              styles.statusValue,
-              config.hasSupabase ? styles.success : styles.error,
-            ]}
-          >
-            {config.hasSupabase ? "✅ Connected" : "❌ Not configured"}
-          </Text>
-        </View>
-
-        <View style={styles.statusRow}>
           <Text style={styles.statusLabel}>Google Auth:</Text>
           <Text
             style={[
@@ -59,23 +43,6 @@ export default function DevStatus() {
             {config.hasGoogleAuth ? "✅ Configured" : "❌ Not configured"}
           </Text>
         </View>
-
-        <View style={styles.statusRow}>
-          <Text style={styles.statusLabel}>Mode:</Text>
-          <Text style={styles.statusValue}>
-            {config.hasSupabase ? "🌐 Online" : "📱 Offline"}
-          </Text>
-        </View>
-
-        {!config.hasSupabase && (
-          <View style={styles.tipContainer}>
-            <Text style={styles.tipTitle}>💡 Setup Required:</Text>
-            <Text style={styles.tipText}>
-              Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY to
-              .env
-            </Text>
-          </View>
-        )}
 
         {!config.hasGoogleAuth && (
           <View style={styles.tipContainer}>

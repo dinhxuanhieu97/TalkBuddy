@@ -12,55 +12,53 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useT } from "../../lib/i18n";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 // Combined slides from Onboarding + Onboarding2
-const slides = [
+const slides = (t: ReturnType<typeof useT>) => [
   // Onboarding 1 - Bee animation
   {
     id: 0,
     type: "bee",
-    title: "Vietnamese for\nTravelers",
-    subtitle:
-      "Instantly find the right Vietnamese phrase for any situation — airport, hospital, hotel, and more.",
+    title: t("onboarding.forTravelers"),
+    subtitle: t("onboarding.forTravelersSubtitle"),
   },
   // Onboarding 2 - Emoji style
   {
     id: 1,
     type: "emoji",
     emoji: "🚨",
-    title: "Translate language for everyone",
-    subtitle:
-      "Instantly find the right phrase for any urgent situation — airport, hospital, hotel, and more.",
+    title: t("onboarding.translateForEveryone"),
+    subtitle: t("onboarding.translateForEveryoneSubtitle"),
   },
   // Onboarding 3 - Speak like a local
   {
     id: 2,
     type: "emoji",
     emoji: "🗣️",
-    title: "Speak Like\na Local",
-    subtitle:
-      "Listen, repeat, and perfect your Vietnamese accent with interactive audio exercises.",
+    title: t("onboarding.speakLikeLocal"),
+    subtitle: t("onboarding.speakLikeLocalSubtitle"),
   },
   // Onboarding 4 - Track progress
   {
     id: 3,
     type: "emoji",
     emoji: "📚",
-    title: "Track Your\nProgress",
-    subtitle:
-      "Every phrase you learn is saved. Review your history and watch your Vietnamese grow day by day.",
+    title: t("onboarding.trackProgress"),
+    subtitle: t("onboarding.trackProgressSubtitle"),
   },
 ];
 
 export default function Onboarding2() {
   const router = useRouter();
+  const t = useT();
   const [current, setCurrent] = useState(0);
   const translateX = useRef(new Animated.Value(0)).current;
 
   const handleNext = async () => {
-    if (current < slides.length - 1) {
+    if (current < slides(t).length - 1) {
       setCurrent(current + 1);
     } else {
       try {
@@ -103,7 +101,7 @@ export default function Onboarding2() {
       onPanResponderRelease: (_, gestureState) => {
         translateX.stopAnimation();
 
-        if (gestureState.dx < -30 && current < slides.length - 1) {
+        if (gestureState.dx < -30 && current < slides(t).length - 1) {
           // Swipe left - go to next immediately
           handleNext();
         } else if (gestureState.dx > 30 && current > 0) {
@@ -121,7 +119,7 @@ export default function Onboarding2() {
     }),
   ).current;
 
-  const slide = slides[current];
+  const slide = slides(t)[current];
 
   return (
     <LinearGradient
@@ -171,7 +169,7 @@ export default function Onboarding2() {
       <View style={styles.bottomContainer}>
         {/* Dots */}
         <View style={styles.dotsContainer}>
-          {slides.map((_, i) => (
+          {slides(t).map((_, i) => (
             <View
               key={i}
               style={[
@@ -192,8 +190,10 @@ export default function Onboarding2() {
           activeOpacity={0.8}
         >
           <Text style={styles.continueText}>
-            {current < slides.length - 1 ? "Continue" : "Get Started"}
-            {current < slides.length - 1 ? " →" : ""}
+            {current < slides(t).length - 1
+              ? t("common.continue")
+              : t("common.getStarted")}
+            {current < slides(t).length - 1 ? " →" : ""}
           </Text>
         </TouchableOpacity>
       </View>
@@ -251,9 +251,7 @@ function AnimatedBeeIcon() {
   });
 
   return (
-    <Animated.View
-      style={{ transform: [{ translateY }, { rotate }] }}
-    >
+    <Animated.View style={{ transform: [{ translateY }, { rotate }] }}>
       <View style={styles.beeSvgContainer}>
         <Text style={styles.beeEmoji}>🐝</Text>
       </View>

@@ -25,18 +25,18 @@ type ActivePlay = "full" | "slow" | "word-by-word" | null;
 
 // Distractor phrases for quiz
 const DISTRACTORS = [
-  "Tôi không hiểu",
-  "Xin vui lòng đợi",
-  "Không vấn đề gì",
-  "Tôi không thể làm điều đó",
-  "Đi đến đó",
-  "Cho tôi xem giấy tờ",
-  "Giá bao nhiêu?",
-  "Đã hết hàng",
-  "Cảm ơn bạn rất nhiều",
-  "Tôi cần giúp đỡ",
-  "Xin lỗi, tôi bị lạc",
-  "Bạn có thể nói chậm hơn không?",
+  "我不明白",
+  "请稍等",
+  "没关系",
+  "我做不到",
+  "去哪里",
+  "让我看看文件",
+  "多少錢？",
+  "已经没货了",
+  "非常感谢",
+  "我需要帮助",
+  "对不起，我迷路了",
+  "请说慢一点",
 ];
 
 function generateQuizOptions(correctVi: string) {
@@ -48,8 +48,8 @@ function generateQuizOptions(correctVi: string) {
 
   const options = [
     { text: correctVi, correct: true },
-    { text: picked[0] || "Tôi không nghe rõ", correct: false },
-    { text: picked[1] || "Tạm biệt", correct: false },
+    { text: picked[0] || "我不明白", correct: false },
+    { text: picked[1] || "再见", correct: false },
   ];
 
   return options.sort(() => Math.random() - 0.5);
@@ -159,17 +159,25 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Ionicons name="ear-outline" size={20} color="#7B1FA2" />
-          <Text style={styles.title}>Dictation</Text>
+          <Ionicons
+            name="ear-outline"
+            size={20}
+            color="#7yi ting {playCount} ciFyi ting {playCount} ci"
+          />
+          <Text style={styles.title}> 听写</Text>
         </View>
         <View style={styles.headerRight}>
           <View style={styles.stepBadge}>
             <Text style={styles.stepText}>
-              Step {step === "listen" ? "1" : step === "quiz" ? "2" : "3"}/3
+              步骤 {step === "listen" ? "1" : step === "quiz" ? "2" : "3"}/3
             </Text>
           </View>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-            <Ionicons name="close" size={24} color="#1C1C1E" />
+            <Ionicons
+              name="close"
+              size={24}
+              color="#1yi ting {playCount} ciyi ting {playCount} ciE"
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -182,7 +190,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
               <View style={[styles.stepNumber, styles.stepNumberActive]}>
                 <Text style={styles.stepNumberText}>1</Text>
               </View>
-              <Text style={styles.stepTitle}>Listen carefully</Text>
+              <Text style={styles.stepTitle}>仔细听</Text>
             </View>
 
             {/* 3-speed playback */}
@@ -197,7 +205,9 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                 <Ionicons
                   name="volume-high"
                   size={16}
-                  color={activePlay === "full" ? "#FFF" : "#666"}
+                  color={
+                    activePlay === "full" ? "#yi ting {playCount} ci" : "#666"
+                  }
                 />
                 <Text
                   style={[
@@ -205,7 +215,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                     activePlay === "full" && styles.playButtonTextActive,
                   ]}
                 >
-                  Full
+                  完整
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -218,7 +228,9 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                 <Ionicons
                   name="speedometer-outline"
                   size={16}
-                  color={activePlay === "slow" ? "#FFF" : "#666"}
+                  color={
+                    activePlay === "slow" ? "#yi ting {playCount} ci" : "#666"
+                  }
                 />
                 <Text
                   style={[
@@ -226,7 +238,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                     activePlay === "slow" && styles.playButtonTextActive,
                   ]}
                 >
-                  Slow
+                  慢速
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -239,7 +251,11 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                 <Ionicons
                   name="play-skip-forward"
                   size={16}
-                  color={activePlay === "word-by-word" ? "#FFF" : "#666"}
+                  color={
+                    activePlay === "word-by-word"
+                      ? "#yi ting {playCount} ci"
+                      : "#666"
+                  }
                 />
                 <Text
                   style={[
@@ -248,15 +264,13 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                       styles.playButtonTextActive,
                   ]}
                 >
-                  Word
+                  单词
                 </Text>
               </TouchableOpacity>
             </View>
 
             {playCount > 0 && (
-              <Text style={styles.listenCount}>
-                Listened {playCount} time{playCount > 1 ? "s" : ""}
-              </Text>
+              <Text style={styles.listenCount}>已听 {playCount} 次</Text>
             )}
           </View>
 
@@ -272,7 +286,11 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
             <Ionicons
               name="help-circle"
               size={18}
-              color={playCount < 1 ? "#CCC" : "#FFF"}
+              color={
+                playCount < 1
+                  ? "#yi ting {playCount} ci"
+                  : "#yi ting {playCount} ci"
+              }
             />
             <Text
               style={[
@@ -280,9 +298,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                 playCount < 1 && styles.quizButtonTextDisabled,
               ]}
             >
-              {playCount < 1
-                ? "Listen first to unlock quiz"
-                : "Test your understanding"}
+              {playCount < 1 ? "先听" : "测试理解"}
             </Text>
           </TouchableOpacity>
         </View>
@@ -292,13 +308,17 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
       {step === "quiz" && (
         <View>
           <View style={styles.quizHeader}>
-            <Text style={styles.quizTitle}>What does this mean?</Text>
+            <Text style={styles.quizTitle}>这是什么意思?</Text>
             <TouchableOpacity
               onPress={handlePlayFull}
               style={styles.replayButton}
             >
-              <Ionicons name="volume-high" size={16} color="#7B1FA2" />
-              <Text style={styles.replayText}>Listen again</Text>
+              <Ionicons
+                name="volume-high"
+                size={16}
+                color="#7yi ting {playCount} ciFyi ting {playCount} ci"
+              />
+              <Text style={styles.replayText}>再听一次</Text>
             </TouchableOpacity>
           </View>
 
@@ -334,7 +354,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                     <Ionicons
                       name="checkmark-circle"
                       size={18}
-                      color="#2E7D32"
+                      color="#2E7yi ting {playCount} ci2"
                     />
                   )}
                   {showFeedback && isSelected && !option.correct && (
@@ -357,9 +377,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                   : styles.feedbackWrong,
               ]}
             >
-              {quizOptions[selectedAnswer]?.correct
-                ? "Correct!"
-                : "Not quite right"}
+              {quizOptions[selectedAnswer]?.correct ? "正确!" : "不太正确"}
             </Text>
           )}
         </View>
@@ -383,7 +401,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                   : styles.resultTitleNeedWork,
               ]}
             >
-              {score >= 80 ? "Excellent!" : "Keep practicing!"}
+              {score >= 80 ? "太棒了!" : "继续练习!"}
             </Text>
             <Text
               style={[
@@ -391,9 +409,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
                 score >= 80 ? styles.resultSubGood : styles.resultSubNeedWork,
               ]}
             >
-              {score >= 80
-                ? "You understood the phrase correctly"
-                : "Try listening a few more times"}
+              {score >= 80 ? "你正确理解了这句子" : "再听几次吧"}
             </Text>
           </View>
 
@@ -405,7 +421,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
 
           <TouchableOpacity onPress={handleRetry} style={styles.retryButton}>
             <Ionicons name="refresh" size={16} color="#666" />
-            <Text style={styles.retryText}>Practice again</Text>
+            <Text style={styles.retryText}>再练一次</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -415,7 +431,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#yi ting {playCount} ciyi ting {playCount} ci",
     borderRadius: 16,
     padding: 20,
     marginTop: 8,
@@ -445,10 +461,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#1C1C1E",
+    color: "#1yi ting {playCount} ciyi ting {playCount} ciE",
   },
   stepBadge: {
-    backgroundColor: "#F3E5F5",
+    backgroundColor: "#yi ting {playCount} ciE5F5",
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 12,
@@ -456,7 +472,7 @@ const styles = StyleSheet.create({
   stepText: {
     fontSize: 12,
     fontWeight: "600",
-    color: "#7B1FA2",
+    color: "#7yi ting {playCount} ciFyi ting {playCount} ci",
   },
   closeButton: {
     padding: 4,
@@ -467,7 +483,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   stepActive: {
-    backgroundColor: "#F3E5F5",
+    backgroundColor: "#yi ting {playCount} ciE5F5",
     borderWidth: 1,
     borderColor: "#CE93D8",
   },
@@ -486,21 +502,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#E0E0E0",
   },
   stepNumberActive: {
-    backgroundColor: "#7B1FA2",
+    backgroundColor: "#7yi ting {playCount} ciFyi ting {playCount} ci",
   },
   stepNumberText: {
     fontSize: 13,
     fontWeight: "700",
-    color: "#FFFFFF",
+    color: "#yi ting {playCount} ciyi ting {playCount} ci",
   },
   stepTitle: {
     fontSize: 15,
     fontWeight: "600",
-    color: "#1C1C1E",
+    color: "#1yi ting {playCount} ciyi ting {playCount} ciE",
   },
   playbackBar: {
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#yi ting {playCount} ciyi ting {playCount} ci",
     borderRadius: 10,
     padding: 3,
     gap: 3,
@@ -515,7 +531,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   playButtonActive: {
-    backgroundColor: "#7B1FA2",
+    backgroundColor: "#7yi ting {playCount} ciFyi ting {playCount} ci",
   },
   playButtonText: {
     fontSize: 13,
@@ -523,11 +539,11 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   playButtonTextActive: {
-    color: "#FFFFFF",
+    color: "#yi ting {playCount} ciyi ting {playCount} ci",
   },
   listenCount: {
     fontSize: 12,
-    color: "#7B1FA2",
+    color: "#7yi ting {playCount} ciFyi ting {playCount} ci",
     textAlign: "center",
     marginTop: 10,
   },
@@ -536,7 +552,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-    backgroundColor: "#7B1FA2",
+    backgroundColor: "#7yi ting {playCount} ciFyi ting {playCount} ci",
     paddingVertical: 14,
     borderRadius: 12,
   },
@@ -546,7 +562,7 @@ const styles = StyleSheet.create({
   quizButtonText: {
     fontSize: 15,
     fontWeight: "600",
-    color: "#FFFFFF",
+    color: "#yi ting {playCount} ciyi ting {playCount} ci",
   },
   quizButtonTextDisabled: {
     color: "#999",
@@ -558,14 +574,14 @@ const styles = StyleSheet.create({
   quizTitle: {
     fontSize: 16,
     fontWeight: "700",
-    color: "#1C1C1E",
+    color: "#1yi ting {playCount} ciyi ting {playCount} ciE",
     marginBottom: 10,
   },
   replayButton: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    backgroundColor: "#F3E5F5",
+    backgroundColor: "#yi ting {playCount} ciE5F5",
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 10,
@@ -573,7 +589,7 @@ const styles = StyleSheet.create({
   replayText: {
     fontSize: 13,
     fontWeight: "600",
-    color: "#7B1FA2",
+    color: "#7yi ting {playCount} ciFyi ting {playCount} ci",
   },
   optionsContainer: {
     gap: 10,
@@ -609,10 +625,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   optionTextDefault: {
-    color: "#1C1C1E",
+    color: "#1yi ting {playCount} ciyi ting {playCount} ciE",
   },
   optionTextCorrect: {
-    color: "#2E7D32",
+    color: "#2E7yi ting {playCount} ci2",
     fontWeight: "600",
   },
   optionTextWrong: {
@@ -628,7 +644,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   feedbackCorrect: {
-    color: "#2E7D32",
+    color: "#2E7yi ting {playCount} ci2",
   },
   feedbackWrong: {
     color: "#C62828",
@@ -643,7 +659,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E8F5E9",
   },
   resultNeedWork: {
-    backgroundColor: "#FFF3E0",
+    backgroundColor: "#yi ting {playCount} ci3E0",
   },
   resultEmoji: {
     fontSize: 32,
@@ -654,7 +670,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   resultTitleGood: {
-    color: "#2E7D32",
+    color: "#2E7yi ting {playCount} ci2",
   },
   resultTitleNeedWork: {
     color: "#E65100",
@@ -664,7 +680,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   resultSubGood: {
-    color: "#388E3C",
+    color: "#388yi ting {playCount} ciC",
   },
   resultSubNeedWork: {
     color: "#F57C00",
@@ -678,7 +694,7 @@ const styles = StyleSheet.create({
   answerEn: {
     fontSize: 17,
     fontWeight: "600",
-    color: "#1C1C1E",
+    color: "#1yi ting {playCount} ciyi ting {playCount} ciE",
     marginBottom: 6,
   },
   answerVi: {
