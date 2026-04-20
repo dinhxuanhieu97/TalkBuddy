@@ -13,7 +13,7 @@ export function QuickAccessCards({ onNavigate }: QuickAccessCardsProps) {
   const { phrases } = useSavedPhrasesStore();
   const stats = useUserStore((s) => s.stats);
 
-  const cards = [
+  const allCards = [
     {
       id: "saved" as const,
       icon: "bookmark" as const,
@@ -42,6 +42,9 @@ export function QuickAccessCards({ onNavigate }: QuickAccessCardsProps) {
       badge: null,
     },
   ];
+
+  // Only show saved card - vocab and plan hidden (not implemented yet)
+  const cards = allCards.filter((c) => c.id === "saved");
 
   return (
     <View style={styles.container}>

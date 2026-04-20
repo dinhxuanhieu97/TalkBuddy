@@ -490,11 +490,11 @@ export default function ProfileScreen({
         {/* <PracticeHeatmap /> */}
 
         {/* 5. Quick Access Cards */}
-        {/* <QuickAccessCards
+        <QuickAccessCards
           onNavigate={(screen) => {
             if (screen === "saved") setShowMySaved(true);
           }}
-        /> */}
+        />
 
         {/* 6. Invite Friends / Referral */}
         <InviteFriends />

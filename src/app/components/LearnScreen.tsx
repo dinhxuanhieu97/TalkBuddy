@@ -29,6 +29,11 @@ import {
 } from "../../data/preset-scenes";
 import logger from "../../lib/logger";
 import contentService, { type Category } from "../../services/contentService";
+import {
+  VOICE_SETTINGS_STORAGE,
+  DEFAULT_VOICE_SETTINGS,
+  type VoiceSettings,
+} from "../../types/voice";
 
 // Custom debounce hook
 function useDebounce<T>(value: T, delay: number): T {
@@ -222,6 +227,50 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
   const t = useT();
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedScene, setSelectedScene] = useState<PresetScene | null>(null);
+
+  // Close category and stop all audio
+  const handleCloseCategory = useCallback(async () => {
+    await stopSpeaking();
+    setSelectedContext(null);
+    setSelectedScene(null);
+  }, []);
+
+  // Voice settings state - loaded from AsyncStorage
+  const [voiceSettings, setVoiceSettings] = useState<VoiceSettings>(
+    DEFAULT_VOICE_SETTINGS["en-US"],
+  );
+
+  // Load voice settings from AsyncStorage on mount
+  useEffect(() => {
+    const loadVoiceSettings = async () => {
+      try {
+        const saved = await AsyncStorage.getItem(
+          VOICE_SETTINGS_STORAGE.localStorageKey,
+        );
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.accent && parsed.speed) {
+            setVoiceSettings({ ...DEFAULT_VOICE_SETTINGS["en-US"], ...parsed });
+          }
+        }
+      } catch (error) {
+        logger.warn("Failed to load voice settings:", error);
+      }
+    };
+    loadVoiceSettings();
+  }, []);
+
+  // Convert voice settings to TTS format (accent: US->en-US, speed: 0.75->slow)
+  const accentMap: Record<string, string> = {
+    US: "en-US",
+    UK: "en-GB",
+    AU: "en-AU",
+  };
+  const speedMap: Record<number, string> = {
+    0.75: "slow",
+    1.0: "normal",
+    1.25: "fast",
+  };
 
   // Fetch all categories from API (dynamic, not hardcoded)
   const [allCategories, setAllCategories] = useState<Category[]>([]);
@@ -616,8 +665,8 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
       setPlayingPhraseId(phraseId);
 
       await speak(text, {
-        accent: "en-US",
-        speed: "normal",
+        accent: accentMap[voiceSettings.accent] as "en-US" | "en-GB" | "en-AU",
+        speed: speedMap[voiceSettings.speed] as "slow" | "normal" | "fast",
         onDone: () => setPlayingPhraseId(null),
         onError: (error) => {
           setPlayingPhraseId(null);
@@ -701,8 +750,11 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
       // Speak and wait for completion
       try {
         await speak(phrases[i].en, {
-          accent: "en-US",
-          speed: "normal",
+          accent: accentMap[voiceSettings.accent] as
+            | "en-US"
+            | "en-GB"
+            | "en-AU",
+          speed: speedMap[voiceSettings.speed] as "slow" | "normal" | "fast",
         });
         logger.log(`[TTS] Phrase ${i + 1} completed`);
       } catch (error) {
@@ -731,9 +783,10 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     }
   };
 
-  const handleSearchChange = (text: string) => {
+  const handleSearchChange = async (text: string) => {
     setSearchQuery(text);
     if (text) {
+      await stopSpeaking();
       setSelectedContext(null);
       // Show loading immediately on each keystroke
       setIsSearching(true);
@@ -975,7 +1028,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
             {selectedContext && !selectedScene && (
               <View style={styles.inlineSceneListHeader}>
                 <TouchableOpacity
-                  onPress={() => setSelectedContext(null)}
+                  onPress={handleCloseCategory}
                   style={styles.inlineBackButton}
                 >
                   <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
@@ -1150,7 +1203,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
             <View style={styles.sceneListSection}>
               <View style={styles.inlineSceneListHeader}>
                 <TouchableOpacity
-                  onPress={() => setSelectedContext(null)}
+                  onPress={handleCloseCategory}
                   style={[styles.inlineBackButton, { flexShrink: 1 }]}
                 >
                   <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
@@ -1221,7 +1274,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
               <View style={styles.phrasesHeaderLeft}>
                 {selectedScene && (
                   <TouchableOpacity
-                    onPress={() => setSelectedScene(null)}
+                    onPress={handleCloseCategory}
                     style={styles.backButton}
                   >
                     <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
@@ -1232,7 +1285,8 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                 )}
               </View>
               <TouchableOpacity
-                onPress={() => {
+                onPress={async () => {
+                  await stopSpeaking();
                   setSelectedScene(null);
                   if (searchQuery) setSearchQuery("");
                 }}

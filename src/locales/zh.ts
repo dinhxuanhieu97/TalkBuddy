@@ -181,15 +181,15 @@ const zh = {
   "learn.emergencyTip": "紧急提示",
   "learn.emergencyTipDesc":
     "选择场景以查找短语。或使用SOS Buddy获取实时翻译支持。",
-  "learn.commonSituations": "常见情况",
+  "learn.commonSituations": "常见场景",
   "learn.headerSubtitle": "紧急英语",
   "learn.headerTitle": "你需要什么？",
   "learn.close": "关闭",
   "learn.searchResults": "搜索结果",
   "learn.phrases": "{context} 短语",
-  "learn.weakCategory": "Need Practice",
-  "learn.tryNew": "Try New Scenes",
-  "learn.phrasesCount": "phrases",
+  "learn.weakCategory": "需要练习",
+  "learn.tryNew": "尝试新场景",
+  "learn.phrasesCount": "短语",
 
   // Profile
   "profile.defaultName": "用户",
@@ -299,28 +299,27 @@ const zh = {
   "profile.resetSuccess": "已重置引导！重启应用即可查看。",
   "profile.resetError": "重置引导失败。",
   "profile.days": "{n} 天",
-  "profile.earned": "Earned {n} days free",
+  "profile.earned": "获得 {n} 天免费使用",
   "profile.linkCopied": "链接已复制到剪贴板！",
   "profile.shareError": "分享失败",
   "profile.privacyPolicy": "隐私政策",
   "profile.termsOfService": "服务条款",
-  "profile.deleteAccount": "Delete account",
-  "profile.deleteAccountTitle": "Delete account",
+  "profile.deleteAccount": "删除账户",
+  "profile.deleteAccountTitle": "删除账户",
   "profile.deleteAccountMessage":
-    "This action cannot be undone. After deleting your account, all your data (including learning records, favorites and subscription info) will be permanently deleted. Are you sure you want to continue?",
-  "profile.deleteAccountConfirm": "Confirm delete",
-  "profile.deleteAccountError":
-    "Failed to delete account, please try again later.",
-  "profile.notLoggedIn": "Not logged in",
+    "此操作无法撤销。删除账户后，您的所有数据（包括学习记录、收藏和订阅信息）将被永久删除。您确定要继续吗？",
+  "profile.deleteAccountConfirm": "确认删除",
+  "profile.deleteAccountError": "删除账户失败，请稍后重试。",
+  "profile.notLoggedIn": "尚未登录",
   "profile.loginToProtectData":
-    "Please log in to protect your data. If you clear cache without logging in, your data will be lost.",
-  "profile.loginNow": "Log in now",
-  "profile.continueAsGuest": "Continue as guest",
+    "请登录以保护您的数据。如果您未登录清除缓存，数据将丢失。",
+  "profile.loginNow": "立即登录",
+  "profile.continueAsGuest": "继续作为访客",
   "profile.aboutDescription": "AI 驱动的英语学习应用，专为旅行者打造",
   "profile.feedbackIntro": "感谢您的反馈！请通过以下邮箱联系我们：",
   "profile.feedbackThanks": "您的反馈帮助我们改进应用！",
   "invite.shareTitle": "邀请朋友加入 TalkBuddy",
-  "profile.testFamilyPlan": "Enable Family Plan (Test)",
+  "profile.testFamilyPlan": "启用家庭套餐（测试）",
 
   // AI Conversation
   "aiConversation.title": "AI 对话",
@@ -533,6 +532,7 @@ const zh = {
   "voiceSettings.voiceCloningDesc":
     "创建您自己的个性化声音，体验沉浸式 AI 对话",
   "voiceSettings.previewError": "播放失败，请重试。",
+  "voiceSettings.accentInfo": "选择一个口音以使用服务器同步的音频",
 
   // ── Account Section ───────────────────────────────────────────
   "account.title": "账户",

@@ -4,7 +4,7 @@
  * Flow: Listen (Full/Slow/Word-by-word) → Quiz (choose correct meaning) → Result
  */
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useRef } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { speak, stopSpeaking } from "../../services/TTSService";
@@ -60,6 +60,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
   const [playCount, setPlayCount] = useState(0);
   const [activePlay, setActivePlay] = useState<ActivePlay>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const isPlayingRef = useRef(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [score, setScore] = useState(0);
 
@@ -69,58 +70,96 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
   );
   const words = phrase.en.split(/\s+/).filter(Boolean);
 
-  const handleStop = useCallback(() => {
-    void stopSpeaking();
+  const handleStop = useCallback(async () => {
+    await stopSpeaking();
+    isPlayingRef.current = false;
     setIsPlaying(false);
     setActivePlay(null);
   }, []);
 
+  const handleClose = useCallback(async () => {
+    await handleStop();
+    onClose();
+  }, [handleStop, onClose]);
+
   const handlePlayFull = useCallback(async () => {
-    if (isPlaying) {
-      handleStop();
+    // If same option is playing, pause it
+    if (activePlay === "full" && isPlaying) {
+      await handleStop();
       return;
     }
-    try {
-      setIsPlaying(true);
+    // Set new active first, then stop old audio
+    setActivePlay("full");
+    if (isPlaying) {
+      await handleStop();
+      // Small delay to ensure old audio is fully stopped
+      await new Promise((r) => setTimeout(r, 100));
+      // Re-set activePlay since handleStop cleared it
       setActivePlay("full");
+    }
+    try {
+      isPlayingRef.current = true;
+      setIsPlaying(true);
       setPlayCount((c) => c + 1);
       await speak(phrase.en, { accent: "en-US", speed: "normal" });
     } catch {
       // ignore
     } finally {
+      isPlayingRef.current = false;
       setIsPlaying(false);
-      setActivePlay(null);
     }
-  }, [phrase.en, isPlaying, handleStop]);
+  }, [phrase.en, isPlaying, activePlay, handleStop]);
 
   const handlePlaySlow = useCallback(async () => {
-    if (isPlaying) {
-      handleStop();
+    // If same option is playing, pause it
+    if (activePlay === "slow" && isPlaying) {
+      await handleStop();
       return;
     }
-    try {
-      setIsPlaying(true);
+    // Set new active first, then stop old audio
+    setActivePlay("slow");
+    if (isPlaying) {
+      await handleStop();
+      // Small delay to ensure old audio is fully stopped
+      await new Promise((r) => setTimeout(r, 100));
+      // Re-set activePlay since handleStop cleared it
       setActivePlay("slow");
+    }
+    try {
+      isPlayingRef.current = true;
+      setIsPlaying(true);
       setPlayCount((c) => c + 1);
       await speak(phrase.en, { accent: "en-US", speed: "slow" });
     } catch {
       // ignore
     } finally {
+      isPlayingRef.current = false;
       setIsPlaying(false);
-      setActivePlay(null);
     }
-  }, [phrase.en, isPlaying, handleStop]);
+  }, [phrase.en, isPlaying, activePlay, handleStop]);
 
   const handlePlayWordByWord = useCallback(async () => {
-    if (isPlaying) {
-      handleStop();
+    // If same option is playing, pause it
+    if (activePlay === "word-by-word" && isPlaying) {
+      await handleStop();
       return;
     }
-    setIsPlaying(true);
+    // Set new active first, then stop old audio
     setActivePlay("word-by-word");
+    if (isPlaying) {
+      await handleStop();
+      // Small delay to ensure old audio is fully stopped
+      await new Promise((r) => setTimeout(r, 100));
+      // Re-set activePlay since handleStop cleared it
+      setActivePlay("word-by-word");
+    }
+    isPlayingRef.current = true;
+    setIsPlaying(true);
     setPlayCount((c) => c + 1);
 
     for (const word of words) {
+      // Check if stopped externally using ref
+      if (!isPlayingRef.current) break;
       const cleanWord = word.replace(/[.,!?;:'"()]/g, "");
       try {
         await speak(cleanWord, { accent: "en-US", speed: "slow" });
@@ -130,9 +169,9 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
       }
     }
 
+    isPlayingRef.current = false;
     setIsPlaying(false);
-    setActivePlay(null);
-  }, [words, isPlaying, handleStop]);
+  }, [words, isPlaying, activePlay, handleStop]);
 
   const handleAnswer = useCallback(
     (answerIndex: number, isCorrect: boolean) => {
@@ -168,7 +207,7 @@ export default function DictationMode({ phrase, onClose }: DictationModeProps) {
               Step {step === "listen" ? "1" : step === "quiz" ? "2" : "3"}/3
             </Text>
           </View>
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+          <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
             <Ionicons name="close" size={24} color="#1C1C1E" />
           </TouchableOpacity>
         </View>

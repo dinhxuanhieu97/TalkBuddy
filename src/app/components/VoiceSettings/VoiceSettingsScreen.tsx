@@ -12,7 +12,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator,
   Alert,
   StatusBar,
   Modal,
@@ -24,9 +23,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import {
   useVoiceSettings,
   SPEED_OPTIONS,
-  getPreviewText,
 } from "../../../hooks/useVoiceSettings";
-import { useVoicePreview } from "../../../hooks/useVoicePreview";
 import {
   SupportedLocale,
   VoiceAccent,
@@ -139,31 +136,10 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
     getCurrentVoiceId,
   } = useVoiceSettings(locale);
 
-  const {
-    isPlaying,
-    isLoading: isPreviewLoading,
-    error: previewError,
-    playPreview,
-    stopPreview,
-  } = useVoicePreview();
-
   // Modal states
   const [accentModalVisible, setAccentModalVisible] = useState(false);
   const [genderModalVisible, setGenderModalVisible] = useState(false);
   const [speedModalVisible, setSpeedModalVisible] = useState(false);
-
-  // Handle preview button
-  const handlePreview = async () => {
-    if (isPlaying) {
-      stopPreview();
-    } else {
-      try {
-        await playPreview(settings, locale);
-      } catch {
-        Alert.alert(t("common.error"), t("voiceSettings.previewError"));
-      }
-    }
-  };
 
   // Handle reset
   const handleReset = () => {
@@ -248,45 +224,14 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Preview Section */}
+        {/* Accent Info */}
         <View style={styles.previewSection}>
           <View style={styles.iconContainer}>
-            <FontAwesome name="volume-up" size={40} color="#007AFF" />
+            <FontAwesome name="info-circle" size={40} color="#007AFF" />
           </View>
-          <Text style={styles.previewText}>{getPreviewText(locale)}</Text>
-
-          <TouchableOpacity
-            style={[
-              styles.previewButton,
-              isPlaying ? styles.stopButton : styles.playButton,
-            ]}
-            onPress={handlePreview}
-            disabled={isPreviewLoading}
-            activeOpacity={0.8}
-          >
-            {isPreviewLoading ? (
-              <ActivityIndicator color={isPlaying ? "#FF3B30" : "#fff"} />
-            ) : (
-              <>
-                <FontAwesome
-                  name={isPlaying ? "stop" : "play"}
-                  size={18}
-                  color={isPlaying ? "#FF3B30" : "#fff"}
-                  style={styles.buttonIcon}
-                />
-                <Text
-                  style={[
-                    styles.previewButtonText,
-                    isPlaying && styles.stopButtonText,
-                  ]}
-                >
-                  {isPlaying
-                    ? t("voiceSettings.stopPreview")
-                    : t("voiceSettings.playPreview")}
-                </Text>
-              </>
-            )}
-          </TouchableOpacity>
+          <Text style={styles.previewText}>
+            {t("voiceSettings.accentInfo")}
+          </Text>
         </View>
 
         {/* Settings Section */}
@@ -319,7 +264,8 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
             </>
           )}
 
-          {/* Gender Selection */}
+          {/* Gender Selection - disabled, using accent-based audio files */}
+          {/* 
           <Text style={styles.sectionLabel}>{t("voiceSettings.gender")}</Text>
           <TouchableOpacity
             style={styles.selectButton}
@@ -340,6 +286,7 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
             onClose={() => setGenderModalVisible(false)}
             displayValue={(val) => getGenderLabel(val as VoiceGender)}
           />
+          */}
 
           {/* Speed Selection */}
           <Text style={styles.sectionLabel}>{t("voiceSettings.speed")}</Text>
@@ -418,7 +365,8 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
           </Text>
         </TouchableOpacity>
 
-        {/* Coming Soon Section */}
+        {/* Coming Soon Section - disabled */}
+        {/* 
         <View style={styles.comingSoonBox}>
           <FontAwesome
             name="microphone"
@@ -433,14 +381,7 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
             {t("voiceSettings.voiceCloningDesc")}
           </Text>
         </View>
-
-        {/* Error Display */}
-        {previewError && (
-          <View style={styles.errorBox}>
-            <FontAwesome name="exclamation-circle" size={16} color="#FF3B30" />
-            <Text style={styles.errorText}>{previewError}</Text>
-          </View>
-        )}
+        */}
       </ScrollView>
     </SafeAreaView>
   );

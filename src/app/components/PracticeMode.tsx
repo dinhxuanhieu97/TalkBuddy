@@ -4,7 +4,7 @@
  * Flow: View phrase → Play (Full/Slow/Word-by-word) → Click words to hear
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import {
   View,
   Text,
@@ -32,59 +32,98 @@ export default function PracticeMode({ phrase, onClose }: PracticeModeProps) {
   const [activePlay, setActivePlay] = useState<PlayMode>(null);
   const [activeWordIndex, setActiveWordIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const isPlayingRef = useRef(false);
 
   const words = phrase.en.split(/\s+/).filter(Boolean);
 
-  const handleStop = useCallback(() => {
-    void stopSpeaking();
+  const handleStop = useCallback(async () => {
+    await stopSpeaking();
+    isPlayingRef.current = false;
     setIsPlaying(false);
     setActivePlay(null);
     setActiveWordIndex(-1);
   }, []);
 
+  const handleClose = useCallback(async () => {
+    await handleStop();
+    onClose();
+  }, [handleStop, onClose]);
+
   const handlePlayFull = useCallback(async () => {
-    if (isPlaying) {
-      handleStop();
+    // If same option is playing, pause it
+    if (activePlay === "full" && isPlaying) {
+      await handleStop();
       return;
     }
-    try {
-      setIsPlaying(true);
+    // Set new active first, then stop old audio
+    setActivePlay("full");
+    if (isPlaying) {
+      await handleStop();
+      // Small delay to ensure old audio is fully stopped
+      await new Promise((r) => setTimeout(r, 100));
+      // Re-set activePlay since handleStop cleared it
       setActivePlay("full");
+    }
+    try {
+      isPlayingRef.current = true;
+      setIsPlaying(true);
       await speak(phrase.en, { accent: "en-US", speed: "normal" });
     } catch {
       // ignore
     } finally {
+      isPlayingRef.current = false;
       setIsPlaying(false);
-      setActivePlay(null);
     }
-  }, [phrase.en, isPlaying, handleStop]);
+  }, [phrase.en, isPlaying, activePlay, handleStop]);
 
   const handlePlaySlow = useCallback(async () => {
-    if (isPlaying) {
-      handleStop();
+    // If same option is playing, pause it
+    if (activePlay === "slow" && isPlaying) {
+      await handleStop();
       return;
     }
-    try {
-      setIsPlaying(true);
+    // Set new active first, then stop old audio
+    setActivePlay("slow");
+    if (isPlaying) {
+      await handleStop();
+      // Small delay to ensure old audio is fully stopped
+      await new Promise((r) => setTimeout(r, 100));
+      // Re-set activePlay since handleStop cleared it
       setActivePlay("slow");
+    }
+    try {
+      isPlayingRef.current = true;
+      setIsPlaying(true);
       await speak(phrase.en, { accent: "en-US", speed: "slow" });
     } catch {
       // ignore
     } finally {
+      isPlayingRef.current = false;
       setIsPlaying(false);
-      setActivePlay(null);
     }
-  }, [phrase.en, isPlaying, handleStop]);
+  }, [phrase.en, isPlaying, activePlay, handleStop]);
 
   const handlePlayWordByWord = useCallback(async () => {
-    if (isPlaying) {
-      handleStop();
+    // If same option is playing, pause it
+    if (activePlay === "word-by-word" && isPlaying) {
+      await handleStop();
       return;
     }
-    setIsPlaying(true);
+    // Set new active first, then stop old audio
     setActivePlay("word-by-word");
+    if (isPlaying) {
+      await handleStop();
+      // Small delay to ensure old audio is fully stopped
+      await new Promise((r) => setTimeout(r, 100));
+      // Re-set activePlay since handleStop cleared it
+      setActivePlay("word-by-word");
+    }
+    isPlayingRef.current = true;
+    setIsPlaying(true);
 
     for (let i = 0; i < words.length; i++) {
+      // Check if stopped externally using ref
+      if (!isPlayingRef.current) break;
       setActiveWordIndex(i);
       const cleanWord = words[i].replace(/[.,!?;:'"()]/g, "");
       try {
@@ -95,10 +134,10 @@ export default function PracticeMode({ phrase, onClose }: PracticeModeProps) {
       }
     }
 
+    isPlayingRef.current = false;
     setActiveWordIndex(-1);
     setIsPlaying(false);
-    setActivePlay(null);
-  }, [words, isPlaying, handleStop]);
+  }, [words, isPlaying, activePlay, handleStop]);
 
   const handleWordTap = useCallback(async (word: string) => {
     const cleanWord = word.replace(/[.,!?;:'"()]/g, "");
@@ -110,7 +149,7 @@ export default function PracticeMode({ phrase, onClose }: PracticeModeProps) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Practice</Text>
-        <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+        <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
           <Ionicons name="close" size={24} color="#1C1C1E" />
         </TouchableOpacity>
       </View>

@@ -54,10 +54,12 @@
     </dict>
     <key>NSAppleSignInUsageDescription</key>
     <string>Sign in with your Apple ID to save your learning progress and sync across devices</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your camera</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>TalkBuddy needs microphone access for voice practice with Shadow Mode to help you improve your pronunciation and speaking skills.</string>
     <key>NSPhotoLibraryUsageDescription</key>
-    <string>Allow $(PRODUCT_NAME) to access your photos</string>
+    <string>TalkBuddy needs photo library access to let you choose profile pictures.</string>
     <key>NSUserActivityTypes</key>
     <array>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>

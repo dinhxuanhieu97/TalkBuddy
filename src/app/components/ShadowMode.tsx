@@ -59,11 +59,22 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
     };
   }, []);
 
+  // Unified stop for all audio (TTS + recording)
+  const stopAllAudio = useCallback(async () => {
+    await stopSpeaking();
+    if (soundRef.current) {
+      await soundRef.current.stopAsync();
+      await soundRef.current.unloadAsync();
+      soundRef.current = null;
+    }
+    setIsPlayingOriginal(false);
+    setIsPlayingRecording(false);
+  }, []);
+
   // --- Listen to original ---
   const handlePlayOriginal = useCallback(async () => {
-    if (isPlayingOriginal) {
-      await stopSpeaking();
-      setIsPlayingOriginal(false);
+    if (isPlayingOriginal || isPlayingRecording) {
+      await stopAllAudio();
       return;
     }
     setIsPlayingOriginal(true);
@@ -75,12 +86,11 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
     }
     setIsPlayingOriginal(false);
     if (step === "listen") setStep("record");
-  }, [phrase.en, step, isPlayingOriginal]);
+  }, [phrase.en, step, isPlayingOriginal, isPlayingRecording, stopAllAudio]);
 
   const handlePlaySlow = useCallback(async () => {
-    if (isPlayingOriginal) {
-      await stopSpeaking();
-      setIsPlayingOriginal(false);
+    if (isPlayingOriginal || isPlayingRecording) {
+      await stopAllAudio();
       return;
     }
     setIsPlayingOriginal(true);
@@ -90,7 +100,7 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
       // ignore
     }
     setIsPlayingOriginal(false);
-  }, [phrase.en, isPlayingOriginal]);
+  }, [phrase.en, isPlayingOriginal, isPlayingRecording, stopAllAudio]);
 
   // --- Recording ---
   const startRecording = useCallback(async () => {
@@ -152,6 +162,11 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
   const playRecording = useCallback(async () => {
     if (!recordingUri) return;
 
+    // Stop TTS first if playing
+    if (isPlayingOriginal) {
+      await stopAllAudio();
+    }
+
     if (soundRef.current) {
       await soundRef.current.unloadAsync();
       soundRef.current = null;
@@ -175,7 +190,7 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
     } catch {
       setIsPlayingRecording(false);
     }
-  }, [recordingUri]);
+  }, [recordingUri, isPlayingOriginal, stopAllAudio]);
 
   const stopPlayback = useCallback(async () => {
     if (soundRef.current) {
@@ -192,12 +207,8 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
   }, []);
 
   // --- Retry ---
-  const handleRetry = useCallback(() => {
-    void stopSpeaking();
-    if (soundRef.current) {
-      soundRef.current.unloadAsync().catch(() => {});
-      soundRef.current = null;
-    }
+  const handleRetry = useCallback(async () => {
+    await stopAllAudio();
     setStep("listen");
     setRecordingUri(null);
     setIsRecording(false);
@@ -205,7 +216,12 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
     setSelfScore(null);
     setShowText(false);
     setListenCount(0);
-  }, []);
+  }, [stopAllAudio]);
+
+  const handleClose = useCallback(async () => {
+    await stopAllAudio();
+    onClose();
+  }, [stopAllAudio, onClose]);
 
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
@@ -243,7 +259,7 @@ export default function ShadowMode({ phrase, onClose }: ShadowModeProps) {
               Step {step === "listen" ? "1" : step === "record" ? "2" : "3"}/3
             </Text>
           </View>
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+          <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
             <Ionicons name="close" size={24} color="#1C1C1E" />
           </TouchableOpacity>
         </View>

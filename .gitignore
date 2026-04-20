@@ -117,3 +117,37 @@ screenshot/
 
 # Local Android signing materials
 android_build/
+
+# Test results
+test-results/
+*.last-run.json
+
+# Screenshots
+screenshot/*.png
+screenshot/*.jpg
+
+# Build artifacts
+dist/
+build/TalkBuddy.xcarchive/
+
+# Empty directories that should be ignored
+assets/images/
+
+# Playwright
+playwright-report/
+test-results/
+playwright.api.config.ts
+playwright.debug.config.ts
+
+# Skills lock
+skills-lock.json
+
+# Docs (can be moved to separate repo if needed)
+docs/
+guidelines/
+
+# SQL scripts (should be in backend repo)
+*.sql
+
+# Root level markdown files
+*.md
