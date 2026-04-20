@@ -179,6 +179,7 @@ export class AuthService {
       });
 
       console.log("[Auth] Google sign-in request sent, status:", res.status);
+      console.log("[Auth] Google response data:", JSON.stringify(res.data));
       if (res.data.token && res.data.user) {
         await this.persistToken(res.data.token, true);
         return this.mapUser(res.data.user, "google", res.data.token);

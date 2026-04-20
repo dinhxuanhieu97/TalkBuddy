@@ -285,7 +285,7 @@ export default function Onboarding({ onDone }: OnboardingProps) {
       {/* Skip Button */}
       <View style={styles.skipContainer}>
         <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>
-          <Text style={styles.skipText}>Skip</Text>
+          <Text style={styles.skipText}>{t("onboarding.skip")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -327,10 +327,10 @@ export default function Onboarding({ onDone }: OnboardingProps) {
                 <Text style={styles.emoji}>{slide.emoji}</Text>
               </View>
               <Text style={styles.title}>
-                {slide.titleKey ? t(slide.titleKey) : ""}
+                {slide.titleKey ? t(slide.titleKey as any) : ""}
               </Text>
               <Text style={styles.subtitle}>
-                {slide.subtitleKey ? t(slide.subtitleKey) : ""}
+                {slide.subtitleKey ? t(slide.subtitleKey as any) : ""}
               </Text>
             </View>
           )}

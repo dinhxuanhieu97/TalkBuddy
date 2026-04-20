@@ -133,7 +133,7 @@ export default function Onboarding2() {
       {/* Skip Button */}
       <View style={styles.skipContainer}>
         <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>
-          <Text style={styles.skipText}>Skip</Text>
+          <Text style={styles.skipText}>{t("onboarding.skip")}</Text>
         </TouchableOpacity>
       </View>
 

@@ -1,5 +1,34 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+  FlatList,
+  Alert,
+} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { speak, stopSpeaking } from "../../services/TTSService";
+import { useSavedPhrasesStore } from "../../stores/savedPhrasesStore";
+import PracticeMode from "./PracticeMode";
+import DictationMode from "./DictationMode";
+import ShadowMode from "./ShadowMode";
+import { useT } from "../../lib/i18n";
+import {
+  PRESET_SCENES,
+  getScenesByCategory,
+  getSceneById,
+  getAllPhrasesFromScene,
+  type PresetScene,
+  type PresetPhrase,
+} from "../../data/preset-scenes";
 import logger from "../../lib/logger";
+import contentService, { type Category } from "../../services/contentService";
 
 // Custom debounce hook
 function useDebounce<T>(value: T, delay: number): T {
@@ -40,34 +69,6 @@ function searchScenes(query: string): PresetScene[] {
     .filter((entry) => entry.searchText.includes(q))
     .map((entry) => entry.scene);
 }
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-  FlatList,
-  Alert,
-} from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { speak, stopSpeaking } from "../../services/TTSService";
-import { useSavedPhrasesStore } from "../../stores/savedPhrasesStore";
-import PracticeMode from "./PracticeMode";
-import DictationMode from "./DictationMode";
-import ShadowMode from "./ShadowMode";
-import { useT } from "../../lib/i18n";
-import {
-  PRESET_SCENES,
-  getScenesByCategory,
-  getSceneById,
-  getAllPhrasesFromScene,
-  type PresetScene,
-  type PresetPhrase,
-} from "../../data/preset-scenes";
 
 // Context ID to translation key mapping
 const CONTEXT_ID_TO_KEY: Record<string, string> = {
@@ -84,31 +85,40 @@ const CONTEXT_ID_TO_KEY: Record<string, string> = {
   entertainment: "learn.category.entertainment",
   foundation: "learn.category.foundation",
   "daily-life": "learn.category.dailyLife",
+  housing: "learn.category.housing",
+  government: "learn.category.government",
+  education: "learn.category.education",
+  workplace: "learn.category.workplace",
 };
 
-const CONTEXTS: {
-  id: string;
-  icon: string;
-  emoji: string;
-}[] = [
-  { id: "airport", icon: "airplane", emoji: "\u{1F6EB}" },
-  { id: "medical", icon: "medical", emoji: "\u{1F3E5}" },
-  { id: "hotel", icon: "bed", emoji: "\u{1F3E8}" },
-  { id: "restaurant", icon: "restaurant", emoji: "\u{1F37D}\uFE0E" },
-  { id: "emergency", icon: "shield", emoji: "\u{1F6E1}\uFE0E" },
-  { id: "shopping", icon: "cart", emoji: "\u{1F6CD}\uFE0E" },
-  { id: "transport", icon: "bus", emoji: "\u{1F68C}" },
-  { id: "banking", icon: "business", emoji: "\u{1F3E6}" },
-  { id: "accommodation", icon: "home", emoji: "\u{1F3E0}" },
-  { id: "social", icon: "people", emoji: "\u{1F465}" },
-  { id: "entertainment", icon: "film", emoji: "\u{1F3AC}" },
-  { id: "foundation", icon: "book", emoji: "\u{1F4DA}" },
-  { id: "daily-life", icon: "calendar", emoji: "\u{1F4C5}" },
-];
+// Icon mapping for categories (fallback if not provided by API)
+const CATEGORY_ICONS: Record<string, { icon: string; ionicon: string }> = {
+  airport: { icon: "airplane", ionicon: "airplane" },
+  medical: { icon: "medical", ionicon: "medical" },
+  hotel: { icon: "bed", ionicon: "bed" },
+  restaurant: { icon: "restaurant", ionicon: "restaurant" },
+  emergency: { icon: "shield", ionicon: "shield-checkmark" },
+  shopping: { icon: "cart", ionicon: "cart" },
+  transport: { icon: "bus", ionicon: "bus" },
+  banking: { icon: "business", ionicon: "business" },
+  accommodation: { icon: "home", ionicon: "home" },
+  social: { icon: "people", ionicon: "people" },
+  entertainment: { icon: "film", ionicon: "film" },
+  foundation: { icon: "book", ionicon: "book" },
+  "daily-life": { icon: "calendar", ionicon: "calendar" },
+  housing: { icon: "hammer", ionicon: "hammer" },
+  government: { icon: "government", ionicon: "business" },
+  education: { icon: "school", ionicon: "school" },
+  workplace: { icon: "briefcase", ionicon: "briefcase" },
+};
 
-// Filter contexts that have scenes (avoid empty categories)
-const CONTEXTS_WITH_SCENES = CONTEXTS.filter(
-  (ctx) => getScenesByCategory(ctx.id).length > 0,
+// Default CONTEXTS (fallback when API unavailable)
+const DEFAULT_CONTEXTS = Object.entries(CATEGORY_ICONS).map(
+  ([id, { icon, ionicon }]) => ({
+    id,
+    icon,
+    ionicon: ionicon as React.ComponentProps<typeof Ionicons>["name"],
+  }),
 );
 
 // Get scenes by category using preset-scenes.ts helpers
@@ -213,6 +223,113 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedScene, setSelectedScene] = useState<PresetScene | null>(null);
 
+  // Fetch all categories from API (dynamic, not hardcoded)
+  const [allCategories, setAllCategories] = useState<Category[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const cats = await contentService.getCategories();
+        setAllCategories(cats);
+      } catch (error) {
+        logger.warn("Failed to fetch categories, using defaults", error);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+    loadCategories();
+  }, []);
+
+  // Get practice counts from saved phrases for recommendations
+  const { phrases: savedPhrasesList } = useSavedPhrasesStore();
+  const categoryPracticeCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    savedPhrasesList.forEach((phrase) => {
+      if (phrase.contextLabel) {
+        counts[phrase.contextLabel] = (counts[phrase.contextLabel] || 0) + 1;
+      }
+    });
+    return counts;
+  }, [savedPhrasesList]);
+
+  // Recommend Tab: recommended from practice history + random fill to 13
+  const recommendedCategories = useMemo(() => {
+    if (allCategories.length === 0) return [];
+
+    // Sort categories by practice count (most practiced first)
+    const sortedByPractice = [...allCategories].sort(
+      (a, b) =>
+        (categoryPracticeCounts[b.id] || 0) -
+        (categoryPracticeCounts[a.id] || 0),
+    );
+
+    // Get recommended categories (those with practice history)
+    const recommended = sortedByPractice.filter(
+      (c) => (categoryPracticeCounts[c.id] || 0) > 0,
+    );
+
+    // If we have enough recommended, take top 13
+    if (recommended.length >= 13) {
+      return recommended
+        .slice(0, 13)
+        .sort((a, b) => a.displayOrder - b.displayOrder);
+    }
+
+    // Otherwise: recommended on top + fill with random from remaining
+    const remaining = allCategories.filter(
+      (c) => !recommended.some((r) => r.id === c.id),
+    );
+
+    // Shuffle remaining for random fill
+    const shuffledRemaining = remaining.sort(() => Math.random() - 0.5);
+
+    // Combine: recommended + fill to reach 13
+    const result = [...recommended, ...shuffledRemaining].slice(0, 13);
+    return result.sort((a, b) => a.displayOrder - b.displayOrder);
+  }, [allCategories, categoryPracticeCounts]);
+
+  // Tab state - must be defined before currentCategories
+  const [activeLearnTab, setActiveLearnTab] = useState<"recommend" | "scenes">(
+    "recommend",
+  );
+
+  // Scenes Tab: all categories
+  const scenesCategories = useMemo(
+    () => allCategories.sort((a, b) => a.displayOrder - b.displayOrder),
+    [allCategories],
+  );
+
+  // Current categories based on active tab
+  const currentCategories =
+    activeLearnTab === "recommend" ? recommendedCategories : scenesCategories;
+
+  // Build CONTEXTS from API data with fallback icons
+  const CONTEXTS: Array<{
+    id: string;
+    icon: string;
+    ionicon: React.ComponentProps<typeof Ionicons>["name"];
+    sceneCount?: number;
+  }> =
+    currentCategories.length > 0
+      ? currentCategories.map((cat) => {
+          const iconMap = CATEGORY_ICONS[cat.id] || {
+            icon: "folder",
+            ionicon: "folder",
+          };
+          return {
+            id: cat.id,
+            icon: iconMap.icon,
+            ionicon: iconMap.ionicon as React.ComponentProps<
+              typeof Ionicons
+            >["name"],
+            sceneCount: cat.sceneCount,
+          };
+        })
+      : DEFAULT_CONTEXTS;
+
+  const CONTEXTS_WITH_SCENES: typeof CONTEXTS = CONTEXTS;
+
   // Scroll to top when category is selected
   useEffect(() => {
     if (selectedContext) {
@@ -220,15 +337,62 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     }
   }, [selectedContext]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [collapsedSections, setCollapsedSections] = useState<
+    Record<string, boolean>
+  >({
+    continueLearning: false,
+    weakCategory: false,
+    tryNew: false,
+  });
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>(
+    {},
+  );
+  const toggleSection = (section: string) => {
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+  const toggleCard = (cardId: string) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [cardId]: !prev[cardId],
+    }));
+  };
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const [difficultyFilter, setDifficultyFilter] = useState<
     "Basic" | "Intermediate" | "Advanced"
   >("Basic");
-  const {
-    phrases: savedPhrasesList,
-    togglePhrase,
-    isSaved,
-  } = useSavedPhrasesStore();
+
+  // Fetch full scenes from API when category is selected (includes flows/phrases)
+  const [categoryScenes, setCategoryScenes] = useState<any[]>([]);
+  const [scenesLoading, setScenesLoading] = useState(false);
+
+  useEffect(() => {
+    if (!selectedContext) {
+      setCategoryScenes([]);
+      return;
+    }
+
+    const fetchScenes = async () => {
+      setScenesLoading(true);
+      try {
+        // Fetch full scenes with flows from API
+        const scenes = await contentService.getScenesFull(selectedContext);
+        setCategoryScenes(scenes);
+      } catch (error) {
+        logger.warn("Failed to fetch scenes", error);
+        setCategoryScenes([]);
+      } finally {
+        setScenesLoading(false);
+      }
+    };
+
+    fetchScenes();
+  }, [selectedContext]);
+
+  const { togglePhrase, isSaved } = useSavedPhrasesStore();
+
   const [expandedPhraseId, setExpandedPhraseId] = useState<string | null>(null);
   const [playingPhraseId, setPlayingPhraseId] = useState<string | null>(null);
   const [activePractice, setActivePractice] = useState<{
@@ -237,6 +401,7 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
   } | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isPlayingAll, setIsPlayingAll] = useState(false);
   const [playingTurnIndex, setPlayingTurnIndex] = useState<number | null>(null);
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -277,17 +442,29 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
         // Load recent scenes
         const savedScenes = await AsyncStorage.getItem("recentScenes");
         if (savedScenes) {
-          setRecentScenes(JSON.parse(savedScenes).slice(0, 5));
+          try {
+            setRecentScenes(JSON.parse(savedScenes).slice(0, 5));
+          } catch (e) {
+            console.error("Failed to parse recentScenes:", e);
+          }
         }
         // Load category progress
         const savedProgress = await AsyncStorage.getItem("categoryProgress");
         if (savedProgress) {
-          setCategoryProgress(JSON.parse(savedProgress));
+          try {
+            setCategoryProgress(JSON.parse(savedProgress));
+          } catch (e) {
+            console.error("Failed to parse categoryProgress:", e);
+          }
         }
         // Load popular phrases
         const savedPopular = await AsyncStorage.getItem("popularPhrases");
         if (savedPopular) {
-          setPopularPhrases(JSON.parse(savedPopular));
+          try {
+            setPopularPhrases(JSON.parse(savedPopular));
+          } catch (e) {
+            console.error("Failed to parse popularPhrases:", e);
+          }
         }
       } catch (e) {
         console.error("Failed to load data:", e);
@@ -301,19 +478,25 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     async (contextId: string, sceneName: string) => {
       try {
         const newEntry = { contextId, sceneName, timestamp: Date.now() };
-        const updated = [
-          newEntry,
-          ...recentScenes.filter(
-            (r) => !(r.contextId === contextId && r.sceneName === sceneName),
-          ),
-        ].slice(0, 5);
-        setRecentScenes(updated);
-        await AsyncStorage.setItem("recentScenes", JSON.stringify(updated));
+        // Use functional update to avoid stale closure
+        setRecentScenes((prev) => {
+          const updated = [
+            newEntry,
+            ...prev.filter(
+              (r) => !(r.contextId === contextId && r.sceneName === sceneName),
+            ),
+          ].slice(0, 5);
+          // Save to storage after state update
+          AsyncStorage.setItem("recentScenes", JSON.stringify(updated)).catch(
+            (e) => console.error("Failed to save recent scene:", e),
+          );
+          return updated;
+        });
       } catch (e) {
         console.error("Failed to save recent scene:", e);
       }
     },
-    [recentScenes],
+    [],
   );
 
   // Track phrase interaction to build popular phrases
@@ -349,11 +532,6 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     [popularPhrases],
   );
 
-  // Get scenes for selected category
-  const categoryScenes = selectedContext
-    ? getScenesByCategory(selectedContext)
-    : [];
-
   // Get phrases - either from selected scene or all phrases in category
   const phrases = useMemo(() => {
     if (selectedScene) {
@@ -362,8 +540,26 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     return selectedContext ? getPhrasesForContext(selectedContext) : [];
   }, [selectedContext, selectedScene]);
 
+  // Get unique levels from phrases dynamically
+  const availableLevels = useMemo(() => {
+    const levels = new Set(phrases.map((p) => p.level).filter((l) => l !== ""));
+    return Array.from(levels).sort();
+  }, [phrases]);
+
+  // Reset difficulty filter when available levels change
+  useEffect(() => {
+    if (
+      availableLevels.length > 0 &&
+      !availableLevels.includes(difficultyFilter)
+    ) {
+      setDifficultyFilter(
+        availableLevels[0] as "Basic" | "Intermediate" | "Advanced",
+      );
+    }
+  }, [availableLevels]);
+
   const sceneCount = selectedContext
-    ? getScenesByCategory(selectedContext).length
+    ? allCategories.find((c) => c.id === selectedContext)?.sceneCount || 0
     : 0;
 
   // Search using pre-built index - O(n) but with minimal string operations
@@ -456,6 +652,11 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
       await stopSpeaking();
       setIsPlayingAll(false);
       setPlayingTurnIndex(null);
+      // Clear any pending scroll timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+      }
       return;
     }
 
@@ -481,7 +682,11 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
       setPlayingTurnIndex(i);
 
       // Auto-scroll to current phrase - position at bottom of visible area
-      setTimeout(() => {
+      // Clear previous timeout to avoid memory leak
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = setTimeout(() => {
         const PHRASES_HEADER_HEIGHT = 100; // Height of phrases section header + button
         const ITEM_HEIGHT = 120; // Phrase card height
         const SCREEN_HEIGHT = 600; // Approximate screen height for calculation
@@ -519,6 +724,11 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     isPlayingAllRef.current = false;
     setIsPlayingAll(false);
     setPlayingTurnIndex(null);
+    // Clear any pending scroll timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = null;
+    }
   };
 
   const handleSearchChange = (text: string) => {
@@ -545,6 +755,9 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
     return () => {
       if (searchTimeoutRef.current) {
         clearTimeout(searchTimeoutRef.current);
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
     };
   }, []);
@@ -614,25 +827,26 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
       end={{ x: 0.5, y: 1 }}
       style={styles.container}
     >
-      {/* Header */}
-      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
-        <View style={styles.headerContent}>
-          <View style={styles.headerLeft}>
-            <Text style={styles.headerSubtitle}>
-              {t("learn.headerSubtitle")}
-            </Text>
-            <Text style={styles.headerTitle}>{t("learn.headerTitle")}</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.profileButton}
-            onPress={() => onNavigateToProfile?.()}
-          >
-            <View style={styles.profileAvatar}>
-              <Ionicons name="person" size={16} color="#fff" />
-            </View>
-          </TouchableOpacity>
-        </View>
+      {/* Header - Same as Profile screen */}
+      <View style={[styles.headerYellow, { paddingTop: insets.top + 12 }]}>
+        <Text style={styles.headerTitle}>{t("learn.headerTitle")}</Text>
+        <TouchableOpacity
+          style={styles.headerBadge}
+          onPress={() => onNavigateToProfile?.()}
+        >
+          <Ionicons name="person" size={16} color="#1C1C1E" />
+        </TouchableOpacity>
+      </View>
 
+      <ScrollView
+        ref={mainScrollRef}
+        style={styles.scrollView}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingBottom: insets.bottom + 100 },
+        ]}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Search */}
         <View style={styles.searchContainer}>
           <Ionicons
@@ -660,34 +874,9 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
           )}
         </View>
 
-        {/* Sticky button in header - shows when scrolled past original button */}
-        {selectedContext &&
-          phrases.length > 0 &&
-          isPlayingAll &&
-          scrollOffset > 50 && (
-            <View style={styles.stickyButtonWrapper}>
-              <TouchableOpacity
-                style={[styles.playAllButton, styles.playAllButtonActive]}
-                onPress={handlePlayAll}
-              >
-                <Ionicons name="stop" size={18} color="#fff" />
-                <Text style={[styles.playAllText, styles.playAllTextActive]}>
-                  Stop {(playingTurnIndex ?? 0) + 1}/{phrases.length}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-      </View>
+        {/* Search Title */}
+        <Text style={styles.searchTitle}>{t("learn.chooseContext")}</Text>
 
-      <ScrollView
-        ref={mainScrollRef}
-        style={styles.scrollView}
-        contentContainerStyle={[
-          styles.scrollContent,
-          { paddingBottom: insets.bottom + 100 },
-        ]}
-        showsVerticalScrollIndicator={false}
-      >
         {/* Continue Learning - Recent Scenes */}
         {!searchQuery && recentScenes.length > 0 && (
           <View style={styles.section}>
@@ -710,9 +899,12 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                       addRecentScene(recent.contextId, recent.sceneName);
                     }}
                   >
-                    <Text style={styles.recentSceneIcon}>
-                      {ctx?.emoji || "📚"}
-                    </Text>
+                    <Ionicons
+                      name={ctx?.ionicon || "book"}
+                      size={28}
+                      color="#F57C00"
+                      style={styles.recentSceneIcon}
+                    />
                     <Text style={styles.recentSceneName} numberOfLines={1}>
                       {recent.sceneName}
                     </Text>
@@ -726,16 +918,85 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
           </View>
         )}
 
-        {/* Contexts */}
-        {!searchQuery && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>{t("learn.chooseContext")}</Text>
-            <ScrollView
-              style={styles.contextScrollView}
-              showsVerticalScrollIndicator={false}
+        {/* Tab Navigation */}
+        {!searchQuery && !selectedContext && (
+          <View style={styles.tabContainer}>
+            <TouchableOpacity
+              style={[
+                styles.tabButton,
+                activeLearnTab === "recommend" && styles.tabButtonActive,
+              ]}
+              onPress={() => setActiveLearnTab("recommend")}
             >
-              <View style={styles.contextGrid}>
-                {CONTEXTS_WITH_SCENES.map((ctx) => {
+              <Ionicons
+                name="sparkles"
+                size={16}
+                color={activeLearnTab === "recommend" ? "#1C1C1E" : "#8E8E93"}
+                style={styles.tabButtonIcon}
+              />
+              <Text
+                style={[
+                  styles.tabButtonText,
+                  activeLearnTab === "recommend" && styles.tabButtonTextActive,
+                ]}
+              >
+                推荐
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.tabButton,
+                activeLearnTab === "scenes" && styles.tabButtonActive,
+              ]}
+              onPress={() => setActiveLearnTab("scenes")}
+            >
+              <Ionicons
+                name="trending-up"
+                size={16}
+                color={activeLearnTab === "scenes" ? "#1C1C1E" : "#8E8E93"}
+                style={styles.tabButtonIcon}
+              />
+              <Text
+                style={[
+                  styles.tabButtonText,
+                  activeLearnTab === "scenes" && styles.tabButtonTextActive,
+                ]}
+              >
+                场景
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {/* Recommend Tab - Continue Learning + Categories */}
+        {!searchQuery && activeLearnTab === "recommend" && (
+          <View>
+            {/* Selected Category Header with Close Button */}
+            {selectedContext && !selectedScene && (
+              <View style={styles.inlineSceneListHeader}>
+                <TouchableOpacity
+                  onPress={() => setSelectedContext(null)}
+                  style={styles.inlineBackButton}
+                >
+                  <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
+                  <Text style={styles.inlineBackButtonText}>
+                    {t(CONTEXT_ID_TO_KEY[selectedContext] as any) ||
+                      "Categories"}
+                  </Text>
+                </TouchableOpacity>
+                <Text style={styles.inlineSceneCountText}>
+                  {sceneCount} scenes
+                </Text>
+              </View>
+            )}
+
+            {/* Category List - show all 13 categories as list (1 category/row) - only when no category selected */}
+            {!selectedContext && activeLearnTab === "recommend" && (
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>
+                  {t("learn.chooseContext")}
+                </Text>
+                {CONTEXTS_WITH_SCENES.slice(0, 13).map((ctx) => {
                   const progress = categoryProgress[ctx.id];
                   const progressPercent = progress
                     ? Math.round((progress.learned / progress.total) * 100)
@@ -743,105 +1004,215 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                   return (
                     <TouchableOpacity
                       key={ctx.id}
-                      style={[
-                        styles.contextCard,
-                        selectedContext === ctx.id && styles.contextCardActive,
-                      ]}
+                      style={styles.categoryListItem}
                       onPress={() =>
                         setSelectedContext(
                           selectedContext === ctx.id ? null : ctx.id,
                         )
                       }
                     >
-                      <View style={styles.contextContent}>
-                        <Text style={styles.contextIcon}>{ctx.emoji}</Text>
-                        <Text
-                          style={[
-                            styles.contextName,
-                            selectedContext === ctx.id &&
-                              styles.contextNameActive,
-                          ]}
-                        >
-                          {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
-                        </Text>
-                        {progress && progress.total > 0 && (
-                          <View style={styles.progressContainer}>
-                            <View style={styles.progressBar}>
-                              <View
-                                style={[
-                                  styles.progressFill,
-                                  { width: `${progressPercent}%` },
-                                ]}
-                              />
-                            </View>
-                            <Text style={styles.progressText}>
-                              {progressPercent}%
-                            </Text>
-                          </View>
-                        )}
+                      <View style={styles.categoryListLeft}>
+                        <Ionicons
+                          name={ctx.ionicon}
+                          size={24}
+                          color="#666"
+                          style={styles.categoryListIcon}
+                        />
+                        <View style={styles.categoryListInfo}>
+                          <Text style={styles.categoryListName}>
+                            {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
+                          </Text>
+                          <Text style={styles.categoryListCount}>
+                            {ctx.sceneCount || 0} scenes
+                          </Text>
+                        </View>
                       </View>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </ScrollView>
-          </View>
-        )}
-
-        {/* Scene List - when category selected but no scene selected */}
-        {selectedContext && !selectedScene && !searchQuery && (
-          <View style={styles.sceneListSection}>
-            <ScrollView
-              style={styles.sceneListContainer}
-              showsVerticalScrollIndicator={false}
-              stickyHeaderIndices={[0]}
-            >
-              <View style={styles.sceneListStickyHeader}>
-                <TouchableOpacity
-                  onPress={() => setSelectedContext(null)}
-                  style={styles.backButton}
-                >
-                  <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
-                  <Text style={styles.backButtonText}>Categories</Text>
-                </TouchableOpacity>
-                <Text style={styles.sceneCountText}>{sceneCount} scenes</Text>
-              </View>
-              {categoryScenes
-                .filter((scene) => convertScenesToPhrases([scene]).length > 0)
-                .map((scene) => {
-                  const phraseCount = convertScenesToPhrases([scene]).length;
-                  return (
-                    <TouchableOpacity
-                      key={scene.id}
-                      style={styles.sceneCard}
-                      onPress={() => {
-                        setSelectedScene(scene);
-                        addRecentScene(selectedContext, scene.titleEn);
-                      }}
-                    >
-                      <View style={styles.sceneCardContent}>
-                        <Text style={styles.sceneTitleEn}>{scene.titleEn}</Text>
-                        <Text style={styles.sceneTitleZh}>{scene.titleZh}</Text>
-                        <Text style={styles.sceneDescription} numberOfLines={2}>
-                          {scene.description}
-                        </Text>
-                      </View>
-                      <View style={styles.sceneCardRight}>
-                        <Text style={styles.scenePhraseCount}>
-                          {phraseCount} phrases
+                      <View style={styles.categoryListRight}>
+                        <Text style={styles.categoryListPercent}>
+                          {progressPercent}%
                         </Text>
                         <Ionicons
                           name="chevron-forward"
-                          size={18}
-                          color="#9E9E9E"
+                          size={20}
+                          color="#ccc"
                         />
                       </View>
                     </TouchableOpacity>
                   );
                 })}
-            </ScrollView>
+              </View>
+            )}
+
+            {/* Inline Scene List - when category selected - show ALL scenes (1 column) */}
+            {selectedContext && !selectedScene && (
+              <View style={styles.inlineSceneList}>
+                {scenesLoading ? (
+                  <Text style={styles.loadingText}>Loading...</Text>
+                ) : (
+                  <View>
+                    {categoryScenes.map((scene) => {
+                      const phraseCount =
+                        scene.flows?.length || scene.flowCount || 0;
+                      return (
+                        <TouchableOpacity
+                          key={scene.id}
+                          style={styles.inlineSceneCardSingle}
+                          onPress={() => {
+                            setSelectedScene(scene);
+                            addRecentScene(selectedContext, scene.titleEn);
+                          }}
+                        >
+                          <View style={styles.inlineSceneCardSingleContent}>
+                            <View style={styles.inlineSceneCardSingleInfo}>
+                              <Text
+                                style={styles.inlineSceneTitleEnSingle}
+                                numberOfLines={1}
+                              >
+                                {scene.titleEn}
+                              </Text>
+                              <Text
+                                style={styles.inlineSceneTitleZhSingle}
+                                numberOfLines={1}
+                              >
+                                {scene.titleZh}
+                              </Text>
+                              <Text
+                                style={styles.inlineSceneDescSingle}
+                                numberOfLines={2}
+                              >
+                                {scene.description}
+                              </Text>
+                            </View>
+                            <View style={styles.inlineSceneCardSingleRight}>
+                              <Text style={styles.inlineScenePhraseCountSingle}>
+                                {phraseCount} phrases
+                              </Text>
+                              <Ionicons
+                                name="chevron-forward"
+                                size={20}
+                                color="#ccc"
+                              />
+                            </View>
+                          </View>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+                )}
+              </View>
+            )}
           </View>
         )}
+
+        {/* Scenes Tab - Category Grid - Same as Try New Scenes */}
+        {!searchQuery && !selectedContext && activeLearnTab === "scenes" && (
+          <View style={styles.section}>
+            <View style={styles.tryNewGrid}>
+              {CONTEXTS_WITH_SCENES.map((ctx) => {
+                const progress = categoryProgress[ctx.id];
+                const progressPercent = progress
+                  ? Math.round((progress.learned / progress.total) * 100)
+                  : 0;
+                return (
+                  <TouchableOpacity
+                    key={ctx.id}
+                    style={styles.tryNewCard}
+                    onPress={() =>
+                      setSelectedContext(
+                        selectedContext === ctx.id ? null : ctx.id,
+                      )
+                    }
+                  >
+                    <Ionicons
+                      name={ctx.ionicon}
+                      size={24}
+                      color="#666"
+                      style={styles.tryNewIcon}
+                    />
+                    <Text style={styles.tryNewName} numberOfLines={1}>
+                      {t(CONTEXT_ID_TO_KEY[ctx.id] as any)}
+                    </Text>
+                    <Text style={styles.tryNewCount}>
+                      {ctx.sceneCount || 0} scenes
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          </View>
+        )}
+
+        {/* Scene List - when category selected but no scene selected - only in Scenes tab */}
+        {selectedContext &&
+          !selectedScene &&
+          !searchQuery &&
+          activeLearnTab === "scenes" && (
+            <View style={styles.sceneListSection}>
+              <View style={styles.inlineSceneListHeader}>
+                <TouchableOpacity
+                  onPress={() => setSelectedContext(null)}
+                  style={[styles.inlineBackButton, { flexShrink: 1 }]}
+                >
+                  <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
+                  <Text style={styles.inlineBackButtonText} numberOfLines={1}>
+                    {t(CONTEXT_ID_TO_KEY[selectedContext] as any) ||
+                      "Categories"}
+                  </Text>
+                </TouchableOpacity>
+                <Text style={styles.inlineSceneCountText}>
+                  {sceneCount} scenes
+                </Text>
+              </View>
+              <ScrollView
+                style={styles.sceneListContainer}
+                showsVerticalScrollIndicator={false}
+              >
+                {scenesLoading ? (
+                  <Text style={styles.loadingText}>Loading...</Text>
+                ) : (
+                  categoryScenes.map((scene) => {
+                    const phraseCount =
+                      scene.flows?.length || scene.flowCount || 0;
+                    return (
+                      <TouchableOpacity
+                        key={scene.id}
+                        style={styles.sceneCard}
+                        onPress={() => {
+                          setSelectedScene(scene);
+                          addRecentScene(selectedContext, scene.titleEn);
+                        }}
+                      >
+                        <View style={styles.sceneCardContent}>
+                          <Text style={styles.sceneTitleZh}>
+                            {scene.titleZh}
+                          </Text>
+                          <Text style={styles.sceneTitleEn}>
+                            {scene.titleEn}
+                          </Text>
+                          <Text
+                            style={styles.sceneDescription}
+                            numberOfLines={2}
+                          >
+                            {scene.description}
+                          </Text>
+                        </View>
+                        <View style={styles.sceneCardRight}>
+                          <Text style={styles.scenePhraseCount}>
+                            {phraseCount} phrases
+                          </Text>
+                          <Ionicons
+                            name="chevron-forward"
+                            size={18}
+                            color="#9E9E9E"
+                          />
+                        </View>
+                      </TouchableOpacity>
+                    );
+                  })
+                )}
+              </ScrollView>
+            </View>
+          )}
 
         {/* Phrases List - when scene is selected or searching */}
         {(selectedScene || searchQuery) && (
@@ -854,18 +1225,11 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                     style={styles.backButton}
                   >
                     <Ionicons name="chevron-back" size={20} color="#1c1c1e" />
-                    <Text style={styles.backButtonText}>Scenes</Text>
+                    <Text style={styles.backButtonText} numberOfLines={1}>
+                      {selectedScene?.titleEn}
+                    </Text>
                   </TouchableOpacity>
                 )}
-                <Text style={styles.sectionTitle}>
-                  {searchQuery
-                    ? t("learn.searchResults")
-                    : selectedScene
-                      ? selectedScene.titleEn
-                      : t("learn.phrases", {
-                          context: selectedContext?.toUpperCase() || "",
-                        })}
-                </Text>
               </View>
               <TouchableOpacity
                 onPress={() => {
@@ -878,29 +1242,36 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
               </TouchableOpacity>
             </View>
 
-            {/* Difficulty Filter */}
-            <View style={styles.difficultyFilter}>
-              {(["Basic", "Intermediate", "Advanced"] as const).map((level) => (
-                <TouchableOpacity
-                  key={level}
-                  style={[
-                    styles.difficultyButton,
-                    difficultyFilter === level && styles.difficultyButtonActive,
-                  ]}
-                  onPress={() => setDifficultyFilter(level)}
-                >
-                  <Text
+            {/* Difficulty Filter - dynamic from phrases */}
+            {availableLevels.length > 0 && (
+              <View style={styles.difficultyFilter}>
+                {availableLevels.map((level) => (
+                  <TouchableOpacity
+                    key={level}
                     style={[
-                      styles.difficultyButtonText,
+                      styles.difficultyButton,
                       difficultyFilter === level &&
-                        styles.difficultyButtonTextActive,
+                        styles.difficultyButtonActive,
                     ]}
+                    onPress={() =>
+                      setDifficultyFilter(
+                        level as "Basic" | "Intermediate" | "Advanced",
+                      )
+                    }
                   >
-                    {level}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
+                    <Text
+                      style={[
+                        styles.difficultyButtonText,
+                        difficultyFilter === level &&
+                          styles.difficultyButtonTextActive,
+                      ]}
+                    >
+                      {level}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
 
             {/* Listen to Full Dialogue button - below PHRASES header */}
             {phrases.length > 0 && (
@@ -1205,8 +1576,8 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
           </View>
         )}
 
-        {/* Empty State with Emergency Tip */}
-        {!selectedContext && !searchQuery && (
+        {/* Empty State with Emergency Tip - Only show in Scenes tab */}
+        {!selectedContext && !searchQuery && activeLearnTab === "scenes" && (
           <View style={styles.emptyStateContainer}>
             <View style={styles.tipCard}>
               <View style={styles.tipHeader}>
@@ -1238,9 +1609,12 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                           }}
                         >
                           <View style={styles.commonIconContainer}>
-                            <Text style={styles.commonEmoji}>
-                              {ctx?.emoji || "📚"}
-                            </Text>
+                            <Ionicons
+                              name={ctx?.ionicon || "book"}
+                              size={28}
+                              color="#F57C00"
+                              style={styles.commonEmoji}
+                            />
                           </View>
                           <View style={styles.commonContent}>
                             <Text style={styles.commonLabel} numberOfLines={1}>
@@ -1266,17 +1640,17 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                         {
                           label: "Lost Passport",
                           contextId: "emergency",
-                          icon: "🛂",
+                          ionicon: "shield-checkmark" as const,
                         },
                         {
                           label: "Need a Doctor",
                           contextId: "medical",
-                          icon: "🏥",
+                          ionicon: "medical" as const,
                         },
                         {
                           label: "Order Food",
                           contextId: "restaurant",
-                          icon: "🍕",
+                          ionicon: "restaurant" as const,
                         },
                       ].map((item, i) => (
                         <TouchableOpacity
@@ -1288,7 +1662,12 @@ export default function LearnScreen({ onNavigateToProfile }: LearnScreenProps) {
                           }}
                         >
                           <View style={styles.commonIconContainer}>
-                            <Text style={styles.commonEmoji}>{item.icon}</Text>
+                            <Ionicons
+                              name={item.ionicon}
+                              size={28}
+                              color="#F57C00"
+                              style={styles.commonEmoji}
+                            />
                           </View>
                           <View style={styles.commonContent}>
                             <Text style={styles.commonLabel}>{item.label}</Text>
@@ -1322,6 +1701,22 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
     paddingBottom: 20,
+  },
+  headerYellow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingBottom: 12,
+    backgroundColor: "#FFD600",
+  },
+  headerBadge: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: "rgba(255,255,255,0.5)",
+    alignItems: "center",
+    justifyContent: "center",
   },
   headerContent: {
     flexDirection: "row",
@@ -1360,11 +1755,22 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 12,
+    // marginHorizontal: 16,
+    marginTop: 16,
+    marginBottom: 8,
     borderWidth: 1,
     borderColor: "rgba(255, 210, 0, 0.3)",
   },
   searchIcon: {
     marginRight: 8,
+  },
+  searchTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#1c1c1e",
+    marginHorizontal: 16,
+    marginTop: 8,
+    marginBottom: 16,
   },
   searchInput: {
     flex: 1,
@@ -1402,9 +1808,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
+    marginRight: 12,
+  },
+  recentScenesScroll: {
+    marginTop: 8,
   },
   recentSceneIcon: {
-    fontSize: 28,
     marginBottom: 8,
   },
   recentSceneName: {
@@ -1436,6 +1845,270 @@ const styles = StyleSheet.create({
     color: "#8E8E93",
     marginTop: 2,
   },
+  practicedCount: {
+    fontSize: 10,
+    color: "#34C759",
+    fontWeight: "500",
+    marginTop: 2,
+  },
+  confidenceSection: {
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  confidenceHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  confidenceTitle: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1C1C1E",
+  },
+  confidenceValue: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#34C759",
+  },
+  confidenceBar: {
+    height: 8,
+    backgroundColor: "#E8E8E8",
+    borderRadius: 4,
+    overflow: "hidden",
+    marginBottom: 8,
+  },
+  confidenceFill: {
+    height: "100%",
+    backgroundColor: "#34C759",
+    borderRadius: 4,
+  },
+  confidenceDesc: {
+    fontSize: 12,
+    color: "#8E8E93",
+  },
+  sectionHeaderRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  sectionIcon: {
+    fontSize: 16,
+    marginRight: 8,
+  },
+  verticalList: {
+    gap: 12,
+  },
+  weakCategoryGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+  },
+  weakCategoryCard: {
+    width: "47%",
+    backgroundColor: "#FFF8E1",
+    borderRadius: 16,
+    padding: 12,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#FFE0B2",
+  },
+  weakCategoryIcon: {
+    marginBottom: 4,
+  },
+  weakCategoryName: {
+    fontSize: 13,
+    fontWeight: "600",
+    color: "#1c1c1e",
+    textAlign: "center",
+  },
+  weakCategoryPercent: {
+    fontSize: 12,
+    color: "#F57C00",
+    marginTop: 4,
+  },
+  tryNewGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+  },
+  tryNewCard: {
+    width: "31%",
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 12,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  tryNewIcon: {
+    marginBottom: 4,
+  },
+  tryNewName: {
+    fontSize: 11,
+    fontWeight: "600",
+    color: "#1c1c1e",
+    textAlign: "center",
+  },
+  tryNewCount: {
+    fontSize: 10,
+    color: "#8E8E93",
+    marginTop: 2,
+  },
+  categoryListItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  categoryListLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  categoryListIcon: {
+    marginRight: 12,
+  },
+  categoryListInfo: {
+    flex: 1,
+  },
+  categoryListName: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1c1c1e",
+    marginBottom: 2,
+  },
+  categoryListCount: {
+    fontSize: 12,
+    color: "#8E8E93",
+  },
+  categoryListRight: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  categoryListPercent: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#F57C00",
+    marginRight: 8,
+  },
+  continueLearningCard: {
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  continueLearningLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  continueLearningIcon: {
+    marginRight: 12,
+  },
+  continueLearningInfo: {
+    flex: 1,
+  },
+  continueLearningName: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1C1C1E",
+    marginBottom: 2,
+  },
+  continueLearningCategory: {
+    fontSize: 12,
+    color: "#8E8E93",
+  },
+  continueLearningRight: {
+    alignItems: "flex-end",
+  },
+  continueLearningPercent: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#007AFF",
+    marginBottom: 4,
+  },
+  continueLearningPercentHigh: {
+    color: "#FF9500",
+  },
+  continueLearningProgressBar: {
+    width: 80,
+    height: 4,
+    backgroundColor: "#E8E8E8",
+    borderRadius: 2,
+    overflow: "hidden",
+    marginBottom: 4,
+  },
+  continueLearningProgressFill: {
+    height: "100%",
+    backgroundColor: "#007AFF",
+    borderRadius: 2,
+  },
+  continueLearningProgressFillHigh: {
+    backgroundColor: "#FF9500",
+  },
+  continueLearningCount: {
+    fontSize: 10,
+    color: "#8E8E93",
+  },
+  cardChevron: {
+    marginLeft: 8,
+  },
+  cardExpandedContent: {
+    backgroundColor: "#F5F5F5",
+    padding: 12,
+    borderRadius: 12,
+    marginTop: -8,
+    marginBottom: 8,
+    alignItems: "flex-start",
+  },
+  expandedSectionTitle: {
+    fontSize: 13,
+    fontWeight: "600",
+    color: "#1C1C1E",
+    marginBottom: 4,
+  },
+  expandedSectionSubtitle: {
+    fontSize: 11,
+    color: "#8E8E93",
+    marginBottom: 8,
+  },
+  cardExpandedText: {
+    fontSize: 12,
+    color: "#8E8E93",
+    textAlign: "center",
+  },
+  expandedPhraseItem: {
+    backgroundColor: "#F5F5F5",
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 6,
+    width: "100%",
+  },
+  expandedPhraseEn: {
+    fontSize: 12,
+    color: "#1C1C1E",
+    fontWeight: "500",
+  },
+  expandedPhraseVi: {
+    fontSize: 11,
+    color: "#8E8E93",
+    marginTop: 2,
+  },
   difficultyFilter: {
     flexDirection: "row",
     gap: 8,
@@ -1458,21 +2131,55 @@ const styles = StyleSheet.create({
   difficultyButtonTextActive: {
     color: "#1C1C1E",
   },
+  tabContainer: {
+    flexDirection: "row",
+    backgroundColor: "#F2F2F7",
+    borderRadius: 12,
+    padding: 4,
+    marginBottom: 16,
+  },
+  tabButton: {
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  tabButtonActive: {
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  tabButtonText: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#8E8E93",
+  },
+  tabButtonIcon: {
+    marginRight: 6,
+  },
+  tabButtonTextActive: {
+    color: "#1C1C1E",
+    fontWeight: "600",
+  },
   contextGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 8,
   },
   contextCard: {
-    width: "23%",
+    width: "30%",
     aspectRatio: 1,
     backgroundColor: "#fff",
-    borderRadius: 24,
+    borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
     borderColor: "#E0E0E0",
-    paddingVertical: 8,
+    padding: 4,
   },
   contextCardActive: {
     backgroundColor: "#1c1c1e",
@@ -1483,12 +2190,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   contextIcon: {
-    fontSize: 28,
-    marginBottom: 4,
+    fontSize: 26,
+    marginBottom: 1,
   },
   contextName: {
-    fontSize: 10,
-    fontWeight: "700",
+    fontSize: 13,
+    fontWeight: "600",
     color: "#1c1c1e",
     textAlign: "center",
   },
@@ -1556,6 +2263,12 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontSize: 14,
     color: "#9E9E9E",
+  },
+  loadingText: {
+    fontSize: 14,
+    color: "#9E9E9E",
+    textAlign: "center",
+    paddingVertical: 20,
   },
   phraseCard: {
     marginBottom: 12,
@@ -1728,7 +2441,7 @@ const styles = StyleSheet.create({
     borderColor: "#F0F0F0",
   },
   commonEmoji: {
-    fontSize: 28,
+    // Style for Ionicons icon container
   },
   commonContent: {
     flex: 1,
@@ -1758,9 +2471,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#F9F9F9",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginHorizontal: 16,
+    marginTop: 16,
+    marginBottom: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
     zIndex: 1,
   },
   sceneCard: {
@@ -1776,13 +2498,13 @@ const styles = StyleSheet.create({
   sceneCardContent: {
     flex: 1,
   },
-  sceneTitleEn: {
+  sceneTitleZh: {
     fontSize: 15,
     fontWeight: "700",
     color: "#1c1c1e",
     marginBottom: 2,
   },
-  sceneTitleZh: {
+  sceneTitleEn: {
     fontSize: 13,
     color: "#666",
     marginBottom: 4,
@@ -1800,6 +2522,131 @@ const styles = StyleSheet.create({
     color: "#FFD200",
     fontWeight: "600",
     marginBottom: 4,
+  },
+  // Inline Scene List Styles
+  inlineSceneListHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  inlineBackButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexShrink: 1,
+  },
+  inlineBackButtonText: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1c1c1e",
+    marginLeft: 4,
+    flexShrink: 1,
+  },
+  inlineSceneCountText: {
+    fontSize: 13,
+    color: "#666",
+    fontWeight: "500",
+  },
+  inlineSceneList: {
+    marginTop: 8,
+  },
+  inlineSceneCardSingle: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  inlineSceneCardSingleContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  inlineSceneCardSingleInfo: {
+    flex: 1,
+    marginRight: 12,
+  },
+  inlineSceneCardSingleRight: {
+    alignItems: "flex-end",
+  },
+  inlineSceneTitleEnSingle: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1c1c1e",
+    marginBottom: 2,
+  },
+  inlineSceneTitleZhSingle: {
+    fontSize: 13,
+    color: "#666",
+    marginBottom: 4,
+  },
+  inlineSceneDescSingle: {
+    fontSize: 12,
+    color: "#9E9E9E",
+    lineHeight: 16,
+  },
+  inlineScenePhraseCountSingle: {
+    fontSize: 12,
+    color: "#FFD200",
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  inlineSceneGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+  },
+  inlineSceneCard: {
+    width: "47%",
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+  },
+  inlineSceneTitleEn: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1c1c1e",
+    marginBottom: 2,
+  },
+  inlineSceneTitleZh: {
+    fontSize: 12,
+    color: "#666",
+    marginBottom: 4,
+  },
+  inlineSceneDesc: {
+    fontSize: 11,
+    color: "#9E9E9E",
+    marginBottom: 6,
+    lineHeight: 14,
+  },
+  inlineScenePhraseCount: {
+    fontSize: 11,
+    color: "#FFD200",
+    fontWeight: "600",
+  },
+  viewAllButton: {
+    marginTop: 16,
+    alignItems: "center",
+    paddingVertical: 12,
+    backgroundColor: "#FFD200",
+    borderRadius: 12,
+  },
+  viewAllButtonText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1c1c1e",
   },
   sceneCountText: {
     fontSize: 13,

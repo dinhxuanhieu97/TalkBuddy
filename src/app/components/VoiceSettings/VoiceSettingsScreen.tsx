@@ -14,12 +14,12 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
-  SafeAreaView,
   StatusBar,
   Modal,
   FlatList,
   Dimensions,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome } from "@expo/vector-icons";
 import {
   useVoiceSettings,
@@ -38,6 +38,7 @@ import { useT } from "../../../lib/i18n";
 interface VoiceSettingsScreenProps {
   locale?: SupportedLocale;
   onBack?: () => void;
+  onSave?: () => void;
 }
 
 const { height } = Dimensions.get("window");
@@ -126,6 +127,7 @@ function SelectModal<T extends string | number>({
 export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
   locale = "en-US",
   onBack,
+  onSave,
 }) => {
   const t = useT();
   const {
@@ -236,7 +238,13 @@ export const VoiceSettingsScreen: React.FC<VoiceSettingsScreenProps> = ({
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>{t("voiceSettings.title")}</Text>
-        <View style={styles.placeholder} />
+        {onSave ? (
+          <TouchableOpacity onPress={onSave} style={styles.saveButton}>
+            <Text style={styles.saveButtonText}>Save</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.placeholder} />
+        )}
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -464,6 +472,17 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     width: 40,
+  },
+  saveButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: "#007AFF",
+    borderRadius: 8,
+  },
+  saveButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
   },
   content: {
     flex: 1,

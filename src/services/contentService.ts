@@ -26,6 +26,30 @@ export interface Scene {
   flowCount: number;
 }
 
+export interface DialogueTurn {
+  speaker: "you" | "them";
+  textEn: string;
+  textZh: string;
+  translation?: string;
+  audioUrl?: string;
+}
+
+export interface DialogueFlow {
+  id: string;
+  difficulty: "basic" | "intermediate" | "advanced";
+  turns: DialogueTurn[];
+}
+
+export interface FullScene {
+  id: string;
+  titleEn: string;
+  titleZh: string;
+  description: string;
+  otherRole: string;
+  otherRoleIcon?: string;
+  flows: DialogueFlow[];
+}
+
 export interface MicroInteractionItem {
   id: number;
   textEn: string;
@@ -56,6 +80,7 @@ interface CacheData {
   categories?: Category[];
   microInteractions?: MicroInteractionGroup[];
   scenes?: Record<string, Scene[]>;
+  scenesFull?: Record<string, FullScene[]>;
   timestamp: number;
 }
 
@@ -148,6 +173,42 @@ class ContentService {
       const cached = this.getCachedData();
       if (cached?.scenes?.[categoryId]) {
         return cached.scenes[categoryId];
+      }
+      return [];
+    }
+  }
+
+  async getScenesFull(
+    categoryId: string,
+    forceRefresh = false,
+  ): Promise<FullScene[]> {
+    const cacheKey = `scenes_full_${categoryId}`;
+
+    if (!forceRefresh) {
+      const cached = this.getCachedData();
+      if (cached?.scenesFull?.[categoryId]) {
+        return cached.scenesFull[categoryId];
+      }
+    }
+
+    try {
+      const response = await axios.get<{ success: boolean; data: FullScene[] }>(
+        `${API_BASE_URL}/scenes-full/${categoryId}`,
+      );
+
+      if (response.data.success) {
+        const cached = this.getCachedData() || { timestamp: 0, scenesFull: {} };
+        cached.scenesFull = cached.scenesFull || {};
+        cached.scenesFull[categoryId] = response.data.data;
+        this.setCachedData(cached);
+        return response.data.data;
+      }
+      throw new Error("Failed to fetch full scenes");
+    } catch (error) {
+      console.error("Error fetching full scenes:", error);
+      const cached = this.getCachedData();
+      if (cached?.scenesFull?.[categoryId]) {
+        return cached.scenesFull[categoryId];
       }
       return [];
     }

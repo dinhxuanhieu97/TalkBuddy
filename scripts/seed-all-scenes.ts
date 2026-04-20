@@ -32,6 +32,10 @@ import { ACCOMMODATION_SCENES } from "../src/data/scenes/accommodation.js";
 import { ACCOMMODATION_SCENES_EXT } from "../src/data/scenes/accommodation-ext.js";
 import { DAILY_LIFE_SCENES } from "../src/data/scenes/daily-life.js";
 import { DAILY_LIFE_SCENES_EXT } from "../src/data/scenes/daily-life-ext.js";
+import { HOUSING_SCENES } from "../src/data/scenes/housing.js";
+import { GOVERNMENT_SCENES } from "../src/data/scenes/government.js";
+import { EDUCATION_SCENES } from "../src/data/scenes/education.js";
+import { WORKPLACE_SCENES } from "../src/data/scenes/workplace.js";
 
 const API_URL = process.env.API_URL ?? "http://localhost:5277";
 const SEED_KEY = process.env.SEED_KEY ?? "";
@@ -91,6 +95,22 @@ const ALL_CATEGORIES: Record<string, { id: string; scenes: any[] }> = {
   "daily-life": {
     id: "daily-life",
     scenes: [...DAILY_LIFE_SCENES, ...DAILY_LIFE_SCENES_EXT],
+  },
+  housing: {
+    id: "housing",
+    scenes: HOUSING_SCENES,
+  },
+  government: {
+    id: "government",
+    scenes: GOVERNMENT_SCENES,
+  },
+  education: {
+    id: "education",
+    scenes: EDUCATION_SCENES,
+  },
+  workplace: {
+    id: "workplace",
+    scenes: WORKPLACE_SCENES,
   },
 };
 

@@ -29,6 +29,16 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "Hi, could you recommend a good restaurant nearby?",
             textZh: "你好，能推荐附近好吃的餐厅吗？",
             casualVersion: "Hey, any good places to eat around here?",
+            commonMistake: {
+              wrong: "Can you recommend a nearby good restaurant?",
+              correct: "Could you recommend a good restaurant nearby?",
+              explanation: "“Could you”更礼貌；“good restaurant nearby”语序更自然。",
+            },
+            formalityVariants: {
+              casual: "Hey, any good spots to eat around here?",
+              standard: "Hi, could you recommend a good restaurant nearby?",
+              formal: "Good morning/afternoon, I was wondering if you might be able to suggest a reputable restaurant in the immediate vicinity?",
+            },
           },
           {
             speaker: "them",
@@ -43,6 +53,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure thing! Any particular type of food you're craving?", textZh: "没问题！您特别想吃哪种菜？", actionHint: "更随意地询问偏好", frequency: "common" },
               { textEn: "Absolutely! Do you have any preferences — Asian, Italian, local?", textZh: "当然！有偏好吗——亚洲菜、意大利菜还是本地菜？", actionHint: "列举选项引导回答", frequency: "common" },
             ],
+            casualVersion: "Sure! What kinda food are you feelin'?",
+            formalityVariants: {
+              casual: "Sure! What kinda food are you feelin'?",
+              standard: "Of course! What kind of cuisine are you in the mood for?",
+              formal: "Certainly! Could you specify your preferred culinary style or type of cuisine?",
+            },
           },
           {
             speaker: "you",
@@ -50,6 +66,16 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textZh: "我们想试试当地菜，不要太贵的。",
             casualVersion: "Something local and not too pricey.",
             culturalNote: "\'Nothing too expensive\' 是礼貌地表达预算限制。也可以说 \'somewhere mid-range\'。",
+            commonMistake: {
+              wrong: "We want to try local food. Not too expensive.",
+              correct: "We'd like to try some local food. Nothing too expensive.",
+              explanation: "“We'd like to”更礼貌自然；“nothing too expensive”比“not too expensive”更地道。",
+            },
+            formalityVariants: {
+              casual: "Wanna try some local grub. Keep it cheap.",
+              standard: "We'd like to try some local food. Nothing too expensive.",
+              formal: "We are interested in experiencing the local cuisine. Our preference is for options that are reasonably priced.",
+            },
           },
           {
             speaker: "them",
@@ -64,11 +90,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "There's a lovely spot called The Local Kitchen — just a short walk from here, and it won't break the bank.", textZh: "有个不错的地方叫 The Local Kitchen，走几步就到，价格也很亲民。", actionHint: "用口语化方式推荐", frequency: "common" },
               { textEn: "You might enjoy The Local Kitchen. It's nearby and has great prices — most mains are under twenty dollars.", textZh: "您可能会喜欢 The Local Kitchen。就在附近，价格实惠，大部分主菜不到二十美元。", actionHint: "换一种介绍方式", frequency: "occasional" },
             ],
+            casualVersion: "I'd say The Local Kitchen—like, 10 min walk. Food's great, and most stuff's under 20 bucks.",
+            formalityVariants: {
+              casual: "I'd say The Local Kitchen—like, 10 min walk. Food's great, and most stuff's under 20 bucks.",
+              standard: "I'd recommend The Local Kitchen — it's about a 10-minute walk from here. Great food, and most dishes are under $20.",
+              formal: "I would suggest The Local Kitchen; it is approximately a ten-minute walk from this location. They offer excellent cuisine, with the majority of their entrees priced below twenty dollars.",
+            },
           },
           {
             speaker: "you",
             textEn: "That sounds great. Do we need a reservation?",
             textZh: "听起来不错。需要预订吗？",
+            casualVersion: "Sounds good. Gotta make a reservation?",
+            culturalNote: "在美国，直接问“Do we need a reservation?”很常见。",
+            commonMistake: {
+              wrong: "Is reservation needed?",
+              correct: "Do we need a reservation?",
+              explanation: "英语中更常用主动语态“Do we need...”而非被动“Is... needed?”。",
+            },
+            formalityVariants: {
+              casual: "Sounds good. Gotta make a reservation?",
+              standard: "That sounds great. Do we need a reservation?",
+              formal: "That sounds quite promising. Is it necessary to secure a reservation?",
+            },
           },
           {
             speaker: "them",
@@ -83,11 +127,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Weekends tend to be pretty packed. Want me to book a table for you?", textZh: "周末通常人很多。要我帮您订位吗？", actionHint: "口语化表达拥挤", frequency: "common" },
               { textEn: "It fills up fast on weekends. I can call ahead and reserve a spot if you'd like.", textZh: "周末很快就满了。要的话我可以提前帮您留位。", actionHint: "主动提出帮忙", frequency: "occasional" },
             ],
+            casualVersion: "Gets pretty slammed on weekends. Want me to book you a table?",
+            formalityVariants: {
+              casual: "Gets pretty slammed on weekends. Want me to book you a table?",
+              standard: "It can get busy on weekends. Would you like me to make a reservation for you?",
+              formal: "It tends to be quite occupied on weekends. Would you care for me to arrange a reservation on your behalf?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. For two people at 7 PM tonight.",
             textZh: "好的，请帮我订今晚7点，两个人。",
+            casualVersion: "Yeah, for two, 7 tonight.",
+            commonMistake: {
+              wrong: "Yes, please. For two at 7 o'clock tonight.",
+              correct: "Yes, please. For two people at 7 PM tonight.",
+              explanation: "说“two people”更完整自然；时间用“7 PM”更常见，避免“o'clock”。",
+            },
+            formalityVariants: {
+              casual: "Yeah, for two, 7 tonight.",
+              standard: "Yes, please. For two people at 7 PM tonight.",
+              formal: "Yes, if you would be so kind. A table for two individuals at 7:00 PM this evening would be most appreciated.",
+            },
           },
           {
             speaker: "them",
@@ -102,6 +163,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "You're all booked! Table for two at 7. I wrote the address down for you — enjoy!", textZh: "订好了！7点两位。地址给您写下来了，祝用餐愉快！", actionHint: "确认预订并祝福", frequency: "common" },
               { textEn: "Done! I've reserved a table for two at seven. Here's a card with the directions. Have a wonderful dinner!", textZh: "搞定！帮您订了7点两位。路线在这张卡上，祝晚餐愉快！", actionHint: "提供路线卡片", frequency: "occasional" },
             ],
+            casualVersion: "You're all set! Two people, 7 PM. Here's the address on this card. Have a good dinner!",
+            formalityVariants: {
+              casual: "You're all set! Two people, 7 PM. Here's the address on this card. Have a good dinner!",
+              standard: "All set! Reservation for two at 7 PM. Here's the address on this card. Enjoy your dinner!",
+              formal: "The reservation has been confirmed for two individuals at 7:00 PM. Please find the restaurant's address detailed on this card. I trust you will have an enjoyable dining experience.",
+            },
           },
         ],
       },
@@ -215,6 +282,16 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textZh: "能帮我叫一辆出租车吗？",
             casualVersion: "Can you get me a cab?",
             culturalNote: "\'taxi\' 和 \'cab\' 在美式英语中通用。英式英语多用 \'taxi\'。",
+            commonMistake: {
+              wrong: "Can you help me to call a taxi?",
+              correct: "Could you call a taxi for me?",
+              explanation: "英文中 help me call 比 help me to call 更自然地道。",
+            },
+            formalityVariants: {
+              casual: "Can you call a taxi?",
+              standard: "Could you call a taxi for me, please?",
+              formal: "Excuse me, I was wondering if you would be able to arrange a taxi for me at your convenience.",
+            },
           },
           {
             speaker: "them",
@@ -228,11 +305,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure, no problem. Where are you headed?", textZh: "好的，没问题。您去哪儿？", actionHint: "更随意地问目的地", frequency: "common" },
               { textEn: "Right away! Do you have a destination in mind?", textZh: "马上安排！您有目的地了吗？", actionHint: "积极响应", frequency: "common" },
             ],
+            casualVersion: "Sure. Where ya headed?",
+            formalityVariants: {
+              casual: "Sure. Where ya going?",
+              standard: "Of course. Where would you like to go?",
+              formal: "Certainly. May I inquire as to your desired destination?",
+            },
           },
           {
             speaker: "you",
             textEn: "I'd like to go to the National Museum. How long does it take?",
             textZh: "我想去国家博物馆。大概要多久？",
+            casualVersion: "National Museum. How long's that usually take?",
+            commonMistake: {
+              wrong: "I want to go to the National Museum. How much time does it take?",
+              correct: "I'd like to go to the National Museum. How long does it take?",
+              explanation: "询问时长用 'how long' 而不是 'how much time'。",
+            },
+            formalityVariants: {
+              casual: "Wanna go to the National Museum. How long is it?",
+              standard: "I'd like to go to the National Museum. How long does it take?",
+              formal: "My destination is the National Museum. Could you please advise on the estimated travel time?",
+            },
           },
           {
             speaker: "them",
@@ -247,11 +341,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's roughly a 20-minute ride if traffic's not too bad. You're looking at about 15 to 18 dollars.", textZh: "如果不堵车的话大概20分钟。费用大概15到18美元。", actionHint: "口语化说明时间和费用", frequency: "common" },
               { textEn: "Usually takes about 20 minutes, give or take. The meter should come out to around 15 to 18 bucks.", textZh: "通常大概20分钟左右。打表下来大约15到18块。", actionHint: "用bucks代替dollars", frequency: "occasional" },
             ],
+            casualVersion: "Like 20 mins, depends on traffic. Cost ya 'bout fifteen, eighteen bucks.",
+            formalityVariants: {
+              casual: "Prob'ly 20 mins, depends on how bad traffic is. About $15-18.",
+              standard: "About 20 minutes depending on traffic. The fare should be around $15 to $18.",
+              formal: "The estimated travel time is approximately 20 minutes, contingent upon traffic conditions. The fare is projected to be in the range of $15 to $18.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's fine. When can the taxi be here?",
             textZh: "可以。出租车多久能到？",
+            casualVersion: "Sounds good. When'll the taxi get here?",
+            commonMistake: {
+              wrong: "That's fine. When the taxi will be here?",
+              correct: "That's fine. When can the taxi be here?",
+              explanation: "疑问句中动词助动词 (will/can) 提前。",
+            },
+            formalityVariants: {
+              casual: "Okay. When's the taxi coming?",
+              standard: "That's fine. When can the taxi be here?",
+              formal: "Understood. Could you please inform me of the estimated arrival time for the taxi?",
+            },
           },
           {
             speaker: "them",
@@ -266,12 +377,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Let me get one for you now. It should pull up out front in about five minutes.", textZh: "我现在就帮您叫。大概五分钟后到正门口。", actionHint: "用pull up表示停靠", frequency: "common" },
               { textEn: "I'm on it. A cab will be waiting at the main entrance in five minutes or so.", textZh: "我马上安排。出租车五分钟左右会在正门等您。", actionHint: "非正式回应", frequency: "occasional" },
             ],
+            casualVersion: "Calling one now. Should be out front in like 5.",
+            formalityVariants: {
+              casual: "I'll get one now. Be out front in about 5.",
+              standard: "I'll call one right away. It should be at the front entrance in about 5 minutes.",
+              formal: "I shall arrange for one immediately. It is anticipated to arrive at the main entrance in approximately 5 minutes.",
+            },
           },
           {
             speaker: "you",
             textEn: "Great. Should I tip the taxi driver?",
             textZh: "好的。需要给出租车司机小费吗？",
             culturalNote: "在美国，出租车一般给15-20%小费。在其他国家习惯不同，可以提前问礼宾员。",
+            casualVersion: "Awesome. Gotta tip the driver?",
+            commonMistake: {
+              wrong: "Great. I need tip the taxi driver?",
+              correct: "Great. Should I tip the taxi driver?",
+              explanation: "询问义务或建议时，常用 'should' 或 'do I need to'。",
+            },
+            formalityVariants: {
+              casual: "Cool. Do I need to tip?",
+              standard: "Great. Should I tip the taxi driver?",
+              formal: "Excellent. Is it customary to offer a gratuity to the taxi driver?",
+            },
           },
           {
             speaker: "them",
@@ -286,11 +414,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Around here, 15 percent is the norm. I jotted down the address for you — just hand it to the driver.", textZh: "这边一般给15%。我帮您写好了地址，递给司机就行。", actionHint: "用jot down表示写下", frequency: "common" },
               { textEn: "Tipping about 15 percent is standard. Here, I've written the museum name in the local language so there's no confusion.", textZh: "小费一般给15%左右。这里我用当地语言写了博物馆名，免得沟通不清。", actionHint: "解释写地址的原因", frequency: "occasional" },
             ],
+            casualVersion: "Fifteen percent is typical for a tip. Wrote down the museum address for ya — just show it to 'em.",
+            culturalNote: "美国服务业小费是常识，不给会失礼。",
+            formalityVariants: {
+              casual: "Yeah, 15% tip. Got the address for you, just show the driver.",
+              standard: "A 15 percent tip is customary here. I've written down the museum address in the local language — just show it to the driver.",
+              formal: "A gratuity of 15 percent is customary in this region. I have prepared the museum's address for you in the local script; kindly present it to your driver.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's so helpful. Thank you!",
             textZh: "太贴心了，谢谢！",
+            casualVersion: "That's super helpful, thanks!",
+            formalityVariants: {
+              casual: "So helpful, thanks!",
+              standard: "That's so helpful. Thank you!",
+              formal: "I truly appreciate your extensive assistance. Thank you very much!",
+            },
           },
         ],
       },
@@ -404,6 +545,16 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "Are there any good day tours you'd recommend?",
             textZh: "有什么好的一日游推荐吗？",
             casualVersion: "What day trips can we do around here?",
+            commonMistake: {
+              wrong: "Do you have any good day tours recommend?",
+              correct: "Are there any good day tours you'd recommend?",
+              explanation: "中式英语常省略介词或连词。正确的问法更自然。",
+            },
+            formalityVariants: {
+              casual: "Any good day tours you'd recommend?",
+              standard: "Are there any good day tours you'd recommend?",
+              formal: "Could you please recommend some reputable day tours available?",
+            },
           },
           {
             speaker: "them",
@@ -419,11 +570,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "There are a few great ones! A city tour, a trip to wine country, or a boat ride along the coast. Any of those sound good?", textZh: "有几个很棒的！城市游、酒乡之旅或沿海游船。有感兴趣的吗？", actionHint: "更轻松地列举选项", frequency: "common" },
               { textEn: "Definitely! Our most popular day trips are the city highlights tour, the wine country excursion, and a scenic coastal cruise. What appeals to you?", textZh: "当然有！最受欢迎的是城市精华游、酒乡之旅和海岸观光游。哪个吸引您？", actionHint: "用excursion和cruise替换", frequency: "occasional" },
             ],
+            casualVersion: "Got a few popular options: city highlights, wine country, or a coastal boat trip. Which one sounds good?",
+            formalityVariants: {
+              casual: "Got a few popular options: city highlights, wine country, or a coastal boat trip. Which one sounds good?",
+              standard: "We have several popular options. There's a city highlights tour, a wine country trip, and a coastal boat tour. Which sounds interesting?",
+              formal: "We offer a selection of highly-regarded tours, including a comprehensive city highlights excursion, a wine country experience, and a scenic coastal boat cruise. Which of these might pique your interest?",
+            },
           },
           {
             speaker: "you",
             textEn: "The city highlights tour sounds good. How much is it and what's included?",
             textZh: "城市精华游听起来不错。多少钱？包含什么？",
+            casualVersion: "City highlights sounds good. How much is it, and what's included?",
+            commonMistake: {
+              wrong: "The city highlights tour sounds good. How much is it? What included?",
+              correct: "The city highlights tour sounds good. How much is it and what's included?",
+              explanation: "询问包含什么时，常用 'what's included' 或 'what does it include'，不直接用 'what included'。",
+            },
+            formalityVariants: {
+              casual: "City highlights sounds good. How much and what's included?",
+              standard: "The city highlights tour sounds good. How much is it and what's included?",
+              formal: "That city highlights tour sounds quite appealing. Could you please inform me of the cost and the specific inclusions?",
+            },
           },
           {
             speaker: "them",
@@ -439,11 +607,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "That one's 65 dollars per person. They pick you up from the hotel, take you on a walking tour with a guide, include lunch, and you get into three museums — all from 9 to 4.", textZh: "那个每人65美元。酒店接送，有导游带着步行游览，含午餐，还可以参观三个博物馆，上午9点到下午4点。", actionHint: "口语化详细介绍", frequency: "common" },
               { textEn: "It's 65 per person and covers everything — pickup, a guided walk, lunch, and three museum entries. Runs 9 AM to 4 PM.", textZh: "每人65美元，全包——接送、导游步行、午餐和三个博物馆门票。上午9点到下午4点。", actionHint: "用covers everything概括", frequency: "occasional" },
             ],
+            casualVersion: "$65 a head. Gets you hotel pickup, a guided walk, lunch, and entry to three museums. Runs 9 to 4.",
+            formalityVariants: {
+              casual: "$65 a person. Covers hotel pickup, a guided walk, lunch, and three museum entries. Tour's from 9 AM to 4 PM.",
+              standard: "It's $65 per person. Includes hotel pickup, a guided walking tour, lunch, and admission to three museums. The tour runs from 9 AM to 4 PM.",
+              formal: "The cost is $65 per individual, which encompasses hotel pickup, a professionally guided walking tour, a midday meal, and admission fees to three distinct museums. The itinerary is scheduled from 9:00 AM to 4:00 PM.",
+            },
           },
           {
             speaker: "you",
             textEn: "Is the tour in English?",
             textZh: "导游讲英语吗？",
+            casualVersion: "Is it in English?",
+            commonMistake: {
+              wrong: "Tour guide speak English?",
+              correct: "Is the tour in English?",
+              explanation: "中式英语常省略主语或助动词，或用词不当。 'Is the tour in English?' 是最简洁自然的问法。",
+            },
+            formalityVariants: {
+              casual: "Is it in English?",
+              standard: "Is the tour in English?",
+              formal: "Will the tour be conducted in English?",
+            },
           },
           {
             speaker: "them",
@@ -458,11 +643,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Yep, the guide speaks English. And if you'd like, they have Mandarin audio guides available too.", textZh: "是的，导游讲英语。如果需要的话也有中文语音导览。", actionHint: "更随意确认", frequency: "common" },
               { textEn: "It is — all in English. But they offer audio guides in several languages including Mandarin, just in case.", textZh: "是英语讲解。不过他们也提供多种语言的语音导览，包括中文，以防需要。", actionHint: "提到多语言选项", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, it's in English. Also got Mandarin audio guides if you want.",
+            formalityVariants: {
+              casual: "Yep, it's in English. And they've got Mandarin audio guides if you prefer.",
+              standard: "Yes, it's conducted in English. They also have audio guides in Mandarin if you'd prefer.",
+              formal: "Yes, the tour narration will be provided in English. Additionally, we offer audio guides in Mandarin, should that be your preference.",
+            },
           },
           {
             speaker: "you",
             textEn: "Great, I'd like to book two spots for tomorrow.",
             textZh: "好的，我想订明天两个人的。",
+            casualVersion: "Awesome, I'll take two for tomorrow.",
+            commonMistake: {
+              wrong: "Great, I want to book two persons for tomorrow.",
+              correct: "Great, I'd like to book two spots for tomorrow.",
+              explanation: "'I want' 听起来生硬，用 'I'd like to' 更礼貌。'persons' 应改为 'spots' 或 'people'。",
+            },
+            formalityVariants: {
+              casual: "Awesome, I'll take two for tomorrow.",
+              standard: "Great, I'd like to book two spots for tomorrow.",
+              formal: "Excellent. I would like to reserve two places for the tour scheduled for tomorrow.",
+            },
           },
           {
             speaker: "them",
@@ -478,12 +680,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "All booked! The tour bus comes here at 8:45 AM. Just a tip — wear comfy shoes and bring sunscreen.", textZh: "订好了！旅游巴士8:45到这里。小建议——穿舒服的鞋，带上防晒霜。", actionHint: "用tip引出建议", frequency: "common" },
               { textEn: "You're set for two tomorrow. Pickup is at 8:45 right at the hotel entrance. Make sure you've got good walking shoes and something for the sun.", textZh: "明天两位安排好了。8:45在酒店门口接您。记得穿好走路的鞋，带防晒的东西。", actionHint: "更口语化的提醒", frequency: "occasional" },
             ],
+            casualVersion: "Two for tomorrow, got it. Bus'll pick you up right here at 8:45. Bring comfy walking shoes and sunblock.",
+            formalityVariants: {
+              casual: "Got it, two for tomorrow. Bus picks you up right here at 8:45. Make sure to bring comfy shoes and sunblock.",
+              standard: "Two spots for tomorrow — got it. The bus will pick you up right here at 8:45 AM. Please bring comfortable walking shoes and sun protection.",
+              formal: "Confirmed, two reservations for tomorrow. The tour coach will collect you promptly from this location at 8:45 AM. We kindly request that you wear comfortable walking footwear and bring adequate sun protection.",
+            },
           },
           {
             speaker: "you",
             textEn: "Perfect. Can I cancel if something comes up?",
             textZh: "好的。如果有变动能取消吗？",
             culturalNote: "\'if something comes up\' 意思是 \'如果有意外情况\'，是很常用的表达。",
+            casualVersion: "Cool. Can I cancel if something comes up?",
+            commonMistake: {
+              wrong: "Perfect. Can I cancel if I have something changed?",
+              correct: "Perfect. Can I cancel if something comes up?",
+              explanation: "'something comes up' 是指有突发状况，非常地道的表达。直接翻译 '有变动' 会很生硬。",
+            },
+            formalityVariants: {
+              casual: "Cool. Can I cancel if something comes up?",
+              standard: "Perfect. Can I cancel if something comes up?",
+              formal: "Understood. Am I permitted to cancel the reservation should an unforeseen circumstance arise?",
+            },
           },
           {
             speaker: "them",
@@ -499,6 +718,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "You can cancel for free as long as it's at least 24 hours ahead. Otherwise it's half the price. I'll put it on your room.", textZh: "只要提前24小时以上就能免费取消，否则收一半费用。费用挂房间账上。", actionHint: "用ahead替代before", frequency: "common" },
               { textEn: "Sure — no charge if you cancel a day in advance. After that, there's a 50 percent fee. Everything goes on your room bill.", textZh: "可以——提前一天取消不收费。之后的话收50%。所有费用记在房间账上。", actionHint: "用a day in advance替代", frequency: "occasional" },
             ],
+            casualVersion: "You can cancel for free up till 24 hours out. After that, it's a 50% fee. I'll just put it on your room.",
+            formalityVariants: {
+              casual: "You get free cancellation up to 24 hours beforehand. After that, it's a 50% fee. I'll just charge it to your room.",
+              standard: "Free cancellation up to 24 hours before. After that, there's a 50% cancellation fee. I'll charge it to your room.",
+              formal: "Complimentary cancellation is available up to 24 hours prior to the tour. Subsequently, a 50% cancellation penalty will be applied. The charges will be posted directly to your room account.",
+            },
           },
         ],
       },
@@ -514,12 +739,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "We have a full day free tomorrow. Could you help us plan a custom itinerary?",
             textZh: "我们明天一整天有空。能帮我们规划一个定制行程吗？",
             culturalNote: "\'itinerary\' 是旅行行程的正式说法，发音 /aɪˈtɪnəreri/。",
+            casualVersion: "Got all day free tomorrow. Can you help us plan out a custom itinerary?",
+            commonMistake: {
+              wrong: "Can you help me to plan",
+              correct: "Can you help me plan",
+              explanation: "“help do” 比 “help to do” 更常用、简洁。",
+            },
+            formalityVariants: {
+              casual: "Got all day free tomorrow. Can you help us plan out a custom itinerary?",
+              standard: "We have a full day free tomorrow. Could you help us plan a custom itinerary?",
+              formal: "We find ourselves with a full day available tomorrow. Would you be able to assist us in planning a personalized itinerary?",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "I'd be happy to! What are your interests? History, food, nature, shopping?",
             textZh: "很乐意！您对什么感兴趣？历史、美食、自然、购物？",
+            casualVersion: "Totally! So, what kinda stuff are you into? History, food, nature, shopping?",
+            formalityVariants: {
+              casual: "Totally! So, what kinda stuff are you into? History, food, nature, shopping?",
+              standard: "I'd be happy to! What are your interests? History, food, nature, shopping?",
+              formal: "I would be delighted to assist you. May I inquire about your particular interests? For instance, are you drawn to history, culinary experiences, the outdoors, or perhaps shopping?",
+            },
             keyPhrases: [
               { en: "interests", zh: "兴趣" },
             ],
@@ -532,12 +774,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "We love food and history. And we're traveling with our kids, so nothing too tiring.",
             textZh: "我们喜欢美食和历史。而且带着孩子，不要太累的。",
+            casualVersion: "Food and history for sure. And, we've got kids with us, so, nothing too tiring.",
+            commonMistake: {
+              wrong: "We are with our kids",
+              correct: "We're traveling with our kids",
+              explanation: "“with our kids” 听起来不自然，应说 “traveling with” 或 “have kids with us”。",
+            },
+            formalityVariants: {
+              casual: "Food and history for sure. And, we've got kids with us, so, nothing too tiring.",
+              standard: "We love food and history. And we're traveling with our kids, so nothing too tiring.",
+              formal: "Our preferences lean towards culinary experiences and historical exploration. Furthermore, as we are accompanied by our children, we would appreciate activities that are not overly strenuous.",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "How about this: morning at the Old Town food market, then the History Museum — they have a great kids' section — and a relaxing afternoon at the waterfront park?",
             textZh: "这样如何：上午去老城区美食市场，然后去历史博物馆——他们有很棒的儿童区——下午去滨水公园休息？",
+            casualVersion: "Okay, so how 'bout this: morning at the Old Town food market, then the History Museum — they got a sweet kids' section — then chill at the waterfront park in the afternoon?",
+            formalityVariants: {
+              casual: "Okay, so how 'bout this: morning at the Old Town food market, then the History Museum — they got a sweet kids' section — then chill at the waterfront park in the afternoon?",
+              standard: "How about this: morning at the Old Town food market, then the History Museum — they have a great kids' section — and a relaxing afternoon at the waterfront park?",
+              formal: "May I propose the following itinerary: a morning visit to the Old Town food market, followed by the History Museum, which features an excellent children's section, concluding with a leisurely afternoon at the waterfront park?",
+            },
             keyPhrases: [
               { en: "Old Town", zh: "老城区" },
               { en: "food market", zh: "美食市场" },
@@ -553,12 +812,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That sounds perfect. Can you arrange transportation between the stops?",
             textZh: "听起来太好了。能帮我们安排各站之间的交通吗？",
+            casualVersion: "Sounds perfect. Can you hook us up with transport between places?",
+            commonMistake: {
+              wrong: "Can you arrange the transportations?",
+              correct: "Can you arrange transportation?",
+              explanation: "“Transportation” 是不可数名词，一般不加 s。",
+            },
+            formalityVariants: {
+              casual: "Sounds perfect. Can you hook us up with transport between places?",
+              standard: "That sounds perfect. Can you arrange transportation between the stops?",
+              formal: "That sounds most agreeable. Would it be possible for you to arrange transportation between each of the planned locations?",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "Sure. I can book a private driver for the full day. It's $120 and he'll wait for you at each stop. Much easier with kids.",
             textZh: "当然。我可以帮您订全天私人司机，120美元，每站他都会等您。带孩子方便多了。",
+            casualVersion: "Yep. I can get you a private driver all day. It's 120 bucks and he'll just wait at each spot. Way easier with kids.",
+            formalityVariants: {
+              casual: "Yep. I can get you a private driver all day. It's 120 bucks and he'll just wait at each spot. Way easier with kids.",
+              standard: "Sure. I can book a private driver for the full day. It's $120 and he'll wait for you at each stop. Much easier with kids.",
+              formal: "Certainly. I am able to arrange a private driver for your exclusive use throughout the day. The cost will be $120, and the driver will wait for you at each designated stop, which I believe will greatly facilitate your travels with children.",
+            },
             keyPhrases: [
               { en: "private driver", zh: "私人司机" },
               { en: "full day", zh: "全天" },
@@ -573,6 +849,16 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That would make things easier. Let's do it.",
             textZh: "那方便多了。就这样吧。",
+            commonMistake: {
+              wrong: "It's easier.",
+              correct: "That would make things easier.",
+              explanation: "“That would make things easier” 表示认可提议会带来的好处，更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, that'd make things way easier. Let's go for it.",
+              standard: "That would make things easier. Let's do it.",
+              formal: "That arrangement would indeed simplify matters considerably. We shall proceed with that option.",
+            },
             casualVersion: "Yeah, let's go with that.",
           },
           {
@@ -580,6 +866,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "礼宾员",
             textEn: "I'll have the driver here at 9 AM. I'll also prepare a printed itinerary with addresses and estimated times at each stop. Anything else?",
             textZh: "司机9点到。我还会准备一份打印行程单，有地址和每站预计时间。还需要什么？",
+            casualVersion: "Okay, driver'll be here at 9 AM. I'll also print out an itinerary with addresses and estimated times for each stop. Need anything else?",
+            formalityVariants: {
+              casual: "Okay, driver'll be here at 9 AM. I'll also print out an itinerary with addresses and estimated times for each stop. Need anything else?",
+              standard: "I'll have the driver here at 9 AM. I'll also prepare a printed itinerary with addresses and estimated times at each stop. Anything else?",
+              formal: "The driver will be here promptly at 9 AM. Furthermore, I will furnish you with a printed itinerary detailing addresses and approximate timings for each destination. Is there anything further I can assist you with?",
+            },
             keyPhrases: [
               { en: "printed itinerary", zh: "打印行程单" },
               { en: "estimated times", zh: "预计时间" },
@@ -593,12 +885,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Could you also recommend a good spot for lunch near the museum?",
             textZh: "能推荐博物馆附近一个好的午餐地方吗？",
+            casualVersion: "Can you also recommend a good lunch spot by the museum?",
+            commonMistake: {
+              wrong: "Recommend a good place for lunch near museum?",
+              correct: "Could you also recommend a good spot for lunch near the museum?",
+              explanation: "缺少主语和冠词，听起来不礼貌且不完整。",
+            },
+            formalityVariants: {
+              casual: "Can you also recommend a good lunch spot by the museum?",
+              standard: "Could you also recommend a good spot for lunch near the museum?",
+              formal: "Might you also be able to suggest a suitable establishment for lunch in proximity to the museum?",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "There's a family-friendly bistro called Corner Table just across the street from the museum. I'll add it to your itinerary with the directions.",
             textZh: "博物馆对面有一家适合家庭的小餐馆叫 Corner Table。我会把它加到行程单上，附上路线。",
+            casualVersion: "There's this family-friendly bistro, Corner Table, right across from the museum. I'll just add it to your itinerary with directions.",
+            formalityVariants: {
+              casual: "There's this family-friendly bistro, Corner Table, right across from the museum. I'll just add it to your itinerary with directions.",
+              standard: "There's a family-friendly bistro called Corner Table just across the street from the museum. I'll add it to your itinerary with the directions.",
+              formal: "There is a highly-regarded, family-friendly bistro named Corner Table situated directly across the street from the museum. I will ensure it is included in your itinerary along with precise directions.",
+            },
             keyPhrases: [
               { en: "family-friendly", zh: "适合家庭的" },
               { en: "bistro", zh: "小餐馆" },
@@ -634,6 +943,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Can you help me get tickets for the amusement park?",
             textZh: "能帮我买游乐园的门票吗？",
+            casualVersion: "Can you help me get tickets for the amusement park?",
+            commonMistake: {
+              wrong: "Can you help me buy amusement park tickets?",
+              correct: "Can you help me get tickets for the amusement park?",
+              explanation: "buy tickets 听起来可以，但 get tickets 更自然，口语常用。",
+            },
+            formalityVariants: {
+              casual: "Can you help me with tickets for the amusement park?",
+              standard: "Could you please assist me in getting tickets for the amusement park?",
+              formal: "Excuse me, I was wondering if you could possibly assist me with purchasing tickets for the amusement park?",
+            },
           },
           {
             speaker: "them",
@@ -648,11 +968,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Absolutely! And actually, we sell tickets right here at a discount. How many do you need?", textZh: "当然可以！而且我们这里有折扣票卖。您需要几张？", actionHint: "强调当场就能买", frequency: "common" },
               { textEn: "Of course! Good news — we have discounted passes available for hotel guests. How many are you looking for?", textZh: "没问题！好消息——我们有酒店客人专属折扣票。您要几张？", actionHint: "强调住客专属优惠", frequency: "occasional" },
             ],
+            casualVersion: "Sure! We got discounted tickets right here at the front desk. How many you need?",
+            formalityVariants: {
+              casual: "Yep, got discounted tickets right here. How many?",
+              standard: "Certainly! We do sell discounted tickets at the front desk. How many tickets will you be needing?",
+              formal: "Yes, absolutely. We do indeed offer discounted tickets here at the front desk. May I inquire as to how many tickets you require?",
+            },
           },
           {
             speaker: "you",
             textEn: "Two adults and one child. How much is the discount?",
             textZh: "两张成人票一张儿童票。打几折？",
+            casualVersion: "Two adults and one kid. What's the discount?",
+            commonMistake: {
+              wrong: "How many discount?",
+              correct: "How much is the discount?",
+              explanation: "discount是不可数名词，不能用how many，应用how much或What is the discount?",
+            },
+            formalityVariants: {
+              casual: "Two adults, one kid. What's the discount?",
+              standard: "We'll need two adult tickets and one child ticket. What is the discount percentage?",
+              formal: "We would require two adult tickets and one child ticket, please. Could you elaborate on the discount applied?",
+            },
           },
           {
             speaker: "them",
@@ -668,12 +1005,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Adults are 55 bucks through us — normally 70. And kids under 12 are 35 instead of 45. You'd save about 40 dollars altogether.", textZh: "通过我们买成人票55美元，原价70。12岁以下儿童35而不是45。总共能省大约40美元。", actionHint: "用bucks口语化", frequency: "common" },
               { textEn: "The hotel rate is 55 for adults and 35 for children under 12 — that's a good 40 dollars off the gate price.", textZh: "酒店价成人55美元，12岁以下儿童35美元——比门口价便宜了整整40美元。", actionHint: "用gate price表示门市价", frequency: "occasional" },
             ],
+            casualVersion: "Adult tickets are $55 instead of $70, and kids under 12 are $35 instead of $45. Saves you about $40 total.",
+            formalityVariants: {
+              casual: "Adults are $55 instead of $70, kids under 12 are $35 instead of $45. You'll save about $40 total.",
+              standard: "Adult tickets are priced at $55 instead of the regular $70, and children under 12 are $35 instead of $45. This will result in a total saving of approximately $40.",
+              formal: "The adult tickets are offered at a preferential rate of $55, reduced from $70, and tickets for children under 12 are $35, a reduction from $45. This represents a total saving of approximately $40 for your purchase.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's a great deal. Do these tickets have a specific date?",
             textZh: "很划算。这些票有指定日期吗？",
             culturalNote: "\'That's a great deal\' 表示 \'很划算\'，是购物/订票常用表达。",
+            casualVersion: "That's a great deal. Do these tickets have a specific date?",
+            commonMistake: {
+              wrong: "These tickets have specific date?",
+              correct: "Do these tickets have a specific date?",
+              explanation: "疑问句缺少助动词do/does。",
+            },
+            formalityVariants: {
+              casual: "Cool, that's a good deal. Are these tickets for a specific date?",
+              standard: "That's an excellent deal. Do these tickets have a specific validity date?",
+              formal: "That is indeed a very advantageous offer. May I inquire if these tickets are designated for a specific date of use?",
+            },
           },
           {
             speaker: "them",
@@ -689,11 +1043,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "They're good for any day this week. Just pull up the QR code on your phone at the gate — super easy.", textZh: "本周哪天都能用。到门口用手机出示二维码就行，特别方便。", actionHint: "用pull up表示调出", frequency: "common" },
               { textEn: "You can use them any day through Sunday. Everything's digital — just show the QR code at the door and you're in.", textZh: "到周日之前哪天都行。全是电子票——在门口出示二维码就能进。", actionHint: "强调全电子化", frequency: "occasional" },
             ],
+            casualVersion: "They're good for any day this week. Just scan the QR code at the entrance. No need to print.",
+            formalityVariants: {
+              casual: "They're good for any day this week. Just scan the QR at the entrance, no need to print.",
+              standard: "They are valid for any day within this current week. You simply need to scan the QR code at the entrance; there is no requirement to print anything.",
+              formal: "These tickets maintain validity for any day throughout the duration of the current week. Kindly proceed to scan the provided QR code at the entrance; no physical printout is necessary.",
+            },
           },
           {
             speaker: "you",
             textEn: "I'll take them. Can you charge it to my room?",
             textZh: "我买了。能记到房费里吗？",
+            casualVersion: "I'll take 'em. Can you charge it to my room?",
+            commonMistake: {
+              wrong: "Can you put it on my room?",
+              correct: "Can you charge it to my room?",
+              explanation: "charge it to my room 是标准说法，put it on my room 不自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, I'll take 'em. Charge it to my room?",
+              standard: "I would like to purchase them. Would it be possible to charge this to my room?",
+              formal: "I have decided to proceed with the purchase. May I request that the charges be applied directly to my room account?",
+            },
           },
           {
             speaker: "them",
@@ -708,11 +1079,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "No problem. That comes to 145, and I'll put it on room 1208. I just need your email to send the tickets over.", textZh: "没问题。一共145美元，挂在1208房。我需要您的邮箱把票发过去。", actionHint: "用send over表示发送", frequency: "common" },
               { textEn: "Sure thing — $145 on your room. Let me get your email so I can forward the e-tickets right away.", textZh: "好的——145美元记房间。给我邮箱地址，我马上把电子票转发给您。", actionHint: "用forward表示转发", frequency: "occasional" },
             ],
+            casualVersion: "Sure. That's $145 total, charged to room 1208. I'll send the e-tickets to your email. What's your address?",
+            formalityVariants: {
+              casual: "No problem. $145 to room 1208. E-tickets sent to your email. What's the address?",
+              standard: "Certainly. The total comes to $145, which will be charged to room 1208. I will send the electronic tickets to your email address. May I have your address, please?",
+              formal: "Yes, certainly. The total sum amounts to $145, which will be conveniently charged to room 1208. I shall promptly transmit the electronic tickets to your email address. Could you kindly provide your email address?",
+            },
           },
           {
             speaker: "you",
             textEn: "It's wang@email.com. Thank you so much for the help!",
             textZh: "是 wang@email.com。太感谢了！",
+            casualVersion: "It's wang@email.com. Thanks so much!",
+            formalityVariants: {
+              casual: "It's wang@email.com. Thanks a ton!",
+              standard: "My email address is wang@email.com. Thank you very much for your assistance!",
+              formal: "My email address is wang@email.com. I extend my sincere gratitude for your invaluable assistance!",
+            },
           },
         ],
       },
@@ -728,12 +1111,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "Is there anything fun to see in town tonight? A show or live music maybe?",
             textZh: "今晚城里有什么好看的吗？演出或现场音乐什么的？",
             casualVersion: "Anything cool happening tonight? Live music or a show?",
+            commonMistake: {
+              wrong: "Tonight in town what fun to see?",
+              correct: "Is there anything fun to see in town tonight?",
+              explanation: "中文语序直接翻译会显得不自然，英文问句需要倒装并有主谓语。",
+            },
+            formalityVariants: {
+              casual: "Anything fun tonight? A show or live music?",
+              standard: "Is there anything fun to see in town tonight? A show or live music maybe?",
+              formal: "Might there be any notable performances or live music events scheduled for this evening in the city?",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "Great timing! There's a jazz concert at the Blue Note tonight at 8 PM, and a Broadway-style musical at the Grand Theater at 7:30.",
             textZh: "时机真好！今晚8点 Blue Note 有爵士音乐会，7:30 大剧院有百老汇风格的音乐剧。",
+            casualVersion: "Good timing! Blue Note's got a jazz concert tonight at 8 PM, and a Broadway-style musical's at the Grand Theater at 7:30.",
+            formalityVariants: {
+              casual: "Oh, perfect timing! Jazz at Blue Note at 8, and a musical at Grand Theater at 7:30.",
+              standard: "Great timing! There's a jazz concert at the Blue Note tonight at 8 PM, and a Broadway-style musical at the Grand Theater at 7:30.",
+              formal: "Indeed, your inquiry is quite opportune. This evening, the Blue Note will host a jazz concert commencing at 8 PM, and the Grand Theater features a Broadway-style musical at 7:30 PM.",
+            },
             keyPhrases: [
               { en: "jazz concert", zh: "爵士音乐会" },
               { en: "Broadway-style musical", zh: "百老汇风格音乐剧" },
@@ -747,12 +1146,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The musical sounds fun. Are there still tickets available?",
             textZh: "音乐剧听起来不错。还有票吗？",
+            casualVersion: "Musical sounds good. Still got tickets?",
+            commonMistake: {
+              wrong: "Musical sounds good. Still have tickets?",
+              correct: "The musical sounds fun. Are there still tickets available?",
+              explanation: "直接说 'Still have tickets?' 略显生硬，'Are there still tickets available?' 更自然。",
+            },
+            formalityVariants: {
+              casual: "The musical sounds fun. Any tickets left?",
+              standard: "The musical sounds fun. Are there still tickets available?",
+              formal: "The musical production sounds quite appealing. May I inquire as to the availability of tickets?",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "Let me check... Yes, there are a few seats left in the orchestra section at $95 each, and balcony seats for $60.",
             textZh: "我查一下……有的，正厅还剩几个座位，每张95美元；包厢/楼座60美元。",
+            casualVersion: "Lemme check... Yep, got a few seats left in orchestra for $95 each, and balcony seats are $60.",
+            formalityVariants: {
+              casual: "Let me check... Yeah, we've got a few orchestra seats at $95 and balcony for $60.",
+              standard: "Let me check... Yes, there are a few seats left in the orchestra section at $95 each, and balcony seats for $60.",
+              formal: "Allow me to verify... Yes, there are indeed a limited number of orchestra seats remaining, priced at $95 per ticket, and balcony seating is available for $60.",
+            },
             keyPhrases: [
               { en: "orchestra section", zh: "正厅前排" },
               { en: "balcony seats", zh: "楼座" },
@@ -767,6 +1183,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "We'll take two orchestra seats. Is there a dress code?",
             textZh: "我们要两张正厅的。有着装要求吗？",
+            casualVersion: "We'll take two orchestra. Dress code?",
+            commonMistake: {
+              wrong: "We want two orchestra seats. Is there dress code?",
+              correct: "We'll take two orchestra seats. Is there a dress code?",
+              explanation: "表达意愿用 'We'll take' 更自然，'dress code' 前需要冠词 'a'。",
+            },
+            formalityVariants: {
+              casual: "We'll do two orchestra. Is there a dress code?",
+              standard: "We'll take two orchestra seats. Is there a dress code?",
+              formal: "We would like to purchase two orchestra seats, please. May I inquire if there is a specified dress code for the event?",
+            },
             culturalNote: "\'dress code\' 是问着装要求的标准说法。有些高档场所要求 smart casual 或以上。",
           },
           {
@@ -774,6 +1201,13 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "礼宾员",
             textEn: "Smart casual is recommended — no shorts or flip-flops. The theater is about 15 minutes by taxi. Would you like me to arrange a ride?",
             textZh: "建议商务休闲装——不要穿短裤或人字拖。剧院打车约15分钟。需要我安排车吗？",
+            casualVersion: "Smart casual's recommended — no shorts or flip-flops. Theater's 'bout 15 by cab. Want me to set up a ride?",
+            culturalNote: "“Smart casual”是一种常见的着装要求，比休闲正式一点，但又不像商务装那么严谨。",
+            formalityVariants: {
+              casual: "Smart casual's best—no shorts or flips. Theater's like 15 minutes by taxi. Need a ride arranged?",
+              standard: "Smart casual is recommended — no shorts or flip-flops. The theater is about 15 minutes by taxi. Would you like me to arrange a ride?",
+              formal: "Smart casual attire is advised; however, please refrain from wearing shorts or flip-flops. The theater is approximately 15 minutes away by taxi. Would you care for me to make arrangements for your transportation?",
+            },
             keyPhrases: [
               { en: "smart casual", zh: "商务休闲" },
               { en: "flip-flops", zh: "人字拖" },
@@ -788,12 +1222,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Yes, please. Have the taxi here at 7 PM so we're not rushed.",
             textZh: "好的。请7点让出租车到，这样不赶时间。",
+            casualVersion: "Yeah, please. Have the cab here by 7 so we're not rushing.",
+            commonMistake: {
+              wrong: "Yes, please. Let the taxi come at 7 PM, so we are not rush.",
+              correct: "Yes, please. Have the taxi here at 7 PM so we're not rushed.",
+              explanation: "“Let the taxi come”不自然，用“Have the taxi here”更地道。被动语态“not rushed”更准确。",
+            },
+            formalityVariants: {
+              casual: "Yep, please. Get the taxi here by 7 so we're not in a hurry.",
+              standard: "Yes, please. Have the taxi here at 7 PM so we're not rushed.",
+              formal: "Yes, that would be appreciated. Kindly arrange for the taxi to arrive at 7 PM, allowing us ample time before the performance.",
+            },
           },
           {
             speaker: "them",
             role: "礼宾员",
             textEn: "Perfect. Two orchestra tickets and a taxi at 7 PM. I'll email the tickets and leave the taxi confirmation at the front desk. Have a wonderful evening!",
             textZh: "好的。两张正厅票，7点出租车。电子票发邮件，出租车确认单放前台。祝您度过愉快的夜晚！",
+            casualVersion: "Alright. Two orchestra, taxi at 7. I'll email the tickets and leave the taxi confirm at the front desk. Have a great night!",
+            formalityVariants: {
+              casual: "Got it. Two orchestra seats, taxi at 7. I'll email tickets, leave confirmation at front desk. Have fun tonight!",
+              standard: "Perfect. Two orchestra tickets and a taxi at 7 PM. I'll email the tickets and leave the taxi confirmation at the front desk. Have a wonderful evening!",
+              formal: "Excellent. Two orchestra tickets will be secured, and a taxi arranged for 7 PM. I shall send the e-tickets to your email address and place the taxi confirmation at the front desk for your convenience. I trust you will have a most enjoyable evening.",
+            },
             keyPhrases: [
               { en: "confirmation", zh: "确认单" },
               { en: "have a wonderful evening", zh: "祝您度过愉快的夜晚" },
@@ -807,6 +1258,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "You've been incredibly helpful. Thank you!",
             textZh: "你帮了大忙了。谢谢！",
+            casualVersion: "You've been super helpful. Thanks!",
+            commonMistake: {
+              wrong: "You give me big help. Thank you!",
+              correct: "You've been incredibly helpful. Thank you!",
+              explanation: "“You give me big help”是直接翻译，不自然。“You've been incredibly helpful”是更地道的表达。",
+            },
+            formalityVariants: {
+              casual: "You've been a huge help. Thanks!",
+              standard: "You've been incredibly helpful. Thank you!",
+              formal: "I truly appreciate your exceptional assistance. Thank you very much.",
+            },
           },
         ],
       },
@@ -842,12 +1304,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Good evening, room service. What can I get for you?", textZh: "晚上好，客房服务。需要点什么？", actionHint: "更简洁的开场", frequency: "common" },
               { textEn: "Room service, good evening. How may I assist you tonight?", textZh: "客房服务，晚上好。今晚有什么能帮您的？", actionHint: "更正式的问候", frequency: "occasional" },
             ],
+            casualVersion: "Room service, how can I help?",
+            formalityVariants: {
+              casual: "Room service, how can I help?",
+              standard: "Room service, how may I help you?",
+              formal: "Good evening, room service, how may I assist you this evening?",
+            },
           },
           {
             speaker: "you",
             textEn: "Hi, I'd like to order some food to my room, please. Room 1208.",
             textZh: "你好，我想点餐送到房间。1208房间。",
             casualVersion: "Hey, can I get some food sent up? Room 1208.",
+            commonMistake: {
+              wrong: "I want to order some food to my room, please.",
+              correct: "I'd like to order some food to my room, please.",
+              explanation: "I want 在美国听起来很生硬，用 I'd like to 更礼貌委婉。",
+            },
+            formalityVariants: {
+              casual: "Hey, wanna order some food to 1208.",
+              standard: "Hi, I'd like to order some food to my room, please. Room 1208.",
+              formal: "Good evening. I wish to place an order for in-room dining, delivered to room 1208.",
+            },
           },
           {
             speaker: "them",
@@ -862,11 +1340,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Of course! Do you have the in-room menu handy, or shall I tell you what's on special tonight?", textZh: "当然！您手边有房间菜单吗，还是我告诉您今晚的特色菜？", actionHint: "用handy表示手边", frequency: "common" },
               { textEn: "Sure thing. We've got some great specials this evening. Would you like to hear them, or are you ordering from the menu?", textZh: "没问题。今晚有几道不错的特色菜。想听听还是直接从菜单点？", actionHint: "先推荐特色菜", frequency: "occasional" },
             ],
+            casualVersion: "Sure. Wanna hear the specials, or you got a menu?",
+            formalityVariants: {
+              casual: "Sure. Want to hear the specials, or do you have a menu?",
+              standard: "Certainly. Would you like to hear tonight's specials, or do you have the menu in your room?",
+              formal: "Certainly. Would you prefer to hear our chef's specials for this evening, or do you have our in-room dining menu available?",
+            },
           },
           {
             speaker: "you",
             textEn: "I have the menu. I'd like the club sandwich and a bowl of tomato soup.",
             textZh: "我有菜单。我要一份总汇三明治和一碗番茄汤。",
+            casualVersion: "Got the menu. I'll take the club sandwich and a tomato soup.",
+            commonMistake: {
+              wrong: "I want a club sandwich and a tomato soup.",
+              correct: "I'd like a club sandwich and a tomato soup.",
+              explanation: "点餐时用 I'd like 或 I'll take 比 I want 更自然礼貌。",
+            },
+            formalityVariants: {
+              casual: "Got the menu. I'll take the club sandwich and a tomato soup.",
+              standard: "I have the menu. I'd like the club sandwich and a bowl of tomato soup.",
+              formal: "Yes, I have the menu at hand. I would like to order the club sandwich and a bowl of the tomato soup.",
+            },
           },
           {
             speaker: "them",
@@ -881,12 +1376,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Nice pick! Would you like fries on the side, or would you prefer a salad?", textZh: "选得好！旁边配薯条还是沙拉？", actionHint: "用nice pick表示好选择", frequency: "common" },
               { textEn: "Excellent. The sandwich comes with a side — fries or salad. Which would you like?", textZh: "很好。三明治配一个小菜——薯条还是沙拉？", actionHint: "说明包含配菜", frequency: "occasional" },
             ],
+            casualVersion: "Good choice. Fries or side salad with that?",
+            formalityVariants: {
+              casual: "Good choice. Fries or side salad with that?",
+              standard: "Great choice. Would you like fries or a side salad with the sandwich?",
+              formal: "An excellent selection. For your accompaniment, would you prefer the french fries or a side salad with your sandwich?",
+            },
           },
           {
             speaker: "you",
             textEn: "Side salad, please. And a bottle of still water.",
             textZh: "沙拉吧。再来一瓶纯净水。",
             culturalNote: "\'still water\' 是不带气泡的水。\'sparkling water\' 是气泡水。在国外点水常被问这个。",
+            casualVersion: "Side salad. And a still water.",
+            commonMistake: {
+              wrong: "I want still water.",
+              correct: "A bottle of still water, please.",
+              explanation: "表达需求时直接说物品加 'please' 更简洁礼貌。",
+            },
+            formalityVariants: {
+              casual: "Side salad. And a still water.",
+              standard: "Side salad, please. And a bottle of still water.",
+              formal: "I would prefer the side salad, thank you. Additionally, I would like to request a bottle of still water.",
+            },
           },
           {
             speaker: "them",
@@ -901,11 +1413,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Let me repeat that back: club sandwich with salad, tomato soup, and still water. That's $38 plus a $5 service charge. Should be up in about half an hour.", textZh: "我复述一下：总汇三明治配沙拉、番茄汤、纯净水。38美元加5美元服务费。大约半小时送到。", actionHint: "用repeat back确认", frequency: "common" },
               { textEn: "Okay — club sandwich, side salad, tomato soup, still water. Comes to 43 with the delivery charge. We'll have that to you in 30 minutes.", textZh: "好的——总汇三明治、沙拉、番茄汤、纯净水。加送餐费一共43美元。30分钟给您送到。", actionHint: "直接报总价", frequency: "occasional" },
             ],
+            casualVersion: "So, club sandwich, side salad, tomato soup, still water. $38 plus $5 delivery. Should be there in 30.",
+            formalityVariants: {
+              casual: "So, club sandwich, side salad, tomato soup, still water. That's $38 plus $5 delivery. Probably there in 30.",
+              standard: "So that's a club sandwich with side salad, tomato soup, and a bottle of still water. Your total comes to $38 plus a delivery fee of $5. It should be at your door in about 30 minutes.",
+              formal: "To confirm your order, that will be a club sandwich accompanied by a side salad, one bowl of tomato soup, and a bottle of still water. The total charge will be $38, in addition to a delivery fee of $5. You can expect your order to arrive at your room within approximately 30 minutes.",
+            },
           },
           {
             speaker: "you",
             textEn: "Sounds good. Please charge it to my room.",
             textZh: "好的。请记到房费里。",
+            casualVersion: "Sounds good. Charge it to the room.",
+            commonMistake: {
+              wrong: "Charge my room.",
+              correct: "Please charge it to my room.",
+              explanation: "'charge something to' 是固定搭配，表示“记在...账上”。",
+            },
+            formalityVariants: {
+              casual: "Cool. Put it on the room.",
+              standard: "Sounds good. Please charge it to my room.",
+              formal: "That sounds perfectly acceptable. Kindly charge the total amount to my room account.",
+            },
           },
           {
             speaker: "them",
@@ -919,11 +1448,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Got it! Anything else you'd like? And do you have any food allergies I should let the kitchen know about?", textZh: "收到！还要别的吗？有什么食物过敏需要我告诉厨房的吗？", actionHint: "更具体地询问", frequency: "common" },
               { textEn: "All noted. Before I put this in — any dietary restrictions or allergies?", textZh: "都记下了。下单前确认一下——有什么饮食限制或过敏吗？", actionHint: "用put this in表示下单", frequency: "occasional" },
             ],
+            casualVersion: "Will do. Anything else? Allergies?",
+            formalityVariants: {
+              casual: "Got it. Anything else? Allergies?",
+              standard: "Will do. Is there anything else? Any allergies we should know about?",
+              formal: "Consider it done. May I inquire if there will be any further requests, or if there are any dietary restrictions or allergies we should be made aware of?",
+            },
           },
           {
             speaker: "you",
             textEn: "No allergies. That's everything. Thank you!",
             textZh: "没有过敏。就这些。谢谢！",
+            casualVersion: "Nope, no allergies. That's it. Thanks!",
+            commonMistake: {
+              wrong: "No other things. Thank you!",
+              correct: "That's everything. Thank you!",
+              explanation: "That's everything/all 是表示“就这些了”的常用表达，更自然。",
+            },
+            formalityVariants: {
+              casual: "Nope, no allergies. That's it. Thanks!",
+              standard: "No allergies. That's everything. Thank you!",
+              formal: "I have no known allergies, thank you. That concludes my order. I appreciate your assistance.",
+            },
           },
         ],
       },
@@ -946,17 +1492,40 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Hello, room service. How can I help you this evening?", textZh: "您好，客房服务。今晚有什么能帮您的？", actionHint: "稍微不同的问候", frequency: "common" },
               { textEn: "Good evening, this is room service. What can I do for you?", textZh: "晚上好，这里是客房服务。有什么需要？", actionHint: "自报身份", frequency: "common" },
             ],
+            casualVersion: "Room service, hey.",
+            formalityVariants: {
+              casual: "Room service.",
+              standard: "Room service, good evening.",
+              formal: "Good evening, room service, how may I assist you?",
+            },
           },
           {
             speaker: "you",
             textEn: "Hi, I know it's late. Is the kitchen still open?",
             textZh: "你好，我知道很晚了。厨房还开着吗？",
+            casualVersion: "Hey, I know it's super late. Kitchen still open?",
+            commonMistake: {
+              wrong: "Hi, I know it's late. Kitchen is still open?",
+              correct: "Hi, I know it's late. Is the kitchen still open?",
+              explanation: "疑问句语序是'Is the kitchen...', 而非'The kitchen is...'",
+            },
+            formalityVariants: {
+              casual: "Hey, I know it's late. Kitchen open?",
+              standard: "Hi, I know it's late. Is the kitchen still open?",
+              formal: "Good evening, I apologize for the late hour. May I inquire if the kitchen is still operational?",
+            },
           },
           {
             speaker: "them",
             role: "客房服务",
             textEn: "Our full kitchen closes at 11 PM, but we have a late-night menu available until 2 AM. I can send it to your room or read you the options.",
             textZh: "正式厨房11点关，但我们有宵夜菜单到凌晨2点。我可以发到您房间或直接念给您。",
+            casualVersion: "Main kitchen's done at 11, but we got a late-night menu till 2 AM. Can send it up or just tell ya what's on it.",
+            formalityVariants: {
+              casual: "Kitchen's closed at 11, but we got late-night stuff till 2. Can send it or read it to ya.",
+              standard: "Our full kitchen closes at 11 PM, but we have a late-night menu available until 2 AM. I can send it to your room or read you the options.",
+              formal: "Our primary kitchen facility concludes operations at 11 PM. However, we do offer a late-night menu, which is available until 2 AM. I would be pleased to either dispatch a copy to your room or enumerate the selections for you.",
+            },
             keyPhrases: [
               { en: "late-night menu", zh: "宵夜菜单" },
               { en: "available until", zh: "供应到" },
@@ -970,12 +1539,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Could you read me the options? I'm pretty hungry.",
             textZh: "能念给我听吗？我挺饿的。",
+            casualVersion: "Just read 'em? I'm starving.",
+            commonMistake: {
+              wrong: "Can you read me the options? I am very hungry.",
+              correct: "Could you read me the options? I'm pretty hungry.",
+              explanation: "用Could更礼貌，'pretty hungry'比'very hungry'更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, just read 'em. I'm starving.",
+              standard: "Could you read me the options? I'm pretty hungry.",
+              formal: "Would you mind enumerating the available selections for me, please? I find myself quite famished.",
+            },
           },
           {
             speaker: "them",
             role: "客房服务",
             textEn: "We have a cheeseburger with fries, a Caesar salad, a cheese and fruit platter, or chicken wings. All between $18 and $25.",
             textZh: "有芝士汉堡配薯条、凯撒沙拉、芝士水果拼盘和鸡翅。都在18到25美元之间。",
+            casualVersion: "Got a cheeseburger with fries, Caesar salad, cheese/fruit platter, or wings. They're like 18 to 25 bucks.",
+            formalityVariants: {
+              casual: "Cheeseburger/fries, Caesar, cheese plate, or wings. All 18-25 bucks.",
+              standard: "We have a cheeseburger with fries, a Caesar salad, a cheese and fruit platter, or chicken wings. All between $18 and $25.",
+              formal: "Our late-night menu features a cheeseburger served with French fries, a Caesar salad, a cheese and fruit platter, and chicken wings. All selections are priced within the range of $18 to $25.",
+            },
             keyPhrases: [
               { en: "cheeseburger", zh: "芝士汉堡" },
               { en: "platter", zh: "拼盘" },
@@ -990,6 +1576,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'll have the cheeseburger, please. Can I also get a beer? What do you have on tap?",
             textZh: "我要芝士汉堡。还能来杯啤酒吗？有什么生啤？",
+            casualVersion: "Cheeseburger for me, please. Can I snag a beer too? What tap beers ya got?",
+            commonMistake: {
+              wrong: "I will want the cheeseburger, please. Can I also get a beer? What do you have of draft beer?",
+              correct: "I'll have the cheeseburger, please. Can I also get a beer? What do you have on tap?",
+              explanation: "'I'll have'更自然。生啤用'on tap'。",
+            },
+            formalityVariants: {
+              casual: "Cheeseburger, thanks. Any beers? What's on tap?",
+              standard: "I'll have the cheeseburger, please. Can I also get a beer? What do you have on tap?",
+              formal: "I would like to order the cheeseburger, please. Additionally, might I inquire if alcoholic beverages are available, specifically what selections of draft beer you currently feature?",
+            },
             culturalNote: "\'on tap\' 指生啤/扎啤，从酒桶直接打出来的。\'bottled\' 是瓶装的。",
           },
           {
@@ -997,6 +1594,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "客房服务",
             textEn: "For room service we have bottled options — local lager, IPA, or imported pilsner. Each is $8.",
             textZh: "客房送餐有瓶装的——本地拉格、IPA 或进口皮尔森。每瓶8美元。",
+            casualVersion: "Room service, we just got bottled stuff — local lager, IPA, or imported pilsner. Eight bucks each.",
+            formalityVariants: {
+              casual: "Bottled beers only for room service—lager, IPA, pilsner. $8 each.",
+              standard: "For room service we have bottled options — local lager, IPA, or imported pilsner. Each is $8.",
+              formal: "For room service delivery, we offer a selection of bottled beers, including a local lager, an India Pale Ale (IPA), and an imported pilsner. Each selection is priced at $8.",
+            },
             keyPhrases: [
               { en: "bottled", zh: "瓶装的" },
               { en: "lager", zh: "拉格啤酒" },
@@ -1011,12 +1614,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The local lager, please. How long will it take?",
             textZh: "来本地拉格吧。要多久？",
+            casualVersion: "Local lager then. How long 'til it gets here?",
+            commonMistake: {
+              wrong: "The local lager, please. How many time will it take?",
+              correct: "The local lager, please. How long will it take?",
+              explanation: "询问时间长度用'how long'，而非'how many time'。",
+            },
+            formalityVariants: {
+              casual: "Yeah, local lager. How long?",
+              standard: "The local lager, please. How long will it take?",
+              formal: "I will have the local lager, thank you. May I inquire as to the approximate delivery time?",
+            },
           },
           {
             speaker: "them",
             role: "客房服务",
             textEn: "About 25 minutes for the late-night menu. I'll have it sent right up to room 1208. Anything else?",
             textZh: "宵夜大约25分钟。马上送到1208房间。还需要什么？",
+            casualVersion: "Like 25 for the late-night stuff. Get it sent right up to 1208. Anything else?",
+            formalityVariants: {
+              casual: "25 for the food. Sending it to 1208. Anything else?",
+              standard: "About 25 minutes for the late-night menu. I'll have it sent right up to room 1208. Anything else?",
+              formal: "Kindly allow approximately 25 minutes for the preparation and delivery of your late-night menu selection. It will be promptly dispatched to room 1208. Will there be anything further required?",
+            },
             keyPhrases: [
               { en: "sent right up", zh: "马上送上去" },
             ],
@@ -1029,6 +1649,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's all, thanks. You're a lifesaver!",
             textZh: "就这些，谢谢。你救了我一命！",
+            casualVersion: "That's it, thanks! You're the best!",
+            commonMistake: {
+              wrong: "Finished, thank you. You save my life!",
+              correct: "That's all, thanks. You're a lifesaver!",
+              explanation: "'That's all'表达结束，'lifesaver'是常用习语，不是字面意思。",
+            },
+            formalityVariants: {
+              casual: "That's it, thanks! You're awesome!",
+              standard: "That's all, thanks. You're a lifesaver!",
+              formal: "That will be all, thank you. Your assistance is greatly appreciated.",
+            },
             culturalNote: "\'You're a lifesaver\' 是口语表达，意思是 \'太感谢了，你帮了大忙\'。",
           },
         ],
@@ -1056,6 +1687,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hello, I need an extra bed in my room. Is that possible?",
             textZh: "你好，我房间需要加一张床。可以吗？",
+            casualVersion: "Hey, can I get an extra bed for my room?",
+            commonMistake: {
+              wrong: "I need an extra bed",
+              correct: "I'd like an extra bed",
+              explanation: "“I need” 听起来有些生硬，用 “I'd like” 更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, can I get an extra bed for my room?",
+              standard: "Hello, I'd like an extra bed in my room. Is that possible?",
+              formal: "Good morning/afternoon, I was wondering if it would be possible to request an additional bed for my room.",
+            },
           },
           {
             speaker: "them",
@@ -1070,11 +1712,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure, we have rollaway beds available. It's an extra 30 dollars per night. Want me to send one up?", textZh: "有的，我们有折叠床。每晚加30美元。要我安排送上去吗？", actionHint: "用send one up表示送上去", frequency: "common" },
               { textEn: "Absolutely. We can set up a foldaway bed in your room for $30 a night. Shall I arrange that for you?", textZh: "当然可以。我们可以在您房间放一张折叠床，每晚30美元。要安排吗？", actionHint: "用foldaway替代rollaway", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, we can send a rollaway up. It's $30 a night. Want me to set that up?",
+            formalityVariants: {
+              casual: "Sure, we can send a rollaway up. It's $30 a night. You want me to arrange it?",
+              standard: "We can send a rollaway bed to your room. There's a charge of $30 per night. Would you like me to arrange that?",
+              formal: "Certainly, we would be pleased to arrange for a rollaway bed to be delivered to your room. Please be advised that there is an additional charge of $30 per night for this service. Shall I proceed with the arrangement?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. We have a friend joining us for the next two nights.",
             textZh: "好的。我们有个朋友接下来两晚会加入。",
+            casualVersion: "Yeah, cool. Got a friend coming for two nights.",
+            commonMistake: {
+              wrong: "We have a friend will join us",
+              correct: "We have a friend joining us",
+              explanation: "“will join” 不太地道，用现在进行时表示将来更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, perfect. Got a friend joining us for two nights.",
+              standard: "Yes, please. We have a friend joining us for the next two nights.",
+              formal: "Yes, that would be excellent. We are expecting a guest to join us for the upcoming two nights.",
+            },
           },
           {
             speaker: "them",
@@ -1091,11 +1750,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "That's 60 for two nights. It'll come with fresh linens, a pillow, and a blanket. What time works for delivery?", textZh: "两晚60美元。会配全新的床品、枕头和毯子。什么时候送方便？", actionHint: "用linens替代sheets", frequency: "common" },
               { textEn: "Sure — $60 for the two nights. The bed's fully made up with bedding. When should we bring it to your room?", textZh: "好的，两晚60美元。床已经铺好了床品。什么时候送到您房间？", actionHint: "说明床已铺好", frequency: "occasional" },
             ],
+            casualVersion: "No prob. So, $60 for two nights. Bed's got sheets, pillow, blanket. When do you want it?",
+            formalityVariants: {
+              casual: "Alright, no worries. So, $60 for two nights. Comes with sheets, pillow, blanket. When's good for delivery?",
+              standard: "No problem. That'll be $60 total for two nights. The bed comes with sheets, a pillow, and a blanket. When would you like it delivered?",
+              formal: "Certainly. The total charge for two nights will be $60. The rollaway bed is provided with complete linens, including a pillow and a blanket. May I inquire as to your preferred delivery time?",
+            },
           },
           {
             speaker: "you",
             textEn: "This afternoon, if possible. Before 3 PM.",
             textZh: "今天下午行吗？3点之前。",
+            casualVersion: "This afternoon, if you can. Before 3.",
+            commonMistake: {
+              wrong: "This afternoon before 3 PM",
+              correct: "This afternoon, if possible. Before 3 PM.",
+              explanation: "加上 \"if possible\" 听起来更礼貌，不是在命令。",
+            },
+            formalityVariants: {
+              casual: "This afternoon, if you can. Before 3.",
+              standard: "This afternoon, if possible. Before 3 PM.",
+              formal: "Ideally, this afternoon, prior to 3 PM, would be most convenient.",
+            },
           },
           {
             speaker: "them",
@@ -1110,11 +1786,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I'll get housekeeping on it right away — it'll be there before 3. They'll throw in some extra towels too. Put it on your room?", textZh: "我马上通知客房部——3点前到。他们也会多带几条毛巾。记房间账上？", actionHint: "用throw in表示附带", frequency: "common" },
               { textEn: "No problem. Our team will have it in your room by 3 PM along with fresh towels. Shall I bill it to the room?", textZh: "没问题。我们的团队会在3点前送到您房间，附带新毛巾。费用记房间吗？", actionHint: "用bill替代charge", frequency: "occasional" },
             ],
+            casualVersion: "Okay, I'll have housekeeping bring it up before 3. They'll grab extra towels too. Want me to put the charges on your room?",
+            formalityVariants: {
+              casual: "Got it. Housekeeping'll bring it up before 3. Extra towels too. Should I put the charges on your room?",
+              standard: "I'll have housekeeping bring it up before 3 PM. They'll also bring extra towels. Shall I add the charges to your room?",
+              formal: "I will arrange for housekeeping to deliver the bed and additional towels to your room before 3 PM. Would you prefer the charges be posted directly to your room account?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, that works. Also, will the room have enough hangers for three people?",
             textZh: "好的。另外，房间里有足够三个人用的衣架吗？",
+            casualVersion: "Yeah, that's fine. Oh, will there be enough hangers for three?",
+            commonMistake: {
+              wrong: "Room has enough hangers for three people?",
+              correct: "Will the room have enough hangers for three people?",
+              explanation: "英语疑问句需要主谓倒装或助动词，不能直接陈述句加问号。",
+            },
+            formalityVariants: {
+              casual: "Yeah, that's good. And hey, enough hangers for three?",
+              standard: "Yes, that works. Also, will the room have enough hangers for three people?",
+              formal: "Yes, that would be perfectly acceptable. Additionally, I would like to inquire if there will be a sufficient number of hangers in the room for three occupants.",
+            },
           },
           {
             speaker: "them",
@@ -1129,11 +1822,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Good thinking! I'll have them bring more hangers and a third set of toiletries. Is there anything else you need?", textZh: "想得周到！我让他们多带衣架和第三套洗漱用品。还需要别的吗？", actionHint: "夸赞客人想得细", frequency: "common" },
               { textEn: "Of course — I'll add extra hangers and another set of bathroom amenities to the delivery. Anything else?", textZh: "当然——我会让他们一起送额外的衣架和一套浴室用品。还有什么？", actionHint: "用amenities替代toiletries", frequency: "occasional" },
             ],
+            casualVersion: "No prob, I'll make sure they bring more hangers and toiletries. Anything else?",
+            formalityVariants: {
+              casual: "Sure, I'll make sure they grab extra hangers and toiletries. Anything else?",
+              standard: "I'll make sure they bring additional hangers and an extra set of toiletries as well. Anything else?",
+              formal: "Certainly, I will ensure that extra hangers and an additional set of toiletries are provided. Is there anything further I can assist you with?",
+            },
           },
           {
             speaker: "you",
             textEn: "That covers everything. Thank you!",
             textZh: "都齐了。谢谢！",
+            casualVersion: "Yep, that's it. Thanks!",
+            commonMistake: {
+              wrong: "That is all. Thank you.",
+              correct: "That covers everything. Thank you.",
+              explanation: "“That covers everything” 更自然地表达“所有都办妥了”。",
+            },
+            formalityVariants: {
+              casual: "Yep, that's all. Thanks!",
+              standard: "That covers everything. Thank you!",
+              formal: "That covers all our requirements. Thank you kindly for your assistance.",
+            },
           },
         ],
       },
@@ -1149,12 +1859,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "Hi, we have a 10-month-old baby. Do you have cribs available?",
             textZh: "你好，我们有10个月大的宝宝。有婴儿床吗？",
             culturalNote: "\'crib\' 是美式英语的婴儿床。英式英语用 \'cot\'。",
+            casualVersion: "Hey, we've got a 10-month-old. Got any cribs available?",
+            commonMistake: {
+              wrong: "We have 10-month-old baby. Do you have baby bed?",
+              correct: "We have a 10-month-old baby. Do you have cribs available?",
+              explanation: "中文里“婴儿床”常直接说“宝宝的床”，但英文要用 specific word 'crib'。",
+            },
+            formalityVariants: {
+              casual: "Hey, we've got a 10-month-old. Any cribs available?",
+              standard: "Hi, we have a 10-month-old baby. Do you have cribs available?",
+              formal: "Good morning/afternoon, we are traveling with our 10-month-old infant. May I inquire if cribs are available for use?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, we provide complimentary cribs for infants. I'll have one set up in your room right away.",
             textZh: "有的，我们免费提供婴儿床。马上安排送到您房间。",
+            casualVersion: "Yeah, we've got free cribs for infants. I'll get one sent to your room ASAP.",
+            formalityVariants: {
+              casual: "Yep, free cribs. We'll send one up right away.",
+              standard: "Yes, we provide complimentary cribs for infants. I'll have one set up in your room right away.",
+              formal: "Certainly, we are pleased to offer complimentary cribs for our infant guests. I will arrange for one to be delivered to your room immediately.",
+            },
             keyPhrases: [
               { en: "complimentary", zh: "免费提供的" },
               { en: "infants", zh: "婴儿" },
@@ -1169,12 +1896,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's wonderful. Is there a baby-proofed outlet cover? Our baby is starting to crawl.",
             textZh: "太好了。有插座防护盖吗？我们宝宝开始爬了。",
+            casualVersion: "Awesome. Got any outlet covers? Baby's crawling now.",
+            commonMistake: {
+              wrong: "Is there socket protection cover?",
+              correct: "Is there a baby-proofed outlet cover?",
+              explanation: "'Socket protection cover' 是中式英文，地道说法是 'outlet cover' 或 'baby-proofed outlet cover'。",
+            },
+            formalityVariants: {
+              casual: "Great! Do you have outlet covers? Our baby's crawling.",
+              standard: "That's wonderful. Is there a baby-proofed outlet cover? Our baby is starting to crawl.",
+              formal: "That is excellent news. Furthermore, do you happen to have baby-proofed outlet covers available, as our infant is beginning to crawl?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Absolutely. We have a baby safety kit with outlet covers and cabinet locks. We'll also remove the minibar items from the lower shelf.",
             textZh: "当然。我们有婴儿安全套装，包含插座防护盖和柜锁。我们还会把迷你吧下层的东西移走。",
+            casualVersion: "Totally. We've got a baby safety kit with outlet covers and cabinet locks. And we'll clear out the minibar stuff from the bottom shelf.",
+            formalityVariants: {
+              casual: "Yep. Got a baby safety kit – outlet covers, cabinet locks. We'll also clear out the minibar on the bottom.",
+              standard: "Absolutely. We have a baby safety kit with outlet covers and cabinet locks. We'll also remove the minibar items from the lower shelf.",
+              formal: "Certainly. We provide a comprehensive baby safety kit, which includes outlet covers and cabinet locks. Additionally, we will ensure that all minibar contents are removed from the lower shelving units.",
+            },
             keyPhrases: [
               { en: "baby safety kit", zh: "婴儿安全套装" },
               { en: "outlet covers", zh: "插座防护盖" },
@@ -1189,12 +1933,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Very thoughtful. Can you also warm up baby formula if we bring it to the front desk?",
             textZh: "很贴心。我们把奶粉拿到前台能帮忙加热吗？",
+            casualVersion: "So nice. Can you guys warm up formula if we bring it down?",
+            commonMistake: {
+              wrong: "Can you warm milk?",
+              correct: "Can you warm up baby formula?",
+              explanation: "'Milk' 含义太广，用 'baby formula' 更精准。'Warm up' 是动词词组，指加热。",
+            },
+            formalityVariants: {
+              casual: "That's sweet. Can you warm up formula if we bring it to the front desk?",
+              standard: "Very thoughtful. Can you also warm up baby formula if we bring it to the front desk?",
+              formal: "That is very considerate. Would it also be possible to have baby formula warmed if we present it to the front desk personnel?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Of course. You can also call room service anytime and they'll bring a bottle warmer to your room. We also have a microwave in the business center you're welcome to use.",
             textZh: "当然。也可以随时叫客房服务，他们会送暖奶器到房间。商务中心也有微波炉可以用。",
+            casualVersion: "No problem. Just call room service, they'll bring a bottle warmer. There's also a microwave in the business center you can use.",
+            formalityVariants: {
+              casual: "Sure. Just call room service for a bottle warmer. Or use the microwave in the business center.",
+              standard: "Of course. You can also call room service anytime and they'll bring a bottle warmer to your room. We also have a microwave in the business center you're welcome to use.",
+              formal: "Certainly. You are welcome to contact room service at your convenience, and they will deliver a bottle warmer to your room. Furthermore, a microwave is available for guest use in our business center.",
+            },
             keyPhrases: [
               { en: "bottle warmer", zh: "暖奶器" },
               { en: "microwave", zh: "微波炉" },
@@ -1209,12 +1970,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "One more thing — is there a bathtub in our room? It's easier for bathing the baby.",
             textZh: "还有一个问题——我们房间有浴缸吗？给宝宝洗澡方便些。",
+            casualVersion: "Oh, one more thing – does our room have a bathtub? Way easier for bathing the baby.",
+            commonMistake: {
+              wrong: "Our room has bathtub?",
+              correct: "Is there a bathtub in our room?",
+              explanation: "中文常省略 '有' 后面的不定冠词，英文提问时需用 'Is there a...' 或 'Does our room have a...'。",
+            },
+            formalityVariants: {
+              casual: "Hey, one more thing – bathtub in our room? Easier for baby's bath.",
+              standard: "One more thing — is there a bathtub in our room? It's easier for bathing the baby.",
+              formal: "I have one additional inquiry – does our room feature a bathtub? It would be significantly more convenient for bathing our infant.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Your current room has a walk-in shower. If you'd prefer a room with a bathtub, I can switch you to one on the same floor at no extra charge.",
             textZh: "您现在的房间是步入式淋浴。如果需要浴缸的，我可以免费帮您换到同楼层有浴缸的房间。",
+            casualVersion: "Your room's got a walk-in shower. But if you want a tub, I can switch you to one on the same floor, no extra charge.",
+            formalityVariants: {
+              casual: "Right now it's a walk-in shower. But if you prefer a tub, I can move you to another room on this floor, no charge.",
+              standard: "Your current room has a walk-in shower. If you'd prefer a room with a bathtub, I can switch you to one on the same floor at no extra charge.",
+              formal: "Your current room is equipped with a walk-in shower. However, should you prefer a room featuring a bathtub, I would be pleased to relocate you to a comparable accommodation on the same floor, at no additional cost.",
+            },
             keyPhrases: [
               { en: "walk-in shower", zh: "步入式淋浴" },
               { en: "bathtub", zh: "浴缸" },
@@ -1229,6 +2007,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That would be perfect. Thank you for being so accommodating.",
             textZh: "那太好了。谢谢你们这么周到。",
+            casualVersion: "Perfect! Thanks for being so helpful.",
+            commonMistake: {
+              wrong: "That is good. Thank you for your help.",
+              correct: "That would be perfect. Thank you for being so accommodating.",
+              explanation: "'That would be perfect' 更委婉和礼貌。'Accommodating' 指体贴周到，比 'help' 更全面。",
+            },
+            formalityVariants: {
+              casual: "Perfect! Thanks for helping out.",
+              standard: "That would be perfect. Thank you for being so accommodating.",
+              formal: "That arrangement would be absolutely ideal. I sincerely appreciate your exceptional accommodation.",
+            },
             culturalNote: "\'accommodating\' 表示 \'乐于通融/周到的\'，是称赞服务态度的好词。",
           },
         ],
@@ -1257,6 +2046,16 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "Hi, I need to get some clothes laundered. How does it work?",
             textZh: "你好，我有衣服要洗。怎么操作？",
             casualVersion: "Hey, how do I get my laundry done?",
+            commonMistake: {
+              wrong: "How to operate?",
+              correct: "How does it work?",
+              explanation: "直接翻译“如何操作”不自然，\"how does it work\"更地道。",
+            },
+            formalityVariants: {
+              casual: "Hey, need to get some laundry done. What's the deal?",
+              standard: "Hi, I need to get some clothes laundered. How does it work?",
+              formal: "Good morning/afternoon, I require assistance with laundry service. Could you please explain the procedure?",
+            },
           },
           {
             speaker: "them",
@@ -1272,11 +2071,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Easy! There's a laundry bag in the closet. Just fill out the form, put your clothes in the bag, and leave it outside your door by 9 AM.", textZh: "很简单！衣柜里有洗衣袋。填好单子，把衣服放进袋子，9点前放门口就行。", actionHint: "用easy开头轻松引导", frequency: "common" },
               { textEn: "Sure. You'll find a bag and order form in your wardrobe. List what you're sending and set it outside before 9 in the morning.", textZh: "好的。衣橱里有洗衣袋和订单。列出要洗的衣物，早上9点前放门外。", actionHint: "用wardrobe替代closet", frequency: "occasional" },
             ],
+            casualVersion: "Laundry bag's in your closet, with a form. Just list your stuff, put the bag outside your door before 9 AM.",
+            formalityVariants: {
+              casual: "Bag's in the closet, with a form. Just list what you want done, put it out before 9 AM.",
+              standard: "There's a laundry bag in your closet with a form to fill out. Just list the items and place the bag outside your door before 9 AM.",
+              formal: "You will find a laundry bag and an accompanying form within your closet. Kindly itemize the garments on the form and place the bag outside your door prior to 9:00 AM.",
+            },
           },
           {
             speaker: "you",
             textEn: "When will I get them back?",
             textZh: "什么时候能拿回来？",
+            casualVersion: "When do I get 'em back?",
+            commonMistake: {
+              wrong: "When can I take them back?",
+              correct: "When will I get them back?",
+              explanation: "“拿回来”用 \"get back\" 比 \"take back\" 或 \"receive\" 更自然。",
+            },
+            formalityVariants: {
+              casual: "When do I get 'em back?",
+              standard: "When will I get them back?",
+              formal: "Could you please inform me of the expected return time for the laundered items?",
+            },
           },
           {
             speaker: "them",
@@ -1292,11 +2108,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "If you go with standard, you'll have them back by 6 PM the same day. If you're in a rush, we can do express — 3 hours, but it's 50% more.", textZh: "选标准服务的话当天下午6点前送回。赶时间的话有加急服务，3小时，加收50%。", actionHint: "用in a rush表示赶时间", frequency: "common" },
               { textEn: "Regular service gets everything back to you by 6 tonight. Need it sooner? Express is 3 hours with a 50 percent surcharge.", textZh: "普通服务今晚6点前全部送回。要更快吗？加急3小时，加收50%附加费。", actionHint: "用surcharge替代extra charge", frequency: "occasional" },
             ],
+            casualVersion: "Normal service is same-day, back by 6. Got express too, 3 hours, but it's an extra 50%.",
+            formalityVariants: {
+              casual: "Same-day service usually, back by 6. Express is 3 hours, but costs 50% more.",
+              standard: "Standard service is same-day — returned by 6 PM. We also offer express service with a 3-hour turnaround for an extra 50%.",
+              formal: "Our standard service ensures return on the same day, typically by 6:00 PM. Additionally, we provide an express service featuring a three-hour turnaround, subject to an additional charge of 50%.",
+            },
           },
           {
             speaker: "you",
             textEn: "Standard is fine. How much does it cost per item?",
             textZh: "标准就好。每件多少钱？",
+            casualVersion: "Standard's good. How much per item?",
+            commonMistake: {
+              wrong: "How much for one item?",
+              correct: "How much does it cost per item?",
+              explanation: "\"per item\" 比 \"for one item\" 更自然和专业，尤其在服务语境中。",
+            },
+            formalityVariants: {
+              casual: "Standard's good. How much per item?",
+              standard: "Standard is fine. How much does it cost per item?",
+              formal: "The standard service will suffice. Could you please provide the pricing per individual item?",
+            },
           },
           {
             speaker: "them",
@@ -1311,11 +2144,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Shirts run 6 dollars, pants are 8, and a full suit is 20 for dry cleaning. You'll find all the prices on the form.", textZh: "衬衫6美元，裤子8美元，西装全套干洗20美元。价格都在单子上。", actionHint: "用run表示价格为", frequency: "common" },
               { textEn: "A shirt's $6, trousers $8, and dry cleaning a suit is $20. The full price list is right there on the laundry slip.", textZh: "衬衫6美元，长裤8美元，西装干洗20美元。完整价格表在洗衣单上。", actionHint: "用trousers替代pants", frequency: "occasional" },
             ],
+            casualVersion: "Shirts are six bucks, pants eight, suits twenty for dry cleaning. Price list's on the form.",
+            formalityVariants: {
+              casual: "Shirts are $6, pants $8, dry cleaning a suit is $20. Price list's on the form.",
+              standard: "Shirts are $6, pants are $8, and a full suit is $20 for dry cleaning. The price list is on the laundry form.",
+              formal: "The pricing is as follows: shirts are $6, trousers are $8, and a full suit for dry cleaning is $20. The complete price list is available on the laundry form provided.",
+            },
           },
           {
             speaker: "you",
             textEn: "I have a silk blouse — should that be dry cleaned?",
             textZh: "我有一件丝绸上衣——需要干洗吗？",
+            casualVersion: "Got a silk blouse—should I get that dry cleaned?",
+            commonMistake: {
+              wrong: "Does it need dry clean?",
+              correct: "Should that be dry cleaned?",
+              explanation: "\"dry clean\" 是动词，\"dry cleaning\" 是名词。使用被动语态或 \"need + gerund\" 更地道。",
+            },
+            formalityVariants: {
+              casual: "Got a silk blouse—should I dry clean that?",
+              standard: "I have a silk blouse — should that be dry cleaned?",
+              formal: "I possess a silk blouse; would you advise dry cleaning for this particular garment?",
+            },
           },
           {
             speaker: "them",
@@ -1331,11 +2181,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Definitely dry clean for silk. Just note it on the form and our team will take extra care with it.", textZh: "丝绸肯定要干洗。在单子上标注一下，我们会格外小心。", actionHint: "简洁建议干洗", frequency: "common" },
               { textEn: "Yes, silk and delicates should always go to dry cleaning. Mark it on the slip and we'll treat it gently.", textZh: "是的，丝绸和娇贵面料都应该干洗。在单子上标注，我们会轻柔处理。", actionHint: "用delicates表示娇贵面料", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, we suggest dry cleaning for silk and wool. Just mark it on the form, we'll take care of it.",
+            formalityVariants: {
+              casual: "Yeah, silk and wool usually get dry cleaned. Just mark the form, we'll be careful.",
+              standard: "Yes, we recommend dry cleaning for silk and wool items. Just mark it on the form and we'll handle it with care.",
+              formal: "Indeed, we strongly recommend dry cleaning for garments composed of silk and wool. Kindly indicate this preference on the form, and we shall ensure it is handled with the utmost care.",
+            },
           },
           {
             speaker: "you",
             textEn: "Got it. I'll put the bag out tonight. Thanks!",
             textZh: "明白了。我今晚把袋子放出去。谢谢！",
+            casualVersion: "Gotcha. I'll put the bag out tonight. Thanks!",
+            commonMistake: {
+              wrong: "I understand.",
+              correct: "Got it.",
+              explanation: "\"Got it\" 是表示“明白了”的常见地道口语，比 \"I understand\" 更自然。",
+            },
+            formalityVariants: {
+              casual: "Gotcha. I'll put the bag out tonight. Thanks!",
+              standard: "Got it. I'll put the bag out tonight. Thanks!",
+              formal: "Understood. I will place the bag outside this evening. Thank you.",
+            },
           },
         ],
       },
@@ -1450,6 +2317,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, where can I get pool towels?",
             textZh: "你好，在哪里拿泳池毛巾？",
+            casualVersion: "Hey, where can I grab some pool towels?",
+            commonMistake: {
+              wrong: "Hi, how can I get pool towel?",
+              correct: "Hi, where can I get pool towels?",
+              explanation: "问地点用 \"where\"，\"towel\" 可数，通常是多条。",
+            },
+            formalityVariants: {
+              casual: "Hey, where do I get pool towels?",
+              standard: "Hi, where can I get pool towels?",
+              formal: "Excuse me, could you please direct me to where I might obtain pool towels?",
+            },
           },
           {
             speaker: "them",
@@ -1464,11 +2342,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "You've come to the right place! What room are you in? I'll get you set up. How many towels?", textZh: "找对地方了！您哪个房间？我帮您登记。要几条毛巾？", actionHint: "热情引导", frequency: "common" },
               { textEn: "Right here at the desk! Just need your room number to sign them out. How many would you like?", textZh: "就在这个台子！只需要房间号登记一下。要几条？", actionHint: "用sign out替代check out", frequency: "occasional" },
             ],
+            casualVersion: "Right here! Just tell me your room number and I'll get 'em for ya. How many you need?",
+            formalityVariants: {
+              casual: "Right here! Just room number, I'll grab 'em. How many?",
+              standard: "Right here! Just give me your room number and I'll check out towels for you. How many do you need?",
+              formal: "They are available right here. Kindly provide your room number, and I will issue the towels to you. May I inquire as to the quantity required?",
+            },
           },
           {
             speaker: "you",
             textEn: "Room 1208. Two towels, please.",
             textZh: "1208房间。两条，谢谢。",
+            casualVersion: "1208. Two, please.",
+            formalityVariants: {
+              casual: "1208. Two, please.",
+              standard: "Room 1208. Two towels, please.",
+              formal: "My room number is 1208. I would appreciate two towels, please.",
+            },
           },
           {
             speaker: "them",
@@ -1483,11 +2373,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "There you go! When you're finished, just drop them in the towel bin near the entrance. Heads up — there's a $25 fee if one doesn't come back.", textZh: "给您！用完放到入口附近的毛巾箱就行。提醒一下，丢失一条收25美元。", actionHint: "用heads up表示提醒", frequency: "common" },
               { textEn: "Here you are! Please toss them in the collection basket by the gate when done. Lost towels are charged at 25 each.", textZh: "给您！用完请扔到门口的回收篮。丢失的毛巾每条收25美元。", actionHint: "用collection basket替换", frequency: "occasional" },
             ],
+            casualVersion: "Here ya go. Just put 'em in the bin by the pool entrance when you're done. Missing one's $25.",
+            formalityVariants: {
+              casual: "Here. Put 'em in the bin by the entrance when you're done. Lose one, it's $25.",
+              standard: "Here you go. Please return them to the bin by the pool entrance when you're done. There's a $25 charge per towel if they go missing.",
+              formal: "Here are your towels. We kindly request that they be returned to the designated bin situated near the pool entrance upon completion of your use. Please be advised that a replacement fee of $25 per towel will be applied for any missing items.",
+            },
           },
           {
             speaker: "you",
             textEn: "Got it. Are there lounge chairs available?",
             textZh: "明白了。有躺椅吗？",
+            casualVersion: "Got it. Any lounge chairs open?",
+            commonMistake: {
+              wrong: "Got it. Have lounge chairs available?",
+              correct: "Got it. Are there lounge chairs available?",
+              explanation: "询问“是否有”用 \"Are there...\" 或 \"Do you have...\" 更自然。",
+            },
+            formalityVariants: {
+              casual: "Got it. Any lounge chairs?",
+              standard: "Got it. Are there lounge chairs available?",
+              formal: "Understood. May I inquire if there are any lounge chairs currently available?",
+            },
           },
           {
             speaker: "them",
@@ -1503,11 +2410,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Plenty of loungers out there — just grab any open one. There are parasols too if you want shade. And the bar's open till 6.", textZh: "外面有很多躺椅——找空的坐就行。想遮阳也有太阳伞。酒吧开到6点。", actionHint: "用parasol替代umbrella", frequency: "common" },
               { textEn: "Just pick any free chair — it's first come, first served. We've got sun umbrellas too. The pool bar closes at 6 PM.", textZh: "随便找空椅子坐就行，先到先得。也有太阳伞。泳池酒吧6点关门。", actionHint: "更直接地表达", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, first come, first served. Got umbrellas too if you want some shade. Pool bar's open 'til 6.",
+            formalityVariants: {
+              casual: "Yeah, first come, first served. Umbrellas too, if you want shade. Bar's open 'til 6.",
+              standard: "Yes, first come, first served. We also have umbrellas if you'd like some shade. The poolside bar is open until 6 PM.",
+              formal: "Yes, they are available on a first-come, first-served basis. Additionally, we provide umbrellas should you desire some shade. The poolside bar operates until 6 PM.",
+            },
           },
           {
             speaker: "you",
             textEn: "Can I order drinks from the poolside bar to my chair?",
             textZh: "能从泳池酒吧点饮料送到躺椅吗？",
+            casualVersion: "Can I get drinks delivered from the bar to my chair?",
+            commonMistake: {
+              wrong: "Can I order drinks from the poolside bar to my chair?",
+              correct: "Can I have drinks delivered from the poolside bar to my chair?",
+              explanation: "\"order...to\" 略显生硬，\"have...delivered\" 或 \"get...delivered\" 更自然。",
+            },
+            formalityVariants: {
+              casual: "Can I get drinks brought to my chair from the bar?",
+              standard: "Can I order drinks from the poolside bar to my chair?",
+              formal: "Is it possible to order beverages from the poolside bar and have them delivered directly to my lounge chair?",
+            },
           },
           {
             speaker: "them",
@@ -1522,6 +2446,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure! Just wave over any staff and they'll bring drinks to your chair. We use plastic glasses by the pool. You can put it on your room.", textZh: "当然！招招手叫工作人员就行，他们会送到躺椅旁。泳池边用塑料杯。可以记房间账。", actionHint: "用wave over替代flag down", frequency: "common" },
               { textEn: "Absolutely — we do poolside service. Just catch the eye of a server. Everything comes in plastic for safety, and it goes on your room tab.", textZh: "当然，我们有泳池边服务。看到服务员招呼一下就行。出于安全都用塑料杯，记房间账。", actionHint: "用catch the eye表示引起注意", frequency: "occasional" },
             ],
+            casualVersion: "Totally! Just flag down any staff. We use plastic cups for safety, and you can charge it to your room.",
+            formalityVariants: {
+              casual: "Yep! Just flag down staff. Plastic cups for safety. Charge to your room.",
+              standard: "Absolutely! Just flag down any staff member. We serve drinks in plastic cups by the pool for safety. You can charge to your room.",
+              formal: "Certainly! Kindly signal any available staff member. For safety reasons, beverages are served in plastic cups when by the pool. You are welcome to charge any purchases to your room.",
+            },
           },
         ],
       },
@@ -1536,12 +2466,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Excuse me, someone seems to have taken our towels while we were swimming. Our stuff is still on the chairs.",
             textZh: "不好意思，我们游泳时毛巾好像被别人拿走了。我们的东西还在椅子上。",
+            casualVersion: "Hey, looks like someone snagged our towels while we were swimming. Our stuff's still on the chairs.",
+            commonMistake: {
+              wrong: "Someone took our towels.",
+              correct: "Someone seems to have taken our towels.",
+              explanation: "“seems to have taken” 更委婉，避免直接指责。",
+            },
+            formalityVariants: {
+              casual: "Hey, looks like our towels got taken while we were swimming. Our stuff's still there.",
+              standard: "Excuse me, it appears our towels were taken while we were swimming. Our belongings are still on the chairs.",
+              formal: "Pardon me, but it seems our towels have been inadvertently removed while we were utilizing the swimming facilities. Our personal effects remain unattended on the lounge chairs.",
+            },
           },
           {
             speaker: "them",
             role: "泳池服务员",
             textEn: "I'm sorry about that. It happens sometimes. I'll bring you fresh towels right away. Can you confirm your room number?",
             textZh: "很抱歉。这种情况偶尔会发生。我马上给您拿新的。能确认一下房间号吗？",
+            casualVersion: "Oh, shoot, sorry 'bout that. Yeah, happens. I'll grab you fresh towels ASAP. Room number confirmation?",
+            formalityVariants: {
+              casual: "Oh, sorry about that. Happens. I'll get you new towels right away. Room number?",
+              standard: "I apologize for that inconvenience. It does occur occasionally. I'll bring you fresh towels immediately. May I please confirm your room number?",
+              formal: "My sincerest apologies for this unfortunate incident. It is an occurrence we sometimes encounter. I shall retrieve fresh towels for you without delay. Could you kindly provide your room number for verification?",
+            },
             keyPhrases: [
               { en: "fresh towels", zh: "新毛巾" },
             ],
@@ -1554,12 +2501,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Room 1208. Will we be charged for the missing ones?",
             textZh: "1208房间。丢的那些会收我们钱吗？",
+            casualVersion: "1208. We gonna get charged for the missing ones?",
+            commonMistake: {
+              wrong: "Will charge us for missing ones?",
+              correct: "Will we be charged for the missing ones?",
+              explanation: "缺少主语和助动词，听起来不自然。",
+            },
+            formalityVariants: {
+              casual: "1208. Are we getting charged for these?",
+              standard: "It's Room 1208. Will we incur a charge for the towels that are no longer here?",
+              formal: "Our room number is 1208. We are inquiring as to whether we will be assessed a fee for the towels that are currently unaccounted for.",
+            },
           },
           {
             speaker: "them",
             role: "泳池服务员",
             textEn: "Don't worry — since you reported it to us, we'll note it in the system and waive the charge. These things happen.",
             textZh: "别担心——既然您跟我们说了，我们会在系统里备注，免除费用。这种事难免。",
+            casualVersion: "Nah, don't sweat it. Since you told us, we'll just note it and waive the charge. Stuff happens.",
+            formalityVariants: {
+              casual: "No worries. Since you told us, we'll just note it and waive the charge. Happens.",
+              standard: "Please don't be concerned. As you have reported this to us, we will make a note in our system and waive any potential charges. Such incidents do occur.",
+              formal: "Rest assured, there is no need for concern. Given that you have promptly reported this matter, we will document it within our system and accordingly waive any charges. These situations are occasionally unavoidable.",
+            },
             keyPhrases: [
               { en: "waive the charge", zh: "免除费用" },
               { en: "note it in the system", zh: "在系统里备注" },
@@ -1573,6 +2537,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you, that's a relief. Is there somewhere we can lock our valuables?",
             textZh: "谢谢，那就放心了。有地方可以锁贵重物品吗？",
+            casualVersion: "Thanks, good to hear. Anywhere we can lock up our valuables?",
+            commonMistake: {
+              wrong: "Where can we lock valuables?",
+              correct: "Is there somewhere we can lock our valuables?",
+              explanation: "直接问句没有主语和助动词，不礼貌也不自然。",
+            },
+            formalityVariants: {
+              casual: "Thanks, that's good. Can we lock up our valuables anywhere?",
+              standard: "Thank you, that's quite a relief. Is there a designated location where we can securely store our valuables?",
+              formal: "I appreciate that, it's quite reassuring. Could you please advise if there is a secure facility available for the safekeeping of our valuable possessions?",
+            },
             culturalNote: "\'that's a relief\' 表示松了一口气，是很地道的表达。",
           },
           {
@@ -1580,6 +2555,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "泳池服务员",
             textEn: "There are lockers in the changing room — they're free to use. Just bring your own lock, or you can borrow one from me for a $5 deposit.",
             textZh: "更衣室有储物柜——免费使用。自带锁，或押金5美元借一把。",
+            casualVersion: "Lockers in the changing room — free to use. Just gotta bring your own lock, or you can grab one from me for a $5 deposit.",
+            formalityVariants: {
+              casual: "Yeah, lockers in the changing room are free. Just need your own lock or borrow one from me for a $5 deposit.",
+              standard: "Yes, there are lockers located in the changing room, and they are complimentary for use. You may either bring your own lock or borrow one from me for a $5 deposit.",
+              formal: "Indeed, we provide lockers within the changing room facilities, which are available for use at no charge. Patrons are welcome to utilize their personal locks, or they may procure one from me in exchange for a $5 refundable deposit.",
+            },
             keyPhrases: [
               { en: "lockers", zh: "储物柜" },
               { en: "changing room", zh: "更衣室" },
@@ -1594,12 +2575,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'll borrow one. Here's $5.",
             textZh: "我借一把。给您5美元。",
+            casualVersion: "I'll just borrow one. Here's five.",
+            commonMistake: {
+              wrong: "I borrow one. Give you $5.",
+              correct: "I'll borrow one. Here's $5.",
+              explanation: "“I'll” 表示意愿，“Here's” 更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, I'll just borrow one. Here's five.",
+              standard: "I'll take you up on the offer to borrow one. Here is the $5.",
+              formal: "I shall avail myself of the option to borrow one. Kindly accept this $5 deposit.",
+            },
           },
           {
             speaker: "them",
             role: "泳池服务员",
             textEn: "Here's your lock and key. Return it before the pool closes at 9 PM and you'll get your deposit back. Enjoy the rest of your swim!",
             textZh: "给您锁和钥匙。晚上9点泳池关门前还回来就退押金。游泳愉快！",
+            casualVersion: "Here's your lock 'n' key. Just bring it back before the pool closes at 9, you'll get your five back. Have a good rest of your swim!",
+            formalityVariants: {
+              casual: "Here's your lock and key. Bring it back before 9 PM pool close, get your deposit. Enjoy your swim!",
+              standard: "Here are your lock and key. Please ensure its return prior to the pool's closing time at 9 PM to reclaim your deposit. Enjoy the remainder of your swim!",
+              formal: "I present to you your lock and corresponding key. Kindly return these items before the swimming facility closes at 9 PM to facilitate the refund of your deposit. I trust you will thoroughly enjoy the remainder of your aquatic experience!",
+            },
             keyPhrases: [
               { en: "lock and key", zh: "锁和钥匙" },
               { en: "pool closes", zh: "泳池关门" },
@@ -1730,12 +2728,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Excuse me! My son slipped on the wet floor near the pool and scraped his knee.",
             textZh: "不好意思！我儿子在泳池旁的湿地板上滑倒了，膝盖擦伤了。",
+            casualVersion: "Hey! My son slipped on the wet floor by the pool, scraped his knee.",
+            commonMistake: {
+              wrong: "Excuse me! My son slipped near the pool's wet floor and scraped his knee.",
+              correct: "Excuse me! My son slipped on the wet floor near the pool and scraped his knee.",
+              explanation: "中文思维可能误用“near the pool's wet floor”，英文强调“湿地板”的公共性。",
+            },
+            formalityVariants: {
+              casual: "Hey! My son slipped on the wet floor by the pool, scraped his knee.",
+              standard: "Excuse me! My son slipped on the wet floor near the pool and scraped his knee.",
+              formal: "Pardon me, but my son unfortunately slipped on the wet floor adjacent to the pool area and sustained a scrape to his knee.",
+            },
           },
           {
             speaker: "them",
             role: "救生员",
             textEn: "Let me take a look. I have a first aid kit right here. Please sit him down on this chair.",
             textZh: "我看看。我这里有急救箱。请让他坐在这把椅子上。",
+            casualVersion: "Lemme see. Got a first aid kit right here. Have him sit on this chair.",
+            formalityVariants: {
+              casual: "Lemme see. Got a first aid kit right here. Have him sit on this chair.",
+              standard: "Let me take a look. I have a first aid kit right here. Please sit him down on this chair.",
+              formal: "Allow me to assess the situation. I have a first aid kit immediately available. Kindly have him seated on this chair.",
+            },
             keyPhrases: [
               { en: "first aid kit", zh: "急救箱" },
             ],
@@ -1748,12 +2763,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "It's just a scrape, but it's bleeding a little.",
             textZh: "只是擦伤，不过有点出血。",
+            casualVersion: "Just a scrape, but it's bleeding a bit.",
+            commonMistake: {
+              wrong: "It's just scrape, but it's bleeding small.",
+              correct: "It's just a scrape, but it's bleeding a little.",
+              explanation: "\"scrape\"是可数名词，需加冠词a。 \"bleeding small\"不自然。",
+            },
+            formalityVariants: {
+              casual: "Just a scrape, but it's bleeding a bit.",
+              standard: "It's just a scrape, but it's bleeding a little.",
+              formal: "It appears to be a superficial abrasion; however, there is a minor amount of bleeding.",
+            },
           },
           {
             speaker: "them",
             role: "救生员",
             textEn: "I'll clean it with antiseptic and put on a waterproof bandage. It's a minor scrape — he'll be fine.",
             textZh: "我用消毒液清洗一下，贴个防水创可贴。只是小擦伤——没事的。",
+            casualVersion: "I'll clean it with antiseptic, put on a waterproof bandage. Just a minor scrape — he'll be fine.",
+            formalityVariants: {
+              casual: "I'll clean it with antiseptic, put on a waterproof bandage. Just a minor scrape — he'll be fine.",
+              standard: "I'll clean it with antiseptic and put on a waterproof bandage. It's a minor scrape — he'll be fine.",
+              formal: "I will cleanse the wound with an antiseptic solution and apply a waterproof dressing. It is a relatively minor abrasion, and I assure you he will recover without issue.",
+            },
             keyPhrases: [
               { en: "antiseptic", zh: "消毒液" },
               { en: "waterproof bandage", zh: "防水创可贴" },
@@ -1767,12 +2799,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you. Can he still go back in the pool with the bandage?",
             textZh: "谢谢。贴着创可贴还能下水吗？",
+            casualVersion: "Thanks. Can he still go in the pool with that bandage?",
+            commonMistake: {
+              wrong: "Thank you. Can he still go to pool with bandage?",
+              correct: "Thank you. Can he still go back in the pool with the bandage?",
+              explanation: "英文口语中进入泳池用“go in the pool”，\"bandage\"需要冠词。",
+            },
+            formalityVariants: {
+              casual: "Thanks. Can he still go in the pool with that bandage?",
+              standard: "Thank you. Can he still go back in the pool with the bandage?",
+              formal: "I appreciate your assistance. Is it permissible for him to re-enter the swimming pool while wearing this bandage?",
+            },
           },
           {
             speaker: "them",
             role: "救生员",
             textEn: "I'd recommend waiting about 30 minutes to make sure the bleeding has stopped. The waterproof bandage should hold up in the water after that.",
             textZh: "建议等30分钟确认止血了再下水。防水创可贴之后在水里没问题。",
+            casualVersion: "Recommend waiting 'bout 30 minutes to make sure it's stopped bleeding. Waterproof bandage should hold up in the water after that.",
+            formalityVariants: {
+              casual: "Recommend waiting 'bout 30 minutes to make sure it's stopped bleeding. Waterproof bandage should hold up in the water after that.",
+              standard: "I'd recommend waiting about 30 minutes to make sure the bleeding has stopped. The waterproof bandage should hold up in the water after that.",
+              formal: "I would advise a waiting period of approximately 30 minutes to ensure hemostasis. Following that, the waterproof bandage is designed to remain intact in aquatic conditions.",
+            },
             keyPhrases: [
               { en: "bleeding has stopped", zh: "止血了" },
               { en: "hold up", zh: "撑得住/没问题" },
@@ -1786,6 +2835,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Should I fill out an incident report or anything?",
             textZh: "需要填事故报告什么的吗？",
+            casualVersion: "Need to fill out an incident report or something?",
+            commonMistake: {
+              wrong: "I need to fill incident report?",
+              correct: "Should I fill out an incident report or anything?",
+              explanation: "\"fill out a report\"是固定搭配。疑问句常见误用语序。",
+            },
+            formalityVariants: {
+              casual: "Need to fill out an incident report or something?",
+              standard: "Should I fill out an incident report or anything?",
+              formal: "Is it necessary for me to complete an incident report, or any other formal documentation?",
+            },
             culturalNote: "在国外酒店，即使小事故也可能需要填 incident report，这是正常流程。",
           },
           {
@@ -1793,6 +2853,13 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "救生员",
             textEn: "Yes, I'll need you to fill out a quick form — just standard procedure. It protects you in case you need to file an insurance claim later.",
             textZh: "是的，需要您填个简单表格——标准流程。万一之后需要保险理赔，这对您有保障。",
+            casualVersion: "Yeah, just a quick form — standard procedure. Protects you in case you need to file an insurance claim later.",
+            culturalNote: "美国对安全事故记录严谨，哪怕是小伤也会有记录，以防后续纠纷或保险理赔",
+            formalityVariants: {
+              casual: "Yeah, just a quick form — standard procedure. Protects you in case you need to file an insurance claim later.",
+              standard: "Yes, I'll need you to fill out a quick form — just standard procedure. It protects you in case you need to file an insurance claim later.",
+              formal: "Yes, I will require you to complete a brief form; this is merely standard operating procedure. It serves to protect your interests should there be a need to initiate an insurance claim at a later date.",
+            },
             keyPhrases: [
               { en: "standard procedure", zh: "标准流程" },
               { en: "insurance claim", zh: "保险理赔" },
@@ -1806,6 +2873,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Sure, I'll fill it out. Thanks for taking care of him so quickly.",
             textZh: "好的，我来填。谢谢你这么快就处理了。",
+            casualVersion: "Sure, I'll fill it out. Thanks for taking care of him so quick.",
+            commonMistake: {
+              wrong: "Sure, I will fill it. Thank you take care of him so fast.",
+              correct: "Sure, I'll fill it out. Thanks for taking care of him so quickly.",
+              explanation: "\"fill out\"是固定搭配，\"thanks for doing something\"是常用句式。",
+            },
+            formalityVariants: {
+              casual: "Sure, I'll fill it out. Thanks for taking care of him so quick.",
+              standard: "Sure, I'll fill it out. Thanks for taking care of him so quickly.",
+              formal: "Certainly, I will complete the form. My gratitude for your prompt attention in this matter.",
+            },
           },
         ],
       },
@@ -1832,6 +2910,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Is the gym free for hotel guests?",
             textZh: "酒店客人免费用健身房吗？",
+            casualVersion: "Gym free for guests?",
+            commonMistake: {
+              wrong: "Gym is free for hotel guests?",
+              correct: "Is the gym free for hotel guests?",
+              explanation: "中文思维容易省略动词be，但英文疑问句需要助动词。",
+            },
+            formalityVariants: {
+              casual: "Gym free for guests?",
+              standard: "Is the gym free for hotel guests?",
+              formal: "Excuse me, I was wondering if the gym facilities are complimentary for hotel guests?",
+            },
           },
           {
             speaker: "them",
@@ -1847,11 +2936,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Yep, totally free for guests! Just tap your key card at the door. It's open around the clock.", textZh: "对，住客完全免费！门口刷房卡就行。全天候开放。", actionHint: "用tap和around the clock", frequency: "common" },
               { textEn: "Yes, there's no charge at all. Use your room card to get in. The gym never closes — it's 24/7.", textZh: "是的，完全不收费。用房卡进入就行。健身房24小时不关门。", actionHint: "用24/7强调全天", frequency: "occasional" },
             ],
+            casualVersion: "Yep, it's free. Just swipe your key. Open 24/7.",
+            commonMistake: {
+              wrong: "It's free for all guests. Just use your room key to enter. Gym open 24 hours.",
+              correct: "Yes, it's complimentary for all guests. Just swipe your room key to enter. The gym is open 24 hours.",
+              explanation: "complimentary是更常用且礼貌的说法。使用'swipe'更自然，'open 24 hours'前通常加'The gym is'。",
+            },
+            formalityVariants: {
+              casual: "Yep, it's free. Just swipe your key. Open 24/7.",
+              standard: "Yes, it's complimentary for all guests. Just swipe your room key to enter. The gym is open 24 hours.",
+              formal: "Yes, absolutely. The fitness center is complimentary for all our registered guests. Kindly swipe your room key for access. Please note that the facility is accessible 24 hours a day.",
+            },
           },
           {
             speaker: "you",
             textEn: "What equipment do you have?",
             textZh: "有什么器材？",
+            casualVersion: "What gear do you guys have?",
+            commonMistake: {
+              wrong: "What equipment you have?",
+              correct: "What equipment do you have?",
+              explanation: "英文疑问句通常需要助动词'do'或'does'。",
+            },
+            formalityVariants: {
+              casual: "What gear's in the gym?",
+              standard: "What equipment do you have?",
+              formal: "Could you please tell me what fitness equipment is available in the gym?",
+            },
           },
           {
             speaker: "them",
@@ -1868,11 +2979,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We've got a pretty good setup — treadmills, ellipticals, bikes, dumbbells up to 50 pounds, and a cable machine. There's a stretching corner with mats too.", textZh: "设备挺齐全的——跑步机、椭圆机、单车、50磅以下哑铃和龙门架。还有个拉伸角有瑜伽垫。", actionHint: "用setup概括设备", frequency: "common" },
               { textEn: "Quite a lot actually! Cardio machines — treadmills, ellipticals, bikes — plus free weights and a cable station. We also have yoga mats in the stretch area.", textZh: "其实挺多的！有氧器械有跑步机、椭圆机、单车，还有自由重量和龙门架。拉伸区有瑜伽垫。", actionHint: "按类别分组介绍", frequency: "occasional" },
             ],
+            casualVersion: "Got treadmills, ellipticals, bikes, free weights (up to 50lbs), and a cable machine. Plus a stretching area with yoga mats.",
+            formalityVariants: {
+              casual: "Got treadmills, ellipticals, bikes, free weights (up to 50lbs), and a cable machine. Plus a stretching area with yoga mats.",
+              standard: "We have treadmills, ellipticals, stationary bikes, free weights up to 50 pounds, and a cable machine. There's also a stretching area with yoga mats.",
+              formal: "Our fitness center is equipped with a selection of cardio machines, including treadmills, ellipticals, and stationary bikes. We also offer free weights up to 50 pounds, a cable machine, and a dedicated stretching area complete with yoga mats.",
+            },
           },
           {
             speaker: "you",
             textEn: "Are there towels and water available?",
             textZh: "有毛巾和水吗？",
+            casualVersion: "Got towels and water?",
+            commonMistake: {
+              wrong: "There have towels and water?",
+              correct: "Are there towels and water available?",
+              explanation: "表达“有没有”时，常用“Are there...?”而不是“There have...”",
+            },
+            formalityVariants: {
+              casual: "Got towels and water?",
+              standard: "Are there towels and water available?",
+              formal: "May I inquire if towels and water are provided in the fitness center?",
+            },
           },
           {
             speaker: "them",
@@ -1887,11 +3015,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Grab a towel from the basket at the entrance and there's a water cooler in the corner. Just make sure to wipe the machines down when you're done.", textZh: "入口的篮子里拿毛巾，角落有饮水机。用完器材请擦干净。", actionHint: "用water cooler替换", frequency: "common" },
               { textEn: "Towels are by the door, and you'll find water over in the corner. We do ask everyone to clean the equipment after each use.", textZh: "毛巾在门口，水在角落。我们要求每个人用完器材后清洁一下。", actionHint: "用clean替代wipe down", frequency: "occasional" },
             ],
+            casualVersion: "Towels are in the basket by the door, water dispenser's in the corner. Just wipe down equipment after using.",
+            commonMistake: {
+              wrong: "Towels in the basket by door, water machine in corner. Please clean equipment after use.",
+              correct: "Towels are in the basket by the door, and there's a water dispenser in the corner. Please wipe down the equipment after use.",
+              explanation: "中文常省略冠词和系动词，英文需要。'water dispenser'比'water machine'更准确。",
+            },
+            formalityVariants: {
+              casual: "Towels are in the basket by the door, water dispenser's in the corner. Just wipe down equipment after using.",
+              standard: "Towels are in the basket by the door, and there's a water dispenser in the corner. Please wipe down the equipment after use.",
+              formal: "You'll find fresh towels conveniently placed in the basket near the entrance, and a water dispenser is located in the corner. We kindly request that you wipe down the equipment thoroughly after each use.",
+            },
           },
           {
             speaker: "you",
             textEn: "Sure. Is there a time limit on the cardio machines?",
             textZh: "好的。有氧器材有时间限制吗？",
+            casualVersion: "Got it. Any time limit on the cardio machines?",
+            commonMistake: {
+              wrong: "Cardio machines have time limit?",
+              correct: "Is there a time limit on the cardio machines?",
+              explanation: "英文疑问句通常需要助动词或'Is there'结构。",
+            },
+            formalityVariants: {
+              casual: "Got it. Any time limit on the cardio machines?",
+              standard: "Sure. Is there a time limit on the cardio machines?",
+              formal: "Understood. Could you please clarify if there is a time limit for using the cardio machines?",
+            },
           },
           {
             speaker: "them",
@@ -1906,11 +3056,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "When it's busy — usually mornings from 6 to 8 and evenings 5 to 7 — we ask that you keep it to 30 minutes on the cardio machines if there's a line.", textZh: "忙的时候——一般早上6到8点和傍晚5到7点——如果有人排队，有氧器材请控制在30分钟内。", actionHint: "用if there's a line表示排队", frequency: "common" },
               { textEn: "In the morning and evening rush — 6 to 8 AM, 5 to 7 PM — please try to keep your cardio to half an hour when others are waiting.", textZh: "早晚高峰——早6到8点、下午5到7点——有人等的话请尽量控制有氧在半小时内。", actionHint: "用rush替代peak hours", frequency: "occasional" },
             ],
+            casualVersion: "During peak hours (6-8 AM, 5-7 PM), we ask you to keep sessions to 30 mins if people are waiting.",
+            commonMistake: {
+              wrong: "Peak time (6-8 AM, 5-7 PM), we ask guest limit 30 minutes if other waiting.",
+              correct: "During peak hours — 6 to 8 AM and 5 to 7 PM — we ask guests to limit sessions to 30 minutes if others are waiting.",
+              explanation: "注意冠词、复数形式和动词时态，以及“others are waiting”的表达。",
+            },
+            formalityVariants: {
+              casual: "During peak hours (6-8 AM, 5-7 PM), we ask you to keep sessions to 30 mins if people are waiting.",
+              standard: "During peak hours — 6 to 8 AM and 5 to 7 PM — we ask guests to limit sessions to 30 minutes if others are waiting.",
+              formal: "During our designated peak hours, which are typically 6 to 8 AM and 5 to 7 PM, we respectfully request that guests limit their sessions on the cardio equipment to 30 minutes, particularly if other patrons are awaiting their turn.",
+            },
           },
           {
             speaker: "you",
             textEn: "No problem. Thanks for the info.",
             textZh: "没问题。谢谢告知。",
+            casualVersion: "No prob. Thanks!",
+            commonMistake: {
+              wrong: "No problem. Thank you for information.",
+              correct: "No problem. Thanks for the info.",
+              explanation: "“信息”前常加定冠词“the”，口语中“info”是“information”的缩写。",
+            },
+            formalityVariants: {
+              casual: "No prob. Thanks!",
+              standard: "No problem. Thanks for the info.",
+              formal: "Thank you, that's perfectly understandable. I appreciate you providing me with this information.",
+            },
           },
         ],
       },
@@ -1925,12 +3097,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Excuse me, the second treadmill seems to be broken. The belt keeps stopping.",
             textZh: "不好意思，第二台跑步机好像坏了。传送带一直停。",
+            casualVersion: "Hey, that second treadmill's kinda broken. The belt just stops.",
+            commonMistake: {
+              wrong: "The second treadmill is broken.",
+              correct: "The second treadmill seems to be broken.",
+              explanation: "直接说“是坏的”语气太强硬，用 seems to be 听起来更委婉礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, that second treadmill's kinda broken. Belt just stops.",
+              standard: "Excuse me, the second treadmill seems to be broken. The belt keeps stopping.",
+              formal: "Pardon me, I've noticed an issue with the second treadmill. The belt appears to be malfunctioning and intermittently ceases operation.",
+            },
           },
           {
             speaker: "them",
             role: "健身房管理员",
             textEn: "Thank you for letting me know. I'll put an out-of-order sign on it and call maintenance. In the meantime, the other three treadmills are working fine.",
             textZh: "谢谢告知。我贴个故障标签，联系维修。其他三台跑步机正常可用。",
+            casualVersion: "Thanks for the heads-up. I'll tag it and call maintenance. Other three are good though.",
+            formalityVariants: {
+              casual: "Thanks for the heads-up. I'll tag it and call maintenance. Other three are good though.",
+              standard: "Thank you for letting me know. I'll put an out-of-order sign on it and call maintenance. In the meantime, the other three treadmills are working fine.",
+              formal: "I appreciate you bringing this to my attention. I will immediately place an 'out of order' designation on the unit and contact our maintenance department. Please note that the remaining three treadmills are fully operational.",
+            },
             keyPhrases: [
               { en: "out-of-order", zh: "故障/停用" },
               { en: "maintenance", zh: "维修" },
@@ -1944,12 +3133,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Also, I'm not sure how to adjust this cable machine. Can you show me?",
             textZh: "还有，我不太会调这个龙门架。能教我一下吗？",
+            casualVersion: "Also, not sure how to adjust this cable machine. Can you show me?",
+            commonMistake: {
+              wrong: "I don't know how to adjust this cable machine.",
+              correct: "I'm not sure how to adjust this cable machine.",
+              explanation: "I don't know 语气较直接，I'm not sure 更委婉谦虚。",
+            },
+            formalityVariants: {
+              casual: "Also, not sure how to adjust this cable machine. Can you show me?",
+              standard: "Also, I'm not sure how to adjust this cable machine. Can you show me?",
+              formal: "Additionally, I'm unfamiliar with the adjustment mechanisms of this cable machine. Would you be so kind as to demonstrate the procedure?",
+            },
           },
           {
             speaker: "them",
             role: "健身房管理员",
             textEn: "Of course. Pull this pin out to change the weight — each plate is 10 pounds. This handle adjusts the height. What exercise are you trying to do?",
             textZh: "当然。拔出这个插销换重量——每片10磅。这个把手调高度。您想做什么动作？",
+            casualVersion: "Sure. Pull this pin for weight — 10 pounds a plate. This handle's for height. What're you trying to do?",
+            formalityVariants: {
+              casual: "Sure. Pull this pin for weight — 10 pounds a plate. This handle's for height. What're you trying to do?",
+              standard: "Of course. Pull this pin out to change the weight — each plate is 10 pounds. This handle adjusts the height. What exercise are you trying to do?",
+              formal: "Certainly. To modify the resistance, please retract this pin to select the desired weight, with each plate representing 10 pounds. This lever controls the vertical adjustment. May I inquire what specific exercise you intend to perform?",
+            },
             keyPhrases: [
               { en: "pin", zh: "插销" },
               { en: "plate", zh: "重量片" },
@@ -1963,12 +3169,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Chest press and lat pulldowns, if possible.",
             textZh: "推胸和高位下拉，可以吗？",
+            casualVersion: "Chest press and lat pulldowns, if I can.",
+            formalityVariants: {
+              casual: "Chest press and lat pulldowns, if I can.",
+              standard: "Chest press and lat pulldowns, if possible.",
+              formal: "I'd like to perform chest presses and lat pulldowns, if that is feasible with this equipment.",
+            },
           },
           {
             speaker: "them",
             role: "健身房管理员",
             textEn: "Sure — for chest press, set the pulleys at chest height like this. For lat pulldowns, attach this bar and sit here. Start with a lighter weight to get the feel.",
             textZh: "好的——推胸的话，把滑轮调到胸部高度，像这样。高位下拉用这个横杆，坐这里。先用轻重量找找感觉。",
+            casualVersion: "Yeah — for chest press, pulleys at chest height, like this. Lat pulldowns, use this bar, sit here. Start light to get the feel.",
+            formalityVariants: {
+              casual: "Yeah — for chest press, pulleys at chest height, like this. Lat pulldowns, use this bar, sit here. Start light to get the feel.",
+              standard: "Sure — for chest press, set the pulleys at chest height like this. For lat pulldowns, attach this bar and sit here. Start with a lighter weight to get the feel.",
+              formal: "Certainly. For the chest press, position the pulleys at chest level as demonstrated. For lat pulldowns, attach this specific bar and utilize this seating position. I recommend commencing with a lower resistance to familiarize yourself with the movement.",
+            },
             keyPhrases: [
               { en: "pulleys", zh: "滑轮" },
               { en: "lighter weight", zh: "轻重量" },
@@ -1982,12 +3200,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Got it. Are there any personal trainers available at the hotel?",
             textZh: "明白了。酒店有私人教练吗？",
+            casualVersion: "Got it. Any trainers at the hotel?",
+            commonMistake: {
+              wrong: "Do you have personal trainers at the hotel?",
+              correct: "Are there any personal trainers available at the hotel?",
+              explanation: "直接问 'Do you have' 稍显生硬，'Are there any...' 更自然。",
+            },
+            formalityVariants: {
+              casual: "Got it. Any trainers at the hotel?",
+              standard: "Got it. Are there any personal trainers available at the hotel?",
+              formal: "Understood. May I inquire if personal trainers are available for hire within the hotel's facilities?",
+            },
           },
           {
             speaker: "them",
             role: "健身房管理员",
             textEn: "Yes, we have a trainer available by appointment. It's $80 for a one-hour session. I can book one for you if you're interested.",
             textZh: "有的，需要预约。一小时80美元。感兴趣的话我可以帮您预约。",
+            casualVersion: "Yeah, we got a trainer, gotta book 'em. $80 for an hour. I can book one if you're interested.",
+            formalityVariants: {
+              casual: "Yeah, we got a trainer, gotta book 'em. $80 for an hour. I can book one if you're interested.",
+              standard: "Yes, we have a trainer available by appointment. It's $80 for a one-hour session. I can book one for you if you're interested.",
+              formal: "Yes, we do have a personal trainer whose services are available by appointment. The fee for a one-hour session is $80. I would be pleased to arrange a booking for you, should you be interested.",
+            },
             keyPhrases: [
               { en: "by appointment", zh: "需要预约" },
             ],
@@ -2000,6 +3235,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Maybe tomorrow morning. I'll think about it. Thanks for the help!",
             textZh: "也许明天早上。我考虑一下。谢谢帮忙！",
+            casualVersion: "Maybe tomorrow morning. I'll think about it. Thanks!",
+            formalityVariants: {
+              casual: "Maybe tomorrow morning. I'll think about it. Thanks!",
+              standard: "Maybe tomorrow morning. I'll think about it. Thanks for the help!",
+              formal: "Perhaps tomorrow morning. I will consider the option. Thank you for your assistance.",
+            },
           },
         ],
       },
@@ -2027,6 +3268,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I'd like to book a massage. What do you offer?",
             textZh: "你好，我想预约按摩。有什么项目？",
+            casualVersion: "Hey, wanna book a massage. What kinda stuff do you got?",
+            commonMistake: {
+              wrong: "I want to book a massage. What do you offer?",
+              correct: "I'd like to book a massage. What do you offer?",
+              explanation: "“I want to” 听起来太直接，用 “I'd like to” 更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, wanna book a massage. What massages you got?",
+              standard: "Hi, I'd like to book a massage. What services do you offer?",
+              formal: "Good morning/afternoon, I am interested in booking a massage session. Could you please inform me of your available services?",
+            },
           },
           {
             speaker: "them",
@@ -2043,11 +3295,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We have four types: Swedish, deep tissue, hot stone, and aromatherapy. You can choose either a 60-minute or 90-minute session.", textZh: "我们有四种：瑞典式、深层组织、热石和芳香疗法。可选60分钟或90分钟。", actionHint: "分开说类型和时长", frequency: "common" },
               { textEn: "Great choice coming here! We do Swedish, deep tissue, hot stone, and aroma treatments. All available in one-hour or hour-and-a-half sessions.", textZh: "来对地方了！有瑞典式、深层组织、热石和芳香护理。都可选一小时或一个半小时。", actionHint: "热情开场", frequency: "occasional" },
             ],
+            casualVersion: "We got Swedish, deep tissue, hot stone, and aromatherapy. You can do 60 or 90 mins.",
+            formalityVariants: {
+              casual: "We've got Swedish, deep tissue, hot stone, aromatherapy. Sessions are 60 or 90 minutes.",
+              standard: "We offer Swedish massage, deep tissue, hot stone, and aromatherapy. Sessions are 60 or 90 minutes in duration.",
+              formal: "Our services include Swedish massage, deep tissue massage, hot stone therapy, and aromatherapy. Sessions are available in 60-minute or 90-minute increments.",
+            },
           },
           {
             speaker: "you",
             textEn: "How much is a 60-minute Swedish massage?",
             textZh: "60分钟瑞典式按摩多少钱？",
+            casualVersion: "How much for a 60-min Swedish?",
+            commonMistake: {
+              wrong: "How much is 60-minute Swedish massage?",
+              correct: "How much is a 60-minute Swedish massage?",
+              explanation: "名词短语 “60-minute Swedish massage” 前需要冠词 “a”。",
+            },
+            formalityVariants: {
+              casual: "What's the price for a 60-min Swedish?",
+              standard: "How much does a 60-minute Swedish massage cost?",
+              formal: "Could you please inform me of the price for a 60-minute Swedish massage session?",
+            },
           },
           {
             speaker: "them",
@@ -2061,11 +3330,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "The regular price is 120 for an hour, but hotel guests get 15 percent off. So it'd come to 102.", textZh: "正价一小时120美元，但住客打85折，算下来102美元。", actionHint: "先说原价再说折扣", frequency: "common" },
               { textEn: "A 60-minute Swedish is $120. Since you're staying with us, you'd get the guest discount — 15% off, making it $102.", textZh: "60分钟瑞典式120美元。因为您是住客，享受85折优惠，102美元。", actionHint: "强调住客身份", frequency: "occasional" },
             ],
+            casualVersion: "It's 120 for 60 mins. Hotel guests get 15% off, so it's 102.",
+            formalityVariants: {
+              casual: "It's 120 for 60 mins. Hotel guests get 15% off, so it's 102.",
+              standard: "The cost is $120 for a 60-minute session. Hotel guests receive a 15% discount, making the total $102.",
+              formal: "The rate for a 60-minute session is $120. However, hotel guests are entitled to a 15% discount, reducing the price to $102.",
+            },
           },
           {
             speaker: "you",
             textEn: "That sounds good. Do you have anything available today?",
             textZh: "不错。今天有空位吗？",
+            casualVersion: "Sounds good. Got anything open today?",
+            commonMistake: {
+              wrong: "Do you have free time today?",
+              correct: "Do you have any availability today?",
+              explanation: "“free time” 指人有空闲，预约时用 “availability” 指时间空档。",
+            },
+            formalityVariants: {
+              casual: "Sounds good. Got anything open today?",
+              standard: "That sounds acceptable. Do you have any availability today?",
+              formal: "That is satisfactory. I was wondering if you have any appointments available for today?",
+            },
           },
           {
             speaker: "them",
@@ -2080,11 +3366,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Let me have a look... We've got 2 PM and 4:30 open today. Would you like a male or female masseuse?", textZh: "我看一下……今天下午2点和4:30有空。您想要男按摩师还是女按摩师？", actionHint: "用masseuse替代therapist", frequency: "common" },
               { textEn: "Checking now... Good news, we have a 2 o'clock and a 4:30 available. Any preference on your therapist — male or female?", textZh: "查看中……好消息，2点和4:30都有空位。技师有偏好吗——男的还是女的？", actionHint: "先报好消息", frequency: "occasional" },
             ],
+            casualVersion: "Lemme check... We got 2 PM and 4:30 open. Guy or girl therapist?",
+            formalityVariants: {
+              casual: "Lemme check... Got a 2 PM and 4:30 open. Male or female therapist?",
+              standard: "Please allow me a moment to check... We have an opening at 2 PM and another at 4:30 PM. Do you have a preference for a male or female therapist?",
+              formal: "Certainly, please allow me to ascertain our current availability. We currently have openings at 2 PM and 4:30 PM. Do you have a gender preference regarding your therapist?",
+            },
           },
           {
             speaker: "you",
             textEn: "4:30 works. A female therapist, please.",
             textZh: "4:30可以。女技师，谢谢。",
+            casualVersion: "4:30's good. Female therapist.",
+            commonMistake: {
+              wrong: "4:30 PM is okay. I want a female therapist.",
+              correct: "4:30 works. A female therapist, please.",
+              explanation: "“I want” 听起来不礼貌，用 “please” 更客气自然。",
+            },
+            formalityVariants: {
+              casual: "4:30's good. Female therapist.",
+              standard: "4:30 PM works for me. I would prefer a female therapist, please.",
+              formal: "The 4:30 PM slot would be suitable. I would prefer to have a female therapist, if possible.",
+            },
           },
           {
             speaker: "them",
@@ -2099,12 +3402,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Booked! Please come 15 minutes early so you have time to get changed and unwind in the steam room. Dress comfortably.", textZh: "预约好了！请提前15分钟来，这样有时间换衣服在蒸汽房放松一下。穿舒服的来。", actionHint: "用unwind替代relax", frequency: "common" },
               { textEn: "You're all set for 4:30. We suggest arriving at 4:15 to settle in — you can use the steam room and sauna before your session. Come in comfortable clothes.", textZh: "4:30预约好了。建议4:15到，可以先在蒸汽房和桑拿适应一下。穿舒适的衣服来。", actionHint: "提到桑拿", frequency: "occasional" },
             ],
+            casualVersion: "You're all set for 4:30. Just get here 15 mins early to change and chill in the steam room. Wear comfy clothes.",
+            formalityVariants: {
+              casual: "You're all set for 4:30. Just get here 15 mins early to change and chill in the steam room. Wear comfy clothes.",
+              standard: "Your appointment is confirmed for 4:30 PM. We kindly request that you arrive 15 minutes prior to your session to allow time for changing and to relax in our steam room. Please wear comfortable clothing.",
+              formal: "Your reservation for 4:30 PM has been confirmed. We respectfully advise clients to arrive 15 minutes in advance of their scheduled appointment to facilitate changing and to enjoy the amenities of our steam room. Comfortable attire is recommended.",
+            },
           },
           {
             speaker: "you",
             textEn: "Perfect. Should I tip the therapist?",
             textZh: "好的。需要给技师小费吗？",
             culturalNote: "在美国，水疗和按摩一般给15-20%小费。有些酒店水疗已含服务费，可以先确认。",
+            casualVersion: "Cool. Gotta tip the therapist?",
+            commonMistake: {
+              wrong: "Should I give tips?",
+              correct: "Should I tip the therapist?",
+              explanation: "“tip” 在此可直接作动词，或用 “give a tip”。",
+            },
+            formalityVariants: {
+              casual: "Cool. Gotta tip the therapist?",
+              standard: "Perfect. Is it customary to tip the therapist?",
+              formal: "Excellent. Regarding gratuity, is it customary or expected to provide a tip for the therapist?",
+            },
           },
           {
             speaker: "them",
@@ -2119,6 +3439,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Tips aren't included, but they're always appreciated. You can add it to the bill when you sign. Most people leave 15 to 20 percent.", textZh: "小费不含在内，但技师很感激。签单时可以加上。大多数人给15到20%。", actionHint: "用tips替代gratuity", frequency: "common" },
               { textEn: "The price doesn't cover gratuity. If you'd like to tip, just write it in when you settle the bill. Fifteen to twenty percent is typical.", textZh: "价格不含小费。想给的话签单时写上就行。一般15到20%。", actionHint: "用settle the bill", frequency: "occasional" },
             ],
+            casualVersion: "Tip's not included, but it's appreciated. Can add it when you sign the bill. Most people tip 15-20%.",
+            formalityVariants: {
+              casual: "Tip's not included, but it's appreciated. Can add it when you sign the bill. Most people tip 15-20%.",
+              standard: "Gratuity is not automatically included in the service fee, but it is certainly appreciated. You may add it to your total when you sign the bill. Most guests typically provide a tip of 15 to 20 percent.",
+              formal: "Please be advised that gratuity is not factored into the service charge, although it is certainly valued. You have the option to include it when settling your bill. The customary practice among most patrons is to leave a tip ranging from 15 to 20 percent.",
+            },
           },
         ],
       },
@@ -2134,12 +3460,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "Do you have any couples' packages? It's our anniversary.",
             textZh: "有情侣套餐吗？今天是我们的纪念日。",
             culturalNote: "\'anniversary\' 可以指结婚纪念日或恋爱纪念日。",
+            casualVersion: "Got any couples' packages? It's our anniversary.",
+            formalityVariants: {
+              casual: "Got any couples' packages? It's our anniversary.",
+              standard: "Do you have any couples' packages? It's our anniversary.",
+              formal: "I was wondering if you offer any special packages for couples, as it's our anniversary.",
+            },
           },
           {
             speaker: "them",
             role: "水疗接待",
             textEn: "Happy anniversary! We have a wonderful couples' retreat package — side-by-side massage, followed by a facial, and ending with champagne and chocolate truffles in our relaxation lounge.",
             textZh: "纪念日快乐！我们有很棒的情侣套餐——双人同步按摩，然后面部护理，最后在休息厅享用香槟和松露巧克力。",
+            casualVersion: "Happy anniversary! We've got this awesome couples' retreat package – side-by-side massage, then a facial, finishing up with champagne and truffles in our lounge.",
+            formalityVariants: {
+              casual: "Happy anniversary! We've got this awesome couples' retreat package – side-by-side massage, then a facial, finishing up with champagne and truffles in our lounge.",
+              standard: "Happy anniversary! We have a wonderful couples' retreat package — side-by-side massage, followed by a facial, and ending with champagne and chocolate truffles in our relaxation lounge.",
+              formal: "Happy anniversary to you both! We indeed offer an exquisite couples' retreat package, which includes a side-by-side massage, a rejuvenating facial, concluding with champagne and gourmet chocolate truffles in our private relaxation lounge.",
+            },
             keyPhrases: [
               { en: "couples' retreat", zh: "情侣套餐" },
               { en: "side-by-side", zh: "并排/同步" },
@@ -2155,12 +3493,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That sounds amazing. How long is the whole experience and how much does it cost?",
             textZh: "听起来太棒了。整套多长时间？多少钱？",
+            casualVersion: "Sounds amazing! How long's the whole thing and how much is it?",
+            commonMistake: {
+              wrong: "How long and how much is it?",
+              correct: "How long is it and how much does it cost?",
+              explanation: "连问时间和价格时，需要明确主语和谓语，避免生硬。",
+            },
+            formalityVariants: {
+              casual: "Sounds amazing! How long's the whole thing and how much is it?",
+              standard: "That sounds amazing. How long is the whole experience and how much does it cost?",
+              formal: "That sounds truly wonderful. Could you please inform me of the duration of the entire experience and its associated cost?",
+            },
           },
           {
             speaker: "them",
             role: "水疗接待",
             textEn: "It's a 2.5-hour experience for $350 per couple. That includes everything — massage, facial, refreshments, and use of our sauna and steam room all day.",
             textZh: "整套2.5小时，每对350美元。包含所有项目——按摩、面部护理、饮品，以及全天使用桑拿和蒸汽房。",
+            casualVersion: "It's two and a half hours, $350 a couple. Covers everything – massage, facial, snacks, plus you get the sauna and steam room all day.",
+            formalityVariants: {
+              casual: "It's two and a half hours, $350 a couple. Covers everything – massage, facial, snacks, plus you get the sauna and steam room all day.",
+              standard: "It's a 2.5-hour experience for $350 per couple. That includes everything — massage, facial, refreshments, and use of our sauna and steam room all day.",
+              formal: "Certainly, the entire experience spans two and a half hours and is priced at $350 per couple. This comprehensive rate encompasses the massage, facial, complimentary refreshments, and full-day access to our sauna and steam room facilities.",
+            },
             keyPhrases: [
               { en: "per couple", zh: "每对" },
               { en: "refreshments", zh: "茶点/饮品" },
@@ -2175,12 +3530,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Let's do it. What times are available tomorrow?",
             textZh: "就这个了。明天什么时间可以？",
+            casualVersion: "Yeah, let's do it. What times you got for tomorrow?",
+            formalityVariants: {
+              casual: "Yeah, let's do it. What times you got for tomorrow?",
+              standard: "Let's do it. What times are available tomorrow?",
+              formal: "That sounds perfect. Could you please inform me of your availability for tomorrow?",
+            },
           },
           {
             speaker: "them",
             role: "水疗接待",
             textEn: "We have 10 AM and 2 PM available. The morning slot is popular — I'd recommend booking it now before it fills up.",
             textZh: "有上午10点和下午2点。上午时段很抢手——建议现在就订。",
+            casualVersion: "Got 10 AM and 2 PM. The morning one's popular – probably best to book it now before it fills up.",
+            formalityVariants: {
+              casual: "Got 10 AM and 2 PM. The morning one's popular – probably best to book it now before it fills up.",
+              standard: "We have 10 AM and 2 PM available. The morning slot is popular — I'd recommend booking it now before it fills up.",
+              formal: "We currently have openings at 10:00 AM and 2:00 PM. Please be advised that the morning appointment is highly sought after, and I would recommend securing your reservation promptly to ensure its availability.",
+            },
             keyPhrases: [
               { en: "fills up", zh: "订满" },
             ],
@@ -2193,12 +3560,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "10 AM tomorrow, please. Can you charge it to room 1208?",
             textZh: "明天上午10点。能记到1208房间吗？",
+            casualVersion: "10 AM tomorrow, please. Can you just charge it to room 1208?",
+            formalityVariants: {
+              casual: "10 AM tomorrow, please. Can you just charge it to room 1208?",
+              standard: "10 AM tomorrow, please. Can you charge it to room 1208?",
+              formal: "We will proceed with the 10:00 AM appointment tomorrow, please. Kindly charge the services to room 1208.",
+            },
           },
           {
             speaker: "them",
             role: "水疗接待",
             textEn: "Done! I'll also arrange for a complimentary anniversary card and rose petals in the treatment room. It's a small touch we do for celebrations.",
             textZh: "好了！我还会安排免费的纪念日贺卡和治疗室的玫瑰花瓣。这是我们为庆祝活动准备的小心意。",
+            casualVersion: "Done! I'll also set up a complimentary anniversary card and rose petals in the room. Just a little something we do for celebrations.",
+            formalityVariants: {
+              casual: "Done! I'll also set up a complimentary anniversary card and rose petals in the room. Just a little something we do for celebrations.",
+              standard: "Done! I'll also arrange for a complimentary anniversary card and rose petals in the treatment room. It's a small touch we do for celebrations.",
+              formal: "It is done. Furthermore, I will personally arrange for a complimentary anniversary card and the inclusion of rose petals in your treatment room, as a customary gesture for such special celebrations.",
+            },
             keyPhrases: [
               { en: "complimentary", zh: "免费赠送的" },
               { en: "rose petals", zh: "玫瑰花瓣" },
@@ -2212,6 +3591,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Wow, that's so thoughtful. My wife will love it. Thank you!",
             textZh: "太贴心了。我太太一定很喜欢。谢谢！",
+            casualVersion: "Wow, that's super thoughtful. My wife's gonna love that. Thanks!",
+            formalityVariants: {
+              casual: "Wow, that's super thoughtful. My wife's gonna love that. Thanks!",
+              standard: "Wow, that's so thoughtful. My wife will love it. Thank you!",
+              formal: "Oh, that is exceptionally thoughtful. My wife will undoubtedly be delighted. Thank you very much for your kind gesture.",
+            },
           },
         ],
       },
@@ -2247,12 +3632,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Hello! Before we get started, any sore spots or areas I should stay away from?", textZh: "您好！开始之前，有没有疼痛或需要我避开的地方？", actionHint: "用sore spots口语化", frequency: "common" },
               { textEn: "Hi there. Just a quick check — any health concerns, injuries, or sensitive areas I should know about before we begin?", textZh: "您好。快速确认一下——开始前有什么健康问题、受伤或敏感部位需要我知道的吗？", actionHint: "更全面地询问", frequency: "occasional" },
             ],
+            casualVersion: "Hey. Any injuries or spots I should skip before we get started?",
+            formalityVariants: {
+              casual: "Hey. Any injuries or spots I should skip?",
+              standard: "Welcome. Before we begin, do you have any injuries or areas I should avoid?",
+              formal: "Welcome. To ensure your comfort and safety, please let me know if you have any pre-existing injuries or areas that require special consideration or should be avoided.",
+            },
           },
           {
             speaker: "you",
             textEn: "My lower back has been a bit sore from traveling. Could you focus on that area?",
             textZh: "旅途中下背有点酸痛。能重点按那个位置吗？",
             casualVersion: "Yeah, my lower back is killing me from all the travel.",
+            commonMistake: {
+              wrong: "My lower back sore from traveling. Can you focus that area?",
+              correct: "My lower back has been a bit sore from traveling. Could you focus on that area?",
+              explanation: "中文语序直接说“背酸”，英文需要有“is/has been”动词。focus on 才是固定搭配。",
+            },
+            formalityVariants: {
+              casual: "Lower back's kinda sore from traveling. Could you focus there?",
+              standard: "My lower back has been a bit sore from traveling. Could you focus on that area?",
+              formal: "I've been experiencing some soreness in my lower back due to travel. Would it be possible to concentrate the massage on that particular area?",
+            },
           },
           {
             speaker: "them",
@@ -2267,11 +3668,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Of course, I'll give your lower back extra attention. Don't hesitate to tell me if the pressure needs adjusting — more or less, just say the word.", textZh: "当然，我会重点关注您的下背部。力度需要调整随时说——要重要轻，说一声就好。", actionHint: "用say the word表示开口说", frequency: "common" },
               { textEn: "Sure thing. I'll work on that area more. Throughout the session, please speak up if you want me to go deeper or ease off.", textZh: "没问题。我会多按那个部位。过程中想要我加重或减轻随时说。", actionHint: "用go deeper和ease off", frequency: "occasional" },
             ],
+            casualVersion: "For sure. I'll spend more time on your lower back. Just tell me if the pressure's too much or not enough, anytime.",
+            formalityVariants: {
+              casual: "Yeah, totally. I'll hit your lower back extra. Just tell me if the pressure's off.",
+              standard: "Absolutely. I'll spend extra time on your lower back. Please let me know at any point if the pressure is too much or too little.",
+              formal: "Certainly. I will allocate additional time to address your lower back. Kindly inform me immediately if the pressure is not to your preference, either too intense or insufficient.",
+            },
           },
           {
             speaker: "you",
             textEn: "Okay, will do.",
             textZh: "好的。",
+            casualVersion: "Yep, got it.",
+            commonMistake: {
+              wrong: "Okay, I will do.",
+              correct: "Okay, will do.",
+              explanation: "“Will do”是口语中表示“我会照办”的简洁说法，不需要加主语。",
+            },
+            formalityVariants: {
+              casual: "Yep, got it.",
+              standard: "Okay, will do.",
+              formal: "Understood. Thank you.",
+            },
           },
           {
             speaker: "them",
@@ -2286,12 +3704,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "How does the pressure feel? Want me to go deeper or keep it lighter?", textZh: "力度感觉怎么样？要我再深一点还是保持轻柔？", actionHint: "用go deeper替代harder", frequency: "common" },
               { textEn: "Is this comfortable for you? I can increase or decrease the pressure — just let me know.", textZh: "这样舒服吗？我可以加大或减小力度——跟我说就行。", actionHint: "用increase/decrease", frequency: "occasional" },
             ],
+            casualVersion: "Pressure good? Want it harder or softer?",
+            formalityVariants: {
+              casual: "Pressure okay? Harder or softer?",
+              standard: "How's the pressure right now? Would you like it harder or softer?",
+              formal: "Could you please inform me about the current pressure? Would you prefer it to be more intense or gentler?",
+            },
           },
           {
             speaker: "you",
             textEn: "A little harder, please. Especially on the shoulders.",
             textZh: "重一点。特别是肩膀部位。",
             culturalNote: "按摩时别忍着不说话。说 \'harder\' 或 \'softer\' 是完全正常的沟通。",
+            casualVersion: "Bit harder, please. Especially on the shoulders.",
+            commonMistake: {
+              wrong: "More hard, please.",
+              correct: "A little harder, please.",
+              explanation: "形容词比较级是harder，不是more hard。",
+            },
+            formalityVariants: {
+              casual: "Yeah, a bit harder. Shoulders especially.",
+              standard: "A little harder, please. Especially on the shoulders.",
+              formal: "I would appreciate a slightly firmer pressure, particularly in the shoulder area.",
+            },
           },
           {
             speaker: "them",
@@ -2306,11 +3741,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Is that good? Your shoulders are really tight. There's a big knot right here I'm going to work on.", textZh: "可以吗？您的肩膀真的很紧。这里有个大的结我来重点处理。", actionHint: "用work on表示处理", frequency: "common" },
               { textEn: "How's that feel? I'm finding a lot of tightness in your shoulders — especially this spot. I'll try to release it.", textZh: "感觉怎么样？您肩膀很多地方很紧——特别是这个点。我试着帮您松开。", actionHint: "用release表示松开", frequency: "occasional" },
             ],
+            casualVersion: "Better? Wow, can feel a lot of tension in your shoulders. This knot's super tight.",
+            formalityVariants: {
+              casual: "That feel better? Your shoulders are super tense. This knot's really tight.",
+              standard: "How's that? I can feel a lot of tension in your shoulders. This knot right here is quite tight.",
+              formal: "Is that more comfortable for you? I've noted a significant amount of tension in your shoulder musculature; this particular knot appears to be rather constricted.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's perfect. It hurts a little but in a good way.",
             textZh: "正好。有点痛但是是舒服的那种。",
+            casualVersion: "Perfect. Kinda hurts, but like, in a good way.",
+            commonMistake: {
+              wrong: "It hurts good.",
+              correct: "It hurts a little but in a good way.",
+              explanation: "“hurts good”是语法错误。 “in a good way”或“feels good”才是地道表达。",
+            },
+            formalityVariants: {
+              casual: "Yeah, that's perfect. Kinda hurts, but it's a good hurt.",
+              standard: "That's perfect. It hurts a little but in a good way.",
+              formal: "That is ideal. I am experiencing a minor discomfort, but it is a therapeutic sensation.",
+            },
           },
           {
             speaker: "them",
@@ -2326,11 +3778,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "That means the muscles are loosening up. Make sure to drink lots of water afterward — it helps your body recover. Shall I get you some tea when we finish?", textZh: "说明肌肉在放松。做完后记得多喝水，帮助身体恢复。结束后要来杯茶吗？", actionHint: "用loosening up替代releasing", frequency: "common" },
               { textEn: "That's a good sign — the tension is melting away. Hydrate well after this to help flush everything out. I can bring you herbal tea afterward if you'd like.", textZh: "这是好现象——紧张在消退。做完后多补水帮助排出废物。想的话我可以给您泡杯花草茶。", actionHint: "用melting away生动表达", frequency: "occasional" },
             ],
+            casualVersion: "That's just the tension releasing. Definitely drink lots of water after to flush out toxins. Want some herbal tea when we're done?",
+            formalityVariants: {
+              casual: "Just the tension letting go. Drink tons of water after to get those toxins out. Want some tea?",
+              standard: "That's the tension releasing. I'd recommend drinking plenty of water after the massage to help flush out toxins. Would you like some herbal tea when we're done?",
+              formal: "That sensation indicates the release of muscular tension. I highly advise hydrating thoroughly with water post-massage to assist in detoxification. May I offer you some herbal tea upon completion of our session?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. This has been wonderful.",
             textZh: "好的。按得太舒服了。",
+            casualVersion: "Yeah, please. This was awesome.",
+            formalityVariants: {
+              casual: "Yep, please. This was awesome.",
+              standard: "Yes, please. This has been wonderful.",
+              formal: "Yes, thank you. This experience has been truly exceptional.",
+            },
           },
         ],
       },
@@ -2354,17 +3818,45 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Today I'll be working with our house blend of essential oils. Any allergies or sensitivities to fragrances I should know about?", textZh: "今天我会用我们的调配精油。有什么香味过敏或敏感需要注意的吗？", actionHint: "用house blend表示自调", frequency: "common" },
               { textEn: "I'm going to use our signature aromatherapy oils for the massage. Are there any scents that bother you or that you're allergic to?", textZh: "按摩时我会用我们的招牌芳疗精油。有什么气味让您不舒服或过敏的吗？", actionHint: "用bother表示不舒服", frequency: "occasional" },
             ],
+            casualVersion: "Gonna use our signature oil blend today. Any allergies to smells or oils?",
+            commonMistake: {
+              wrong: "Do you have any allergy to scent?",
+              correct: "Do you have any allergies to scents?",
+              explanation: "\"Allergy\" 和 \"scent\" 在这里用复数更自然。",
+            },
+            formalityVariants: {
+              casual: "Hey, using our signature oil blend. Any allergies to scents or oils?",
+              standard: "I'll be using our signature essential oil blend today. Do you have any allergies to scents or essential oils?",
+              formal: "We will be utilizing our signature essential oil blend this session. May I inquire if you have any sensitivities or allergies to particular scents or essential oils?",
+            },
           },
           {
             speaker: "you",
             textEn: "I'm not sure about specific oils, but strong floral scents sometimes give me a headache.",
             textZh: "具体精油我不确定，但太浓的花香有时会让我头疼。",
+            casualVersion: "Not sure 'bout specific oils, but strong flowery smells sometimes give me a headache.",
+            commonMistake: {
+              wrong: "I'm not sure specific oils.",
+              correct: "I'm not sure about specific oils.",
+              explanation: "\"Not sure\" 后面跟具体内容时，常加 \"about\"。",
+            },
+            formalityVariants: {
+              casual: "Not sure about specific oils, but strong floral stuff sometimes gives me a headache.",
+              standard: "I'm not sure about specific oils, but strong floral scents sometimes give me a headache.",
+              formal: "While I'm uncertain regarding specific essential oils, I do find that particularly potent floral scents occasionally induce a headache.",
+            },
           },
           {
             speaker: "them",
             role: "技师",
             textEn: "No problem. I'll use our calming eucalyptus blend instead — it's much lighter. I'll also do a small patch test on your wrist first.",
             textZh: "没问题。我换成镇静的尤加利精油——味道淡很多。我先在您手腕做个小测试。",
+            casualVersion: "No prob. I'll use our calming eucalyptus blend instead—way lighter. I'll also do a quick patch test on your wrist first.",
+            formalityVariants: {
+              casual: "No prob. I'll just use the eucalyptus blend, it's lighter. And I'll do a quick test on your wrist first.",
+              standard: "No problem. I'll use our calming eucalyptus blend instead — it's much lighter. I'll also do a small patch test on your wrist first.",
+              formal: "Certainly, that's perfectly understandable. I will opt for our calming eucalyptus blend as an alternative, which is significantly lighter. Furthermore, I will perform a small patch test on your wrist beforehand.",
+            },
             keyPhrases: [
               { en: "eucalyptus", zh: "尤加利/桉树" },
               { en: "patch test", zh: "皮肤测试" },
@@ -2378,12 +3870,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's fine, no reaction. Could you also turn the music down a little? It's a bit loud.",
             textZh: "没问题，没反应。能把音乐调小一点吗？有点吵。",
+            casualVersion: "Looks good, no reaction. Hey, could you turn the music down a bit? It's kinda loud.",
+            commonMistake: {
+              wrong: "It's a little loud.",
+              correct: "It's a bit loud.",
+              explanation: "\"A bit\" 听起来更自然，表示“有点，稍微”。",
+            },
+            formalityVariants: {
+              casual: "Looks fine, no reaction. Uh, could you turn the music down a bit? It's kinda loud.",
+              standard: "That's fine, no reaction. Could you also turn the music down a little? It's a bit loud.",
+              formal: "That appears satisfactory, with no adverse reaction. Would it be possible to reduce the volume of the music slightly? It is a touch pronounced.",
+            },
           },
           {
             speaker: "them",
             role: "技师",
             textEn: "Of course. Would you prefer a different playlist? We have nature sounds, piano, or complete silence.",
             textZh: "当然。想换个播放列表吗？有自然音效、钢琴曲，或者完全安静。",
+            casualVersion: "Sure. Wanna a different playlist? Got nature sounds, piano, or total silence.",
+            formalityVariants: {
+              casual: "Sure. Wanna switch playlists? We got nature sounds, piano, or nothing.",
+              standard: "Of course. Would you prefer a different playlist? We have nature sounds, piano, or complete silence.",
+              formal: "Certainly. Would you perhaps prefer an alternative musical selection? Our options include nature soundscapes, classical piano, or the tranquility of complete silence.",
+            },
             keyPhrases: [
               { en: "playlist", zh: "播放列表" },
               { en: "nature sounds", zh: "自然音效" },
@@ -2397,12 +3906,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Nature sounds would be great, just at a low volume.",
             textZh: "自然音效就好，音量低一点。",
+            casualVersion: "Nature sounds, that'd be great, just low volume.",
+            commonMistake: {
+              wrong: "Nature sound is great.",
+              correct: "Nature sounds would be great.",
+              explanation: "\"Nature sounds\" 是复数，且用 \"would be\" 表示假设或愿望。",
+            },
+            formalityVariants: {
+              casual: "Yeah, nature sounds would be great, just keep it low.",
+              standard: "Nature sounds would be great, just at a low volume.",
+              formal: "Nature soundscapes would be most agreeable, provided they are maintained at a subdued volume.",
+            },
           },
           {
             speaker: "them",
             role: "技师",
             textEn: "Done. Also, the room temperature — are you comfortable? I can adjust it or add another blanket to keep your feet warm.",
             textZh: "好了。还有室温——您舒服吗？我可以调温度或加一条毯子给脚保暖。",
+            casualVersion: "Done. So, room temp—comfy? I can change it or add a blanket for your feet.",
+            formalityVariants: {
+              casual: "Alright, that's done. Room temp good? I can change it or grab a blanket for your feet.",
+              standard: "Done. Also, the room temperature — are you comfortable? I can adjust it or add another blanket to keep your feet warm.",
+              formal: "That has been addressed. Furthermore, regarding the room temperature, are you presently comfortable? I am able to adjust it as needed or provide an additional blanket to ensure your feet remain warm.",
+            },
             keyPhrases: [
               { en: "room temperature", zh: "室温" },
             ],
@@ -2415,12 +3941,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "A blanket for my feet would be nice. Thank you for being so attentive.",
             textZh: "给脚盖条毯子吧。谢谢你这么细心。",
+            casualVersion: "Yeah, a blanket for my feet would be nice. Thanks for being so attentive.",
+            commonMistake: {
+              wrong: "A blanket for my feet is nice.",
+              correct: "A blanket for my feet would be nice.",
+              explanation: "\"Would be nice\" 表示一种礼貌的愿望或请求，比 \"is nice\" 更合适。",
+            },
+            formalityVariants: {
+              casual: "Yeah, a foot blanket would be good. Thanks for being so on top of it.",
+              standard: "A blanket for my feet would be nice. Thank you for being so attentive.",
+              formal: "An additional blanket for my feet would indeed be appreciated. I am very grateful for your attentiveness.",
+            },
           },
           {
             speaker: "them",
             role: "技师",
             textEn: "That's what we're here for. Just relax and let me know if you need anything at all. We have about 45 minutes left.",
             textZh: "这是我们该做的。放松就好，有任何需要随时说。还有大约45分钟。",
+            casualVersion: "That's why we're here. Just relax and let me know if you need anything. Got 'bout 45 mins left.",
+            commonMistake: {
+              wrong: "This is what we are here for.",
+              correct: "That's what we're here for.",
+              explanation: "\"That's what we're here for\" 是一个常用习语，表示“这是我们的职责”。",
+            },
+            formalityVariants: {
+              casual: "Exactly. Just relax, and yell if you need anything. Got 'bout 45 mins still.",
+              standard: "That's what we're here for. Just relax and let me know if you need anything at all. We have about 45 minutes left.",
+              formal: "It is our pleasure to ensure your comfort. Please do relax and do not hesitate to inform me should you require anything whatsoever. We have approximately 45 minutes remaining in your session.",
+            },
             keyPhrases: [
               { en: "that's what we're here for", zh: "这是我们该做的" },
             ],
@@ -2455,6 +4003,18 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I need to print my boarding pass. Can I use the business center?",
             textZh: "你好，我需要打印登机牌。可以用商务中心吗？",
+            casualVersion: "Hey, gotta print my boarding pass. Can I just use the biz center?",
+            culturalNote: "美国服务场景下'Hi'比'你好'更常用，更自然。",
+            commonMistake: {
+              wrong: "Hi, I want to print my boarding pass. Can I use the business center?",
+              correct: "Hi, I need to print my boarding pass. Can I use the business center?",
+              explanation: "'Want'显得直接，'need'更礼貌，或用'I'd like to'。",
+            },
+            formalityVariants: {
+              casual: "Hey, gotta print my boarding pass. Can I use the business center here?",
+              standard: "Hi, I need to print my boarding pass. May I use the business center?",
+              formal: "Good morning/afternoon, I require access to a printer for my boarding pass. Is the business center available for guest use?",
+            },
           },
           {
             speaker: "them",
@@ -2469,11 +4029,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure! It's open around the clock. You can hop on one of our computers or just email your file directly to the printer.", textZh: "当然！全天开放。可以用我们的电脑，也可以直接把文件发邮件到打印机。", actionHint: "用hop on表示使用", frequency: "common" },
               { textEn: "Absolutely. The business center is 24/7. Feel free to use the workstation or send documents to print by email.", textZh: "当然可以。商务中心全天候开放。随意使用工作站，或通过邮件发送文件打印。", actionHint: "用workstation替代computer", frequency: "occasional" },
             ],
+            casualVersion: "Totally! Biz center's open 24/7. You can use the computer here or just email your file to our printer.",
+            formalityVariants: {
+              casual: "Yeah, for sure! Business center's open all day. Just use the computer or email it to our printer.",
+              standard: "Certainly! The business center operates 24 hours a day. You're welcome to use the provided computer or forward your document to our printer via email.",
+              formal: "Absolutely. The business center is accessible twenty-four hours a day. Guests are welcome to utilize the on-site computer terminals or transmit their documents to our printer via email.",
+            },
           },
           {
             speaker: "you",
             textEn: "I'll use the computer. Is there a charge for printing?",
             textZh: "我用电脑吧。打印收费吗？",
+            casualVersion: "I'll just use the computer. Printing cost anything?",
+            commonMistake: {
+              wrong: "I use computer. Printing is free?",
+              correct: "I'll use the computer. Is there a charge for printing?",
+              explanation: "直接说'I use computer'不自然，'Printing is free?'太直接。用'I'll use'和'Is there a charge for'更地道。",
+            },
+            formalityVariants: {
+              casual: "Yeah, I'll just use the computer. Any charge for printing?",
+              standard: "I'll opt to use the computer. Is there a fee for printing services?",
+              formal: "I shall utilize the computer. Could you please inform me if there is an associated charge for printing services?",
+            },
           },
           {
             speaker: "them",
@@ -2490,11 +4067,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "B&W printing is free — up to 10 pages a day. If you need color, that's 50 cents a page.", textZh: "黑白打印免费——每天最多10页。彩色的话每页50美分。", actionHint: "用B&W缩写", frequency: "common" },
               { textEn: "For hotel guests, black and white is on the house — 10 pages daily. Color copies run 50 cents each.", textZh: "住客黑白打印免费，每天10页。彩色每页50美分。", actionHint: "用on the house表示免费", frequency: "occasional" },
             ],
+            casualVersion: "B&W prints are free, up to 10 pages a day. Color's 50 cents a page.",
+            formalityVariants: {
+              casual: "B&W's free, 10 pages max daily. Color's fifty cents a page.",
+              standard: "Black and white printing is complimentary, with a limit of 10 pages per day. Color prints are priced at 50 cents per page.",
+              formal: "Complimentary black and white printing is provided, with a daily allowance of up to ten pages. Color printing services are available at a rate of fifty cents per page.",
+            },
           },
           {
             speaker: "you",
             textEn: "Black and white is fine for the boarding pass. Where's the printer?",
             textZh: "登机牌黑白就行。打印机在哪？",
+            casualVersion: "B&W's totally fine for the boarding pass. Where's the printer at?",
+            commonMistake: {
+              wrong: "Black and white is good for boarding pass. Printer where?",
+              correct: "Black and white is fine for the boarding pass. Where's the printer?",
+              explanation: "'Good'和'fine'意思相近但'fine'更口语化。'Printer where?'语法错误，缺乏主语和助动词。",
+            },
+            formalityVariants: {
+              casual: "B&W's good for the boarding pass. Printer location?",
+              standard: "Black and white will suffice for the boarding pass. Could you please direct me to the printer?",
+              formal: "Black and white printing will be perfectly adequate for the boarding pass. May I inquire as to the precise location of the printing apparatus?",
+            },
           },
           {
             speaker: "them",
@@ -2510,11 +4104,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's right by the computer. Click print and your pages will come out on the side. Shout if you need a hand getting logged in.", textZh: "就在电脑旁边。点打印，纸从侧面出来。登录需要帮忙就喊我。", actionHint: "用shout表示叫我", frequency: "common" },
               { textEn: "The printer is over there, next to the workstation. Just press print and pick up your papers. Need help with the login?", textZh: "打印机在那边，工作站旁边。按打印然后取纸就行。登录需要帮忙吗？", actionHint: "直接询问是否需要帮助", frequency: "occasional" },
             ],
+            casualVersion: "It's right next to the computer. Just hit print, grab your pages from the tray. Lemme know if you need help logging in.",
+            formalityVariants: {
+              casual: "Printer's right by the computer. Hit print, grab your stuff from the tray. Holler if you need login help.",
+              standard: "The printer is situated adjacent to the computer workstation. Simply initiate the print command and retrieve your documents from the output tray. Please do not hesitate to ask if you require assistance with the login process.",
+              formal: "The printing apparatus is conveniently located contiguous to the computer workstation. You may proceed to activate the print function and subsequently collect your printed materials from the designated output tray. Should you require any assistance with the authentication process, please inform a member of staff.",
+            },
           },
           {
             speaker: "you",
             textEn: "What's the Wi-Fi password for the business center?",
             textZh: "商务中心的 Wi-Fi 密码是多少？",
+            casualVersion: "Wi-Fi password for the biz center?",
+            commonMistake: {
+              wrong: "Wi-Fi password is what?",
+              correct: "What's the Wi-Fi password?",
+              explanation: "疑问词要放在句首，这是英语基本语序。",
+            },
+            formalityVariants: {
+              casual: "Password for the biz center Wi-Fi?",
+              standard: "Could you please provide the Wi-Fi password for the business center?",
+              formal: "May I inquire as to the access credentials for the wireless network within the business center?",
+            },
           },
           {
             speaker: "them",
@@ -2529,11 +4140,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Same Wi-Fi as the hotel — just punch in your room number and last name. Or if you want a faster connection, each desk has an ethernet hookup.", textZh: "和酒店Wi-Fi一样——输入房间号和姓氏。想要更快的话，每个桌上有以太网接口。", actionHint: "用punch in和hookup", frequency: "common" },
               { textEn: "It uses the hotel's network — log in with your room number and surname. There are also LAN cables at each workstation if you need a more stable connection.", textZh: "用的是酒店网络——房间号和姓氏登录。每个工作站也有网线，如果需要更稳定的连接。", actionHint: "用LAN cables和stable", frequency: "occasional" },
             ],
+            casualVersion: "Same as the hotel Wi-Fi – just use your room number and last name to log in. If you want a wired connection, there's ethernet cables at each desk.",
+            formalityVariants: {
+              casual: "Same as the hotel's – room number and last name to log in. Wired? Each desk has ethernet.",
+              standard: "The Wi-Fi credentials are identical to those for the general hotel network; please utilize your room number and last name for login. Should you favor a wired connection, Ethernet cables are provided at each workstation.",
+              formal: "The authentication protocol for the business center's wireless network is consistent with that of the main hotel Wi-Fi system; kindly employ your room number and surname for access. Furthermore, for guests who may prefer a hardwired internet connection, Ethernet cables are readily available at every desk.",
+            },
           },
           {
             speaker: "you",
             textEn: "Perfect, I've got it printed. Thank you!",
             textZh: "好了，打印出来了。谢谢！",
+            casualVersion: "Got it, printed! Thanks!",
+            commonMistake: {
+              wrong: "Perfect, I print it. Thank you.",
+              correct: "Perfect, I've got it printed. Thank you!",
+              explanation: "表示'已经完成'要用完成时态'I've got it printed'或'I printed it'，不是'I print it'。",
+            },
+            formalityVariants: {
+              casual: "Awesome, done printing. Thanks!",
+              standard: "Excellent, I have successfully printed it. Thank you kindly!",
+              formal: "Splendid, the printing task has been completed. My sincere gratitude!",
+            },
           },
         ],
       },
@@ -2548,12 +4176,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I need to scan a signed contract and email it to my office urgently. Do you have a scanner?",
             textZh: "我需要紧急扫描一份签好的合同发邮件给公司。有扫描仪吗？",
+            casualVersion: "Gotta scan a signed contract, email it to my office ASAP. Got a scanner?",
+            commonMistake: {
+              wrong: "I need scan a signed contract urgently email to my office. Do you have scanner?",
+              correct: "I need to scan a signed contract and email it to my office urgently. Do you have a scanner?",
+              explanation: "动词前要加'to'，'urgently'是副词修饰'email'。'scanner'是可数名词，前面要加'a'。",
+            },
+            formalityVariants: {
+              casual: "Need to scan a contract, email it to my office ASAP. Got a scanner?",
+              standard: "I need to scan a signed contract and email it to my office urgently. Do you have a scanner?",
+              formal: "Excuse me, I require assistance with scanning a signed contract and emailing it to my office promptly. Do you happen to have a scanner available for guest use?",
+            },
           },
           {
             speaker: "them",
             role: "商务中心",
             textEn: "Yes, our multifunction printer can scan to PDF. Would you like me to help you with it?",
             textZh: "有的，我们的多功能打印机可以扫描成PDF。需要我帮您操作吗？",
+            casualVersion: "Yeah, our printer scans to PDF. Wanna hand with that?",
+            formalityVariants: {
+              casual: "Yeah, our printer scans to PDF. Want me to help?",
+              standard: "Yes, our multifunction printer can scan to PDF. Would you like me to help you with it?",
+              formal: "Yes, certainly. Our multifunction device is equipped with scanning capabilities, and it can generate PDF files. May I assist you with that process?",
+            },
             keyPhrases: [
               { en: "multifunction printer", zh: "多功能打印机" },
               { en: "scan to PDF", zh: "扫描成PDF" },
@@ -2567,12 +4212,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Yes, please. It's a 5-page contract. Can it scan all pages into one PDF?",
             textZh: "好的。一共5页合同。能扫到一个PDF里吗？",
+            casualVersion: "Yeah, please. Five-page contract. Can it scan 'em all into one PDF?",
+            commonMistake: {
+              wrong: "Yes, please. It's 5 pages contract. Can it scan to one PDF?",
+              correct: "Yes, please. It's a 5-page contract. Can it scan all pages into one PDF?",
+              explanation: "'5-page'作定语修饰'contract'时是单数；'all pages into one PDF'更完整。",
+            },
+            formalityVariants: {
+              casual: "Yeah, please. Five pages. Can it combine 'em into one PDF?",
+              standard: "Yes, please. It's a 5-page contract. Can it scan all pages into one PDF?",
+              formal: "Yes, that would be most helpful. The document is a 5-page contract. Is it capable of consolidating all pages into a single PDF file?",
+            },
           },
           {
             speaker: "them",
             role: "商务中心",
             textEn: "Absolutely. I'll set it to batch scan mode. Place all pages face down in the feeder tray. It'll create one PDF file.",
             textZh: "当然。我设置成批量扫描模式。把所有页面面朝下放到进纸口。会生成一个PDF文件。",
+            casualVersion: "Totally. I'll set it to batch scan. Just put all the pages face down in the feeder. It'll make one PDF.",
+            formalityVariants: {
+              casual: "Yep. I'll set it for batch. Just drop 'em face down in the feeder. One PDF, easy.",
+              standard: "Absolutely. I'll set it to batch scan mode. Place all pages face down in the feeder tray. It will create one PDF file.",
+              formal: "Certainly. I will configure the device for batch scanning mode. Kindly place all pages face down in the feeder tray, and it will subsequently compile them into a single PDF document.",
+            },
             keyPhrases: [
               { en: "batch scan", zh: "批量扫描" },
               { en: "face down", zh: "面朝下" },
@@ -2587,12 +4249,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Great. Can I email it directly from the machine or do I need to use the computer?",
             textZh: "好。能直接从机器发邮件还是要用电脑？",
+            casualVersion: "Cool. Can I email it from the machine direct, or gotta use the computer?",
+            commonMistake: {
+              wrong: "Great. Can I email it directly from machine or need use computer?",
+              correct: "Great. Can I email it directly from the machine or do I need to use the computer?",
+              explanation: "'machine'前需加'the'，'need'后加'to'，并补全疑问句结构。",
+            },
+            formalityVariants: {
+              casual: "Awesome. Email from here, or use a computer?",
+              standard: "Great. Can I email it directly from the machine, or do I need to use the computer?",
+              formal: "Excellent. May I inquire if the scanned document can be emailed directly from this device, or is it necessary to utilize a computer for that purpose?",
+            },
           },
           {
             speaker: "them",
             role: "商务中心",
             textEn: "You can enter your email address on the touchscreen and it'll send the PDF directly to you. Then you can forward it from your phone or the computer.",
             textZh: "在触摸屏上输入邮箱地址，PDF会直接发到您邮箱。然后用手机或电脑转发。",
+            casualVersion: "Just put your email on the touchscreen, it'll send the PDF right to ya. Then you can just forward it from your phone or computer.",
+            formalityVariants: {
+              casual: "Just pop your email in the touchscreen, and it'll shoot the PDF right over. Then you can forward it from your phone or laptop.",
+              standard: "You can enter your email address on the touchscreen, and it will send the PDF directly to you. Then you can forward it from your phone or the computer.",
+              formal: "You may input your email address onto the touchscreen interface, and the PDF document will be transmitted directly to you. Subsequently, you will be able to forward it from your mobile device or personal computer.",
+            },
             keyPhrases: [
               { en: "touchscreen", zh: "触摸屏" },
               { en: "forward", zh: "转发" },
@@ -2606,12 +4285,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's very convenient. Is there a charge for scanning?",
             textZh: "很方便。扫描收费吗？",
+            casualVersion: "Super convenient. Is scanning free?",
+            commonMistake: {
+              wrong: "That's very convenient. Scanning charge?",
+              correct: "That's very convenient. Is there a charge for scanning?",
+              explanation: "'scanning charge'不完整，疑问句需要有动词和主语。",
+            },
+            formalityVariants: {
+              casual: "So easy. Any charge for scanning?",
+              standard: "That's very convenient. Is there a charge for scanning?",
+              formal: "That is exceptionally convenient. May I inquire if there is an associated fee for the scanning service?",
+            },
           },
           {
             speaker: "them",
             role: "商务中心",
             textEn: "Scanning is free of charge for hotel guests. If you need to send an international fax, that's $3 per page.",
             textZh: "住店客人扫描免费。如果需要发国际传真，每页3美元。",
+            casualVersion: "Scanning's free for guests. International faxes are $3 a page though.",
+            formalityVariants: {
+              casual: "Scans are free if you're staying here. International faxes? That's $3 a page.",
+              standard: "Scanning is free of charge for hotel guests. If you need to send an international fax, that is $3 per page.",
+              formal: "Scanning services are provided complimentary for our hotel guests. However, should you require the transmission of an international fax, there is a charge of $3 per page.",
+            },
             keyPhrases: [
               { en: "free of charge", zh: "免费" },
               { en: "international fax", zh: "国际传真" },
@@ -2625,6 +4321,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "No fax needed, just the scan. Thank you so much for your help!",
             textZh: "不用传真，扫描就好。非常感谢你的帮助！",
+            casualVersion: "No fax, just the scan. Thanks a ton for the help!",
+            commonMistake: {
+              wrong: "No fax need, only scan. Thank you very much help!",
+              correct: "No fax needed, just the scan. Thank you so much for your help!",
+              explanation: "'needed'是过去分词作定语；'only scan'不自然，用'just the scan'更地道；'for your help'是完整表达。",
+            },
+            formalityVariants: {
+              casual: "No fax, just the scan. Really appreciate the help!",
+              standard: "No fax is needed, just the scan. Thank you so much for your help!",
+              formal: "A fax will not be necessary; the scanning service will suffice. I am sincerely grateful for your assistance.",
+            },
           },
         ],
       },
@@ -2651,6 +4358,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I need a meeting room for tomorrow afternoon. Something for about 6 people.",
             textZh: "我明天下午需要一间会议室。大约6个人用。",
+            casualVersion: "Need a meeting room tomorrow afternoon. For like 6 people.",
+            commonMistake: {
+              wrong: "I need a meeting room",
+              correct: "I'd like a meeting room",
+              explanation: "\"I need\" 语气比较直接，用 \"I'd like\" 会更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Need a meeting room tomorrow afternoon. For like 6 people.",
+              standard: "I need a meeting room for tomorrow afternoon. Something for about 6 people.",
+              formal: "I'd like to reserve a meeting room for tomorrow afternoon, ideally one that can accommodate approximately six individuals.",
+            },
           },
           {
             speaker: "them",
@@ -2666,11 +4384,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We've got a boardroom that fits 8. It's open from 1 to 5 PM tomorrow, and it's 150 for the afternoon.", textZh: "我们有间可容纳8人的会议室。明天下午1到5点有空，下午150美元。", actionHint: "更简洁说明", frequency: "common" },
               { textEn: "Perfect timing — our 8-person conference room is free tomorrow afternoon, 1 to 5. The half-day rate is $150.", textZh: "时间正好——我们8人会议室明天下午1到5点空着。半天价150美元。", actionHint: "强调时间凑巧", frequency: "occasional" },
             ],
+            casualVersion: "Got a boardroom, seats 8 easy. Available 1 to 5 tomorrow. $150 for a half day.",
+            formalityVariants: {
+              casual: "Yeah, we've got a boardroom that seats 8 no problem. Open 1-5 PM tomorrow. $150 for a half day.",
+              standard: "We have a boardroom that seats 8 people comfortably. It's available from 1 PM to 5 PM tomorrow. The rate is $150 for a half day.",
+              formal: "Certainly, we have a boardroom with a comfortable seating capacity for eight individuals. It is available tomorrow from 1:00 PM to 5:00 PM, and the half-day rate is $150.",
+            },
           },
           {
             speaker: "you",
             textEn: "That works. Does it have a projector and a whiteboard?",
             textZh: "可以。有投影仪和白板吗？",
+            casualVersion: "That works. Got a projector and whiteboard?",
+            commonMistake: {
+              wrong: "OK. Has projector and whiteboard?",
+              correct: "That works. Does it have a projector and a whiteboard?",
+              explanation: "需主谓一致，且直接翻译 \"有吗\" 不自然。",
+            },
+            formalityVariants: {
+              casual: "Okay, cool. Projector and whiteboard included?",
+              standard: "That works. Does it have a projector and a whiteboard?",
+              formal: "That is perfectly acceptable. May I inquire if the room is equipped with a projector and a whiteboard?",
+            },
           },
           {
             speaker: "them",
@@ -2687,11 +4422,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's fully loaded — projector, whiteboard, speakerphone, HDMI hookups. I'll make sure there are pens and pads in there too.", textZh: "设备齐全——投影仪、白板、会议电话、HDMI连接。我还会确保放好笔和本子。", actionHint: "用fully loaded和hookups", frequency: "common" },
               { textEn: "Yes, the room comes with all the tech — screen, projector, conference phone, and cables. Plus, I'll put fresh markers and notepads on the table.", textZh: "有的，房间配备了所有技术设备——屏幕、投影仪、会议电话和线缆。另外桌上会放新马克笔和记事本。", actionHint: "用all the tech概括", frequency: "occasional" },
             ],
+            casualVersion: "Yep, comes with a projector, whiteboard, conference phone, HDMI cables. I'll make sure there's markers and notepads too.",
+            formalityVariants: {
+              casual: "Yeah, it's got a projector, whiteboard, conference phone, and HDMI cables. I'll make sure markers and notepads are there too.",
+              standard: "Yes, it comes equipped with a projector, a whiteboard, a conference phone, and HDMI cables. I'll also make sure there are markers and notepads.",
+              formal: "Yes, indeed. The room is fully equipped with a projector, a whiteboard, a conference telephone, and HDMI cabling. I will also ensure that writing implements and notepads are readily available.",
+            },
           },
           {
             speaker: "you",
             textEn: "Can we get coffee and some snacks set up?",
             textZh: "能准备咖啡和小点心吗？",
+            casualVersion: "Can we get coffee and snacks?",
+            commonMistake: {
+              wrong: "Can prepare coffee and snacks?",
+              correct: "Can we get coffee and some snacks set up?",
+              explanation: "英文需要主语 \"we\"，且 \"set up\" 表示准备好。",
+            },
+            formalityVariants: {
+              casual: "Can we get coffee and snacks in there?",
+              standard: "Can we get coffee and some snacks set up?",
+              formal: "Would it be possible to arrange for coffee and light refreshments to be provided?",
+            },
           },
           {
             speaker: "them",
@@ -2706,11 +4458,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We have a nice coffee service — $12 a head. You get coffee, tea, water, and a mix of pastries. Want me to add that on?", textZh: "我们有不错的茶歇服务——每人12美元。有咖啡、茶、水和各种点心。要加上吗？", actionHint: "用a head替代per person", frequency: "common" },
               { textEn: "Sure! Our standard refreshment package is 12 per person and includes hot drinks, water, and a selection of baked goods. Shall I set that up?", textZh: "当然！标准茶点套餐每人12美元，包含热饮、水和精选糕点。要安排吗？", actionHint: "用baked goods替代pastries", frequency: "occasional" },
             ],
+            casualVersion: "$12 a head for the standard coffee break package — coffee, tea, water, pastries. Wanna add it?",
+            formalityVariants: {
+              casual: "Standard coffee break is $12 a person — coffee, tea, water, pastries. Want me to add it?",
+              standard: "Our standard coffee break package is $12 per person — includes coffee, tea, water, and assorted pastries. Shall I add that?",
+              formal: "Our comprehensive coffee break package is priced at $12 per person and includes coffee, tea, bottled water, and a selection of assorted pastries. Would you like me to include this in your booking?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, for 6 people. Can everything be ready by 12:45?",
             textZh: "好的，6个人。12:45之前能准备好吗？",
+            casualVersion: "Yep, for 6. Can everything be ready by 12:45?",
+            commonMistake: {
+              wrong: "Can everything ready by 12:45?",
+              correct: "Can everything be ready by 12:45?",
+              explanation: "情态动词后加动词原形，此处需 \"be\"。",
+            },
+            formalityVariants: {
+              casual: "Yeah, for 6. Can it all be ready by 12:45?",
+              standard: "Yes, for 6 people. Can everything be ready by 12:45?",
+              formal: "Yes, please include the package for six individuals. Would it be possible for everything to be prepared by 12:45 PM?",
+            },
           },
           {
             speaker: "them",
@@ -2725,11 +4494,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Everything will be good to go by 12:45. The total comes to $222 — that's 150 for the room and 72 for the food and drinks. Put it on your room?", textZh: "12:45之前一切准备就绪。总计222美元——房间150加餐饮72。记到房间吗？", actionHint: "用good to go表示准备好", frequency: "common" },
               { textEn: "We'll have the room ready and refreshments laid out by quarter to one. That's $222 all in — room and catering. Shall I bill your room?", textZh: "12:45前会议室和茶歇都会布置好。全部222美元——房间加餐饮。记房间账吗？", actionHint: "用laid out和quarter to one", frequency: "occasional" },
             ],
+            casualVersion: "Totally. Room'll be set up, refreshments ready by 12:45. Total's $222 — $150 for the room, $72 for catering. Wanna charge it to your room?",
+            formalityVariants: {
+              casual: "No problem. Room and refreshments set by 12:45. Total's $222 ($150 room, $72 catering). Put it on your room?",
+              standard: "Absolutely. The room will be set up and the refreshments ready by 12:45. The total is $222 — $150 for the room plus $72 for catering. Charged to your room?",
+              formal: "Certainly. The meeting room will be fully prepared and the refreshments arranged by 12:45 PM. The total amount will be $222, comprising $150 for the room rental and $72 for the catering service. Shall we charge this to your room account?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, room 1208. Thank you for arranging everything.",
             textZh: "好的，1208房间。谢谢安排一切。",
+            casualVersion: "Yep, room 1208. Thanks for setting it all up.",
+            commonMistake: {
+              wrong: "Thank you for your arrangement.",
+              correct: "Thank you for arranging everything.",
+              explanation: "\"arrangement\" 是名词，动词形式更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, room 1208. Thanks for getting it all sorted.",
+              standard: "Yes, room 1208. Thank you for arranging everything.",
+              formal: "Yes, please charge it to room 1208. I genuinely appreciate your thorough assistance in arranging these details.",
+            },
           },
         ],
       },
@@ -2744,12 +4530,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I need to set up a video conference call in the meeting room. Can someone help me connect my laptop to the screen?",
             textZh: "我需要在会议室设置视频会议。能帮我把笔记本连到屏幕上吗？",
+            casualVersion: "Gotta set up a video conference in here. Can someone help me hook up my laptop to the screen?",
+            commonMistake: {
+              wrong: "I need you to help me connect my laptop.",
+              correct: "Can someone help me connect my laptop?",
+              explanation: "直接说 'I need you to...' 听起来像命令，用 'Can someone help me...' 更委婉。",
+            },
+            formalityVariants: {
+              casual: "Gotta set up a video call in here. Can someone help me get my laptop on the screen?",
+              standard: "I need to set up a video conference call in the meeting room. Could someone help me connect my laptop to the screen?",
+              formal: "Excuse me, I need assistance in setting up a video conference call within this meeting room. Would it be possible for someone to help me connect my laptop to the display, please?",
+            },
           },
           {
             speaker: "them",
             role: "IT支持",
             textEn: "Sure! Do you have an HDMI port or USB-C on your laptop? We have adapters for both.",
             textZh: "当然！您的笔记本有HDMI接口还是USB-C？两种转接头我们都有。",
+            casualVersion: "Yeah! Your laptop got HDMI or USB-C? We got adapters for either.",
+            formalityVariants: {
+              casual: "Yep! HDMI or USB-C on your laptop? We got adapters.",
+              standard: "Sure! Do you have an HDMI port or USB-C on your laptop? We have adapters for both.",
+              formal: "Certainly! Could you please tell me if your laptop is equipped with an HDMI port or a USB-C port? We have the necessary adapters for both interfaces.",
+            },
             keyPhrases: [
               { en: "HDMI port", zh: "HDMI接口" },
               { en: "USB-C", zh: "USB-C接口" },
@@ -2764,12 +4567,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "USB-C. Also, the Wi-Fi seems slow. Is there a faster connection for the meeting room?",
             textZh: "USB-C。另外，Wi-Fi好像很慢。会议室有更快的网络吗？",
+            casualVersion: "USB-C. And, uh, Wi-Fi's kinda slow. Got a faster connection for in here?",
+            commonMistake: {
+              wrong: "The Wi-Fi is very slow.",
+              correct: "The Wi-Fi seems slow.",
+              explanation: "用 'seems' 或 'kinda' 语气更委婉，不直接指责，显得更礼貌。",
+            },
+            formalityVariants: {
+              casual: "USB-C. Also, the Wi-Fi's a bit slow. Is there a quicker connection for this room?",
+              standard: "USB-C. Also, the Wi-Fi seems slow. Is there a faster connection for the meeting room?",
+              formal: "It is USB-C. Additionally, the wireless connection appears to be rather slow. Is there a more robust or high-speed internet connection available for this meeting room?",
+            },
           },
           {
             speaker: "them",
             role: "IT支持",
             textEn: "I'll connect you to our dedicated conference network — it's much faster and more stable. Here's the network name and password.",
             textZh: "我帮您连专用的会议网络——速度更快也更稳定。这是网络名和密码。",
+            casualVersion: "I'll get you on our conference network — way faster, more stable. Here's the name and password.",
+            formalityVariants: {
+              casual: "I'll put you on our conference network – way faster, more stable. Here's the info.",
+              standard: "I'll connect you to our dedicated conference network — it's much faster and more stable. Here's the network name and password.",
+              formal: "I will connect you to our dedicated conference network, which offers significantly greater speed and stability. I can provide you with the network name and password now.",
+            },
             keyPhrases: [
               { en: "dedicated conference network", zh: "专用会议网络" },
               { en: "stable", zh: "稳定的" },
@@ -2783,12 +4603,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "How do I use the conference phone for dial-in participants?",
             textZh: "拨入的参会者怎么用会议电话？",
+            casualVersion: "How do I use this conference phone for people dialing in?",
+            formalityVariants: {
+              casual: "How do I use this conference phone for people dialing in?",
+              standard: "How do I use the conference phone for dial-in participants?",
+              formal: "Could you please explain the procedure for operating the conference phone for participants joining remotely via dial-in?",
+            },
           },
           {
             speaker: "them",
             role: "IT支持",
             textEn: "Press the green button to get a dial tone, then dial the number. For international calls, press 9 first for an outside line, then the country code.",
             textZh: "按绿色按钮拨号，然后输入号码。国际电话先按9转外线，再输国家代码。",
+            casualVersion: "Hit the green button for a dial tone, then just dial. International calls, hit 9 first for an outside line, then country code.",
+            formalityVariants: {
+              casual: "Hit the green button for a dial tone, then dial. International, press 9 for an outside line, then the country code.",
+              standard: "Press the green button to get a dial tone, then dial the number. For international calls, press 9 first for an outside line, then the country code.",
+              formal: "To initiate a call, please press the green button to obtain a dial tone, and then proceed to dial the desired number. For international calls, it is necessary to first dial '9' to access an outside line, followed by the respective country code.",
+            },
             keyPhrases: [
               { en: "dial tone", zh: "拨号音" },
               { en: "outside line", zh: "外线" },
@@ -2803,12 +4635,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Got it. One more thing — can you test the microphone? I want to make sure remote participants can hear us clearly.",
             textZh: "明白了。还有一个——能测一下麦克风吗？我想确保远程参会者能听清。",
+            casualVersion: "Got it. Oh, and can you test the mic? Wanna make sure folks on the call can hear us clearly.",
+            commonMistake: {
+              wrong: "I want you to test the microphone.",
+              correct: "Can you test the microphone?",
+              explanation: "直接说 'I want you to...' 听起来像命令，用 'Can you...' 更委婉。",
+            },
+            formalityVariants: {
+              casual: "Got it. Hey, can you just test the mic? Wanna make sure they can hear us okay.",
+              standard: "Got it. One more thing — can you test the microphone? I want to make sure remote participants can hear us clearly.",
+              formal: "Understood. Additionally, could you please conduct a test of the microphone? I wish to ensure that all remote participants will be able to hear us without any clarity issues.",
+            },
           },
           {
             speaker: "them",
             role: "IT支持",
             textEn: "Sure, let me do a quick test call. The microphone picks up sound from about a 10-foot radius. If you have more than 6 people, I can bring in an extra mic.",
             textZh: "好的，我打个测试电话。麦克风能接收大约10英尺范围的声音。如果超过6人，我可以加个麦克风。",
+            casualVersion: "Yeah, I'll do a quick test call. Mic picks up sound from about 10 feet. More than 6 people, I can grab another mic.",
+            formalityVariants: {
+              casual: "Sure, lemme do a quick test. Mic's good for about 10 feet. More than 6 people, I can get another mic.",
+              standard: "Sure, let me do a quick test call. The microphone picks up sound from about a 10-foot radius. If you have more than 6 people, I can bring in an extra mic.",
+              formal: "Certainly, I will initiate a brief test call. The microphone has an effective pickup range of approximately a 10-foot radius. Should your group exceed six individuals, I would be pleased to provide an additional microphone.",
+            },
             keyPhrases: [
               { en: "test call", zh: "测试电话" },
               { en: "picks up sound", zh: "接收声音" },
@@ -2823,6 +4672,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That should be fine. Thank you for all the tech support!",
             textZh: "应该够了。谢谢技术支持！",
+            casualVersion: "Should be good. Thanks for all the help with the tech!",
+            commonMistake: {
+              wrong: "Thank you for your technical support.",
+              correct: "Thank you for all the tech support!",
+              explanation: "'Tech support' 更口语化和常用，'technical support' 略显正式。",
+            },
+            formalityVariants: {
+              casual: "That's good. Thanks for the tech help!",
+              standard: "That should be fine. Thank you for all the tech support!",
+              formal: "That should be perfectly adequate. I sincerely appreciate all of your technical assistance!",
+            },
           },
         ],
       },
@@ -2858,11 +4718,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Good evening! Can I park your car for you?", textZh: "晚上好！要我帮您停车吗？", actionHint: "更简洁的问候", frequency: "common" },
               { textEn: "Welcome to the hotel! Would you like us to take care of parking for you?", textZh: "欢迎来到酒店！要我们帮您停车吗？", actionHint: "用take care of", frequency: "occasional" },
             ],
+            casualVersion: "Hey! Valet parking?",
+            formalityVariants: {
+              casual: "Hey! Valet parking?",
+              standard: "Welcome! Would you like valet parking?",
+              formal: "Welcome to the hotel. May I assist you with valet parking?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. How much is it per night?",
             textZh: "好的。每晚多少钱？",
+            casualVersion: "Yeah, how much a night?",
+            commonMistake: {
+              wrong: "Yes, how much one night?",
+              correct: "Yes, how much per night?",
+              explanation: "“one night” 不如 “per night” 或 “a night” 自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, how much a night?",
+              standard: "Yes, please. How much is it per night?",
+              formal: "Yes, thank you. Could you please inform me of the nightly rate for valet service?",
+            },
           },
           {
             speaker: "them",
@@ -2877,11 +4754,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's 35 a night. You can come and go as you please — just show your ticket when you need your car back.", textZh: "每晚35美元。随时可以存取——取车时出示停车票就行。", actionHint: "用come and go替代in-and-out", frequency: "common" },
               { textEn: "That'll be $35 per night, and you get unlimited access. Keep this ticket handy — you'll need it every time you pick up your car.", textZh: "每晚35美元，不限存取次数。把这张票收好——每次取车都需要。", actionHint: "用unlimited access", frequency: "occasional" },
             ],
+            casualVersion: "Valet's $35 a night, with in-and-out. Just show your ticket when you need your car.",
+            formalityVariants: {
+              casual: "Valet's $35 a night, in-and-out's included. Just show your ticket when you need your car.",
+              standard: "Valet parking is $35 per night with in-and-out privileges. Just present your ticket each time you need your car.",
+              formal: "The valet parking service is priced at $35 per evening and includes unlimited in-and-out privileges. Kindly present your valet ticket each time you require your vehicle.",
+            },
           },
           {
             speaker: "you",
             textEn: "Do I need to take my valuables out of the car?",
             textZh: "需要把贵重物品从车里拿出来吗？",
+            casualVersion: "Gotta take my valuables out?",
+            commonMistake: {
+              wrong: "Do I need to take out valuables?",
+              correct: "Do I need to take my valuables out of the car?",
+              explanation: "通常会加上所有格 “my” 更自然。",
+            },
+            formalityVariants: {
+              casual: "Gotta take my valuables out?",
+              standard: "Do I need to take my valuables out of the car?",
+              formal: "Should I remove my valuables from the vehicle?",
+            },
           },
           {
             speaker: "them",
@@ -2897,11 +4791,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I'd suggest taking anything valuable with you. The parking area is monitored, but we can't be held liable for personal belongings left inside.", textZh: "建议带走贵重物品。停车区有监控，但我们不对留在车内的个人物品负责。", actionHint: "用liable替代responsible", frequency: "common" },
               { textEn: "It's always best to bring your valuables along. The garage is locked and has cameras, but the hotel isn't responsible for items in the car.", textZh: "最好把贵重物品随身带着。车库有锁和监控，但酒店不对车内物品负责。", actionHint: "说明安全措施", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, best to take your valuables. Garage is safe, but we're not responsible for stuff left in your car.",
+            formalityVariants: {
+              casual: "Yeah, you should probably take your valuables. Garage is secure, but we're not responsible for anything left in there.",
+              standard: "We recommend taking any valuables with you. The garage is secure, but we're not responsible for items left in the vehicle.",
+              formal: "We highly recommend that you secure all valuables on your person. While our garage facilities are secure, we cannot assume responsibility for any items left unattended within your vehicle.",
+            },
           },
           {
             speaker: "you",
             textEn: "Got it. Let me grab my bags. Here are the keys.",
             textZh: "明白了。我拿下行李。钥匙给你。",
+            casualVersion: "Got it. Lemme grab my stuff. Here's the keys.",
+            formalityVariants: {
+              casual: "Okay, lemme just grab my stuff. Keys.",
+              standard: "Got it. Let me grab my bags. Here are the keys.",
+              formal: "Understood. I will retrieve my luggage. Here are the vehicle keys.",
+            },
           },
           {
             speaker: "them",
@@ -2918,11 +4824,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Here's your ticket — hang onto it. When you want your car, just call us or give the ticket to the bellman. It takes about 10 minutes to get it out.", textZh: "这是您的票——收好。取车时打电话或把票给行李员就行。大约10分钟取车。", actionHint: "用hang onto和bellman", frequency: "common" },
               { textEn: "Keep this ticket safe. Whenever you need the car, hand it in at the valet desk or to the door attendant. We ask for about 10 minutes' notice.", textZh: "请保管好这张票。取车时交到泊车台或给门口服务员。请提前10分钟左右通知。", actionHint: "用door attendant", frequency: "occasional" },
             ],
+            casualVersion: "Here's your ticket. Need your car? Just call valet or give this to the doorman. Give us about 10 mins to get it.",
+            formalityVariants: {
+              casual: "Here's your ticket. When you need your car, just call valet or hand this to the doorman. Give us about 10 minutes to get it ready.",
+              standard: "Here's your valet ticket. When you need your car, just call the valet desk or hand this ticket to the doorman. Please allow about 10 minutes for retrieval.",
+              formal: "Kindly take your valet ticket. Should you require your vehicle, please contact the valet desk or present this ticket to the doorman. We respectfully request that you allow approximately 10 minutes for vehicle retrieval.",
+            },
           },
           {
             speaker: "you",
             textEn: "Thanks. I'll need the car around 8 AM tomorrow.",
             textZh: "谢谢。我明天早上8点左右需要车。",
+            casualVersion: "Thanks. Need the car 'round 8 AM tomorrow.",
+            commonMistake: {
+              wrong: "Thanks. I will need car 8 AM tomorrow.",
+              correct: "Thanks. I'll need the car around 8 AM tomorrow.",
+              explanation: "需要加上 “the car” 和 “around” 才自然。",
+            },
+            formalityVariants: {
+              casual: "Thanks. Need the car 'round 8 AM tomorrow.",
+              standard: "Thanks. I'll need the car around 8 AM tomorrow.",
+              formal: "Thank you. I anticipate requiring the vehicle at approximately 8:00 AM tomorrow morning.",
+            },
           },
           {
             speaker: "them",
@@ -2937,6 +4860,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Got it — 8 AM tomorrow. If you ring us around 7:45, your car will be warmed up and waiting at the door. Enjoy your stay!", textZh: "记下了——明早8点。7:45左右打电话来，车会热好在门口等您。祝入住愉快！", actionHint: "用warmed up增加细节", frequency: "common" },
               { textEn: "I'll note that down. Just give us a heads-up about 15 minutes before and we'll have it out front. Have a wonderful evening!", textZh: "我记下了。提前15分钟给我们打个招呼，车会在门口备好。祝您晚上愉快！", actionHint: "用heads-up表示提前通知", frequency: "occasional" },
             ],
+            casualVersion: "Got it. If you call valet at 7:45, we'll have it ready. Enjoy your evening!",
+            formalityVariants: {
+              casual: "Got it. Just call valet at 7:45, and we'll have it ready. Enjoy your evening!",
+              standard: "I'll make a note of that. If you call down to the valet desk at 7:45, we'll have it ready and waiting. Have a great evening!",
+              formal: "I have made a note of your request. Should you contact the valet desk at 7:45 AM, we will ensure your vehicle is promptly prepared for your departure. I wish you a pleasant evening.",
+            },
           },
         ],
       },
@@ -2951,12 +4880,30 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I'd like my car, please. Here's my ticket.",
             textZh: "你好，我要取车。这是停车票。",
+            casualVersion: "Hey, car, please. Here's my ticket.",
+            culturalNote: "美国口语中，直接说出需求很常见，'I'd like' 已很礼貌。",
+            commonMistake: {
+              wrong: "I want to take my car.",
+              correct: "I'd like my car.",
+              explanation: "“I want”听起来可能比较生硬，用“I'd like”更礼貌客气。",
+            },
+            formalityVariants: {
+              casual: "Hey, car, please. Here's my ticket.",
+              standard: "Hi, I'd like my car, please. Here's my ticket.",
+              formal: "Good morning/afternoon. I am here to retrieve my vehicle. My ticket is here.",
+            },
           },
           {
             speaker: "them",
             role: "泊车员",
             textEn: "I'll have it brought up in about 10 minutes. Would you like to wait in the lobby?",
             textZh: "大约10分钟开上来。您在大厅等可以吗？",
+            casualVersion: "Be up in like 10. Wanna wait in the lobby?",
+            formalityVariants: {
+              casual: "Be up in like 10. Wanna wait in the lobby?",
+              standard: "I'll have it brought up in about 10 minutes. Would you like to wait in the lobby?",
+              formal: "Your vehicle will be retrieved for you within approximately ten minutes. Would you prefer to wait in our lounge area?",
+            },
             keyPhrases: [
               { en: "brought up", zh: "开上来" },
             ],
@@ -2969,12 +4916,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Sure. Actually, I noticed a small scratch on the bumper that wasn't there before. Can you take a look?",
             textZh: "好的。其实，我注意到保险杠上有一道小划痕，之前没有。能看看吗？",
+            casualVersion: "Yeah. So, I saw this small scratch on the bumper that wasn't there. Can you check it out?",
+            commonMistake: {
+              wrong: "Actually, I noticed a small scratch...",
+              correct: "By the way, I noticed...",
+              explanation: "“Actually”在中文中常表示“事实上”，英文中常用于转折或纠正，这里用by the way或also更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah. So, I saw this small scratch on the bumper that wasn't there. Can you check it out?",
+              standard: "Sure. Actually, I noticed a small scratch on the bumper that wasn't there before. Can you take a look?",
+              formal: "Certainly. However, I observed a minor scratch on the vehicle's bumper that was not present prior to my arrival. Could you please investigate this?",
+            },
           },
           {
             speaker: "them",
             role: "泊车员",
             textEn: "I'm very sorry about that. Let me get my manager. We take these reports seriously and we do have cameras in the garage.",
             textZh: "非常抱歉。我叫经理过来。我们很重视这类报告，车库里有监控。",
+            casualVersion: "Oh, shoot, sorry 'bout that. Lemme grab my manager. We take this stuff seriously, and yeah, we got cameras in the garage.",
+            formalityVariants: {
+              casual: "Oh, shoot, sorry 'bout that. Lemme grab my manager. We take this stuff seriously, and yeah, we got cameras in the garage.",
+              standard: "I'm very sorry about that. Let me get my manager. We take these reports seriously and we do have cameras in the garage.",
+              formal: "I sincerely apologize for this inconvenience. I will promptly retrieve my manager. Please be assured that we treat such reports with the utmost gravity, and our premises are monitored by surveillance cameras.",
+            },
             keyPhrases: [
               { en: "scratch", zh: "划痕" },
               { en: "bumper", zh: "保险杠" },
@@ -2989,6 +4953,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I appreciate that. I took a photo of the car when I arrived, so I can show you the before condition.",
             textZh: "谢谢。我到达时拍了照片，可以给你看之前的状况。",
+            casualVersion: "Appreciate it. Snapped a pic of the car when I got here, so I can show ya what it looked like before.",
+            formalityVariants: {
+              casual: "Appreciate it. Snapped a pic of the car when I got here, so I can show ya what it looked like before.",
+              standard: "I appreciate that. I took a photo of the car when I arrived, so I can show you the before condition.",
+              formal: "I am grateful for your assistance. I proactively documented the vehicle's condition upon my arrival, enabling me to demonstrate its prior state.",
+            },
             culturalNote: "使用代客泊车前拍照记录车辆状况是个好习惯，可以避免纠纷。",
           },
           {
@@ -2996,6 +4966,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "经理",
             textEn: "Thank you for the photo, that's very helpful. We'll review the security footage and file a claim with our insurance. You won't be charged for the repair.",
             textZh: "感谢您的照片，很有帮助。我们会查看监控并向保险公司报案。维修费用不会让您承担。",
+            casualVersion: "Thanks for the pic, that's super helpful. We'll check the footage, file a claim with our insurance. You won't get charged for the fix.",
+            formalityVariants: {
+              casual: "Thanks for the pic, that's super helpful. We'll check the footage, file a claim with our insurance. You won't get charged for the fix.",
+              standard: "Thank you for the photo, that's very helpful. We'll review the security footage and file a claim with our insurance. You won't be charged for the repair.",
+              formal: "We appreciate you providing the photograph; it is indeed highly beneficial. We will proceed with reviewing the security footage and initiating a claim with our insurance provider. Please be advised that you will not incur any charges for the repair.",
+            },
             keyPhrases: [
               { en: "security footage", zh: "监控录像" },
               { en: "file a claim", zh: "报案/理赔" },
@@ -3010,12 +4986,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "How will the repair be handled? I'm leaving the day after tomorrow.",
             textZh: "维修怎么安排？我后天就走了。",
+            casualVersion: "So, how's the repair gonna work? I'm outta here day after tomorrow.",
+            formalityVariants: {
+              casual: "So, how's the repair gonna work? I'm outta here day after tomorrow.",
+              standard: "How will the repair be handled? I'm leaving the day after tomorrow.",
+              formal: "What is the procedure for managing the repair? I am scheduled to depart the day after tomorrow.",
+            },
           },
           {
             speaker: "them",
             role: "经理",
             textEn: "If it's a rental car, we'll coordinate directly with the rental company. If it's your own vehicle, I'll give you our insurance contact and a written incident report for your records.",
             textZh: "如果是租的车，我们直接和租车公司协调。如果是您自己的车，我给您保险联系方式和书面事故报告留档。",
+            casualVersion: "If it's a rental, we'll just deal with the rental company directly. Your own car, I'll give ya our insurance info and a written report for your records.",
+            formalityVariants: {
+              casual: "If it's a rental, we'll just deal with the rental company directly. Your own car, I'll give ya our insurance info and a written report for your records.",
+              standard: "If it's a rental car, we'll coordinate directly with the rental company. If it's your own vehicle, I'll give you our insurance contact and a written incident report for your records.",
+              formal: "Should this be a rental vehicle, we will liaise directly with the rental company. In the event that it is your personal vehicle, I will provide you with our insurance contact details and a formal written incident report for your documentation.",
+            },
             keyPhrases: [
               { en: "rental car", zh: "租的车" },
               { en: "coordinate", zh: "协调" },
@@ -3030,6 +5018,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "It's a rental. Thank you for handling this so professionally.",
             textZh: "是租的车。谢谢你们这么专业地处理。",
+            casualVersion: "It's a rental. Thanks for handling this so pro.",
+            formalityVariants: {
+              casual: "It's a rental. Thanks for handling this so pro.",
+              standard: "It's a rental. Thank you for handling this so professionally.",
+              formal: "It is a rental vehicle. I appreciate your highly professional approach to this matter.",
+            },
           },
         ],
       },
@@ -3056,6 +5050,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Where is the hotel parking garage?",
             textZh: "酒店停车场在哪？",
+            casualVersion: "Where's the hotel parking?",
+            commonMistake: {
+              wrong: "Hotel parking garage is where?",
+              correct: "Where is the hotel parking garage?",
+              explanation: "询问地点时，英文的疑问词通常放在句首，而不是句末。",
+            },
+            formalityVariants: {
+              casual: "Where's the parking here?",
+              standard: "Where is the hotel parking garage?",
+              formal: "Could you please direct me to the hotel's parking garage?",
+            },
           },
           {
             speaker: "them",
@@ -3071,11 +5076,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's on Oak Street — just go around the corner from the front door. Grab a ticket from the machine when you pull in.", textZh: "在橡树街——从正门拐个弯就到。开进去时从机器取票。", actionHint: "用grab和pull in", frequency: "common" },
               { textEn: "Head to Oak Street, right around the corner. You'll see the garage entrance. Just take a parking ticket at the barrier.", textZh: "走到橡树街，就在拐角。您会看到车库入口。在栏杆处取停车票就行。", actionHint: "用barrier替代gate", frequency: "occasional" },
             ],
+            casualVersion: "Self-parking entrance is on Oak Street, just around the corner from the main entrance. Grab a ticket at the gate.",
+            formalityVariants: {
+              casual: "Parking entrance is on Oak, just 'round the corner from the main door. Grab a ticket there.",
+              standard: "The self-parking garage entrance is on Oak Street, around the corner from the main entrance. Take a ticket at the gate.",
+              formal: "The entrance for self-parking is located on Oak Street, directly around the corner from the main hotel entrance. Please ensure you take a ticket upon entry at the gate.",
+            },
           },
           {
             speaker: "you",
             textEn: "How much does it cost?",
             textZh: "费用怎么算？",
+            casualVersion: "What's it cost?",
+            commonMistake: {
+              wrong: "How much is it cost?",
+              correct: "How much does it cost?",
+              explanation: "“cost”作动词时，疑问句用“does it cost”；“cost”作名词时，用“how much is the cost”。",
+            },
+            formalityVariants: {
+              casual: "What's the cost?",
+              standard: "How much does it cost?",
+              formal: "What is the charge for parking?",
+            },
           },
           {
             speaker: "them",
@@ -3090,11 +5112,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's 20 bucks a night for guests. Just bring your parking ticket down to the front desk so we can stamp it for the hotel rate.", textZh: "住客每晚20美元。把停车票拿到前台来我们盖章按酒店价。", actionHint: "用stamp替代validate", frequency: "common" },
               { textEn: "For hotel guests, self-parking is $20 per night. Don't forget to get your ticket validated at reception — otherwise you'll be charged the public rate.", textZh: "住客自助停车每晚20美元。别忘了到前台验票——不然会按公共费率收费。", actionHint: "提醒不验票的后果", frequency: "occasional" },
             ],
+            casualVersion: "Self-parking's $20 a night for hotel guests. Just bring your ticket to the front desk, and we'll validate it for the overnight rate.",
+            culturalNote: "validate在这里是“确认有效并计费”的意思，而不是“验证真伪”。",
+            commonMistake: {
+              wrong: "We will stamp it.",
+              correct: "we'll validate it",
+              explanation: "在美国，票据收费确认常用\"validate\"，不是\"stamp\"。",
+            },
+            formalityVariants: {
+              casual: "For hotel guests, self-parking's $20 a night. Just bring your ticket to the desk, and we'll get it validated for the overnight rate.",
+              standard: "Self-parking is $20 per night for hotel guests. Just bring your ticket to the front desk and we'll validate it for the overnight rate.",
+              formal: "The self-parking rate for hotel guests is $20 per night. Kindly present your parking ticket at the front desk for validation to receive the overnight rate.",
+            },
           },
           {
             speaker: "you",
             textEn: "Are there any height restrictions? We have a large SUV.",
             textZh: "有高度限制吗？我们是大型SUV。",
+            casualVersion: "Any height restrictions? Got a big SUV.",
+            commonMistake: {
+              wrong: "Have height restrictions?",
+              correct: "Are there any height restrictions?",
+              explanation: "英文疑问句通常需要助动词或系动词，不能直接省略。",
+            },
+            formalityVariants: {
+              casual: "Any height restrictions? Got a big SUV.",
+              standard: "Are there any height restrictions? We have a large SUV.",
+              formal: "Are there any height limitations for vehicles? We are driving a large SUV.",
+            },
           },
           {
             speaker: "them",
@@ -3110,11 +5155,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "The lower floors have a clearance of about 6 foot 2. With a big SUV, you'll want to head straight to Level 3 — it's the rooftop, so no height limit.", textZh: "低楼层限高大约6英尺2。大SUV的话直接上三层——是楼顶，没有高度限制。", actionHint: "用rooftop替代open-air", frequency: "common" },
               { textEn: "Levels 1 and 2 max out at 6-2. If your SUV is taller than that, go up to the third floor — it's an uncovered deck with no ceiling.", textZh: "一层和二层最高6英尺2。如果SUV更高，上三楼——那是无顶的露天层。", actionHint: "用uncovered deck描述", frequency: "occasional" },
             ],
+            casualVersion: "First two levels are 6'2\" clearance. Taller vehicles, use Level 3, it's open-air, no height limit.",
+            formalityVariants: {
+              casual: "Levels 1 & 2 are 6'2\" clearance. Taller cars, use Level 3 – it's open air, no limit.",
+              standard: "The first two levels have a 6-foot-2 clearance. For taller vehicles, use Level 3, which is the open-air level with no height restriction.",
+              formal: "Levels one and two maintain a clearance of six feet, two inches. For vehicles exceeding this height, kindly utilize Level Three, which is an open-air level and thus has no height restriction.",
+            },
           },
           {
             speaker: "you",
             textEn: "Good to know. Is the garage secure at night?",
             textZh: "好的。车库晚上安全吗？",
+            casualVersion: "Good to know. Garage secure at night?",
+            formalityVariants: {
+              casual: "Good to know. Garage safe at night?",
+              standard: "Good to know. Is the garage secure at night?",
+              formal: "That's good to know. Could you please confirm if the garage is secure during evening hours?",
+            },
           },
           {
             speaker: "them",
@@ -3130,11 +5187,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Very safe. Cameras everywhere, and after 10 PM you need a key card to get in. Your room key doubles as a garage pass.", textZh: "非常安全。到处都有监控，晚10点后需要刷卡进入。房卡同时也是车库通行证。", actionHint: "用doubles as表示兼用", frequency: "common" },
               { textEn: "Absolutely — it's well secured. Round-the-clock CCTV, and the entrance locks down at 10 PM. Just use your room key to swipe in.", textZh: "绝对安全。全天候闭路监控，10点后入口上锁。用房卡刷一下就能进。", actionHint: "用locks down表示上锁", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, it's got 24/7 camera coverage, and after 10 PM, you need a key card to get in. Your room key works for it.",
+            formalityVariants: {
+              casual: "Yep, 24/7 camera coverage, and after 10 PM, it's key card access. Your room key gets you in.",
+              standard: "Yes, there's 24-hour security camera coverage and the garage requires a key card to enter after 10 PM. Your room key works for garage access.",
+              formal: "Yes, the garage is equipped with 24-hour security camera surveillance, and entry after 10 PM requires a key card. Your hotel room key is programmed for garage access.",
+            },
           },
           {
             speaker: "you",
             textEn: "Great. I'll head over there now. Thanks!",
             textZh: "好的。我现在过去停车。谢谢！",
+            casualVersion: "Awesome. Heading over now. Thanks!",
+            formalityVariants: {
+              casual: "Cool. I'll head over. Thanks!",
+              standard: "Great. I'll head over there now. Thanks!",
+              formal: "Excellent. I will proceed to the garage now. Thank you very much!",
+            },
           },
         ],
       },
@@ -3149,12 +5218,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Do you have electric vehicle charging stations in the parking garage?",
             textZh: "停车场有电动车充电桩吗？",
+            casualVersion: "Got EV charging in the garage?",
+            commonMistake: {
+              wrong: "Do you have EV charger?",
+              correct: "Do you have EV charging stations?",
+              explanation: "charger 是充电器，charging station 指充电桩，复数更自然。",
+            },
+            formalityVariants: {
+              casual: "Got EV charging in the garage?",
+              standard: "Do you have electric vehicle charging stations in the parking garage?",
+              formal: "Could you please inform me if electric vehicle charging stations are available within your parking facility?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, we have 4 Level 2 charging stations on the first level of the garage. They're available on a first-come, first-served basis.",
             textZh: "有的，车库一层有4个二级充电桩。先到先得。",
+            casualVersion: "Yeah, we got 4 Level 2 chargers on the first floor of the garage. It's first-come, first-served.",
+            formalityVariants: {
+              casual: "Yeah, we got 4 Level 2 chargers on the first floor. First-come, first-served.",
+              standard: "Yes, we have 4 Level 2 charging stations on the first level of the garage. They're available on a first-come, first-served basis.",
+              formal: "Indeed, we do. We offer four Level 2 charging stations located on the first level of our parking garage. Availability is managed on a first-come, first-served basis.",
+            },
             keyPhrases: [
               { en: "Level 2 charging stations", zh: "二级充电桩" },
               { en: "first-come, first-served", zh: "先到先得" },
@@ -3168,12 +5254,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Is there an extra charge for using them?",
             textZh: "使用充电桩额外收费吗？",
+            casualVersion: "Gotta pay extra for 'em?",
+            commonMistake: {
+              wrong: "Is it extra charge?",
+              correct: "Is there an extra charge?",
+              explanation: "英文问是否有某物常用 'Is there...' 句型。",
+            },
+            formalityVariants: {
+              casual: "Gotta pay extra for 'em?",
+              standard: "Is there an extra charge for using them?",
+              formal: "May I inquire if there is an additional fee associated with the utilization of these facilities?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Charging is complimentary for hotel guests. We just ask that you move your car once it's fully charged so others can use the station.",
             textZh: "住店客人免费充电。只是请在充满后移车，方便其他人使用。",
+            casualVersion: "Nah, charging's free for guests. Just gotta move your car once it's full so others can use it.",
+            formalityVariants: {
+              casual: "Nah, charging's free for guests. Just move your car once it's full so others can use it.",
+              standard: "Charging is complimentary for hotel guests. We just ask that you move your car once it's fully charged so others can use the station.",
+              formal: "Charging services are complimentary for our esteemed hotel guests. We kindly request that vehicles be relocated promptly upon completion of their charge cycle, thereby allowing other patrons access to the station.",
+            },
             keyPhrases: [
               { en: "complimentary", zh: "免费的" },
               { en: "fully charged", zh: "充满电" },
@@ -3188,12 +5291,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "What type of connector do the chargers have? I drive a Tesla.",
             textZh: "充电桩是什么接口？我开特斯拉。",
+            casualVersion: "What kinda connector do they got? I got a Tesla.",
+            commonMistake: {
+              wrong: "What connector of charger?",
+              correct: "What type of connector do the chargers have?",
+              explanation: "询问种类常用 'What type of...' 或 'What kind of...' 句型。",
+            },
+            formalityVariants: {
+              casual: "What kinda connector do they got? I got a Tesla.",
+              standard: "What type of connector do the chargers have? I drive a Tesla.",
+              formal: "Could you please specify the connector type utilized by your charging stations? I operate a Tesla vehicle.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "They have J1772 connectors, which work with most EVs. Tesla vehicles will need the adapter that usually comes with the car. We don't provide adapters.",
             textZh: "是J1772接口，兼容大多数电动车。特斯拉需要随车附带的转接头。我们不提供转接头。",
+            casualVersion: "They're J1772s, work with most EVs. Teslas'll need their own adapter, usually comes with the car. We don't got 'em.",
+            formalityVariants: {
+              casual: "They're J1772s, work with most EVs. Teslas need their own adapter; we don't got 'em.",
+              standard: "They have J1772 connectors, which work with most EVs. Tesla vehicles will need the adapter that usually comes with the car. We don't provide adapters.",
+              formal: "Our charging stations are equipped with J1772 connectors, which are compatible with the majority of electric vehicles. However, Tesla vehicles typically require their proprietary adapter, which is provided with the vehicle itself. We do not supply adapters.",
+            },
             keyPhrases: [
               { en: "connector", zh: "接口/插头" },
               { en: "adapter", zh: "转接头" },
@@ -3207,12 +5327,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I have my adapter. How long does a full charge typically take?",
             textZh: "我有转接头。一般充满要多久？",
+            casualVersion: "Got my adapter. How long for a full charge usually?",
+            commonMistake: {
+              wrong: "How long full charge?",
+              correct: "How long does a full charge take?",
+              explanation: "英文问时间长度需要动词 take 和完整的句型。",
+            },
+            formalityVariants: {
+              casual: "Got my adapter. How long for a full charge usually?",
+              standard: "I have my adapter. How long does a full charge typically take?",
+              formal: "I possess the necessary adapter. Could you please inform me of the approximate duration required for a complete charge?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "With a Level 2 charger, most EVs take about 6 to 8 hours for a full charge. Overnight is perfect. The charger will stop automatically when the battery is full.",
             textZh: "二级充电桩大多数电动车需要6到8小时充满。过夜刚好。充满后充电桩会自动停止。",
+            casualVersion: "With a Level 2, most EVs take 'bout 6-8 hours for a full charge. Overnight's perfect. Stops automatically once it's full.",
+            formalityVariants: {
+              casual: "With a Level 2, most EVs take 'bout 6-8 hours. Overnight's perfect. Stops automatically when it's full.",
+              standard: "With a Level 2 charger, most EVs take about 6 to 8 hours for a full charge. Overnight is perfect. The charger will stop automatically when the battery is full.",
+              formal: "Utilizing a Level 2 charger, the majority of electric vehicles require approximately six to eight hours for a complete charge cycle. An overnight charge is ideal. The charging process will cease automatically upon the battery reaching full capacity.",
+            },
             keyPhrases: [
               { en: "6 to 8 hours", zh: "6到8小时" },
               { en: "stop automatically", zh: "自动停止" },
@@ -3226,6 +5363,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Perfect. I'll plug in tonight. Thank you!",
             textZh: "太好了。今晚就充。谢谢！",
+            casualVersion: "Cool. I'll plug in tonight. Thanks!",
+            formalityVariants: {
+              casual: "Cool. I'll plug in tonight. Thanks!",
+              standard: "Perfect. I'll plug in tonight. Thank you!",
+              formal: "Excellent. I shall proceed to plug in my vehicle this evening. Thank you kindly!",
+            },
           },
         ],
       },
@@ -3253,6 +5396,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The fire alarm is going off! What should we do?",
             textZh: "火警警报响了！我们该怎么办？",
+            casualVersion: "Fire alarm's goin' off! What do we do?",
+            commonMistake: {
+              wrong: "The fire alarm rings!",
+              correct: "The fire alarm is going off!",
+              explanation: "“ring”更常指一声响铃，而“go off”指警报持续响动或触发。",
+            },
+            formalityVariants: {
+              casual: "Fire alarm's goin' off! What do we do?",
+              standard: "The fire alarm is going off! What should we do?",
+              formal: "Excuse me, the fire alarm appears to be activating. Could you please advise us on the appropriate procedure?",
+            },
           },
           {
             speaker: "them",
@@ -3269,11 +5423,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Don't panic. Head for the stairs — never the elevator during an alarm. The exit is down the hall on your left.", textZh: "别慌。走楼梯——警报期间不要坐电梯。出口在走廊左边。", actionHint: "用head for表示前往", frequency: "common" },
               { textEn: "Everyone, please remain calm. Use the emergency staircase, not the lifts. The closest one is at the left end of this corridor.", textZh: "请大家保持冷静。走消防楼梯，不要坐电梯。最近的在走廊左端。", actionHint: "用lifts和corridor（英式）", frequency: "occasional" },
             ],
+            casualVersion: "Stay calm. Take the stairs, no elevators. Nearest stairs are down the hall, on your left.",
+            commonMistake: {
+              wrong: "Don't take the elevator.",
+              correct: "Do not use the elevator.",
+              explanation: "在安全指令中，“do not use”比“don't take”更常见且更强调禁令。",
+            },
+            formalityVariants: {
+              casual: "Stay calm. Take the stairs, no elevators. Nearest stairs are down the hall, left.",
+              standard: "Please stay calm. Take the stairs — do not use the elevator. The nearest stairwell is at the end of the hallway to your left.",
+              formal: "We kindly request everyone to remain composed. Utilize the stairwells for evacuation; under no circumstances should the elevators be used. The closest designated stairwell is located at the furthest point down the hallway to your left.",
+            },
           },
           {
             speaker: "you",
             textEn: "Should I grab my passport and valuables?",
             textZh: "要带上护照和贵重物品吗？",
+            casualVersion: "Grab my passport, valuables?",
+            commonMistake: {
+              wrong: "Do I need to take my passport?",
+              correct: "Should I grab my passport and valuables?",
+              explanation: "“grab”在紧急情况中更自然，表示快速拿取，比“take”更口语化。",
+            },
+            formalityVariants: {
+              casual: "Grab my passport, valuables?",
+              standard: "Should I grab my passport and valuables?",
+              formal: "Is it advisable to retrieve my passport and other valuable possessions at this juncture?",
+            },
           },
           {
             speaker: "them",
@@ -3288,11 +5464,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Only if they're right there. Don't waste time. Your safety is the priority. Head to the meeting point in the lot across the street.", textZh: "只有在手边的情况下。别浪费时间。安全是第一位的。到街对面停车场的集合点去。", actionHint: "用meeting point替代assembly point", frequency: "common" },
               { textEn: "If you can grab them in seconds, yes. Otherwise, just get out. Everyone should gather at the designated area in the parking lot opposite.", textZh: "如果几秒钟能拿到就拿。否则直接撤离。所有人到对面停车场的指定区域集合。", actionHint: "用designated area", frequency: "occasional" },
             ],
+            casualVersion: "Only if you can get 'em fast. Your safety's priority. Head to the assembly point in the parking lot across the street.",
+            formalityVariants: {
+              casual: "Only if you can get 'em fast. Your safety's first. Head to the assembly point in the parking lot across the street.",
+              standard: "Only if you can reach them quickly. Your safety comes first. Proceed to the assembly point in the parking lot across the street.",
+              formal: "Please only retrieve such items if doing so does not compromise your immediate departure. Your personal safety is paramount. Kindly proceed directly to the designated assembly point, which is located in the parking lot opposite this building.",
+            },
           },
           {
             speaker: "you",
             textEn: "Is this a drill or a real emergency?",
             textZh: "这是演习还是真的紧急情况？",
+            casualVersion: "Drill or real emergency?",
+            commonMistake: {
+              wrong: "Is this a drill or a true emergency?",
+              correct: "Is this a drill or a real emergency?",
+              explanation: "在口语中“real emergency”比“true emergency”更自然常用。",
+            },
+            formalityVariants: {
+              casual: "Drill or real emergency?",
+              standard: "Is this a drill or a real emergency?",
+              formal: "Could you please clarify whether this is a scheduled drill or an actual emergency situation?",
+            },
           },
           {
             speaker: "them",
@@ -3308,11 +5501,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We always treat it as real until we know for sure. The fire brigade has been called and they're on their way.", textZh: "在确认之前我们始终按真实情况处理。消防队已经叫了，正在赶来。", actionHint: "用fire brigade（英式）", frequency: "common" },
               { textEn: "Until we get the all-clear, we assume it's the real thing. Emergency services have been contacted and are en route.", textZh: "在得到安全确认前我们假定是真的。已联系急救服务，正在途中。", actionHint: "用all-clear和en route", frequency: "occasional" },
             ],
+            casualVersion: "We treat every alarm like it's real 'til we know it's not. Fire department's been called, they're comin'.",
+            commonMistake: {
+              wrong: "The fire department already informed.",
+              correct: "The fire department has been notified and is on the way.",
+              explanation: "消防部门是被通知，需要用被动语态“has been notified”。",
+            },
+            formalityVariants: {
+              casual: "We treat every alarm like it's real 'til we know it's not. Fire department's been called, they're comin'.",
+              standard: "We treat every alarm as real until confirmed otherwise. The fire department has been notified and is on the way.",
+              formal: "It is our policy to consider all alarms as genuine until official confirmation to the contrary is received. The local fire department has been promptly notified and is currently en route.",
+            },
           },
           {
             speaker: "you",
             textEn: "My children are scared. How long will we be outside?",
             textZh: "我的孩子们很害怕。要在外面待多久？",
+            casualVersion: "Kids are scared. How long we gonna be out here?",
+            commonMistake: {
+              wrong: "My children very scared.",
+              correct: "My children are scared.",
+              explanation: "形容词前需要动词“are”来构成完整句子。口语中“very”常被省略或替换。",
+            },
+            formalityVariants: {
+              casual: "Kids are scared. How long we gonna be out here?",
+              standard: "My children are scared. How long will we be outside?",
+              formal: "My children appear quite distressed. Could you please provide an estimate of how long we anticipate remaining outdoors?",
+            },
           },
           {
             speaker: "them",
@@ -3327,11 +5542,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Shouldn't be more than 15 or 20 minutes. We'll announce when it's clear to go back in. There are blankets here if your kids are cold.", textZh: "不会超过15到20分钟。确认安全后我们会通知大家回去。这里有毯子，孩子冷的话可以用。", actionHint: "用clear to go back in", frequency: "common" },
               { textEn: "It typically takes about 15 to 20 minutes to get the all-clear. We've got blankets and water here at the assembly point.", textZh: "通常大约15到20分钟可以确认安全。集合点这里有毯子和水。", actionHint: "提到有水", frequency: "occasional" },
             ],
+            casualVersion: "Usually like 15-20 minutes. We'll let everyone know once it's safe to go back in. Got blankets if you're cold.",
+            formalityVariants: {
+              casual: "Usually like 15-20 minutes. We'll let everyone know once it's safe to go back in. Got blankets if you're cold.",
+              standard: "Usually about 15 to 20 minutes. We'll let everyone know as soon as it's safe to return. We have blankets if anyone is cold.",
+              formal: "Typically, this process takes approximately fifteen to twenty minutes. We will promptly inform all individuals once it has been confirmed that it is safe to re-enter the building. Blankets are available should anyone require warmth.",
+            },
           },
           {
             speaker: "you",
             textEn: "Thank you. We'll wait at the assembly point.",
             textZh: "谢谢。我们在集合点等。",
+            casualVersion: "Thanks. We'll wait at the assembly point.",
+            formalityVariants: {
+              casual: "Thanks. We'll wait at the assembly point.",
+              standard: "Thank you. We'll wait at the assembly point.",
+              formal: "Thank you for the information. We will proceed to the designated assembly point and await further instructions there.",
+            },
           },
           {
             speaker: "them",
@@ -3347,6 +5574,18 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Great. Someone from our team will be there counting heads. Make sure to let them know you're out so we can confirm everyone's safe.", textZh: "好的。我们的人会在那边清点人数。跟他们说一声，这样我们能确认每个人都安全。", actionHint: "用counting heads口语化", frequency: "common" },
               { textEn: "Perfect. A hotel staff member at the assembly point is doing a roll call. Please report in so we know your family is all out safely.", textZh: "好的。集合点有酒店员工在点名。请过去报到，让我们知道您一家人都安全撤出了。", actionHint: "用roll call和report in", frequency: "occasional" },
             ],
+            casualVersion: "Okay. Someone from staff'll be at the assembly point to do a headcount. Check in with 'em so we know everyone's here.",
+            culturalNote: "“headcount”和“accounted for”都是指清点并确认所有人员安全在场，这对中国旅行者来说可能是陌生词汇",
+            commonMistake: {
+              wrong: "Please report to them.",
+              correct: "Please check in with them.",
+              explanation: "“check in with”是报到、确认自己已到场的意思，比“report to”更自然，后者听起来更正式或像汇报问题。",
+            },
+            formalityVariants: {
+              casual: "Okay. Someone from staff'll be at the assembly point to do a headcount. Check in with 'em so we know everyone's here.",
+              standard: "Good. A staff member will be at the assembly point to take a headcount. Please check in with them so we know everyone is accounted for.",
+              formal: "Understood. A designated staff member will be positioned at the assembly point to conduct a comprehensive headcount. Kindly register your presence with them to ensure all individuals are accounted for.",
+            },
           },
         ],
       },
@@ -3371,17 +5610,40 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Great news everyone — it was just a false alarm. A faulty smoke detector on the 8th floor triggered it. You're all safe to head back to your rooms.", textZh: "好消息——只是误报。8楼一个故障的烟雾探测器触发的。可以安全回房间了。", actionHint: "用triggered表示触发", frequency: "common" },
               { textEn: "All clear! A broken smoke sensor on floor 8 set off the alarm. No actual fire. It's safe to return to your rooms now.", textZh: "解除警报！8楼一个坏了的烟雾传感器触发了警报。没有真正的火情。现在可以安全回房了。", actionHint: "用all clear开头", frequency: "occasional" },
             ],
+            casualVersion: "Good news – just a false alarm from a faulty smoke detector on the 8th. You guys can head back to your rooms now.",
+            formalityVariants: {
+              casual: "Hey, good news – just a false alarm from a smoke detector on the 8th. You're all good to go back to your rooms.",
+              standard: "Good news — it was a false alarm caused by a malfunctioning smoke detector on the 8th floor. It's safe to return to your rooms.",
+              formal: "We are pleased to inform you that the alarm was a false report, triggered by a technical malfunction in a smoke detector on the eighth floor. You may now safely return to your accommodations.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's a relief. We were in the middle of sleeping. Will this happen again tonight?",
             textZh: "那就好。我们正在睡觉。今晚还会再响吗？",
+            casualVersion: "Oh, thank god. We were totally asleep. Is this gonna happen again tonight?",
+            commonMistake: {
+              wrong: "That's good. We were sleeping in the middle. This will happen again tonight?",
+              correct: "That's a relief. We were in the middle of sleeping. Will this happen again tonight?",
+              explanation: "\"in the middle of sleeping\"是固定搭配，疑问句语序需倒装。",
+            },
+            formalityVariants: {
+              casual: "Whew, good. We were totally asleep. So, is this gonna happen again tonight?",
+              standard: "That's a relief. We were in the middle of sleeping. Will this happen again tonight?",
+              formal: "That is a considerable relief. We were, in fact, asleep. May I inquire if there is any possibility of a recurrence this evening?",
+            },
           },
           {
             speaker: "them",
             role: "经理",
             textEn: "We've disabled the faulty detector and a technician will replace it first thing in the morning. I sincerely apologize for the inconvenience.",
             textZh: "我们已关闭故障探测器，技术员明天一早来更换。非常抱歉给您带来不便。",
+            casualVersion: "We've got the bad detector shut off, and someone's replacing it first thing tomorrow. Really sorry about all this.",
+            formalityVariants: {
+              casual: "We've shut off the bad detector, and a tech's coming to swap it out tomorrow morning. Super sorry for the trouble.",
+              standard: "We've disabled the faulty detector and a technician will replace it first thing in the morning. I sincerely apologize for the inconvenience.",
+              formal: "We have already deactivated the malfunctioning detector, and a technician is scheduled to replace it promptly tomorrow morning. Please accept my sincerest apologies for any disruption or inconvenience this incident may have caused.",
+            },
             keyPhrases: [
               { en: "disabled", zh: "关闭/禁用" },
               { en: "faulty", zh: "故障的" },
@@ -3397,12 +5659,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I understand things happen. But my kids are wide awake now and it took an hour to get them to sleep.",
             textZh: "我理解意外难免。但孩子们现在完全清醒了，之前哄了一个小时才睡着。",
+            casualVersion: "Yeah, I get it, stuff happens. But my kids are totally awake now, and it took me like an hour to get 'em down before.",
+            commonMistake: {
+              wrong: "I understand things happening. But my children now very awake and it took one hour to let them sleep.",
+              correct: "I understand things happen. But my kids are wide awake now and it took an hour to get them to sleep.",
+              explanation: "\"things happen\"是固定搭配，\"get them to sleep\"更自然，\"wide awake\"比\"very awake\"更生动。",
+            },
+            formalityVariants: {
+              casual: "Yeah, I get that stuff happens. But my kids are super awake now, and it just took me an hour to get 'em to sleep.",
+              standard: "I understand things happen. But my kids are wide awake now and it took an hour to get them to sleep.",
+              formal: "While I certainly comprehend that unforeseen circumstances can arise, my children are now fully awake, and it had previously taken us an hour to settle them for sleep.",
+            },
           },
           {
             speaker: "them",
             role: "经理",
             textEn: "I completely understand. As a gesture of goodwill, I'd like to offer you a complimentary late checkout tomorrow and breakfast for the family.",
             textZh: "完全理解。作为补偿，我想免费提供明天的延迟退房和全家早餐。",
+            casualVersion: "Totally get it. Look, as a goodwill gesture, how about a free late checkout tomorrow and breakfast for the family?",
+            formalityVariants: {
+              casual: "I totally get it. To make up for it, I'd like to offer you a free late checkout tomorrow and breakfast for everyone.",
+              standard: "I completely understand. As a gesture of goodwill, I'd like to offer you a complimentary late checkout tomorrow and breakfast for the family.",
+              formal: "I genuinely empathize with your situation. As a token of our sincere apology and a gesture of goodwill, I would like to extend a complimentary late checkout for your room tomorrow, along with breakfast for your entire family.",
+            },
             keyPhrases: [
               { en: "gesture of goodwill", zh: "善意表示/补偿" },
               { en: "complimentary late checkout", zh: "免费延迟退房" },
@@ -3416,12 +5695,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's very kind of you. What time can we check out?",
             textZh: "太客气了。可以几点退房？",
+            casualVersion: "Oh, that's really nice. What time can we check out?",
+            commonMistake: {
+              wrong: "You are very kind. What time we can check out?",
+              correct: "That's very kind of you. What time can we check out?",
+              explanation: "\"That's very kind of you\"是更自然的表达，疑问句语序需倒装。",
+            },
+            formalityVariants: {
+              casual: "Oh, that's really nice of you. What time can we check out?",
+              standard: "That's very kind of you. What time can we check out?",
+              formal: "That is exceptionally considerate of you. Could you please inform me of the extended checkout time available to us?",
+            },
           },
           {
             speaker: "them",
             role: "经理",
             textEn: "You can check out as late as 2 PM instead of the usual 11 AM. I'll note it on your reservation. Again, I'm very sorry for the disruption.",
             textZh: "可以延迟到下午2点退房，而不是通常的11点。我会备注在您的预订上。再次为打扰深表歉意。",
+            casualVersion: "You can check out by 2 PM, instead of the normal 11. I'll put it in your reservation. And again, really sorry about the whole thing.",
+            formalityVariants: {
+              casual: "You're good till 2 PM for checkout, instead of 11. I'll just add that to your booking. And again, super sorry for the trouble.",
+              standard: "You can check out as late as 2 PM instead of the usual 11 AM. I'll note it on your reservation. Again, I'm very sorry for the disruption.",
+              formal: "You are welcome to extend your departure time to 2:00 PM, rather than the standard 11:00 AM checkout. I will ensure this adjustment is thoroughly documented on your reservation. Once more, I extend our profound apologies for any inconvenience caused by this incident.",
+            },
             keyPhrases: [
               { en: "as late as 2 PM", zh: "最迟下午2点" },
               { en: "disruption", zh: "打扰/干扰" },
@@ -3435,12 +5731,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you. We appreciate you handling it well. Good night.",
             textZh: "谢谢。感谢你们处理得当。晚安。",
+            casualVersion: "Thanks. Appreciate you guys handling it. Night.",
+            commonMistake: {
+              wrong: "Thank you. We appreciate your good handling. Good night.",
+              correct: "Thank you. We appreciate you handling it well. Good night.",
+              explanation: "\"appreciate you handling it well\"是更自然的口语表达。",
+            },
+            formalityVariants: {
+              casual: "Thanks. Appreciate you guys handling this. Night.",
+              standard: "Thank you. We appreciate you handling it well. Good night.",
+              formal: "Thank you. We are grateful for your prompt and effective resolution of the situation. Good night.",
+            },
           },
           {
             speaker: "them",
             role: "经理",
             textEn: "Good night. If you need anything at all — warm milk for the kids, extra pillows — please don't hesitate to call the front desk.",
             textZh: "晚安。如果需要任何东西——给孩子的热牛奶、额外的枕头——请随时打前台电话。",
+            casualVersion: "Night. If you need anything at all – like warm milk for the kids, extra pillows, whatever – just call the front desk.",
+            formalityVariants: {
+              casual: "Night. Seriously, if you need anything – warm milk for the little ones, more pillows – just hit up the front desk.",
+              standard: "Good night. If you need anything at all — warm milk for the kids, extra pillows — please don't hesitate to call the front desk.",
+              formal: "Good night. Should you require anything further at all — be it warm milk for the children, additional pillows, or any other amenity — please do not hesitate to contact the front desk.",
+            },
             keyPhrases: [
               { en: "don't hesitate to call", zh: "随时打电话" },
             ],
@@ -3474,6 +5787,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Help! My husband is having severe chest pain. Please call an ambulance!",
             textZh: "救命！我丈夫胸口剧痛。请叫救护车！",
+            casualVersion: "Help! My husband's got real bad chest pain. Call an ambulance, please!",
+            commonMistake: {
+              wrong: "Please call ambulance!",
+              correct: "Please call an ambulance!",
+              explanation: "中文不说“一个救护车”，但英文需要冠词“an”。",
+            },
+            formalityVariants: {
+              casual: "Help! My husband's got real bad chest pain. Call an ambulance!",
+              standard: "Help! My husband is having severe chest pain. Please call an ambulance!",
+              formal: "Excuse me, I require urgent assistance. My husband is experiencing severe chest pain. Could you please summon an ambulance immediately?",
+            },
           },
           {
             speaker: "them",
@@ -3488,11 +5812,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I'm dialing 911 as we speak. What's your room number? Someone from our team is on the way up right now.", textZh: "我正在拨911。您房间号是？我们的人马上上去。", actionHint: "用as we speak表示此刻", frequency: "common" },
               { textEn: "911 is being called right now. Tell me your room number and I'll have our first responder up there immediately.", textZh: "现在正在打911。告诉我房间号，我们的急救人员马上上去。", actionHint: "用first responder", frequency: "occasional" },
             ],
+            casualVersion: "Calling 911 now. What room you in? I'll send someone right up.",
+            formalityVariants: {
+              casual: "Calling 911 now. What room you in? I'll send someone right up.",
+              standard: "I'm calling 911 right now. What room are you in? I'll send someone up immediately.",
+              formal: "I am contacting emergency services, 911, at this moment. May I inquire as to your room number? I will dispatch personnel to your location without delay.",
+            },
           },
           {
             speaker: "you",
             textEn: "Room 1208. He's conscious but in a lot of pain. Please hurry!",
             textZh: "1208房间。他还有意识但非常痛。请快一点！",
+            casualVersion: "1208. He's conscious, but super painful. Hurry!",
+            commonMistake: {
+              wrong: "He is much pain.",
+              correct: "He is in a lot of pain.",
+              explanation: "“much pain”是错的，应说“a lot of pain”或“much pain”前加“in”。",
+            },
+            formalityVariants: {
+              casual: "1208. He's conscious, but super painful. Hurry!",
+              standard: "Room 1208. He's conscious but in a lot of pain. Please hurry!",
+              formal: "Our room is 1208. He remains conscious, however, he is experiencing a significant amount of pain. Your promptness is greatly appreciated.",
+            },
           },
           {
             speaker: "them",
@@ -3509,11 +5850,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "An ambulance is en route — about 5 minutes out. Our security is coming to your room with first aid supplies. Does your husband take any medications?", textZh: "救护车正在路上——大约5分钟到。我们的安保正带急救用品去您房间。您丈夫有在吃什么药吗？", actionHint: "用en route", frequency: "common" },
               { textEn: "EMTs should be there in 5 minutes. I've also sent our on-site first aid team to your room right away. Is he currently on any medication?", textZh: "急救员大约5分钟到。我已经派现场急救人员去您房间了。他目前有在吃什么药吗？", actionHint: "用EMTs替代paramedics", frequency: "occasional" },
             ],
+            casualVersion: "Paramedics are on their way, like 5 mins out. Security guard's got a first aid kit, heading to your room now. Any meds he's on?",
+            formalityVariants: {
+              casual: "Paramedics are on their way, like 5 mins out. Security guard's got a first aid kit, heading to your room now. Any meds he's on?",
+              standard: "The paramedics are on their way — estimated 5 minutes. Our security guard has a first aid kit and is heading to your room now. Is he on any medication?",
+              formal: "The emergency medical technicians are en route, with an estimated arrival time of five minutes. Our security personnel, equipped with a first aid kit, is proceeding to your room presently. Could you please advise if he is currently taking any prescribed medications?",
+            },
           },
           {
             speaker: "you",
             textEn: "He takes blood pressure medication. It's in his bag. Should I give him an aspirin?",
             textZh: "他吃降压药。在他包里。要给他吃阿司匹林吗？",
+            casualVersion: "He's on blood pressure meds. It's in his bag. Should I give him an aspirin?",
+            commonMistake: {
+              wrong: "He eats blood pressure medicine.",
+              correct: "He takes blood pressure medication.",
+              explanation: "英文说“take medication”或“on medication”，不用“eat”。",
+            },
+            formalityVariants: {
+              casual: "He's on blood pressure meds. It's in his bag. Should I give him an aspirin?",
+              standard: "He takes blood pressure medication. It's in his bag. Should I give him an aspirin?",
+              formal: "He is currently prescribed blood pressure medication. It can be found in his personal bag. Would it be advisable to administer an aspirin?",
+            },
           },
           {
             speaker: "them",
@@ -3529,11 +5887,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "If he's okay with aspirin, give him one to chew — don't let him swallow it whole. Prop him up and try to keep him relaxed until help arrives.", textZh: "如果他能吃阿司匹林，给他一片嚼着吃——别整颗咽下去。把他扶坐起来，帮助他尽量放松等救援。", actionHint: "用prop him up表示扶起", frequency: "common" },
               { textEn: "One aspirin, chewed not swallowed, should help — if he's not allergic. Keep him seated and as calm as possible. The ambulance is almost there.", textZh: "如果不过敏的话，一片阿司匹林嚼碎吃会有帮助。让他坐着尽量保持平静。救护车快到了。", actionHint: "给出安慰", frequency: "occasional" },
             ],
+            casualVersion: "If he's not allergic, a regular aspirin might help. Chew it, don't just swallow. Keep him sitting up and try to keep him calm.",
+            commonMistake: {
+              wrong: "Don't swallow whole.",
+              correct: "Don't swallow it whole.",
+              explanation: "英文动词后常需带宾语，这里指“它”即药片。",
+            },
+            formalityVariants: {
+              casual: "If he's not allergic, a regular aspirin might help. Chew it, don't just swallow. Keep him sitting up and try to keep him calm.",
+              standard: "If he's not allergic to aspirin, one regular aspirin may help. Have him chew it, not swallow it whole. Keep him sitting upright and try to keep him calm.",
+              formal: "Provided he does not have an aspirin allergy, a standard dose may be beneficial. Instruct him to chew it thoroughly rather than ingesting it whole. Please ensure he remains in an upright seated position and endeavor to maintain his composure.",
+            },
           },
           {
             speaker: "you",
             textEn: "Okay. Where will the ambulance go? Should I meet them downstairs?",
             textZh: "好的。救护车会停在哪？我需要下去接他们吗？",
+            casualVersion: "Okay. Where's the ambulance gonna go? Need me to meet 'em downstairs?",
+            commonMistake: {
+              wrong: "Where ambulance go?",
+              correct: "Where will the ambulance go?",
+              explanation: "英文问句需要动词be或助动词，且“ambulance”前需要冠词“the”。",
+            },
+            formalityVariants: {
+              casual: "Okay. Where's the ambulance gonna go? Need me to meet 'em downstairs?",
+              standard: "Okay. Where will the ambulance go? Should I meet them downstairs?",
+              formal: "Understood. Could you please inform me of the ambulance's designated location upon arrival? Am I required to meet them downstairs?",
+            },
           },
           {
             speaker: "them",
@@ -3548,11 +5928,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Please stay right there with him. We'll handle everything downstairs — meet the ambulance, guide the medics up, and hold the lift for them.", textZh: "请留在他身边。楼下的事我们搞定——接救护车、带医护人员上去、预留电梯。", actionHint: "用medics和lift", frequency: "common" },
               { textEn: "Don't leave his side. Our team will escort the paramedics straight to your room — we're keeping the elevator clear for them.", textZh: "别离开他身边。我们的团队会直接把急救人员带到您房间——电梯已经为他们清空了。", actionHint: "用escort和keeping clear", frequency: "occasional" },
             ],
+            casualVersion: "Stay with him. Our staff'll meet the ambulance at the entrance, bring 'em straight up. We'll hold the elevator too.",
+            formalityVariants: {
+              casual: "Stay with him. Our staff'll meet the ambulance at the entrance, bring 'em straight up. We'll hold the elevator too.",
+              standard: "Stay with your husband. Our staff will meet the ambulance at the entrance and bring the paramedics directly to your room. We'll also hold the elevator for them.",
+              formal: "Please remain with your husband. Our staff will intercept the ambulance at the main entrance and escort the paramedics directly to your room. We will also ensure the elevator is held for their immediate access.",
+            },
           },
           {
             speaker: "you",
             textEn: "Thank you so much. I also need our travel insurance information — it's in the hotel safe.",
             textZh: "太感谢了。我还需要旅行保险信息——在酒店保险箱里。",
+            casualVersion: "Thanks so much. Also, I need our travel insurance info — it's in the safe.",
+            formalityVariants: {
+              casual: "Thanks so much. Also, I need our travel insurance info — it's in the safe.",
+              standard: "Thank you so much. I also need our travel insurance information — it's in the hotel safe.",
+              formal: "I am profoundly grateful for your assistance. Additionally, I will require our travel insurance information, which is stored in the hotel safe.",
+            },
           },
           {
             speaker: "them",
@@ -3567,6 +5959,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Once the medical team is with him, I'll have someone come up to help you open the safe. The closest hospital is City General — about 8 minutes by ambulance. We're here for whatever you need.", textZh: "医疗团队到了之后，我派人帮您开保险箱。最近的医院是市综合医院，救护车约8分钟。您需要什么我们都在。", actionHint: "详细说明安排", frequency: "common" },
               { textEn: "I'll send someone for the safe as soon as the paramedics arrive. They'll likely take him to City General, just 8 minutes away. Please don't worry — we'll take care of everything on our end.", textZh: "急救人员一到我就派人帮您开保险箱。他们可能会送到市综合医院，只有8分钟。请别担心——我们这边会处理好一切。", actionHint: "用on our end表示我们这边", frequency: "occasional" },
             ],
+            casualVersion: "I'll send someone to help with the safe once paramedics get here. Nearest hospital's City General, 'bout 8 mins. We'll help with anything you need.",
+            formalityVariants: {
+              casual: "I'll send someone to help with the safe once paramedics get here. Nearest hospital's City General, 'bout 8 mins. We'll help with anything you need.",
+              standard: "I'll send someone to help you access the safe after the paramedics arrive. The nearest hospital is City General, about 8 minutes away. We'll help with anything you need.",
+              formal: "I will arrange for assistance to access the safe following the arrival of the paramedics. The closest medical facility is City General Hospital, approximately eight minutes distant. We are committed to providing any necessary support.",
+            },
           },
         ],
       },
@@ -3581,12 +5979,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I have a bad headache and I forgot to pack pain medication. Do you have anything at the front desk?",
             textZh: "我头很痛，忘了带止痛药。前台有吗？",
+            casualVersion: "Got a bad headache, forgot my pain meds. Y'all got anything at the front desk?",
+            commonMistake: {
+              wrong: "I have a big headache and forgot to bring pain medicine. Does the front desk have it?",
+              correct: "I have a bad headache and I forgot to pack pain medication. Do you have anything at the front desk?",
+              explanation: "“big headache”不地道，用“bad headache”。“bring”用于携带，“pack”用于行李打包。",
+            },
+            formalityVariants: {
+              casual: "Got a bad headache, forgot my pain meds. Anything at the front desk?",
+              standard: "I have a bad headache and I forgot to pack pain medication. Do you have anything at the front desk?",
+              formal: "Excuse me, I'm experiencing a severe headache and unfortunately, I neglected to pack any pain medication. Would you happen to have any available at the front desk, please?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We have a small first aid kit with basic over-the-counter medications. I can offer you ibuprofen or acetaminophen. Which would you prefer?",
             textZh: "我们有小急救箱，有基本的非处方药。有布洛芬和对乙酰氨基酚。您要哪种？",
+            casualVersion: "Yeah, we got a small first aid kit with basic over-the-counter stuff. Can offer ibuprofen or Tylenol. Which one you want?",
+            formalityVariants: {
+              casual: "Yeah, we got a small first aid kit, basic meds. Ibuprofen or Tylenol? Which do you want?",
+              standard: "We have a small first aid kit with basic over-the-counter medications. I can offer you ibuprofen or acetaminophen. Which would you prefer?",
+              formal: "Certainly, we do maintain a small first aid kit which includes essential over-the-counter medications. I can provide you with either ibuprofen or acetaminophen. Please let me know which you would prefer.",
+            },
             keyPhrases: [
               { en: "over-the-counter", zh: "非处方的" },
               { en: "ibuprofen", zh: "布洛芬" },
@@ -3601,6 +6016,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Ibuprofen, please. Also, is there a pharmacy nearby? I might need cold medicine too — I think I'm coming down with something.",
             textZh: "布洛芬吧。附近有药店吗？我可能还需要感冒药——感觉要生病了。",
+            casualVersion: "Ibuprofen's good. Oh, is there a pharmacy near here? Might need cold meds too — feel like I'm getting sick.",
+            commonMistake: {
+              wrong: "I want Ibuprofen. Is there a pharmacy nearby? I also need cold medicine, I feel I am sick.",
+              correct: "Ibuprofen, please. Also, is there a pharmacy nearby? I might need cold medicine too — I think I'm coming down with something.",
+              explanation: "“I want”不礼貌，用“Ibuprofen, please”。“I feel I am sick”不自然，用“I think I'm coming down with something”。",
+            },
+            formalityVariants: {
+              casual: "Ibuprofen's fine. Any pharmacies 'round here? Think I'm getting sick, might need cold meds.",
+              standard: "Ibuprofen, please. Also, is there a pharmacy nearby? I might need cold medicine too — I think I'm coming down with something.",
+              formal: "Ibuprofen, if you please. Furthermore, could you inform me if there is a pharmacy in the vicinity? I believe I may also require some cold medicine, as I suspect I might be developing an illness.",
+            },
             culturalNote: "\'coming down with something\' 是地道表达，意思是 \'感觉要生病了\'。",
           },
           {
@@ -3608,6 +6034,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "前台",
             textEn: "There's a CVS pharmacy two blocks north of here — open until midnight. They have a pharmacist on duty who can recommend cold remedies.",
             textZh: "北边两个街区有一家CVS药店——营业到午夜。有药剂师在岗，可以推荐感冒药。",
+            casualVersion: "Yeah, there's a CVS two blocks north, open 'til midnight. Pharmacist there can totally recommend cold stuff.",
+            formalityVariants: {
+              casual: "CVS, two blocks north, open 'til midnight. Pharmacist there can recommend cold stuff.",
+              standard: "There's a CVS pharmacy two blocks north of here — open until midnight. They have a pharmacist on duty who can recommend cold remedies.",
+              formal: "Certainly, you'll find a CVS pharmacy located approximately two blocks to the north of our establishment. It operates until midnight, and there will be a pharmacist available who can expertly recommend suitable cold remedies.",
+            },
             keyPhrases: [
               { en: "pharmacy", zh: "药店" },
               { en: "pharmacist on duty", zh: "值班药剂师" },
@@ -3622,12 +6054,30 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "If I get worse, is there an urgent care clinic nearby?",
             textZh: "如果更严重了，附近有急诊诊所吗？",
+            casualVersion: "If I feel worse, is there an urgent care clinic close?",
+            culturalNote: "“Urgent Care”是介于家庭医生和急诊室之间的医疗机构，处理非生命危险但紧急的疾病。",
+            commonMistake: {
+              wrong: "If I become worse, is there an urgent care clinic nearby?",
+              correct: "If I get worse, is there an urgent care clinic nearby?",
+              explanation: "“become worse”听起来不自然，用“get worse”更地道。",
+            },
+            formalityVariants: {
+              casual: "If I get worse, any urgent care clinics around?",
+              standard: "If I get worse, is there an urgent care clinic nearby?",
+              formal: "In the event my condition deteriorates, would there be an urgent care clinic located in the vicinity?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, there's an urgent care clinic on Main Street, about a 5-minute drive. They accept walk-ins and most travel insurance. I can call them for you.",
             textZh: "有的，主街上有一家急诊诊所，开车约5分钟。接受直接就诊和大多数旅行保险。我可以帮您打电话。",
+            casualVersion: "Yeah, urgent care on Main Street, like a 5-min drive. They take walk-ins and most travel insurance. I can call 'em for ya.",
+            formalityVariants: {
+              casual: "Yep, urgent care on Main, 5 min drive. They take walk-ins, most travel insurance. I can call 'em.",
+              standard: "Yes, there's an urgent care clinic on Main Street, about a 5-minute drive. They accept walk-ins and most travel insurance. I can call them for you.",
+              formal: "Yes, there is an urgent care clinic conveniently located on Main Street, approximately a five-minute drive from here. They do accept walk-in patients and typically honor most travel insurance policies. I would be happy to contact them on your behalf.",
+            },
             keyPhrases: [
               { en: "urgent care clinic", zh: "急诊诊所" },
               { en: "walk-ins", zh: "直接就诊/无需预约" },
@@ -3642,12 +6092,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Not yet, hopefully the medicine will help. Can I also get some hot water with lemon and honey sent to my room?",
             textZh: "先不用，希望药有用。能送一杯加柠檬和蜂蜜的热水到房间吗？",
+            casualVersion: "Nah, not yet, hopefully the medicine helps. Can I get some hot water with lemon and honey sent to my room too?",
+            commonMistake: {
+              wrong: "No need yet, hope the medicine will be useful. Can I also ask some hot water with lemon and honey sent to my room?",
+              correct: "Not yet, hopefully the medicine will help. Can I also get some hot water with lemon and honey sent to my room?",
+              explanation: "“No need yet”不自然，用“Not yet”。“be useful”不如“help”地道。“ask...sent”语法错误，用“get...sent”。",
+            },
+            formalityVariants: {
+              casual: "Nah, not yet, hope the meds help. Can I get hot water with lemon and honey sent to my room?",
+              standard: "Not yet, hopefully the medicine will help. Can I also get some hot water with lemon and honey sent to my room?",
+              formal: "Not at this moment, thank you. I am hopeful that the medication will prove beneficial. Additionally, would it be possible to have some hot water with lemon and honey delivered to my room, please?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Of course — I'll have room service bring it up along with some herbal tea. No charge. Feel better soon!",
             textZh: "当然——我让客房服务送上去，再配些草本茶。不收费。祝您早日康复！",
+            casualVersion: "Totally — I'll get room service to bring it up, and some herbal tea too. No charge. Get well soon!",
+            formalityVariants: {
+              casual: "Sure thing — room service'll bring it, plus some herbal tea. On the house. Get better!",
+              standard: "Of course — I'll have room service bring it up along with some herbal tea. No charge. Feel better soon!",
+              formal: "Certainly, I would be pleased to arrange for room service to deliver that for you, along with a selection of herbal tea, at no additional charge. We sincerely hope you feel better very soon!",
+            },
             keyPhrases: [
               { en: "no charge", zh: "不收费" },
               { en: "feel better soon", zh: "祝早日康复" },
@@ -3661,6 +6128,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "You're very kind. Thank you for all the help.",
             textZh: "你人真好。谢谢这些帮助。",
+            casualVersion: "You're awesome. Thanks for everything.",
+            formalityVariants: {
+              casual: "You're great. Thanks for the help.",
+              standard: "You're very kind. Thank you for all the help.",
+              formal: "That is exceedingly kind of you. I am deeply grateful for all of your assistance.",
+            },
           },
         ],
       },
@@ -3670,6 +6143,7 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
   // ==================== 投诉 ====================
   {
     id: "hotel-complaint-noise",
+    tags: ["complaint", "投诉", "问题"],
     category: "hotel",
     titleZh: "投诉：噪音",
     titleEn: "Complaint: Noise Disturbance",
@@ -3688,6 +6162,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I'm in room 1208 and the room next door is extremely loud. It's past midnight and I can't sleep.",
             textZh: "你好，我是1208房间，隔壁房间特别吵。已经过了午夜，我睡不着。",
+            casualVersion: "Hey, I'm in 1208. Room next door's super loud. It's past midnight, can't sleep.",
+            commonMistake: {
+              wrong: "I am room 1208.",
+              correct: "I'm in room 1208.",
+              explanation: "直接说“我是1208房间”不符合英语习惯，需用介词“in”。",
+            },
+            formalityVariants: {
+              casual: "Hey, I'm in 1208, and the room next door's super loud. It's past midnight, can't sleep.",
+              standard: "Hello, I'm in room 1208. The room next door is extremely loud, and it's past midnight so I can't sleep.",
+              formal: "Good evening. I am calling from room 1208. The adjacent room is generating a significant amount of noise, and as it is now past midnight, I am finding it impossible to sleep.",
+            },
           },
           {
             speaker: "them",
@@ -3702,11 +6187,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I apologize for the disturbance. I'll have someone from our security team go up and talk to them immediately.", textZh: "对打扰感到抱歉。我马上让安保团队的人上去跟他们谈。", actionHint: "更正式地表达", frequency: "common" },
               { textEn: "I'm so sorry about that. Let me send someone up right away to have a word with those guests.", textZh: "非常抱歉。我马上派人上去跟那些客人谈谈。", actionHint: "用have a word with", frequency: "occasional" },
             ],
+            casualVersion: "Oh, super sorry 'bout that. I'll send security right up to talk to 'em.",
+            formalityVariants: {
+              casual: "Oh, sorry to hear that. I'll send security right up to talk to them.",
+              standard: "I'm very sorry to hear that. I'll send security up to speak with the guests in that room right away.",
+              formal: "I sincerely apologize for the disturbance you are experiencing. I will dispatch security personnel to address the guests in question immediately.",
+            },
           },
           {
             speaker: "you",
             textEn: "Thank you. They've been playing loud music and shouting for over an hour.",
             textZh: "谢谢。他们放大声音乐、喊叫已经一个多小时了。",
+            casualVersion: "Thanks. They've been blasting music and yelling for over an hour now.",
+            commonMistake: {
+              wrong: "They make loud music and shouting.",
+              correct: "They've been playing loud music and shouting.",
+              explanation: "描述持续行为用现在完成进行时，且“播放音乐”用“play”。",
+            },
+            formalityVariants: {
+              casual: "Thanks. They've been blasting music and yelling for like an hour.",
+              standard: "Thank you. They have been playing loud music and shouting for over an hour.",
+              formal: "I appreciate your prompt assistance. They have been generating significant noise, specifically loud music and shouting, for approximately an hour now.",
+            },
           },
           {
             speaker: "them",
@@ -3722,11 +6224,33 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "That's absolutely not okay. We enforce quiet hours from 10 PM. Security will tell them to quiet down, and if they don't, they'll be asked to leave the hotel.", textZh: "这完全不行。我们从晚10点开始执行安静规定。安保会让他们安静，不听的话就请他们离开酒店。", actionHint: "用enforce表示执行", frequency: "common" },
               { textEn: "I understand your frustration. Our noise policy kicks in at 10 PM. We'll give them one warning, and if they don't comply, they'll be removed.", textZh: "我理解您的不满。我们的噪音规定从10点生效。我们会警告一次，不配合就让他们走。", actionHint: "用kicks in和comply", frequency: "occasional" },
             ],
+            casualVersion: "That's just not cool. Quiet hours start at 10. Security'll tell 'em to chill. If they don't, we can kick 'em out.",
+            commonMistake: {
+              wrong: "Our policy of quiet hours starts from 10 PM.",
+              correct: "Our quiet hours policy starts at 10 PM.",
+              explanation: "表达时间点用介词“at”，而不是“from”或“of”。",
+            },
+            formalityVariants: {
+              casual: "Totally unacceptable. Quiet hours kick in at 10. Security'll get 'em to quiet down. Keep it up, and we'll have 'em removed.",
+              standard: "That is unacceptable. Our quiet hours policy commences at 10 PM. Security will instruct them to reduce their noise level. Should the disturbance persist, we reserve the right to request their departure from the premises.",
+              formal: "This behavior is entirely unacceptable. Our hotel's quiet hours policy is strictly enforced from 10:00 PM onwards. Security personnel will intervene and request that they cease the disturbance. Should the noise continue, we reserve the right to revoke their occupancy and request that they vacate the premises.",
+            },
           },
           {
             speaker: "you",
             textEn: "I hope it works. I have an early flight tomorrow and really need to sleep.",
             textZh: "希望有用。我明天有早班飞机，真的需要睡觉。",
+            casualVersion: "Hope that works. Got an early flight tomorrow, really gotta get some sleep.",
+            commonMistake: {
+              wrong: "I have early flight tomorrow and really need sleep.",
+              correct: "I have an early flight tomorrow and really need to sleep.",
+              explanation: "“an early flight”需要冠词；“need to sleep”是动词不定式。",
+            },
+            formalityVariants: {
+              casual: "Hope it works out. Got an early flight tomorrow, so I seriously need to sleep.",
+              standard: "I certainly hope that resolves the issue. I have an early flight tomorrow and am in urgent need of sleep.",
+              formal: "I sincerely hope this intervention proves effective. I have a very early departure flight scheduled for tomorrow, and adequate rest is absolutely essential.",
+            },
           },
           {
             speaker: "them",
@@ -3742,12 +6266,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Of course. If it's still noisy after 15 minutes, just ring us and we'll switch you to a peaceful room on another floor right away.", textZh: "当然。如果15分钟后还吵，打电话来我们马上给您换到其他楼层安静的房间。", actionHint: "用switch和peaceful", frequency: "common" },
               { textEn: "If the problem persists, give us a call and we'll relocate you to a quieter part of the hotel. No hassle at all.", textZh: "如果问题持续，打电话来我们会帮您搬到酒店更安静的区域。完全不麻烦。", actionHint: "用relocate和no hassle", frequency: "occasional" },
             ],
+            casualVersion: "Totally get it. If it's still noisy in 15, just call us, and we can switch you to a quieter room on another floor.",
+            commonMistake: {
+              wrong: "If the noise doesn't stop within 15 minutes, call back us and we can transfer you to a quieter room.",
+              correct: "If the noise doesn't stop within 15 minutes, call us back and we can move you to a quieter room.",
+              explanation: "电话打回是“call us back”，移动房间是“move you to a room”。",
+            },
+            formalityVariants: {
+              casual: "I totally get it. If the noise isn't gone in 15, just buzz us again, and we can swap your room to a quieter floor.",
+              standard: "I understand completely. Should the noise persist beyond 15 minutes, please contact us again, and we will be pleased to relocate you to a quieter room on an alternate floor.",
+              formal: "I fully comprehend your predicament. Should the disturbance not abate within a quarter of an hour, I invite you to contact us once more, and we will arrange for your relocation to a more serene accommodation on a separate level of the hotel.",
+            },
           },
           {
             speaker: "you",
             textEn: "That would be great as a backup plan. I don't want to pack up and move if I don't have to.",
             textZh: "作为备选方案很好。不到万不得已不想收拾搬房。",
             culturalNote: "\'backup plan\' 是 \'备选方案\'，常用于日常和商务场合。",
+            casualVersion: "That's a good backup. Really don't wanna pack everything up and move if I don't gotta.",
+            commonMistake: {
+              wrong: "That would be great as a backup plan. I don't want to pack up and move if no choice.",
+              correct: "That would be great as a backup plan. I don't want to pack up and move if I don't have to.",
+              explanation: "“If I don't have to”是更自然的表达“不到万不得已”。",
+            },
+            formalityVariants: {
+              casual: "Yeah, that's a good backup. Rather not pack and move if I don't have to.",
+              standard: "That would be an excellent backup plan. I would prefer not to have to pack and relocate if it can be avoided.",
+              formal: "That contingency plan is appreciated. I would, however, prefer to avoid the inconvenience of packing and relocating if circumstances do not absolutely necessitate it.",
+            },
           },
           {
             speaker: "them",
@@ -3762,6 +6308,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "No problem. If a move is needed, we'll send someone to help with your bags. I've also set a wake-up call for 5:30 just in case. Does that time work?", textZh: "没问题。如果需要搬房，会派人帮您拿行李。以防万一我也设了5:30叫醒服务。这个时间可以吗？", actionHint: "用just in case", frequency: "common" },
               { textEn: "If we do switch rooms, a porter will help carry everything. And as a precaution, I've scheduled your wake-up call for 5:30 AM. Shall I adjust the time?", textZh: "如果换房的话，搬运员会帮忙搬所有东西。作为预防，我安排了5:30叫醒。需要调整时间吗？", actionHint: "用porter和scheduled", frequency: "occasional" },
             ],
+            casualVersion: "Got it. If we gotta move you, a bellman'll help with your bags. Also, set you up with a 5:30 AM wake-up call, just in case. Is that good?",
+            commonMistake: {
+              wrong: "I've also set wake-up call for you at 5:30 AM.",
+              correct: "I've also set a wake-up call for you at 5:30 AM.",
+              explanation: "“wake-up call”是可数名词，需要冠词“a”。",
+            },
+            formalityVariants: {
+              casual: "Got it. If we do gotta move you, bellman'll help with your bags. Also, set a 5:30 AM wake-up call, just in case. Sound good?",
+              standard: "Understood. Should a room change become necessary, a bellman will be available to assist with your luggage. Additionally, I have proactively scheduled a wake-up call for you at 5:30 AM. Is that time correct?",
+              formal: "I fully comprehend. In the event that a room relocation is required, a bellman will be assigned to assist you with your luggage. Furthermore, as a precautionary measure, I have arranged a wake-up call for 5:30 AM. Could you please confirm if this time is accurate?",
+            },
           },
         ],
       },
@@ -3776,12 +6333,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "There's been construction noise outside my window since 7 AM. I wasn't told about this when I checked in.",
             textZh: "从早上7点开始窗外就有施工噪音。入住时没人告诉我。",
+            casualVersion: "Construction noise outside my window since 7 AM. Nobody told me when I checked in.",
+            commonMistake: {
+              wrong: "Outside my window has construction noise since 7 AM.",
+              correct: "There's been construction noise outside my window since 7 AM.",
+              explanation: "中式英语常将主语和动词直接翻译。英文常用\"There is/are\"句型。",
+            },
+            formalityVariants: {
+              casual: "Noise outside my window since 7 AM. Nobody mentioned it at check-in.",
+              standard: "There's been construction noise outside my window since 7 AM. I wasn't told about this when I checked in.",
+              formal: "I must bring to your attention that there has been significant construction noise outside my window since 7 AM this morning. This information was not disclosed to me during the check-in process.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I sincerely apologize. There's a building project next door that we were just notified about yesterday. I should have informed you at check-in.",
             textZh: "非常抱歉。隔壁有一个建筑工程，我们昨天才收到通知。入住时应该告诉您的。",
+            casualVersion: "So sorry about that. There's a building project next door we just found out about yesterday. Should've told you when you checked in.",
+            formalityVariants: {
+              casual: "So sorry. We just found out about that building project next door yesterday. My bad for not telling you at check-in.",
+              standard: "I sincerely apologize. There's a building project next door that we were just notified about yesterday. I should have informed you at check-in.",
+              formal: "Please accept my sincerest apologies. We were only apprised of a new building project commencing next door yesterday. I regret that this information was not communicated to you upon your arrival.",
+            },
             keyPhrases: [
               { en: "building project", zh: "建筑工程" },
               { en: "notified about", zh: "收到通知" },
@@ -3795,12 +6369,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'm here for three more nights. I can't deal with jackhammers every morning.",
             textZh: "我还要住三晚。每天早上电钻声受不了。",
+            casualVersion: "Got three more nights here. Can't deal with those jackhammers every morning.",
+            commonMistake: {
+              wrong: "I cannot stand jackhammers every morning.",
+              correct: "I can't deal with jackhammers every morning.",
+              explanation: "\"can't deal with\"更自然地表达无法忍受某种情况。",
+            },
+            formalityVariants: {
+              casual: "Still got three nights. No way I can handle that jackhammer noise every morning.",
+              standard: "I'm here for three more nights. I can't deal with jackhammers every morning.",
+              formal: "I am scheduled to stay for an additional three nights. I find the persistent noise from the jackhammers each morning quite unbearable.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I'd like to move you to a room on the opposite side of the hotel, facing the garden. It's quieter and actually a higher room category. No extra charge.",
             textZh: "我想给您换到酒店另一侧面向花园的房间。更安静，实际上还是更高级别的房型。不加收费用。",
+            casualVersion: "How about moving you to a room on the other side, facing the garden? It's way quieter, even a better room, no extra charge.",
+            formalityVariants: {
+              casual: "Let's get you into a room on the other side, garden-facing. Much quieter, better room, no extra cost.",
+              standard: "I'd like to move you to a room on the opposite side of the hotel, facing the garden. It's quieter and actually a higher room category. No extra charge.",
+              formal: "I would be pleased to offer you a room relocation to the opposite wing of the hotel, specifically one that faces the garden. This accommodation offers a significantly quieter environment and is, in fact, an upgraded room category, all at no additional cost.",
+            },
             keyPhrases: [
               { en: "opposite side", zh: "另一侧" },
               { en: "higher room category", zh: "更高级别房型" },
@@ -3814,12 +6405,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That would help a lot. What about compensation for today? I couldn't sleep in and my whole morning was ruined.",
             textZh: "那帮助很大。今天的补偿呢？我没法睡懒觉，整个上午都毁了。",
+            casualVersion: "That'd help a ton. What about today though? Couldn't sleep in, my morning's trashed.",
+            commonMistake: {
+              wrong: "My whole morning was destroyed.",
+              correct: "my whole morning was ruined.",
+              explanation: "\"destroyed\"通常指物理性破坏，\"ruined\"更常用于抽象事物如计划、心情、一天。",
+            },
+            formalityVariants: {
+              casual: "Yeah, that'd be great. But what about today? Couldn't sleep in, morning's a wash.",
+              standard: "That would help a lot. What about compensation for today? I couldn't sleep in and my whole morning was ruined.",
+              formal: "That arrangement would be highly beneficial. However, regarding today's inconvenience, particularly the disturbance that prevented me from sleeping in and effectively disrupted my entire morning, what compensation can be offered?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Absolutely fair. I'll apply a 30% discount on tonight's room rate and add complimentary dinner for two at our restaurant. Would that work for you?",
             textZh: "完全合理。我给今晚房费打7折，再加上我们餐厅的免费双人晚餐。可以吗？",
+            casualVersion: "Totally fair. I'll take 30% off tonight's room and throw in a free dinner for two at our restaurant. Sound good?",
+            formalityVariants: {
+              casual: "Yeah, that's fair. 30% off tonight's room, plus free dinner for two here. Cool?",
+              standard: "Absolutely fair. I'll apply a 30% discount on tonight's room rate and add complimentary dinner for two at our restaurant. Would that work for you?",
+              formal: "That is an entirely reasonable request. As such, I will apply a 30% discount to tonight's room rate and also provide complimentary dinner for two at our esteemed restaurant. Would this resolution be satisfactory?",
+            },
             keyPhrases: [
               { en: "30% discount", zh: "7折/30%折扣" },
               { en: "room rate", zh: "房费" },
@@ -3834,12 +6442,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I appreciate the gesture. When can I move to the new room?",
             textZh: "感谢你们的诚意。什么时候可以搬到新房间？",
+            casualVersion: "Appreciate it. When can I move rooms?",
+            formalityVariants: {
+              casual: "Thanks. When can I switch rooms?",
+              standard: "I appreciate the gesture. When can I move to the new room?",
+              formal: "I am grateful for your consideration. May I inquire as to the earliest opportunity for me to relocate to the new room?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "The room is ready now. I'll have a bellman come up to help you move. Your new room is 2415 — same floor plan but garden view. Much more peaceful.",
             textZh: "房间已经准备好了。我让行李员上去帮您搬。新房间是2415——相同户型但是花园景。安静多了。",
+            casualVersion: "Room's ready. I'll send a bellman up to help you move. New room's 2415 – same layout but garden view. Way more peaceful.",
+            formalityVariants: {
+              casual: "It's ready. I'll send a bellman up to help. New room's 2415 – same setup, but garden view. Much quieter.",
+              standard: "The room is ready now. I'll have a bellman come up to help you move. Your new room is 2415 — same floor plan but garden view. Much more peaceful.",
+              formal: "The designated room is now prepared for your occupancy. I shall arrange for a bellman to assist you with your relocation. Your new accommodation, room 2415, features an identical floor plan but offers a serene garden view, ensuring a considerably more tranquil environment.",
+            },
             keyPhrases: [
               { en: "floor plan", zh: "户型" },
               { en: "garden view", zh: "花园景" },
@@ -3854,6 +6474,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you for resolving this so quickly.",
             textZh: "谢谢这么快解决问题。",
+            casualVersion: "Thanks for sorting this out fast.",
+            commonMistake: {
+              wrong: "Thank you for solving this so quickly.",
+              correct: "Thank you for resolving this so quickly.",
+              explanation: "\"solve\"更常用于解决谜题或数学问题，\"resolve\"或\"sort out\"更常用于解决争议或问题。",
+            },
+            formalityVariants: {
+              casual: "Thanks for the quick fix.",
+              standard: "Thank you for resolving this so quickly.",
+              formal: "I appreciate your prompt and efficient resolution of this matter.",
+            },
           },
         ],
       },
@@ -3862,6 +6493,7 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
 
   {
     id: "hotel-complaint-cleanliness",
+    tags: ["complaint", "投诉", "问题"],
     category: "hotel",
     titleZh: "投诉：清洁问题",
     titleEn: "Complaint: Cleanliness Issue",
@@ -3880,6 +6512,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I just checked into my room and it hasn't been properly cleaned. There are used towels on the floor and the bed sheets look like they haven't been changed.",
             textZh: "我刚入住，房间没有打扫干净。地上有用过的毛巾，床单看起来没换。",
+            casualVersion: "Just checked in, and my room isn't clean. Got used towels on the floor, and the sheets look like they haven't been changed.",
+            commonMistake: {
+              wrong: "My room not clean. The sheets didn't change.",
+              correct: "My room hasn't been properly cleaned. The bed sheets look like they haven't been changed.",
+              explanation: "中文母语者常省略动词或使用过去式表达未完成动作，地道的表达需要现在完成时被动语态。",
+            },
+            formalityVariants: {
+              casual: "Just checked in, and my room's not clean. Used towels on the floor, sheets look un-changed.",
+              standard: "I just checked into my room and it hasn't been properly cleaned. There are used towels on the floor and the bed sheets look like they haven't been changed.",
+              formal: "Upon checking into my assigned room, I've noticed that it appears the cleaning standards have not been met. Specifically, there are used towels present and the bed linens seem to be unrefreshed.",
+            },
           },
           {
             speaker: "them",
@@ -3894,11 +6537,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Oh, I'm so sorry about that. That should never happen. I'll get our cleaning team up there right now. Can I offer you a coffee in the lobby while they fix it?", textZh: "太抱歉了。这绝不应该发生。我马上派清洁团队上去。打扫期间在大厅请您喝杯咖啡好吗？", actionHint: "提供咖啡等待", frequency: "common" },
               { textEn: "I'm really sorry — that's not the standard we hold ourselves to. Housekeeping is on the way up. Would you like to relax in the lounge until it's sorted?", textZh: "真的很抱歉——这不是我们的标准。客房部正在上去。在休息厅等处理好可以吗？", actionHint: "用sorted表示处理好", frequency: "occasional" },
             ],
+            casualVersion: "Oh, I'm so sorry. That's totally unacceptable. I'll get housekeeping up there right away. Wanna wait in the lobby while they clean?",
+            formalityVariants: {
+              casual: "Oh, my bad. That's not okay. I'll send housekeeping up ASAP. You wanna chill in the lobby while they sort it?",
+              standard: "I'm terribly sorry about that. That's completely unacceptable. I'll send housekeeping to your room immediately. Would you prefer to wait in the lobby while they clean?",
+              formal: "Please accept my sincerest apologies for this oversight. This standard is certainly not what we aim to provide. I will dispatch our housekeeping team to your room without delay. Would you be more comfortable waiting in our lobby while the room is attended to?",
+            },
           },
           {
             speaker: "you",
             textEn: "Actually, I'd rather just get a different room if possible. I don't feel comfortable staying in this one now.",
             textZh: "其实如果可以的话，我想换个房间。在这个房间我不太放心了。",
+            casualVersion: "Actually, I'd rather just get a different room, if that's okay. Don't feel good about staying in this one anymore.",
+            commonMistake: {
+              wrong: "I want change a room. I not comfortable stay here.",
+              correct: "I'd rather get a different room. I don't feel comfortable staying in this one.",
+              explanation: "“I want”听起来过于直接，用“I'd rather”更礼貌；“不舒服”要用“don't feel comfortable”。",
+            },
+            formalityVariants: {
+              casual: "Nah, I'd rather just switch rooms, if possible. Can't stay in this one now.",
+              standard: "Actually, I'd rather just get a different room if possible. I don't feel comfortable staying in this one now.",
+              formal: "Given the circumstances, I would actually prefer to be relocated to an alternative room, if that is feasible. I no longer feel entirely at ease occupying this particular room.",
+            },
           },
           {
             speaker: "them",
@@ -3913,11 +6573,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I totally understand. Let me find a clean room for you right away. I'll check it myself before handing over the key.", textZh: "完全理解。我马上给您找一间干净的房间。给您钥匙之前我亲自检查。", actionHint: "用handing over表示交钥匙", frequency: "common" },
               { textEn: "Absolutely — I wouldn't want to stay in that room either. Give me a moment to find a freshly prepared room. I'll make sure it meets our standards before you move in.", textZh: "当然——换我也不想住那个房间。给我一会儿找间刚准备好的。确保达标再让您入住。", actionHint: "表示感同身受", frequency: "occasional" },
             ],
+            casualVersion: "For sure. I'll find you a fresh-cleaned room right now. I'll even check it myself before I hand you the key.",
+            formalityVariants: {
+              casual: "Absolutely. I'll grab you a clean room ASAP. I'll even check it myself before you get the key.",
+              standard: "Of course. Let me find you a freshly cleaned room right now. I'll personally inspect it before giving you the key.",
+              formal: "Certainly. I will locate a thoroughly cleaned and prepared room for you immediately. I assure you I will personally conduct an inspection of it prior to presenting you with the key.",
+            },
           },
           {
             speaker: "you",
             textEn: "Thank you. I'm also worried about hygiene. Can you make sure the bathroom is thoroughly sanitized?",
             textZh: "谢谢。我也担心卫生。能确保浴室彻底消毒吗？",
+            casualVersion: "Thanks. I'm also kinda worried about hygiene. Can you make sure the bathroom's totally sanitized?",
+            commonMistake: {
+              wrong: "I also worry hygiene. Can you make sure bathroom clean well?",
+              correct: "I'm also worried about hygiene. Can you make sure the bathroom is thoroughly sanitized?",
+              explanation: "“担心”要用“be worried about”；“彻底消毒”用“thoroughly sanitized”更准确专业。",
+            },
+            formalityVariants: {
+              casual: "Appreciate it. Also, hygiene's a concern. Can you make sure the bathroom's spotless?",
+              standard: "Thank you. I'm also worried about hygiene. Can you make sure the bathroom is thoroughly sanitized?",
+              formal: "I appreciate that. Furthermore, I have concerns regarding the general hygiene. Could you please confirm that the bathroom facilities will be thoroughly sanitized?",
+            },
           },
           {
             speaker: "them",
@@ -3932,11 +6609,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I've got room 1412 for you — it was thoroughly cleaned and checked this morning. Let me take you up so you can have a look before you unpack.", textZh: "给您找到了1412——今早彻底打扫和检查过。我带您上去看看，满意再收拾。", actionHint: "用unpack表示收拾", frequency: "common" },
               { textEn: "Room 1412 is ready — fresh clean this morning and double-checked. I'll walk up with you so you can give it the once-over before moving in.", textZh: "1412房间好了——今早做了全新清洁和双重检查。我陪您上去过目一下再入住。", actionHint: "用once-over表示过目", frequency: "occasional" },
             ],
+            casualVersion: "Totally. Got room 1412 for you — cleaned and checked this morning. I'll walk you up, and you can check it out yourself before you move in.",
+            formalityVariants: {
+              casual: "For sure. Got room 1412 — cleaned and checked this AM. I'll take you up, you can see it yourself before you get comfy.",
+              standard: "Absolutely. I've found room 1412 — it was cleaned and inspected this morning. I'll walk you up and you can check it yourself before settling in.",
+              formal: "Most certainly. I have located room 1412, which underwent a comprehensive cleaning and inspection process this very morning. I would be pleased to escort you to the room so that you may personally verify its condition prior to occupying it.",
+            },
           },
           {
             speaker: "you",
             textEn: "I appreciate that. Will you also look into why this happened?",
             textZh: "感谢。也能调查一下为什么会这样吗？",
+            casualVersion: "Appreciate it. Also, can you look into why this even happened?",
+            commonMistake: {
+              wrong: "Can you investigate why this happened?",
+              correct: "Will you also look into why this happened?",
+              explanation: "“look into”更自然口语，比“investigate”更常用。",
+            },
+            formalityVariants: {
+              casual: "Thanks. And can you find out why this went down?",
+              standard: "I appreciate that. Will you also look into why this happened?",
+              formal: "I appreciate your prompt assistance. Furthermore, could you please initiate an inquiry into the root cause of this incident?",
+            },
           },
           {
             speaker: "them",
@@ -3951,11 +6645,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Absolutely. I'll flag this with our head housekeeper. And tonight is on the house — I'm waiving the room charge completely. This isn't the experience you should have.", textZh: "一定的。我会向客房部负责人反映。今晚免单——房费全免。您不应该有这样的体验。", actionHint: "用flag和waiving", frequency: "common" },
               { textEn: "I'll look into it personally and speak with the team. To make it right, I'm taking tonight's charge off your bill entirely. We hold ourselves to a higher standard.", textZh: "我会亲自调查并和团队谈。为了弥补，今晚房费全部减免。我们对自己有更高的标准。", actionHint: "用make it right", frequency: "occasional" },
             ],
+            casualVersion: "For sure. I'll tell our housekeeping manager. And, as an apology, I'm taking tonight's room charge off your bill. This just shouldn't happen here.",
+            formalityVariants: {
+              casual: "Yep. I'll let the housekeeping manager know. And, sorry, but I'm comping tonight's room charge. This is not how we do things.",
+              standard: "Definitely. I'll report this to our housekeeping manager. As an apology, I'm removing tonight's room charge from your bill. This shouldn't happen at our hotel.",
+              formal: "Absolutely. I will ensure this incident is thoroughly reported to our housekeeping manager. As a gesture of sincere apology, I am pleased to inform you that tonight's room charge will be waived from your final bill. Such occurrences are entirely uncharacteristic of our hotel's standards.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's fair. Let's go see the new room.",
             textZh: "很合理。那去看看新房间吧。",
+            casualVersion: "Sounds fair. Let's go check out the new room.",
+            commonMistake: {
+              wrong: "This fair. Let's go see new room.",
+              correct: "That's fair. Let's go see the new room.",
+              explanation: "指代对方说的话，要用“That's fair”；“新房间”需要加冠词“the”。",
+            },
+            formalityVariants: {
+              casual: "Fair enough. Let's hit up the new room.",
+              standard: "That's fair. Let's go see the new room.",
+              formal: "That arrangement is satisfactory. Shall we proceed to view the alternative room?",
+            },
           },
         ],
       },
@@ -3970,12 +6681,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I've been here for three days and the housekeeping quality has been inconsistent. Today they didn't replace the shampoo, and yesterday the trash wasn't emptied.",
             textZh: "我住了三天了，打扫质量不稳定。今天洗发水没补，昨天垃圾桶没倒。",
+            casualVersion: "Been here three days, and the housekeeping's been hit or miss. Like, today no shampoo, and yesterday they didn't even empty the trash.",
+            commonMistake: {
+              wrong: "I stay here three days",
+              correct: "I've been here for three days",
+              explanation: "表示持续的动作或状态，用现在完成时更准确。",
+            },
+            formalityVariants: {
+              casual: "Been here three days, housekeeping's been kinda meh. Like, no shampoo today, and yesterday they didn't even empty the trash.",
+              standard: "I've been here for three days and the housekeeping quality has been inconsistent. Today they didn't replace the shampoo, and yesterday the trash wasn't emptied.",
+              formal: "Good morning/afternoon, I wish to report an issue with the consistency of the housekeeping service during my three-day stay. Specifically, today the shampoo was not replenished, and yesterday the waste bin was not emptied.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I apologize for the inconsistency. I'll notify the housekeeping supervisor and assign a senior housekeeper to your room for the remainder of your stay.",
             textZh: "为质量不稳定道歉。我会通知客房主管，安排资深清洁员负责您的房间直到退房。",
+            casualVersion: "My bad about the inconsistency. I'll tell the housekeeping supervisor and get a senior housekeeper assigned to your room for the rest of your stay.",
+            formalityVariants: {
+              casual: "Oops, sorry about that inconsistency. I'll tell the supervisor and get a senior housekeeper on your room for the rest of your stay.",
+              standard: "I apologize for the inconsistency. I'll notify the housekeeping supervisor and assign a senior housekeeper to your room for the remainder of your stay.",
+              formal: "Please accept my sincerest apologies for the inconsistency you have experienced. I will promptly inform the housekeeping supervisor and ensure a senior housekeeper is exclusively assigned to your room for the duration of your current reservation.",
+            },
             keyPhrases: [
               { en: "inconsistency", zh: "不稳定/不一致" },
               { en: "housekeeping supervisor", zh: "客房主管" },
@@ -3991,12 +6719,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Also, I put the 'Do Not Disturb' sign out yesterday morning, but housekeeping still knocked and tried to come in.",
             textZh: "而且，昨天早上我挂了「请勿打扰」牌，但清洁员还是敲门想进来。",
+            casualVersion: "Oh, and yesterday morning, I had the 'Do Not Disturb' sign up, but housekeeping still knocked and tried to come in anyway.",
+            commonMistake: {
+              wrong: "I hanged the 'Do Not Disturb' sign",
+              correct: "I put the 'Do Not Disturb' sign out",
+              explanation: "Put out/hung 更自然。Hanged 通常指绞刑。",
+            },
+            formalityVariants: {
+              casual: "Oh, and yesterday morning, I had the 'Do Not Disturb' sign up, but housekeeping still knocked and tried to come in.",
+              standard: "Also, I put the 'Do Not Disturb' sign out yesterday morning, but housekeeping still knocked and tried to come in.",
+              formal: "Furthermore, I must report that despite displaying the 'Do Not Disturb' sign yesterday morning, housekeeping personnel attempted to gain entry to my room.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "That's a serious policy violation. Our staff must always respect the Do Not Disturb sign. I'll address this with the team directly. Is there a preferred time for cleaning?",
             textZh: "这违反了政策。我们的员工必须尊重「请勿打扰」牌。我会直接跟团队沟通。您希望什么时间打扫？",
+            casualVersion: "Whoa, that's a big policy violation. Our staff *always* has to respect the DND sign. I'll talk to the team about this myself. When's a good time for cleaning?",
+            formalityVariants: {
+              casual: "Whoa, that's totally against policy. Staff's gotta respect that DND sign. I'll talk to the team. When's good for cleaning?",
+              standard: "That's a serious policy violation. Our staff must always respect the Do Not Disturb sign. I'll address this with the team directly. Is there a preferred time for cleaning?",
+              formal: "That indeed constitutes a significant breach of our established policy. It is imperative that our staff invariably honor the Do Not Disturb sign. I assure you I will address this matter personally with the team. May I inquire if you have a specific time preference for the cleaning service?",
+            },
             keyPhrases: [
               { en: "policy violation", zh: "违反政策" },
               { en: "Do Not Disturb", zh: "请勿打扰" },
@@ -4011,12 +6756,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Between 1 and 3 PM would be best. We're usually out sightseeing then.",
             textZh: "下午1点到3点最好。那时我们通常出去观光。",
+            casualVersion: "One to three PM works best. We're usually out sightseeing around then.",
+            formalityVariants: {
+              casual: "One to three PM works best. We're usually out sightseeing around then.",
+              standard: "Between 1 and 3 PM would be best. We're usually out sightseeing then.",
+              formal: "Between 1:00 PM and 3:00 PM would be the most convenient, as we are typically out sightseeing during those hours.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I'll note that in your preferences. Housekeeping will come between 1 and 3 PM only. I've also added extra toiletries and a fresh fruit basket to your room as an apology.",
             textZh: "我记下了。客房部只在1到3点之间来。我还送了额外的洗漱用品和新鲜水果篮到您房间表示歉意。",
+            casualVersion: "Got it, I'll put that in your preferences. Housekeeping will only come between one and three. And I've sent up some extra toiletries and a fruit basket to your room as an apology.",
+            formalityVariants: {
+              casual: "Got it, I'll put that in your preferences. Housekeeping's only gonna come between one and three. Also sent up some extra toiletries and a fruit basket as an apology.",
+              standard: "I'll note that in your preferences. Housekeeping will come between 1 and 3 PM only. I've also added extra toiletries and a fresh fruit basket to your room as an apology.",
+              formal: "I have duly noted your preference for cleaning services. Housekeeping will strictly adhere to the 1:00 PM to 3:00 PM timeframe. Furthermore, as a gesture of our apology, I have arranged for additional toiletries and a complimentary fresh fruit basket to be delivered to your room.",
+            },
             keyPhrases: [
               { en: "preferences", zh: "偏好设置" },
               { en: "toiletries", zh: "洗漱用品" },
@@ -4031,12 +6788,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you. One more thing — can we get extra pillows? There are only two and we could really use four.",
             textZh: "谢谢。还有一件事——能多给几个枕头吗？只有两个，我们需要四个。",
+            casualVersion: "Thanks. Oh, and can we get more pillows? There's only two, and we could really use four.",
+            commonMistake: {
+              wrong: "We need four pillows",
+              correct: "we could really use four",
+              explanation: "Could really use 更委婉自然，表达需求而非命令。",
+            },
+            formalityVariants: {
+              casual: "Thanks. Oh, and can we get more pillows? Only two, and we could really use four.",
+              standard: "Thank you. One more thing — can we get extra pillows? There are only two and we could really use four.",
+              formal: "Thank you. Additionally, we would appreciate it if we could acquire extra pillows. Currently, there are only two, and we find that four would be more suitable.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I'll have two extra pillows brought up right away. Soft, medium, or firm? We have a pillow menu.",
             textZh: "马上送两个枕头上去。软的、中等还是硬的？我们有枕头选单。",
+            casualVersion: "I'll get two more pillows sent up right away. Soft, medium, or firm? We actually have a pillow menu.",
+            formalityVariants: {
+              casual: "I'll get two more pillows sent up right away. Soft, medium, or firm? We got a pillow menu.",
+              standard: "I'll have two extra pillows brought up right away. Soft, medium, or firm? We have a pillow menu.",
+              formal: "I will arrange for two additional pillows to be brought to your room immediately. May I inquire as to your preference regarding firmness: soft, medium, or firm? We do offer a comprehensive pillow menu.",
+            },
             keyPhrases: [
               { en: "pillow menu", zh: "枕头选单" },
               { en: "soft, medium, or firm", zh: "软的、中等、硬的" },
@@ -4050,6 +6824,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "One soft and one firm, please. Thank you for addressing everything.",
             textZh: "一个软的一个硬的。谢谢处理这些问题。",
+            casualVersion: "One soft, one firm, please. Thanks for getting everything sorted.",
+            commonMistake: {
+              wrong: "Thank you for solve these problems.",
+              correct: "Thank you for addressing everything.",
+              explanation: "Address 用于处理问题，solve 更常指数学题或谜题。",
+            },
+            formalityVariants: {
+              casual: "One soft, one firm, please. Thanks for getting everything sorted.",
+              standard: "One soft and one firm, please. Thank you for addressing everything.",
+              formal: "One soft and one firm would be ideal, please. I genuinely appreciate your thorough attention to these matters.",
+            },
           },
         ],
       },
@@ -4058,6 +6843,7 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
 
   {
     id: "hotel-complaint-billing",
+    tags: ["complaint", "投诉", "问题"],
     category: "hotel",
     titleZh: "投诉：账单问题",
     titleEn: "Complaint: Billing Dispute",
@@ -4076,6 +6862,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'd like to review my bill. There are some charges I don't recognize.",
             textZh: "我想看看账单。有些收费我不认识。",
+            casualVersion: "Wanna check my bill. Got some charges I don't recognize.",
+            commonMistake: {
+              wrong: "I want to review my bill.",
+              correct: "I'd like to review my bill.",
+              explanation: "“I want to” 直接说听起来生硬，用 “I'd like to” 更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Can I check my bill? Got some charges I don't recognize.",
+              standard: "I'd like to review my bill. There are some charges I don't recognize.",
+              formal: "Excuse me, I'd appreciate it if I could review my bill. I've noticed a few charges that I don't readily recognize.",
+            },
           },
           {
             speaker: "them",
@@ -4091,11 +6888,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure, let me bring up your account. Can you point out which charges don't look right?", textZh: "好的，我调出您的账户。能指出哪些费用不对吗？", actionHint: "用bring up和account", frequency: "common" },
               { textEn: "Of course. I'll pull your billing details up right now. Tell me which items seem off.", textZh: "当然。我现在调出您的账单明细。告诉我哪些项目看起来不对。", actionHint: "用seem off表示不对", frequency: "occasional" },
             ],
+            casualVersion: "Sure. Let me get your folio. What looks wrong?",
+            formalityVariants: {
+              casual: "No problem. Lemme pull up your info. What charges look off?",
+              standard: "Of course. Let me pull up your folio. Which charges look incorrect?",
+              formal: "Certainly, I'd be happy to assist. I'll retrieve your folio momentarily. Could you please specify which charges appear to be inaccurate?",
+            },
           },
           {
             speaker: "you",
             textEn: "There's a $45 minibar charge on March 10th, but I didn't use the minibar at all. I didn't even touch anything in it.",
             textZh: "3月10日有一笔45美元的迷你吧费用，但我根本没用过迷你吧。里面的东西我碰都没碰。",
+            casualVersion: "Got a $45 minibar charge on March 10th, but I didn't use it. Didn't even touch anything.",
+            commonMistake: {
+              wrong: "I didn't use minibar.",
+              correct: "I didn't use the minibar at all.",
+              explanation: "缺少冠词 “the” 或强调语 “at all” 听起来不自然。",
+            },
+            formalityVariants: {
+              casual: "There's a $45 minibar charge on the 10th, but I definitely didn't use it. Didn't even open it.",
+              standard: "There's a $45 minibar charge on March 10th, but I didn't use the minibar at all. I didn't even touch anything in it.",
+              formal: "I've identified a $45 charge for the minibar on March 10th. However, I can assure you I did not consume any items from it, nor did I disturb its contents.",
+            },
           },
           {
             speaker: "them",
@@ -4111,11 +6925,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "I see that charge. The minibar has automatic sensors that can trigger a fee if something is even slightly moved. Let me get housekeeping to check — if nothing's missing, I'll take it off.", textZh: "我看到了。迷你吧有自动传感器，东西稍微动一下就可能触发扣费。我让客房部查一下——如果没少就删除。", actionHint: "用trigger和take it off", frequency: "common" },
               { textEn: "Those minibar charges are sensor-based and can be a bit glitchy. I'll send someone to verify the inventory. If it's all there, the charge comes right off.", textZh: "迷你吧费用是传感器自动记录的，有时不太准。我派人核对库存。如果都在就删掉。", actionHint: "用glitchy表示不太准", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, see it. Sometimes the sensors just register a charge if stuff moves. I'll get housekeeping to check it. If everything's still in there, I'll take it off.",
+            formalityVariants: {
+              casual: "Yep, I see that. Minibar sensors can be tricky, sometimes just moving stuff charges you. I'll have housekeeping check. If it's all there, I'll take it off.",
+              standard: "I see the charge here. Sometimes the sensors in the minibar register a charge if items are moved. Let me have housekeeping verify the contents. I'll remove it if everything is still there.",
+              formal: "I note the charge in question. It's not uncommon for minibar sensors to activate and register a charge if items are merely displaced. I will dispatch housekeeping to conduct a physical verification of the contents, and should everything be intact, the charge will be promptly reversed.",
+            },
           },
           {
             speaker: "you",
             textEn: "I also see a 'resort fee' of $30 per night. Nobody mentioned this when I booked.",
             textZh: "我还看到每晚30美元的「度假费」。预订时没人提到这个。",
+            casualVersion: "Also, there's this 'resort fee' for $30 a night. No one said anything 'bout this when I booked.",
+            culturalNote: "“Resort fee” 在中国酒店较少见，美国很普遍，常有隐藏性质。",
+            commonMistake: {
+              wrong: "No one told me about this.",
+              correct: "Nobody mentioned this.",
+              explanation: "“mention” 在这种语境下更自然，“tell” 可能过于直接。",
+            },
+            formalityVariants: {
+              casual: "Oh, and a $30 'resort fee' nightly? Nobody told me about that when I booked.",
+              standard: "I also see a 'resort fee' of $30 per night. Nobody mentioned this when I booked.",
+              formal: "Furthermore, I've identified a 'resort fee' of $30 per night. I must state that this particular charge was not disclosed to me at the time of my reservation.",
+            },
           },
           {
             speaker: "them",
@@ -4130,11 +6962,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "The resort fee is for amenities like the pool, gym, and Wi-Fi. It's in the fine print when you book, but I know it can be a surprise. Let me see what options I have.", textZh: "度假费是泳池、健身房和Wi-Fi的费用。预订时的小字里写了，但我知道这可能让人意外。我看看有什么办法。", actionHint: "用fine print表示小字条款", frequency: "common" },
               { textEn: "That fee covers access to our pool, fitness center, and internet. It was disclosed in the reservation terms, though I understand the frustration. Let me look into it for you.", textZh: "这笔费用包含泳池、健身中心和网络。预订条款里有说明，不过我理解您的不满。我帮您想想办法。", actionHint: "用disclosed", frequency: "occasional" },
             ],
+            casualVersion: "The resort fee's for the pool, gym, and Wi-Fi. It's in the booking terms, but yeah, I get it, it's a surprise. Lemme see what I can do.",
+            formalityVariants: {
+              casual: "That fee's for the pool, gym, and Wi-Fi. It's usually in the fine print, but I know it's still annoying. I'll see what I can do.",
+              standard: "The resort fee covers pool access, gym, and Wi-Fi. It's listed in the booking terms, but I understand it can be surprising. Let me see what I can do.",
+              formal: "The resort fee encompasses amenities such as pool access, gymnasium usage, and Wi-Fi connectivity. While it is stipulated within the booking terms and conditions, I empathize that its presence can be unexpected. Allow me to explore potential solutions.",
+            },
           },
           {
             speaker: "you",
             textEn: "I didn't even use the pool or gym. Can you waive it?",
             textZh: "我泳池和健身房都没用过。能免掉吗？",
+            casualVersion: "Didn't even use the pool or gym. Can you just waive it?",
+            commonMistake: {
+              wrong: "Can you give me free?",
+              correct: "Can you waive it?",
+              explanation: "表达免除费用时，用 “waive” 或 “remove the charge” 更地道。",
+            },
+            formalityVariants: {
+              casual: "I didn't use any of that. Can you just take it off?",
+              standard: "I didn't even use the pool or gym. Can you waive it?",
+              formal: "Given that I did not utilize the pool or gym facilities, would it be possible to have this charge waived?",
+            },
           },
           {
             speaker: "them",
@@ -4150,11 +6999,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's a required fee so I can't remove it completely, but since it wasn't explained at check-in, I'm happy to cut it in half as a goodwill gesture.", textZh: "这是必收的费用不能完全取消，但因为入住时没说清楚，我很乐意减半作为善意。", actionHint: "用cut it in half", frequency: "common" },
               { textEn: "Unfortunately it's a mandatory charge, but given the miscommunication, I'll give you 50 percent off as a one-time exception.", textZh: "很遗憾这是强制性收费，但考虑到沟通失误，我给您打5折作为一次性例外。", actionHint: "用miscommunication和exception", frequency: "occasional" },
             ],
+            casualVersion: "Can't fully waive it, it's mandatory, but I can do 50% off as a one-time thing since it wasn't clear at check-in.",
+            formalityVariants: {
+              casual: "Can't totally waive it, it's mandatory. But I can give you 50% off as a courtesy since it wasn't clear at check-in.",
+              standard: "I can't waive it entirely as it's a mandatory fee, but I can apply a 50% discount as a one-time courtesy since it wasn't clearly communicated to you at check-in.",
+              formal: "While I am unable to entirely waive this charge due to its mandatory nature, I can extend a 50% discount as a one-time courtesy, acknowledging that its communication during your check-in was not as explicit as it should have been.",
+            },
           },
           {
             speaker: "you",
             textEn: "I'll take the 50% off. Please also remove the minibar charge. Can I get an updated bill?",
             textZh: "那就打5折吧。请也把迷你吧费用删掉。能给我更新后的账单吗？",
+            casualVersion: "I'll take the 50% off. And, uh, remove that minibar charge too. Can I get the new bill?",
+            commonMistake: {
+              wrong: "I want updated bill.",
+              correct: "Can I get an updated bill?",
+              explanation: "“want” 不够礼貌，且 “updated bill” 前应有冠词。",
+            },
+            formalityVariants: {
+              casual: "Okay, 50% off. Also, please take off the minibar charge. Can I get the new bill?",
+              standard: "I'll take the 50% off. Please also remove the minibar charge. Can I get an updated bill?",
+              formal: "I will accept the 50% discount. Furthermore, kindly ensure the minibar charge is also removed. Could I please be provided with an updated bill reflecting these adjustments?",
+            },
           },
           {
             speaker: "them",
@@ -4169,6 +7035,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "All taken care of. The minibar charge is gone and the resort fee is halved. Your revised total is $428 — down from $533. Here's the new printout.", textZh: "都处理好了。迷你吧费用取消，度假费减半。修正后总额428美元，原来是533美元。这是新打印的。", actionHint: "用revised total", frequency: "common" },
               { textEn: "Everything's been adjusted. I've removed the minibar charge and applied the 50% discount on the resort fee. New total: 428, saving you $105. Here's your corrected bill.", textZh: "全部调整好了。迷你吧费用删除，度假费打了5折。新总额428美元，省了105美元。这是更正后的账单。", actionHint: "具体说出节省金额", frequency: "occasional" },
             ],
+            casualVersion: "Done. Minibar charge is gone, and the resort fee discount's applied. Here's your new bill. Total's $428, not $533.",
+            formalityVariants: {
+              casual: "Alright, it's done. Minibar charge removed, resort fee discount applied. Here's your bill. $428 instead of $533.",
+              standard: "Done. The minibar charge is removed, and I've applied the resort fee discount. Here's your updated bill. The new total is $428 instead of $533.",
+              formal: "It is done. The minibar charge has been successfully removed, and the resort fee discount has been duly applied. Here is your updated statement. The revised total amounts to $428, reduced from the original $533.",
+            },
           },
         ],
       },
@@ -4183,12 +7055,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I just checked my credit card statement and I've been charged twice for the same room service order on March 9th.",
             textZh: "我刚看了信用卡账单，3月9日的客房送餐被扣了两次。",
+            casualVersion: "Just checked my card statement, got double-charged for the same room service from March 9th.",
+            commonMistake: {
+              wrong: "My credit card statement charged me twice for the same room service.",
+              correct: "I've been charged twice for the same room service on my credit card statement.",
+              explanation: "账单是被动的，不能主动“charge”人。更自然地说是“我被扣费了”。",
+            },
+            formalityVariants: {
+              casual: "Just checked my statement, I got double-charged for room service on the 9th.",
+              standard: "I just checked my credit card statement and I've been charged twice for the same room service order on March 9th.",
+              formal: "Good morning/afternoon. I am contacting you regarding a discrepancy on my credit card statement. It appears I was charged twice for a single room service order placed on March 9th.",
+            },
           },
           {
             speaker: "them",
             role: "前台经理",
             textEn: "Let me look into that right away. Can you tell me the amounts you see on your statement?",
             textZh: "我马上查。您账单上看到的金额是多少？",
+            casualVersion: "Lemme look into that real quick. What amounts are you seeing on your statement?",
+            formalityVariants: {
+              casual: "Lemme check that right away. What amounts are you seeing?",
+              standard: "Let me look into that right away. Can you tell me the amounts you see on your statement?",
+              formal: "Certainly, I will investigate this matter immediately. Could you please confirm the exact amounts that appear on your statement?",
+            },
             keyPhrases: [
               { en: "credit card statement", zh: "信用卡账单" },
               { en: "look into", zh: "调查/查看" },
@@ -4202,12 +7091,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Two charges of $43 each. I only ordered room service once that evening.",
             textZh: "两笔各43美元。那天晚上我只点了一次客房送餐。",
+            casualVersion: "Two charges for $43 each. I only ordered once that night.",
+            commonMistake: {
+              wrong: "It is two charges $43 each. I only ordered one time.",
+              correct: "Two charges of $43 each. I only ordered room service once that evening.",
+              explanation: "“of $43 each”和“once”是更地道的说法。",
+            },
+            formalityVariants: {
+              casual: "Yeah, two charges, $43 each. Only ordered once that night.",
+              standard: "Two charges of $43 each. I only ordered room service once that evening.",
+              formal: "There are two separate charges, each for forty-three dollars. I can assure you I only placed a single room service order on that particular evening.",
+            },
           },
           {
             speaker: "them",
             role: "前台经理",
             textEn: "You're right — I can see a duplicate transaction in our system. It looks like a processing error. I'll issue a refund for the extra charge immediately.",
             textZh: "您说得对——我在系统里看到一笔重复交易。看起来是处理错误。我立刻退还多收的费用。",
+            casualVersion: "Yep, you're right. See a double charge here. Looks like a processing error. I'll just refund the extra one now.",
+            formalityVariants: {
+              casual: "Yep, you're right. See the duplicate transaction. Looks like a processing error. I'll refund the extra charge now.",
+              standard: "You're right — I can see a duplicate transaction in our system. It looks like a processing error. I'll issue a refund for the extra charge immediately.",
+              formal: "Indeed, you are correct. I can confirm the presence of a duplicate transaction within our system. This appears to be a processing error, and I will initiate a refund for the erroneous charge without delay.",
+            },
             keyPhrases: [
               { en: "duplicate transaction", zh: "重复交易" },
               { en: "processing error", zh: "处理错误" },
@@ -4222,12 +7128,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "How long will the refund take to appear on my card?",
             textZh: "退款多久能到我的卡上？",
+            casualVersion: "How long 'til the refund hits my card?",
+            commonMistake: {
+              wrong: "How long refund arrive?",
+              correct: "How long will the refund take to appear on my card?",
+              explanation: "地道的问法是用 “take to appear” 或 “show up”，避免直译。",
+            },
+            formalityVariants: {
+              casual: "How long for the refund to show up?",
+              standard: "How long will the refund take to appear on my card?",
+              formal: "Could you please advise on the estimated timeframe for the refund to be reflected on my credit card statement?",
+            },
           },
           {
             speaker: "them",
             role: "前台经理",
             textEn: "The refund will be processed today, but it typically takes 3 to 5 business days to appear on your statement, depending on your bank.",
             textZh: "退款今天处理，但通常需要3到5个工作日才能在账单上显示，取决于您的银行。",
+            casualVersion: "It'll be processed today, but usually takes 3-5 business days to show up, depends on your bank.",
+            formalityVariants: {
+              casual: "We'll process it today, but usually, it's 3-5 business days to show up, depends on your bank.",
+              standard: "The refund will be processed today, but it typically takes 3 to 5 business days to appear on your statement, depending on your bank.",
+              formal: "The refund will be processed today; however, please anticipate a timeframe of three to five business days for it to be posted to your statement, as this can vary depending on your financial institution.",
+            },
             keyPhrases: [
               { en: "3 to 5 business days", zh: "3到5个工作日" },
               { en: "depending on your bank", zh: "取决于银行" },
@@ -4241,12 +7164,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Can I get a receipt or confirmation of the refund? I want to have it for my records.",
             textZh: "能给我退款收据或确认吗？我想留档。",
+            casualVersion: "Can I get a refund confirmation? Just for my records.",
+            commonMistake: {
+              wrong: "Can I get a receipt for the refund? I want to keep it.",
+              correct: "Can I get a receipt or confirmation of the refund? I want to have it for my records.",
+              explanation: "“for my records”是更专业、礼貌的说法。",
+            },
+            formalityVariants: {
+              casual: "Can I get a receipt or confirmation? Just want it for my records.",
+              standard: "Can I get a receipt or confirmation of the refund? I want to have it for my records.",
+              formal: "Would it be possible to obtain a written receipt or confirmation of this refund for my personal records?",
+            },
           },
           {
             speaker: "them",
             role: "前台经理",
             textEn: "Absolutely. I'll print a refund confirmation with the transaction ID and my name on it. You can also contact us if the refund doesn't appear within 7 days.",
             textZh: "当然。我打印退款确认单，上面有交易ID和我的名字。如果7天内退款未到可以联系我们。",
+            casualVersion: "Sure. I'll print out a confirmation with the ID and my name. And if it's not there in 7 days, just give us a call.",
+            formalityVariants: {
+              casual: "Yep. I'll print a confirmation with the ID and my name. If it's not there in 7 days, just call us.",
+              standard: "Absolutely. I'll print a refund confirmation with the transaction ID and my name on it. You can also contact us if the refund doesn't appear within 7 days.",
+              formal: "Certainly. I will provide you with a printed refund confirmation that includes the transaction identification number and my name. Please do not hesitate to contact us should the refund not be reflected within seven calendar days.",
+            },
             keyPhrases: [
               { en: "refund confirmation", zh: "退款确认单" },
               { en: "transaction ID", zh: "交易ID" },
@@ -4260,6 +7200,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you for sorting this out. Mistakes happen, but I'm glad it was resolved quickly.",
             textZh: "谢谢处理。失误难免，但很高兴快速解决了。",
+            casualVersion: "Thanks for sorting this. Mistakes happen, but glad it got fixed fast.",
+            commonMistake: {
+              wrong: "Thank you for solve this. Mistakes are easy to happen.",
+              correct: "Thank you for sorting this out. Mistakes happen, but I'm glad it was resolved quickly.",
+              explanation: "“sorting this out”是常用搭配，“Mistakes happen”更地道，避免直译。",
+            },
+            formalityVariants: {
+              casual: "Thanks for sorting this. Mistakes happen, but glad it got handled fast.",
+              standard: "Thank you for sorting this out. Mistakes happen, but I'm glad it was resolved quickly.",
+              formal: "I appreciate you addressing this matter. While errors can occur, I am pleased with the swift resolution.",
+            },
           },
         ],
       },
@@ -4287,6 +7238,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I'd like to extend my stay. I was supposed to check out tomorrow, but I need two more nights.",
             textZh: "你好，我想延长住宿。本来明天退房，但需要再住两晚。",
+            casualVersion: "Hey, wanna extend my stay. Was supposed to check out tomorrow, but need two more nights.",
+            commonMistake: {
+              wrong: "I want to extend my stay.",
+              correct: "I'd like to extend my stay.",
+              explanation: "I want to 听起来过于直接，I'd like to 更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, wanna extend my stay. Was supposed to check out tomorrow, but need two more nights.",
+              standard: "Hi, I'd like to extend my stay. I was supposed to check out tomorrow, but I need two more nights.",
+              formal: "Good morning/afternoon, I was hoping to inquire about extending my current reservation. My original checkout date is tomorrow, but I would ideally require two additional nights.",
+            },
           },
           {
             speaker: "them",
@@ -4302,11 +7264,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Let me see what's available... Great — your room is open for two more nights. Same rate, $189 a night.", textZh: "我看看有没有空房……太好了——您的房间还能住两晚。同样价格，每晚189美元。", actionHint: "简洁确认", frequency: "common" },
               { textEn: "One moment while I check... You're in luck! We can keep you in the same room for another two nights at $189 per night, matching your original booking.", textZh: "稍等让我查查……运气不错！同一间房可以再住两晚，每晚189美元，和原来的预订一样。", actionHint: "用you're in luck", frequency: "occasional" },
             ],
+            casualVersion: "Lemme check your room type... Good news! You can keep your room for two more nights. Rate's still $189 a night, same as now.",
+            formalityVariants: {
+              casual: "Lemme check your room type... Good news! You can keep your room for two more nights. Rate's still $189 a night, same as now.",
+              standard: "Let me check availability for your room type... Good news! Your room is available for two more nights. The rate will be $189 per night, same as your current rate.",
+              formal: "Certainly, please allow me a moment to verify the availability of your room type. Excellent news, your current room type is indeed available for an additional two nights. The nightly rate will remain $189, consistent with your existing reservation.",
+            },
           },
           {
             speaker: "you",
             textEn: "Great. Can I keep the same room? I've already unpacked everything.",
             textZh: "太好了。能继续住同一间吗？我东西都摊开了。",
+            casualVersion: "Awesome. Can I just keep this room? Already got everything out.",
+            formalityVariants: {
+              casual: "Awesome. Can I just keep this room? Already got everything out.",
+              standard: "Great. Can I keep the same room? I've already unpacked everything.",
+              formal: "That's wonderful to hear. Would it be possible to retain my current room? I've already settled in and unpacked my belongings.",
+            },
           },
           {
             speaker: "them",
@@ -4321,11 +7295,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Absolutely, no need to switch rooms. I'll push your checkout to March 17th. Your key card stays active — nothing changes on your end.", textZh: "当然，不用换房间。我把退房改到3月17日。您的房卡保持有效——您这边什么都不用变。", actionHint: "用push和nothing changes", frequency: "common" },
               { textEn: "Of course — you're all set to stay in 1208. I've extended your reservation through the 17th. Same key, same everything.", textZh: "当然——1208您继续住。我把预订延到17号了。钥匙不变，一切照旧。", actionHint: "用extended through", frequency: "occasional" },
             ],
+            casualVersion: "Yep, you can keep 1208. I'll just update your checkout to March 17th. Key'll still work.",
+            formalityVariants: {
+              casual: "Yep, you can keep 1208. I'll just update your checkout to March 17th. Key'll still work.",
+              standard: "Yes, you can keep room 1208. I'll update your checkout date to March 17th. Your room key will continue to work.",
+              formal: "Certainly, you are welcome to remain in room 1208. I will proceed with updating your checkout date to March 17th, and your existing room key will remain active for the duration of your extended stay.",
+            },
           },
           {
             speaker: "you",
             textEn: "Do I need to provide my credit card again?",
             textZh: "需要重新提供信用卡吗？",
+            casualVersion: "Need my card again?",
+            formalityVariants: {
+              casual: "Need my card again?",
+              standard: "Do I need to provide my credit card again?",
+              formal: "Will it be necessary to re-present my credit card details?",
+            },
           },
           {
             speaker: "them",
@@ -4341,12 +7327,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "No need — we already have your payment details. We'll just pre-authorize the extra nights. Want me to email you a new confirmation?", textZh: "不用——我们已经有您的支付信息了。我们会预授权延住的金额。要我发新的确认单到邮箱吗？", actionHint: "用pre-authorize", frequency: "common" },
               { textEn: "We've got your card saved from check-in. I'll just charge the additional amount. Shall I send an updated booking confirmation to your email?", textZh: "入住时保存的卡信息还在。我直接扣额外金额。要发更新的预订确认到您邮箱吗？", actionHint: "用saved from check-in", frequency: "occasional" },
             ],
+            casualVersion: "Nah, got your card on file. We'll just authorize the extra amount. Want an updated confirmation emailed?",
+            formalityVariants: {
+              casual: "Nah, got your card on file. We'll just authorize the extra amount. Want an updated confirmation emailed?",
+              standard: "No, we have your card on file. We'll just authorize the additional amount. Would you like me to send an updated confirmation to your email?",
+              formal: "No, that will not be necessary, as we have your payment information securely on file. We will simply authorize the additional charges. Would you prefer to have an updated confirmation sent to your email address?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. I need it for my expense report.",
             textZh: "好的。我需要用来报销。",
             culturalNote: "\'expense report\' 是 \'报销单/费用报告\'，出差常用。",
+            casualVersion: "Yeah, please. Gotta use it for my expense report.",
+            formalityVariants: {
+              casual: "Yeah, please. Gotta use it for my expense report.",
+              standard: "Yes, please. I need it for my expense report.",
+              formal: "Yes, that would be appreciated. I require it for my expense report submission.",
+            },
           },
           {
             speaker: "them",
@@ -4360,11 +7358,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "On its way to your inbox now. Anything else for the extra nights? New towels, cleaning schedule adjustments?", textZh: "正在发到您邮箱。延住期间还需要什么？换毛巾、调整清洁时间？", actionHint: "用on its way", frequency: "common" },
               { textEn: "Done — you'll have it in a moment. Is there anything we can arrange for your extended stay? Extra amenities, different cleaning times?", textZh: "好了——稍后就收到。延住期间有什么需要安排的吗？额外用品、不同的清洁时间？", actionHint: "用extended stay", frequency: "occasional" },
             ],
+            casualVersion: "Sending it right now. Anything else for the extra nights? Like fresh towels or cleaning?",
+            formalityVariants: {
+              casual: "Sending it right now. Anything else for the extra nights? Like fresh towels or cleaning?",
+              standard: "I'll send it right away. Is there anything else you need for the extra nights? Fresh towels, room cleaning schedule?",
+              formal: "I will send that immediately. Is there anything further I can assist you with regarding your extended stay, such as fresh towels or your preferred room cleaning schedule?",
+            },
           },
           {
             speaker: "you",
             textEn: "Everything has been great. Just keep the same housekeeping schedule. Thanks!",
             textZh: "一切都很好。保持原来的打扫安排就行。谢谢！",
+            casualVersion: "Everything's been great. Just keep the same cleaning schedule. Thanks!",
+            commonMistake: {
+              wrong: "Everything is very good.",
+              correct: "Everything has been great.",
+              explanation: "这种情况下用“has been great”或“fine”表示持续的满意度，更自然。",
+            },
+            formalityVariants: {
+              casual: "Everything's been great. Just keep the same cleaning schedule. Thanks!",
+              standard: "Everything has been great. Just keep the same housekeeping schedule. Thanks!",
+              formal: "Everything has been entirely satisfactory thus far. Please maintain the current housekeeping schedule. Thank you.",
+            },
           },
         ],
       },
@@ -4379,12 +7394,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I need to stay one more night. My flight was cancelled due to the storm.",
             textZh: "我需要再住一晚。航班因暴风雪取消了。",
+            casualVersion: "Need another night. Flight got cancelled 'cause of the storm.",
+            commonMistake: {
+              wrong: "My flight cancelled because of the storm.",
+              correct: "My flight was cancelled due to the storm.",
+              explanation: "中式英语常省略被动语态，航班是被取消的。",
+            },
+            formalityVariants: {
+              casual: "Gotta stay another night, flight got cancelled 'cause of the storm.",
+              standard: "I need to stay one more night. My flight was cancelled due to the storm.",
+              formal: "I require an additional night's accommodation, as my flight has been unfortunately cancelled due to inclement weather.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I'm sorry about your flight. Unfortunately, your current room is already booked for tomorrow. But let me see what else we have.",
             textZh: "您航班的事很遗憾。不巧您现在的房间明天已被预订。不过让我看看还有什么房。",
+            casualVersion: "Ugh, sorry 'bout the flight. Your room's actually booked for tomorrow. But lemme see what else is open.",
+            formalityVariants: {
+              casual: "Dang, sorry 'bout your flight. Your room's actually taken for tomorrow. But lemme check what else is available.",
+              standard: "I'm sorry about your flight. Unfortunately, your current room is already booked for tomorrow. But let me see what else we have.",
+              formal: "I am truly sorry to hear about your flight cancellation. Regrettably, your current accommodation is reserved for tomorrow evening. However, allow me to investigate alternative availabilities.",
+            },
             keyPhrases: [
               { en: "already booked", zh: "已被预订" },
             ],
@@ -4397,12 +7429,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I understand. Anything available is fine — I just need a place to sleep.",
             textZh: "理解。有什么房都行——只要有地方睡。",
+            casualVersion: "Got it. Anything's fine, really— just need somewhere to crash.",
+            commonMistake: {
+              wrong: "I understand. Anything is fine, I just need a place to sleep.",
+              correct: "I understand. Anything available is fine — I just need a place to sleep.",
+              explanation: "\"Anything available\"比\"anything is fine\"更自然、礼貌。",
+            },
+            formalityVariants: {
+              casual: "Okay, anything's cool, just need somewhere to crash.",
+              standard: "I understand. Anything available is fine — I just need a place to sleep.",
+              formal: "I comprehend the situation. Any available accommodation would be satisfactory, as my primary need is simply a place to rest.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I have a standard double room on the 8th floor. It's normally $210, but given your situation with the cancelled flight, I can offer it at $170.",
             textZh: "8楼有一间标准双人房。正常210美元，考虑到您航班取消的情况，我可以170美元给您。",
+            casualVersion: "Got a standard double on the 8th. Usually $210, but since your flight got cancelled, I can do $170.",
+            formalityVariants: {
+              casual: "There's a standard double on the 8th. It's usually $210, but with the cancelled flight, I can do $170 for you.",
+              standard: "I have a standard double room on the 8th floor. It's normally $210, but given your situation with the cancelled flight, I can offer it at $170.",
+              formal: "I have located a standard double room available on the eighth floor. The usual rate for this accommodation is $210, however, in light of your unforeseen flight cancellation, I am authorized to extend a reduced rate of $170.",
+            },
             keyPhrases: [
               { en: "standard double", zh: "标准双人房" },
               { en: "given your situation", zh: "考虑到您的情况" },
@@ -4416,12 +7465,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's kind of you. I'll take it. Do I need to move all my things today?",
             textZh: "太好了。我要了。今天就要搬东西吗？",
+            casualVersion: "That's awesome, thanks. I'll take it. Gotta move everything today?",
+            commonMistake: {
+              wrong: "I take it.",
+              correct: "I'll take it.",
+              explanation: "\"I'll take it\"表达“我要了”，\"I take it\"则有“我理解”或“我接受”的含义。",
+            },
+            formalityVariants: {
+              casual: "Oh, cool, thanks! I'll take it. So, gotta move all my stuff today?",
+              standard: "That's kind of you. I'll take it. Do I need to move all my things today?",
+              formal: "I appreciate your generosity. I shall accept that offer. Will it be necessary for me to relocate all of my belongings this very day?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "You can stay in your current room until the regular checkout time at 11 AM tomorrow, then move to the new room. We can store your luggage during the transition.",
             textZh: "您可以在现在的房间住到明天正常退房时间11点，然后搬到新房间。过渡期间可以存行李。",
+            casualVersion: "You can just stay in your room 'til 11 AM checkout tomorrow, then move. We can hold onto your bags while you switch.",
+            formalityVariants: {
+              casual: "No need to rush. Stay in your room 'til 11 AM checkout tomorrow, then switch. We can keep your bags for you in between.",
+              standard: "You can stay in your current room until the regular checkout time at 11 AM tomorrow, then move to the new room. We can store your luggage during the transition.",
+              formal: "You are welcome to remain in your current room until the standard checkout time of 11:00 AM tomorrow morning, at which point you may transition to your new accommodation. We would be pleased to store your luggage for you during this interim period.",
+            },
             keyPhrases: [
               { en: "regular checkout time", zh: "正常退房时间" },
               { en: "store your luggage", zh: "存行李" },
@@ -4436,12 +7502,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Can you also help me rebook my flight? I'm not sure how to contact the airline from here.",
             textZh: "能帮我改签航班吗？我不确定在这里怎么联系航空公司。",
+            casualVersion: "Hey, can you help me rebook my flight too? Not sure how to get ahold of the airline from here.",
+            commonMistake: {
+              wrong: "Can you help me rebook my flight also?",
+              correct: "Can you also help me rebook my flight?",
+              explanation: "\"Also\"放动词前，\"too\"放句末更自然。",
+            },
+            formalityVariants: {
+              casual: "Also, can you help me rebook my flight? I'm kinda lost on contacting the airline from here.",
+              standard: "Can you also help me rebook my flight? I'm not sure how to contact the airline from here.",
+              formal: "Would it be possible for you to assist me with rebooking my flight as well? I am presently uncertain as to the appropriate method for contacting the airline from this location.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Our concierge can help with that. I'll also give you the airline's local customer service number. Many airlines are offering free rebooking due to the storm.",
             textZh: "我们礼宾台可以帮忙。我也给您航空公司的本地客服号码。很多航空公司因暴风雪免费改签。",
+            casualVersion: "Our concierge can totally help with that. I'll also give you their local customer service number. Lots of airlines are doing free rebooking 'cause of the storm.",
+            formalityVariants: {
+              casual: "Yeah, our concierge can totally sort that out. I'll get you their local customer service number too. Most airlines are doing free rebooking for the storm.",
+              standard: "Our concierge can help with that. I'll also give you the airline's local customer service number. Many airlines are offering free rebooking due to the storm.",
+              formal: "Our concierge service is available to assist you with that particular matter. Furthermore, I shall provide you with the airline's local customer service contact number. Please be advised that numerous airlines are currently offering complimentary rebooking services in light of the inclement weather conditions.",
+            },
             keyPhrases: [
               { en: "rebook", zh: "改签" },
               { en: "free rebooking", zh: "免费改签" },
@@ -4455,6 +7538,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Thank you so much. This has been a stressful day and you've made it much easier.",
             textZh: "太感谢了。今天压力很大，你帮了大忙。",
+            casualVersion: "Seriously, thanks a ton. Today's been rough, but you've made it way better.",
+            commonMistake: {
+              wrong: "You made it much easy.",
+              correct: "You've made it much easier.",
+              explanation: "\"Easier\"是比较级，形容词修饰名词，此处形容“一天”更轻松了。",
+            },
+            formalityVariants: {
+              casual: "Oh my gosh, thank you! Today's been crazy, you've really helped a lot.",
+              standard: "Thank you so much. This has been a stressful day and you've made it much easier.",
+              formal: "My sincere gratitude. This day has proven quite challenging, and your assistance has significantly alleviated the difficulties.",
+            },
           },
         ],
       },
@@ -4481,6 +7575,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, is it possible to change my room? The street noise is quite loud on this side.",
             textZh: "你好，能换个房间吗？这边街上噪音挺大的。",
+            casualVersion: "Hey, can I switch rooms? It's really loud with the street noise over here.",
+            commonMistake: {
+              wrong: "I want to change room.",
+              correct: "Is it possible to change my room?",
+              explanation: "直接说 'I want' 听起来很生硬，用疑问句或 'I'd like to' 更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, can I switch rooms? It's really loud with the street noise over here.",
+              standard: "Hi, is it possible to change my room? The street noise is quite loud on this side.",
+              formal: "Good morning/afternoon. I was wondering if it would be possible to request a room change. I've found the street noise on this particular side to be rather disruptive.",
+            },
           },
           {
             speaker: "them",
@@ -4495,11 +7600,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure, I can help with that. Let me look for something on the quiet side. Any other requests — higher floor, specific bed type?", textZh: "当然，我来帮您。我找安静那边的房间。其他要求吗——高楼层、特定床型？", actionHint: "主动询问更多需求", frequency: "common" },
               { textEn: "Absolutely. I'll see what we have away from the street. Anything else you'd like in the new room?", textZh: "没问题。我看看远离街道的有什么。新房间还有什么要求吗？", actionHint: "用away from the street", frequency: "occasional" },
             ],
+            casualVersion: "Got it. Lemme see what's open on the quieter side. Anything else you're looking for?",
+            formalityVariants: {
+              casual: "Got it. Lemme see what's open on the quieter side. Anything else you're looking for?",
+              standard: "I understand. Let me check what's available on the quieter side of the building. Do you have any other preferences?",
+              formal: "I perfectly understand your concern. Please allow me a moment to ascertain the availability of rooms on the quieter side of the premises. Are there any other specific preferences you might have?",
+            },
           },
           {
             speaker: "you",
             textEn: "A higher floor would be great if possible. And I'd prefer to keep the same room type.",
             textZh: "如果可以的话高楼层更好。希望保持同样的房型。",
+            casualVersion: "Higher floor'd be awesome, if you got one. And wanna stick with the same room type.",
+            commonMistake: {
+              wrong: "Higher floor good. I prefer same room type.",
+              correct: "A higher floor would be great if possible. And I'd prefer to keep the same room type.",
+              explanation: "表达偏好时，用 'I'd prefer to' 或 'I'd like to' 更自然。",
+            },
+            formalityVariants: {
+              casual: "Higher floor'd be awesome, if you got one. And wanna stick with the same room type.",
+              standard: "A higher floor would be great if possible. And I'd prefer to keep the same room type.",
+              formal: "Should it be feasible, a room on a higher floor would be highly appreciated. Furthermore, I would greatly prefer to retain the current room type.",
+            },
           },
           {
             speaker: "them",
@@ -4514,11 +7636,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "There's a king room on 18 overlooking the inner courtyard — super quiet. And it's the same price you're paying now.", textZh: "18楼有间大床房，俯瞰内庭院，非常安静。和您现在的价格一样。", actionHint: "用overlooking", frequency: "common" },
               { textEn: "I've found a nice option — 18th floor, courtyard-facing king room. You won't hear a thing up there, and there's no price difference.", textZh: "找到个不错的——18楼面向庭院的大床房。上面完全听不到声音，而且不用加钱。", actionHint: "用won't hear a thing", frequency: "occasional" },
             ],
+            casualVersion: "Got a king room on 18, facing the courtyard. Way quieter up there. Same price as yours now.",
+            formalityVariants: {
+              casual: "Got a king room on 18, facing the courtyard. Way quieter up there. Same price as yours now.",
+              standard: "I have a king room on the 18th floor facing the courtyard. It's much quieter up there. Same rate as your current room.",
+              formal: "I have located a suitable king-sized room on the eighteenth floor, which offers a view of the courtyard. This particular location is significantly quieter. The room rate will remain consistent with your current accommodation.",
+            },
           },
           {
             speaker: "you",
             textEn: "That sounds perfect. When can I move?",
             textZh: "听起来很好。什么时候能搬？",
+            casualVersion: "Sounds perfect. When can I move in?",
+            commonMistake: {
+              wrong: "When I can move?",
+              correct: "When can I move?",
+              explanation: "疑问句中助动词 'can' 应放在主语 'I' 之前。",
+            },
+            formalityVariants: {
+              casual: "Sounds perfect. When can I move in?",
+              standard: "That sounds perfect. When can I move?",
+              formal: "That sounds absolutely ideal. Could you please advise me on the earliest time I would be able to transfer to the new room?",
+            },
           },
           {
             speaker: "them",
@@ -4532,11 +7671,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's all set! Let me make you new room keys right now. Need a hand carrying your bags up?", textZh: "都准备好了！我现在给您做新房卡。需要帮忙拿行李上去吗？", actionHint: "用need a hand", frequency: "common" },
               { textEn: "Good to go. I'll get your new key cards ready in a moment. Shall I send a bellman to help with your things?", textZh: "可以了。我马上准备新房卡。要派行李员帮您搬东西吗？", actionHint: "用good to go", frequency: "occasional" },
             ],
+            casualVersion: "Room's ready. I'll get new keys for you. Need help with your bags?",
+            formalityVariants: {
+              casual: "Room's ready. I'll get new keys for you. Need help with your bags?",
+              standard: "The room is ready now. I'll program new key cards for you. Would you like help with your luggage?",
+              formal: "The room is indeed prepared for your occupancy at this moment. I shall proceed to program new key cards for you forthwith. May I inquire if you would appreciate any assistance with your luggage?",
+            },
           },
           {
             speaker: "you",
             textEn: "I can manage. Just a couple of bags. Do I need to return the old keys?",
             textZh: "我自己来就行。就几个包。旧钥匙需要还吗？",
+            casualVersion: "I'm good. Just a couple bags. Gotta return the old keys?",
+            commonMistake: {
+              wrong: "Do I need return old keys?",
+              correct: "Do I need to return the old keys?",
+              explanation: "'need' 后跟动词不定式 'to return'。",
+            },
+            formalityVariants: {
+              casual: "I'm good. Just a couple bags. Gotta return the old keys?",
+              standard: "I can manage. Just a couple of bags. Do I need to return the old keys?",
+              formal: "I believe I can manage quite alright, as I only have a modest amount of luggage. Regarding the previous key cards, am I required to return them?",
+            },
           },
           {
             speaker: "them",
@@ -4550,11 +7706,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Just drop the old keys here. They'll stop working automatically. Your new room is 1812 — lifts are on your right. Enjoy the quiet!", textZh: "旧钥匙放这里就行。会自动失效的。新房间1812——电梯在右边。享受安静！", actionHint: "用lifts（英式）", frequency: "common" },
               { textEn: "Yes, please hand them back and I'll disable them. You're in room 1812 now — take the elevator to the right. I hope the new room is much better!", textZh: "是的，请交还给我，我来注销。现在您住1812——右边坐电梯。希望新房间好多了！", actionHint: "用disable", frequency: "occasional" },
             ],
+            casualVersion: "Yep, just bring 'em back here. Old cards deactivate automatically. New room's 1812 — elevators are to your right.",
+            formalityVariants: {
+              casual: "Yep, just bring 'em back here. Old cards deactivate automatically. New room's 1812 — elevators are to your right.",
+              standard: "Yes, please return them here. The old cards will be deactivated automatically. Your new room is 1812 — elevators are to your right.",
+              formal: "Yes, kindly return them to this reception desk. The previous key cards will be automatically deactivated upon your new room assignment. Your new room number is 1812, and the elevators are located to your right.",
+            },
           },
           {
             speaker: "you",
             textEn: "Great. Thanks for making this easy!",
             textZh: "好的。谢谢这么方便！",
+            casualVersion: "Awesome. Thanks for making it so easy!",
+            commonMistake: {
+              wrong: "Thanks for make this easy.",
+              correct: "Thanks for making this easy!",
+              explanation: "'for' 后面跟动名词 'making'。",
+            },
+            formalityVariants: {
+              casual: "Awesome. Thanks for making it so easy!",
+              standard: "Great. Thanks for making this easy!",
+              formal: "Excellent. I truly appreciate your efficiency and assistance in facilitating this change so smoothly!",
+            },
           },
         ],
       },
@@ -4570,12 +7743,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             textEn: "We're celebrating our honeymoon. Is there any chance of an upgrade to a suite?",
             textZh: "我们在度蜜月。有机会升级到套房吗？",
             culturalNote: "礼貌地提出升级请求是完全可以的。提到特殊场合（蜜月、生日）有时会帮到。",
+            casualVersion: "It's our honeymoon. Any chance of a suite upgrade?",
+            commonMistake: {
+              wrong: "We are honeymooning. Can we upgrade to a suite?",
+              correct: "We're celebrating our honeymoon. Is there any chance of an upgrade to a suite?",
+              explanation: "直接说“can we”语气较硬，用“Is there any chance”更礼貌委婉。",
+            },
+            formalityVariants: {
+              casual: "It's our honeymoon. Any chance of a suite upgrade?",
+              standard: "We're celebrating our honeymoon. Is there any chance of an upgrade to a suite?",
+              formal: "Excuse me, we are celebrating our honeymoon, and we were wondering if there might be an opportunity to upgrade to a suite.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Congratulations! Let me see what we can do for you. We do have a junior suite available. The difference would be $80 per night.",
             textZh: "恭喜！我看看能帮什么忙。有一间小套房可以。差价是每晚80美元。",
+            casualVersion: "Congrats! Let me see what we can do. Got a junior suite. It'd be $80 more a night.",
+            formalityVariants: {
+              casual: "Congrats! Let me see what we can do. Got a junior suite, it'd be $80 more a night.",
+              standard: "Congratulations! Let me see what we can do for you. We do have a junior suite available. The difference would be $80 per night.",
+              formal: "Congratulations to you both! Please allow me a moment to check our availability. We do indeed have a junior suite available. The additional charge for this upgrade would be $80 per night.",
+            },
             keyPhrases: [
               { en: "junior suite", zh: "小套房" },
               { en: "difference", zh: "差价" },
@@ -4589,12 +7779,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Is there any chance you could offer a discount on the upgrade since it's a special occasion?",
             textZh: "因为是特殊场合，升级费能优惠一点吗？",
+            casualVersion: "Any chance of a discount on the upgrade, since it's a special occasion?",
+            commonMistake: {
+              wrong: "Can you give me a discount for upgrade?",
+              correct: "Is there any chance you could offer a discount on the upgrade since it's a special occasion?",
+              explanation: "“Give me”语气太直接，“offer a discount on”更自然。",
+            },
+            formalityVariants: {
+              casual: "Could we get a discount on the upgrade since it's our honeymoon?",
+              standard: "Is there any chance you could offer a discount on the upgrade since it's a special occasion?",
+              formal: "Given that this is a special occasion for us, would it be possible to inquire about any potential discount on the upgrade?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "I can offer the upgrade at $50 per night instead of $80. The suite has a separate living area, a soaking tub, and a city view. Perfect for a honeymoon.",
             textZh: "我可以给您每晚50美元而不是80美元。套房有独立客厅、泡澡浴缸和城市景观。蜜月很合适。",
+            casualVersion: "I can do $50 a night instead of $80 for the upgrade. It's got a separate living area, a soaking tub, city view. Perfect for a honeymoon.",
+            formalityVariants: {
+              casual: "I can do the upgrade for $50 a night instead of $80. It's got a separate living area, soaking tub, city view. Perfect for a honeymoon.",
+              standard: "I can offer the upgrade at $50 per night instead of $80. The suite has a separate living area, a soaking tub, and a city view. Perfect for a honeymoon.",
+              formal: "Certainly, I am able to offer the upgrade to you at a rate of $50 per night, reduced from $80. This suite features a separate living area, a luxurious soaking tub, and offers an exquisite city view, making it an ideal choice for a honeymoon.",
+            },
             keyPhrases: [
               { en: "separate living area", zh: "独立客厅" },
               { en: "soaking tub", zh: "泡澡浴缸" },
@@ -4609,12 +7816,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That sounds wonderful. We'll take it for the remaining three nights.",
             textZh: "听起来太棒了。剩下三晚都要。",
+            casualVersion: "Sounds great! We'll take it for the last three nights.",
+            commonMistake: {
+              wrong: "It sounds wonderful. We want it for the rest three nights.",
+              correct: "That sounds wonderful. We'll take it for the remaining three nights.",
+              explanation: "“It sounds”不如“That sounds”自然。“rest three nights”是中式英语。",
+            },
+            formalityVariants: {
+              casual: "Sounds great! We'll take it for the last three nights.",
+              standard: "That sounds wonderful. We'll take it for the remaining three nights.",
+              formal: "That sounds absolutely wonderful. We would be delighted to accept that for the duration of our remaining three nights.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Wonderful! I'll also arrange complimentary champagne and chocolates in the room. A small honeymoon gift from us.",
             textZh: "太好了！我还会在房间安排免费的香槟和巧克力。我们送给蜜月的小礼物。",
+            casualVersion: "Awesome! I'll also get some complimentary champagne and chocolates in the room. A little honeymoon gift from us.",
+            formalityVariants: {
+              casual: "Awesome! I'll also get some free champagne and chocolates in the room. A little honeymoon gift from us.",
+              standard: "Wonderful! I'll also arrange complimentary champagne and chocolates in the room. A small honeymoon gift from us.",
+              formal: "Excellent! I will also make arrangements for complimentary champagne and chocolates to be placed in your room, as a small token of our congratulations for your honeymoon.",
+            },
             keyPhrases: [
               { en: "complimentary", zh: "免费的" },
               { en: "champagne", zh: "香槟" },
@@ -4628,12 +7852,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's so generous! When can we move in?",
             textZh: "太慷慨了！什么时候能搬进去？",
+            casualVersion: "That's so sweet! When can we go in?",
+            commonMistake: {
+              wrong: "So generous! When can we move into?",
+              correct: "That's so generous! When can we move in?",
+              explanation: "“So generous”少了个“That's”不自然。“move into”后面需要宾语。",
+            },
+            formalityVariants: {
+              casual: "That's so sweet! When can we go in?",
+              standard: "That's so generous! When can we move in?",
+              formal: "That is truly very generous of you! May I inquire as to when we might be able to transition to the new suite?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Give me about 30 minutes to prepare the room and set up the welcome amenities. I'll call your room when it's ready. Suite 2001 — top floor!",
             textZh: "给我大约30分钟准备房间和布置欢迎礼品。准备好了打电话到您房间。2001套房——顶层！",
+            casualVersion: "Gimme 'bout 30 minutes to get the room ready and set up the welcome stuff. I'll call your room when it's done. Suite 2001 — top floor!",
+            formalityVariants: {
+              casual: "Gimme 'bout 30 minutes to get the room ready and set up the welcome stuff. I'll call your room when it's done. Suite 2001 — top floor!",
+              standard: "Give me about 30 minutes to prepare the room and set up the welcome amenities. I'll call your room when it's ready. Suite 2001 — top floor!",
+              formal: "Please allow me approximately 30 minutes to thoroughly prepare the room and arrange the welcome amenities. I will contact your current room as soon as the suite is ready for occupancy. You will be in Suite 2001, on the top floor!",
+            },
             keyPhrases: [
               { en: "welcome amenities", zh: "欢迎礼品" },
               { en: "top floor", zh: "顶层" },
@@ -4647,6 +7888,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "You've made our honeymoon even more special. Thank you so much!",
             textZh: "你让我们的蜜月更特别了。太感谢了！",
+            casualVersion: "You've made our honeymoon even better. Thanks a ton!",
+            commonMistake: {
+              wrong: "You made our honeymoon more special. Thank you very much!",
+              correct: "You've made our honeymoon even more special. Thank you so much!",
+              explanation: "“You made”不如“You've made”自然，且“even more”语气更强。“Thank you very much”略显正式。",
+            },
+            formalityVariants: {
+              casual: "You've made our honeymoon even better. Thanks a ton!",
+              standard: "You've made our honeymoon even more special. Thank you so much!",
+              formal: "You have truly made our honeymoon even more memorable and special. We are incredibly grateful for your exceptional service and generosity. Thank you so very much!",
+            },
           },
         ],
       },
@@ -4674,6 +7926,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I'm expecting a package to be delivered here. Has anything arrived for room 1208?",
             textZh: "你好，我有个包裹寄到酒店。1208房间有包裹到吗？",
+            casualVersion: "Hey, expecting a package. Anything for room 1208?",
+            commonMistake: {
+              wrong: "Hi, I have a package to be delivered here.",
+              correct: "Hi, I'm expecting a package to be delivered here.",
+              explanation: "“I have a package” 可能让人误解你已经有了包裹。用 “I'm expecting” 更自然。",
+            },
+            formalityVariants: {
+              casual: "Hey, expecting a package. Anything for 1208?",
+              standard: "Hi, I'm expecting a package to be delivered here. Has anything arrived for room 1208?",
+              formal: "Good morning/afternoon, I am inquiring about a package delivery. Could you please check if anything has arrived for room 1208?",
+            },
           },
           {
             speaker: "them",
@@ -4688,11 +7951,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "One moment... Yes, a package came in for you this morning! May I see your ID or room key to confirm?", textZh: "稍等……是的，今早到了一个您的包裹！能看下证件或房卡确认一下吗？", actionHint: "用came in for you", frequency: "common" },
               { textEn: "Let me have a look... We do have something for room 1208. I just need to check your key or ID before I hand it over.", textZh: "我查查……1208房确实有东西。交给您之前需要核实一下房卡或证件。", actionHint: "用hand it over", frequency: "occasional" },
             ],
+            casualVersion: "Lemme check... Yep, got one for ya this morning. Can I see your room key or ID?",
+            formalityVariants: {
+              casual: "Lemme check... Yep, got one for ya this morning. Key or ID?",
+              standard: "Let me check... Yes, we received a package for you this morning. Can I see your room key or ID to verify?",
+              formal: "Certainly, please allow me a moment to confirm. Yes, we did receive a package for you earlier today. May I kindly request your room key or a form of identification for verification purposes?",
+            },
           },
           {
             speaker: "you",
             textEn: "Here's my room key. Is it a medium-sized box from Amazon?",
             textZh: "给您房卡。是亚马逊的中号箱子吗？",
+            casualVersion: "Here's my key. Is it a medium-sized Amazon box?",
+            formalityVariants: {
+              casual: "Here's my key. Medium-sized Amazon box?",
+              standard: "Here's my room key. Is it a medium-sized box from Amazon?",
+              formal: "Certainly, here is my room key. Could you confirm if the package is a medium-sized box originating from Amazon?",
+            },
           },
           {
             speaker: "them",
@@ -4707,11 +7982,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "That's the one! Here you go. Want to take it with you or shall I have someone bring it to your room?", textZh: "就是这个！给您。自己拿走还是让人送到房间？", actionHint: "更随意", frequency: "common" },
               { textEn: "Yep, this is it. Would you prefer to carry it now, or should we have it delivered to your room later?", textZh: "是的，就是这个。现在带走还是稍后送到房间？", actionHint: "用delivered", frequency: "occasional" },
             ],
+            casualVersion: "Yep, that's it. Here ya go. Want us to send it up, or you taking it now?",
+            formalityVariants: {
+              casual: "Yep, that's it. Here ya go. Send it up or taking it now?",
+              standard: "Yes, that matches. Here it is. Would you like us to send it up to your room, or will you take it now?",
+              formal: "Yes, that description is accurate. Here is your package. Would you prefer that we have it delivered to your room, or will you be taking it with you presently?",
+            },
           },
           {
             speaker: "you",
             textEn: "I'll take it now. I'm also expecting another delivery tomorrow. Will you hold it for me if I'm not here?",
             textZh: "我现在带走。明天还有一个快递。如果我不在能帮我保管吗？",
+            casualVersion: "I'll take it now. Got another delivery coming tomorrow too. Can you hold it if I'm not here?",
+            commonMistake: {
+              wrong: "Can you help me keep it if I'm not here?",
+              correct: "Can you hold it for me if I'm not here?",
+              explanation: "在英语中 “keep” 更多指拥有，而 “hold” 指暂时保管，更适合保管包裹。",
+            },
+            formalityVariants: {
+              casual: "I'll take it now. Got another delivery tomorrow too. Can you hold it if I'm not here?",
+              standard: "I'll take it now. I'm also expecting another delivery tomorrow. Will you hold it for me if I'm not here?",
+              formal: "I will take it with me now. I anticipate another delivery arriving tomorrow; would it be possible for you to retain it for me if I am not present?",
+            },
           },
           {
             speaker: "them",
@@ -4726,11 +8018,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "No problem — we'll keep it safe at the desk and drop a note in your room. If it's big, we can bring it up when you get back.", textZh: "没问题——我们在前台保管好，在您房间留个条。如果很大，等您回来送上去。", actionHint: "用drop a note", frequency: "common" },
               { textEn: "Absolutely. We'll store it here and let you know with a message. For anything heavy or bulky, we'll deliver it straight to your door.", textZh: "当然。我们存这里然后给您留言。重的或大件的，直接送到您门口。", actionHint: "用bulky表示大件", frequency: "occasional" },
             ],
+            casualVersion: "Totally. We'll keep it at the front desk and leave a note in your room. Big stuff, we can bring it up when you get back.",
+            formalityVariants: {
+              casual: "Totally. We'll keep it at the front desk and leave a note in your room. Big stuff, we can bring it up when you get back.",
+              standard: "Of course. We'll hold it at the front desk and leave a message in your room. For large items, we can deliver them to your room when you return.",
+              formal: "Certainly. We will securely hold it at the front desk and ensure a message is left in your room. For larger consignments, we can arrange for delivery to your room upon your return.",
+            },
           },
           {
             speaker: "you",
             textEn: "Perfect. One more question — can I ship a package from the hotel?",
             textZh: "好的。再问一个——能从酒店寄包裹吗？",
+            casualVersion: "Cool. Another question — can I ship a package from here?",
+            commonMistake: {
+              wrong: "Can I mail a package from the hotel?",
+              correct: "Can I ship a package from the hotel?",
+              explanation: "“Mail” 更常指邮局寄信件，而 “ship” 更常指用快递公司寄送包裹。",
+            },
+            formalityVariants: {
+              casual: "Cool. Another question — can I ship a package from here?",
+              standard: "Perfect. One more question — can I ship a package from the hotel?",
+              formal: "Excellent. I have one further inquiry — is it possible to arrange for a package shipment from the hotel?",
+            },
           },
           {
             speaker: "them",
@@ -4746,11 +8055,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure! We work with FedEx and UPS. Just drop off the package at the front desk with the label attached, and we'll arrange a pickup. No charge for the service.", textZh: "可以！我们和FedEx、UPS合作。把贴好运单的包裹拿到前台，我们安排取件。不收服务费。", actionHint: "用drop off和label attached", frequency: "common" },
               { textEn: "Yes, we can handle that. Bring it down to the desk with the shipping info, and we'll take care of the rest. There's no additional fee for the service.", textZh: "可以的，我们来处理。把包裹和快递信息拿到前台，剩下的交给我们。不另收服务费。", actionHint: "用take care of the rest", frequency: "occasional" },
             ],
+            casualVersion: "Yep! We can set up FedEx or UPS to pick it up. Just bring the package to the front desk with the label, we'll take care of it. No extra fee.",
+            formalityVariants: {
+              casual: "Yep! We can set up FedEx or UPS to pick it up. Just bring the package to the front desk with the label, we'll take care of it. No extra fee.",
+              standard: "Yes! We can arrange FedEx or UPS pickup. Just bring the package to the front desk with the shipping label, and we'll handle it. There's no extra service fee.",
+              formal: "Yes, absolutely. We are able to facilitate FedEx or UPS package pickups. Kindly bring your package to the front desk with the requisite shipping label, and we will process it for you. There will be no additional service charge.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's very convenient. Thank you!",
             textZh: "很方便。谢谢！",
+            casualVersion: "That's super convenient. Thanks!",
+            formalityVariants: {
+              casual: "That's super convenient. Thanks!",
+              standard: "That's very convenient. Thank you!",
+              formal: "That is exceedingly convenient. Thank you very much for your assistance.",
+            },
           },
         ],
       },
@@ -4765,12 +8086,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I bought too many souvenirs and need to ship some home to China. Can the hotel help with international shipping?",
             textZh: "我买了太多纪念品，需要寄一些回中国。酒店能帮忙寄国际快递吗？",
+            casualVersion: "Yeah, got too many souvenirs. Gotta ship some back to China. Can you guys help with international shipping?",
+            commonMistake: {
+              wrong: "I have too much souvenirs.",
+              correct: "I bought too many souvenirs.",
+              explanation: "Souvenirs是可数名词，前面要用many，不是much。",
+            },
+            formalityVariants: {
+              casual: "Bought too many souvenirs, gotta ship some back to China. Can you guys help with international shipping?",
+              standard: "I've bought too many souvenirs and need to ship some home to China. Can the hotel assist with international shipping?",
+              formal: "I've acquired a significant number of souvenirs and require international shipping services to send them to China. Does the hotel offer assistance with such services?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We can arrange international shipping through FedEx or DHL. Do you have the items packed already?",
             textZh: "我们可以通过FedEx或DHL安排国际快递。东西打包好了吗？",
+            casualVersion: "Yeah, we can do international shipping, FedEx or DHL. Got your stuff packed already?",
+            commonMistake: {
+              wrong: "Do you pack the items?",
+              correct: "Do you have the items packed already?",
+              explanation: "东西是否已完成打包，用 'have something packed' 表状态。",
+            },
+            formalityVariants: {
+              casual: "Yeah, we can handle international shipping with FedEx or DHL. Are your items packed up?",
+              standard: "We are able to arrange international shipping services for you via FedEx or DHL. Have you already packed your items?",
+              formal: "Certainly, we can facilitate international shipping through our partnerships with FedEx or DHL. May I inquire if your items are already packaged for shipment?",
+            },
             keyPhrases: [
               { en: "international shipping", zh: "国际快递" },
               { en: "packed", zh: "打包好了" },
@@ -4784,12 +8127,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Not yet. I need a box and some packing materials. Do you have any?",
             textZh: "还没有。我需要箱子和包装材料。你们有吗？",
+            casualVersion: "Nah, not yet. Need a box and some packing stuff. Got any?",
+            commonMistake: {
+              wrong: "I don't have.",
+              correct: "Not yet.",
+              explanation: "回答'没有'时，用'Not yet'比'I don't have'更自然。",
+            },
+            formalityVariants: {
+              casual: "Nope, not yet. Need a box and some packing stuff. You got any?",
+              standard: "Not yet. I will require a box and some packing materials. Do you have any available?",
+              formal: "Not at this moment. I will be requiring a shipping box and appropriate packing materials. Are such items available for provision here?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We have some spare boxes and bubble wrap. For a proper shipping box, I can order one from FedEx — they deliver packing supplies for free.",
             textZh: "我们有一些空余箱子和气泡膜。如果要专用快递箱，我可以从FedEx订——他们免费送包装材料。",
+            casualVersion: "Got some spare boxes and bubble wrap. For a proper shipping box though, I can just order one from FedEx, they deliver packing stuff for free.",
+            formalityVariants: {
+              casual: "We've got a few extra boxes and bubble wrap. For a proper shipping box, I can just get one from FedEx – they'll deliver the supplies for free.",
+              standard: "We do have some spare boxes and bubble wrap available. However, for a proper shipping box, I can place an order with FedEx, as they provide free delivery of packing supplies.",
+              formal: "We possess a limited quantity of spare boxes and bubble wrap. Should a dedicated shipping box be preferred, I am able to procure one from FedEx, as they offer complimentary delivery of packing materials.",
+            },
             keyPhrases: [
               { en: "bubble wrap", zh: "气泡膜" },
               { en: "packing supplies", zh: "包装材料" },
@@ -4803,12 +8163,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The spare box should be fine. How much does shipping to China usually cost?",
             textZh: "空余箱子就行。寄到中国一般多少钱？",
+            casualVersion: "That spare box is fine. So, how much is it usually to ship to China?",
+            commonMistake: {
+              wrong: "How much shipping to China?",
+              correct: "How much does shipping to China usually cost?",
+              explanation: "英文疑问句需完整，动词'cost'和助动词'does'不能省。",
+            },
+            formalityVariants: {
+              casual: "That spare box is good. What's the usual cost for shipping to China?",
+              standard: "The spare box should be perfectly adequate. Could you please inform me of the approximate cost for shipping to China?",
+              formal: "The availability of a spare box will suffice. Could you kindly provide an estimate of the typical expenditure for international shipping to China?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "It depends on the weight and size. A medium box to China is usually $60 to $100 by FedEx. DHL might be slightly cheaper. Delivery takes 5 to 7 business days.",
             textZh: "取决于重量和尺寸。寄到中国的中号箱子FedEx一般60到100美元。DHL可能稍便宜。5到7个工作日到。",
+            casualVersion: "Depends on weight and size. A medium box to China's usually like 60 to 100 bucks with FedEx. DHL might be a bit cheaper. Takes 5 to 7 business days.",
+            commonMistake: {
+              wrong: "It depend on...",
+              correct: "It depends on...",
+              explanation: "第三人称单数动词要加s，'It depends'是固定用法。",
+            },
+            formalityVariants: {
+              casual: "Depends on weight and size. A medium box to China usually runs about 60 to 100 bucks with FedEx. DHL might be a little less. Figure 5 to 7 business days for delivery.",
+              standard: "The cost is dependent upon the weight and dimensions of the package. A typical medium-sized box shipped to China via FedEx generally ranges from $60 to $100. DHL may offer a slightly more economical rate. Delivery typically occurs within 5 to 7 business days.",
+              formal: "The pricing is contingent upon both the weight and volumetric dimensions of the parcel. For instance, a medium-sized consignment destined for China via FedEx typically incurs charges between $60 and $100. DHL services may present a marginally lower cost. The estimated transit time for delivery is 5 to 7 business days.",
+            },
             keyPhrases: [
               { en: "depends on weight and size", zh: "取决于重量和尺寸" },
               { en: "5 to 7 business days", zh: "5到7个工作日" },
@@ -4822,6 +8204,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'll go with FedEx. Are there any customs forms I need to fill out?",
             textZh: "选FedEx吧。需要填海关表格吗？",
+            casualVersion: "Yeah, I'll go with FedEx. Any customs forms I gotta fill out?",
+            commonMistake: {
+              wrong: "I choose FedEx.",
+              correct: "I'll go with FedEx.",
+              explanation: "表达选择时，用'go with'比'choose'更地道自然。",
+            },
+            formalityVariants: {
+              casual: "FedEx sounds good. Any customs forms I gotta fill out?",
+              standard: "I'll proceed with FedEx. Will I be required to complete any customs forms?",
+              formal: "I shall opt for FedEx. Are there any requisite customs declaration forms that I must complete?",
+            },
             culturalNote: "国际邮寄需要填写海关申报单（customs declaration），列出物品内容和价值。",
           },
           {
@@ -4829,6 +8222,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "前台",
             textEn: "Yes, you'll need to fill out a customs declaration form listing each item and its value. I have the forms here. Just be aware that electronics and food items may have restrictions.",
             textZh: "是的，需要填海关申报单，列出每件物品和价值。表格我这里有。注意电子产品和食品可能有限制。",
+            casualVersion: "Yep, you'll gotta fill out a customs declaration form, list every item and its value. Got the forms right here. Just heads up, electronics and food might have restrictions.",
+            commonMistake: {
+              wrong: "I have the forms in here.",
+              correct: "I have the forms here.",
+              explanation: "表示东西在手边或此地，直接用'here'即可，无需'in here'。",
+            },
+            formalityVariants: {
+              casual: "Yeah, you'll need to fill out a customs form, list each item and its value. I've got 'em here. Just so you know, electronics and food might have restrictions.",
+              standard: "Yes, it will be necessary for you to complete a customs declaration form, detailing each item and its respective value. I have the requisite forms available. Please be advised that restrictions may apply to electronic devices and food items.",
+              formal: "Affirmative, a customs declaration form will require completion, wherein you enumerate each article and its declared value. I currently possess these forms. Furthermore, please be apprised that certain limitations or prohibitions may pertain to electronic goods and foodstuffs.",
+            },
             keyPhrases: [
               { en: "customs declaration", zh: "海关申报单" },
               { en: "restrictions", zh: "限制" },
@@ -4842,12 +8246,35 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "It's mostly clothing and small gifts. I'll fill out the form. When is the next pickup?",
             textZh: "主要是衣服和小礼物。我来填表。下次取件是什么时候？",
+            casualVersion: "Mostly just clothes and small gifts. I'll fill out that form. So, when's the next pickup?",
+            commonMistake: {
+              wrong: "When is next pickup?",
+              correct: "When is the next pickup?",
+              explanation: "特指下一次取件，前面需要加定冠词'the'。",
+            },
+            formalityVariants: {
+              casual: "Mostly just clothes and small gifts. I'll get that form done. When's the next pickup?",
+              standard: "The contents primarily consist of clothing and small gifts. I will proceed to complete the form. When is the scheduled time for the next pickup?",
+              formal: "The package predominantly contains apparel and minor gifts. I shall undertake the completion of the aforementioned form. Could you please inform me of the forthcoming scheduled pickup time?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "FedEx picks up daily at 4 PM. If you have everything ready by 3:30, it'll go out today. I'll weigh the box and get you an exact price before you commit.",
             textZh: "FedEx每天下午4点取件。如果3:30前准备好，今天就能寄出。我先称重给您准确报价，再决定。",
+            casualVersion: "FedEx picks up daily at 4. If you got everything ready by 3:30, it'll go out today. I'll weigh it and get you an exact price before you commit.",
+            culturalNote: "美国快递取件时间很固定，需提前做好准备。",
+            commonMistake: {
+              wrong: "If you ready everything...",
+              correct: "If you have everything ready...",
+              explanation: "表达'准备好某事'用'have/get something ready'。",
+            },
+            formalityVariants: {
+              casual: "FedEx is here daily at 4. If you can get everything ready by 3:30, it'll ship today. I'll weigh it and give you the exact price before you decide.",
+              standard: "FedEx conducts daily pickups at 4 PM. Should you have all items prepared by 3:30 PM, the shipment can depart today. I will weigh the box and provide you with an exact price quotation prior to your commitment.",
+              formal: "FedEx operates on a schedule of daily pickups, occurring at 4 PM. If all necessary preparations are completed by 3:30 PM, the parcel will be dispatched today. I will ascertain the precise weight of the box and furnish you with an exact cost estimate preceding your final decision.",
+            },
             keyPhrases: [
               { en: "picks up daily", zh: "每天取件" },
               { en: "weigh the box", zh: "称重" },
@@ -4883,6 +8310,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Can I get a wake-up call for tomorrow morning at 6 AM?",
             textZh: "能设明天早上6点的叫醒服务吗？",
+            casualVersion: "Hey, can I get a 6 AM wake-up call for tomorrow?",
+            commonMistake: {
+              wrong: "I want a wake-up call for 6 AM tomorrow.",
+              correct: "Can I get a wake-up call for 6 AM tomorrow?",
+              explanation: "直接说 'I want' 在英语中听起来不够礼貌，用 'Can I get' 或 'Could I have' 更委婉客气。",
+            },
+            formalityVariants: {
+              casual: "Hey, can I set a 6 AM wake-up for tomorrow?",
+              standard: "Can I get a wake-up call for tomorrow morning at 6 AM?",
+              formal: "Excuse me, I'd like to arrange a wake-up call for 6 AM tomorrow morning, if that's possible.",
+            },
           },
           {
             speaker: "them",
@@ -4897,12 +8335,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Done — 6 AM wake-up for room 1208. Want me to schedule a second call as a safety net?", textZh: "好了——1208房6点叫醒。要设第二次作为保险吗？", actionHint: "用safety net", frequency: "common" },
               { textEn: "All set for 6 o'clock tomorrow morning. Shall I add a follow-up call 15 minutes later, just to be safe?", textZh: "明早6点设好了。要再加一个15分钟后的跟进电话吗，以防万一？", actionHint: "用follow-up call", frequency: "occasional" },
             ],
+            casualVersion: "Sure, room 1208. Got your 6 AM wake-up. Want a backup call?",
+            formalityVariants: {
+              casual: "No problem, room 1208. Six AM wake-up's set. Want a backup call too?",
+              standard: "Of course, room 1208. I'll set a wake-up call for 6 AM. Would you like a second call as a backup?",
+              formal: "Certainly, room 1208. Your wake-up call has been scheduled for 6 AM. Would you be interested in a secondary call as a precautionary measure?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. A second one at 6:15 just in case. I'm a heavy sleeper.",
             textZh: "好的，6:15再来一次以防万一。我睡得很沉。",
             culturalNote: "\'heavy sleeper\' 是 \'睡得沉的人\'，\'light sleeper\' 是 \'睡得浅的人\'。",
+            casualVersion: "Yeah, a 6:15 backup'd be great, just in case. I sleep like a log.",
+            commonMistake: {
+              wrong: "I'm a sleep heavy person.",
+              correct: "I'm a heavy sleeper.",
+              explanation: "'heavy sleeper' 是指'睡得很沉的人'，'sleep heavy person' 是中式英语的直接翻译。",
+            },
+            formalityVariants: {
+              casual: "Yeah, 6:15 for the second, just in case. I'm a really heavy sleeper.",
+              standard: "Yes, please. A second one at 6:15 just in case. I'm a heavy sleeper.",
+              formal: "Yes, that would be appreciated. Could we schedule a supplementary call for 6:15, purely as a precaution? I tend to sleep quite soundly.",
+            },
           },
           {
             speaker: "them",
@@ -4917,11 +8372,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Got it — 6 and 6:15. Your room phone will ring. Just answer and let us know you're up.", textZh: "记下了——6点和6:15。房间电话会响。接起来跟我们说一声您醒了就好。", actionHint: "更简洁", frequency: "common" },
               { textEn: "Two calls set — 6 AM and 6:15. When you pick up, the operator will make sure you're awake.", textZh: "设了两次——6点和6:15。接电话时接线员会确认您醒了。", actionHint: "用operator", frequency: "occasional" },
             ],
+            casualVersion: "Got it — 6 and 6:15. Phone'll ring in your room. Just answer and we'll check if you're up.",
+            formalityVariants: {
+              casual: "Okay, 6 and 6:15. Your room phone'll ring. Just answer so we know you're up.",
+              standard: "No problem — 6 AM and 6:15 AM. The phone will ring in your room. Just pick up and we'll confirm you're awake.",
+              formal: "Certainly. The wake-up calls are confirmed for 6 AM and 6:15 AM. The in-room telephone will ring, and we kindly request you answer to confirm you are awake.",
+            },
           },
           {
             speaker: "you",
             textEn: "What happens if I don't pick up?",
             textZh: "如果我没接呢？",
+            casualVersion: "What if I don't pick up?",
+            formalityVariants: {
+              casual: "What if I miss the call?",
+              standard: "What happens if I don't pick up?",
+              formal: "Could you please inform me of the procedure if I were to miss the call?",
+            },
           },
           {
             speaker: "them",
@@ -4936,11 +8403,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We'll keep trying — up to three calls. If you still don't answer, someone will come up and give your door a good knock.", textZh: "我们会持续尝试——最多打三次。还是没接的话会派人上来敲门。", actionHint: "用a good knock", frequency: "common" },
               { textEn: "We'll ring you three times. If there's still no response, a staff member will personally come knock on your door to wake you.", textZh: "我们会打三次电话。如果还是没反应，工作人员会亲自来敲门叫醒您。", actionHint: "强调亲自来", frequency: "occasional" },
             ],
+            casualVersion: "We'll call three times. If no answer after the third, we'll send someone to your door to knock.",
+            formalityVariants: {
+              casual: "We'll give you three calls. If you don't answer the third, we'll send someone to knock on your door.",
+              standard: "We'll try calling three times. If there's no answer after the third attempt, we'll send someone to knock on your door.",
+              formal: "We initiate three attempts to reach you by phone. Should there be no response following the third attempt, we will dispatch a staff member to your room to knock on the door.",
+            },
           },
           {
             speaker: "you",
             textEn: "Good, I definitely can't miss my flight. Thanks!",
             textZh: "好的，我绝对不能错过航班。谢谢！",
+            casualVersion: "Perfect, really can't miss my flight. Cheers!",
+            commonMistake: {
+              wrong: "Good, I definitely can't miss flight. Thanks very much!",
+              correct: "Good, I definitely can't miss my flight. Thanks!",
+              explanation: "航班前通常用 'my'，表示自己的航班；'thanks very much' 略显冗长，'thanks' 更自然。",
+            },
+            formalityVariants: {
+              casual: "Good, really can't miss my flight. Thanks!",
+              standard: "Good, I definitely can't miss my flight. Thanks!",
+              formal: "Excellent, it is imperative that I do not miss my flight. Thank you kindly.",
+            },
           },
           {
             speaker: "them",
@@ -4955,6 +8439,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "You're good to go. Sleep tight, and we'll get you up right on time tomorrow!", textZh: "都安排好了。好好睡，明天准时叫醒您！", actionHint: "用sleep tight", frequency: "common" },
               { textEn: "Everything's in place. Rest easy — we won't let you oversleep. Good night!", textZh: "一切就绪。放心休息——不会让您睡过头的。晚安！", actionHint: "用rest easy和oversleep", frequency: "occasional" },
             ],
+            casualVersion: "All good. Have a good night, and we'll make sure you're up!",
+            formalityVariants: {
+              casual: "You're good to go. Get some sleep, we'll get you up!",
+              standard: "You're all set. Have a good night's rest, and we'll make sure you're up on time!",
+              formal: "Everything is arranged. We wish you a restful night, and we will ensure you are awakened promptly.",
+            },
           },
         ],
       },
@@ -4969,12 +8459,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I set a wake-up call for 6 AM, but my plans changed. Can I change it to 8 AM instead?",
             textZh: "我设了6点的叫醒，但计划变了。能改成8点吗？",
+            casualVersion: "Set a wake-up for 6 AM, but plans changed. Can I change it to 8 AM?",
+            commonMistake: {
+              wrong: "Can I change it to 8 AM?",
+              correct: "Can I change it to 8 AM instead?",
+              explanation: "instead 强调替代，使句子更完整自然。",
+            },
+            formalityVariants: {
+              casual: "Hey, I set a wake-up for 6 AM, but plans changed. Can I switch it to 8 AM?",
+              standard: "I set a wake-up call for 6 AM, but my plans changed. Can I change it to 8 AM instead?",
+              formal: "Good morning. I had previously scheduled a wake-up call for 6 AM, but my itinerary has since changed. Would it be possible to adjust that to 8 AM?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "No problem at all. I'll cancel the 6 AM call and set a new one for 8 AM. The backup at 6:15 will also be cancelled.",
             textZh: "完全没问题。我取消6点的，改设8点。6:15的备份也一起取消。",
+            casualVersion: "No prob. I'll just cancel the 6 AM and set a new one for 8. The 6:15 backup's canceled too.",
+            formalityVariants: {
+              casual: "Sure, no problem. I'll just cancel the 6 AM and set up an 8 AM. The backup 6:15 is gone too.",
+              standard: "No problem at all. I'll cancel the 6 AM call and set a new one for 8 AM. The backup at 6:15 will also be cancelled.",
+              formal: "Certainly, that won't be an issue. I will proceed with cancelling your scheduled 6 AM wake-up call and establish a new one for 8 AM. The supplementary call at 6:15 AM will also be concurrently cancelled.",
+            },
             keyPhrases: [
               { en: "cancel", zh: "取消" },
               { en: "set a new one", zh: "重新设一个" },
@@ -4988,12 +8495,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Actually, can I also request something with the wake-up call? Like a pot of coffee delivered at 8 AM?",
             textZh: "其实，叫醒时能送东西吗？比如8点送一壶咖啡？",
+            casualVersion: "Actually, can I get something with the wake-up too? Like, a pot of coffee delivered at 8?",
+            commonMistake: {
+              wrong: "Can I ask something with the wake-up call?",
+              correct: "Can I also request something with the wake-up call?",
+              explanation: "request 更正式和礼貌，适合服务场景，ask 更口语化。",
+            },
+            formalityVariants: {
+              casual: "Oh, also, can I get something delivered with the wake-up? Like coffee at 8?",
+              standard: "Actually, can I also request something with the wake-up call? Like a pot of coffee delivered at 8 AM?",
+              formal: "Excuse me, I have an additional query. Would it be possible to arrange for a supplementary service, such as the delivery of a pot of coffee, concurrently with the 8 AM wake-up call?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We can arrange that! Would you like just coffee, or our 'Rise and Shine' tray — coffee, juice, and a croissant for $15?",
             textZh: "可以安排！只要咖啡，还是我们15美元的「早安套餐」——咖啡、果汁和牛角面包？",
+            casualVersion: "Yeah, we can totally do that! Just coffee, or our 'Rise and Shine' tray—coffee, juice, and a croissant for 15 bucks?",
+            formalityVariants: {
+              casual: "Absolutely! Just coffee, or how about our 'Rise and Shine' tray—coffee, juice, and a croissant for 15 bucks?",
+              standard: "We can arrange that! Would you like just coffee, or our 'Rise and Shine' tray — coffee, juice, and a croissant for $15?",
+              formal: "Certainly, we can make those arrangements for you. Would you prefer merely a pot of coffee, or would you be interested in our 'Rise and Shine' tray, which includes coffee, juice, and a croissant for an additional charge of $15?",
+            },
             keyPhrases: [
               { en: "Rise and Shine", zh: "早安" },
               { en: "croissant", zh: "牛角面包" },
@@ -5007,12 +8531,25 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The Rise and Shine tray sounds nice. Will it be at my door at exactly 8?",
             textZh: "早安套餐不错。8点准时送到门口吗？",
+            casualVersion: "The Rise and Shine tray sounds good. Will it be right at my door at 8?",
+            formalityVariants: {
+              casual: "Rise and Shine tray sounds great. Will it be at my door exactly at 8?",
+              standard: "The Rise and Shine tray sounds nice. Will it be at my door at exactly 8?",
+              formal: "The 'Rise and Shine' tray sounds quite appealing. May I inquire if it will be delivered precisely to my door at 8 AM?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We'll have it delivered between 7:55 and 8 AM. The tray will be placed on a stand outside your door so it's ready when you open up.",
             textZh: "7:55到8点之间送到。托盘放在门外的架子上，您开门就能拿。",
+            casualVersion: "We'll get it delivered between 7:55 and 8. The tray'll be on a stand outside your door so it's ready when you open up.",
+            culturalNote: "送餐服务可能将餐盘置于门外，客人自行取用，不同于中国习惯。",
+            formalityVariants: {
+              casual: "We'll get it to you between 7:55 and 8. It'll be on a stand outside your door, ready for you to grab when you open up.",
+              standard: "We'll have it delivered between 7:55 and 8 AM. The tray will be placed on a stand outside your door so it's ready when you open up.",
+              formal: "We anticipate delivery between 7:55 AM and 8 AM. The tray will be securely placed on a dedicated stand outside your door, ensuring it is readily accessible upon your opening of the door.",
+            },
             keyPhrases: [
               { en: "delivered between", zh: "在…之间送到" },
               { en: "stand outside your door", zh: "门外架子" },
@@ -5026,12 +8563,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Perfect. That's a much nicer way to wake up than an alarm!",
             textZh: "完美。比闹钟叫醒好多了！",
+            casualVersion: "Perfect. Way better to wake up that way than with an alarm!",
+            formalityVariants: {
+              casual: "Awesome. This is way better than an alarm!",
+              standard: "Perfect. That's a much nicer way to wake up than an alarm!",
+              formal: "Excellent. This certainly provides a significantly more pleasant awakening experience than an alarm clock.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We agree! Your wake-up call is set for 8 AM with the Rise and Shine tray. Coffee is freshly brewed. Sleep well!",
             textZh: "我们也觉得！8点叫醒加早安套餐设好了。咖啡是现磨的。睡个好觉！",
+            casualVersion: "Totally agree! Wake-up's set for 8 AM with the Rise and Shine tray. Coffee's fresh. Sleep well!",
+            formalityVariants: {
+              casual: "Right? Your wake-up's all set for 8 AM with the tray. Fresh coffee. Sleep tight!",
+              standard: "We agree! Your wake-up call is set for 8 AM with the Rise and Shine tray. Coffee is freshly brewed. Sleep well!",
+              formal: "We concur wholeheartedly! Your wake-up call is confirmed for 8 AM, inclusive of the 'Rise and Shine' tray. The coffee will be freshly brewed. We wish you a restful night's sleep.",
+            },
             keyPhrases: [
               { en: "freshly brewed", zh: "现磨的/新鲜冲泡的" },
             ],
@@ -5066,6 +8615,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I noticed a sign about your loyalty program. How does it work?",
             textZh: "我看到你们会员计划的标牌。怎么运作的？",
+            casualVersion: "Saw a sign 'bout your loyalty program. How's it work?",
+            formalityVariants: {
+              casual: "Saw your loyalty program sign. How's it work?",
+              standard: "I noticed a sign about your loyalty program. How does it work?",
+              formal: "Excuse me, I observed a display regarding your guest loyalty program. Could you please elaborate on its operational procedures?",
+            },
           },
           {
             speaker: "them",
@@ -5082,11 +8637,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "It's totally free to join! You rack up 10 points for every dollar on rooms, meals, and spa. Then you can trade those points in for free stays.", textZh: "完全免费加入！房费、餐饮和水疗每花1美元攒10积分。然后可以用积分换免费住宿。", actionHint: "用rack up和trade in", frequency: "common" },
               { textEn: "Signing up is free. You earn points on everything — rooms, dining, the spa. Ten points per dollar, and you can use them for complimentary nights.", textZh: "注册免费。所有消费都能积分——房费、餐饮、水疗。每美元10积分，可以用来换免费住宿。", actionHint: "用signing up和everything", frequency: "occasional" },
             ],
+            casualVersion: "Our rewards program's free. Get 10 points per dollar on room, food, spa. Use points for free nights.",
+            formalityVariants: {
+              casual: "Rewards program's free. 10 pts/dollar on rooms, food, spa. Redeem for free nights.",
+              standard: "Our rewards program is free to join. You earn 10 points per dollar spent on room charges, dining, and spa services. Points can be redeemed for free nights.",
+              formal: "Our esteemed rewards program is complimentary for enrollment. Participants accrue 10 points for every dollar expended on accommodation charges, dining facilities, and spa treatments. These accumulated points are redeemable for complimentary overnight stays.",
+            },
           },
           {
             speaker: "you",
             textEn: "How many points do I need for a free night?",
             textZh: "多少积分能换一晚免费住宿？",
+            casualVersion: "How many points for a free night?",
+            commonMistake: {
+              wrong: "How many points I need for a free night?",
+              correct: "How many points do I need for a free night?",
+              explanation: "问句中需要助动词 do/does/did。",
+            },
+            formalityVariants: {
+              casual: "Points for a free night?",
+              standard: "How many points do I need for a free night?",
+              formal: "Could you please inform me of the point requirement for a complimentary overnight stay?",
+            },
           },
           {
             speaker: "them",
@@ -5101,11 +8673,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "A standard room is 20,000 points, suites start at 40,000. Plus, as a member you get exclusive rates — about 10 percent off what everyone else pays.", textZh: "标准间20,000积分，套房从40,000起。而且作为会员有专属价——比普通价低大约10%。", actionHint: "用what everyone else pays", frequency: "common" },
               { textEn: "Free nights kick in at 20,000 points for a regular room, 40,000 for a suite. Members also unlock special pricing that's 10 percent below the standard rate.", textZh: "20,000积分可以换普通房免费住，40,000积分换套房。会员还能解锁比标准价低10%的特别价。", actionHint: "用kick in和unlock", frequency: "occasional" },
             ],
+            casualVersion: "Standard room's 20k points. Suites 40k. Plus, member rates are usually 10% less than public.",
+            formalityVariants: {
+              casual: "Std rooms 20k, suites 40k. Members get ~10% off public rate.",
+              standard: "A standard room starts at 20,000 points. Suites are 40,000 points. You also get member-only rates, which are typically 10% lower than the public rate.",
+              formal: "A standard accommodation begins at 20,000 points. Suites are available for 40,000 points. Additionally, members are accorded exclusive rates, which are generally 10% below the publicly advertised rate.",
+            },
           },
           {
             speaker: "you",
             textEn: "Can I get points for my current stay? I've been here four nights already.",
             textZh: "现在的住宿能积分吗？我已经住了四晚了。",
+            casualVersion: "Can I get points for this stay? Been here four nights already.",
+            commonMistake: {
+              wrong: "Can I get points for my current stay? I already here four nights.",
+              correct: "Can I get points for my current stay? I've been here four nights already.",
+              explanation: "表达持续一段时间的动作要用完成时态。",
+            },
+            formalityVariants: {
+              casual: "Points for this stay? Been here 4 nights already.",
+              standard: "Can I get points for my current stay? I've been here four nights already.",
+              formal: "Would it be possible to accrue points for my current reservation? I have already resided here for four nights.",
+            },
           },
           {
             speaker: "them",
@@ -5120,11 +8709,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Great news — if you join today, I can backdate the points for all four nights. You'd start with a nice balance!", textZh: "好消息——今天加入的话我可以把四晚的积分都补上。开局就有不少积分！", actionHint: "用backdate和nice balance", frequency: "common" },
               { textEn: "Absolutely. Register now and I'll credit the points from your whole stay — all four nights. That's a solid head start!", textZh: "当然可以。现在注册我就把全部住宿的积分补上——四个晚上。开局很不错！", actionHint: "用credit和head start", frequency: "occasional" },
             ],
+            casualVersion: "Sign up now, I can add points for your whole stay. Good way to start!",
+            formalityVariants: {
+              casual: "Sign up now, I'll add points for your whole stay. Good start!",
+              standard: "If you sign up now, I can retroactively apply points for your entire stay. That's a great way to get started!",
+              formal: "Should you choose to enroll at this moment, I am able to retroactively credit points for the entirety of your current stay. This presents an excellent opportunity to commence your membership benefits.",
+            },
           },
           {
             speaker: "you",
             textEn: "Let's do it. What do I need to sign up?",
             textZh: "那就注册吧。需要什么？",
+            casualVersion: "Yeah, let's do it. What d'I need to sign up?",
+            commonMistake: {
+              wrong: "Let's do it. What I need to sign up?",
+              correct: "Let's do it. What do I need to sign up?",
+              explanation: "问句中需要助动词 do。",
+            },
+            formalityVariants: {
+              casual: "Okay, what do I need?",
+              standard: "Let's do it. What do I need to sign up?",
+              formal: "Certainly, I would like to proceed. What information or documentation is required for enrollment?",
+            },
           },
           {
             speaker: "them",
@@ -5138,11 +8744,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Just need your name, email, and phone. I'll set it up right here — only takes a couple of minutes. Your membership card will come to your email.", textZh: "只需要姓名、邮箱和电话。我直接在这里注册——只要几分钟。会员卡会发到邮箱。", actionHint: "用set it up和couple of minutes", frequency: "common" },
               { textEn: "It's quick — just your name and contact info. I can do it right now and you'll have a digital card in your inbox within minutes.", textZh: "很快——只需要姓名和联系方式。我现在就办，几分钟内电子卡就到您邮箱了。", actionHint: "用within minutes", frequency: "occasional" },
             ],
+            casualVersion: "Just name, email, phone. Can sign ya up right here – like 2 minutes. Get a digital card by email.",
+            formalityVariants: {
+              casual: "Name, email, phone. I can sign you up here, takes 2 mins. Digital card via email.",
+              standard: "Just your name, email address, and phone number. I can sign you up right here — it takes about 2 minutes. You'll get a digital membership card by email.",
+              formal: "Only your full name, email address, and telephone number are required. I can facilitate your enrollment immediately at this station, a process which typically requires approximately two minutes. A digital membership card will subsequently be delivered to you via email.",
+            },
           },
           {
             speaker: "you",
             textEn: "Great. Here's my information. Thank you for telling me about this!",
             textZh: "好的。这是我的信息。谢谢告诉我这个！",
+            casualVersion: "Cool. Here's my info. Thanks for telling me!",
+            commonMistake: {
+              wrong: "Great. This is my information. Thank you for tell me this!",
+              correct: "Great. Here's my information. Thank you for telling me about this!",
+              explanation: "\"This is\" 指示性太强，\"Here's\" 更自然。for后面接动名词。",
+            },
+            formalityVariants: {
+              casual: "Awesome. Here's my info. Thanks for the heads-up!",
+              standard: "Great. Here's my information. Thank you for telling me about this!",
+              formal: "Excellent. Please find my particulars enclosed herewith. I appreciate you bringing this opportunity to my attention.",
+            },
           },
         ],
       },
@@ -5157,12 +8780,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'm a Gold member. What benefits do I get during my stay?",
             textZh: "我是金卡会员。入住期间有什么权益？",
+            casualVersion: "Gold member. What benefits do I get?",
+            commonMistake: {
+              wrong: "What benefits I get?",
+              correct: "What benefits do I get?",
+              explanation: "中文里常省略助动词，但英文问句中通常需要助动词。",
+            },
+            formalityVariants: {
+              casual: "Gold member here. What benefits come with that?",
+              standard: "I'm a Gold member. What benefits do I get during my stay?",
+              formal: "Good morning/afternoon. I am a Gold member with your loyalty program. Could you please inform me of the benefits I am entitled to during my current stay?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Welcome back! As a Gold member, you enjoy complimentary breakfast, late checkout until 2 PM, free room upgrades when available, and access to our executive lounge.",
             textZh: "欢迎回来！金卡会员享有免费早餐、下午2点延迟退房、有空房时免费升级，以及行政酒廊使用权。",
+            casualVersion: "Welcome back! Gold members get free breakfast, late checkout (2 PM), free room upgrades (if available), and executive lounge access.",
+            formalityVariants: {
+              casual: "Hey, welcome back! Gold members get free breakfast, late checkout 'til 2, free upgrades (if available), and executive lounge access.",
+              standard: "Welcome back! As a Gold member, you enjoy complimentary breakfast, late checkout until 2 PM, free room upgrades when available, and access to our executive lounge.",
+              formal: "Welcome back! As a valued Gold member, you are entitled to several exclusive benefits, including complimentary breakfast, extended checkout privileges until 2 PM, complimentary room upgrades subject to availability, and access to our distinguished executive lounge.",
+            },
             keyPhrases: [
               { en: "Gold member", zh: "金卡会员" },
               { en: "complimentary breakfast", zh: "免费早餐" },
@@ -5178,12 +8818,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "What's available in the executive lounge?",
             textZh: "行政酒廊有什么？",
+            casualVersion: "What's in the lounge?",
+            commonMistake: {
+              wrong: "What have executive lounge?",
+              correct: "What's available in the executive lounge?",
+              explanation: "中文里用'有'，但英文说'有什么'用'What's in/available in'更自然。",
+            },
+            formalityVariants: {
+              casual: "What's in the lounge?",
+              standard: "What's available in the executive lounge?",
+              formal: "Could you please elaborate on the amenities and services provided within the executive lounge?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Complimentary drinks and snacks all day, evening cocktail hour from 5 to 7 PM with free wine and appetizers, and a quiet workspace with printing services.",
             textZh: "全天免费饮品和小食，下午5到7点有免费酒水和开胃菜的鸡尾酒时间，还有安静的工作区和打印服务。",
+            casualVersion: "Free drinks/snacks all day, cocktail hour 5-7 PM (free wine/apps), and a quiet workspace with printing.",
+            formalityVariants: {
+              casual: "All-day free drinks/snacks, cocktail hour from 5-7 (free wine & apps), plus a quiet workspace with printing.",
+              standard: "Complimentary drinks and snacks all day, evening cocktail hour from 5 to 7 PM with free wine and appetizers, and a quiet workspace with printing services.",
+              formal: "The executive lounge offers complimentary beverages and light refreshments throughout the day, an evening cocktail hour from 5 to 7 PM featuring complimentary wine and appetizers, as well as a tranquil workspace equipped with printing capabilities.",
+            },
             keyPhrases: [
               { en: "cocktail hour", zh: "鸡尾酒时间" },
               { en: "appetizers", zh: "开胃菜" },
@@ -5198,12 +8855,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "How close am I to Platinum status? I travel a lot for work.",
             textZh: "我离白金卡还差多少？我经常出差。",
+            casualVersion: "How close am I to Platinum? I travel a lot for work.",
+            commonMistake: {
+              wrong: "How far am I from Platinum status?",
+              correct: "How close am I to Platinum status?",
+              explanation: "表示接近目标用 'how close' 比 'how far' 更自然地道。",
+            },
+            formalityVariants: {
+              casual: "How close to Platinum am I? I'm on the road a lot for work.",
+              standard: "How close am I to Platinum status? I travel a lot for work.",
+              formal: "Could you please inform me of my current progress towards Platinum status? I frequently travel for business purposes.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "You're currently at 42 nights this year. Platinum requires 50 nights. Just 8 more nights and you'll reach Platinum, which adds suite upgrades and 50% bonus points.",
             textZh: "您今年已住42晚。白金卡需要50晚。再住8晚就达到白金，增加套房升级和50%额外积分。",
+            casualVersion: "You're at 42 nights this year. Platinum's 50. Just 8 more and you'll hit Platinum, getting suite upgrades and 50% bonus points.",
+            formalityVariants: {
+              casual: "You've got 42 nights this year. Platinum's 50, so just 8 more to hit it. That gets you suite upgrades and 50% bonus points.",
+              standard: "You're currently at 42 nights this year. Platinum requires 50 nights. Just 8 more nights and you'll reach Platinum, which adds suite upgrades and 50% bonus points.",
+              formal: "You have currently accumulated 42 nights this year. Platinum status requires a total of 50 nights. Therefore, with just 8 additional nights, you will achieve Platinum, which includes benefits such as complimentary suite upgrades and a 50% bonus on earned points.",
+            },
             keyPhrases: [
               { en: "Platinum status", zh: "白金卡" },
               { en: "bonus points", zh: "额外积分" },
@@ -5218,12 +8892,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I have two more business trips this quarter. That should do it. Is there a way to track my progress?",
             textZh: "这个季度还有两次出差。应该够了。有办法跟踪进度吗？",
+            casualVersion: "Got two more business trips this quarter. That should do it. Can I track my progress somehow?",
+            commonMistake: {
+              wrong: "Is there a method to track my progress?",
+              correct: "Is there a way to track my progress?",
+              explanation: "'Method'听起来太正式或学术，日常口语用'way'更自然。",
+            },
+            formalityVariants: {
+              casual: "Two more work trips this quarter. Should be enough. How do I track my progress?",
+              standard: "I have two more business trips this quarter. That should do it. Is there a way to track my progress?",
+              formal: "I anticipate two additional business trips this quarter, which should be sufficient. Is there a convenient method available for me to monitor my progress?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, download our app. It shows your points balance, tier progress, and you can even book rooms and request upgrades directly from it.",
             textZh: "有的，下载我们的APP。可以看积分余额、等级进度，还能直接订房和申请升级。",
+            casualVersion: "Yeah, download our app. Shows your points, tier progress, and you can even book rooms/request upgrades right from it.",
+            formalityVariants: {
+              casual: "Yep, just grab our app. It'll show your points, tier progress, and you can even book rooms/request upgrades directly.",
+              standard: "Yes, download our app. It shows your points balance, tier progress, and you can even book rooms and request upgrades directly from it.",
+              formal: "Yes, we recommend downloading our official application. It provides real-time updates on your points balance and tier progress, and you may also conveniently book rooms and request upgrades directly through the platform.",
+            },
             keyPhrases: [
               { en: "app", zh: "应用/APP" },
               { en: "points balance", zh: "积分余额" },
@@ -5238,6 +8929,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'll download it tonight. Thanks for the rundown on all the benefits!",
             textZh: "今晚就下载。谢谢介绍这些权益！",
+            casualVersion: "I'll download it tonight. Thanks for the rundown!",
+            commonMistake: {
+              wrong: "Thanks for your introduction of all benefits.",
+              correct: "Thanks for the rundown on all the benefits!",
+              explanation: "'rundown'是口语中'详细解释'的自然表达，'introduction'不恰当。",
+            },
+            formalityVariants: {
+              casual: "Downloading it tonight. Thanks for the info!",
+              standard: "I'll download it tonight. Thanks for the rundown on all the benefits!",
+              formal: "I will download it this evening. Thank you for thoroughly outlining the benefits.",
+            },
             culturalNote: "\'rundown\' 在这里是 \'概述/介绍\' 的意思。",
           },
         ],
@@ -5265,6 +8967,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'd like to use my points for a free night. I have about 25,000 points.",
             textZh: "我想用积分换一晚免费住宿。我大概有25,000积分。",
+            casualVersion: "Wanna use my points for a free night. Got like 25K points.",
+            commonMistake: {
+              wrong: "I want to exchange points for a free night.",
+              correct: "I'd like to use my points for a free night.",
+              explanation: "\"exchange\" 更像物品交换，\"use points\" 更自然地表达积分使用。",
+            },
+            formalityVariants: {
+              casual: "Hey, can I use my points for a free night? Got about 25K.",
+              standard: "I'd like to use my points for a free night. I have approximately 25,000 points.",
+              formal: "Good morning/afternoon, I would like to inquire about redeeming my loyalty points for a complimentary night. I currently possess approximately 25,000 points.",
+            },
           },
           {
             speaker: "them",
@@ -5280,11 +8993,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Let me pull up your account... You've got 25,400 points. A standard room costs 20,000 points a night. When would you like to use them?", textZh: "我调出您的账户……有25,400积分。标准间每晚需要20,000积分。想什么时候用？", actionHint: "用costs和use them", frequency: "common" },
               { textEn: "Checking now... Nice — 25,400 points in your account. That's more than enough for a standard room at 20,000 per night. What date are you thinking?", textZh: "查看中……不错——账户里有25,400积分。标准间每晚20,000积分绰绰有余。想用在哪天？", actionHint: "用more than enough", frequency: "occasional" },
             ],
+            casualVersion: "Okay, checking your account... Yeah, you got 25,400. Standard room's 20K a night. When d'you wanna use 'em?",
+            formalityVariants: {
+              casual: "Lemme check... Okay, you've got 25,400. Standard room's 20K a night. When do you wanna use 'em?",
+              standard: "Certainly, let me access your account... You currently have 25,400 points available. A standard room requires 20,000 points per night. What date would you prefer for redemption?",
+              formal: "Please allow me a moment to access your membership account... I see you have a balance of 25,400 points. A standard room redemption is 20,000 points per night. Could you please advise which dates you are considering for your complimentary stay?",
+            },
           },
           {
             speaker: "you",
             textEn: "Can I use it for tonight? I'd like to add one more night to my stay using points.",
             textZh: "今晚能用吗？我想用积分多住一晚。",
+            casualVersion: "Tonight work? Wanna add another night with points.",
+            commonMistake: {
+              wrong: "I want to use points to stay another night.",
+              correct: "I'd like to add one more night to my stay using points.",
+              explanation: "\"I'd like to\" 比 \"I want to\" 更礼貌，适合服务场景。",
+            },
+            formalityVariants: {
+              casual: "Can I use 'em for tonight? Wanna tack on another night with points.",
+              standard: "Is it possible to apply these points for tonight's stay? I would like to extend my current reservation by one night using points.",
+              formal: "Would it be permissible to utilize my points for this evening's accommodation? I am hoping to secure an additional night to my existing reservation through point redemption.",
+            },
           },
           {
             speaker: "them",
@@ -5300,11 +9030,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Sure thing! I'll use 20,000 points for tonight — no room charge. That leaves you with 5,400 points in the bank.", textZh: "没问题！今晚用20,000积分——免房费。您账户里还剩5,400积分。", actionHint: "用in the bank", frequency: "common" },
               { textEn: "Done — 20,000 points redeemed for tonight. Your room is on the house this evening. You've still got 5,400 points left over.", textZh: "好了——今晚兑换20,000积分。今晚房费免了。您还剩5,400积分。", actionHint: "用left over", frequency: "occasional" },
             ],
+            casualVersion: "Yep, can put 20K points on tonight. That covers the room charge. You'll have 5,400 left.",
+            formalityVariants: {
+              casual: "Yeah, I can throw 20K points on tonight. Takes care of the room charge. You'll have 5,400 left over.",
+              standard: "Yes, I can certainly apply 20,000 points toward tonight's accommodation. This will waive the room charge for this evening. You will then have a balance of 5,400 points remaining.",
+              formal: "Affirmative, I can certainly allocate 20,000 points to cover this evening's lodging. This will effectively nullify the room charge for the present night, leaving you with a balance of 5,400 points.",
+            },
           },
           {
             speaker: "you",
             textEn: "Do I still earn points on meals and services during a reward night?",
             textZh: "积分兑换的晚上，餐饮和服务消费还能积分吗？",
+            casualVersion: "Still get points on food and stuff even with a free night?",
+            commonMistake: {
+              wrong: "Can I still have points for meals?",
+              correct: "Do I still earn points on meals and services?",
+              explanation: "\"earn\" 或 \"get points\" 表示挣取积分，\"have points\" 是拥有积分。",
+            },
+            formalityVariants: {
+              casual: "Do I still get points for food and stuff, even if it's a free night?",
+              standard: "Will I continue to accrue points on expenditures such as meals and other services during a complimentary reward night?",
+              formal: "I was wondering if point accrual for incidental charges, such as dining and ancillary services, is still applicable during a reward night stay.",
+            },
           },
           {
             speaker: "them",
@@ -5319,11 +9066,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Absolutely! Everything except the room — restaurants, spa, minibar — still earns you points, even on a reward night.", textZh: "当然！除了房费以外的一切——餐厅、水疗、迷你吧——都照常积分，即使是兑换的晚上。", actionHint: "用reward night", frequency: "common" },
               { textEn: "Yes, you keep earning on all other spending during a free night. So dining, drinks, spa — it all counts toward your next reward.", textZh: "是的，免费住宿期间其他消费照常积分。餐饮、酒水、水疗都算在内，向下一次奖励累积。", actionHint: "用toward your next reward", frequency: "occasional" },
             ],
+            casualVersion: "Totally! Any non-room charges still get points, even on free stays. So, food, spa, minibar—all count.",
+            formalityVariants: {
+              casual: "Yep! You still get points for anything not related to the room, even on a free stay. So, like, food, spa, minibar, all that stuff counts.",
+              standard: "Indeed! You are eligible to earn points on all non-room charges, even when redeeming points for your stay. This includes dining, spa services, and minibar purchases.",
+              formal: "Absolutely! Please be advised that point accumulation applies to all non-room related expenditures, even during complimentary reward stays. This encompasses amenities such as dining, spa treatments, and minibar consumption.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's great. Will the points redemption show on my bill?",
             textZh: "太好了。积分兑换会显示在账单上吗？",
+            casualVersion: "Awesome. Will the points thing show up on my bill?",
+            commonMistake: {
+              wrong: "Can the points redemption show on my bill?",
+              correct: "Will the points redemption show on my bill?",
+              explanation: "询问未来的事实，用 \"Will\" 比 \"Can\" 更自然。",
+            },
+            formalityVariants: {
+              casual: "Cool. Will the points show up on my bill?",
+              standard: "That's excellent. Will the details of this points redemption be reflected on my billing statement?",
+              formal: "That is splendid news. I would like to confirm whether the point redemption transaction will be itemized on my final invoice.",
+            },
           },
           {
             speaker: "them",
@@ -5337,11 +9101,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Yep, you'll see it listed as a points redemption on your bill — zero charge for the room tonight. I'll also shoot you an email with your updated points balance.", textZh: "会的，账单上会显示积分兑换——今晚房费为零。我也会给您发邮件显示更新后的积分余额。", actionHint: "用shoot和zero charge", frequency: "common" },
               { textEn: "It will appear on your invoice as a points redemption with no room fee for tonight. I'll send your latest points summary by email as well.", textZh: "发票上会显示积分兑换，今晚无房费。我也会邮件发送最新的积分汇总。", actionHint: "用invoice和summary", frequency: "occasional" },
             ],
+            casualVersion: "Yep, it'll say 'Points Redemption — 20K pts' with zero for the room tonight. And I'll email ya an updated statement.",
+            formalityVariants: {
+              casual: "Yeah, it'll show up as 'Points Redemption — 20K pts' with a zero room charge for tonight. I'll shoot you an updated points statement too.",
+              standard: "Yes, it will be itemized as 'Points Redemption — 20,000 pts' with a zero-dollar room charge for this evening. Additionally, I will email you an updated points statement.",
+              formal: "Affirmative, the transaction will be clearly displayed as 'Points Redemption — 20,000 pts,' indicating a zero-dollar room charge for the current night. Furthermore, I will dispatch an updated points statement to your registered email address.",
+            },
           },
           {
             speaker: "you",
             textEn: "Perfect. It feels great to use those points! Thank you.",
             textZh: "太好了。用积分的感觉真好！谢谢。",
+            casualVersion: "Sweet. Feels good to finally use those points! Thanks.",
+            commonMistake: {
+              wrong: "It's good to use the points.",
+              correct: "It feels great to use those points!",
+              explanation: "\"It's good\" 较为平淡，\"It feels great\" 更能表达喜悦心情。",
+            },
+            formalityVariants: {
+              casual: "Awesome. Good to finally use those points! Thanks a bunch.",
+              standard: "Excellent. I'm pleased to have utilized those points! Thank you.",
+              formal: "Splendid. I am most satisfied to have redeemed my points! I appreciate your assistance.",
+            },
           },
         ],
       },
@@ -5356,12 +9137,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Can I transfer my hotel points to an airline frequent flyer program?",
             textZh: "我的酒店积分能转到航空公司的常旅客计划吗？",
+            casualVersion: "Can I transfer my hotel points to an airline program?",
+            commonMistake: {
+              wrong: "My hotel points can transfer to an airline frequent flyer program?",
+              correct: "Can I transfer my hotel points to an airline frequent flyer program?",
+              explanation: "中式英语常按字面翻译，英文问句需倒装或助动词开头。",
+            },
+            formalityVariants: {
+              casual: "Can I transfer my hotel points to an airline program?",
+              standard: "Can I transfer my hotel points to an airline frequent flyer program?",
+              formal: "Excuse me, I was wondering if it is possible to transfer my accumulated hotel points to a participating airline's frequent flyer program?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, we partner with over 30 airlines. You can transfer points at a ratio of 10 hotel points to 3 airline miles.",
             textZh: "可以，我们和30多家航空公司合作。转换比例是10酒店积分换3航空里程。",
+            casualVersion: "Yeah, we partner with like 30+ airlines. It's 10 hotel points to 3 airline miles.",
+            commonMistake: {
+              wrong: "The ratio is 10 hotel points exchange 3 airline miles.",
+              correct: "The ratio is 10 hotel points to 3 airline miles.",
+              explanation: "“exchange”用于具体物品交换，此处用“to”或“for”更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, we're with like 30+ airlines. It's 10 points to 3 miles.",
+              standard: "Yes, we partner with over 30 airlines. You can transfer points at a ratio of 10 hotel points to 3 airline miles.",
+              formal: "Indeed, we maintain partnerships with more than 30 airline carriers. The conversion rate for points is 10 hotel points to 3 airline miles.",
+            },
             keyPhrases: [
               { en: "transfer points", zh: "积分转换" },
               { en: "frequent flyer program", zh: "常旅客计划" },
@@ -5377,12 +9180,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Is it better to use points for hotel nights or transfer them to miles? What do you recommend?",
             textZh: "用积分换住宿好还是转里程好？你建议呢？",
+            casualVersion: "Better to use points for hotel stays or transfer 'em to miles? What do you think?",
+            commonMistake: {
+              wrong: "Which is better, use points for hotel nights or transfer miles?",
+              correct: "Is it better to use points for hotel nights or transfer them to miles?",
+              explanation: "句子结构混乱，且“transfer miles”易误解为转移里程。",
+            },
+            formalityVariants: {
+              casual: "Better for hotel stays or miles? What do you think?",
+              standard: "Is it better to use points for hotel nights or transfer them to miles? What do you recommend?",
+              formal: "In your professional opinion, would you advise utilizing points for hotel accommodations or converting them into airline mileage? Which option do you generally recommend?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Generally, points are worth more when redeemed for hotel stays. A 20,000-point night saves you $189, but 20,000 points would only convert to 6,000 miles — worth about $60 in flights.",
             textZh: "一般来说积分用于兑换住宿更值。20,000积分换一晚省189美元，但转换只能得6,000里程——大约价值60美元的机票。",
+            casualVersion: "Usually, points are worth more for hotel stays. Like, 20k points for a night saves 189 bucks, but that's only 6k miles, maybe 60 bucks for flights.",
+            formalityVariants: {
+              casual: "Usually, points are better for hotel stays. 20k for a night saves almost 200 bucks, but it's only 6k miles, like 60 bucks for flights.",
+              standard: "Generally, points are worth more when redeemed for hotel stays. A 20,000-point night saves you $189, but 20,000 points would only convert to 6,000 miles — worth about $60 in flights.",
+              formal: "From a value perspective, points typically yield a higher return when redeemed for hotel accommodations. For instance, a 20,000-point redemption for a single night's stay equates to a savings of $189, whereas the conversion of 20,000 points would only yield approximately 6,000 airline miles, valued at around $60 towards air travel.",
+            },
             keyPhrases: [
               { en: "worth more", zh: "更值" },
               { en: "convert to", zh: "转换为" },
@@ -5396,12 +9216,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Good advice. Are there any other ways to use points besides free nights?",
             textZh: "好建议。除了免费住宿，积分还有其他用法吗？",
+            casualVersion: "Good to know. Any other ways to use points besides free nights?",
+            commonMistake: {
+              wrong: "Besides free nights, are there other ways to use points?",
+              correct: "Are there any other ways to use points besides free nights?",
+              explanation: "“besides”引导的短语放句末更自然，问句语序要正确。",
+            },
+            formalityVariants: {
+              casual: "Good to know. Any other ways to use points besides free nights?",
+              standard: "Good advice. Are there any other ways to use points besides free nights?",
+              formal: "Thank you for that helpful insight. Are there any alternative methods for utilizing points beyond complimentary overnight stays?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "You can use points for room upgrades, spa treatments, dining credits, and even gift cards. There's also a 'Points + Cash' option where you pay half with points and half with money.",
             textZh: "可以用于房间升级、水疗、餐饮抵扣，甚至礼品卡。还有「积分+现金」选项，一半积分一半现金。",
+            casualVersion: "Yeah, you can use 'em for room upgrades, spa stuff, food, even gift cards. Oh, and there's 'Points + Cash' where you just pay half with points, half with money.",
+            formalityVariants: {
+              casual: "Yeah, you can use 'em for upgrades, spa, food, even gift cards. Plus there's 'Points + Cash'—half points, half money.",
+              standard: "You can use points for room upgrades, spa treatments, dining credits, and even gift cards. There's also a 'Points + Cash' option where you pay half with points and half with money.",
+              formal: "Points may be utilized for various amenities such as room upgrades, spa services, dining credits, and even the acquisition of gift cards. Additionally, we offer a 'Points + Cash' option, which allows for a split payment of fifty percent points and fifty percent monetary tender.",
+            },
             keyPhrases: [
               { en: "dining credits", zh: "餐饮抵扣" },
               { en: "gift cards", zh: "礼品卡" },
@@ -5416,12 +9253,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The Points + Cash option sounds flexible. I'll keep saving my points for now.",
             textZh: "积分+现金听起来很灵活。我先继续攒积分吧。",
+            casualVersion: "'Points + Cash' sounds pretty flexible. I'll just keep saving my points for now.",
+            commonMistake: {
+              wrong: "I will continue to save my points now.",
+              correct: "I'll keep saving my points for now.",
+              explanation: "“for now”比“now”更自然地表达“暂时、眼下”的意思。",
+            },
+            formalityVariants: {
+              casual: "'Points + Cash' sounds pretty flexible. I'll just keep saving my points for now.",
+              standard: "The Points + Cash option sounds flexible. I'll keep saving my points for now.",
+              formal: "The 'Points + Cash' option appears to offer considerable flexibility. I believe I will continue to accrue my points for the time being.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Smart choice. Points don't expire as long as you have at least one stay per year. Keep an eye on your email — we often run double-points promotions.",
             textZh: "明智的选择。只要每年至少住一次，积分就不会过期。留意邮件——我们经常有双倍积分活动。",
+            casualVersion: "Smart choice. Points won't expire as long as you stay once a year. Keep an eye on your email — we often have double-points promos.",
+            commonMistake: {
+              wrong: "Points will not expire if you have at least one stay per year.",
+              correct: "Points don't expire as long as you have at least one stay per year.",
+              explanation: "“as long as”在表达条件时比“if”更强调持续性。",
+            },
+            formalityVariants: {
+              casual: "Smart choice. Points won't expire as long as you stay once a year. Watch your email — we often have double-points promos.",
+              standard: "Smart choice. Points don't expire as long as you have at least one stay per year. Keep an eye on your email — we often run double-points promotions.",
+              formal: "That is an astute decision. Your points will not be subject to expiration provided that you maintain a minimum of one stay per annum. Please monitor your email correspondence, as we frequently announce double-points promotional offers.",
+            },
             keyPhrases: [
               { en: "don't expire", zh: "不会过期" },
               { en: "double-points promotions", zh: "双倍积分活动" },
@@ -5435,6 +9294,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'll definitely watch for those. Thanks for explaining everything so clearly!",
             textZh: "我一定留意。谢谢解释得这么清楚！",
+            casualVersion: "I'll definitely keep an eye out for those. Thanks for explaining everything so clearly!",
+            commonMistake: {
+              wrong: "I will sure to watch for those.",
+              correct: "I'll definitely watch for those.",
+              explanation: "“sure to”在此表达不自然，用“definitely watch for”或“keep an eye out”更地道。",
+            },
+            formalityVariants: {
+              casual: "I'll definitely keep an eye out. Thanks for explaining everything so clearly!",
+              standard: "I'll definitely watch for those. Thanks for explaining everything so clearly!",
+              formal: "I will certainly be attentive to those opportunities. I genuinely appreciate your clear and thorough explanation of all the details.",
+            },
           },
         ],
       },
@@ -5462,6 +9332,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Hi, I have a small dog with me. Is your hotel pet-friendly?",
             textZh: "你好，我带了一只小狗。你们酒店可以带宠物吗？",
+            casualVersion: "Hey, got my little dog with me. Y'all pet-friendly here?",
+            commonMistake: {
+              wrong: "Your hotel allows pet?",
+              correct: "Is your hotel pet-friendly?",
+              explanation: "“Pet-friendly” 是指酒店欢迎宠物的常用说法，更自然。",
+            },
+            formalityVariants: {
+              casual: "Hey, got my dog with me. Y'all pet-friendly?",
+              standard: "Hi, I have a small dog with me. Is your hotel pet-friendly?",
+              formal: "Good morning/afternoon, I'm inquiring about your pet policy. I have a small dog with me, and I was wondering if your establishment is pet-friendly?",
+            },
           },
           {
             speaker: "them",
@@ -5477,11 +9358,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Absolutely — we love dogs here! Small pups under 30 pounds are welcome. There's a flat fee of $50 for your whole stay, not per night.", textZh: "当然——我们很欢迎狗狗！30磅以下的小狗可以入住。整个住宿期间收一笔50美元固定费，不是按天算。", actionHint: "用pups和flat fee", frequency: "common" },
               { textEn: "We sure are pet-friendly! Dogs up to 30 pounds can stay. It's a one-time $50 charge for the duration of your visit.", textZh: "我们确实是宠物友好酒店！30磅以下的狗可以住。整个住宿期间一次性收50美元。", actionHint: "用one-time charge", frequency: "occasional" },
             ],
+            casualVersion: "Yep, totally pet-friendly! Dogs under 30 lbs are good. It's a $50 pet fee for the whole stay, not each night.",
+            culturalNote: "美国酒店的宠物费通常是“per stay”而不是“per night”，需要注意。",
+            formalityVariants: {
+              casual: "Yep, we're pet-friendly! Dogs under 30 lbs are cool. It's a $50 fee per stay, not nightly.",
+              standard: "Yes, we're a pet-friendly hotel! Dogs under 30 pounds are welcome. There's a pet fee of $50 per stay, not per night.",
+              formal: "Yes, we are indeed a pet-friendly establishment. We welcome dogs weighing under 30 pounds. Please note there is a one-time pet fee of $50 per stay, rather than a nightly charge.",
+            },
           },
           {
             speaker: "you",
             textEn: "She's about 15 pounds. Are there any rules I should know about?",
             textZh: "她大约15磅。有什么规定需要注意？",
+            casualVersion: "She's like 15 lbs. Any rules I gotta know?",
+            commonMistake: {
+              wrong: "What rules do I need to know?",
+              correct: "Are there any rules I should know about?",
+              explanation: "问规则时，用 \"Are there any rules...?\" 比 \"What rules...?\" 更委婉。",
+            },
+            formalityVariants: {
+              casual: "She's like 15 lbs. Any rules I gotta know?",
+              standard: "She's about 15 pounds. Are there any rules I should know about?",
+              formal: "She weighs approximately 15 pounds. Could you please inform me of any specific regulations or guidelines I should be aware of?",
+            },
           },
           {
             speaker: "them",
@@ -5497,11 +9396,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Just a few rules: keep her leashed in common areas, don't leave her alone in the room, and please pick up after her outside.", textZh: "就几条规定：公共区域拴绳，不要让她独自待在房间，外面记得清理排泄物。", actionHint: "用common areas和pick up after", frequency: "common" },
               { textEn: "She needs to be on a lead in all shared spaces, she can't be in the room by herself, and we ask all pet owners to tidy up on the hotel grounds.", textZh: "在所有共用空间要拴绳，不能单独留在房间，我们也请宠物主人在酒店场地上保持清洁。", actionHint: "用lead（英式）和tidy up", frequency: "occasional" },
             ],
+            casualVersion: "Pets gotta be on a leash in public spots. Can't leave 'em alone in the room. And just clean up after 'em outside.",
+            formalityVariants: {
+              casual: "Pets gotta be leashed in public spots. Can't leave 'em alone in the room. And clean up after 'em outside.",
+              standard: "Pets must be on a leash in all public areas. They cannot be left unattended in the room. And we ask that you clean up after your pet on the grounds.",
+              formal: "For the safety and comfort of all guests, pets are required to be on a leash in all public areas. They are not permitted to be left unattended within the guest rooms. Furthermore, we kindly request that pet owners ensure proper waste disposal on the hotel premises.",
+            },
           },
           {
             speaker: "you",
             textEn: "Is there a designated area for walking her?",
             textZh: "有专门遛狗的地方吗？",
+            casualVersion: "Got a spot to walk her?",
+            formalityVariants: {
+              casual: "Got a spot to walk her?",
+              standard: "Is there a designated area for walking her?",
+              formal: "May I inquire if there is a specific or designated area for pet exercise?",
+            },
           },
           {
             speaker: "them",
@@ -5517,11 +9428,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Out the back there's a pet area with poop bags provided. And if she wants to stretch her legs, there's a nice dog park just two blocks to the east.", textZh: "后面有宠物区，提供拾便袋。如果她想活动活动，东边两个街区有个不错的狗公园。", actionHint: "用stretch her legs", frequency: "common" },
               { textEn: "We've got a doggy area behind the hotel with bags and bins. There's also a fenced-off dog park nearby if she needs a good run.", textZh: "酒店后面有遛狗区，有袋子和垃圾桶。附近还有个围起来的狗公园，如果她需要好好跑跑。", actionHint: "用fenced-off和good run", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, there's a pet relief spot out back, with bags. Plus, a dog park two blocks east if she needs more space to run around.",
+            formalityVariants: {
+              casual: "Yeah, pet relief spot out back, bags provided. Dog park two blocks east too if she needs more room.",
+              standard: "Yes, there's a pet relief area behind the hotel with waste bags provided. There's also a dog park two blocks east if she needs more room to run.",
+              formal: "Indeed, we have a designated pet relief area located behind the hotel, complete with complimentary waste bags. Additionally, there is a dog park situated two blocks to the east should your pet require more expansive space for exercise.",
+            },
           },
           {
             speaker: "you",
             textEn: "Do you provide any pet amenities? Like a water bowl or bed?",
             textZh: "有提供宠物用品吗？比如水碗或宠物床？",
+            casualVersion: "Y'all got any pet stuff? Like a water bowl or bed?",
+            commonMistake: {
+              wrong: "Do you have pet amenities?",
+              correct: "Do you provide any pet amenities?",
+              explanation: "“any” 让问句听起来更自然和礼貌。",
+            },
+            formalityVariants: {
+              casual: "Y'all got any pet stuff? Like a water bowl or bed?",
+              standard: "Do you provide any pet amenities? Like a water bowl or bed?",
+              formal: "Could you inform me if any pet amenities are offered, such as a water bowl or a pet bed?",
+            },
           },
           {
             speaker: "them",
@@ -5537,11 +9465,23 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "We've got a little welcome package for your pup — bowls for food and water, a cozy bed, and some doggy treats. I'll send it right up. I can also suggest some restaurants where dogs are welcome.", textZh: "我们给您家狗狗准备了欢迎包——食碗、水碗、小窝和零食。马上送上去。也可以推荐允许带狗的餐厅。", actionHint: "用pup和cozy bed", frequency: "common" },
               { textEn: "Absolutely! We provide a pet welcome set with bowls, a bed, and some snacks. It'll be in your room shortly. And if you need pet-friendly dining options, just ask!", textZh: "当然！我们提供宠物欢迎套装，有碗、床和零食。很快送到您房间。如果需要宠物友好餐厅推荐随时问！", actionHint: "用shortly", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, we got a welcome kit for pets – food bowl, water bowl, a small bed, and some treats. I'll send it up to your room. Can also tell ya about pet-friendly restaurants nearby.",
+            formalityVariants: {
+              casual: "Yep, we got a welcome kit – bowls, small bed, treats. I'll send it up. Can also recommend pet-friendly restaurants.",
+              standard: "We have a welcome kit for pets — a food bowl, water bowl, a small bed, and some treats. I'll have it sent to your room. We can also recommend pet-friendly restaurants nearby.",
+              formal: "Certainly, we provide a comprehensive welcome kit for pets, which includes a food bowl, water bowl, a small bed, and a selection of treats. I will arrange for this to be delivered to your room promptly. Furthermore, we would be pleased to recommend nearby pet-friendly dining establishments.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's wonderful! She's going to love it here. Thank you!",
             textZh: "太棒了！她在这里一定很开心。谢谢！",
+            casualVersion: "Awesome! She's gonna love it here. Thanks!",
+            formalityVariants: {
+              casual: "Awesome! She's gonna love it. Thanks!",
+              standard: "That's wonderful! She's going to love it here. Thank you!",
+              formal: "That's absolutely delightful! I'm sure she will thoroughly enjoy her stay. Thank you very much for your assistance!",
+            },
           },
         ],
       },
@@ -5556,12 +9496,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "We want to go to a museum today, but pets aren't allowed inside. Is there a pet sitting service?",
             textZh: "我们今天想去博物馆，但里面不让带宠物。有宠物看管服务吗？",
+            casualVersion: "Wanna hit a museum today, but can't bring pets inside. Got any pet sitting?",
+            commonMistake: {
+              wrong: "Want to go to museum today, but pets not allowed. Have pet sitting service?",
+              correct: "We want to go to a museum today, but pets aren't allowed inside. Is there a pet sitting service?",
+              explanation: "中文常省略主语，英文不可。英文句子要有主谓宾，且疑问句需用助动词。",
+            },
+            formalityVariants: {
+              casual: "Wanna go to a museum today, but pets aren't allowed. Got any pet sitting?",
+              standard: "We want to go to a museum today, but pets aren't allowed inside. Is there a pet sitting service?",
+              formal: "We are hoping to visit a museum today, but unfortunately, pets are not permitted inside. Do you happen to offer a pet sitting service?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We partner with a local pet sitting service. They can watch your dog here at the hotel or take her to their daycare facility. It's $25 for a half day.",
             textZh: "我们和一家本地宠物看管服务合作。可以在酒店看管您的狗，或带到他们的日托中心。半天25美元。",
+            casualVersion: "We partner with a local pet sitter. They can watch your dog here or take her to their daycare. Twenty-five bucks for half a day.",
+            formalityVariants: {
+              casual: "We work with a local pet sitter. They can watch your dog here or at their daycare. It's twenty-five for half a day.",
+              standard: "We partner with a local pet sitting service. They can watch your dog here at the hotel or take her to their daycare facility. It's $25 for a half day.",
+              formal: "We do indeed collaborate with a reputable local pet sitting service. They offer the convenience of watching your dog on-site here at the hotel, or alternatively, they can transport her to their dedicated daycare facility. The cost is $25 for a half-day service.",
+            },
             keyPhrases: [
               { en: "pet sitting service", zh: "宠物看管服务" },
               { en: "daycare facility", zh: "日托中心" },
@@ -5576,12 +9533,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Having someone watch her at the hotel would be better. She gets anxious in new places.",
             textZh: "在酒店看管更好。她到新地方会紧张。",
+            casualVersion: "Yeah, having someone watch her here at the hotel'd be better. She gets kinda anxious in new places.",
+            commonMistake: {
+              wrong: "Watch her at hotel better. She nervous in new places.",
+              correct: "Having someone watch her at the hotel would be better. She gets anxious in new places.",
+              explanation: "中文常省略主语和助动词，英文表达紧张用 get anxious 更自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, having someone watch her here at the hotel'd be better. She gets anxious in new places.",
+              standard: "Having someone watch her at the hotel would be better. She gets anxious in new places.",
+              formal: "I believe it would be preferable to have someone attend to her here at the hotel, as she tends to become quite anxious in unfamiliar environments.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Understood. The sitter will come to your room and stay with her. They're trained professionals — bonded and insured. Would you like me to book for this afternoon?",
             textZh: "明白。看管员会到您房间陪着她。他们是受过训练的专业人员——有担保和保险。要预约今天下午吗？",
+            casualVersion: "Got it. The sitter'll come to your room and hang out with her. They're total pros — totally bonded and insured. Wanna book for this afternoon?",
+            commonMistake: {
+              wrong: "They have bond and insurance.",
+              correct: "They're trained professionals — bonded and insured.",
+              explanation: "“bonded and insured” 是固定短语，表示有担保和保险的专业服务。",
+            },
+            formalityVariants: {
+              casual: "Got it. The sitter'll come to your room and stay with her. They're total pros — bonded and insured. Wanna book for this afternoon?",
+              standard: "Understood. The sitter will come to your room and stay with her. They're trained professionals — bonded and insured. Would you like me to book for this afternoon?",
+              formal: "Certainly. The pet sitter will arrive at your room and provide direct supervision. Rest assured, they are highly trained professionals who are both bonded and insured. Would you like me to proceed with a booking for this afternoon?",
+            },
             keyPhrases: [
               { en: "sitter", zh: "看管员" },
               { en: "bonded and insured", zh: "有担保和保险" },
@@ -5595,12 +9574,34 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Yes, from about 1 to 5 PM. Should I leave her food and her medication? She takes allergy pills.",
             textZh: "好，大约下午1点到5点。要留下她的食物和药吗？她吃过敏药。",
+            casualVersion: "Yep, like 1 to 5 PM. Should I leave her food and meds? She takes allergy pills.",
+            commonMistake: {
+              wrong: "Yes, 1 to 5 PM. Leave her food and medicine? She eat allergy pills.",
+              correct: "Yes, from about 1 to 5 PM. Should I leave her food and her medication? She takes allergy pills.",
+              explanation: "英文问句需要助动词 (should I)。 \"take pills\" 比 \"eat pills\" 更自然。",
+            },
+            formalityVariants: {
+              casual: "Yep, 1 to 5 PM. Leave her food and meds? She takes allergy pills.",
+              standard: "Yes, from about 1 to 5 PM. Should I leave her food and her medication? She takes allergy pills.",
+              formal: "Yes, that timeframe would be suitable, approximately from 1:00 PM to 5:00 PM. Regarding her needs, should I prepare her food and any necessary medication, specifically her allergy pills?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, please leave her food with feeding instructions and the medication with dosage information. Also let us know her name and any commands she responds to.",
             textZh: "是的，请留下食物和喂食说明，药物和剂量信息。也告诉我们她的名字和她听得懂的指令。",
+            casualVersion: "Yep, leave her food with instructions and the meds with dosage info. Also, her name and any commands she knows.",
+            commonMistake: {
+              wrong: "Yes, please leave her food and feeding how-to, and medicine and how much to take. Also tell name and commands she listen.",
+              correct: "Yes, please leave her food with feeding instructions and the medication with dosage information. Also let us know her name and any commands she responds to.",
+              explanation: "“feeding instructions” 和 “dosage information” 是固定搭配，表示喂食和用药说明。",
+            },
+            formalityVariants: {
+              casual: "Yep, leave her food with instructions and the meds with dosage info. Plus, her name and any commands she knows.",
+              standard: "Yes, please leave her food with feeding instructions and the medication with dosage information. Also let us know her name and any commands she responds to.",
+              formal: "Indeed. We kindly request that you provide her food along with clear feeding instructions, and her medication accompanied by precise dosage information. Furthermore, please inform us of her name and any verbal commands she responds to.",
+            },
             keyPhrases: [
               { en: "feeding instructions", zh: "喂食说明" },
               { en: "dosage", zh: "剂量" },
@@ -5615,12 +9616,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Her name is Mimi. She knows 'sit,' 'stay,' and 'come.' She's very friendly but barks at doorbells.",
             textZh: "她叫Mimi。会「坐下」「等等」和「过来」。她很友好，但听到门铃会叫。",
+            casualVersion: "Her name's Mimi. She knows 'sit,' 'stay,' 'come.' Super friendly, but barks at doorbells.",
+            commonMistake: {
+              wrong: "Her name Mimi. She can sit, stay, come. Very friendly but barks when doorbell.",
+              correct: "Her name is Mimi. She knows 'sit,' 'stay,' and 'come.' She's very friendly but barks at doorbells.",
+              explanation: "英文介绍宠物名字用 \"Her name is...\", 技能用 \"She knows...\", 习惯用 \"barks at doorbells\"。",
+            },
+            formalityVariants: {
+              casual: "Her name's Mimi. She knows 'sit,' 'stay,' 'come.' Super friendly, but barks at doorbells.",
+              standard: "Her name is Mimi. She knows 'sit,' 'stay,' and 'come.' She's very friendly but barks at doorbells.",
+              formal: "Her name is Mimi. She is familiar with the commands 'sit,' 'stay,' and 'come.' While she possesses a very friendly disposition, please be aware that she tends to bark in response to doorbells.",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Good to know — I'll put the 'Do Not Disturb' sign on your door so nobody rings the bell. The sitter will arrive at 12:50 PM. Have a great time at the museum!",
             textZh: "好的——我会挂上「请勿打扰」牌，这样没人按门铃。看管员12:50到。祝博物馆玩得开心！",
+            casualVersion: "Good to know — I'll just stick a 'Do Not Disturb' on your door so no one rings the bell. Sitter'll be there at 12:50. Enjoy the museum!",
+            formalityVariants: {
+              casual: "Good to know — I'll just stick a 'Do Not Disturb' on your door so no one rings the bell. Sitter'll be there at 12:50. Enjoy the museum!",
+              standard: "Good to know — I'll put the 'Do Not Disturb' sign on your door so nobody rings the bell. The sitter will arrive at 12:50 PM. Have a great time at the museum!",
+              formal: "That is valuable information. I will ensure a 'Do Not Disturb' sign is placed on your door to prevent any unsolicited ringing of the doorbell. The pet sitter is scheduled to arrive promptly at 12:50 PM. We hope you have a truly enjoyable experience at the museum!",
+            },
             keyPhrases: [
               { en: "Do Not Disturb sign", zh: "请勿打扰牌" },
             ],
@@ -5633,6 +9651,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "You've thought of everything. Thank you so much!",
             textZh: "你想得太周到了。太感谢了！",
+            casualVersion: "You thought of everything! Thanks so much!",
+            commonMistake: {
+              wrong: "You think everything already. Thank you very much!",
+              correct: "You've thought of everything. Thank you so much!",
+              explanation: "“You've thought of everything” 是地道表达，表示考虑周全。",
+            },
+            formalityVariants: {
+              casual: "You thought of everything! Thanks so much!",
+              standard: "You've thought of everything. Thank you so much!",
+              formal: "Your thoroughness is truly appreciated. Thank you very much indeed!",
+            },
           },
         ],
       },
@@ -5659,6 +9688,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "My mother uses a wheelchair. Do you have accessible rooms available?",
             textZh: "我母亲坐轮椅。有无障碍房间吗？",
+            casualVersion: "Mom's in a wheelchair. Got accessible rooms?",
+            commonMistake: {
+              wrong: "My mother use wheelchair. Have accessible rooms?",
+              correct: "My mother uses a wheelchair. Do you have accessible rooms?",
+              explanation: "中文习惯不说冠词，且常省略主语。英文动词要变位，提问需要助动词。",
+            },
+            formalityVariants: {
+              casual: "Mom's in a wheelchair. Got any accessible rooms?",
+              standard: "My mother uses a wheelchair. Do you have accessible rooms available?",
+              formal: "Good morning/afternoon, my mother requires a wheelchair for mobility. I was wondering if you have any wheelchair-accessible accommodations available.",
+            },
           },
           {
             speaker: "them",
@@ -5676,11 +9716,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Absolutely. We have fully accessible rooms on every floor — wide doors, barrier-free showers, handrails, and lowered surfaces. Everything's designed for wheelchair users.", textZh: "当然有。每层都有全无障碍房间——宽门、无障碍淋浴、扶手和降低的台面。全部为轮椅使用者设计。", actionHint: "用barrier-free和handrails", frequency: "common" },
               { textEn: "Yes, we do. Our accessible rooms meet all ADA standards — extra-wide doorways, step-free showers with grab bars, and lower counters throughout.", textZh: "有的。我们的无障碍房间符合所有ADA标准——超宽门口、无门槛淋浴配扶手、全面降低的台面。", actionHint: "用step-free和throughout", frequency: "occasional" },
             ],
+            casualVersion: "Yeah, we got ADA-compliant rooms on every floor. They've got wider doors, roll-in showers, grab bars, lowered counters.",
+            culturalNote: "ADA是美国特有的法律，确保残疾人无障碍。",
+            formalityVariants: {
+              casual: "Yep, we've got ADA rooms on every floor. Wider doors, roll-in showers, grab bars, lower counters.",
+              standard: "Yes, we have ADA-compliant accessible rooms on every floor. They feature wider doorways, roll-in showers, grab bars, and lowered countertops.",
+              formal: "Certainly, our establishment is equipped with ADA-compliant accessible rooms situated on each floor. These accommodations are designed with wider doorways, roll-in showers, safety grab bars, and lowered countertops for ease of use.",
+            },
           },
           {
             speaker: "you",
             textEn: "Can she easily get to the restaurant and pool area in her wheelchair?",
             textZh: "她坐轮椅能方便地去餐厅和泳池区吗？",
+            casualVersion: "Can she easily get to the restaurant and pool in her wheelchair?",
+            commonMistake: {
+              wrong: "She can easy go to restaurant and pool?",
+              correct: "Can she easily get to the restaurant and pool area in her wheelchair?",
+              explanation: "疑问句需要助动词，副词修饰动词，地点名词前常有冠词。",
+            },
+            formalityVariants: {
+              casual: "Can she easily get to the restaurant and pool in her wheelchair?",
+              standard: "Can she easily get to the restaurant and pool area in her wheelchair?",
+              formal: "Will she be able to access the restaurant and pool areas conveniently while using her wheelchair?",
+            },
           },
           {
             speaker: "them",
@@ -5697,11 +9755,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "No problem at all. Every public space is fully accessible — ramps, wide corridors, and auto-opening doors. The pool even has a special lift for wheelchair access.", textZh: "完全没问题。所有公共区域都完全无障碍——坡道、宽走廊、自动开门。泳池还有专用轮椅升降机。", actionHint: "用auto-opening doors", frequency: "common" },
               { textEn: "Everything is wheelchair-friendly. All common areas have ramps and powered doors, and the pool has a hoist to help her get in and out safely.", textZh: "一切都对轮椅友好。所有公共区域有坡道和电动门，泳池有升降设备帮助她安全出入水。", actionHint: "用hoist", frequency: "occasional" },
             ],
+            casualVersion: "Totally. All public areas are wheelchair accessible, got ramps and automatic doors. Pool's even got a lift for getting in.",
+            formalityVariants: {
+              casual: "Yeah, totally. Public areas are all accessible with ramps and auto doors. Pool's got a lift too.",
+              standard: "Absolutely. All public areas are wheelchair accessible with ramps and automatic doors. The pool also has a wheelchair lift for pool entry.",
+              formal: "Indeed. All public areas within our premises are fully wheelchair accessible, featuring integrated ramps and automatic door systems. Furthermore, our swimming pool is equipped with a dedicated wheelchair lift to facilitate ease of entry.",
+            },
           },
           {
             speaker: "you",
             textEn: "Is there a charge for the accessible room? Sometimes hotels charge extra.",
             textZh: "无障碍房间加收费用吗？有些酒店会加价。",
+            casualVersion: "Is there an extra charge for the accessible room? Some hotels charge more.",
+            culturalNote: "美国法律规定无障碍房间不得加价",
+            commonMistake: {
+              wrong: "Accessible room need pay extra money?",
+              correct: "Is there a charge for the accessible room? Sometimes hotels charge extra.",
+              explanation: "英文询问费用常用 'charge'。'money' 在此听起来不自然。",
+            },
+            formalityVariants: {
+              casual: "Do accessible rooms cost extra? Some places charge more.",
+              standard: "Is there a charge for the accessible room? Sometimes hotels charge extra.",
+              formal: "May I inquire if there is an additional charge for the accessible room? I've noted that some establishments levy supplementary fees.",
+            },
           },
           {
             speaker: "them",
@@ -5716,11 +9792,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "There's no additional cost whatsoever. Accessible rooms are priced the same as any other room. That's non-negotiable for us.", textZh: "完全不额外收费。无障碍房间和其他房间价格一样。这对我们来说不可商量。", actionHint: "用non-negotiable", frequency: "common" },
               { textEn: "Absolutely not — same price as a standard room. Accessibility should never come with a surcharge.", textZh: "完全不会——和标准间同价。无障碍服务不应该有附加费。", actionHint: "表达价值观", frequency: "occasional" },
             ],
+            casualVersion: "No extra charge, nope. Accessible rooms are the same price as regular ones. It's the law, and just, ya know, the right thing.",
+            formalityVariants: {
+              casual: "Nah, no extra charge. Same price as regular rooms. It's the law, and, well, it's right.",
+              standard: "No extra charge at all. Accessible rooms are the same rate as standard rooms. It's the law, and it's the right thing to do.",
+              formal: "There is absolutely no additional charge. Our accessible rooms are priced identically to our standard accommodations. This policy aligns with legal requirements and our commitment to ethical practices.",
+            },
           },
           {
             speaker: "you",
             textEn: "That's good to hear. Can you also arrange a wheelchair-accessible taxi for us?",
             textZh: "那就好。能帮我们安排无障碍出租车吗？",
+            casualVersion: "Good to hear. Can you also get us a wheelchair taxi?",
+            commonMistake: {
+              wrong: "That good hear. Can you arrange wheelchair taxi for us?",
+              correct: "That's good to hear. Can you also arrange a wheelchair-accessible taxi for us?",
+              explanation: "口语中省略 \"that is\" 常见，但书面或正式场合需补全。名词需要冠词。",
+            },
+            formalityVariants: {
+              casual: "Awesome. Can you guys get us a wheelchair taxi too?",
+              standard: "That's good to hear. Can you also arrange a wheelchair-accessible taxi for us?",
+              formal: "That is most reassuring. Would it also be possible for you to arrange a wheelchair-accessible taxi service for our party?",
+            },
           },
           {
             speaker: "them",
@@ -5736,11 +9829,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Happy to! Just let us know about 20 minutes beforehand and we'll book an accessible cab. Our concierge also knows which local attractions are wheelchair-friendly.", textZh: "很乐意！提前20分钟左右告诉我们，我们预约无障碍出租车。礼宾台也知道哪些本地景点方便轮椅出行。", actionHint: "用beforehand和cab", frequency: "common" },
               { textEn: "Of course — we have a preferred service for accessible vehicles. Give us a heads-up 20 minutes out and it'll be waiting. We can also suggest barrier-free sightseeing spots.", textZh: "当然——我们有无障碍车辆合作服务。提前20分钟通知就行。也可以推荐无障碍观光景点。", actionHint: "用barrier-free sightseeing", frequency: "occasional" },
             ],
+            casualVersion: "Sure. Just give us like 20 minutes' heads up, and we'll get a wheelchair-accessible car. Concierge can also recommend accessible spots.",
+            formalityVariants: {
+              casual: "Yeah, no problem. Just give us 20 min heads up, we'll get a wheelchair car. Concierge can tell you about accessible places too.",
+              standard: "Of course. Just give us about 20 minutes' notice and we'll arrange a wheelchair-accessible vehicle. Our concierge can also recommend accessible tourist attractions.",
+              formal: "Certainly. We kindly request approximately 20 minutes' advance notice to arrange a suitable wheelchair-accessible vehicle. Furthermore, our concierge desk is available to offer recommendations for accessible tourist attractions.",
+            },
           },
           {
             speaker: "you",
             textEn: "Thank you for making everything so easy for us.",
             textZh: "谢谢你们让一切都这么方便。",
+            casualVersion: "Thanks for making everything so easy.",
+            commonMistake: {
+              wrong: "Thank you for make everything easy for us.",
+              correct: "Thank you for making everything so easy for us.",
+              explanation: "\"for\" 后跟动词ing形式。",
+            },
+            formalityVariants: {
+              casual: "Thanks for making it all so easy.",
+              standard: "Thank you for making everything so easy for us.",
+              formal: "We genuinely appreciate your assistance in facilitating such a seamless experience for us.",
+            },
           },
         ],
       },
@@ -5755,12 +9865,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "My father is hard of hearing. What accommodations do you offer for hearing-impaired guests?",
             textZh: "我父亲听力不好。你们为听障客人提供什么便利？",
+            casualVersion: "My dad's hard of hearing. What do you guys have for hearing-impaired guests?",
+            commonMistake: {
+              wrong: "My father is hearing impaired. What accommodations do you offer for hearing impaired guests?",
+              correct: "My father is hard of hearing. What accommodations do you offer for hearing-impaired guests?",
+              explanation: "“hard of hearing”更日常，指听力受损但不完全失聪；“hearing impaired”较正式。",
+            },
+            formalityVariants: {
+              casual: "My dad's kinda hard of hearing. What do you guys have for that?",
+              standard: "My father is hard of hearing. What accommodations do you offer for hearing-impaired guests?",
+              formal: "Good morning/afternoon. My father has a hearing impairment. Could you please inform me of the specialized accommodations available for guests with hearing loss?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "We have rooms equipped with visual alert systems — the doorbell and phone flash a light instead of ringing. The fire alarm also has a strobe light and a bed shaker.",
             textZh: "我们有配备视觉提示系统的房间——门铃和电话闪灯而不是响铃。火警也有闪灯和床震器。",
+            casualVersion: "We got rooms with visual alert systems — doorbell and phone just flash light. Fire alarm's got a strobe and bed shaker too.",
+            formalityVariants: {
+              casual: "Yeah, we got rooms with visual alert systems – doorbell and phone flash a light. Fire alarm's got a strobe light and bed shaker too.",
+              standard: "We have rooms equipped with visual alert systems — the doorbell and phone flash a light instead of ringing. The fire alarm also has a strobe light and a bed shaker.",
+              formal: "Certainly, we offer specially equipped rooms featuring visual alert systems for doorbells and telephones, which illuminate rather than emit an auditory signal. Furthermore, the fire alarm system includes both a strobe light and a bed shaker for enhanced safety.",
+            },
             keyPhrases: [
               { en: "visual alert systems", zh: "视觉提示系统" },
               { en: "flash a light", zh: "闪灯" },
@@ -5776,12 +9903,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's very thorough. Does the TV have closed captioning?",
             textZh: "很全面。电视有字幕吗？",
+            casualVersion: "That's good. TV got closed captioning?",
+            commonMistake: {
+              wrong: "Does the TV have subtitles?",
+              correct: "Does the TV have closed captioning?",
+              explanation: "Closed captioning指给听障人士的字幕，与电影字幕(subtitles)不同。",
+            },
+            formalityVariants: {
+              casual: "Oh, cool. And the TV, does it have captions?",
+              standard: "That's very thorough. Does the TV have closed captioning?",
+              formal: "That sounds exceptionally comprehensive. Could you confirm whether the televisions in these rooms are equipped with closed captioning functionality?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, all our TVs support closed captioning. I can also provide a written guide for all hotel services so your father doesn't need to rely on phone calls.",
             textZh: "有的，所有电视都支持字幕。我还可以提供酒店所有服务的书面指南，这样您父亲不需要依赖电话。",
+            casualVersion: "Yep, all our TVs do closed captioning. And I can give you a written guide for all hotel services so your dad doesn't gotta call.",
+            formalityVariants: {
+              casual: "Yep, all TVs have closed captioning. Plus, I can give you a written guide for all our services so your dad won't need to call.",
+              standard: "Yes, all our TVs support closed captioning. I can also provide a written guide for all hotel services so your father doesn't need to rely on phone calls.",
+              formal: "Indeed, all televisions within our establishment are equipped with closed captioning capabilities. Additionally, I would be pleased to furnish you with a comprehensive written guide outlining all hotel services, thereby eliminating the necessity for your father to utilize telephone communication.",
+            },
             keyPhrases: [
               { en: "closed captioning", zh: "字幕" },
               { en: "written guide", zh: "书面指南" },
@@ -5795,12 +9939,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "A written guide would be very helpful. He can also text instead of call, right?",
             textZh: "书面指南会很有用。他也可以发短信而不是打电话，对吧？",
+            casualVersion: "A written guide'd be super helpful. He can text instead of call, right?",
+            commonMistake: {
+              wrong: "He also can text instead of call, right?",
+              correct: "He can also text instead of call, right?",
+              explanation: "英文中“also”通常放在助动词（can）之后，动词之前。",
+            },
+            formalityVariants: {
+              casual: "A written guide's great. He can just text instead of call, yeah?",
+              standard: "A written guide would be very helpful. He can also text instead of call, right?",
+              formal: "A written guide would indeed be exceptionally beneficial. May I also confirm that he has the option to communicate via text message rather than a phone call?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes! Guests can text the front desk at this number for any requests. We also have a tablet in the room that connects directly to our services — everything is visual and text-based.",
             textZh: "是的！客人可以发短信到这个号码联系前台。房间里还有一个平板电脑直连酒店服务——全是视觉和文字操作。",
+            casualVersion: "Yep! Guests can text the front desk at this number for anything. We also got a tablet in the room that connects straight to our services — everything's visual and text-based.",
+            formalityVariants: {
+              casual: "Absolutely! Guests can just text the front desk at this number for anything. And there's a tablet in the room that goes straight to our services – it's all visual and text.",
+              standard: "Yes! Guests can text the front desk at this number for any requests. We also have a tablet in the room that connects directly to our services — everything is visual and text-based.",
+              formal: "Affirmatively! Guests are welcome to communicate with the front desk via text message at this provided number for any inquiries or requests. Furthermore, each room is equipped with a tablet offering direct access to our services, with all interactions presented visually and through text.",
+            },
             keyPhrases: [
               { en: "text the front desk", zh: "短信联系前台" },
               { en: "tablet", zh: "平板电脑" },
@@ -5815,12 +9976,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's fantastic. He'll feel very comfortable here. One more thing — can the wake-up call be replaced with something visual?",
             textZh: "太好了。他在这里会很舒服。还有——叫醒服务能换成视觉提示的吗？",
+            casualVersion: "That's awesome. He'll feel totally comfortable here. One more thing — can the wake-up call be something visual?",
+            formalityVariants: {
+              casual: "That's fantastic. He'll be really comfy here. One last thing – can the wake-up call be visual instead?",
+              standard: "That's fantastic. He'll feel very comfortable here. One more thing — can the wake-up call be replaced with something visual?",
+              formal: "That is truly excellent. I am confident he will find the accommodations most comfortable. Just one final query, please: is it possible for the wake-up service to be provided through a visual signal rather than an auditory one?",
+            },
           },
           {
             speaker: "them",
             role: "前台",
             textEn: "Yes, we can set a vibrating alarm clock or use the bed shaker for wake-up. We can also send a staff member to knock with a flashlight signal at the peephole.",
             textZh: "可以，我们可以设震动闹钟或用床震器叫醒。也可以派工作人员来用手电筒在猫眼处打信号。",
+            casualVersion: "Yeah, we can set a vibrating alarm or use the bed shaker for wake-up. Or we can send someone to knock with a flashlight at the peephole.",
+            formalityVariants: {
+              casual: "Sure, we can do a vibrating alarm clock or use the bed shaker for wake-up. We can even send a staff member to knock with a flashlight signal at the peephole.",
+              standard: "Yes, we can set a vibrating alarm clock or use the bed shaker for wake-up. We can also send a staff member to knock with a flashlight signal at the peephole.",
+              formal: "Certainly, we are able to provide a vibrating alarm clock or utilize the bed shaker for your father's wake-up call. Additionally, we can arrange for a staff member to deliver a wake-up signal by knocking and employing a flashlight at the peephole.",
+            },
             keyPhrases: [
               { en: "vibrating alarm clock", zh: "震动闹钟" },
               { en: "peephole", zh: "猫眼" },
@@ -5834,6 +10007,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "The vibrating alarm would be great. Thank you for being so inclusive.",
             textZh: "震动闹钟就好。谢谢你们这么包容。",
+            casualVersion: "The vibrating alarm sounds perfect. Thanks for being so inclusive.",
+            commonMistake: {
+              wrong: "Thank you for inclusive.",
+              correct: "Thank you for being so inclusive.",
+              explanation: "“inclusive”是形容词，需要搭配“being”才能表达“感谢你们如此包容”。",
+            },
+            formalityVariants: {
+              casual: "Vibrating alarm's great. Thanks for being so thoughtful.",
+              standard: "The vibrating alarm would be great. Thank you for being so inclusive.",
+              formal: "The vibrating alarm would be an excellent solution. My sincere gratitude for your comprehensive and inclusive approach.",
+            },
             culturalNote: "\'inclusive\' 在这里表示 \'包容的/考虑到所有人的\'，是现代服务行业很重视的理念。",
           },
         ],
@@ -5870,11 +10054,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Good morning! Right this way to breakfast. Could I just see your room key?", textZh: "早上好！请这边用早餐。能看下房卡吗？", actionHint: "更随意引导", frequency: "common" },
               { textEn: "Morning! Welcome to the restaurant. May I check your room card before seating you?", textZh: "早上好！欢迎来餐厅。入座前能看下房卡吗？", actionHint: "用seating you", frequency: "occasional" },
             ],
+            casualVersion: "Morning! Welcome to breakfast. Room key, please?",
+            formalityVariants: {
+              casual: "Morning! Welcome to breakfast. Room key?",
+              standard: "Good morning! Welcome to breakfast. May I see your room key, please?",
+              formal: "Good morning, and welcome to our breakfast service. Could I trouble you to present your room key at your convenience?",
+            },
           },
           {
             speaker: "you",
             textEn: "Here you go. Is breakfast included in our stay?",
             textZh: "给您。早餐包含在房费里吗？",
+            casualVersion: "Here. Breakfast included?",
+            commonMistake: {
+              wrong: "Breakfast is included in our stay?",
+              correct: "Is breakfast included in our stay?",
+              explanation: "直接用陈述句语序问问题听起来不自然。",
+            },
+            formalityVariants: {
+              casual: "Here. Breakfast included?",
+              standard: "Here you go. Is breakfast included in our stay?",
+              formal: "Certainly, here is the room key. May I inquire if breakfast is included with our reservation?",
+            },
           },
           {
             speaker: "them",
@@ -5890,11 +10091,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Your stay comes with breakfast for two! It's a buffet — just grab whatever looks good. How about a spot by the window?", textZh: "您的房费含两人早餐！自助餐——看什么好拿什么就行。想坐窗边吗？", actionHint: "用spot替代table", frequency: "common" },
               { textEn: "Breakfast for two is included in your booking. Everything's laid out — feel free to go back as many times as you like. Window seat?", textZh: "预订包含两人早餐。都摆好了——随意取用，可以多拿几次。坐窗边？", actionHint: "用go back as many times", frequency: "occasional" },
             ],
+            casualVersion: "Yep, your booking includes breakfast for two. It's self-service, just grab anything. Window table?",
+            formalityVariants: {
+              casual: "Yep, your booking includes breakfast for two. It's self-service, just grab anything. Want a window table?",
+              standard: "Yes, your booking includes breakfast for two. The buffet is self-service — help yourself to anything you'd like. Would you prefer a table by the window?",
+              formal: "Yes, your reservation does include breakfast for two guests. The buffet operates on a self-service basis, so please feel free to select anything you desire. Might you prefer a table with a view by the window?",
+            },
           },
           {
             speaker: "you",
             textEn: "Yes, please. What's available on the buffet?",
             textZh: "好的。自助餐有什么？",
+            casualVersion: "Yeah, what's on the buffet?",
+            commonMistake: {
+              wrong: "What buffet has?",
+              correct: "What's available on the buffet?",
+              explanation: "问句省略动词和介词会听起来不自然。",
+            },
+            formalityVariants: {
+              casual: "Yeah, what's on the buffet?",
+              standard: "Yes, please. What's available on the buffet?",
+              formal: "Yes, that would be lovely, thank you. Could you please inform me of the selections currently available at the buffet?",
+            },
           },
           {
             speaker: "them",
@@ -5912,11 +10130,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Lots of options! Hot food includes eggs, bacon, sausages, and pancakes. On the cold side, there's cereal, yogurt, fruit, and pastries. Oh, and we have an omelet bar where the chef makes it fresh for you.", textZh: "选择很多！热食有鸡蛋、培根、香肠和松饼。冷餐有麦片、酸奶、水果和糕点。对了，还有蛋饼台厨师现做。", actionHint: "用omelet bar", frequency: "common" },
               { textEn: "We've got a great spread. The hot buffet has eggs, bacon, sausage, and pancakes. Cold options include granola, yogurt, fresh fruit, and baked goods. And there's a live cooking station for custom omelets!", textZh: "我们的自助很丰盛。热餐有蛋、培根、香肠和松饼。冷餐有格兰诺拉、酸奶、鲜果和烘焙品。还有现场烹饪台做定制蛋饼！", actionHint: "用live cooking station", frequency: "occasional" },
             ],
+            casualVersion: "Hot section's got scrambled eggs, bacon, sausages, pancakes. Cold section's got cereals, yogurt, fruit, pastries. Plus, a made-to-order omelet station.",
+            formalityVariants: {
+              casual: "Hot section's got scrambled eggs, bacon, sausages, pancakes. Cold section's got cereals, yogurt, fruit, pastries. Plus, a made-to-order omelet station.",
+              standard: "We have a hot section with scrambled eggs, bacon, sausages, and pancakes. The cold section has cereals, yogurt, fresh fruit, and pastries. There's also a made-to-order omelet station.",
+              formal: "Our breakfast offerings include a hot food section featuring scrambled eggs, bacon, sausages, and pancakes. For cooler options, we provide cereals, yogurt, an assortment of fresh fruits, and various pastries. Additionally, we have a bespoke omelet station where orders are prepared individually.",
+            },
           },
           {
             speaker: "you",
             textEn: "An omelet sounds great. Do I just go to the station and order?",
             textZh: "蛋饼不错。直接去蛋饼台点吗？",
+            casualVersion: "Omelet sounds good. Just go order it at the station?",
+            commonMistake: {
+              wrong: "Omelet sound great. I just go to the station and order?",
+              correct: "An omelet sounds great. Do I just go to the station and order?",
+              explanation: "主谓不一致，且问句语序不自然。",
+            },
+            formalityVariants: {
+              casual: "Omelet sounds good. Just go order it at the station?",
+              standard: "An omelet sounds great. Do I just go to the station and order?",
+              formal: "An omelet sounds quite appealing. May I simply proceed to the station to place my order?",
+            },
           },
           {
             speaker: "them",
@@ -5931,11 +10166,28 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Just head over and tell the chef what you want inside — cheese, veggies, ham, you name it. I'll bring coffee to your table. Regular or decaf?", textZh: "走过去跟厨师说想加什么——芝士、蔬菜、火腿，随您选。我给您送咖啡到桌上。普通还是无咖啡因？", actionHint: "用you name it", frequency: "common" },
               { textEn: "Exactly — just pick your toppings at the station. Meanwhile, what can I get you to drink? We have fresh-brewed regular and decaf.", textZh: "没错——在台子那选配料就行。同时想喝什么？我们有现煮的普通咖啡和无咖啡因咖啡。", actionHint: "用toppings和fresh-brewed", frequency: "occasional" },
             ],
+            casualVersion: "Yep, chef'll ask what fillings you want — cheese, mushrooms, peppers, ham, all that. Coffee and tea are at your table — I'll bring 'em right over. Regular or decaf?",
+            formalityVariants: {
+              casual: "Yep, chef'll ask what fillings you want — cheese, mushrooms, peppers, ham, all that. Coffee and tea are at your table — I'll bring 'em right over. Regular or decaf?",
+              standard: "Yes, the chef will ask you what fillings you'd like — cheese, mushrooms, peppers, ham, and more. Coffee and tea are at your table — I'll bring some right over. Regular or decaf?",
+              formal: "Yes, indeed. The attending chef will be pleased to inquire about your preferred fillings, such as cheese, mushrooms, peppers, or ham, among other options. Coffee and tea service will be provided directly to your table; I shall bring them over momentarily. Would you prefer regular or decaffeinated?",
+            },
           },
           {
             speaker: "you",
             textEn: "Regular coffee, please. What time does breakfast end?",
             textZh: "普通咖啡。早餐到几点结束？",
+            casualVersion: "Regular, please. When's breakfast stop?",
+            commonMistake: {
+              wrong: "Regular coffee, please. What time breakfast end?",
+              correct: "Regular coffee, please. What time does breakfast end?",
+              explanation: "问句语序中缺少助动词。",
+            },
+            formalityVariants: {
+              casual: "Regular, please. When's breakfast stop?",
+              standard: "Regular coffee, please. What time does breakfast end?",
+              formal: "Regular coffee, if you please. Could you also inform me of the closing time for breakfast service?",
+            },
           },
           {
             speaker: "them",
@@ -5951,6 +10203,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
               { textEn: "Weekdays we wrap up at 10, weekends at 10:30. No rush — sit back and enjoy your meal!", textZh: "工作日10点结束，周末10:30。不着急——坐下慢慢享用！", actionHint: "用wrap up和sit back", frequency: "common" },
               { textEn: "Breakfast runs till 10 during the week and 10:30 on Saturdays and Sundays. There's plenty of time — relax and help yourself!", textZh: "工作日早餐到10点，周六周日到10:30。时间很充裕——放松随意取用！", actionHint: "用during the week", frequency: "occasional" },
             ],
+            casualVersion: "Breakfast goes 'til 10 AM weekdays, 10:30 AM weekends. Take your time, enjoy!",
+            formalityVariants: {
+              casual: "Breakfast goes 'til 10 AM weekdays, 10:30 AM weekends. Take your time, enjoy!",
+              standard: "Breakfast is served until 10 AM on weekdays and 10:30 AM on weekends. Take your time and enjoy!",
+              formal: "Breakfast service concludes at 10:00 AM on weekdays and extends until 10:30 AM on weekends. Please feel free to take your time and savor your meal.",
+            },
           },
         ],
       },
@@ -5965,12 +10223,31 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Excuse me, are any of these dishes gluten-free? My daughter has celiac disease.",
             textZh: "不好意思，有无麸质的菜吗？我女儿有乳糜泻。",
+            casualVersion: "Hey, are any of these gluten-free? My daughter's got celiac.",
+            culturalNote: "西方对麸质过敏认知度高，可直接询问",
+            commonMistake: {
+              wrong: "Excuse me, are these dishes gluten-free?",
+              correct: "Excuse me, are any of these dishes gluten-free?",
+              explanation: "询问特定物品时，any of these 更自然地表达了“这些之中有没有”的意思。",
+            },
+            formalityVariants: {
+              casual: "Hey, are any of these gluten-free? My daughter's got celiac.",
+              standard: "Excuse me, are any of these dishes gluten-free? My daughter has celiac disease.",
+              formal: "Pardon me, could you please inform me if any of these offerings are suitable for a gluten-free diet? My daughter has celiac disease.",
+            },
           },
           {
             speaker: "them",
             role: "服务员",
             textEn: "Yes, the items marked with a green 'GF' label are gluten-free. We have gluten-free bread, fruit, yogurt, and the eggs and bacon are naturally gluten-free.",
             textZh: "有的，标有绿色「GF」标签的是无麸质的。有无麸质面包、水果、酸奶，鸡蛋和培根天然无麸质。",
+            casualVersion: "Yeah, anything with a green 'GF' label is GF. We've got GF bread, fruit, yogurt, and eggs and bacon are naturally GF.",
+            culturalNote: "GF是无麸质的常见缩写，在西方很普及。",
+            formalityVariants: {
+              casual: "Yeah, anything with a green 'GF' label is GF. We've got GF bread, fruit, yogurt, and eggs and bacon are naturally GF.",
+              standard: "Yes, the items marked with a green 'GF' label are gluten-free. We have gluten-free bread, fruit, yogurt, and the eggs and bacon are naturally gluten-free.",
+              formal: "Certainly, any selections bearing the green 'GF' label are designated as gluten-free. Our offerings include gluten-free bread, various fruits, yogurt, and both eggs and bacon are inherently gluten-free.",
+            },
             keyPhrases: [
               { en: "gluten-free", zh: "无麸质" },
               { en: "celiac disease", zh: "乳糜泻" },
@@ -5985,6 +10262,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "What about cross-contamination? She's very sensitive.",
             textZh: "交叉污染呢？她很敏感。",
+            casualVersion: "What about cross-contamination? She's super sensitive.",
+            commonMistake: {
+              wrong: "How about cross-contamination?",
+              correct: "What about cross-contamination?",
+              explanation: "What about 用于询问具体情况或对某事的担忧，How about 更多用于提议或征求意见。",
+            },
+            formalityVariants: {
+              casual: "What about cross-contamination? She's super sensitive.",
+              standard: "What about cross-contamination? She's very sensitive.",
+              formal: "Could you please elaborate on your measures regarding cross-contamination? She is highly sensitive.",
+            },
             culturalNote: "\'cross-contamination\' 是食物过敏场景的重要词汇，指无麸质食品接触了含麸质的食品。",
           },
           {
@@ -5992,6 +10280,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "服务员",
             textEn: "The gluten-free items are prepared in a separate area with dedicated utensils. The omelet chef can also make a gluten-free omelet using a separate pan.",
             textZh: "无麸质食品在单独区域用专用器具准备。蛋饼厨师也可以用单独的锅做无麸质蛋饼。",
+            casualVersion: "GF stuff's made in a separate area with its own utensils. The omelet chef can also whip up a GF omelet in a different pan.",
+            formalityVariants: {
+              casual: "GF stuff's made in a separate area with its own utensils. The omelet chef can also whip up a GF omelet in a different pan.",
+              standard: "The gluten-free items are prepared in a separate area with dedicated utensils. The omelet chef can also make a gluten-free omelet using a separate pan.",
+              formal: "Our gluten-free selections are prepared within a distinct area utilizing specialized utensils. Furthermore, our omelet chef is equipped to prepare a gluten-free omelet using a dedicated pan upon request.",
+            },
             keyPhrases: [
               { en: "cross-contamination", zh: "交叉污染" },
               { en: "separate area", zh: "单独区域" },
@@ -6007,12 +10301,30 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That's reassuring. Do you also have plant-based milk? I'm lactose intolerant.",
             textZh: "那就放心了。有植物奶吗？我乳糖不耐受。",
+            casualVersion: "Good to hear. Got any plant milk? I'm lactose intolerant.",
+            culturalNote: "plant-based milk是比vegan milk更常见的说法。",
+            commonMistake: {
+              wrong: "Do you have vegan milk?",
+              correct: "Do you also have plant-based milk?",
+              explanation: "Plant-based milk 是更通用且中性的说法，vegan milk 带有更多生活方式的意味。",
+            },
+            formalityVariants: {
+              casual: "Good to hear. Got any plant milk? I'm lactose intolerant.",
+              standard: "That's reassuring. Do you also have plant-based milk? I'm lactose intolerant.",
+              formal: "That is quite reassuring. Do you also offer any plant-based milk alternatives? I am lactose intolerant.",
+            },
           },
           {
             speaker: "them",
             role: "服务员",
             textEn: "We have oat milk, almond milk, and soy milk at the coffee station. Just ask the barista and they'll steam it for your coffee.",
             textZh: "咖啡台有燕麦奶、杏仁奶和豆奶。跟咖啡师说一声就帮您打奶泡。",
+            casualVersion: "We've got oat, almond, and soy milk at the coffee station. Just ask the barista, they'll steam it for your coffee.",
+            formalityVariants: {
+              casual: "We've got oat, almond, and soy milk at the coffee station. Just ask the barista, they'll steam it for your coffee.",
+              standard: "We have oat milk, almond milk, and soy milk at the coffee station. Just ask the barista and they'll steam it for your coffee.",
+              formal: "We provide oat milk, almond milk, and soy milk options at our coffee station. Simply inform the barista, and they will be pleased to steam it for your coffee.",
+            },
             keyPhrases: [
               { en: "plant-based milk", zh: "植物奶" },
               { en: "lactose intolerant", zh: "乳糖不耐受" },
@@ -6028,12 +10340,30 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Oat milk would be great. You know, a lot of hotels don't have these options. I'm impressed.",
             textZh: "燕麦奶就好。说实话，很多酒店没有这些选择。很赞。",
+            casualVersion: "Oat milk's perfect. Honestly, most hotels don't have these options. Super impressed.",
+            culturalNote: "Super impressed在口语中表示非常赞赏，比I'm impressed更强烈。",
+            commonMistake: {
+              wrong: "Many hotels don't have these options.",
+              correct: "A lot of hotels don't have these options.",
+              explanation: "A lot of 在口语中比 many 更常用，听起来更自然。",
+            },
+            formalityVariants: {
+              casual: "Oat milk's perfect. Honestly, most hotels don't have these options. Super impressed.",
+              standard: "Oat milk would be great. You know, a lot of hotels don't have these options. I'm impressed.",
+              formal: "Oat milk would be excellent. It is worth noting that many establishments do not provide such comprehensive options. I am genuinely impressed.",
+            },
           },
           {
             speaker: "them",
             role: "服务员",
             textEn: "Thank you! We believe everyone should enjoy breakfast comfortably. If you have specific needs during your stay, let the kitchen know and we'll prepare something special.",
             textZh: "谢谢！我们觉得每个人都应该舒服地享用早餐。入住期间如有特殊需求，告诉厨房我们会特别准备。",
+            casualVersion: "Thanks! We think everyone should enjoy breakfast comfortably. If you've got specific needs during your stay, just let the kitchen know, and we'll make something special.",
+            formalityVariants: {
+              casual: "Thanks! We think everyone should enjoy breakfast comfortably. If you've got specific needs during your stay, just let the kitchen know, and we'll make something special.",
+              standard: "Thank you! We believe everyone should enjoy breakfast comfortably. If you have specific needs during your stay, let the kitchen know and we'll prepare something special.",
+              formal: "Thank you very much! We are committed to ensuring every guest can enjoy their breakfast comfortably. Should you have any specific requirements during your patronage, please do not hesitate to inform the kitchen, and we shall endeavor to prepare something special for you.",
+            },
             keyPhrases: [
               { en: "specific needs", zh: "特殊需求" },
               { en: "prepare something special", zh: "特别准备" },
@@ -6047,6 +10377,12 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Will do. Thank you for taking dietary needs so seriously.",
             textZh: "好的。谢谢你们这么重视饮食需求。",
+            casualVersion: "Will do. Thanks for taking dietary needs so seriously.",
+            formalityVariants: {
+              casual: "Will do. Thanks for taking dietary needs so seriously.",
+              standard: "Will do. Thank you for taking dietary needs so seriously.",
+              formal: "I will certainly do so. My sincere gratitude for your diligent attention to dietary requirements.",
+            },
           },
         ],
       },
@@ -6178,12 +10514,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'd like to try a cocktail but I'm not sure what to order. What's your specialty?",
             textZh: "我想试鸡尾酒但不知道点什么。你们的招牌是什么？",
+            casualVersion: "Wanna try a cocktail but not sure what to get. What's your specialty?",
+            commonMistake: {
+              wrong: "I want to try a cocktail.",
+              correct: "I'd like to try a cocktail.",
+              explanation: "“I want” 听起来太直接，用 “I'd like” 更礼貌客气。",
+            },
+            formalityVariants: {
+              casual: "Wanna try a cocktail but not sure what to get. What's your specialty?",
+              standard: "I'd like to try a cocktail but I'm not sure what to order. What's your specialty?",
+              formal: "Good evening. I'm interested in trying one of your cocktails, but I'm somewhat unfamiliar with your menu. Could you please recommend your house specialty?",
+            },
           },
           {
             speaker: "them",
             role: "酒保",
             textEn: "Our signature cocktail is the 'City Sunset' — vodka, blood orange, elderflower liqueur, and a splash of champagne. It's refreshing and not too strong.",
             textZh: "我们的招牌鸡尾酒是「城市日落」——伏特加、血橙、接骨木花利口酒，加一点香槟。清爽不太烈。",
+            casualVersion: "Our signature's the 'City Sunset'—vodka, blood orange, elderflower, and a splash of champagne. It's refreshing, not too strong.",
+            formalityVariants: {
+              casual: "It's called the 'City Sunset'—vodka, blood orange, elderflower, splash of champagne. Really refreshing, not too strong.",
+              standard: "Our signature cocktail is the 'City Sunset' — vodka, blood orange, elderflower liqueur, and a splash of champagne. It's refreshing and not too strong.",
+              formal: "Our establishment's signature libation is the 'City Sunset,' meticulously crafted with vodka, blood orange, elderflower liqueur, and a delicate splash of champagne. It offers a wonderfully refreshing profile and is not overly potent.",
+            },
             keyPhrases: [
               { en: "signature cocktail", zh: "招牌鸡尾酒" },
               { en: "vodka", zh: "伏特加" },
@@ -6199,12 +10552,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "That sounds interesting. I usually like sweeter drinks. Is it sweet or more on the sour side?",
             textZh: "听起来不错。我一般喜欢偏甜的。这是甜的还是偏酸的？",
+            casualVersion: "Sounds interesting. Usually like sweeter drinks. Is it sweet or kinda sour?",
+            commonMistake: {
+              wrong: "Is it sweet or sour?",
+              correct: "Is it sweet or more on the sour side?",
+              explanation: "直接问 \"sweet or sour\" 听起来生硬，加 \"more on the side\" 表达更自然委婉。",
+            },
+            formalityVariants: {
+              casual: "Sounds interesting. Usually like sweeter drinks. Is it sweet or kinda sour?",
+              standard: "That sounds interesting. I usually like sweeter drinks. Is it sweet or more on the sour side?",
+              formal: "That combination of flavors certainly sounds intriguing. I typically gravitate towards beverages with a sweeter profile. Would you characterize this drink as predominantly sweet, or does it lean more towards a tart or sour taste?",
+            },
           },
           {
             speaker: "them",
             role: "酒保",
             textEn: "It's balanced — slightly sweet from the elderflower with a citrus finish. If you prefer sweeter, I can also recommend our Espresso Martini or a classic Piña Colada.",
             textZh: "很平衡——接骨木花带来微甜，有柑橘收尾。如果喜欢更甜的，推荐浓缩咖啡马天尼或经典椰林飘香。",
+            casualVersion: "It's balanced—a little sweet from the elderflower, citrus finish. If you like sweeter, I can also recommend our Espresso Martini or a classic Piña Colada.",
+            formalityVariants: {
+              casual: "It's balanced—kinda sweet from the elderflower, citrus finish. For sweeter, try our Espresso Martini or a classic Piña Colada.",
+              standard: "It's balanced — slightly sweet from the elderflower with a citrus finish. If you prefer sweeter, I can also recommend our Espresso Martini or a classic Piña Colada.",
+              formal: "The 'City Sunset' offers a well-balanced profile, deriving a subtle sweetness from the elderflower, elegantly concluded with a citrus finish. Should your preference lean towards a decidedly sweeter concoction, I would be pleased to suggest either our Espresso Martini or the classic Piña Colada.",
+            },
             keyPhrases: [
               { en: "balanced", zh: "平衡的" },
               { en: "citrus finish", zh: "柑橘收尾" },
@@ -6220,6 +10590,17 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "I'll try the City Sunset. Can you make it a little less strong? I'm not a big drinker.",
             textZh: "我试城市日落。能做淡一点吗？我不太能喝。",
+            casualVersion: "I'll try the City Sunset. Can you make it a bit less strong? Not a big drinker.",
+            commonMistake: {
+              wrong: "Can you make it weak?",
+              correct: "Can you make it a little less strong?",
+              explanation: "“weak” 在这里听起来有点贬义，用 “less strong” 更礼貌、自然。",
+            },
+            formalityVariants: {
+              casual: "I'll try the City Sunset. Can you make it a bit less strong? Not a big drinker.",
+              standard: "I'll try the City Sunset. Can you make it a little less strong? I'm not a big drinker.",
+              formal: "I believe I shall try the City Sunset. Would it be possible to prepare it with a slightly reduced alcoholic content? I tend to prefer beverages that are not overly potent.",
+            },
             culturalNote: "在酒吧可以要求 \'make it lighter\' 或 \'easy on the alcohol\'，酒保会减少烈酒用量。",
           },
           {
@@ -6227,6 +10608,13 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             role: "酒保",
             textEn: "No problem — I'll go easy on the vodka and add a bit more juice. Would you like it on the rocks or straight up?",
             textZh: "没问题——伏特加少放，多加点果汁。要加冰还是不加冰？",
+            casualVersion: "No problem—I'll go easy on the vodka, add a bit more juice. On the rocks or straight up?",
+            culturalNote: "“on the rocks” 指加冰；“straight up” 或 “neat” 指不加冰。",
+            formalityVariants: {
+              casual: "No problem—I'll go easy on the vodka, add a bit more juice. On the rocks or straight up?",
+              standard: "No problem — I'll go easy on the vodka and add a bit more juice. Would you like it on the rocks or straight up?",
+              formal: "Certainly, that is not an issue. I shall moderate the vodka content and incorporate a slightly increased amount of juice. Regarding presentation, would you prefer it served 'on the rocks,' meaning over ice, or 'straight up,' which is chilled but without ice?",
+            },
             keyPhrases: [
               { en: "go easy on", zh: "少放" },
               { en: "on the rocks", zh: "加冰" },
@@ -6241,12 +10629,29 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "On the rocks, please. Also, do you have any bar snacks we can order?",
             textZh: "加冰。另外，有酒吧小食吗？",
+            casualVersion: "On the rocks, please. Any bar snacks we can get?",
+            commonMistake: {
+              wrong: "Do you have any snack?",
+              correct: "Do you have any bar snacks?",
+              explanation: "“snack” 可数名词需加 's'， “bar snacks” 指酒吧里特有的小食，更地道。",
+            },
+            formalityVariants: {
+              casual: "On the rocks, please. Any bar snacks we can get?",
+              standard: "On the rocks, please. Also, do you have any bar snacks we can order?",
+              formal: "On the rocks, please, thank you. Furthermore, may I inquire if there is a selection of bar snacks or light appetizers available for order?",
+            },
           },
           {
             speaker: "them",
             role: "酒保",
             textEn: "We have a small bites menu — truffle fries, sliders, edamame, and a cheese board. The truffle fries pair really well with the City Sunset.",
             textZh: "有小食菜单——松露薯条、迷你汉堡、毛豆和芝士拼盘。松露薯条配城市日落特别搭。",
+            casualVersion: "We've got a small bites menu—truffle fries, sliders, edamame, cheese board. Truffle fries pair great with the City Sunset.",
+            formalityVariants: {
+              casual: "We've got a small bites menu—truffle fries, sliders, edamame, cheese board. Truffle fries pair great with the City Sunset.",
+              standard: "We have a small bites menu — truffle fries, sliders, edamame, and a cheese board. The truffle fries pair really well with the City Sunset.",
+              formal: "Certainly. We offer a curated 'small bites' menu, featuring items such as truffle fries, miniature sliders, edamame, and a refined cheese board selection. I might particularly recommend the truffle fries, as they complement the 'City Sunset' exceptionally well.",
+            },
             keyPhrases: [
               { en: "small bites", zh: "小食" },
               { en: "truffle fries", zh: "松露薯条" },
@@ -6263,12 +10668,24 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             speaker: "you",
             textEn: "Truffle fries and the cheese board, please. This is turning into a great evening!",
             textZh: "来松露薯条和芝士拼盘。今晚真不错！",
+            casualVersion: "Truffle fries and the cheese board, please. This is turning into a great evening!",
+            formalityVariants: {
+              casual: "Truffle fries and the cheese board, please. This is turning into a great evening!",
+              standard: "Truffle fries and the cheese board, please. This is turning into a great evening!",
+              formal: "We shall have the truffle fries and the cheese board, please. This evening is certainly proving to be quite delightful!",
+            },
           },
           {
             speaker: "them",
             role: "酒保",
             textEn: "Coming right up! I'll add everything to your room tab. The kitchen takes about 10 minutes for the food. Cheers!",
             textZh: "马上来！都记到您的房间账上。食物大约10分钟出来。干杯！",
+            casualVersion: "Comin' right up! I'll add everything to your room tab. Food's about 10 minutes from the kitchen. Cheers!",
+            formalityVariants: {
+              casual: "Comin' right up! I'll add everything to your room tab. Food's about 10 minutes from the kitchen. Cheers!",
+              standard: "Coming right up! I'll add everything to your room tab. The kitchen takes about 10 minutes for the food. Cheers!",
+              formal: "Excellent, those items will be prepared for you immediately. I shall place all charges onto your room tab. Please allow approximately ten minutes for the kitchen to prepare the food. Enjoy your evening!",
+            },
             keyPhrases: [
               { en: "coming right up", zh: "马上来" },
               { en: "room tab", zh: "房间账单" },
@@ -6277,6 +10694,2428 @@ export const HOTEL_SCENES_EXT: PresetScene[] = [
             alternativeExpressions: [
               { textEn: "On its way! Everything goes on your room. Food will be about 10 minutes. Enjoy your night!", textZh: "马上来！都记到房间账上。食物大约10分钟。祝您度过愉快的夜晚！", actionHint: "用on its way", frequency: "common" },
               { textEn: "You got it! All on the room tab. The kitchen needs about 10 minutes for the food. Sit back and enjoy — cheers!", textZh: "收到！全挂房间账。厨房需要大约10分钟准备食物。坐好享受吧——干杯！", actionHint: "用sit back and enjoy", frequency: "occasional" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // ==================== 新增场景：升级/退房/健身/房卡/迷你吧 ====================
+  {
+    id: "hotel-room-upgrade",
+    category: "hotel",
+    titleZh: "升级房间",
+    titleEn: "Room Upgrade Request",
+    description: "在前台请求升级房间类型，询问价格差异和可用性",
+    otherRole: "前台接待",
+    otherRoleIcon: "🛎️",
+    flows: [
+      {
+        id: "basic-upgrade",
+        titleZh: "基础升级请求",
+        titleEn: "Basic Upgrade Request",
+        description: "礼貌地询问是否能升级房间",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I was wondering if there are any room upgrades available?",
+            textZh: "你好，请问有没有可以升级的房间？",
+            casualVersion: "Hey, any chance I could get an upgrade?",
+            culturalNote: "'I was wondering if' 是非常礼貌的请求方式，比直接说 'Can I upgrade' 更得体。",
+            commonMistake: {
+              wrong: "I want to upgrade my room.",
+              correct: "I was wondering if there are any room upgrades available?",
+              explanation: "用疑问句比祈使句更礼貌，'available' 暗示你理解可能没有。",
+            },
+            formalityVariants: {
+              casual: "Hey, any chance I could get an upgrade?",
+              standard: "Hi, I was wondering if there are any room upgrades available?",
+              formal: "Good day. I would like to inquire whether there might be any upgraded accommodations available for my stay.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Let me check for you. We do have a deluxe king room with a city view available. It's $50 more per night.",
+            textZh: "我帮您查一下。我们有一间豪华大床房，带城市景观。每晚多50美元。",
+            keyPhrases: [
+              { en: "deluxe king room", zh: "豪华大床房" },
+              { en: "$50 more per night", zh: "每晚多50美元" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Let me take a look. We've got a deluxe room with a king bed and city view — just $50 extra per night.", textZh: "我看看。有间豪华大床房带城景——每晚只多50美元。", actionHint: "用extra代替more", frequency: "common" },
+            ],
+            casualVersion: "Lemme check… Yeah, we've got a deluxe king with a city view. It's 50 bucks more a night.",
+            formalityVariants: {
+              casual: "Lemme check… Yeah, we've got a deluxe king with a city view. It's 50 bucks more a night.",
+              standard: "Let me check for you. We do have a deluxe king room with a city view available. It's $50 more per night.",
+              formal: "Allow me to verify availability. Indeed, we have a deluxe king accommodation with a city panorama at an additional fifty dollars per evening.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That sounds nice. Is the price difference for the entire stay or just tonight?",
+            textZh: "听起来不错。这个差价是整个住宿期间还是只是今晚？",
+            casualVersion: "Cool. Is that 50 bucks for the whole stay or per night?",
+            commonMistake: {
+              wrong: "Is this price for all days or only today?",
+              correct: "Is the price difference for the entire stay or just tonight?",
+              explanation: "'price difference' 比 'this price' 更准确；'entire stay' 比 'all days' 更地道。",
+            },
+            formalityVariants: {
+              casual: "Cool. Is that 50 bucks for the whole stay or per night?",
+              standard: "That sounds nice. Is the price difference for the entire stay or just tonight?",
+              formal: "That does sound appealing. May I confirm whether the surcharge applies to the full duration of my reservation or solely to this evening?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "It's $50 per night for the remaining two nights, so $100 total. The room also includes access to the executive lounge.",
+            textZh: "剩余两晚每晚50美元，一共100美元。这个房间还包含行政酒廊的使用权。",
+            keyPhrases: [
+              { en: "per night", zh: "每晚" },
+              { en: "executive lounge", zh: "行政酒廊" },
+            ],
+            alternativeExpressions: [
+              { textEn: "That's $50 a night for your last two nights — $100 altogether. Plus you get executive lounge access thrown in.", textZh: "最后两晚每晚50美元——总共100。还附带行政酒廊使用权。", actionHint: "用thrown in表示附赠", frequency: "common" },
+            ],
+            casualVersion: "It's 50 a night, so a hundred total for two nights. Oh, and you'd get lounge access too.",
+            formalityVariants: {
+              casual: "It's 50 a night, so a hundred total for two nights. Oh, and you'd get lounge access too.",
+              standard: "It's $50 per night for the remaining two nights, so $100 total. The room also includes access to the executive lounge.",
+              formal: "The supplementary charge is fifty dollars per evening for the remaining two nights, totaling one hundred dollars. Additionally, the upgraded room affords complimentary access to our executive lounge.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That's a good deal. I'll take it. Can I move in right away?",
+            textZh: "很划算。我要了。能马上搬过去吗？",
+            casualVersion: "Deal! Can I switch rooms now?",
+            culturalNote: "'I'll take it' 在英语中是确认购买或接受的标准用语，非常地道。",
+            commonMistake: {
+              wrong: "I accept it. Can I change room now?",
+              correct: "I'll take it. Can I move in right away?",
+              explanation: "'I'll take it' 比 'I accept it' 更自然；'move in' 比 'change room' 更准确。",
+            },
+            formalityVariants: {
+              casual: "Deal! Can I switch rooms now?",
+              standard: "That's a good deal. I'll take it. Can I move in right away?",
+              formal: "That is quite a reasonable arrangement. I shall proceed with the upgrade. Might the transition to the new room be facilitated immediately?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Absolutely! The room is ready. Here are your new key cards — room 1502. I'll have someone help with your luggage.",
+            textZh: "当然可以！房间已经准备好了。这是您的新房卡——1502房。我安排人帮您搬行李。",
+            keyPhrases: [
+              { en: "key cards", zh: "房卡" },
+              { en: "help with your luggage", zh: "帮您搬行李" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Of course! It's all set. Here are the keys for room 1502. Let me send someone up to move your bags.", textZh: "当然！都准备好了。1502的钥匙给您。我派人帮您搬行李。", actionHint: "用send someone up", frequency: "common" },
+            ],
+            casualVersion: "For sure! Room's good to go. Here's your keys — 1502. I'll get someone to grab your bags.",
+            formalityVariants: {
+              casual: "For sure! Room's good to go. Here's your keys — 1502. I'll get someone to grab your bags.",
+              standard: "Absolutely! The room is ready. Here are your new key cards — room 1502. I'll have someone help with your luggage.",
+              formal: "Certainly. The accommodations have been prepared. Please accept these key cards for suite 1502. I shall arrange for a porter to assist with the transfer of your belongings.",
+            },
+          },
+        ],
+      },
+      {
+        id: "negotiate-upgrade",
+        titleZh: "协商升级",
+        titleEn: "Negotiating an Upgrade",
+        description: "尝试获得免费升级或优惠升级",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "I noticed my room is right next to the elevator and it's quite noisy. Is there any way I could be moved to a quieter room?",
+            textZh: "我发现房间就在电梯旁边，很吵。有没有可能换到安静一点的房间？",
+            casualVersion: "My room's right by the elevator and it's super loud. Any chance of a switch?",
+            culturalNote: "先说明合理的不满再提出换房请求，比直接要求升级更容易成功。",
+            commonMistake: {
+              wrong: "My room is very noisy. Give me a better room.",
+              correct: "I noticed my room is right next to the elevator and it's quite noisy. Is there any way I could be moved?",
+              explanation: "先描述问题再礼貌请求比直接命令式要求更有效。",
+            },
+            formalityVariants: {
+              casual: "My room's right by the elevator and it's super loud. Any chance of a switch?",
+              standard: "I noticed my room is right next to the elevator and it's quite noisy. Is there any way I could be moved to a quieter room?",
+              formal: "I would like to bring to your attention that my current room is situated adjacent to the elevator, resulting in considerable noise. Might it be possible to relocate me to a quieter accommodation?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I'm sorry to hear that. Let me see what's available. We don't have standard rooms on a quieter floor, but I can offer you a complimentary upgrade to a superior room.",
+            textZh: "很抱歉听到这个。我查一下有什么空房。安静楼层没有标准间了，但我可以免费帮您升级到高级房。",
+            keyPhrases: [
+              { en: "complimentary upgrade", zh: "免费升级" },
+              { en: "superior room", zh: "高级房" },
+            ],
+            alternativeExpressions: [
+              { textEn: "I apologize for the inconvenience. The quieter floors are full for standard rooms, but I'd be happy to bump you up to a superior room at no extra charge.", textZh: "很抱歉给您带来不便。安静楼层标准间满了，但我可以免费帮您升到高级房。", actionHint: "用bump you up表示升级", frequency: "common" },
+            ],
+            casualVersion: "Oh no, sorry about that. Quiet floors are booked for standard, but I can bump you up to a nicer room for free.",
+            formalityVariants: {
+              casual: "Oh no, sorry about that. Quiet floors are booked for standard, but I can bump you up to a nicer room for free.",
+              standard: "I'm sorry to hear that. Let me see what's available. We don't have standard rooms on a quieter floor, but I can offer you a complimentary upgrade to a superior room.",
+              formal: "I sincerely apologize for the disturbance. Regrettably, our standard rooms on quieter floors are fully occupied. However, I am pleased to extend a complimentary upgrade to a superior category room.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That would be wonderful, thank you. What's different about the superior room?",
+            textZh: "太好了，谢谢。高级房有什么不同？",
+            casualVersion: "Awesome, thanks! So what's better about that room?",
+            commonMistake: {
+              wrong: "What is the difference between my room and superior room?",
+              correct: "What's different about the superior room?",
+              explanation: "'What's different about X' 更简洁口语化。",
+            },
+            formalityVariants: {
+              casual: "Awesome, thanks! So what's better about that room?",
+              standard: "That would be wonderful, thank you. What's different about the superior room?",
+              formal: "That would be most gracious of you, thank you. Could you kindly outline the distinguishing features of the superior room?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "It's a larger room with a sitting area, a rainfall shower, and a higher floor with a park view. Much quieter up there.",
+            textZh: "房间更大，有休息区，雨淋花洒，高楼层还能看到公园。上面安静多了。",
+            keyPhrases: [
+              { en: "sitting area", zh: "休息区" },
+              { en: "rainfall shower", zh: "雨淋花洒" },
+            ],
+            alternativeExpressions: [
+              { textEn: "You'll get more space, a nice sitting area, a rain shower, and the room faces the park. Way quieter on that floor.", textZh: "空间更大，有休息区和雨淋浴，朝公园。那层安静很多。", actionHint: "用way quieter强调安静", frequency: "common" },
+            ],
+            casualVersion: "Bigger room, little lounge area, rain shower, and a park view. Way quieter up on that floor.",
+            formalityVariants: {
+              casual: "Bigger room, little lounge area, rain shower, and a park view. Way quieter up on that floor.",
+              standard: "It's a larger room with a sitting area, a rainfall shower, and a higher floor with a park view. Much quieter up there.",
+              formal: "The superior room features a more spacious layout with a dedicated sitting area, a rainfall shower, and is situated on a higher floor affording a view of the park. The ambient noise level is considerably reduced.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Perfect. I really appreciate you taking care of this. Could I keep the same checkout date?",
+            textZh: "太好了。真的很感谢您帮忙处理。退房日期不变吧？",
+            casualVersion: "That's great, thanks a ton. Same checkout date, right?",
+            culturalNote: "表达感谢时 'I really appreciate you taking care of this' 比简单的 'thank you' 更有诚意。",
+            commonMistake: {
+              wrong: "Thank you. My checkout date is same?",
+              correct: "I really appreciate you taking care of this. Could I keep the same checkout date?",
+              explanation: "'Could I keep the same...' 语序更自然。",
+            },
+            formalityVariants: {
+              casual: "That's great, thanks a ton. Same checkout date, right?",
+              standard: "Perfect. I really appreciate you taking care of this. Could I keep the same checkout date?",
+              formal: "Excellent. I truly appreciate your attention to this matter. Might I confirm that my departure date shall remain unchanged?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Everything stays the same — same dates, same rate. Here's your new key card for room 2108. Enjoy the view!",
+            textZh: "一切不变——同样的日期，同样的价格。这是2108房的新房卡。祝您欣赏美景！",
+            keyPhrases: [
+              { en: "same dates, same rate", zh: "同样的日期和价格" },
+              { en: "enjoy the view", zh: "祝您欣赏美景" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Nothing changes on your reservation — dates and rate stay as they are. Here's the key for 2108. Hope you love the park view!", textZh: "预订信息不变——日期和价格照旧。2108的钥匙给您。希望您喜欢公园景！", actionHint: "用nothing changes强调", frequency: "common" },
+            ],
+            casualVersion: "All good — same dates, same price. Here's your key for 2108. Enjoy!",
+            formalityVariants: {
+              casual: "All good — same dates, same price. Here's your key for 2108. Enjoy!",
+              standard: "Everything stays the same — same dates, same rate. Here's your new key card for room 2108. Enjoy the view!",
+              formal: "Your reservation details remain entirely unchanged — identical dates and rate. Please accept the key card for room 2108. I trust you will find the park view most agreeable.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "hotel-late-checkout",
+    category: "hotel",
+    titleZh: "延迟退房",
+    titleEn: "Late Checkout Request",
+    description: "请求延迟退房时间，协商费用或免费延迟",
+    otherRole: "前台接待",
+    otherRoleIcon: "🛎️",
+    flows: [
+      {
+        id: "basic-late-checkout",
+        titleZh: "基础延迟退房",
+        titleEn: "Basic Late Checkout",
+        description: "简单请求延迟退房",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I'd like to request a late checkout tomorrow. Is that possible?",
+            textZh: "你好，我想申请明天延迟退房。可以吗？",
+            casualVersion: "Hey, any chance I can check out late tomorrow?",
+            culturalNote: "大多数酒店标准退房时间是上午11点或12点，延迟退房通常可延至下午2点。",
+            commonMistake: {
+              wrong: "I want to checkout late tomorrow.",
+              correct: "I'd like to request a late checkout tomorrow. Is that possible?",
+              explanation: "'request a late checkout' 是酒店专业用语；加 'Is that possible' 更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, any chance I can check out late tomorrow?",
+              standard: "Hi, I'd like to request a late checkout tomorrow. Is that possible?",
+              formal: "Good morning. I would like to inquire about the possibility of arranging a late checkout for tomorrow.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Sure, let me check availability. What time were you hoping to check out?",
+            textZh: "好的，我查一下。您希望几点退房？",
+            keyPhrases: [
+              { en: "check availability", zh: "查一下有没有空" },
+              { en: "hoping to check out", zh: "希望退房" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Of course, let me look into that. What time did you have in mind?", textZh: "当然，我查一下。您想几点退？", actionHint: "用have in mind", frequency: "common" },
+            ],
+            casualVersion: "Sure thing, lemme check. What time are you thinking?",
+            formalityVariants: {
+              casual: "Sure thing, lemme check. What time are you thinking?",
+              standard: "Sure, let me check availability. What time were you hoping to check out?",
+              formal: "Certainly. Allow me to verify availability. At what hour would you prefer to vacate the room?",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Would 2 PM be okay? My flight isn't until 6.",
+            textZh: "下午2点可以吗？我的航班6点才起飞。",
+            casualVersion: "Like 2 PM? My flight's not till 6.",
+            commonMistake: {
+              wrong: "Can I checkout at 2 PM? My flight is 6 PM.",
+              correct: "Would 2 PM be okay? My flight isn't until 6.",
+              explanation: "'isn't until' 强调航班要很晚才飞，更地道。",
+            },
+            formalityVariants: {
+              casual: "Like 2 PM? My flight's not till 6.",
+              standard: "Would 2 PM be okay? My flight isn't until 6.",
+              formal: "Would a 2:00 PM departure be feasible? My flight is not scheduled until 6:00 PM.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "2 PM should be fine. Since you're a returning guest, I can offer that at no extra charge.",
+            textZh: "下午2点没问题。因为您是回头客，不收额外费用。",
+            keyPhrases: [
+              { en: "returning guest", zh: "回头客" },
+              { en: "no extra charge", zh: "不收额外费用" },
+            ],
+            alternativeExpressions: [
+              { textEn: "2 PM works. And since you've stayed with us before, it's on the house.", textZh: "2点可以。您之前住过，这次免费。", actionHint: "用on the house表示免费", frequency: "common" },
+            ],
+            casualVersion: "2 PM? No problem. You've stayed with us before, so no charge.",
+            formalityVariants: {
+              casual: "2 PM? No problem. You've stayed with us before, so no charge.",
+              standard: "2 PM should be fine. Since you're a returning guest, I can offer that at no extra charge.",
+              formal: "A 2:00 PM checkout is entirely feasible. As a valued returning guest, I am pleased to extend this courtesy at no additional cost.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That's very kind of you. Should I call the front desk when I'm ready to leave?",
+            textZh: "太好了，谢谢。我准备走的时候打电话到前台就行吗？",
+            casualVersion: "Thanks! Should I just call you guys when I'm heading out?",
+            culturalNote: "退房时通常需要归还房卡并确认账单，不能直接离开。",
+            commonMistake: {
+              wrong: "Do I need to call when I leave?",
+              correct: "Should I call the front desk when I'm ready to leave?",
+              explanation: "'the front desk' 更具体；'ready to leave' 比 'when I leave' 更自然。",
+            },
+            formalityVariants: {
+              casual: "Thanks! Should I just call you guys when I'm heading out?",
+              standard: "That's very kind of you. Should I call the front desk when I'm ready to leave?",
+              formal: "That is most generous of you. Shall I notify the front desk upon my readiness to depart?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, just give us a call or stop by the desk. We can also arrange a taxi to the airport if you'd like.",
+            textZh: "是的，打电话或直接来前台都行。需要的话我们也可以帮您叫去机场的出租车。",
+            keyPhrases: [
+              { en: "stop by the desk", zh: "来前台" },
+              { en: "arrange a taxi", zh: "安排出租车" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Just ring us or come down to the lobby. We can also book you a cab to the airport — just let us know.", textZh: "打个电话或者下来大厅就行。也可以帮您叫去机场的车——告诉我们一声就好。", actionHint: "用ring和cab", frequency: "common" },
+            ],
+            casualVersion: "Yep, just call or come down. We can grab you a cab to the airport too if you want.",
+            formalityVariants: {
+              casual: "Yep, just call or come down. We can grab you a cab to the airport too if you want.",
+              standard: "Yes, just give us a call or stop by the desk. We can also arrange a taxi to the airport if you'd like.",
+              formal: "Certainly, kindly contact us by telephone or present yourself at the reception desk. We would also be delighted to arrange ground transportation to the airport at your convenience.",
+            },
+          },
+        ],
+      },
+      {
+        id: "late-checkout-fee",
+        titleZh: "延迟退房协商费用",
+        titleEn: "Late Checkout with Fee Negotiation",
+        description: "延迟退房需要额外费用时协商",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "I need to check out by 4 PM instead of noon. Is there a fee for that?",
+            textZh: "我需要下午4点退房而不是中午。需要收费吗？",
+            casualVersion: "I gotta stay till 4. What's the damage?",
+            culturalNote: "'What's the damage' 是非正式说法，意思是'要花多少钱'。",
+            commonMistake: {
+              wrong: "I want to extend checkout to 4 PM. How much is it?",
+              correct: "I need to check out by 4 PM instead of noon. Is there a fee for that?",
+              explanation: "'Is there a fee for that' 比 'How much is it' 更委婉，给了可能免费的暗示。",
+            },
+            formalityVariants: {
+              casual: "I gotta stay till 4. What's the damage?",
+              standard: "I need to check out by 4 PM instead of noon. Is there a fee for that?",
+              formal: "I find it necessary to extend my checkout until 4:00 PM rather than the standard noon. Might there be an associated surcharge?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "A checkout after 2 PM is considered a half-day charge, which would be 50% of the room rate. That comes to $85.",
+            textZh: "2点以后退房算半天，收房费的50%，就是85美元。",
+            keyPhrases: [
+              { en: "half-day charge", zh: "半天费用" },
+              { en: "50% of the room rate", zh: "房费的50%" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Anything past 2 PM counts as a half-day — that's half the nightly rate, so $85 in your case.", textZh: "2点之后算半天——按晚间房价一半收，您的话就是85美元。", actionHint: "用counts as表示算作", frequency: "common" },
+            ],
+            casualVersion: "After 2 is a half-day thing — half the room rate, so 85 bucks for you.",
+            formalityVariants: {
+              casual: "After 2 is a half-day thing — half the room rate, so 85 bucks for you.",
+              standard: "A checkout after 2 PM is considered a half-day charge, which would be 50% of the room rate. That comes to $85.",
+              formal: "Any departure subsequent to 2:00 PM incurs a half-day occupancy charge, calculated at fifty percent of the standard room rate. In your case, this amounts to eighty-five dollars.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "I see. Is there any way to reduce that? I've been staying here for five nights.",
+            textZh: "明白了。有没有可能减免一些？我已经住了五晚了。",
+            casualVersion: "Any way you could cut me a deal? I've been here five nights already.",
+            commonMistake: {
+              wrong: "Can you give discount? I stayed many days.",
+              correct: "Is there any way to reduce that? I've been staying here for five nights.",
+              explanation: "'reduce that' 比 'give discount' 更委婉；'five nights' 具体数字更有说服力。",
+            },
+            formalityVariants: {
+              casual: "Any way you could cut me a deal? I've been here five nights already.",
+              standard: "I see. Is there any way to reduce that? I've been staying here for five nights.",
+              formal: "I understand. Given that I have been a guest for five consecutive nights, would there be any possibility of a reduced fee?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I appreciate your loyalty. Let me see — I can bring it down to $50 as a courtesy. Or I can offer you free checkout until 2 PM.",
+            textZh: "感谢您的支持。我看一下——作为优惠，可以减到50美元。或者我可以提供免费延迟到下午2点。",
+            keyPhrases: [
+              { en: "bring it down to", zh: "减到" },
+              { en: "as a courtesy", zh: "作为优惠" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Since you've been with us all week, I can knock it down to $50 — or extend to 2 PM for free. Your call.", textZh: "您住了一整周，我可以降到50美元——或者免费延到2点。您选。", actionHint: "用knock down和your call", frequency: "common" },
+            ],
+            casualVersion: "Since you've been here a while, I can do 50 bucks, or free till 2. Up to you.",
+            formalityVariants: {
+              casual: "Since you've been here a while, I can do 50 bucks, or free till 2. Up to you.",
+              standard: "I appreciate your loyalty. Let me see — I can bring it down to $50 as a courtesy. Or I can offer you free checkout until 2 PM.",
+              formal: "We greatly value your continued patronage. I am authorized to reduce the charge to fifty dollars as a gesture of goodwill. Alternatively, I can extend a complimentary checkout until 2:00 PM.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "I'll take the 2 PM free checkout and just head to the airport lounge after that. Thanks for working with me on this.",
+            textZh: "那就免费延到2点吧，之后去机场休息室。谢谢您的通融。",
+            casualVersion: "I'll do the free 2 PM thing. Thanks for being flexible!",
+            culturalNote: "'Thanks for working with me on this' 是感谢对方配合协商的地道说法。",
+            commonMistake: {
+              wrong: "OK I will check out at 2 PM free. Thank you for your help.",
+              correct: "I'll take the 2 PM free checkout. Thanks for working with me on this.",
+              explanation: "'working with me on this' 表达感谢对方通融和协商的诚意。",
+            },
+            formalityVariants: {
+              casual: "I'll do the free 2 PM thing. Thanks for being flexible!",
+              standard: "I'll take the 2 PM free checkout and just head to the airport lounge after that. Thanks for working with me on this.",
+              formal: "I shall opt for the complimentary 2:00 PM checkout and proceed to the airport lounge thereafter. Thank you sincerely for your flexibility in accommodating my request.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "You're welcome! I've updated your checkout to 2 PM. Have a safe flight, and we hope to see you again soon.",
+            textZh: "不客气！已经帮您改到下午2点退房。祝旅途平安，希望下次再见！",
+            keyPhrases: [
+              { en: "have a safe flight", zh: "祝旅途平安" },
+              { en: "hope to see you again", zh: "希望下次再见" },
+            ],
+            alternativeExpressions: [
+              { textEn: "All done — you're set for 2 PM. Safe travels, and we'd love to have you back!", textZh: "搞定——2点退房。一路平安，欢迎下次再来！", actionHint: "用safe travels和have you back", frequency: "common" },
+            ],
+            casualVersion: "Done! 2 PM it is. Have a good flight, come back soon!",
+            formalityVariants: {
+              casual: "Done! 2 PM it is. Have a good flight, come back soon!",
+              standard: "You're welcome! I've updated your checkout to 2 PM. Have a safe flight, and we hope to see you again soon.",
+              formal: "My pleasure. Your checkout has been extended to 2:00 PM. I wish you a pleasant and safe journey, and we look forward to welcoming you again in the near future.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "hotel-gym-spa",
+    category: "hotel",
+    titleZh: "使用健身房/SPA",
+    titleEn: "Using the Gym and Spa",
+    description: "询问酒店健身房和SPA的使用方法、营业时间和设施",
+    otherRole: "前台接待",
+    otherRoleIcon: "🏋️",
+    flows: [
+      {
+        id: "basic-gym-inquiry",
+        titleZh: "基础健身房咨询",
+        titleEn: "Basic Gym Inquiry",
+        description: "询问健身房的位置、时间和设备",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Excuse me, where is the gym and what are the hours?",
+            textZh: "请问健身房在哪里？营业时间是什么？",
+            casualVersion: "Hey, where's the gym? What time does it open?",
+            culturalNote: "酒店健身房通常24小时开放或凌晨5点到晚上11点，需要房卡刷卡进入。",
+            commonMistake: {
+              wrong: "Where is gym? What time it opens?",
+              correct: "Where is the gym and what are the hours?",
+              explanation: "'the gym' 需要冠词；'what are the hours' 是询问营业时间的固定说法。",
+            },
+            formalityVariants: {
+              casual: "Hey, where's the gym? What time does it open?",
+              standard: "Excuse me, where is the gym and what are the hours?",
+              formal: "Pardon me, could you direct me to the fitness center and inform me of the operating hours?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "The gym is on the 3rd floor. It's open 24 hours — just use your room key to get in.",
+            textZh: "健身房在3楼。24小时开放——用房卡刷卡进入就行。",
+            keyPhrases: [
+              { en: "open 24 hours", zh: "24小时开放" },
+              { en: "room key to get in", zh: "用房卡进入" },
+            ],
+            alternativeExpressions: [
+              { textEn: "It's on the third floor, open around the clock. Your key card gets you in.", textZh: "在三楼，全天开放。用房卡进。", actionHint: "用around the clock", frequency: "common" },
+            ],
+            casualVersion: "Third floor, open all day. Just swipe your key card to get in.",
+            formalityVariants: {
+              casual: "Third floor, open all day. Just swipe your key card to get in.",
+              standard: "The gym is on the 3rd floor. It's open 24 hours — just use your room key to get in.",
+              formal: "The fitness center is located on the third floor and operates twenty-four hours a day. Kindly use your room key card for access.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Great. Are towels provided, or should I bring my own?",
+            textZh: "好的。提供毛巾吗，还是要自带？",
+            casualVersion: "Cool. Do they have towels or do I need to bring mine?",
+            commonMistake: {
+              wrong: "Is there towel? Or I bring my towel?",
+              correct: "Are towels provided, or should I bring my own?",
+              explanation: "'Are towels provided' 是被动语态的标准问法；'my own' 比重复 'my towel' 更简洁。",
+            },
+            formalityVariants: {
+              casual: "Cool. Do they have towels or do I need to bring mine?",
+              standard: "Great. Are towels provided, or should I bring my own?",
+              formal: "Excellent. Are complimentary towels available at the facility, or should I bring my own from the room?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Towels and water are provided. There's also a small changing area with lockers. You'll need to bring your own earphones though.",
+            textZh: "提供毛巾和水。还有一个小更衣区和储物柜。不过耳机需要自备。",
+            keyPhrases: [
+              { en: "changing area", zh: "更衣区" },
+              { en: "lockers", zh: "储物柜" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Towels and bottled water are all set up for you. There are lockers to store your stuff. Just bring your own headphones.", textZh: "毛巾和瓶装水都准备好了。有储物柜放东西。耳机自带就行。", actionHint: "用set up for you", frequency: "common" },
+            ],
+            casualVersion: "Towels and water are there. Lockers too. Just bring your own earbuds.",
+            formalityVariants: {
+              casual: "Towels and water are there. Lockers too. Just bring your own earbuds.",
+              standard: "Towels and water are provided. There's also a small changing area with lockers. You'll need to bring your own earphones though.",
+              formal: "Fresh towels and complimentary water are provided. The facility includes a changing area equipped with personal lockers. However, guests are kindly requested to supply their own earphones.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Does the gym have treadmills and free weights?",
+            textZh: "健身房有跑步机和自由重量器械吗？",
+            casualVersion: "They got treadmills and weights?",
+            culturalNote: "'Free weights' 指哑铃、杠铃等非固定器械，区别于 'machines'（固定器械）。",
+            commonMistake: {
+              wrong: "Does gym have running machine and dumbbells?",
+              correct: "Does the gym have treadmills and free weights?",
+              explanation: "'treadmill' 是跑步机的标准说法；'free weights' 是健身房术语。",
+            },
+            formalityVariants: {
+              casual: "They got treadmills and weights?",
+              standard: "Does the gym have treadmills and free weights?",
+              formal: "Might I inquire whether the fitness center is equipped with treadmills and a selection of free weights?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, we have five treadmills, an elliptical, dumbbells up to 50 pounds, and a cable machine. If you need a personal trainer, I can arrange one for $60 per session.",
+            textZh: "有的，5台跑步机、一台椭圆机、最重50磅的哑铃和一台绳索器械。如果需要私教，每节60美元。",
+            keyPhrases: [
+              { en: "elliptical", zh: "椭圆机" },
+              { en: "personal trainer", zh: "私教" },
+            ],
+            alternativeExpressions: [
+              { textEn: "We've got treadmills, an elliptical, free weights going up to 50 lbs, and a cable machine. We can also set you up with a personal trainer if you're interested — $60 a session.", textZh: "有跑步机、椭圆机、最重50磅的自由重量和绳索器械。想请私教的话可以安排——每节60美元。", actionHint: "用set you up with", frequency: "common" },
+            ],
+            casualVersion: "Yeah — treadmills, elliptical, dumbbells up to 50 lbs, cable machine. We can hook you up with a trainer too, 60 bucks a session.",
+            formalityVariants: {
+              casual: "Yeah — treadmills, elliptical, dumbbells up to 50 lbs, cable machine. We can hook you up with a trainer too, 60 bucks a session.",
+              standard: "Yes, we have five treadmills, an elliptical, dumbbells up to 50 pounds, and a cable machine. If you need a personal trainer, I can arrange one for $60 per session.",
+              formal: "Indeed. The facility features five treadmills, an elliptical trainer, dumbbells ranging up to fifty pounds, and a cable resistance machine. Should you desire personal training services, we can arrange a certified trainer at sixty dollars per session.",
+            },
+          },
+        ],
+      },
+      {
+        id: "spa-booking-inquiry",
+        titleZh: "SPA预约咨询",
+        titleEn: "Spa Booking Inquiry",
+        description: "咨询和预约SPA服务",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "I'd like to book a spa treatment for this afternoon. What do you have available?",
+            textZh: "我想预约今天下午的SPA。有什么可以选的？",
+            casualVersion: "Can I get a spa thing this afternoon? What've you got?",
+            culturalNote: "在欧美酒店SPA，通常提前预约是必要的，walk-in 可能等很久。",
+            commonMistake: {
+              wrong: "I want spa today afternoon. What can I choose?",
+              correct: "I'd like to book a spa treatment for this afternoon. What do you have available?",
+              explanation: "'spa treatment' 是正式用语；'this afternoon' 的语序不能用 'today afternoon'。",
+            },
+            formalityVariants: {
+              casual: "Can I get a spa thing this afternoon? What've you got?",
+              standard: "I'd like to book a spa treatment for this afternoon. What do you have available?",
+              formal: "I would be interested in scheduling a spa treatment for this afternoon. Could you please outline the available services?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "We have a few openings this afternoon. Our most popular options are a 60-minute Swedish massage for $120 and a 90-minute hot stone treatment for $180.",
+            textZh: "今天下午还有几个空位。最受欢迎的是60分钟瑞典式按摩120美元和90分钟热石疗法180美元。",
+            keyPhrases: [
+              { en: "Swedish massage", zh: "瑞典式按摩" },
+              { en: "hot stone treatment", zh: "热石疗法" },
+            ],
+            alternativeExpressions: [
+              { textEn: "We've got a couple of slots left. Top picks are the Swedish massage — 60 minutes at $120 — or the hot stone treatment — 90 minutes at $180.", textZh: "还有几个位子。热门选择是60分钟瑞典按摩120美元，或90分钟热石疗法180美元。", actionHint: "用slots和top picks", frequency: "common" },
+            ],
+            casualVersion: "We've got a few spots open. Most people go for the Swedish massage — $120 for an hour — or the hot stone thing for $180, that's 90 minutes.",
+            formalityVariants: {
+              casual: "We've got a few spots open. Most people go for the Swedish massage — $120 for an hour — or the hot stone thing for $180, that's 90 minutes.",
+              standard: "We have a few openings this afternoon. Our most popular options are a 60-minute Swedish massage for $120 and a 90-minute hot stone treatment for $180.",
+              formal: "There are several appointments available this afternoon. Our most sought-after offerings include a sixty-minute Swedish massage at one hundred and twenty dollars and a ninety-minute hot stone therapeutic treatment at one hundred and eighty dollars.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "The Swedish massage sounds good. Can I request a female therapist?",
+            textZh: "瑞典式按摩不错。可以指定女性理疗师吗？",
+            casualVersion: "I'll do the Swedish one. Can I get a female masseuse?",
+            culturalNote: "在西方SPA，要求指定性别的理疗师是完全正常的，不会被认为冒犯。正式用语是 therapist 而非 masseuse。",
+            commonMistake: {
+              wrong: "I want the Swedish massage. I want a woman to do it.",
+              correct: "The Swedish massage sounds good. Can I request a female therapist?",
+              explanation: "用 'request' 和 'therapist' 更专业礼貌。",
+            },
+            formalityVariants: {
+              casual: "I'll do the Swedish one. Can I get a female masseuse?",
+              standard: "The Swedish massage sounds good. Can I request a female therapist?",
+              formal: "The Swedish massage would be ideal. Would it be possible to arrange for a female therapist?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Of course. We have Lisa available at 3 PM. Please arrive 15 minutes early to use the sauna and relaxation room beforehand.",
+            textZh: "当然。Lisa下午3点有空。请提前15分钟到，可以先用桑拿和休息室。",
+            keyPhrases: [
+              { en: "arrive 15 minutes early", zh: "提前15分钟到" },
+              { en: "relaxation room", zh: "休息室" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Absolutely. Lisa's free at 3. Come 15 minutes early so you can enjoy the sauna and lounge area before your session.", textZh: "可以。Lisa 3点有空。提前15分钟来，可以先享受桑拿和休息区。", actionHint: "用free at和session", frequency: "common" },
+            ],
+            casualVersion: "Sure! Lisa's got 3 PM open. Show up at 2:45 so you can hit the sauna first.",
+            formalityVariants: {
+              casual: "Sure! Lisa's got 3 PM open. Show up at 2:45 so you can hit the sauna first.",
+              standard: "Of course. We have Lisa available at 3 PM. Please arrive 15 minutes early to use the sauna and relaxation room beforehand.",
+              formal: "Certainly. Lisa is available for a 3:00 PM appointment. We recommend arriving fifteen minutes prior to your scheduled time to avail yourself of the sauna and relaxation lounge.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Perfect. Can I charge it to my room? And is there anything I should know beforehand — like what to wear?",
+            textZh: "好的。可以记到房间吗？有什么需要提前知道的吗——比如穿什么？",
+            casualVersion: "Can I put it on my room? And what should I wear?",
+            commonMistake: {
+              wrong: "Can I pay by room? What clothes should I wear?",
+              correct: "Can I charge it to my room? And is there anything I should know beforehand — like what to wear?",
+              explanation: "'charge it to my room' 是酒店标准用语；'what to wear' 比 'what clothes' 更自然。",
+            },
+            formalityVariants: {
+              casual: "Can I put it on my room? And what should I wear?",
+              standard: "Perfect. Can I charge it to my room? And is there anything I should know beforehand — like what to wear?",
+              formal: "Splendid. Might the charge be applied to my room account? Additionally, are there any preparations I should be aware of — attire requirements, for instance?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, it'll go on your room bill. Just wear something comfortable — a robe and slippers will be provided. We also ask that you silence your phone during the treatment.",
+            textZh: "可以，记到房间账上。穿舒适的衣服就行——浴袍和拖鞋会提供。另外请在理疗期间将手机静音。",
+            keyPhrases: [
+              { en: "room bill", zh: "房间账单" },
+              { en: "robe and slippers", zh: "浴袍和拖鞋" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Absolutely, it goes on your room tab. We provide robes and slippers when you get there. Just put your phone on silent and relax!", textZh: "当然，挂房间账。到了会提供浴袍和拖鞋。把手机静音就好，好好放松！", actionHint: "用room tab和put on silent", frequency: "common" },
+            ],
+            casualVersion: "Yep, on your room. We've got robes and slippers for you. Just mute your phone and chill!",
+            formalityVariants: {
+              casual: "Yep, on your room. We've got robes and slippers for you. Just mute your phone and chill!",
+              standard: "Yes, it'll go on your room bill. Just wear something comfortable — a robe and slippers will be provided. We also ask that you silence your phone during the treatment.",
+              formal: "Certainly, the charge shall be appended to your room folio. Please arrive in comfortable attire; a robe and slippers will be furnished upon arrival. We respectfully request that mobile devices be placed on silent mode throughout the duration of your treatment.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "hotel-lost-key",
+    category: "hotel",
+    titleZh: "房卡丢失",
+    titleEn: "Lost Room Key Card",
+    description: "报告房卡丢失并请求补办",
+    otherRole: "前台接待",
+    otherRoleIcon: "🛎️",
+    flows: [
+      {
+        id: "basic-lost-key",
+        titleZh: "基础房卡补办",
+        titleEn: "Basic Key Replacement",
+        description: "发现房卡丢失后到前台补办",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I think I've lost my room key card. Can I get a replacement?",
+            textZh: "你好，我的房卡好像丢了。能补办一张吗？",
+            casualVersion: "Hey, I lost my key card. Can I get a new one?",
+            culturalNote: "酒店补办房卡通常免费，但需要出示身份证件确认身份。",
+            commonMistake: {
+              wrong: "I lost my room card. Give me a new one.",
+              correct: "I think I've lost my room key card. Can I get a replacement?",
+              explanation: "'I think I've lost' 比 'I lost' 更委婉；'replacement' 是补办的正式说法。",
+            },
+            formalityVariants: {
+              casual: "Hey, I lost my key card. Can I get a new one?",
+              standard: "Hi, I think I've lost my room key card. Can I get a replacement?",
+              formal: "Good day. I believe I have misplaced my room key card. Would it be possible to obtain a replacement?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "No problem at all. Could I see your ID and confirm your room number, please?",
+            textZh: "没问题。请出示您的证件并确认房间号好吗？",
+            keyPhrases: [
+              { en: "see your ID", zh: "出示证件" },
+              { en: "confirm your room number", zh: "确认房间号" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Sure thing. I just need to verify your identity — could I see some ID and get your room number?", textZh: "当然。我需要验证一下身份——可以看下证件和房间号吗？", actionHint: "用verify your identity", frequency: "common" },
+            ],
+            casualVersion: "No worries. Just need to see your ID and room number real quick.",
+            formalityVariants: {
+              casual: "No worries. Just need to see your ID and room number real quick.",
+              standard: "No problem at all. Could I see your ID and confirm your room number, please?",
+              formal: "Certainly, that is easily rectified. For security purposes, may I kindly request a form of identification and confirmation of your room number?",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Sure, here's my passport. I'm in room 805.",
+            textZh: "好的，这是我的护照。我住805房。",
+            casualVersion: "Here you go — passport. Room 805.",
+            commonMistake: {
+              wrong: "This is my passport. My room is 805.",
+              correct: "Here's my passport. I'm in room 805.",
+              explanation: "'Here's my passport' 更自然；'I'm in room 805' 比 'My room is 805' 更口语化。",
+            },
+            formalityVariants: {
+              casual: "Here you go — passport. Room 805.",
+              standard: "Sure, here's my passport. I'm in room 805.",
+              formal: "Certainly. Here is my passport for verification. I am currently staying in room 805.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Thank you. I've deactivated the old card so no one else can use it. Here's your new key card.",
+            textZh: "谢谢。旧卡已经注销了，别人无法使用。这是您的新房卡。",
+            keyPhrases: [
+              { en: "deactivated the old card", zh: "注销了旧卡" },
+              { en: "new key card", zh: "新房卡" },
+            ],
+            alternativeExpressions: [
+              { textEn: "All set. The lost card has been canceled for security, and here's a fresh one for you.", textZh: "搞定。丢失的卡已经取消了，这是新的。", actionHint: "用canceled for security", frequency: "common" },
+            ],
+            casualVersion: "Cool. Old card's canceled — no one can get in. Here's a new one.",
+            formalityVariants: {
+              casual: "Cool. Old card's canceled — no one can get in. Here's a new one.",
+              standard: "Thank you. I've deactivated the old card so no one else can use it. Here's your new key card.",
+              formal: "Thank you. The previous card has been deactivated as a security precaution. Please accept this replacement key card.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Is there a charge for the replacement?",
+            textZh: "补办房卡需要收费吗？",
+            casualVersion: "Do I gotta pay for it?",
+            culturalNote: "大多数酒店免费补办房卡，但少数经济型酒店可能收取小额费用。",
+            commonMistake: {
+              wrong: "Do I need pay money?",
+              correct: "Is there a charge for the replacement?",
+              explanation: "'Is there a charge for...' 是询问收费的标准句式。",
+            },
+            formalityVariants: {
+              casual: "Do I gotta pay for it?",
+              standard: "Is there a charge for the replacement?",
+              formal: "May I inquire whether there is any associated fee for the replacement card?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "No charge at all — it's complimentary. Just be careful with this one! If you find the old card, you can just toss it.",
+            textZh: "完全免费的。这张小心保管！如果找到旧卡，扔掉就行。",
+            keyPhrases: [
+              { en: "complimentary", zh: "免费的" },
+              { en: "toss it", zh: "扔掉" },
+            ],
+            alternativeExpressions: [
+              { textEn: "It's free of charge. If the old one turns up, just throw it away — it won't work anymore.", textZh: "免费的。旧卡找到的话直接扔掉——已经不能用了。", actionHint: "用turns up和free of charge", frequency: "common" },
+            ],
+            casualVersion: "Nah, it's free. If you find the old one, just chuck it — it's dead now.",
+            formalityVariants: {
+              casual: "Nah, it's free. If you find the old one, just chuck it — it's dead now.",
+              standard: "No charge at all — it's complimentary. Just be careful with this one! If you find the old card, you can just toss it.",
+              formal: "There is no charge whatsoever — the replacement is entirely complimentary. Should the original card be recovered, you may simply dispose of it, as it has been permanently deactivated.",
+            },
+          },
+        ],
+      },
+      {
+        id: "locked-out",
+        titleZh: "被锁门外",
+        titleEn: "Locked Out of Room",
+        description: "房卡失灵或忘带被锁在门外",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "I'm locked out of my room. My key card isn't working — the light keeps flashing red.",
+            textZh: "我被锁在房间外面了。房卡不管用——灯一直闪红色。",
+            casualVersion: "I'm locked out! The card keeps showing red.",
+            culturalNote: "酒店门锁绿灯表示开锁成功，红灯表示读卡失败或卡已失效。",
+            commonMistake: {
+              wrong: "I can't open my door. The card has problem.",
+              correct: "I'm locked out of my room. My key card isn't working — the light keeps flashing red.",
+              explanation: "'locked out' 是被锁在外面的标准说法；描述具体现象（红灯闪烁）更有助于解决问题。",
+            },
+            formalityVariants: {
+              casual: "I'm locked out! The card keeps showing red.",
+              standard: "I'm locked out of my room. My key card isn't working — the light keeps flashing red.",
+              formal: "I appear to be locked out of my room. The key card does not seem to be functioning — the indicator light continuously flashes red.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I'm sorry about that. Sometimes the cards get demagnetized if they're near a phone. What's your room number? I'll send someone up right away.",
+            textZh: "很抱歉。房卡靠近手机有时会消磁。请问您的房间号？我马上派人上去。",
+            keyPhrases: [
+              { en: "demagnetized", zh: "消磁" },
+              { en: "send someone up", zh: "派人上去" },
+            ],
+            alternativeExpressions: [
+              { textEn: "That happens sometimes — phones and magnets can wipe the card. Give me your room number and I'll have someone there in a minute.", textZh: "有时候会这样——手机和磁铁会清除卡上的信息。告诉我房间号，马上派人过去。", actionHint: "用wipe the card", frequency: "common" },
+            ],
+            casualVersion: "Oh no, that happens a lot with phones. What room? I'll get someone up there ASAP.",
+            formalityVariants: {
+              casual: "Oh no, that happens a lot with phones. What room? I'll get someone up there ASAP.",
+              standard: "I'm sorry about that. Sometimes the cards get demagnetized if they're near a phone. What's your room number? I'll send someone up right away.",
+              formal: "I do apologize for the inconvenience. Key cards occasionally become demagnetized through proximity to electronic devices. May I have your room number? I shall dispatch someone to assist you immediately.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Room 805. I'm standing outside the door right now. Could someone come quickly? I left my baby sleeping inside.",
+            textZh: "805房间。我现在就在门外。能快点来吗？我的宝宝在里面睡觉。",
+            casualVersion: "805. I'm right here by the door. Can someone hurry? My baby's asleep in there.",
+            commonMistake: {
+              wrong: "I am at room 805. Come fast, my baby is inside.",
+              correct: "Room 805. Could someone come quickly? I left my baby sleeping inside.",
+              explanation: "'Could someone come quickly' 既表达紧迫性又保持礼貌。",
+            },
+            formalityVariants: {
+              casual: "805. I'm right here by the door. Can someone hurry? My baby's asleep in there.",
+              standard: "Room 805. I'm standing outside the door right now. Could someone come quickly? I left my baby sleeping inside.",
+              formal: "Room 805. I am presently outside the door. Might someone attend to this promptly? My infant is sleeping unattended inside the room.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Understood — I'm sending security right now. They'll be there in under two minutes with a master key. Please stay by the door.",
+            textZh: "明白了——我现在就派安保过去。他们会带万能钥匙两分钟内到。请在门口等着。",
+            keyPhrases: [
+              { en: "security", zh: "安保" },
+              { en: "master key", zh: "万能钥匙" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Got it — security is on the way with a master key. They'll be there in a minute or two. Just wait right there.", textZh: "收到——安保带着万能钥匙正在过来。一两分钟就到。在那等着就行。", actionHint: "用on the way", frequency: "common" },
+            ],
+            casualVersion: "On it! Security's heading up with a master key — two minutes tops. Hang tight.",
+            formalityVariants: {
+              casual: "On it! Security's heading up with a master key — two minutes tops. Hang tight.",
+              standard: "Understood — I'm sending security right now. They'll be there in under two minutes with a master key. Please stay by the door.",
+              formal: "Understood completely. I am dispatching our security team immediately with a master key. They will arrive within two minutes. Kindly remain at the door.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Thank you so much. Could I also get a new key card so this doesn't happen again?",
+            textZh: "非常感谢。能再给我一张新房卡吗？免得再出这种情况。",
+            casualVersion: "Thanks! Can I get a new card too so this doesn't happen again?",
+            culturalNote: "请求预防措施是合理的，酒店通常会主动提供新卡。",
+            commonMistake: {
+              wrong: "Thank you. And give me new card, I don't want this problem again.",
+              correct: "Could I also get a new key card so this doesn't happen again?",
+              explanation: "'so this doesn't happen again' 是解释原因的自然方式。",
+            },
+            formalityVariants: {
+              casual: "Thanks! Can I get a new card too so this doesn't happen again?",
+              standard: "Thank you so much. Could I also get a new key card so this doesn't happen again?",
+              formal: "Thank you ever so much. Might I also request a replacement key card to prevent a recurrence of this situation?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Absolutely. I'll have the security guard bring two new cards — keep one as a backup. And a tip: keep the card away from your phone to avoid demagnetization.",
+            textZh: "当然。我让安保带两张新卡上来——一张备用。建议房卡远离手机，避免消磁。",
+            keyPhrases: [
+              { en: "keep one as a backup", zh: "一张备用" },
+              { en: "demagnetization", zh: "消磁" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Of course. Security will bring two fresh cards — one spare just in case. Pro tip: don't keep the card near your phone or it'll lose its coding.", textZh: "当然。安保会带两张新卡——一张以防万一。建议：别把卡和手机放一起，不然会消磁。", actionHint: "用pro tip和lose its coding", frequency: "common" },
+            ],
+            casualVersion: "For sure. They'll bring two new ones — keep one as backup. Oh, and don't put it next to your phone — that's usually what does it.",
+            formalityVariants: {
+              casual: "For sure. They'll bring two new ones — keep one as backup. Oh, and don't put it next to your phone — that's usually what does it.",
+              standard: "Absolutely. I'll have the security guard bring two new cards — keep one as a backup. And a tip: keep the card away from your phone to avoid demagnetization.",
+              formal: "Certainly. I shall instruct the security officer to provide two replacement cards — one to serve as a spare. Additionally, I recommend storing the card separately from electronic devices to prevent demagnetization.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "hotel-minibar-dispute",
+    category: "hotel",
+    titleZh: "迷你吧收费争议",
+    titleEn: "Minibar Charge Dispute",
+    description: "对迷你吧的错误收费提出异议并解决",
+    otherRole: "前台接待",
+    otherRoleIcon: "🛎️",
+    flows: [
+      {
+        id: "basic-minibar-dispute",
+        titleZh: "基础收费争议",
+        titleEn: "Basic Charge Dispute",
+        description: "发现账单上有未消费的迷你吧费用",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I'm checking my bill and I see a minibar charge of $35. I didn't use the minibar at all.",
+            textZh: "你好，我在看账单，上面有35美元的迷你吧费用。我根本没用过迷你吧。",
+            casualVersion: "Hey, there's a $35 minibar charge on my bill but I didn't touch the minibar.",
+            culturalNote: "很多酒店迷你吧使用重量感应器，移动物品后放回也可能被记为消费。",
+            commonMistake: {
+              wrong: "Why is there minibar charge? I didn't use it.",
+              correct: "I see a minibar charge of $35. I didn't use the minibar at all.",
+              explanation: "先描述看到的具体问题（金额），再陈述事实，比质问语气更有效。",
+            },
+            formalityVariants: {
+              casual: "Hey, there's a $35 minibar charge on my bill but I didn't touch the minibar.",
+              standard: "Hi, I'm checking my bill and I see a minibar charge of $35. I didn't use the minibar at all.",
+              formal: "Good morning. Upon reviewing my folio, I have noticed a minibar charge of thirty-five dollars. I can assure you that I did not consume any items from the minibar.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I'm sorry about that. Let me pull up the details. It shows two bottles of water and a bag of chips were taken from the minibar yesterday.",
+            textZh: "很抱歉。我查一下详情。显示昨天从迷你吧取了两瓶水和一包薯片。",
+            keyPhrases: [
+              { en: "pull up the details", zh: "调出详情" },
+              { en: "taken from the minibar", zh: "从迷你吧取了" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Let me look into that. The system shows two waters and a bag of chips removed from the minibar yesterday.", textZh: "我查一下。系统显示昨天取走了两瓶水和一包薯片。", actionHint: "用removed from", frequency: "common" },
+            ],
+            casualVersion: "Hmm, let me check. System says two waters and chips were taken yesterday.",
+            formalityVariants: {
+              casual: "Hmm, let me check. System says two waters and chips were taken yesterday.",
+              standard: "I'm sorry about that. Let me pull up the details. It shows two bottles of water and a bag of chips were taken from the minibar yesterday.",
+              formal: "I do apologize for the discrepancy. Allow me to retrieve the itemized record. According to our system, two bottles of water and a packet of chips were recorded as removed from the minibar yesterday.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Oh, I did pick them up to look at the prices, but I put everything back. The sensor must have triggered by mistake.",
+            textZh: "哦，我确实拿起来看过价格，但都放回去了。传感器应该是误触发了。",
+            casualVersion: "Oh — I picked stuff up to check prices but put it all back. Must've set off the sensor.",
+            commonMistake: {
+              wrong: "I touched them but I put back. The machine is wrong.",
+              correct: "I did pick them up to look at the prices, but I put everything back. The sensor must have triggered by mistake.",
+              explanation: "'did pick them up' 承认行为更诚实；'triggered by mistake' 比 'is wrong' 更中性。",
+            },
+            formalityVariants: {
+              casual: "Oh — I picked stuff up to check prices but put it all back. Must've set off the sensor.",
+              standard: "Oh, I did pick them up to look at the prices, but I put everything back. The sensor must have triggered by mistake.",
+              formal: "I see. I did handle the items briefly to review the pricing, however I returned everything to its original position. It appears the sensor may have been activated inadvertently.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "That does happen sometimes with our sensor-based system. I'll send housekeeping to verify the items are still there, and we'll remove the charge right away.",
+            textZh: "我们的感应系统有时确实会出现这种情况。我让客房部去确认东西还在，然后马上取消收费。",
+            keyPhrases: [
+              { en: "sensor-based system", zh: "感应系统" },
+              { en: "remove the charge", zh: "取消收费" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Yeah, the sensors can be a bit touchy. I'll get someone to check the minibar and take that charge off your bill.", textZh: "是的，传感器有时候比较敏感。我让人去检查，然后把费用从账单上去掉。", actionHint: "用touchy和take off", frequency: "common" },
+            ],
+            casualVersion: "Yeah, those sensors are finicky. I'll send someone to check and drop that charge.",
+            formalityVariants: {
+              casual: "Yeah, those sensors are finicky. I'll send someone to check and drop that charge.",
+              standard: "That does happen sometimes with our sensor-based system. I'll send housekeeping to verify the items are still there, and we'll remove the charge right away.",
+              formal: "That is a known occasional issue with our automated sensor system. I shall request housekeeping to confirm that all items remain in place, and the charge will be reversed from your account immediately.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Thank you. How soon will the charge be removed? I'm checking out tomorrow morning.",
+            textZh: "谢谢。费用多久能取消？我明天早上退房。",
+            casualVersion: "Thanks. How fast can you fix it? I'm leaving tomorrow.",
+            commonMistake: {
+              wrong: "When will you delete the charge? I checkout tomorrow.",
+              correct: "How soon will the charge be removed? I'm checking out tomorrow morning.",
+              explanation: "'How soon' 比 'When' 更强调紧迫性；'removed' 比 'deleted' 更适合账单用语。",
+            },
+            formalityVariants: {
+              casual: "Thanks. How fast can you fix it? I'm leaving tomorrow.",
+              standard: "Thank you. How soon will the charge be removed? I'm checking out tomorrow morning.",
+              formal: "Thank you. Approximately when might the charge be reversed? I am scheduled to depart tomorrow morning.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I've already submitted the reversal. It'll be off your bill within the hour. You'll see the updated total at checkout.",
+            textZh: "我已经提交了撤销。一小时内会从账单上去掉。退房时您会看到更新后的总额。",
+            keyPhrases: [
+              { en: "submitted the reversal", zh: "提交了撤销" },
+              { en: "updated total", zh: "更新后的总额" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Already done — the reversal is in the system. By the time you check out, it'll be cleared. You can double-check at the desk tomorrow.", textZh: "已经处理了——撤销已提交。退房时就会清除。明天到前台可以再确认一下。", actionHint: "用cleared和double-check", frequency: "common" },
+            ],
+            casualVersion: "Done! It'll drop off within an hour. Your final bill tomorrow will be correct.",
+            formalityVariants: {
+              casual: "Done! It'll drop off within an hour. Your final bill tomorrow will be correct.",
+              standard: "I've already submitted the reversal. It'll be off your bill within the hour. You'll see the updated total at checkout.",
+              formal: "The reversal has been processed. The charge will be removed from your folio within the hour. The corrected total will be reflected upon your checkout tomorrow.",
+            },
+          },
+        ],
+      },
+      {
+        id: "minibar-price-dispute",
+        titleZh: "迷你吧价格异议",
+        titleEn: "Minibar Price Dispute",
+        description: "对迷你吧标价与实际收费不符提出异议",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Excuse me, the minibar price list says water is $5, but I was charged $8 per bottle on my bill.",
+            textZh: "不好意思，迷你吧价目表上水是5美元，但账单上每瓶收了8美元。",
+            casualVersion: "Hey, the minibar list says water's 5 bucks but you charged me 8 each.",
+            culturalNote: "在美国酒店，迷你吧价格通常标注在冰箱上或房间的信息手册里，是有效的价格依据。",
+            commonMistake: {
+              wrong: "The water price is wrong. It should be $5 not $8.",
+              correct: "The minibar price list says water is $5, but I was charged $8 per bottle on my bill.",
+              explanation: "引用具体证据（价目表）比直接说'价格错了'更有说服力。",
+            },
+            formalityVariants: {
+              casual: "Hey, the minibar list says water's 5 bucks but you charged me 8 each.",
+              standard: "Excuse me, the minibar price list says water is $5, but I was charged $8 per bottle on my bill.",
+              formal: "I beg your pardon. According to the minibar price list displayed in my room, bottled water is listed at five dollars. However, my bill reflects a charge of eight dollars per bottle.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Let me check that for you. You're right — the prices were recently updated in our system but the in-room lists haven't been changed yet. I apologize for the confusion.",
+            textZh: "我查一下。您说得对——系统里的价格最近更新了，但房间里的价目表还没换。很抱歉造成困扰。",
+            keyPhrases: [
+              { en: "recently updated", zh: "最近更新了" },
+              { en: "apologize for the confusion", zh: "为混乱道歉" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Good catch. Our system prices went up but we didn't update the cards in the rooms yet. That's our mistake — sorry about that.", textZh: "发现得好。系统价格涨了但房间里的卡还没更新。是我们的失误——抱歉。", actionHint: "用good catch承认错误", frequency: "common" },
+            ],
+            casualVersion: "Oh, you're right. We raised prices in the system but didn't change the room list yet. Our bad.",
+            formalityVariants: {
+              casual: "Oh, you're right. We raised prices in the system but didn't change the room list yet. Our bad.",
+              standard: "Let me check that for you. You're right — the prices were recently updated in our system but the in-room lists haven't been changed yet. I apologize for the confusion.",
+              formal: "Allow me to investigate. You are indeed correct. The pricing was recently revised in our system; however, the displayed price lists within the guest rooms have not yet been updated accordingly. I sincerely apologize for this discrepancy.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "So will I be charged the listed price or the new price?",
+            textZh: "那我是按标注的价格还是新价格收费？",
+            casualVersion: "So am I paying 5 or 8?",
+            commonMistake: {
+              wrong: "Which price do I pay?",
+              correct: "Will I be charged the listed price or the new price?",
+              explanation: "'the listed price' 和 'the new price' 明确指出两个价格，表达更清晰。",
+            },
+            formalityVariants: {
+              casual: "So am I paying 5 or 8?",
+              standard: "So will I be charged the listed price or the new price?",
+              formal: "Could you clarify whether my bill will reflect the price as displayed on the in-room list or the revised system price?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "We'll honor the listed price since that's what was displayed in your room. I'll adjust the charge from $8 to $5 per bottle right now.",
+            textZh: "我们会按房间里标注的价格收。我现在就把每瓶从8美元调整为5美元。",
+            keyPhrases: [
+              { en: "honor the listed price", zh: "以标注价格为准" },
+              { en: "adjust the charge", zh: "调整收费" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Since the room list said $5, that's the price you'll pay. I'm fixing it in the system right now — dropping each bottle from $8 to $5.", textZh: "房间价目表标的5美元，就按5美元算。我现在改系统——每瓶从8降到5。", actionHint: "用fixing和dropping", frequency: "common" },
+            ],
+            casualVersion: "You'll pay the $5 — that's what the sign said. Fixing it now.",
+            formalityVariants: {
+              casual: "You'll pay the $5 — that's what the sign said. Fixing it now.",
+              standard: "We'll honor the listed price since that's what was displayed in your room. I'll adjust the charge from $8 to $5 per bottle right now.",
+              formal: "We shall honor the price as displayed in your room, as that constitutes the communicated rate. I will adjust the charge from eight dollars to five dollars per bottle immediately.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "I appreciate that. Could I get an updated printout of my bill so I can verify everything before checkout?",
+            textZh: "谢谢。能打一份更新后的账单给我吗？退房前我确认一下。",
+            casualVersion: "Thanks. Can I get a new printout to check everything?",
+            culturalNote: "退房前核实账单是好习惯，酒店通常会很配合。",
+            commonMistake: {
+              wrong: "Can you print my bill again? I want to check.",
+              correct: "Could I get an updated printout of my bill so I can verify everything before checkout?",
+              explanation: "'updated printout' 更专业；'verify' 比 'check' 更正式。",
+            },
+            formalityVariants: {
+              casual: "Thanks. Can I get a new printout to check everything?",
+              standard: "I appreciate that. Could I get an updated printout of my bill so I can verify everything before checkout?",
+              formal: "I appreciate your prompt attention. Might I request an updated copy of my bill for verification prior to checkout?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Of course. Here's the updated bill. The two waters are now at $5 each, so your total has been reduced by $6. Everything else look correct?",
+            textZh: "当然。这是更新后的账单。两瓶水各5美元，总额减少了6美元。其他都正确吗？",
+            keyPhrases: [
+              { en: "reduced by $6", zh: "减少了6美元" },
+              { en: "everything else look correct", zh: "其他都正确吗" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Here you go — updated bill. I knocked $6 off for the water adjustment. Does everything else check out?", textZh: "给您——更新后的账单。水的调整减了6美元。其他都对吗？", actionHint: "用knocked off和check out", frequency: "common" },
+            ],
+            casualVersion: "Here's the new bill. Saved you 6 bucks on the water. Rest of it look good?",
+            formalityVariants: {
+              casual: "Here's the new bill. Saved you 6 bucks on the water. Rest of it look good?",
+              standard: "Of course. Here's the updated bill. The two waters are now at $5 each, so your total has been reduced by $6. Everything else look correct?",
+              formal: "Certainly. Please find the revised bill. The two bottles of water have been adjusted to five dollars each, resulting in a six-dollar reduction to your total. Would you kindly confirm that all remaining charges are accurate?",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // ==================== 快递代收 Package Pickup ====================
+  {
+    id: "hotel-package-pickup",
+    category: "hotel",
+    titleZh: "快递代收",
+    titleEn: "Package Pickup at Front Desk",
+    description: "请求酒店前台代收快递包裹并安排取件",
+    otherRole: "前台接待",
+    otherRoleIcon: "📦",
+    flows: [
+      {
+        id: "basic-package-pickup",
+        titleZh: "基础代收",
+        titleEn: "Basic Package Pickup",
+        description: "通知前台有包裹要寄到酒店并确认取件",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I'm expecting a package to be delivered here today. Can the front desk hold it for me?",
+            textZh: "你好，我今天有一个包裹会寄到这里。前台可以帮我代收吗？",
+            casualVersion: "Hey, I've got a package coming today. Can you guys hold it for me?",
+            culturalNote: "大多数酒店都提供代收包裹服务，但建议提前通知前台，并提供追踪号。",
+            commonMistake: {
+              wrong: "I have a package come to hotel today. Can you keep it?",
+              correct: "I'm expecting a package to be delivered here today. Can the front desk hold it for me?",
+              explanation: "'expecting...to be delivered' 比 'have...come to' 更地道；'hold it' 是代收的标准说法。",
+            },
+            formalityVariants: {
+              casual: "Hey, I've got a package coming today. Can you guys hold it for me?",
+              standard: "Hi, I'm expecting a package to be delivered here today. Can the front desk hold it for me?",
+              formal: "Good morning. I am expecting a delivery to arrive at the hotel today. Would you be so kind as to accept the package on my behalf and hold it at the front desk?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Of course! Could I have your name and room number? We'll give you a call when it arrives.",
+            textZh: "当然可以！能告诉我您的姓名和房间号吗？包裹到了我们会打电话通知您。",
+            keyPhrases: [
+              { en: "room number", zh: "房间号" },
+              { en: "give you a call", zh: "打电话通知您" },
+            ],
+            alternativeExpressions: [
+              { textEn: "No problem! Just leave your name and room number, and we'll notify you as soon as it gets here.", textZh: "没问题！留下姓名和房间号，到了我们马上通知您。", actionHint: "用notify替代call", frequency: "common" },
+            ],
+            casualVersion: "Sure thing! What's your name and room? We'll ring you when it shows up.",
+            formalityVariants: {
+              casual: "Sure thing! What's your name and room? We'll ring you when it shows up.",
+              standard: "Of course! Could I have your name and room number? We'll give you a call when it arrives.",
+              formal: "Certainly. May I kindly have your full name and room number? We will contact you promptly upon receipt of the package.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "It's under Wayne Chen, room 812. Here's the tracking number just in case.",
+            textZh: "姓名Wayne Chen，812房间。这是追踪号，以防万一。",
+            casualVersion: "Wayne Chen, room 812. Here's the tracking number.",
+            culturalNote: "提供追踪号（tracking number）能帮助前台更准确地匹配包裹，特别是同名住客较多时。",
+            commonMistake: {
+              wrong: "My name Wayne Chen, 812 room. This is tracking number.",
+              correct: "It's under Wayne Chen, room 812. Here's the tracking number just in case.",
+              explanation: "'It's under' 是登记信息的标准说法；'just in case' 表达'以防万一'更自然。",
+            },
+            formalityVariants: {
+              casual: "Wayne Chen, room 812. Got the tracking number here too.",
+              standard: "It's under Wayne Chen, room 812. Here's the tracking number just in case.",
+              formal: "The reservation is under Wayne Chen, room eight-one-two. I have the tracking number here for your reference, should you need it.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Perfect. We've noted that down. Just so you know, we can hold packages for up to 48 hours after your checkout.",
+            textZh: "好的，已经记下了。提醒一下，退房后我们可以保管包裹最多48小时。",
+            keyPhrases: [
+              { en: "noted that down", zh: "记下了" },
+              { en: "hold packages for up to 48 hours", zh: "保管包裹最多48小时" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Got it. Just a heads-up — we'll keep packages for two days after checkout.", textZh: "收到。提醒一下，退房后包裹保留两天。", actionHint: "口语化提醒", frequency: "common" },
+            ],
+            casualVersion: "Got it. FYI, we keep packages up to 48 hours after checkout.",
+            formalityVariants: {
+              casual: "Got it. FYI, we keep packages up to 48 hours after checkout.",
+              standard: "Perfect. We've noted that down. Just so you know, we can hold packages for up to 48 hours after your checkout.",
+              formal: "Excellent. I have recorded all the details. For your information, our policy permits us to retain packages for a maximum of forty-eight hours following your departure.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Great, that works. Could you also sign for it if a signature is required?",
+            textZh: "太好了，没问题。如果需要签收的话，你们可以代签吗？",
+            casualVersion: "Cool. Can you sign for it if they need a signature?",
+            culturalNote: "有些快递（尤其是贵重物品）需要签名确认。酒店通常可以代签，但贵重物品可能要求本人签收。",
+            commonMistake: {
+              wrong: "Can you help sign the package for me?",
+              correct: "Could you also sign for it if a signature is required?",
+              explanation: "'sign for it' 是签收快递的固定搭配；加 'if...required' 更礼貌完整。",
+            },
+            formalityVariants: {
+              casual: "Cool. Can you sign for it if they need a signature?",
+              standard: "Great, that works. Could you also sign for it if a signature is required?",
+              formal: "That is most helpful, thank you. In the event that the carrier requires a signature upon delivery, would the front desk be able to sign on my behalf?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, we can sign on your behalf for standard deliveries. For anything marked as high-value, you'd need to pick it up in person.",
+            textZh: "可以，普通快递我们可以代签。标记为高价值的物品需要您本人领取。",
+            keyPhrases: [
+              { en: "sign on your behalf", zh: "代签" },
+              { en: "pick it up in person", zh: "本人领取" },
+            ],
+            alternativeExpressions: [
+              { textEn: "For regular packages, absolutely. High-value items require the guest's own signature, though.", textZh: "普通包裹没问题。不过高价值物品需要住客本人签收。", actionHint: "区分普通和高价值", frequency: "common" },
+            ],
+            casualVersion: "Yep, we can sign for normal stuff. If it's marked high-value, you'll need to grab it yourself.",
+            formalityVariants: {
+              casual: "Yep, we can sign for normal stuff. If it's marked high-value, you'll need to grab it yourself.",
+              standard: "Yes, we can sign on your behalf for standard deliveries. For anything marked as high-value, you'd need to pick it up in person.",
+              formal: "Indeed, we are pleased to sign on your behalf for standard deliveries. However, items designated as high-value require the recipient's personal signature upon collection.",
+            },
+          },
+        ],
+      },
+      {
+        id: "intermediate-package-pickup",
+        titleZh: "进阶代收",
+        titleEn: "Intermediate Package Pickup",
+        description: "处理包裹丢失或延迟送达的问题",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "I was told my package arrived this morning, but I haven't received any notification. Could you check on it?",
+            textZh: "快递公司说包裹今早到了，但我没收到任何通知。能帮我查一下吗？",
+            casualVersion: "Tracking says my package got here this morning but nobody told me. Can you look into it?",
+            culturalNote: "查询时保持冷静、提供追踪信息比表达不满更有效。",
+            commonMistake: {
+              wrong: "My package arrived but nobody tell me. Why?",
+              correct: "I was told my package arrived this morning, but I haven't received any notification. Could you check on it?",
+              explanation: "'I was told' 被动语态更客观；'check on it' 比 'why' 更有建设性。",
+            },
+            formalityVariants: {
+              casual: "Tracking says it's here but no one told me. Can you check?",
+              standard: "I was told my package arrived this morning, but I haven't received any notification. Could you check on it?",
+              formal: "According to the carrier's tracking information, my package was delivered to the hotel this morning. However, I have not yet received any notification. Would you be able to investigate?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I apologize for the inconvenience. Let me check our receiving log. Do you have the tracking number handy?",
+            textZh: "很抱歉给您带来不便。我查一下我们的签收记录。您有追踪号吗？",
+            keyPhrases: [
+              { en: "receiving log", zh: "签收记录" },
+              { en: "tracking number handy", zh: "手头有追踪号" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Sorry about that. Let me look it up in our system. Can you share the tracking number?", textZh: "抱歉。我在系统里查一下。能告诉我追踪号吗？", actionHint: "简化表达", frequency: "common" },
+            ],
+            casualVersion: "My bad. Let me check. Got the tracking number?",
+            formalityVariants: {
+              casual: "My bad. Let me check. Got the tracking number?",
+              standard: "I apologize for the inconvenience. Let me check our receiving log. Do you have the tracking number handy?",
+              formal: "I sincerely apologize for this oversight. Permit me to review our receiving log immediately. Might I trouble you for the tracking number?",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Yes, here it is. It says it was signed for by someone at the front desk at 9 a.m.",
+            textZh: "有的，给你。上面显示今早9点由前台人员签收了。",
+            casualVersion: "Yeah, here. Says someone at the desk signed for it at 9.",
+            culturalNote: "提供签收详情（时间和签收人）能加速查找过程。",
+            commonMistake: {
+              wrong: "Here. It says front desk signed at 9 o'clock morning.",
+              correct: "Yes, here it is. It says it was signed for by someone at the front desk at 9 a.m.",
+              explanation: "'signed for by someone' 被动语态更准确；'9 a.m.' 是标准时间表达。",
+            },
+            formalityVariants: {
+              casual: "Yeah, here. Says someone at the desk signed for it at 9.",
+              standard: "Yes, here it is. It says it was signed for by someone at the front desk at 9 a.m.",
+              formal: "Certainly, here is the tracking information. It indicates that the package was received and signed for by a member of your front desk staff at nine o'clock this morning.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I found it — it was placed in our storage room by mistake and the notification wasn't sent. I'll have it brought to your room right away.",
+            textZh: "找到了——被误放到储物间了，通知也没发出去。我马上让人送到您房间。",
+            keyPhrases: [
+              { en: "placed in our storage room by mistake", zh: "被误放到储物间" },
+              { en: "brought to your room right away", zh: "马上送到您房间" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Found it! It ended up in the back storage by accident. I'll send it up to your room immediately.", textZh: "找到了！不小心放到后面仓库了。马上送到您房间。", actionHint: "口语化解释", frequency: "common" },
+            ],
+            casualVersion: "Found it! It got put in the back by accident. I'll send it up right now.",
+            formalityVariants: {
+              casual: "Found it! It got put in the back by accident. I'll send it up right now.",
+              standard: "I found it — it was placed in our storage room by mistake and the notification wasn't sent. I'll have it brought to your room right away.",
+              formal: "I have located the package. Unfortunately, it was inadvertently placed in our storage facility and the notification was not dispatched. I will arrange for it to be delivered to your room without delay.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Thank you. Is there anything I need to sign when I receive it?",
+            textZh: "谢谢。我收到的时候需要签什么吗？",
+            casualVersion: "Thanks. Do I need to sign anything when it gets here?",
+            culturalNote: "高档酒店可能需要住客签收确认，这是正常流程。",
+            commonMistake: {
+              wrong: "Do I need sign something?",
+              correct: "Is there anything I need to sign when I receive it?",
+              explanation: "'need to sign' 需要 'to'；'when I receive it' 比 'when it comes' 更正式。",
+            },
+            formalityVariants: {
+              casual: "Thanks. Do I gotta sign anything?",
+              standard: "Thank you. Is there anything I need to sign when I receive it?",
+              formal: "Thank you very much. Will there be any documentation requiring my signature upon receipt of the package?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, our bellman will bring a receipt for you to sign confirming delivery. Again, sorry for the mix-up.",
+            textZh: "是的，行李员送来时会带一份签收单请您签字确认。再次为搞混了道歉。",
+            keyPhrases: [
+              { en: "receipt for you to sign", zh: "签收单请您签字" },
+              { en: "sorry for the mix-up", zh: "为搞混了道歉" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Just a quick signature when the bellman drops it off. Apologies again for the delay.", textZh: "行李员送到时签个字就行。再次为延误道歉。", actionHint: "简洁道歉", frequency: "common" },
+            ],
+            casualVersion: "Yeah, just sign when the guy brings it up. Sorry about the mix-up!",
+            formalityVariants: {
+              casual: "Yeah, just sign when the guy brings it up. Sorry about the mix-up!",
+              standard: "Yes, our bellman will bring a receipt for you to sign confirming delivery. Again, sorry for the mix-up.",
+              formal: "Indeed, our bellman will present a delivery receipt for your signature upon arrival. Please accept our sincere apologies for this unfortunate mix-up.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // ==================== 连通房 Connecting Rooms ====================
+  {
+    id: "hotel-connecting-rooms",
+    category: "hotel",
+    titleZh: "连通房",
+    titleEn: "Connecting Rooms Request",
+    description: "咨询和预订连通房，适合家庭或团体出行",
+    otherRole: "前台接待",
+    otherRoleIcon: "🚪",
+    flows: [
+      {
+        id: "basic-connecting-rooms",
+        titleZh: "基础连通房",
+        titleEn: "Basic Connecting Rooms",
+        description: "询问连通房是否可用并请求预订",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, we're a family of five. Do you have any connecting rooms available?",
+            textZh: "你好，我们一家五口。请问有连通房吗？",
+            casualVersion: "Hey, we're five people. Got any connecting rooms?",
+            culturalNote: "Connecting rooms 是有内部门相通的两间房；adjoining rooms 只是相邻但没有内部门。预订时要区分。",
+            commonMistake: {
+              wrong: "We are five people family. Do you have connected room?",
+              correct: "We're a family of five. Do you have any connecting rooms available?",
+              explanation: "'a family of five' 比 'five people family' 更自然；'connecting rooms' 是固定说法。",
+            },
+            formalityVariants: {
+              casual: "Hey, we're five people. Got any connecting rooms?",
+              standard: "Hi, we're a family of five. Do you have any connecting rooms available?",
+              formal: "Good day. We are a family of five and would be interested in booking connecting rooms. Might you have any available?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Let me check. Yes, we have a set of connecting rooms on the 6th floor — a king room and a double queen room. Would that work?",
+            textZh: "我查一下。有的，6楼有一套连通房——一间大床房和一间双大床房。可以吗？",
+            keyPhrases: [
+              { en: "a set of connecting rooms", zh: "一套连通房" },
+              { en: "double queen room", zh: "双大床房" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Good news — we do have connecting rooms available on the 6th floor. One king and one with two queens.", textZh: "好消息——6楼有连通房可用。一间大床，一间双大床。", actionHint: "先报好消息", frequency: "common" },
+            ],
+            casualVersion: "Yeah, we've got connecting rooms on the 6th floor. One king, one with two queens. Sound good?",
+            formalityVariants: {
+              casual: "Yeah, we've got connecting rooms on the 6th floor. One king, one with two queens. Sound good?",
+              standard: "Let me check. Yes, we have a set of connecting rooms on the 6th floor — a king room and a double queen room. Would that work?",
+              formal: "Allow me to verify availability. Indeed, we have a suite of connecting rooms on the sixth floor — one king room and one double queen room. Would this arrangement be suitable for your family?",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That sounds perfect. Is the connecting door lockable from both sides?",
+            textZh: "听起来很好。连通门两边都能锁吗？",
+            casualVersion: "Sounds great. Can you lock the connecting door from both sides?",
+            culturalNote: "连通门的锁是很多家庭关心的安全问题，尤其是带小孩时。",
+            commonMistake: {
+              wrong: "Is the middle door can lock from two sides?",
+              correct: "Is the connecting door lockable from both sides?",
+              explanation: "'connecting door' 是连通门的正确说法；'lockable from both sides' 比 'can lock from two sides' 更地道。",
+            },
+            formalityVariants: {
+              casual: "Can you lock the door between the rooms from both sides?",
+              standard: "That sounds perfect. Is the connecting door lockable from both sides?",
+              formal: "That arrangement sounds ideal. May I confirm whether the connecting door is equipped with locks on both sides for privacy and security?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, each side has its own deadbolt. You can keep it open for easy access or lock it for privacy.",
+            textZh: "是的，两边各有一个门栓。可以敞开方便走动，也可以锁上保护隐私。",
+            keyPhrases: [
+              { en: "deadbolt", zh: "门栓" },
+              { en: "easy access", zh: "方便走动" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Absolutely. There's a deadbolt on each side, so either room can lock it independently.", textZh: "当然。每边都有门栓，任何一间房都可以独立上锁。", actionHint: "强调独立锁定", frequency: "common" },
+            ],
+            casualVersion: "Yep, both sides have locks. Leave it open or lock it — up to you.",
+            formalityVariants: {
+              casual: "Yep, both sides have locks. Leave it open or lock it — up to you.",
+              standard: "Yes, each side has its own deadbolt. You can keep it open for easy access or lock it for privacy.",
+              formal: "Absolutely. Each side of the connecting door is fitted with an independent deadbolt. You may leave it open for convenient access between the rooms or secure it for complete privacy.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Great. What's the rate for both rooms together?",
+            textZh: "好的。两间房一起的价格是多少？",
+            casualVersion: "Cool. How much for both rooms?",
+            culturalNote: "连通房通常按两间房分别计价，但有些酒店提供family package打包价。",
+            commonMistake: {
+              wrong: "How much money for two room together?",
+              correct: "What's the rate for both rooms together?",
+              explanation: "'rate' 是酒店房价的标准用词；'both rooms together' 比 'two room together' 更自然。",
+            },
+            formalityVariants: {
+              casual: "How much for both rooms?",
+              standard: "Great. What's the rate for both rooms together?",
+              formal: "Excellent. Could you kindly advise me of the combined rate for both connecting rooms?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "The king room is $189 per night and the double queen is $209 per night. We also have a family package at $359 per night for both.",
+            textZh: "大床房每晚189美元，双大床房每晚209美元。我们还有家庭套餐，两间一起每晚359美元。",
+            keyPhrases: [
+              { en: "per night", zh: "每晚" },
+              { en: "family package", zh: "家庭套餐" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Individually, they'd be $189 and $209 a night. But we can bundle them as a family deal for $359.", textZh: "单独的话分别是189和209美元一晚。不过我们有家庭打包价359美元。", actionHint: "对比单独和打包价", frequency: "common" },
+            ],
+            casualVersion: "King's $189 a night, double queen is $209. Or we've got a family deal — both for $359.",
+            formalityVariants: {
+              casual: "King's $189 a night, double queen is $209. Or we've got a family deal — both for $359.",
+              standard: "The king room is $189 per night and the double queen is $209 per night. We also have a family package at $359 per night for both.",
+              formal: "The king room is priced at one hundred eighty-nine dollars per night, and the double queen room at two hundred nine dollars per night. Additionally, we offer a family package at three hundred fifty-nine dollars per night, encompassing both rooms.",
+            },
+          },
+        ],
+      },
+      {
+        id: "intermediate-connecting-rooms",
+        titleZh: "进阶连通房",
+        titleEn: "Intermediate Connecting Rooms",
+        description: "到达后发现连通房不如预期，协商解决",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Excuse me, we booked connecting rooms but the door between them seems to be locked on your side. Could someone come open it?",
+            textZh: "不好意思，我们订了连通房，但中间的门好像从你们那边锁住了。能派人来打开吗？",
+            casualVersion: "Hey, we booked connecting rooms but the middle door won't open. Can someone come fix it?",
+            culturalNote: "连通房的内部门有时需要前台派人来解锁，因为默认是锁定状态以保护前一位住客的隐私。",
+            commonMistake: {
+              wrong: "We booked connecting room but door is locked. Please open.",
+              correct: "We booked connecting rooms but the door between them seems to be locked on your side. Could someone come open it?",
+              explanation: "'seems to be locked on your side' 更委婉；'Could someone come open it' 比命令式更礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, the connecting door's locked. Can someone come open it?",
+              standard: "Excuse me, we booked connecting rooms but the door between them seems to be locked on your side. Could someone come open it?",
+              formal: "Pardon me. We reserved connecting rooms; however, it appears the internal door is secured from the hotel side. Would it be possible to dispatch a staff member to unlock it?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I'm sorry about that. Yes, we keep them locked between guests for security. I'll send someone up right away with the master key.",
+            textZh: "很抱歉。是的，为了安全，客人之间我们会锁上连通门。我马上派人带万能钥匙上去。",
+            keyPhrases: [
+              { en: "master key", zh: "万能钥匙" },
+              { en: "between guests for security", zh: "客人之间为了安全" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Apologies — those doors stay locked between check-ins. I'll have maintenance come up with the key right away.", textZh: "抱歉——入住之间门会保持锁定。我让维护人员马上带钥匙上去。", actionHint: "解释流程", frequency: "common" },
+            ],
+            casualVersion: "Oh sorry, those stay locked between guests. I'll send someone up with the key now.",
+            formalityVariants: {
+              casual: "Oh sorry, those stay locked between guests. I'll send someone up with the key now.",
+              standard: "I'm sorry about that. Yes, we keep them locked between guests for security. I'll send someone up right away with the master key.",
+              formal: "My apologies for the inconvenience. As a security protocol, connecting doors are maintained in a locked position between guest stays. I will dispatch a member of our engineering team with the master key immediately.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Also, we were told both rooms would have a city view, but one of them faces the parking lot. Is there anything you can do?",
+            textZh: "另外，我们被告知两间房都是城景房，但有一间对着停车场。能想想办法吗？",
+            casualVersion: "Oh, and one room is supposed to be city view but it's looking at the parking lot. Any chance of switching?",
+            culturalNote: "用 'Is there anything you can do?' 比直接要求换房更礼貌，给对方解决问题的空间。",
+            commonMistake: {
+              wrong: "One room no city view, it see parking lot. You must change.",
+              correct: "We were told both rooms would have a city view, but one of them faces the parking lot. Is there anything you can do?",
+              explanation: "'We were told' 引用预订承诺更有说服力；'Is there anything you can do' 是请求帮助的礼貌方式。",
+            },
+            formalityVariants: {
+              casual: "One room looks at the parking lot, not the city. Can we switch?",
+              standard: "We were told both rooms would have a city view, but one of them faces the parking lot. Is there anything you can do?",
+              formal: "Additionally, our reservation specified city-view rooms for both accommodations. However, one of the rooms appears to overlook the parking facility. Would there be any possibility of reassigning us to a room that meets the original booking terms?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I see that in your reservation notes. Let me check if we have another connecting set with city views. It might be on a different floor — would that be okay?",
+            textZh: "我在预订备注里看到了。我查一下是否有其他城景连通房。可能在不同楼层——可以接受吗？",
+            keyPhrases: [
+              { en: "reservation notes", zh: "预订备注" },
+              { en: "on a different floor", zh: "在不同楼层" },
+            ],
+            alternativeExpressions: [
+              { textEn: "You're right, the notes do say city view. Let me see what else we have — might need to move you to another floor though.", textZh: "您说得对，备注确实写着城景。我看看还有什么——可能需要换楼层。", actionHint: "确认并提出方案", frequency: "common" },
+            ],
+            casualVersion: "Yeah, I see it in the notes. Let me check other floors for connecting rooms with city views.",
+            formalityVariants: {
+              casual: "Yeah, I see it in the notes. Let me check other floors for connecting rooms with city views.",
+              standard: "I see that in your reservation notes. Let me check if we have another connecting set with city views. It might be on a different floor — would that be okay?",
+              formal: "I can confirm the city-view specification in your reservation notes. Allow me to investigate the availability of an alternative connecting room set with city views. It may necessitate a change of floor — would that be acceptable?",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "A different floor is fine, as long as the rooms are still connecting and both have a city view.",
+            textZh: "换楼层没问题，只要还是连通房，两间都有城景就行。",
+            casualVersion: "Different floor's fine. Just need them connecting with city views.",
+            culturalNote: "明确重申你的核心需求（连通+城景），确保换房后不会出现新问题。",
+            commonMistake: {
+              wrong: "Different floor OK. But must connecting and city view.",
+              correct: "A different floor is fine, as long as the rooms are still connecting and both have a city view.",
+              explanation: "'as long as' 是表达条件的地道说法；完整句子比短语更专业。",
+            },
+            formalityVariants: {
+              casual: "Different floor's fine. Just need them connecting with city views.",
+              standard: "A different floor is fine, as long as the rooms are still connecting and both have a city view.",
+              formal: "A change of floor would be perfectly acceptable, provided the rooms remain connecting and both offer a city view as originally arranged.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Good news — I have a connecting set on the 10th floor, both with city views. I'll arrange the room change now and have your luggage moved. It should take about 20 minutes.",
+            textZh: "好消息——10楼有一套连通房，都是城景。我现在安排换房，帮您搬行李。大约需要20分钟。",
+            keyPhrases: [
+              { en: "arrange the room change", zh: "安排换房" },
+              { en: "have your luggage moved", zh: "帮您搬行李" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Great news! 10th floor has connecting rooms with city views. I'll get you moved over — about 20 minutes for the luggage transfer.", textZh: "好消息！10楼有城景连通房。我安排换房——行李转移大约20分钟。", actionHint: "积极解决", frequency: "common" },
+            ],
+            casualVersion: "Got a set on the 10th floor, both city views. I'll get you switched over — about 20 min for the bags.",
+            formalityVariants: {
+              casual: "Got a set on the 10th floor, both city views. I'll get you switched over — about 20 min for the bags.",
+              standard: "Good news — I have a connecting set on the 10th floor, both with city views. I'll arrange the room change now and have your luggage moved. It should take about 20 minutes.",
+              formal: "Excellent news. I have located a connecting room set on the tenth floor, both offering city views. I will initiate the room transfer immediately and arrange for our porter to relocate your luggage. The process should take approximately twenty minutes.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // ==================== 酒店宠物政策 Pet Rules ====================
+  {
+    id: "hotel-pet-rules",
+    category: "hotel",
+    titleZh: "酒店宠物政策咨询",
+    titleEn: "Hotel Pet Policy Inquiry",
+    description: "咨询酒店的宠物入住政策、费用和限制",
+    otherRole: "前台接待",
+    otherRoleIcon: "🐾",
+    flows: [
+      {
+        id: "basic-pet-rules",
+        titleZh: "基础宠物政策",
+        titleEn: "Basic Pet Policy",
+        description: "询问是否可以带宠物入住以及相关规定",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I'd like to bring my dog when I check in. Are you a pet-friendly hotel?",
+            textZh: "你好，我想入住时带我的狗。你们是宠物友好酒店吗？",
+            casualVersion: "Hey, can I bring my dog? Are you guys pet-friendly?",
+            culturalNote: "'Pet-friendly' 是查询酒店是否接受宠物的标准用语。很多国外酒店分 pet-friendly 和 pet-free 楼层。",
+            commonMistake: {
+              wrong: "Can I bring dog to hotel? Do you accept pet?",
+              correct: "I'd like to bring my dog when I check in. Are you a pet-friendly hotel?",
+              explanation: "'pet-friendly hotel' 是固定表达；'I'd like to bring my dog' 比 'Can I bring dog' 更完整礼貌。",
+            },
+            formalityVariants: {
+              casual: "Hey, can I bring my dog? You guys pet-friendly?",
+              standard: "Hi, I'd like to bring my dog when I check in. Are you a pet-friendly hotel?",
+              formal: "Good afternoon. I am planning to travel with my dog and would like to know whether your hotel accommodates pets.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, we are pet-friendly! We accept dogs and cats under 50 pounds. There's a nightly pet fee of $35.",
+            textZh: "是的，我们是宠物友好酒店！接受50磅以下的猫狗。每晚收取35美元的宠物费。",
+            keyPhrases: [
+              { en: "pet fee", zh: "宠物费" },
+              { en: "under 50 pounds", zh: "50磅以下" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Absolutely! We welcome dogs and cats up to 50 lbs. There's a $35 per-night pet surcharge.", textZh: "当然！欢迎50磅以内的猫狗。每晚加收35美元宠物附加费。", actionHint: "用surcharge替代fee", frequency: "common" },
+            ],
+            casualVersion: "Yep! Dogs and cats under 50 pounds are cool. It's $35 a night extra for pets.",
+            formalityVariants: {
+              casual: "Yep! Dogs and cats under 50 pounds are cool. It's $35 a night extra for pets.",
+              standard: "Yes, we are pet-friendly! We accept dogs and cats under 50 pounds. There's a nightly pet fee of $35.",
+              formal: "Indeed, we are a pet-friendly establishment. We accommodate dogs and cats weighing under fifty pounds. A nightly pet fee of thirty-five dollars applies.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Good to know. My dog is a 30-pound golden retriever. Are there any areas where pets aren't allowed?",
+            textZh: "了解了。我的狗是30磅的金毛。有没有宠物不能去的区域？",
+            casualVersion: "Cool. She's a 30-pound golden. Where can't she go?",
+            culturalNote: "大多数宠物友好酒店会限制宠物进入餐厅、泳池和健身房等公共区域。",
+            commonMistake: {
+              wrong: "My dog is golden retriever, 30 pounds. Where pet cannot go?",
+              correct: "My dog is a 30-pound golden retriever. Are there any areas where pets aren't allowed?",
+              explanation: "'30-pound golden retriever' 用复合形容词更简洁；'areas where pets aren't allowed' 更正式。",
+            },
+            formalityVariants: {
+              casual: "She's a 30-pound golden. Any spots she can't go?",
+              standard: "My dog is a 30-pound golden retriever. Are there any areas where pets aren't allowed?",
+              formal: "My companion is a thirty-pound golden retriever. Could you please advise me of any areas within the hotel where pets are not permitted?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "A golden retriever — lovely! Pets are welcome in the lobby and your room. They're not allowed in the restaurant, pool area, or fitness center. We do have a dog relief area in the back garden.",
+            textZh: "金毛——很可爱！宠物可以进大厅和客房。不能进餐厅、泳池区和健身中心。后花园有一个宠物活动区。",
+            keyPhrases: [
+              { en: "dog relief area", zh: "宠物活动区" },
+              { en: "not allowed in", zh: "不能进" },
+            ],
+            alternativeExpressions: [
+              { textEn: "How sweet! Your dog can be in the lobby and guest rooms. The restaurant, pool, and gym are pet-free zones. There's a nice little dog park out back.", textZh: "太可爱了！狗狗可以在大厅和客房活动。餐厅、泳池和健身房是无宠物区域。后面有个小狗公园。", actionHint: "用pet-free zones", frequency: "common" },
+            ],
+            casualVersion: "Aww, cute! Dogs are fine in the lobby and rooms. Not in the restaurant, pool, or gym though. There's a dog area out back.",
+            formalityVariants: {
+              casual: "Aww, cute! Dogs are fine in the lobby and rooms. Not in the restaurant, pool, or gym though. There's a dog area out back.",
+              standard: "A golden retriever — lovely! Pets are welcome in the lobby and your room. They're not allowed in the restaurant, pool area, or fitness center. We do have a dog relief area in the back garden.",
+              formal: "What a wonderful breed. Pets are welcome in the lobby and guest rooms. However, they are not permitted in the restaurant, swimming pool area, or fitness center. For your convenience, we maintain a designated dog relief area in the rear garden.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That's helpful. Do I need to keep her on a leash in the common areas?",
+            textZh: "这很有用。在公共区域需要给她系牵引绳吗？",
+            casualVersion: "Got it. Does she need to be on a leash in the common areas?",
+            culturalNote: "'On a leash' 是遛狗时系牵引绳的标准说法。公共场所牵绳是大多数酒店和城市的基本要求。",
+            commonMistake: {
+              wrong: "Do I need to put rope on my dog in public area?",
+              correct: "Do I need to keep her on a leash in the common areas?",
+              explanation: "'leash' 不是 'rope'；'keep on a leash' 是固定搭配；'common areas' 是酒店公共区域的标准说法。",
+            },
+            formalityVariants: {
+              casual: "Does she need to be leashed in the hotel?",
+              standard: "Do I need to keep her on a leash in the common areas?",
+              formal: "Am I required to keep my dog on a leash when traversing the common areas of the hotel?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, all pets must be on a leash in common areas. We can also provide a pet bed and water bowl for your room at no extra charge.",
+            textZh: "是的，所有宠物在公共区域必须系牵引绳。我们还可以免费为您的房间提供宠物床和水碗。",
+            keyPhrases: [
+              { en: "on a leash", zh: "系牵引绳" },
+              { en: "at no extra charge", zh: "不额外收费" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Leashes are required in all shared spaces. And we'd be happy to set up a pet bed and water dish in your room — complimentary.", textZh: "所有共享空间都需要牵绳。我们很乐意在您房间放置宠物床和水碗——免费的。", actionHint: "用complimentary替代", frequency: "common" },
+            ],
+            casualVersion: "Yeah, keep her leashed in shared spaces. We'll throw in a pet bed and water bowl for your room — no charge.",
+            formalityVariants: {
+              casual: "Yeah, keep her leashed in shared spaces. We'll throw in a pet bed and water bowl — no charge.",
+              standard: "Yes, all pets must be on a leash in common areas. We can also provide a pet bed and water bowl for your room at no extra charge.",
+              formal: "Indeed, all pets are required to remain leashed in common areas. Additionally, we would be delighted to furnish your room with a pet bed and water bowl, complimentary of charge.",
+            },
+          },
+        ],
+      },
+      {
+        id: "intermediate-pet-rules",
+        titleZh: "进阶宠物政策",
+        titleEn: "Intermediate Pet Policy",
+        description: "处理宠物押金、清洁和邻居投诉等问题",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "I noticed a $200 pet deposit on my bill. Is that refundable at checkout?",
+            textZh: "我注意到账单上有200美元的宠物押金。退房时可以退吗？",
+            casualVersion: "Hey, there's a $200 pet deposit on my bill. Do I get that back when I leave?",
+            culturalNote: "宠物押金（pet deposit）通常是可退还的，前提是房间没有宠物造成的损坏。这和不可退的宠物费（pet fee）不同。",
+            commonMistake: {
+              wrong: "There is 200 dollar pet deposit. Can I get money back?",
+              correct: "I noticed a $200 pet deposit on my bill. Is that refundable at checkout?",
+              explanation: "'refundable' 是询问押金是否可退的专业用词；'at checkout' 明确了时间点。",
+            },
+            formalityVariants: {
+              casual: "What's the deal with the $200 pet deposit? Do I get it back?",
+              standard: "I noticed a $200 pet deposit on my bill. Is that refundable at checkout?",
+              formal: "I have observed a two-hundred-dollar pet deposit listed on my account. Could you clarify whether this deposit is fully refundable upon checkout?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Yes, the $200 deposit is fully refundable as long as there's no damage to the room. We do a quick inspection at checkout and release the hold within 3-5 business days.",
+            textZh: "是的，200美元押金在房间无损坏的情况下全额退还。退房时我们会做一次快速检查，3-5个工作日内释放预授权。",
+            keyPhrases: [
+              { en: "fully refundable", zh: "全额退还" },
+              { en: "release the hold", zh: "释放预授权" },
+            ],
+            alternativeExpressions: [
+              { textEn: "That deposit comes back to you as long as the room's in good shape. We'll inspect at checkout and refund within 3-5 days.", textZh: "只要房间状况良好，押金就会退给您。退房时检查，3-5天内退款。", actionHint: "口语化解释", frequency: "common" },
+            ],
+            casualVersion: "Yep, you get it all back if nothing's damaged. Quick check at checkout, and the money's back in 3-5 days.",
+            formalityVariants: {
+              casual: "Yep, you get it all back if nothing's damaged. Quick check at checkout, money's back in 3-5 days.",
+              standard: "Yes, the $200 deposit is fully refundable as long as there's no damage to the room. We do a quick inspection at checkout and release the hold within 3-5 business days.",
+              formal: "Indeed, the two-hundred-dollar deposit is fully refundable, contingent upon the room being returned in its original condition. We conduct a brief inspection upon checkout and release the authorization hold within three to five business days.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That's fair. One more question — my dog had a small accident on the carpet. Should I let housekeeping know, or will that come out of the deposit?",
+            textZh: "合理。还有个问题——我的狗在地毯上出了一点小意外。我应该通知客房部，还是会从押金里扣？",
+            casualVersion: "OK cool. Also, my dog had a little accident on the carpet. Should I tell housekeeping or does it come out of the deposit?",
+            culturalNote: "'Had an accident' 是宠物弄脏地板的委婉说法，比直接描述更得体。主动告知通常会得到更好的处理。",
+            commonMistake: {
+              wrong: "My dog peed on carpet. Will you charge me?",
+              correct: "My dog had a small accident on the carpet. Should I let housekeeping know?",
+              explanation: "'had an accident' 是委婉表达；主动询问下一步比等着被追责更好。",
+            },
+            formalityVariants: {
+              casual: "Also, she had a little accident on the carpet. What should I do?",
+              standard: "My dog had a small accident on the carpet. Should I let housekeeping know, or will that come out of the deposit?",
+              formal: "I should mention that my dog unfortunately had a minor accident on the carpet. Would it be advisable to notify housekeeping directly, or will this be addressed through the deposit?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Thanks for letting us know — we appreciate the honesty. I'll send housekeeping up for a deep clean. Minor accidents like that are usually covered by the pet fee, not the deposit.",
+            textZh: "谢谢告知——感谢您的诚实。我会派客房部去做深度清洁。这种小意外通常由宠物费覆盖，不会扣押金。",
+            keyPhrases: [
+              { en: "deep clean", zh: "深度清洁" },
+              { en: "covered by the pet fee", zh: "由宠物费覆盖" },
+            ],
+            alternativeExpressions: [
+              { textEn: "No worries, thanks for being upfront. I'll have housekeeping take care of it. Small stuff like that is what the pet fee covers.", textZh: "没关系，谢谢坦诚告知。我让客房部处理。这种小事正是宠物费涵盖的。", actionHint: "轻松安抚", frequency: "common" },
+            ],
+            casualVersion: "No worries, thanks for telling us. I'll send housekeeping. That kinda stuff is what the pet fee is for.",
+            formalityVariants: {
+              casual: "No worries, thanks for telling us. I'll send housekeeping. That's what the pet fee is for.",
+              standard: "Thanks for letting us know — we appreciate the honesty. I'll send housekeeping up for a deep clean. Minor accidents like that are usually covered by the pet fee, not the deposit.",
+              formal: "Thank you for informing us — your forthcomingness is greatly appreciated. I will arrange for housekeeping to perform a thorough cleaning. Please rest assured that minor incidents of this nature are typically covered by the nightly pet fee and would not affect your deposit.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That's a relief. I'll make sure to take her out more frequently for the rest of the stay.",
+            textZh: "那就放心了。剩下的住宿期间我会更频繁地带她出去。",
+            casualVersion: "Oh good. I'll take her out more often from now on.",
+            culturalNote: "主动表示会防止再次发生，展现负责任的态度，酒店工作人员会更友好配合。",
+            commonMistake: {
+              wrong: "OK good. I will take dog go out more.",
+              correct: "I'll make sure to take her out more frequently for the rest of the stay.",
+              explanation: "'make sure to' 表示保证；'for the rest of the stay' 限定了时间范围。",
+            },
+            formalityVariants: {
+              casual: "Good to know. I'll take her out way more often.",
+              standard: "That's a relief. I'll make sure to take her out more frequently for the rest of the stay.",
+              formal: "That is most reassuring, thank you. I will ensure to take her out at more frequent intervals for the remainder of our stay to prevent any recurrence.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "That would be great. And just a reminder — the dog relief area in the garden is available 24/7. Feel free to call us if you need anything else for your pup.",
+            textZh: "那太好了。提醒一下——后花园的宠物活动区24小时开放。如果您的狗狗需要什么，随时联系我们。",
+            keyPhrases: [
+              { en: "available 24/7", zh: "24小时开放" },
+              { en: "feel free to call", zh: "随时联系" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Sounds good. The garden dog area is open round the clock, and we're here if you need pet-related help anytime.", textZh: "好的。花园宠物区全天候开放，宠物相关问题随时找我们。", actionHint: "热情友好", frequency: "common" },
+            ],
+            casualVersion: "Sounds good. Dog area in the garden is open all the time. Let us know if you need anything for her.",
+            formalityVariants: {
+              casual: "Sounds good. Dog area in the garden is open all the time. Hit us up if you need anything for her.",
+              standard: "That would be great. And just a reminder — the dog relief area in the garden is available 24/7. Feel free to call us if you need anything else for your pup.",
+              formal: "That would be most appreciated. As a gentle reminder, the designated dog relief area in our garden is accessible twenty-four hours a day, seven days a week. Please do not hesitate to contact us should you require any further assistance for your pet.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // ==================== 退房账单争议 Checkout Dispute ====================
+  {
+    id: "hotel-checkout-dispute",
+    category: "hotel",
+    titleZh: "退房账单争议",
+    titleEn: "Checkout Bill Dispute",
+    description: "退房时发现账单错误，与前台协商解决",
+    otherRole: "前台接待",
+    otherRoleIcon: "🧾",
+    flows: [
+      {
+        id: "basic-checkout-dispute",
+        titleZh: "基础账单争议",
+        titleEn: "Basic Bill Dispute",
+        description: "发现账单上有未消费的费用并要求更正",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Hi, I'm checking out and I'd like to review my bill. There seem to be a few charges I don't recognize.",
+            textZh: "你好，我要退房。我想看一下账单。有几笔费用我不认识。",
+            casualVersion: "Hey, I'm checking out. Can I see my bill? There's some stuff on there I don't recognize.",
+            culturalNote: "退房前仔细检查账单是好习惯。用 'charges I don't recognize' 比直接说 'wrong charges' 更礼貌。",
+            commonMistake: {
+              wrong: "I check out now. Bill has wrong charge.",
+              correct: "I'm checking out and I'd like to review my bill. There seem to be a few charges I don't recognize.",
+              explanation: "'I'd like to review my bill' 更正式；'charges I don't recognize' 不预设对方错误，更有效。",
+            },
+            formalityVariants: {
+              casual: "Hey, checking out. Some weird charges on my bill though.",
+              standard: "Hi, I'm checking out and I'd like to review my bill. There seem to be a few charges I don't recognize.",
+              formal: "Good morning. I am preparing to check out and would like to review my final bill. I have noticed several charges that I am unable to account for.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Of course. Here's a printout of your bill. Which charges are you concerned about?",
+            textZh: "当然。这是您账单的打印件。您对哪些费用有疑问？",
+            keyPhrases: [
+              { en: "printout of your bill", zh: "账单打印件" },
+              { en: "concerned about", zh: "有疑问" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Sure, let me pull up your folio. Can you point out which items look off?", textZh: "好的，我调出您的账单明细。能指出哪些项目有问题吗？", actionHint: "用folio替代bill", frequency: "common" },
+            ],
+            casualVersion: "Sure, here's your bill. What looks off to you?",
+            formalityVariants: {
+              casual: "Sure, here's your bill. What looks off?",
+              standard: "Of course. Here's a printout of your bill. Which charges are you concerned about?",
+              formal: "Certainly. Please find a detailed printout of your account. Could you kindly indicate which specific charges are of concern?",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "I see a $45 room service charge on Tuesday, but I didn't order any room service that day. I also see a $20 parking fee, but I don't have a car.",
+            textZh: "我看到周二有一笔45美元的客房服务费用，但那天我没有点过客房服务。还有一笔20美元的停车费，但我没有车。",
+            casualVersion: "There's a $45 room service on Tuesday — didn't order that. And $20 for parking, but I don't even have a car.",
+            culturalNote: "列出具体日期和金额，逐项说明为什么不对，比笼统地说'账单不对'更容易得到快速解决。",
+            commonMistake: {
+              wrong: "Tuesday $45 room service is wrong. And $20 parking is wrong. I have no car.",
+              correct: "I see a $45 room service charge on Tuesday, but I didn't order any room service that day. I also see a $20 parking fee, but I don't have a car.",
+              explanation: "逐项描述并给出原因（'didn't order' / 'don't have a car'），比直接说 'wrong' 更有说服力。",
+            },
+            formalityVariants: {
+              casual: "$45 room service on Tuesday — nope, didn't order anything. And $20 parking — I don't have a car.",
+              standard: "I see a $45 room service charge on Tuesday, but I didn't order any room service that day. I also see a $20 parking fee, but I don't have a car.",
+              formal: "I have identified two discrepancies. First, there is a forty-five-dollar room service charge dated Tuesday, although I did not place any room service order that day. Second, I see a twenty-dollar parking fee, which is incorrect as I do not have a vehicle.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Let me look into both of those. It looks like the room service was charged to the wrong room — that was for room 410, not yours. And the parking fee was auto-applied in error. I'll remove both right away.",
+            textZh: "我查一下这两笔。看起来客房服务记错了房间——那是410房间的。停车费是系统误加的。我马上帮您删除这两笔。",
+            keyPhrases: [
+              { en: "charged to the wrong room", zh: "记错了房间" },
+              { en: "auto-applied in error", zh: "系统误加" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Oh I see — the room service was billed to your room by mistake, and the parking was a system glitch. I'll take both off immediately.", textZh: "噢我看到了——客房服务误记到您房间了，停车费是系统故障。我马上删除。", actionHint: "快速解释并修正", frequency: "common" },
+            ],
+            casualVersion: "Oh, the room service was for the wrong room. And parking was a system error. I'll take them off now.",
+            formalityVariants: {
+              casual: "Oh, room service was for the wrong room, parking was a system error. Taking them off now.",
+              standard: "Let me look into both of those. It looks like the room service was charged to the wrong room — that was for room 410, not yours. And the parking fee was auto-applied in error. I'll remove both right away.",
+              formal: "Allow me to investigate both items. It appears the room service charge was erroneously attributed to your room rather than room four-ten. Furthermore, the parking fee was automatically applied in error. I will remove both charges from your account without delay.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "Thank you. So my updated total should be $65 less, right?",
+            textZh: "谢谢。那我更新后的总额应该少65美元，对吧？",
+            casualVersion: "Thanks. So that's $65 off my total, right?",
+            culturalNote: "主动确认调整后的金额，确保双方对最终数字达成一致。",
+            commonMistake: {
+              wrong: "So total is less $65 now?",
+              correct: "My updated total should be $65 less, right?",
+              explanation: "'updated total' 和 '$65 less' 都是更自然的表达方式。",
+            },
+            formalityVariants: {
+              casual: "Cool, so $65 off the total?",
+              standard: "Thank you. So my updated total should be $65 less, right?",
+              formal: "Thank you very much. To confirm, the revised total should reflect a reduction of sixty-five dollars, is that correct?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "That's correct. Your new total is $412. Would you like to pay by the card on file, or use a different payment method?",
+            textZh: "没错。您的新总额是412美元。用预留的银行卡支付，还是用其他方式？",
+            keyPhrases: [
+              { en: "card on file", zh: "预留的银行卡" },
+              { en: "payment method", zh: "支付方式" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Exactly. Updated total is $412. Shall I charge the card we have on file, or would you prefer another method?", textZh: "对。更新后总额412美元。用我们存档的卡扣款，还是用其他方式？", actionHint: "确认并询问支付", frequency: "common" },
+            ],
+            casualVersion: "Yep, new total's $412. Same card, or wanna use something else?",
+            formalityVariants: {
+              casual: "Yep, $412. Same card, or different one?",
+              standard: "That's correct. Your new total is $412. Would you like to pay by the card on file, or use a different payment method?",
+              formal: "That is correct. Your revised total comes to four hundred twelve dollars. Would you prefer to settle the account with the card currently on file, or would you like to arrange an alternative payment method?",
+            },
+          },
+        ],
+      },
+      {
+        id: "intermediate-checkout-dispute",
+        titleZh: "进阶账单争议",
+        titleEn: "Intermediate Bill Dispute",
+        description: "涉及复杂费用争议如服务质量不满要求折扣",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "you",
+            textEn: "Beyond the billing errors, I'd like to discuss compensation. The Wi-Fi was down for two of our three nights, which really affected my work.",
+            textZh: "除了账单错误，我还想讨论补偿的问题。三晚中有两晚Wi-Fi断了，严重影响了我的工作。",
+            casualVersion: "Also, I wanna talk about some kind of compensation. Wi-Fi was down two out of three nights and I needed it for work.",
+            culturalNote: "用事实陈述问题并说明实际影响，比情绪化投诉更容易获得补偿。'Compensation' 是正式但合理的用词。",
+            commonMistake: {
+              wrong: "Wi-Fi broken two nights! You should give me discount.",
+              correct: "I'd like to discuss compensation. The Wi-Fi was down for two of our three nights, which really affected my work.",
+              explanation: "'I'd like to discuss compensation' 更专业；描述影响比下命令更有效。",
+            },
+            formalityVariants: {
+              casual: "Also, Wi-Fi was out two nights and I needed it for work. Any chance of a discount?",
+              standard: "Beyond the billing errors, I'd like to discuss compensation. The Wi-Fi was down for two of our three nights, which really affected my work.",
+              formal: "In addition to the billing discrepancies, I would like to raise the matter of compensation. The Wi-Fi service was unavailable for two of our three nights, which significantly impacted my professional obligations.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "I completely understand your frustration. I can see in our system that there was a network outage on those nights. Let me speak with my manager about what we can offer.",
+            textZh: "我完全理解您的不满。系统记录显示那两晚确实有网络中断。我和经理商量一下能提供什么补偿。",
+            keyPhrases: [
+              { en: "network outage", zh: "网络中断" },
+              { en: "speak with my manager", zh: "和经理商量" },
+            ],
+            alternativeExpressions: [
+              { textEn: "I totally get it. Our logs confirm the outage. Let me check with my supervisor on compensation options.", textZh: "完全理解。日志确认了中断。我找主管确认补偿方案。", actionHint: "确认问题并升级", frequency: "common" },
+            ],
+            casualVersion: "Yeah, I get it. Records show the Wi-Fi was down those nights. Let me talk to my manager real quick.",
+            formalityVariants: {
+              casual: "Yeah, I get it. Let me check with my manager about making it right.",
+              standard: "I completely understand your frustration. I can see in our system that there was a network outage on those nights. Let me speak with my manager about what we can offer.",
+              formal: "I completely understand your frustration, and I apologize for the inconvenience. Our system records do confirm a network outage during those evenings. With your permission, I shall consult with my manager regarding an appropriate remedy.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "I appreciate that. I'm not trying to be difficult — I just feel it's fair given the impact on my trip.",
+            textZh: "谢谢。我不是想刁难——只是觉得考虑到对行程的影响，这是合理的。",
+            casualVersion: "Thanks. Not trying to be a pain — just think it's fair considering how it messed up my trip.",
+            culturalNote: "'I'm not trying to be difficult' 是表达立场的经典缓和语。展现合理性往往比强硬态度得到更好的结果。",
+            commonMistake: {
+              wrong: "I am not making trouble. It is fair.",
+              correct: "I'm not trying to be difficult — I just feel it's fair given the impact on my trip.",
+              explanation: "'not trying to be difficult' 是固定表达；'given the impact' 解释了合理性。",
+            },
+            formalityVariants: {
+              casual: "Not trying to be a pain — just think it's fair.",
+              standard: "I'm not trying to be difficult — I just feel it's fair given the impact on my trip.",
+              formal: "I assure you that it is not my intention to be unreasonable. I simply believe that some form of compensation would be appropriate given the material impact on my travel experience.",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Not at all — your request is completely reasonable. My manager has authorized a 25% discount on your room rate for those two nights. That brings your total down by another $94.",
+            textZh: "完全不会——您的要求完全合理。我的经理已经授权那两晚房费打75折。这又减少了94美元。",
+            keyPhrases: [
+              { en: "authorized a 25% discount", zh: "授权打75折" },
+              { en: "brings your total down", zh: "又减少了" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Absolutely fair. We've approved a 25% discount on two nights' room charges — that saves you an additional $94.", textZh: "完全合理。我们批准了两晚房费的25%折扣——额外节省94美元。", actionHint: "直接报结果", frequency: "common" },
+            ],
+            casualVersion: "Totally fair. Manager says 25% off for those two nights — saves you another $94.",
+            formalityVariants: {
+              casual: "Totally fair. Manager approved 25% off for those two nights — another $94 off.",
+              standard: "Not at all — your request is completely reasonable. My manager has authorized a 25% discount on your room rate for those two nights. That brings your total down by another $94.",
+              formal: "Your concern is entirely justified. My manager has authorized a twenty-five percent discount on the room rate for the two affected evenings, which reduces your total by an additional ninety-four dollars.",
+            },
+          },
+          {
+            speaker: "you",
+            textEn: "That's very fair, thank you. Could I get an itemized receipt showing all the adjustments?",
+            textZh: "非常合理，谢谢。能给我一份显示所有调整的明细收据吗？",
+            casualVersion: "That works, thanks. Can I get a receipt that shows all the changes?",
+            culturalNote: "'Itemized receipt' 是逐项列明的收据，对报销或记录很重要。出差住客经常需要这个。",
+            commonMistake: {
+              wrong: "Give me receipt with all change.",
+              correct: "Could I get an itemized receipt showing all the adjustments?",
+              explanation: "'itemized receipt' 是明细收据的专业说法；'showing all the adjustments' 明确了需求。",
+            },
+            formalityVariants: {
+              casual: "Can I get a receipt with everything broken down?",
+              standard: "Could I get an itemized receipt showing all the adjustments?",
+              formal: "Would it be possible to receive a fully itemized receipt reflecting all the adjustments that have been made to my account?",
+            },
+          },
+          {
+            speaker: "them",
+            role: "前台接待",
+            textEn: "Absolutely. Here's your updated, itemized receipt. It shows the two removed charges and the 25% discount. Your final total is $318. We hope this resolves everything to your satisfaction.",
+            textZh: "当然。这是您更新后的明细收据。上面显示了删除的两笔费用和25%的折扣。最终总额是318美元。希望这让您满意。",
+            keyPhrases: [
+              { en: "itemized receipt", zh: "明细收据" },
+              { en: "resolves everything to your satisfaction", zh: "让您满意" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Here you go — everything's itemized with the corrections. Final total: $318. We appreciate your patience and understanding.", textZh: "给您——所有更正都逐项列出了。最终总额：318美元。感谢您的耐心和理解。", actionHint: "感谢配合", frequency: "common" },
+            ],
+            casualVersion: "Here's the updated receipt with everything broken down. Total's $318. Hope that works for you!",
+            formalityVariants: {
+              casual: "Here's the new receipt — all broken down. $318 total. Hope that's cool!",
+              standard: "Absolutely. Here's your updated, itemized receipt. It shows the two removed charges and the 25% discount. Your final total is $318. We hope this resolves everything to your satisfaction.",
+              formal: "Certainly. Please find your revised, fully itemized receipt, which details the two removed charges as well as the twenty-five percent discount. Your final total stands at three hundred eighteen dollars. We sincerely hope this resolution meets with your complete satisfaction.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // ==================== 电话确认/修改酒店预订 Phone Hotel Confirmation ====================
+  {
+    id: "phone-hotel-confirm",
+    tags: ["phone", "电话", "hotel", "酒店", "confirm", "确认", "modify", "修改"],
+    category: "hotel",
+    titleZh: "电话确认酒店预订",
+    titleEn: "Phone Hotel Confirmation",
+    description: "打电话给酒店确认或修改预订，处理被转接、确认号码核实等电话场景",
+    otherRole: "酒店预订部",
+    otherRoleIcon: "📞",
+    flows: [
+      {
+        id: "confirm-booking",
+        titleZh: "确认预订详情",
+        titleEn: "Confirm Booking Details",
+        description: "打电话确认入住日期、房型和价格",
+        difficulty: "basic",
+        turns: [
+          {
+            speaker: "them",
+            role: "自动语音",
+            textEn: "Thank you for calling the Grand Pacific Hotel. For reservations, press 1. For the front desk, press 2. For billing, press 3. To speak with an operator, press 0.",
+            textZh: "感谢致电 Grand Pacific 酒店。预订请按 1。前台请按 2。账单请按 3。人工服务请按 0。",
+            keyPhrases: [
+              { en: "for reservations, press 1", zh: "预订请按1" },
+              { en: "front desk", zh: "前台" },
+              { en: "operator", zh: "人工服务" },
+            ],
+            culturalNote: "美国酒店电话通常先是自动语音菜单（IVR）。需要仔细听按键选项。如果没听清，可以等系统重播，或直接按 0 转人工。",
+          },
+          {
+            speaker: "you",
+            textEn: "[Presses 1] ...",
+            textZh: "[按 1] ……",
+            culturalNote: "按键后通常会有等待音乐和'请稍候'的提示。",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Reservations, this is Kevin. How can I help you?",
+            textZh: "预订部，我是 Kevin。有什么可以帮您的？",
+          },
+          {
+            speaker: "you",
+            textEn: "Hi Kevin. I have a reservation for next week and I'd like to confirm the details. My confirmation number is GP-8842-WC.",
+            textZh: "你好 Kevin。我有下周的预订想确认一下。我的确认号是 GP-8842-WC。",
+            casualVersion: "Hey, I just wanna double-check my reservation. Confirmation number GP-8842-WC.",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Let me pull that up... GP-8842-WC. I have a reservation under Wei Chen, checking in Thursday, March 27th, checking out Sunday, March 30th. One king room, non-smoking. Rate is $189 per night plus tax. Does that all look right?",
+            textZh: "让我查一下……GP-8842-WC。Wei Chen 名下的预订，3 月 27 日周四入住，3 月 30 日周日退房。一间大床房，无烟。房价每晚 189 美元加税。都对吗？",
+            keyPhrases: [
+              { en: "checking in", zh: "入住" },
+              { en: "checking out", zh: "退房" },
+              { en: "king room", zh: "大床房" },
+              { en: "non-smoking", zh: "无烟" },
+              { en: "plus tax", zh: "加税" },
+            ],
+            alternativeExpressions: [
+              { textEn: "OK, pulling it up now... Got it. Chen, Wei. Arrival March 27, departure March 30. King bed, smoke-free. $189 a night before taxes. Sound right?", textZh: "好的，正在查……找到了。Chen, Wei。3月27日到达，3月30日离开。大床，禁烟。每晚189美元税前。对吗？", actionHint: "sound right 听起来对吗", frequency: "common" },
+            ],
+          },
+          {
+            speaker: "you",
+            textEn: "Yes, that's correct. And is breakfast included?",
+            textZh: "是的，没错。请问含早餐吗？",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Your rate does include complimentary breakfast — that's served in the lobby restaurant from 6:30 to 10 a.m. Is there anything else you'd like to confirm?",
+            textZh: "您的房价包含免费早餐——在大堂餐厅供应，时间是早上 6:30 到 10 点。还有别的想确认的吗？",
+            keyPhrases: [
+              { en: "complimentary breakfast", zh: "免费早餐" },
+              { en: "lobby restaurant", zh: "大堂餐厅" },
+            ],
+          },
+          {
+            speaker: "you",
+            textEn: "What time is check-in? Our flight doesn't land until 4 p.m., so we probably won't arrive until around 6.",
+            textZh: "几点可以办入住？我们的航班下午4点才到，所以大概6点左右才能到。",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Check-in starts at 3 p.m. and the front desk is open 24 hours, so 6 p.m. is no problem at all. Your room will be ready. If you run into any delays, just give us a call — we'll hold the room for you regardless.",
+            textZh: "入住从下午 3 点开始，前台 24 小时有人，所以下午 6 点完全没问题。您的房间会准备好。如果遇到延误，给我们打个电话——我们无论如何都会保留房间。",
+            keyPhrases: [
+              { en: "front desk is open 24 hours", zh: "前台24小时有人" },
+              { en: "hold the room", zh: "保留房间" },
+              { en: "regardless", zh: "无论如何" },
+            ],
+          },
+          {
+            speaker: "you",
+            textEn: "That's great to know. One last thing — is there parking? And what does it cost?",
+            textZh: "那太好了。最后一个问题——有停车场吗？费用多少？",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "We have both self-parking at $25 per night and valet parking at $45 per night. I can add self-parking to your reservation right now if you'd like.",
+            textZh: "我们有自助停车每晚 25 美元和代客泊车每晚 45 美元。如果您需要，我现在就可以把自助停车加到您的预订里。",
+            keyPhrases: [
+              { en: "self-parking", zh: "自助停车" },
+              { en: "valet parking", zh: "代客泊车" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Yes! Self-park is $25 a night, valet is $45. Want me to go ahead and add parking to your reservation?", textZh: "有！自助停车每晚25美元，代客泊车45美元。要我直接把停车加到您的预订里吗？", actionHint: "go ahead and 直接/马上", frequency: "common" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "upgrade-modify",
+        titleZh: "要求升级与修改",
+        titleEn: "Room Upgrade & Modifications",
+        description: "打电话要求升级房间、加床或提前入住",
+        difficulty: "intermediate",
+        turns: [
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Grand Pacific Hotel reservations, how may I assist you?",
+            textZh: "Grand Pacific 酒店预订部，有什么可以为您服务的？",
+          },
+          {
+            speaker: "you",
+            textEn: "Hi, I have an existing reservation and I was wondering if I could make some changes. Confirmation number GP-8842-WC.",
+            textZh: "你好，我有一个已有的预订想做一些修改。确认号 GP-8842-WC。",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Sure, let me look that up... OK, I see your reservation. Three nights, king room. What changes did you have in mind?",
+            textZh: "好的，让我查一下……好的，我看到您的预订了。三晚，大床房。您想做什么修改？",
+            keyPhrases: [{ en: "what changes did you have in mind", zh: "您想做什么修改" }],
+          },
+          {
+            speaker: "you",
+            textEn: "Two things. First, is it possible to upgrade to a suite? And second, we'll actually be arriving early — can we check in around noon instead of 3 p.m.?",
+            textZh: "两件事。第一，能不能升级到套房？第二，我们其实会早到——能不能中午12点左右入住而不是下午3点？",
+            casualVersion: "So two things — can we get a suite instead? And can we check in early, like around noon?",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Let me check suite availability for those dates... Good news — we do have a junior suite available. It's a step up from the king room: larger space, separate sitting area, and a soaking tub. The rate would be $289 per night instead of $189. That's a $100 per night difference, so $300 more for three nights. Would you like to go ahead with that?",
+            textZh: "让我查一下那几天套房的空房情况……好消息——我们有一间小套房。比大床房升级：空间更大，有独立起居区和浴缸。房价每晚 289 美元而不是 189 美元。每晚差价 100 美元，三晚多 300 美元。要升级吗？",
+            keyPhrases: [
+              { en: "junior suite", zh: "小套房" },
+              { en: "a step up", zh: "升级/更高级" },
+              { en: "separate sitting area", zh: "独立起居区" },
+              { en: "soaking tub", zh: "浴缸" },
+              { en: "go ahead with that", zh: "确认/进行" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Checking now... You're in luck! We have a junior suite open. It's bigger, has a living area and a deep tub. It'd be $289 a night though, so that's an extra hundred a night — $300 total for the three nights. Want me to switch it?", textZh: "正在查……运气好！我们有一间小套房。更大，有客厅区和深浴缸。但是每晚289美元，也就是每晚多100美元——三晚总共多300美元。要我换吗？", actionHint: "you're in luck 运气好", frequency: "common" },
+            ],
+          },
+          {
+            speaker: "you",
+            textEn: "Hmm, $300 more is a bit steep. Is there anything in between — maybe a room with a better view, without the full suite price?",
+            textZh: "嗯，多 300 美元有点贵。有没有中间选项——比如景观更好的房间，不用套房的价格？",
+            casualVersion: "$300 more? That's pricey. Got anything in between?",
+            culturalNote: "在美国酒店谈升级是常见的。直接问有没有更便宜的升级选项完全可以，不会显得失礼。",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Actually, I can offer you a deluxe king with a city view. Same room size as your current booking but on a higher floor with a much better view. That would be $219 per night — only $30 more per night. Interested?",
+            textZh: "其实，我可以给您一间城景豪华大床房。跟您现在的预订一样大，但楼层更高景观好很多。每晚 219 美元——每晚只多 30 美元。感兴趣吗？",
+            keyPhrases: [
+              { en: "deluxe king", zh: "豪华大床房" },
+              { en: "city view", zh: "城景" },
+              { en: "higher floor", zh: "更高楼层" },
+            ],
+          },
+          {
+            speaker: "you",
+            textEn: "That sounds much better. Let's do that. And what about the early check-in?",
+            textZh: "那听起来好多了。就那个吧。那提前入住呢？",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Early check-in is subject to availability, so I can't guarantee it right now. But I'll put a note on your reservation requesting noon check-in. If the room is ready, we'll get you in. If not, we can store your luggage and you can use the lobby and pool area until the room is ready. I'd suggest calling the front desk the morning of your arrival to check.",
+            textZh: "提前入住取决于房间情况，所以我现在不能保证。但我会在您的预订上备注请求中午入住。如果房间准备好了，我们会让您入住。如果没有，我们可以寄存行李，您可以使用大堂和泳池区域直到房间准备好。建议您到达当天早上打电话给前台确认。",
+            keyPhrases: [
+              { en: "subject to availability", zh: "取决于房间情况" },
+              { en: "store your luggage", zh: "寄存行李" },
+              { en: "the morning of your arrival", zh: "到达当天早上" },
+            ],
+            alternativeExpressions: [
+              { textEn: "Early check-in isn't guaranteed — it depends on occupancy. I'll flag your reservation for a noon arrival. Best case, the room's ready and you walk right in. Worst case, we hold your bags and you can hang out in the lobby or by the pool. Call the front desk that morning to check status.", textZh: "提前入住不能保证——取决于入住率。我会在您的预订上标注中午到达。最好的情况是房间准备好了直接入住。最坏的情况是我们保管行李，您可以在大堂或泳池边休息。那天早上打前台电话确认一下。", actionHint: "flag 标注, hang out 待着/消磨时间", frequency: "common" },
+            ],
+          },
+          {
+            speaker: "you",
+            textEn: "That works. Oh, one more thing — can you add a rollaway bed? We have a child who needs their own bed.",
+            textZh: "可以的。哦，还有一件事——能加一张折叠床吗？我们有个孩子需要自己的床。",
+          },
+          {
+            speaker: "them",
+            role: "预订部",
+            textEn: "Rollaway beds are available for $30 per night. I'll add that to your reservation. So your updated total will be $219 plus $30 for the rollaway, that's $249 per night plus tax for three nights. Shall I confirm all these changes?",
+            textZh: "折叠床每晚 30 美元。我把它加到您的预订里。所以更新后的总价是每晚 219 美元加 30 美元折叠床，即每晚 249 美元加税，三晚。要确认所有这些修改吗？",
+            keyPhrases: [
+              { en: "rollaway bed", zh: "折叠床" },
+              { en: "updated total", zh: "更新后的总价" },
             ],
           },
         ],

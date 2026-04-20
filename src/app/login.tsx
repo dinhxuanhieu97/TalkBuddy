@@ -35,6 +35,7 @@ interface LoginProps {
   onAuthSuccess?: () => void;
   onGoToRegister?: () => void;
   onGoToForgotPassword?: () => void;
+  onGoToGuestMode?: () => void;
 }
 
 interface LoginErrors {
@@ -47,6 +48,7 @@ export default function Login({
   onAuthSuccess,
   onGoToRegister,
   onGoToForgotPassword,
+  onGoToGuestMode,
 }: LoginProps) {
   const insets = useSafeAreaInsets();
   const t = useT();
@@ -370,6 +372,17 @@ export default function Login({
             <Text style={styles.signUpText}>{t("auth.signUp")}</Text>
           </TouchableOpacity>
         </View>
+
+        {/* Guest Mode */}
+        <TouchableOpacity
+          style={styles.guestButton}
+          onPress={() => onGoToGuestMode?.()}
+          disabled={isLoading}
+        >
+          <Text style={styles.guestButtonText}>
+            {t("auth.continueAsGuest")}
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -575,6 +588,20 @@ const styles = StyleSheet.create({
   signUpText: {
     fontSize: 14,
     fontWeight: "700",
+    color: "#1c1c1e",
+  },
+  guestButton: {
+    backgroundColor: "transparent",
+    borderRadius: 12,
+    paddingVertical: 14,
+    alignItems: "center",
+    marginBottom: 40,
+    borderWidth: 1,
+    borderColor: "rgba(28,28,30,0.3)",
+  },
+  guestButtonText: {
+    fontSize: 14,
+    fontWeight: "600",
     color: "#1c1c1e",
   },
 });

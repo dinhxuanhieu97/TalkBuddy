@@ -41,6 +41,7 @@ const zh = {
   "auth.error.loginFailed": "登录失败，请重试",
   "auth.error.googleLoginFailed": "Google 登录失败，请重试",
   "auth.rememberMe": "记住我",
+  "auth.continueAsGuest": "以游客身份继续",
   "auth.comingSoon.appleLogin": "Apple 登录即将上线！",
 
   // ── Register ─────────────────────────────────────────────────────
@@ -160,6 +161,10 @@ const zh = {
   "learn.category.entertainment": "娱乐",
   "learn.category.foundation": "基础",
   "learn.category.dailyLife": "日常生活",
+  "learn.category.housing": "住房",
+  "learn.category.government": "政府",
+  "learn.category.education": "教育",
+  "learn.category.workplace": "工作场所",
   "learn.level.basic": "基础",
   "learn.level.advanced": "进阶",
   "learn.practiceMode": "练习",
@@ -182,6 +187,9 @@ const zh = {
   "learn.close": "关闭",
   "learn.searchResults": "搜索结果",
   "learn.phrases": "{context} 短语",
+  "learn.weakCategory": "Need Practice",
+  "learn.tryNew": "Try New Scenes",
+  "learn.phrasesCount": "phrases",
 
   // Profile
   "profile.defaultName": "用户",
@@ -702,6 +710,7 @@ const zh = {
   "onboarding.slide4.subtitle":
     "您学习的每个短语都会被保存。查看您的历史记录，看着您的英语日益进步。",
   "onboarding.continue": "继续",
+  "onboarding.skip": "跳过",
   "onboarding.getStarted": "开始使用",
 
   // Edit Profile

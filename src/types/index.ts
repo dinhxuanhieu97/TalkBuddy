@@ -2,7 +2,7 @@
 // TalkBuddy Core Types
 // ============================================================
 
-/** Scene categories for organizing learning content (13 categories) */
+/** Scene categories for organizing learning content (17 categories) */
 export type SceneCategory =
   | "airport"
   | "hotel"
@@ -16,7 +16,11 @@ export type SceneCategory =
   | "banking"
   | "accommodation"
   | "daily-life"
-  | "foundation";
+  | "foundation"
+  | "housing"
+  | "government"
+  | "education"
+  | "workplace";
 
 /** Journey phase — where in the travel timeline this scene occurs */
 export type JourneyPhase =

@@ -48,8 +48,8 @@ function generateQuizOptions(correctVi: string) {
 
   const options = [
     { text: correctVi, correct: true },
-    { text: picked[0] || "Tôi không nghe rõ", correct: false },
-    { text: picked[1] || "Tạm biệt", correct: false },
+    { text: picked[0] || "我不明白", correct: false },
+    { text: picked[1] || "再见", correct: false },
   ];
 
   return options.sort(() => Math.random() - 0.5);

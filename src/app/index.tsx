@@ -25,6 +25,7 @@ type AppStep =
   | "verifyOtp"
   | "resetPassword"
   | "resetPasswordSuccess"
+  | "guestMode"
   | "mainApp";
 
 export default function Index() {
@@ -112,6 +113,10 @@ export default function Index() {
     setStep("login");
   };
 
+  const handleGuestMode = () => {
+    setStep("guestMode");
+  };
+
   const handleResetOnboarding = async () => {
     try {
       await AsyncStorage.removeItem("hasSeenOnboarding");
@@ -187,6 +192,16 @@ export default function Index() {
     );
   }
 
+  if (step === "guestMode") {
+    return (
+      <MainApp
+        onLogout={handleLogout}
+        onResetOnboarding={handleResetOnboarding}
+        isGuestMode={true}
+      />
+    );
+  }
+
   if (step === "mainApp") {
     return (
       <MainApp
@@ -201,6 +216,7 @@ export default function Index() {
       onAuthSuccess={handleAuthSuccess}
       onGoToRegister={() => setStep("register")}
       onGoToForgotPassword={() => setStep("forgotPassword")}
+      onGoToGuestMode={handleGuestMode}
     />
   );
 }

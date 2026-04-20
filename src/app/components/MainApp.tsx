@@ -29,9 +29,14 @@ const tabs: {
 interface MainAppProps {
   onLogout?: () => void;
   onResetOnboarding?: () => void;
+  isGuestMode?: boolean;
 }
 
-export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
+export default function MainApp({
+  onLogout,
+  onResetOnboarding,
+  isGuestMode,
+}: MainAppProps) {
   const t = useT();
   const [activeTab, setActiveTab] = useState<Tab>("learn");
 
@@ -74,6 +79,7 @@ export default function MainApp({ onLogout, onResetOnboarding }: MainAppProps) {
             onLogout={onLogout}
             onResetOnboarding={onResetOnboarding}
             onNavigateToLearn={() => setActiveTab("learn")}
+            isGuestMode={isGuestMode}
           />
         )}
       </View>

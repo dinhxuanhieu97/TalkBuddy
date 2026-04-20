@@ -29,7 +29,8 @@
           }
         ],
         "NSAppleSignInUsageDescription": "Sign in with your Apple ID to save your learning progress and sync across devices",
-        "NSMicrophoneUsageDescription": "TalkBuddy needs microphone access for voice practice with Shadow Mode to help you improve your pronunciation and speaking skills."
+        "NSMicrophoneUsageDescription": "TalkBuddy needs microphone access for voice practice with Shadow Mode to help you improve your pronunciation and speaking skills.",
+        "NSPhotoLibraryUsageDescription": "TalkBuddy needs photo library access to let you choose profile pictures."
       }
     },
     "android": {

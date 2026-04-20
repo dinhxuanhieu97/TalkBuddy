@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+// Hide payment/subscription UI - not yet implemented
+const HIDE_PAYMENT_UI = true;
 import {
   View,
   Text,
@@ -17,7 +20,7 @@ import { useT } from "../../lib/i18n";
 import { AuthService } from "../../services/AuthService";
 import { CreditBalance } from "../../components/CreditBalance";
 import { CreditShop } from "../../components/CreditShop";
-import { SubscriptionPlans } from "../../components/SubscriptionPlans";
+// SubscriptionPlans removed - payment not implemented
 import { FamilyManager } from "../../components/FamilyManager";
 import { NotificationSettings } from "../../components/NotificationSettings";
 import { AnalyticsDashboard } from "../../components/AnalyticsDashboard";
@@ -52,16 +55,18 @@ interface ProfileScreenProps {
   onLogout?: () => void;
   onResetOnboarding?: () => void;
   onNavigateToLearn?: () => void;
+  isGuestMode?: boolean;
 }
 
 export default function ProfileScreen({
   onLogout,
   onResetOnboarding,
   onNavigateToLearn,
+  isGuestMode,
 }: ProfileScreenProps) {
   const t = useT();
   const [showCreditShop, setShowCreditShop] = useState(false);
-  const [showSubscriptionPlans, setShowSubscriptionPlans] = useState(false);
+  // showSubscriptionPlans removed - payment not implemented
   const [showFamilyManager, setShowFamilyManager] = useState(false);
   const [showNotificationSettings, setShowNotificationSettings] =
     useState(false);
@@ -538,7 +543,7 @@ export default function ProfileScreen({
           </View>
         ))}
 
-        {/* Upgrade Banner - Hidden */}
+        {/* Upgrade Banner - Hidden - payment not implemented */}
         {/* <View style={styles.upgradeCard}>
           <View style={styles.upgradeContent}>
             <View style={styles.upgradeIcon}>
@@ -597,8 +602,8 @@ export default function ProfileScreen({
         <View style={{ height: 40 }} />
       </ScrollView>
 
-      {/* Credit Shop Modal */}
-      <Modal
+      {/* Credit Shop Modal - Hidden - payment not implemented */}
+      {/* <Modal
         visible={showCreditShop}
         animationType="slide"
         presentationStyle="pageSheet"
@@ -612,10 +617,10 @@ export default function ProfileScreen({
           </View>
           <CreditShop />
         </View>
-      </Modal>
+      </Modal> */}
 
-      {/* Subscription Plans Modal */}
-      <Modal
+      {/* Subscription Plans Modal - Hidden - payment not implemented */}
+      {/* <Modal
         visible={showSubscriptionPlans}
         animationType="slide"
         presentationStyle="pageSheet"
@@ -629,10 +634,10 @@ export default function ProfileScreen({
           </View>
           <SubscriptionPlans />
         </View>
-      </Modal>
+      </Modal> */}
 
-      {/* Family Manager Modal */}
-      <Modal
+      {/* Family Manager Modal - Hidden - family plan not implemented */}
+      {/* <Modal
         visible={showFamilyManager}
         animationType="slide"
         presentationStyle="pageSheet"
@@ -646,7 +651,7 @@ export default function ProfileScreen({
           </View>
           <FamilyManager />
         </View>
-      </Modal>
+      </Modal> */}
 
       {/* Notification Settings Modal */}
       <Modal
@@ -687,6 +692,7 @@ export default function ProfileScreen({
         <VoiceSettingsScreen
           locale="en-US"
           onBack={() => setShowVoiceSettings(false)}
+          onSave={() => setShowVoiceSettings(false)}
         />
       </Modal>
 

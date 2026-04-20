@@ -1,37 +1,69 @@
 /**
  * TTS Service for Mobile App
- * Primary: Backend API (Google Cloud TTS) → Expo AV playback
+ * Primary: Microsoft Edge TTS via talkbuddy_tts service
  * Fallback: expo-speech (device built-in)
  */
 
 import { Audio } from "expo-av";
 import * as Speech from "expo-speech";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ttsClient } from "./tts";
+import {
+  VoiceSpeed,
+  SPEED_TO_RATE,
+  VOICE_SETTINGS_STORAGE,
+  VoiceSettings,
+  DEFAULT_VOICE_SETTINGS,
+} from "../types/voice";
 
 export type VoiceAccent = "en-US" | "en-GB" | "en-AU";
 export type SpeechSpeed = "slow" | "normal" | "fast";
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL
-  ? `${process.env.EXPO_PUBLIC_API_URL}/api`
-  : "http://localhost:5277/api";
 const TTS_CACHE_PREFIX = "talkbuddy_tts_url_";
+
+// Map SpeechSpeed to VoiceSpeed
+const SPEED_MAP: Record<SpeechSpeed, VoiceSpeed> = {
+  slow: 0.75,
+  normal: 1.0,
+  fast: 1.25,
+};
+
+// Default voice IDs for each accent
+const DEFAULT_VOICES: Record<VoiceAccent, string> = {
+  "en-US": "en-US-AvaNeural",
+  "en-GB": "en-GB-LibbyNeural",
+  "en-AU": "en-AU-NatashaNeural",
+};
 
 const SPEED_RATE_MAP: Record<SpeechSpeed, number> = {
   slow: 0.5,
-  normal: 0.9,
-  fast: 1.2,
+  normal: 1,
+  fast: 1.25,
 };
 
 let currentSound: Audio.Sound | null = null;
 
-/** Get JWT token from storage */
-async function getToken(): Promise<string | null> {
-  return await AsyncStorage.getItem("auth_token");
-}
-
 /** Cache key for audio */
 function cacheKey(text: string, accent: string, speed: string): string {
   return `${TTS_CACHE_PREFIX}${accent}_${speed}_${text.slice(0, 80)}`;
+}
+
+/** Load saved voice settings from AsyncStorage */
+async function getSavedVoiceSettings(): Promise<VoiceSettings | null> {
+  try {
+    const saved = await AsyncStorage.getItem(
+      VOICE_SETTINGS_STORAGE.localStorageKey,
+    );
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.selectedVoiceId && parsed.speed) {
+        return parsed as VoiceSettings;
+      }
+    }
+  } catch (error) {
+    console.warn("[TTS] Failed to load voice settings:", error);
+  }
+  return null;
 }
 
 /** Get cached audio URL */
@@ -108,7 +140,7 @@ async function speakFallback(
 }
 
 /**
- * Speak text - tries backend Google Cloud TTS first, falls back to expo-speech
+ * Speak text - uses Microsoft Edge TTS via talkbuddy_tts service
  */
 export async function speak(
   text: string,
@@ -122,8 +154,18 @@ export async function speak(
   const { accent = "en-US", speed = "normal", onDone, onError } = options;
 
   try {
+    // Load saved voice settings from AsyncStorage
+    const savedSettings = await getSavedVoiceSettings();
+
+    // Use saved settings or fallback to options/defaults
+    const voiceId =
+      savedSettings?.selectedVoiceId ||
+      DEFAULT_VOICES[accent] ||
+      DEFAULT_VOICES["en-US"];
+    const voiceSpeed = savedSettings?.speed || SPEED_MAP[speed];
+
     // L1: Check cached URL
-    const key = cacheKey(text, accent, speed);
+    const key = cacheKey(text, voiceId, String(voiceSpeed));
     const cachedUrl = await getCachedAudioUrl(key);
 
     if (cachedUrl) {
@@ -132,32 +174,19 @@ export async function speak(
       return;
     }
 
-    // L2: Call backend TTS API
-    const token = await getToken();
-    if (!token) throw new Error("Not authenticated");
+    // L2: Use Microsoft Edge TTS via ttsClient
+    const response = await ttsClient.synthesize(text, voiceId, voiceSpeed);
 
-    const res = await fetch(`${API_URL}/tts/speak`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ text, accent, speed }),
-    });
-
-    if (!res.ok) throw new Error(`TTS API error: ${res.status}`);
-
-    const data = await res.json();
-    if (!data.success || !data.data?.audioUrl)
-      throw new Error("Invalid TTS response");
+    // Build audio URL
+    const audioUrl = `${ttsClient.getBaseUrl()}/api/v1/tts/audio/${response.audio_id}`;
 
     // Cache URL for reuse
-    cacheAudioUrl(key, data.data.audioUrl);
+    cacheAudioUrl(key, audioUrl);
 
-    await playAudioFromUrl(data.data.audioUrl);
+    await playAudioFromUrl(audioUrl);
     onDone?.();
   } catch (err) {
-    console.warn("[TTS] Backend failed, falling back to expo-speech:", err);
+    console.warn("[TTS] Edge TTS failed, falling back to expo-speech:", err);
     try {
       await speakFallback(text, accent, speed);
       onDone?.();

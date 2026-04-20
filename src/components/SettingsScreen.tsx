@@ -250,9 +250,10 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
                 </Text>
               </TouchableOpacity>
             </View>
-            {!isPro && (
+            {/* Upgrade to Pro hint hidden - payment not implemented */}
+            {/* {!isPro && (
               <Text style={styles.proHint}>{t("settings.upgradeToPro")}</Text>
-            )}
+            )} */}
           </View>
         </View>
 
