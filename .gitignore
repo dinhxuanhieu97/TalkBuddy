@@ -112,5 +112,8 @@ firebase-debug.*.log
 tmp/
 temp/
 
+# Screenshots
+screenshot/
+
 # Local Android signing materials
 android_build/
