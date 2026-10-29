@@ -1,0 +1,68 @@
+{
+  "expo": {
+    "name": "TalkBuddy-场景学英语，即学即用～",
+    "slug": "talkbuddy",
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "talkbuddy",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.talkbuddy.scenario",
+      "buildNumber": "1.0.1",
+      "buildReactNativeFromSource": false,
+      "infoPlist": {
+        "CFBundleDisplayName": "TalkBuddy",
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.108942595833-pgbud7gpkatf252ghm14mjej01jbkkh9"
+            ]
+          }
+        ],
+        "NSAppleSignInUsageDescription": "Sign in with your Apple ID to save your learning progress and sync across devices",
+        "NSMicrophoneUsageDescription": "TalkBuddy needs microphone access for voice practice with Shadow Mode to help you improve your pronunciation and speaking skills.",
+        "NSPhotoLibraryUsageDescription": "TalkBuddy needs photo library access to let you choose profile pictures."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.talkbuddy.scenario",
+      "versionCode": 2,
+      "config": {
+        "appAuthRedirectScheme": "com.talkbuddy.scenario"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-apple-authentication",
+      "expo-sqlite",
+      "./plugins/withAndroidReleaseSigning"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "84d80e31-f62b-47f1-a155-7151ee9c32d4"
+      },
+      "router": {}
+    },
+    "owner": "keydever"
+  }
+}
